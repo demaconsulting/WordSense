@@ -3,14 +3,16 @@ using System.Globalization;
 namespace DemaConsulting.WordSense.MiniLM.Tests;
 
 /// <summary>
-///     Doc-check tests that keep the README usage samples and their documented output from drifting.
+///     Doc-check tests that keep the usage samples of the README and the user guide and their documented output from
+///     drifting.
 /// </summary>
 /// <remarks>
-///     <c>README.md</c> marks each usage sample with <c>&lt;!-- sample:NAME --&gt;</c> before the code block and
-///     <c>&lt;!-- output:NAME --&gt;</c> before the output block. A code block must equal the using directives plus the
-///     region of <c>ReadmeSample.cs</c> between the <c>&lt;sample:NAME&gt;</c> markers, and an output block must equal
-///     what that code writes. An output block that still holds the text <c>TBD</c> has not been generated yet and
-///     fails the test.
+///     <c>README.md</c> holds the main sample and its Basic output. <c>docs/user_guide/introduction.md</c> holds the
+///     download and capability samples and the encoder outputs. Each document marks a usage sample with
+///     <c>&lt;!-- sample:NAME --&gt;</c> before the code block and <c>&lt;!-- output:NAME --&gt;</c> before the output
+///     block. A code block must equal the using directives plus the region of <c>ReadmeSample.cs</c> between the
+///     <c>&lt;sample:NAME&gt;</c> markers, and an output block must equal what that code writes. An output block that
+///     still holds the text <c>TBD</c> has not been generated yet and fails the test.
 /// </remarks>
 public class ReadmeSampleTests
 {
@@ -50,6 +52,15 @@ public class ReadmeSampleTests
     }
 
     /// <summary>
+    ///     Reads the user guide that holds the download and capability samples and the encoder outputs.
+    /// </summary>
+    /// <returns>The text of <c>docs/user_guide/introduction.md</c>.</returns>
+    private static async Task<string> ReadGuideAsync() =>
+        await File.ReadAllTextAsync(
+            Path.Join(DocSampleText.FindRepositoryRoot(), "docs", "user_guide", "introduction.md"),
+            TestContext.Current.CancellationToken);
+
+    /// <summary>
     ///     Builds the text that a README code block must equal: the using directives plus the unindented region of the
     ///     sample source between the markers of the sample, with the common indentation removed.
     /// </summary>
@@ -78,26 +89,28 @@ public class ReadmeSampleTests
     }
 
     /// <summary>
-    ///     The README block that calls <c>EnsureModelAsync</c> on the concrete model type equals the compiled sample.
+    ///     The user guide block that calls <c>EnsureModelAsync</c> on the concrete model type equals the compiled
+    ///     sample.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
     public async Task WordSense_Readme_DownloadBlock_MatchesCompiledSample()
     {
         // Arrange
-        var (readme, source) = await ReadAsync();
+        var (_, source) = await ReadAsync();
+        var guide = await ReadGuideAsync();
 
         // Act
-        var documented = DocSampleText.Normalize(DocSampleText.FencedBlock(readme, "<!-- sample:download -->", "csharp"));
+        var documented = DocSampleText.Normalize(DocSampleText.FencedBlock(guide, "<!-- sample:download -->", "csharp"));
 
-        // Assert: the code the README shows is the code that compiles, with the call made directly on the model
+        // Assert: the code the guide shows is the code that compiles, with the call made directly on the model
         Assert.Equal(Compiled(source, "download", MiniLMUsings), documented);
         Assert.Contains("await model.EnsureModelAsync();", documented, StringComparison.Ordinal);
         Assert.DoesNotContain("is IDownloadableWordSenseModel", documented, StringComparison.Ordinal);
     }
 
     /// <summary>
-    ///     The README block that asks an <c>IWordSenseModel</c> for the downloadable capability equals the compiled
+    ///     The user guide block that asks an <c>IWordSenseModel</c> for the downloadable capability equals the compiled
     ///     sample.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
@@ -105,10 +118,11 @@ public class ReadmeSampleTests
     public async Task WordSense_Readme_CapabilityBlock_MatchesCompiledSample()
     {
         // Arrange
-        var (readme, source) = await ReadAsync();
+        var (_, source) = await ReadAsync();
+        var guide = await ReadGuideAsync();
 
         // Act
-        var documented = DocSampleText.Normalize(DocSampleText.FencedBlock(readme, "<!-- sample:capability -->", "csharp"));
+        var documented = DocSampleText.Normalize(DocSampleText.FencedBlock(guide, "<!-- sample:capability -->", "csharp"));
 
         // Assert: the type check pattern for code that holds only the model contract
         Assert.Equal(Compiled(source, "capability", MiniLMUsings), documented);
@@ -117,20 +131,23 @@ public class ReadmeSampleTests
     }
 
     /// <summary>
-    ///     The README marks exactly the samples that are checked.
+    ///     The README and the user guide mark exactly the samples that are checked.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
     public async Task WordSense_Readme_SampleMarkers_AreAllChecked()
     {
-        // Arrange: read the README
+        // Arrange: read the README and the user guide
         var (readme, _) = await ReadAsync();
+        var guide = await ReadGuideAsync();
 
-        // Act: list the samples that the README marks
-        var names = DocSampleText.SampleNames(readme);
+        // Act: list the samples that each document marks
+        var readmeNames = DocSampleText.SampleNames(readme);
+        var guideNames = DocSampleText.SampleNames(guide);
 
         // Assert: every marked sample is one of the checked samples, in document order
-        Assert.Equal(["readme", "download", "capability"], names);
+        Assert.Equal(["readme"], readmeNames);
+        Assert.Equal(["download", "capability"], guideNames);
     }
 
     /// <summary>
@@ -160,37 +177,38 @@ public class ReadmeSampleTests
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public Task WordSense_Readme_BasicOutput_MatchesReadme() => CheckOutputAsync("basic", "basic", null, BasicConfidenceTolerance);
+    public Task WordSense_Readme_BasicOutput_MatchesReadme() => CheckOutputAsync("basic", "basic", null, BasicConfidenceTolerance, false);
 
     /// <summary>
-    ///     The documented MiniLM output equals the output of the sample run against the real model; the confidences
-    ///     match within <see cref="EncoderConfidenceTolerance"/>.
+    ///     The documented MiniLM output of the user guide equals the output of the sample run against the real model;
+    ///     the confidences match within <see cref="EncoderConfidenceTolerance"/>.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public Task WordSense_Readme_MiniLMOutput_MatchesReadme() => CheckOutputAsync("minilm", "minilm", "all-MiniLM-L6-v2-int8", EncoderConfidenceTolerance);
+    public Task WordSense_Readme_MiniLMOutput_MatchesReadme() => CheckOutputAsync("minilm", "minilm", "all-MiniLM-L6-v2-int8", EncoderConfidenceTolerance, true);
 
     /// <summary>
-    ///     The documented BertBaseCased output equals the output of the sample run against the real model; the
-    ///     confidences match within <see cref="EncoderConfidenceTolerance"/>.
+    ///     The documented BertBaseCased output of the user guide equals the output of the sample run against the real
+    ///     model; the confidences match within <see cref="EncoderConfidenceTolerance"/>.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public Task WordSense_Readme_BertBaseCasedOutput_MatchesReadme() => CheckOutputAsync("bertbasecased", "bertbasecased", "bert-base-cased-int8", EncoderConfidenceTolerance);
+    public Task WordSense_Readme_BertBaseCasedOutput_MatchesReadme() => CheckOutputAsync("bertbasecased", "bertbasecased", "bert-base-cased-int8", EncoderConfidenceTolerance, true);
 
     /// <summary>
-    ///     Compares the documented output block of a README sample with the output of the sample run.
+    ///     Compares the documented output block of a sample with the output of the sample run.
     /// </summary>
     /// <param name="marker">The name in the <c>&lt;!-- output:NAME --&gt;</c> marker of the documented block.</param>
     /// <param name="modelKey">The key of the model that the sample runs against.</param>
     /// <param name="modelId">The id of the model whose files must be available, or <c>null</c> for Basic.</param>
     /// <param name="tolerance">The largest allowed absolute difference of a documented confidence.</param>
+    /// <param name="inGuide">Whether the output block is in the user guide (otherwise in the README).</param>
     /// <returns>A task that completes when the check has run.</returns>
-    private static async Task CheckOutputAsync(string marker, string modelKey, string? modelId, decimal tolerance)
+    private static async Task CheckOutputAsync(string marker, string modelKey, string? modelId, decimal tolerance, bool inGuide)
     {
         // Arrange: read the documented output, require the model files and create the sample
-        var (readme, _) = await ReadAsync();
-        var documented = DocSampleText.FencedBlock(readme, $"<!-- output:{marker} -->", "text");
+        var document = inGuide ? await ReadGuideAsync() : (await ReadAsync()).Readme;
+        var documented = DocSampleText.FencedBlock(document, $"<!-- output:{marker} -->", "text");
         FailWhenNotGenerated(documented);
         if (modelId is not null)
         {

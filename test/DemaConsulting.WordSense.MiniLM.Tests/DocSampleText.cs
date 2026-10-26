@@ -145,15 +145,15 @@ internal static partial class DocSampleText
     ///     within a tolerance and every other column exactly.
     /// </summary>
     /// <remarks>
-    ///     Each line is <c>word pos level confidence [sense] [runner-up]</c> separated by spaces. The confidences of an
+    ///     Each line is <c>word pos level confidence [sense]</c> separated by spaces. The confidences of an
     ///     encoder model come from an int8 ONNX graph whose output differs slightly between CPUs and operating systems,
-    ///     so they are approximate, and so is every other number on the line (the runner-up's probability). The word and
+    ///     so they are approximate. The word and
     ///     the part of speech are decisions and must match exactly. The level is a decision against a per-lemma
     ///     threshold, so a word whose margin lies close to its threshold may be answered one step more or less
     ///     specifically on another CPU: a documented sense may come out as its own group or at the part-of-speech level,
     ///     and a documented group as one of its senses or at the part-of-speech level. Such a line is accepted only when
-    ///     the answers are consistent (same part of speech, the sense belongs to the group); its confidence and
-    ///     runner-up then refer to a different level and are not compared. Any other difference fails.
+    ///     the answers are consistent (same part of speech, the sense belongs to the group); its confidence
+    ///     then refers to a different level and is not compared. Any other difference fails.
     /// </remarks>
     /// <param name="documented">The output block of the README, the single source of truth.</param>
     /// <param name="actual">The output the sample wrote.</param>

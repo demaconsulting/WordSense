@@ -1,188 +1,21 @@
-# Introduction
+# Overview
 
-## Purpose
+WordSense is a .NET library that identifies an English word in context, offline. For each word it returns the lemma,
+the part of speech with its features and, where it can tell, the sense: an Open English WordNet (OEWN) fine sense, or
+the group of closely related senses it belongs to.
 
-This document is the user guide for WordSense, a .NET library that identifies the sense of English words in context,
-offline: the lemma, the part of speech and, where a model can tell, the sense. A sense is an Open English WordNet
-(OEWN) fine sense with a readable id such as `bank#financial-institution`, linked to one OEWN sense key; where closely
-related senses of a lemma are easy to confuse, a curated group collects them, with an id such as
-`help#group:assistance`. Every answer
-states the level at which it was made: the fine sense, the group (where one exists), or the part of speech alone, and
-its confidence refers to that level, so the library tells you, for example, whether "bank" is the money kind or the
-river kind when it is sure, whether it is at least a group of related senses when it is only sure of that, and that it
-is a noun when it can tell no more. Every answer also lists the probability of every analysis of the word and, where
-the model scored them, the ranked fine senses inside each analysis, so you can apply a grouping of your own. Every
-word is looked up in an embedded word table; a word with several meanings
-is decided from its sentence by
-a model that you choose. The library comes as four NuGet packages: the core `DemaConsulting.WordSense` (API, word
-table, sense catalog and the statistical `BasicWordSenseModel`, which needs no files and no network), and
-two encoder models, `DemaConsulting.WordSense.MiniLM` and `DemaConsulting.WordSense.BertBaseCased`, which share the
-machinery of `DemaConsulting.WordSense.Onnx` and answer the words they were not trained for with the Basic model.
+Every answer states its **level** (sense, group or part of speech), carries a **confidence** for that level and lists
+the probability of every candidate analysis. So you know whether "bank" is the money kind, at least a financial word, or
+only a noun.
 
-## Scope
+Every word is looked up in an embedded word table. A word with one analysis and one sense is answered at once. A word
+with several analyses is decided from its sentence by the model you choose (see "Choosing a Model").
 
-This user guide covers:
-
-- Choosing and installing the packages, requirements and a quick start
-- The classification API: words, results, analyses, levels, confidence, senses, part of speech, groups and sense ids
-- Composing two models with `FallbackWordSenseModel`
-- The word table and the sense catalog of the core package, including the lookup of a sense by its OEWN sense key and
-  the version of the sense inventory
-- Keys: the one stable string of every answer, the enumeration of every key the library can return, building a map from
-  keys to your own data, and the heteronyms (the spellings where the key decides the word)
-- Changes from the previous release
-- Accuracy and model choice, with the model comparison table
-- Model download, mirrors, offline use and the typed exceptions
-- Limitations
-- Licensing and provenance of the data
-- Extending the training corpus with the builder
-- Troubleshooting
-- A glossary of the terms used
 <!-- markdownlint-disable MD051 -->
 <!-- The appendix is a separate file that pandoc concatenates, so its heading anchor only exists in the PDF. -->
-- [Appendix: Supported Senses](#appendix-supported-senses): the catalog of all lemmas with trained weights, their
-  senses (id, group, OEWN key and gloss) and every analysis of their forms with its features, the explanation of the
-  keys and the heteronyms by their keys (generated from the data and the corpus)
+The [appendix](#appendix-supported-senses) lists every trained lemma with its senses, groups and OEWN keys, and the
+heteronyms by their keys.
 <!-- markdownlint-enable MD051 -->
-
-The code samples in this guide use only the public API of the packages. The README sample is compiled and run by the
-test suite for each of the three models; the samples in this guide are reviewed with the guide. They assume `ImplicitUsings`,
-`using DemaConsulting.WordSense;` and `using DemaConsulting.WordSense.MiniLM;`.
-
-# Glossary
-
-- **Lemma**: the dictionary base form of a word, for example "record" for "records".
-- **Word table**: the embedded word image of the core package, read through `WordLexicon`. It holds every known spelling,
-  including the inflected forms that the build generated for every dictionary word, with its possible analyses, and the
-  sense catalog. A word in it is *known*.
-- **Analysis**: one morphological reading of a word, a `WordDetails`: lemma, part of speech and features. A form that
-  belongs to several lemmas or tenses (`left`, `bases`, `rows`, `read`) has one analysis for each.
-- **Sense**: one meaning of a lemma and part of speech, an OEWN fine sense (or a project sense, see below) described
-  by a `SenseInfo`: sense id, group id (null when the sense is in no group), lemma, part of speech and OEWN sense key.
-- **Sense id**: the readable, stable id of a sense, `lemma#label`, for example `bank#financial-institution`. An id is
-  never reused for another sense. The labels of the trained lemmas were chosen by hand; the label of every other sense
-  is generated by a fixed rule (for example `bank#noun` for the only noun sense of a lemma) and then frozen.
-- **OEWN sense key**: the WordNet key of a sense (for example `bow%1:06:02::`), the attach point for glossaries,
-  thesauri and other WordNet-keyed resources. Every sense id maps to exactly one key, except a project sense.
-- **Project sense**: a sense that OEWN does not provide, declared by the project without a key: one for each
-  determiner, pronoun, preposition, conjunction, interjection or auxiliary use (for example `the#determiner`) and the
-  curated discourse senses (for example `well#discourse-marker`).
-- **Group**: a set of at least two, but not all, of the senses of one lemma and one part of speech that are closely
-  related in meaning and easy to confuse, with a readable id `lemma#group:label` (for example `help#group:assistance`).
-  A group exists only where it was curated, so most lemmas have none; a sense is in at most one group (its `GroupId` is
-  `null` when it is in none); a group never mixes parts of speech. A group needs the curator's judgment that its senses
-  mean the same for practical
-  purposes plus evidence of confusion (a judge or a classifier mixes them up, or their glosses are nearly identical);
-  the data records whether the senses of a group are near-duplicates (`equivalent`) or a genuine family of meanings
-  (`related`).
-- **Group id**: the id of a group. It has a namespace of its own (the marker `#group:`), so it can never equal a sense
-  id. Unlike a sense id it is **not frozen**: group ids are versioned per data release (a group can be added, renamed,
-  merged or dropped; the changelog and the release notes list the changes), so treat a group id as an opaque value of
-  one release, and save it together with `WordLexicon.Version` if you store it. A group answer always exposes its
-  member sense ids: `WordLexicon.TryGetGroup(groupId, out SenseGroup group)` gives `group.SenseIds`.
-- **Level**: how precisely a result is answered, the `SenseLevel` of the `ClassifyResult`: `Sense` (a fine sense, and
-  its group when it has one), `Group` (a group only), `PartOfSpeech` (the analysis only) or `None` (unknown word only).
-  The levels nest (the part of speech, then the optional group, then the sense) and are ordered from the least to the
-  most precise. A model that is unsure between senses answers at the next level that exists above them: their shared
-  group, or else the part of speech. A word that is in the table is never answered at `None`, however unsure the model
-  is: that shows in a low confidence.
-- **Analyses and senses**: the `ClassifyResult.Analyses` of a result: one `AnalysisCandidate` for every analysis of the
-  word with its probability, the largest first, and, where the model scored them, inside each analysis the fine senses
-  of its lemma and part of speech with their probability given the analysis (`AnalysisCandidate.Senses`). Both lists
-  sum to one. The rest of the result (the selected analysis, the level, the confidence and the ids) is a summary of
-  them. A consumer can group them its own way.
-- **Heteronym**: a word that is spelled the same but pronounced differently depending on its use, for example
-  "record" (the noun is said REK-urd, the verb rih-KORD) or "bow". A group never mixes the pronunciations of a
-  heteronym, so the group id (or the sense id) tells which one is meant; the library has no phonetic data of its own.
-- **Part of speech**: the grammatical role of a word in its sentence. `PartOfSpeech` has ten values: noun, pronoun,
-  verb, adjective, adverb, preposition, conjunction, interjection, determiner (`the`, `a`, `an`, `his`) and auxiliary
-  (`will`, `can`, `is`, `has`). A word such as `will` lists its content analyses first (verb, noun) and an `Auxiliary`
-  analysis last. Basic chooses `Auxiliary` where the context calls for it ("we will record"); the encoder models
-  answer an auxiliary through their Basic model.
-- **Features**: the inflection of the analysis as `Key=Value` pairs separated by `+` (for example `Number=Plur`), or an
-  empty string. They come from the authoritative form table of the library.
-- **Confidence**: a number from 0 to 1 in each result that is the probability of the answer at its level, built on
-  the probability of the **slot** of the selected analysis (its lemma and part of speech: the sum of the probabilities
-  of the analyses that share them and differ only in features, such as `cut` as an infinitive and as a past tense, or
-  `deer` as a singular and a plural; the senses belong to the slot, so the split among these variants never lowers the
-  confidence): at the `PartOfSpeech` level the probability of the slot; at the `Group` level that probability times
-  the sum of the probabilities, within the slot, of the senses of the group; at the `Sense` level that probability
-  times the probability of the answered sense within the slot. It is 0 for an unknown word and 1 for a word with one
-  lemma and part of speech and one sense (at the `Sense` level), and also 1 at the `PartOfSpeech` level for a word with
-  one lemma and part of speech that has several senses which the model does not decide (the part of speech is certain,
-  the sense is not): test the `Level`, not whether the confidence is 1. It is comparable only within one result, not
-  across models, words or levels.
-- **Key**: the one stable string of an answer, `ClassifyResult.Key`, of the form
-  `{spelling}|{lemma}/{Part}[/{Features}][#{label}]`; it names the meaning (the analysis and, where known, the sense) and
-  never a sound. `WordLexicon.Keys()` lists every key that any model can return; `WordKey` splits a key into its parts.
-- **Heteronym**: a spelling that stands for different words, so that the key, not the spelling, decides what a
-  consumer maps it to (`read` as a past or a present tense, `bass` the fish or the music, `record` the noun or the verb);
-  the appendix lists them by their keys.
-- **Fallback model**: the second model of a `FallbackWordSenseModel`. It answers every word for which the first model
-  (the primary model) scored no senses. The MiniLM and BertBaseCased packages use their encoder as the primary model
-  and the Basic model as the fallback, so an ambiguous word that the encoder was not trained for is answered by the
-  Basic model at the `PartOfSpeech` level.
-- **Mirror**: an HTTP(S) location, usually inside your network, that serves the model files.
-- **Downloadable model**: a model that implements `IDownloadableWordSenseModel`, the optional capability interface of
-  `EnsureModelAsync` (MiniLM, BertBaseCased and `FallbackWordSenseModel`; Basic needs no files and does not).
-- **Model directory**: a folder that holds the exact model files, used instead of a download.
-
-# Choosing a Package
-
-All packages target `net8.0`, `net9.0` and `net10.0`. The core package is a dependency of every other package and
-holds the Basic model; the two encoder packages also bring the Onnx package, and answer the words that the encoder was
-not trained for with the Basic model of the core. (Before version 1.0 the Basic model was a package of its own,
-`DemaConsulting.WordSense.Basic`; that package is retired and `BasicWordSenseModel` is now in `DemaConsulting.WordSense`.)
-
-<!-- markdownlint-disable MD013 -->
-
-| Package | Decides a multi-sense word by | Answers at | Needs files or network | Native dependency | Casing |
-| ------- | ----------------------------- | ---------- | ---------------------- | ----------------- | ------ |
-| `DemaConsulting.WordSense` | statistical tagger and context cues (the Basic model); word table and sense catalog | sense (one-sense words), otherwise part of speech | no | no | lower-cased lookup; case chooses between `Polish` and `polish` |
-| `DemaConsulting.WordSense.MiniLM` | all-MiniLM-L6-v2 encoder, fine-sense weights; Basic for the other words | sense, group or part of speech | 22 MiB, once | ONNX Runtime | uncased |
-| `DemaConsulting.WordSense.BertBaseCased` | bert-base-cased encoder; Basic for the other words | sense, group or part of speech | 104 MiB, once | ONNX Runtime | cased |
-
-<!-- markdownlint-enable MD013 -->
-
-- Use **core** alone to look up the possible analyses and senses of a word (`WordLexicon.Lookup`,
-  `WordLexicon.SensesOf`), to resolve a sense id or an OEWN sense key, and to answer words that have one sense, in your
-  own code.
-- Use **Basic** (`BasicWordSenseModel`, in the core package) when you want a fast, dependency-free answer at the part
-  of speech level and can accept that it never
-  names a fine sense or a group (except for an analysis whose lemma and part of speech have only one sense).
-- Use **MiniLM** for the best size-to-quality trade-off: the smallest download and the fastest encoder. It is the
-  default recommendation.
-- Use **BertBaseCased** when the larger, cased encoder gives better results on your texts. The accuracy of each model
-  is measured on SemCor (sense accuracy at each level) and on running text (part of speech), neither of which is used
-  for training or tuning; the figures, with the share of words answered at each level, are in the model table of the
-  README and in the chapter "Accuracy and Model Choice".
-
-The measured size and speed (rounded; the exact table is the chapter "Model Comparison Table" and the README, and
-latency, first-use time and memory are approximate and machine dependent). The numbers come from the repository's
-build tool (`evaluate <model> --table`), run once per model on one machine with at most two ONNX threads, so use the
-absolute times and memory as relative figures. "Download needed: yes" in the table means that the files are downloaded
-the first time a classification needs the encoder (lazily by `ClassifyAsync`, or earlier by `EnsureModelAsync`); a
-model whose encoder is never needed is never downloaded.
-
-| Model | Download | Latency per sentence |
-| ----- | -------: | -------------------: |
-| Basic | none (embedded table) | under 0.1 ms |
-| MiniLM | 22 MiB | about 2 ms |
-| BertBaseCased | 104 MiB | about 9 ms |
-
-The memory a model adds (the "RAM" column) is only in the generated model table (the chapter "Model Comparison Table"):
-it is measured as the larger of the growth of the private memory of the process and the growth of the managed heap (both
-after a full garbage collection) from before the model was created to after it classified warm-up sentences, so it is
-not a count of the model's own data, and the word lexicon and sense catalog, which were loaded before, are not included.
-
-**Basic is enough** when nothing may be downloaded, startup time and memory must stay small, or ONNX Runtime cannot be
-shipped, and the part of speech is the precision you need. Otherwise start with MiniLM and move to BertBaseCased if
-its accuracy is not enough.
-
-`DemaConsulting.WordSense.Onnx` is the shared base of the two encoder packages (`OnnxWordSenseModel`, the downloader,
-the tokenizer, the weights reader and the classifier). It references only the core package. It is installed with them
-and is not used directly; its encoder model answers the words it does not score from the word table alone, and the
-encoder packages combine it with the Basic model (see "Composing Models").
 
 # Installation
 
@@ -190,521 +23,58 @@ encoder packages combine it with the Basic model (see "Composing Models").
 dotnet add package DemaConsulting.WordSense.MiniLM
 ```
 
-Installing a model package brings the core (which holds the Basic model) and, for an encoder model, the Onnx package
-with it. Install `DemaConsulting.WordSense.BertBaseCased` in the same way, and
-`DemaConsulting.WordSense` alone for the word table, the sense catalog and the Basic model.
+| Package | Contents | Needs |
+| ------- | -------- | ----- |
+| `DemaConsulting.WordSense` | API, word table, sense catalog and the `Basic` model | Nothing |
+| `DemaConsulting.WordSense.MiniLM` | MiniLM encoder model and weights | Model files, ONNX Runtime |
+| `DemaConsulting.WordSense.BertBaseCased` | BERT base cased encoder model and weights | Model files, ONNX Runtime |
+| `DemaConsulting.WordSense.Onnx` | Shared ONNX code, brought in by the encoder packages | ONNX Runtime |
 
-## Requirements
-
-- .NET 8, 9 or 10 on Windows, Linux or macOS.
-- For an encoder model, disk space in a per-user directory for the model files (see "Model Files") that are downloaded
-  on first use, and the ONNX Runtime native libraries for the target platform. The NuGet package contains the trained
-  weights but not the model files. A machine that cannot reach the internet needs a mirror or a model directory (see
-  "Offline and Air-Gapped Use"). The core package (with the Basic model) needs neither.
-- Contributors who clone the repository also need [Git LFS](https://git-lfs.com): the files in `model/` are stored
-  in Git LFS (`git lfs install` once, then `git lfs pull`).
+A model package brings the core package. Requirements: .NET 8, 9 or 10 on Windows, Linux or macOS. An encoder model
+downloads its model files on first use (see "Configuration and Model Download"). Contributors who clone the repository
+also need [Git LFS](https://git-lfs.com) (`git lfs install`, then `git lfs pull`), because `model/` is stored in it.
 
 # Quick Start
 
+The samples in this guide assume `ImplicitUsings`, `using DemaConsulting.WordSense;` and
+`using DemaConsulting.WordSense.MiniLM;`. The README has a complete sample with its output.
+
 ```csharp
-// Downloads the model files on first use, verifies their SHA-256 and reuses them later
+// MiniLM downloads its model files on first use. For a model without a download: new BasicWordSenseModel()
 using var model = new MiniLMWordSenseModel();
-await model.EnsureModelAsync();   // optional: ClassifyAsync would ensure the files lazily
 
 string[] words = ["The", "record", "was", "broken", "so", "they", "will", "record", "the", "new", "album", "."];
 ClassifyResult[] results = await model.ClassifyAsync(words);
 
-foreach (var result in results)
+foreach (var result in results.Where(r => r.IsKnown))
 {
-    if (result.IsKnown)
-    {
-        Console.WriteLine($"{result.Word}: {result.Details!.PartOfSpeech}, {result.Level}, " +
-                          $"{result.SenseId ?? result.GroupId ?? "-"} ({result.Confidence:F2})");
-    }
+    Console.WriteLine($"{result.Word}: {result.Details!.PartOfSpeech}, {result.Level}, " +
+                      $"{result.SenseId ?? result.GroupId ?? "-"} ({result.Confidence:F2})");
 }
 ```
 
-The input is a list of words that you have tokenized yourself, in order and including punctuation tokens as elements
-of their own; they are read as one running text, so classify independent sentences with one call each.
-`ClassifyAsync` returns a non-null array that is parallel to the input: element `i` is the `ClassifyResult` of
-`words[i]`, whatever the word is.
-
-For MiniLM and BertBaseCased the call of `EnsureModelAsync` is optional: it is a member of the capability interface
-`IDownloadableWordSenseModel` (the encoder models and `FallbackWordSenseModel` implement it, `BasicWordSenseModel` does
-not), and `ClassifyAsync` ensures the files lazily. It lets you choose when the download happens and handle its failures
-up front (see "Handling Failures").
-
-## The Flow
-
-Every word follows the same path:
-
-1. The word is lower-cased (a curly apostrophe is read as `'`) and looked up in `WordLexicon`. A word that is
-   not there is **unknown**: `IsKnown` is `false`, `Analyses` is empty, `Details` is `null`, `Level` is `None` and
-   `Confidence` is 0.
-2. A word with one analysis whose lemma and part of speech have exactly one sense is answered with that sense (`Level`
-   is `Sense`) and `Confidence` 1, by every model, without running anything.
-3. A word with several senses is decided from its context by the model. The encoder models score the fine
-   senses of the word from the sentence and answer at the finest level they are confident in (see "Levels and
-   Confidence"); the Basic model tags the sentence and weighs the context words and answers with the part of speech.
-   Every model answers a word with several senses; the level and the confidence say how precise and how sure the answer
-   is. Every model lists the probability of every analysis in `Analyses`, and, inside each analysis, the ranked senses
-   with their probabilities (see "Using the Analyses and Senses"): an encoder model scores them for the lemmas it was
-   trained for, and the Basic model ranks them by how often the senses are used for every other lemma and part of speech
-   with two or more senses (a ranking of the lemma, not of the sentence, and never an answer). An
-   encoder model that was not trained for the word (the lemma has no weights) scored no senses, so its package answers
-   the word with the Basic model instead (see "Composing Models"): the analysis that Basic chooses, at the
-   `PartOfSpeech` level, with the senses ranked by usage and never a guessed sense.
-
-An encoder model runs the encoder only when a sentence has a word that needs it, so a sentence without such a word
-costs no model call. Whatever is in the word table is classified, whatever its capitalization or a trailing
-possessive, and the table covers the inflected forms. (The Basic model's tagger does use the capitalization of a
-word that is not in the table, as one of its features.) The Basic model also reads the case of a word whose lower-case
-spelling has a capitalized and a lower-case lemma, such as `Polish` and `polish` or `August` and `august`: written in
-lower case, or capitalized on its own inside a sentence, the word prefers the lemma of that case (about ten to one, a
-prior that clear context can outweigh); a capital at the start of a sentence, a capitalized word next to another
-capitalized word, an upper-case or mixed-case word and the words of a title-case segment say nothing and the context decides.
-`WordLexicon.Lookup` lists the candidates of both cases and does not choose.
-
-## The Result
-
-A `ClassifyResult` is a `readonly record struct` with eight members; its properties are plain, so it serializes
-without custom code:
-
-- `Word`: the word as you gave it.
-- `IsKnown`: whether the word is in the word table.
-- `Analyses`: an `ImmutableArray<AnalysisCandidate>`, the full answer: every analysis of the word with its
-  `Probability`, summing to one and never truncated. The analyses are ordered by the probability of their lemma and
-  part of speech (the sum over the analyses that share them), the largest first, and inside one lemma and part of
-  speech by their own probability, the largest first (ties keep the order of `WordLexicon.Lookup`); the analyses that
-  differ only in features (`cut` as an infinitive and as a past tense) share the probability of their lemma and part of
-  speech, split among them by the evidence of the model or, without evidence, equally, and every one of them lists
-  the same senses with the same probabilities. It is empty only for an unknown word. Each `AnalysisCandidate` has
-  `Details` (a `WordDetails`: `Lemma`,
-  `PartOfSpeech` and `Features`; it has no sense id), `Probability` and `Senses`, an `ImmutableArray<SenseCandidate>` of
-  the fine senses of that analysis, each a `SenseId` and a `Probability` given the analysis, the largest first (ties in
-  the inventory order of the lemma), summing to one and never truncated. `Senses` is empty only when the lemma and
-  part of speech of the analysis have no sense; for an analysis that has several senses it is either the ranking of an encoder
-  model that was trained for the lemma or, for every other lemma, the usage ranking of the Basic model (the WordNet 3.0
-  tag counts of the senses with smoothing: the same in every sentence, a statement about the lemma and not an answer), and
-  for an analysis that has one sense it is that sense with probability 1.
-- `Details`: the selected analysis (the best variant of the most probable lemma and part of speech, the first entry of
-  `Analyses`) as a `WordDetails`, or `null` for an unknown word.
-  `WordDetails.TryGetFeature("Tense", out var tense)` reads one feature of it.
-- `Level`: the `SenseLevel` at which the word was answered: `None` (only for an unknown word), `PartOfSpeech`, `Group`
-  or `Sense`.
-- `Confidence`: from 0 to 1, the probability of the answer at its level (see "Levels and Confidence").
-- `GroupId`: the id of the group: set at the `Group` level, and at the `Sense` level when the sense is in a group
-  (`null` for a sense that is in no group, which is the usual case).
-- `SenseId`: the id of the fine sense, set at the `Sense` level only.
-
-`Analyses` is the single source of truth; everything else is a summary of it. A consumer that wants its own decision
-reads `Analyses`, and a consumer that wants the model's decision reads `Level`, `Confidence` and the ids. A group or
-sense that is answered lies in the selected analysis.
-
-Two results are equal when all members are equal, the arrays compared item by item. The arrays are immutable and may be
-shared between results (for example by all unknown words and by all occurrences of a word with one analysis), so never
-rely on reference identity. `default(ClassifyResult)` is valid: its word is the empty string, `IsKnown` is `false`, its
-arrays are empty and its level is `None`.
-
-Test the `Level`, not whether an id is `null`: a result at the `PartOfSpeech` level has no sense id and is a valid
-answer, and a result at the `Sense` level may have no group id. For speech synthesis, key your own pronunciation
-lexicon on the sense id where the level is `Sense`, and on the group id where the level is `Group` (a group never
-mixes two pronunciations); fall back to the part of speech otherwise. The library has no phonetic data of its own, and
-`SenseInfo` and `SenseGroup` carry no pronunciation.
-
-The
-<!-- markdownlint-disable-next-line MD051 -->
-[appendix](#appendix-supported-senses) is the catalog of the lemmas that have trained weights, with their senses, groups
-and OEWN keys.
-
-`IsKnown` is `false` in exactly one case, and then `Analyses` is empty, `Details` is `null`, `Level` is `None` and
-`Confidence` is 0: the word is unknown, that is it has no entry in `WordLexicon` (most proper
-nouns, a misspelling) or has no letter (a number written with digits, punctuation; `WordLexicon.Lookup("3")` is empty
-too); every model does this. Every
-dictionary word is in the table, the determiners, conjunctions and interjections among them, whatever the accuracy of a
-model: the accuracy only decides which level a model reaches. Every other word gets an answer: a word with one sense
-gets it with `Confidence` 1, and a word with several senses gets at least its part of speech, with a lower confidence
-when the model is unsure, so `Level` `None` never means "low confidence".
-
-```csharp
-// "the" is a determiner (Sense level, confidence 1) and "." is unknown (None, 0); "record" has several senses: the
-// level and the model-specific confidence depend on the model and the context
-ClassifyResult[] results = await model.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
-```
-
-## Levels and Confidence
-
-The levels nest: the part of speech (the lemma and part of speech of the analysis), then the optional group, then the
-fine sense. A **group** exists only where it was curated: a set of at least two, but not all, senses of one lemma and
-part of speech that are closely related in meaning and easy to confuse (for example two near senses of an adjective
-that the context rarely tells apart). There is no group for a single sense and none that holds every sense of a lemma
-and part of speech, so most lemmas have no group and most senses have a `null` `GroupId`. A model that is unsure
-between senses steps up to the next level that exists: their shared group when they have one, otherwise the part of
-speech. A word that is in the table is never answered at `None`: a known word that the model is unsure about is
-answered at the `PartOfSpeech` level, with its ranked senses still listed.
-
-An encoder model answers a trained lemma at the finest of these levels that passes the lemma's own threshold for that
-level:
-
-<!-- markdownlint-disable MD013 -->
-
-| Level | When | Ids set |
-| ----- | ---- | ------- |
-| `Sense` | the best fine sense is clear enough, and lies in the selected analysis | `SenseId`, and `GroupId` when the sense is in a group |
-| `Group` | the lemma has groups; the fine senses are too close to tell apart but the group of the best one is clear | `GroupId` |
-| `PartOfSpeech` | neither is clear, or the lemma has no group to step to (or the best sense is in none) | none |
-| `PartOfSpeech` | the word has no scored senses (it was not trained, or the encoder gave no vector): the analysis of the Basic model, with its senses ranked by usage | none |
-
-<!-- markdownlint-enable MD013 -->
-
-The thresholds of each lemma were measured when the weights were trained: first by cross-validation on the lemma's own
-training sentences, for a precision target of 95 percent at each level, and then moved up on real text. Real held-out
-sentences of documents that are kept apart from the test documents (the calibration split) are scored, and the thresholds
-are raised, with one shift for all lemmas that have few such sentences and a threshold of their own for a lemma that has
-many, for a real-text calibration target of 0.97 (two points above the 95 percent, because the whole pipeline is about
-two points less precise than the classifier alone). The shift is the lowest one that reaches the target while at least 30
-percent of the calibration answers are kept; when no shift reaches the target on that many answers (the case for MiniLM
-on the current corpus; BertBaseCased reaches it), the largest shift that keeps them is used and the builder reports the
-target as not reached; the
-lemma-level precision on the calibration sentences then stays below the target, at about 96 percent (see the chapter
-"Accuracy and Model Choice"). A lemma has
-a group threshold only when it has groups, and a level whose cross-validation target was never reached is never answered
-for that lemma; the thresholds decide the level of an answer.
-The `Confidence` that the result carries is the probability of the answer at that level:
-
-<!-- markdownlint-disable MD013 -->
-
-| Level | Confidence |
-| ----- | ---------- |
-| `PartOfSpeech` | the probability of the slot of the selected analysis (the sum of the `Probability` of the analyses that have its lemma and part of speech) |
-| `Group` | the probability of the slot times the sum of the probabilities, within the slot, of the senses that are members of the group |
-| `Sense` | the probability of the slot times the probability of the answered sense within the slot |
-
-<!-- markdownlint-enable MD013 -->
-
-A word with one lemma and part of speech and one sense has the confidence 1 at the `Sense` level, and so does a word
-with one lemma and part of speech and several senses that the model does not decide, at the `PartOfSpeech` level (the
-part of speech is certain, the sense is not, so test the `Level`); an unknown word has 0. The confidence
-grows with the evidence for the answer (the margin of the model's evidence decides the level), but it is comparable
-only within one result: do not compare it across models, across words or
-across levels as if it were calibrated, and tune any threshold per model and level on your own text. The precision that
-the models reach on real held-out text (the test split of the corpus, never seen by the weights or the thresholds) is
-published per level in the README model table and in the chapter "Accuracy and Model Choice"; it is measured on a balanced
-corpus, so it is not the precision on typical running text. The independent text (SemCor) is the check for that, and it
-shows that the sense answers are less precise there than the thresholds aimed for (see "Accuracy and Model Choice"):
-treat the sense level as a candidate to check, and the part of speech as
-the dependable part of the answer.
-
-The `Level` is what to test. A `PartOfSpeech` result from an encoder model for a trained lemma still lists the ranked
-senses of its analysis: use the best of them as a guess, or treat the word as unresolved.
-
-## Using the Analyses and Senses
-
-Every result lists the probability of every analysis of the word in `Analyses`. Where the model scored the fine senses
-(an encoder model, for a trained lemma), each analysis also lists its senses with their probabilities given the
-analysis, ranked from the most to the least probable, whatever the level of the answer; both lists sum to one. Where the
-model answers at the `PartOfSpeech` or the `Group` level, the senses still show how the evidence spreads over them.
-A consumer that maps senses to its own categories sums, per category, the product of the analysis probability and the
-sense probability, and answers the category with the largest sum: for example `bow#archery` at 0.48 and `bow#violin`
-at 0.41 together give 0.89 for a category of "things you hold and play or shoot with", even though neither sense alone
-is clear enough for a `Sense` answer.
-
-```csharp
-ClassifyResult[] results = await model.ClassifyAsync(["She", "drew", "the", "bow", "."]);
-ClassifyResult bow = results[3];
-
-// Your own categories, keyed by sense id
-Dictionary<string, string> categoryOf = new()
-{
-    ["bow#archery"] = "tool",
-    ["bow#violin"] = "tool",
-};
-
-var sums = bow.Analyses
-    .SelectMany(analysis => analysis.Senses.Select(sense => (
-        Category: categoryOf.GetValueOrDefault(sense.SenseId, "other"),
-        Probability: analysis.Probability * sense.Probability)))
-    .GroupBy(entry => entry.Category)
-    .Select(group => (Category: group.Key, Probability: group.Sum(entry => entry.Probability)))
-    .OrderByDescending(entry => entry.Probability);
-
-foreach (var (category, probability) in sums)
-{
-    Console.WriteLine($"{category}: {probability:P0}");
-}
-```
-
-The same two lists answer questions about the analyses alone, with no senses: the probability that a word is a verb is
-the sum of `Probability` over the analyses whose `Details.PartOfSpeech` is `Verb`.
-
-`Senses` is empty for an analysis whose lemma and part of speech have no sense, and for an analysis of a model that did
-not rank its senses (a model that you write, for example).
-Every analysis of the Basic model lists its one sense (probability 1) or its senses ranked by usage (the usage prior: the
-WordNet 3.0 tag counts, never an answer), and so does every analysis of a word that an encoder model's package answers
-through its Basic model. `Analyses` is empty only for an
-unknown word. The senses are those of the lemma and part of speech of each analysis, so a form that belongs to several
-lemmas lists the senses of each lemma under its own analysis. The probabilities are a ranking score of one model: like
-the confidence they are comparable only within one result, so do not compare them across models.
-
-A group answer exposes its members: look the group up with `WordLexicon.TryGetGroup(result.GroupId, out var group)` and
-read `group.SenseIds`, in inventory order. When the senses were scored, the `Senses` of the selected analysis let you
-degrade a group answer to its member senses, ranked by probability.
-
-**Stored ids.** Sense ids are frozen: an id is never reused for another meaning, so you can store it. Group ids are
-versioned per data release and are not frozen: a group can be added, renamed, merged or dropped in a later release, and
-the changelog and the release notes list the changes. If you store a group id, store `WordLexicon.Version` with it and
-resolve it again with `WordLexicon.TryGetGroup` after the version changes; treat a group id as an opaque per-release
-value and never parse it.
-
-## Looking Up Senses and OEWN Keys
-
-The core package resolves the ids of an answer without a model, and finds a sense by its Open English WordNet key so
-that a glossary or a thesaurus keyed on WordNet can be attached to it:
-
-```csharp
-// The senses of "bow" as a noun, in the order of Open English WordNet, with the group of each (null: no group)
-foreach (SenseInfo info in WordLexicon.SensesOf("bow", PartOfSpeech.Noun))
-{
-    Console.WriteLine($"{info.SenseId} in {info.GroupId ?? "(no group)"}, key {info.SenseKey ?? "(project sense)"}");
-}
-
-// From an answer to its sense, group and OEWN key
-ClassifyResult answer = (await model.ClassifyAsync(["She", "drew", "the", "bow", "."]))[3];
-if (answer.SenseId is { } id && WordLexicon.TryGetSense(id, out SenseInfo found))
-{
-    Console.WriteLine($"{found.SenseId}: group {found.GroupId ?? "(none)"}, key {found.SenseKey}");
-}
-
-// From a WordNet key to the sense of this library
-if (WordLexicon.TryGetSenseByKey("bow%1:06:02::", out SenseInfo byKey))
-{
-    Console.WriteLine(byKey.SenseId);
-}
-
-// A group lists its member senses (a group exists only where it was curated); a group answer always exposes them
-if (answer.GroupId is { } groupId && WordLexicon.TryGetGroup(groupId, out SenseGroup group))
-{
-    Console.WriteLine(string.Join(", ", group.SenseIds));
-}
-
-// The version of the sense inventory: save it with any group id that you store
-Console.WriteLine(WordLexicon.Version);
-```
-
-`SensesOf` lists the senses of a lemma and part of speech in inventory order, which is the order of Open English WordNet
-(the position of the sense in its entry, which puts the commonly used senses first; project senses come last).
-`TryGetSense` and `TryGetSenseByKey` find the same sense through its id or its key; a project sense
-has no key and is found only by its id. A sense is in at most one group of the same lemma and part of speech, and a
-group lists at least two senses and never all the senses of its lemma and part of speech. A group id (`lemma#group:label`)
-is in a namespace of its own and never equals a sense id. `WordLexicon.Version` is a string that identifies the sense
-inventory of the embedded table (the first 16 hexadecimal digits of its inventory hash): it changes whenever an
-analysis, a sense or a group changes. Compare it for equality only; it is not a version number.
-
-## Keys
-
-WordSense names the meaning of a word and never its sound. A consumer that attaches its own data to a meaning, for
-example a speech front end that maps each word to its phonemes, needs one stable string for every answer and a way to
-know every string the library can return. `ClassifyResult.Key` is that string and `WordLexicon.Keys()` lists them all.
-
-### The Key of an Answer
-
-A key has the form `{spelling}|{lemma}/{Part}[/{Features}][#{label}]`:
-
-- `spelling`: the written form as the lexicon looks it up: lower case, with the typographic apostrophe straightened
-  (`polish` for `Polish`, `don't` for `Don’t`). The spelling is part of the key because two forms of one analysis can be
-  spelled, and pronounced, differently (`dreamt` and `dreamed`).
-- `lemma`: the lemma of the selected analysis as `WordDetails` has it, with its case (`Polish`).
-- `Part`: the `PartOfSpeech` name (`Noun`, `Verb`, `Adjective`, ...).
-- `Features`: the features of the selected analysis as `WordDetails` carries them (`Number=Sing`,
-  `Person=3+Tense=Pres`); the `/` and the features are left out when they are empty (`the|the/Determiner`). A possessive
-  has `Poss=Yes` (`dog's|dog/Noun/Number=Sing+Poss=Yes`).
-- `label`: the part after `#` of a sense id (`sea-bass` for `bass#sea-bass`), left out with its `#` when the key names no
-  sense.
-
-The label depends on the level of the answer:
-
-- **Sense level**: the answered sense (`bass|bass/Noun/Number=Sing#sea-bass`).
-- **Group level, or part-of-speech level where the model ranked the senses of the analysis** (the encoder models for the
-  lemmas they are trained for, and every model for the other lemmas and parts of speech that have two or more senses, by
-  the usage ranking of the Basic model): the most probable ranked sense of the selected analysis, the first listed one on
-  equal probabilities (`bass|bass/Noun/Number=Sing#sea-bass`). A group id is never used, because group ids are not frozen.
-  For a word that no model scored the label is the most frequent sense of the lemma and part of speech, not a decision
-  of the context: test the `Level` and the `Confidence` before you read it as a meaning.
-- **Part-of-speech level without a ranking** (an analysis whose lemma and part of speech have no sense): no label
-  (`bass|bass/Noun/Number=Sing`).
-- **Unknown word**: the key is `null`.
-
-The key is computed from the fields of the result alone (`Word`, `IsKnown`, `Details`, `Level`, `SenseId` and `Analyses`),
-so it is the same for every model, an `IWordSenseModel` of your own included. A key is a plain string that you can store,
-compare and use as a dictionary key. `WordKey` holds its parts when you need them:
-
-```csharp
-ClassifyResult answer = (await model.ClassifyAsync(["She", "caught", "a", "bass", "."]))[3];
-Console.WriteLine(answer.Key);                          // for example: bass|bass/Noun/Number=Sing#sea-bass
-
-if (WordKey.TryParse(answer.Key, out WordKey? parts))
-{
-    Console.WriteLine($"{parts.Spelling} {parts.Lemma} {parts.PartOfSpeech} {parts.Features} {parts.Label ?? "(no sense)"}");
-}
-```
-
-A few lemmas contain the separators (`A/C`, `read/write head`). A `\` in front of a `\`, `|`, `/` or `#` inside a part
-escapes it (`a\/c|A\/C/Noun/Number=Sing`) and nothing else is escaped, so almost every key has no backslash;
-`WordKey.ToString` and `WordKey.TryParse` apply the rule in both directions.
-
-### Every Key the Library Can Return
-
-`WordLexicon.Keys()` enumerates every key that any model can return. It is a guaranteed superset, so it stays complete
-for any model and any retraining, and it changes only when the sense inventory changes (see `WordLexicon.Version`). For
-every spelling of the word table and every analysis of it (the analyses of all its case variants, and the possessive
-analyses of a known noun or pronoun), it lists the key without a label and one key with a label for every catalog sense
-of the lemma and part of speech of the analysis (`WordLexicon.SensesOf`). On the committed image that is 1,285,019 keys,
-about 63 MB of text; the enumeration has deferred execution, makes one pass over the spellings when you first read it and
-then streams the keys in about three seconds, so only what you keep takes
-memory.
-
-```csharp
-// Build a map from every key to your own data. WordSense carries no phonemes: the data is yours.
-var map = new Dictionary<string, string>(StringComparer.Ordinal);
-foreach (string key in WordLexicon.Keys())
-{
-    if (WordKey.TryParse(key, out WordKey? parts))
-    {
-        map[key] = MyPronunciations.For(parts);        // your own function: any value you attach to a meaning
-    }
-}
-
-// At run time, one lookup for each classified word
-foreach (ClassifyResult result in await model.ClassifyAsync(words))
-{
-    if (result.Key is { } key && map.TryGetValue(key, out string? data))
-    {
-        Console.WriteLine($"{result.Word}: {data}");
-    }
-}
-```
-
-Most spellings have one meaning for each analysis, so a map of every key mostly repeats one value; store only what differs
-from the value of the spelling and its analysis, and look for the heteronyms below to find where it differs. The
-builder writes the keys as a file: `dotnet run --project tools/WordSense.Builder -c Release -- keys --output keys.txt`
-writes one key for each line, sorted, after a header comment line that gives the format and the inventory version. The
-file is large and is not committed; the build publishes it, with the heteronym table, as the `word-keys` artifact.
-
-### Where the Key Decides the Word
-
-A heteronym is a spelling that stands for different words, so that the spelling alone cannot decide what you map it to;
-the key does. The appendix lists every heteronym by its keys, in three levels, each with its meaning classes and the keys
-of each class (and no phonemes):
-
-- **Entry level**: the analyses (lemma and part of speech) belong to entries that sound different, such as the noun and
-  the verb of `record`, `August` and `august`, `minute` and `Polish` and `polish`; derived from the pronunciations of the
-  data, with a few curated cases (`wound`, `dove`, `lives`).
-- **Tense level**: the past and the present of `read` (and `reread`, `misread`, `proofread`) are spelled alike; the key
-  tells them apart through the features (`read|read/Verb/Tense=Past+VerbForm=Part` and `read|read/Verb/Tense=Pres`).
-  The encoder models do not score the features of an analysis, so the selected analysis of `read` is not decided by its
-  sentence: decide the tense yourself from the analyses of the result when it matters.
-- **Sense level**: the senses of one analysis sound different (`bass` the fish and the music, `bow`, `lead`, `tear`,
-  `wind`, `row`); only the label of the key decides, so a key without a label of such a spelling decides nothing and the
-  consumer picks a default.
-
-`dotnet run --project tools/WordSense.Builder -c Release -- heteronyms --output heteronyms.tsv` writes the same table as
-a TSV (`level`, `group`, `spelling`, `class`, `key`, `note`) for a library that wants to load it. A key without a label
-in it stands for its analysis and every sense of it, and a key with `#label` for that one sense. The `note` (empty for
-most) says that the classes of a pair such as `conflict`, `export` or `transport` (a noun with the stress on the first
-syllable and a verb with the stress on the second) are merged in some dialects, which the table keeps because the usual
-contrast is why you need the key.
-
-## Changes from the Previous Release
-
-The previous release identified a sense by a pronunciation or part-of-speech class id such as `lead#metal` or
-`read#past`, and carried it in `WordDetails.SenseId`. This release changes the model as follows:
-
-- **The result type was renamed and reshaped.** The classification result `WordSense` is now `ClassifyResult` (a type
-  named like its namespace is awkward to use), and `IWordSenseModel.ClassifyAsync` returns `Task<ClassifyResult[]>`,
-  still one result per input word in input order. The name `WordSense` stays the name of the project, the namespace and
-  the packages.
-- **The sense id moved.** `WordDetails.SenseId` is gone: an analysis has a lemma, a part of speech and features. The
-  sense is in `ClassifyResult.SenseId`, next to `ClassifyResult.GroupId` and `ClassifyResult.Level`. Replace a test for
-  a non-null sense id by a test of the level (`result.Level == SenseLevel.Sense`).
-- **The ids are readable fine senses, and groups only where needed.** The sense ids of this release are new
-  (`lemma#label`, for example `bank#noun`), and the ids of the previous release are not valid any more; no mapping
-  from them is promised. A group exists only for confusable senses, so a sense usually has no group. Group ids
-  (`lemma#group:label`) are versioned per data release; see "Using the Analyses and Senses".
-- **Results carry analyses and senses.** `ClassifyResult.Analyses` lists the probability of every analysis of the word
-  and, where the model scored them, the ranked senses inside each analysis (the idea of a list of candidate senses is
-  now this: sum `analysis.Probability * sense.Probability`). `ClassifyResult.IsKnown` says whether the word is in the
-  table.
-- **Confidence refers to a level.** Re-tune the threshold you apply: the confidence now is the probability of the answer
-  at the level the model answered at, and a word answered at the `Group` or `PartOfSpeech` level has no sense id at all.
-- **`Lookup` returns analyses once.** `WordLexicon.Lookup` no longer repeats an analysis for each class of a word;
-  use `WordLexicon.SensesOf(lemma, partOfSpeech)` to list the senses of an analysis.
-- **Words not trained for an encoder** are answered at the part of speech level by the statistical model, with their
-  senses ranked by usage and never a guessed sense, where the
-  previous release answered their first dictionary sense with a confidence of one over the number of senses.
-- **Models compose.** `FallbackWordSenseModel` combines two models; the encoder packages use it with the Basic model
-  (see "Composing Models").
-- **Sense probabilities reflect usage.** The encoder models correct their per-sense scores to the usage of the senses
-  (WordNet 3.0 counts), so the most probable sense is the usual one unless the context says otherwise (see "Working with
-  an Encoder Model"); the chapter "Accuracy and Model Choice" gives the measured effect.
-- **`IWordSenseModel` only classifies; downloading is an optional capability.** `IWordSenseModel` now has
-  `ClassifyAsync` and `Dispose` only. `EnsureModelAsync` moved to the new interface
-  `IDownloadableWordSenseModel : IWordSenseModel`, which `MiniLMWordSenseModel`, `BertBaseCasedWordSenseModel`,
-  `OnnxWordSenseModel` and `FallbackWordSenseModel` implement; `BasicWordSenseModel` has no `EnsureModelAsync` any more
-  because it needs no files. To migrate: where your code holds the concrete model type (`MiniLMWordSenseModel`,
-  `BertBaseCasedWordSenseModel`) nothing changes, except that a call on `BasicWordSenseModel` is to be removed; where it
-  holds only an `IWordSenseModel`, use the capability pattern:
-
-  ```csharp
-  if (model is IDownloadableWordSenseModel downloadable)
-  {
-      await downloadable.EnsureModelAsync();
-  }
-  ```
-
-  A class that implemented `IWordSenseModel` with an `EnsureModelAsync(MirrorOptions? mirror, CancellationToken
-  cancellationToken)` does not compile unchanged, because `MirrorOptions` no longer exists: rename the parameter type to
-  `DownloadOptions`, and implement `IDownloadableWordSenseModel` (instead of only `IWordSenseModel`) so that callers and
-  `FallbackWordSenseModel` can discover the capability. A class without files implements only `IWordSenseModel` and can
-  drop its `EnsureModelAsync`.
-- **`MirrorOptions` is now `DownloadOptions`.** The members (`BaseUri`, `BearerToken`, `Credentials`, `StoreRoot` and
-  `Timeout`) and their rules are the same, and so are the environment variables `WORDSENSE_MIRROR_URL`,
-  `WORDSENSE_MIRROR_USER`, `WORDSENSE_MIRROR_PASSWORD` and `WORDSENSE_MIRROR_BEARER_TOKEN`; rename the type.
-- **Failures have typed exceptions.** `ModelUnavailableException`, `ModelIntegrityException` and
-  `DownloadConfigurationException` (all derived from the abstract `WordSenseException`) replace the loose
-  `HttpRequestException`, `FileNotFoundException`, `DirectoryNotFoundException`, `InvalidDataException` and
-  `ArgumentException` of the model files and the download settings; the original exception is always the
-  `InnerException` (see "Handling Failures"). `DownloadConfigurationException` is **not** an `ArgumentException`, so
-  code that caught `ArgumentException` around `EnsureModelAsync` or `ClassifyAsync` for a bad mirror setting must catch
-  `DownloadConfigurationException` (the `ParamName` is on the inner exception). The embedded word table and sense
-  catalog (`WordLexicon`) and the embedded table of the Basic model report `ModelIntegrityException` where they
-  reported `InvalidDataException`.
-- **`Respelling` was removed.** `SenseInfo` is now `SenseInfo(SenseId, GroupId, Lemma, PartOfSpeech, SenseKey)` and
-  `SenseGroup` is `SenseGroup(GroupId, Lemma, PartOfSpeech, SenseIds)`: the library has no phonetic data, and the
-  appendix has no pronunciations.
+`ClassifyAsync` takes the tokens of one text and returns an array parallel to the input: element `i` is the result of
+`words[i]`.
 
 ## Input and Tokenization
 
-You tokenize the text; the models expect what the evaluation used:
+You tokenize the text. The models expect what the evaluation used:
 
-- Punctuation is an element of its own (`"race"`, `"."`, never `"race."`).
-- Keep a contraction (`don't`) and a hyphenated word (`re-read`) as one token. A contraction is a stored word of the
-  table (a closed list, found with the analysis of its head word and `Contraction=Yes`); a hyphenated word is not a key,
-  so such a token is unknown (null, 0), but the words around it are still classified. A curly apostrophe (U+2019) is
-  read as `'`. A possessive (`dog's`) is looked up as a whole spelling: the lookup returns the analysis of the stem with
-  `Poss=Yes`. The tokenizer contract keeps `'s` inside the token; a caller that splits `'s` off as a separate token
-  must look the stem up on its own. Basic's tagger reads a joined possessive the way its statistics were counted, as the
-  stem followed by the possessive marker, but only inside the tagger: the results stay parallel to your tokens and the
-  possessive is still answered as one word.
-- Case does not matter for the lookup (words are lower-cased); the cased BertBaseCased encoder also sees the case you
-  give it.
-- Classify one sentence per call. The Basic model splits the list into sentences at the tokens `"."`, `"!"` and `"?"`
-  and uses a window of five words on each side of the target; it has no length limit. An encoder model joins the words
-  with single spaces and encodes them as one text of at most `maxSequenceLength` word pieces (128 by default, including
-  the two special tokens; 8 to 512 can be set). A longer list is not rejected: each target is encoded from a window of
-  that size around it, so only distant context is lost.
+- Punctuation is a token of its own (`"race"`, `"."`, never `"race."`). Classify one sentence per call: the list is
+  read as one running text.
+- Keep a contraction (`don't`), a possessive (`dog's`) and a hyphenated word (`re-read`) as one token. A contraction is
+  a stored word, and a possessive is found as its stem with `Poss=Yes`. A hyphenated word is unknown, but the words
+  around it are still classified. A curly apostrophe (U+2019) is read as `'`.
+- A number, punctuation mark, misspelling or name that is not in the table is unknown. Merge abbreviations such as
+  `Mr.` into one token: a split period ends a sentence for `Basic`.
+- Case is ignored by the lookup, but `BertBaseCased` sees it. `Basic` prefers the lemma of the written case where a
+  spelling has both (`Polish` and `polish`).
+- `Basic` splits the list into sentences at `"."`, `"!"` and `"?"` and reads five words on each side of the target. An
+  encoder encodes at most `maxSequenceLength` word pieces (128 by default, 8 to 512 allowed) from a window around the
+  target.
+- A null element throws `ArgumentException`. An empty string, or one that contains a space, is unknown.
 
-A reference tokenizer (a word with inner apostrophes and hyphens, a number with separators, or one other character per
-token); the repository has a unit test that runs this exact pattern:
+A reference tokenizer (the repository has a unit test for this exact pattern):
 
 ```csharp
 using System.Text.RegularExpressions;
@@ -719,822 +89,433 @@ string[] Tokenize(string sentence) => tokenPattern.Matches(sentence).Select(matc
 string[] tokens = Tokenize("Smith's well-known dog didn't \"bark\" at 3.5 cats.");
 ```
 
-What each model returns for typical tokens (the lexicon lookup comes first, so the three models agree on whether a
-token is known; "null" means `IsKnown` is `false`, `Details` is null and the confidence is 0):
+# Results
 
-<!-- markdownlint-disable MD013 -->
+## The Result
 
-| Token | Result |
-| --- | --- |
-| `record`, `Record`, `RECORD`, `records` | Found (case is ignored by the lookup): answered from context at the level the model reaches, with a confidence |
-| `the`, `The`, `a`, `an`, `his` | Found (case is ignored): `Determiner`, `Sense` level, confidence 1 |
-| a misspelling, a name not in the lexicon | Unknown: null, 0 (a name that is in the lexicon, such as `Smith`, is found) |
-| `,` `"` `-` an em dash `;` `)` | Unknown: null, 0; for Basic only `.`, `!` and `?` also end a sentence segment |
-| `race.` (period attached) | Unknown: null, 0, and Basic sees no sentence end; always split the period off |
-| `don't` (also with U+2019), `it's`, `didn't` | Found: a stored contraction, with the analysis of its head word and `Contraction=Yes` |
-| `dog's`, `dogs'` | Found when the stem is known: the analysis of the stem with `Poss=Yes` |
-| `do` + `n't` | `do` is found, `n't` is unknown; not the form the models were evaluated on, so avoid it |
-| `well-known`, `re-read`, `mother-in-law` | Unknown: null, 0; keep them as one token |
-| `3`, `3.5`, `1,000` | Unknown: null, 0, and `WordLexicon.Lookup` finds nothing for them either (a token without a letter is never a word); keep `3.5` as one token, because for Basic a split period ends a segment |
-| `Mr` + `.`, `U` + `.` + `S` + `.` | The reference tokenizer does not handle abbreviations and splits them like this; each period ends a segment for Basic and cuts its context, so merge `Mr.` into one token yourself or drop the periods |
-| empty string, null element, empty list | Empty string: null, 0; null element: `ArgumentException`; empty list: empty array |
+An **analysis** is one reading of a word: a `WordDetails` of lemma, part of speech and features (`Number=Plur`). A form
+that belongs to several lemmas or tenses (`left`, `read`) has one analysis for each. A **sense** is one meaning of a
+lemma and part of speech, with a stable id `lemma#label` such as `bank#financial-institution`. It is an OEWN fine sense
+with an OEWN sense key (`bow%1:06:02::`), or a project sense without a key (`the#determiner`, `well#discourse-marker`).
+A **group** is a curated set of at least two, but not all, closely related senses of one lemma and part of speech, with
+an id such as `help#group:assistance`. A sense is in at most one group, and most lemmas have none.
 
-<!-- markdownlint-enable MD013 -->
+`ClassifyResult` is a `readonly record struct` with plain properties, so it serializes without custom code:
 
-Case: the lookup lower-cases every word for Basic, and `WordLexicon.Lookup` tries the exact spelling first and the
-lower-case folding second. MiniLM is uncased (its tokenizer lower-cases, so case never changes its answer);
-BertBaseCased is cased, so keep the case of the original text. Basic uses case in two places. A word that is not in the
-lexicon and starts with an upper-case letter inside a segment (not first) is tagged as a noun. And for a word whose
-lower-case spelling has both a capitalized and a lower-case lemma (`Polish` and `polish`, `August` and `august`) the
-written case is evidence of the lemma: a word written in lower case, or an isolated capitalized word inside a sentence,
-weighs the analyses of the other case down to a tenth, which clear context can still outweigh. A capital at the start
-of a segment (also after a quotation mark), a capitalized word next to another capitalized word (`State Department`),
-the words of a title-case segment, and an upper-case, single-letter or mixed-case word (`POLISH`, `I`, `pOlIsh`) carry
-no such evidence.
+- `Word` is the word as you gave it. `IsKnown` says whether it is in the word table.
+- `Analyses` lists every analysis as an `AnalysisCandidate`, largest probability first. The probabilities sum to one and
+  nothing is truncated. Analyses that differ only in features (`cut` as an infinitive and as a past tense) share the
+  probability of their lemma and part of speech.
+- `AnalysisCandidate` has `Details` (`Lemma`, `PartOfSpeech`, `Features`), `Probability` and `Senses`: its ranked fine
+  senses, each a `SenseId` and a `Probability`, summing to one. `Senses` is empty only when the lemma and part of speech
+  have no sense. `SensesRankedByUsage` is true when the senses are the usage-prior ranking of an untrained lemma rather
+  than scores from the context of the word.
+- `Details` is the selected analysis, the first of `Analyses`, or `null` for an unknown word.
+- `Level` is `None`, `PartOfSpeech`, `Group` or `Sense`. `Confidence` is the probability of the answer at that level.
+- `GroupId` is set at the `Group` level, and at the `Sense` level when the sense is in a group. `SenseId` is set at the
+  `Sense` level only.
+- `Key` is one stable string for the answer (see "Keys").
 
-# The Models
+`Analyses` is the source of truth and the rest summarizes it. Read `Level`, `Confidence` and the ids for the model's
+decision, or `Analyses` for your own. An unknown word has no entry in `WordLexicon`: `IsKnown` is false, `Analyses` is
+empty, `Details` is null, `Level` is `None` and `Confidence` is 0. Every other word gets an answer, so `Level` `None`
+never means low confidence.
 
-## Core: the Word Table
+## Levels and Confidence
 
-`WordLexicon` looks a word up in the embedded word image, a flat in-place data file that is read without building a
-dictionary. `WordLexicon.Lookup(word)` returns the analyses of a word (lemma, part of speech and features) as an
-immutable array (empty for an unknown word), one analysis for each lemma, part of speech and features of the spelling
-and none for each sense; `TryLookup`, `Contains` and `FormsOf(lemma)` answer the related questions. The inflected
-forms (plural, verb forms, comparatives and so on) of every dictionary word are in the image, so no morphology runs at
-use time. The sense catalog in the same image answers `SensesOf`, `TryGetSense`, `TryGetSenseByKey` and `TryGetGroup`,
-and `Version` identifies it
-(see "Looking Up Senses and OEWN Keys"). The core package has no model, no ONNX Runtime and no weights: it knows
-nothing of the model packages. It also holds `FallbackWordSenseModel`, which combines two models (see "Composing
-Models").
+The levels nest: part of speech, then the optional group, then the sense. A model that is unsure between senses steps
+up to the next level that exists: their shared group, or else the part of speech.
+
+| Level | Meaning | Ids set |
+| ----- | ------- | ------- |
+| `Sense` | The best fine sense is clear enough | `SenseId`, and `GroupId` when it has a group |
+| `Group` | The senses are too close to tell apart, but their group is clear | `GroupId` |
+| `PartOfSpeech` | Neither is clear, the lemma has no group, or no senses were scored | none |
+
+An encoder answers a trained lemma at the finest level that passes the lemma's own threshold. The thresholds are
+measured when the weights are trained (see "Accuracy and Model Choice"). Test the `Level`, not whether an id is `null`.
+A `PartOfSpeech` result is a valid answer, and its `Senses` still rank the senses of the analysis.
+
+The **confidence** is the probability of the answer at its level. The *slot* of the selected analysis is its lemma and
+part of speech: the sum of the probabilities of the analyses that share them.
+
+- `PartOfSpeech`: the probability of the slot.
+- `Group`: the probability of the slot times the probability of the group's senses within the slot.
+- `Sense`: the probability of the slot times the probability of the answered sense within the slot.
+
+It is 0 for an unknown word and 1 for a word with one lemma and part of speech and one sense. It is also 1 at the
+`PartOfSpeech` level for a word whose one lemma and part of speech have several senses that the model does not decide,
+so test the `Level`, not whether the confidence is 1.
+
+The confidence is a score, not a calibrated probability. Compare it only within one result, never across models, words
+or levels: 0.9 at the `Group` level means something other than 0.9 at the `Sense` level. Choose a threshold per model
+and level on your own text.
+
+## Analyses and Senses
+
+Where a model scored the senses (an encoder, for a trained lemma), each analysis lists its senses with their
+probabilities at every level of answer. To map senses to your own categories, sum the product of the analysis
+probability and the sense probability per category. For example `bow#archery` at 0.48 and `bow#violin` at 0.41 give 0.89
+for a "things you hold and play or shoot with" category, though neither sense alone is clear enough for a `Sense`
+answer. The probability that a word is a verb is the sum of `Probability` over the analyses whose
+`Details.PartOfSpeech` is `Verb`.
+
+For a lemma without trained weights, every model ranks the senses of each analysis that has two or more by how often
+they are used: the WordNet 3.0 tag counts, with smoothing. The ranking is the same in every sentence. It describes the
+lemma and is never an answer: the level stays `PartOfSpeech` and the ids stay empty. The probabilities are a ranking
+score of one model, so do not compare them across models.
+
+## Senses, Groups and OEWN Keys
+
+The core package resolves the ids of an answer without a model, and finds a sense by its OEWN key:
 
 ```csharp
-foreach (WordDetails analysis in WordLexicon.Lookup("lead"))
+// The senses of "bow" as a noun, in OEWN order (common senses first), with the group of each
+foreach (SenseInfo info in WordLexicon.SensesOf("bow", PartOfSpeech.Noun))
 {
-    Console.WriteLine($"{analysis.Lemma}: {analysis.PartOfSpeech}, {analysis.Features}");
-    foreach (SenseInfo info in WordLexicon.SensesOf(analysis.Lemma, analysis.PartOfSpeech))
-    {
-        Console.WriteLine($"  {info.SenseId} ({info.GroupId ?? "no group"})");
-    }
+    Console.WriteLine($"{info.SenseId} in {info.GroupId ?? "(no group)"}, key {info.SenseKey ?? "(project sense)"}");
+}
+
+// From an answer to its sense, from a WordNet key to a sense, and from a group answer to its members
+ClassifyResult answer = (await model.ClassifyAsync(["She", "drew", "the", "bow", "."]))[3];
+if (answer.SenseId is { } id && WordLexicon.TryGetSense(id, out SenseInfo found))
+{
+    Console.WriteLine($"{found.SenseId}: group {found.GroupId ?? "(none)"}, key {found.SenseKey}");
+}
+
+WordLexicon.TryGetSenseByKey("bow%1:06:02::", out SenseInfo byKey);
+
+if (answer.GroupId is { } groupId && WordLexicon.TryGetGroup(groupId, out SenseGroup group))
+{
+    Console.WriteLine(string.Join(", ", group.SenseIds));
 }
 ```
 
-An exact spelling is tried first, so a case-sensitive entry wins; otherwise the word is lower-cased (the curly
-apostrophe U+2019 counts as `'`) and looked up again. The first lookup takes about 55 ms and about 15 MiB
-(approximate, machine dependent), once per process; the sense catalog is read the first time a catalog method needs it.
-If the embedded image or catalog is missing, corrupt or not the one that was built with the package (mixed package
-versions), the `WordLexicon` members report a `ModelIntegrityException`.
+`WordLexicon.Lookup(word)` returns the analyses of a spelling, and `TryLookup`, `Contains` and `FormsOf(lemma)` answer
+related questions. The inflected forms of every dictionary word are in the table, so no morphology runs at use time.
 
-## Basic
+**Stored ids.** Sense ids are frozen, so you can store them. Group ids are not: a data release can add, rename, merge or
+drop a group. Treat a group id as an opaque value of one release. Store `WordLexicon.Version` with it and resolve it
+again with `TryGetGroup` after the version changes. Compare `Version` for equality only.
 
-`BasicWordSenseModel` (in the core package `DemaConsulting.WordSense`) needs no files, no network and no ONNX Runtime.
-It is not downloadable: it has no `EnsureModelAsync` and does not implement `IDownloadableWordSenseModel`, there is
-nothing to prepare and no mirror applies, and disposing the model (with `using`) releases nothing but is still honored:
-afterwards `ClassifyAsync` throws `ObjectDisposedException`. It decides the analysis of a word with several analyses
-with a small statistical table that is
-embedded in the package: a part-of-speech tagger (a hidden Markov model trained on the tag statistics of the open
-English part-of-speech corpus of this project, limited to the parts of speech that the word table allows) and, for
-lemmas that have enough training
-sentences, context cues that separate analyses of the same part of speech (for example the past participle and the
-present of `read`, or the lemmas of `left`). It always answers a word with several analyses, at the `PartOfSpeech`
-level, and lists every analysis in `Analyses` with its probability; the confidence is the
-probability that the model gives to the lemma and part of speech of the selected analysis (the sum over its feature
-variants, which the context cues alone separate), between 0 and 1. It names a sense (level `Sense`) only
-for a word whose selected analysis has a lemma and part of speech with a single sense (the confidence is then the
-probability of that lemma and part of speech, 1 for a word with only one; a word with only one lemma and part of speech
-and several senses is at the `PartOfSpeech` level, also with confidence 1), it never answers at the `Group` level, and
-the `Senses`
-of its analyses are the one sense of a single-sense analysis (probability 1), the senses ranked by usage for an analysis
-with two or more senses (the WordNet 3.0 tag counts; a ranking of the lemma that is never an answer), and empty for an
-analysis without senses, because it scores analyses and not fine senses. The measured
-quality is in the chapter "Accuracy and Model Choice". First use costs about 55 ms for the word table and about 22 ms for
-the statistical table (approximate, machine dependent); after that a sentence takes well under a millisecond. A missing
-or corrupt embedded table is reported by `ClassifyAsync` as a `ModelIntegrityException`, thrown from the call.
+## Keys
 
+A key is one stable string for an answer. It names the meaning and never the sound, so a consumer that attaches its own
+data to a meaning (a speech front end mapping words to phonemes, for example) can key that data on it. The format is
+`{spelling}|{lemma}/{Part}[/{Features}][#{label}]`:
+
+- `spelling` is the lower-case written form with a straight apostrophe (`polish` for `Polish`). `lemma` is the lemma of
+  the selected analysis, with its case. `Part` is the `PartOfSpeech` name.
+- `Features` are the features of the analysis. The `/` and the features are left out when empty (`the|the/Determiner`).
+- `label` is the part after `#` of a sense id (`sea-bass` for `bass#sea-bass`), left out when the key names no sense.
+
+At the `Sense` level the label is the answered sense. At the `Group` level, or at the `PartOfSpeech` level where the
+senses are ranked, it is the most probable ranked sense. A group id is never used. For a word that no model scored, that
+label is the most frequent sense of the lemma, not a decision of the context: test `Level` and `Confidence` before you
+read it as a meaning. An unknown word has a `null` key. The key depends only on the fields of the result, so it is the
+same for every model, your own included. A `\` escapes a `\`, `|`, `/` or `#` inside a part (`a\/c|A\/C/Noun/Number=Sing`).
+
+```csharp
+ClassifyResult answer = (await model.ClassifyAsync(["She", "caught", "a", "bass", "."]))[3];
+Console.WriteLine(answer.Key);      // for example: bass|bass/Noun/Number=Sing#sea-bass
+
+if (WordKey.TryParse(answer.Key, out WordKey? parts))
+{
+    Console.WriteLine($"{parts.Spelling} {parts.Lemma} {parts.PartOfSpeech} {parts.Features} {parts.Label ?? "(no sense)"}");
+}
+```
+
+`WordLexicon.Keys()` enumerates every key any model can return: for every spelling and analysis the key without a label,
+and one key with a label for each catalog sense of the analysis. Build a map from these keys to your own data once, then
+look up `result.Key` for each answer. The committed image has 1,285,019 keys, about 63 MB of text, which stream in about
+three seconds. The builder writes them as a file: `dotnet run --project tools/WordSense.Builder -c Release -- keys
+--output keys.txt`. The build publishes it, with the heteronym table, as the `word-keys` artifact.
+
+**Heteronyms** are spellings that stand for different words, so the key, not the spelling, tells them apart. The
+appendix lists them at three levels. At the *entry* level the analyses belong to entries that sound different (`record`,
+`August` and `august`). At the *tense* level the past and the present are spelled alike (`read`); the key tells them
+apart through the features, but the encoder models do not score features, so decide the tense yourself from the
+analyses when it matters. At the *sense* level the senses of one analysis sound different (`bass`, `bow`, `lead`); only
+the label decides. `dotnet run --project tools/WordSense.Builder -c Release -- heteronyms --output heteronyms.tsv`
+writes the table as a TSV.
+
+# Choosing a Model
+
+The chapter "Model Comparison Table" lists accuracy, size and speed, and "Accuracy and Model Choice" explains the
+columns. The part of speech is the dependable part of an answer in all three models. Treat a sense as a candidate to
+check.
+
+- Use the **core package alone** to look up analyses and senses, resolve a sense id or key, and answer words that have
+  one sense.
+- Use **`Basic`** when the part of speech is enough, nothing may be downloaded, or ONNX Runtime cannot be shipped. It is
+  also the fallback of the encoder models.
+- Use **`MiniLM`** (uncased, 22 MiB) for a small download and fast answers. It answers mostly at the part-of-speech and
+  group levels.
+- Use **`BertBaseCased`** (cased, 104 MiB) for fine senses. It commits to a sense most often and ranks senses best.
+
+The sentence of the README, answered by the encoder models. The confidences differ slightly between CPUs, and a word
+near its threshold can be answered one level finer or coarser (`BertBaseCased` answers `back` at the group
+`back#group:return` on some CPUs).
+
+<!-- output:minilm -->
+```text
+The       Determiner   Sense        1.00  the#determiner
+hunter    Noun         PartOfSpeech 1.00
+fired     Verb         PartOfSpeech 1.00
+an        Determiner   Sense        1.00  an#determiner
+arrow     Noun         PartOfSpeech 1.00
+from      Preposition  Sense        1.00  from#preposition
+his       Determiner   Sense        1.00  his#determiner
+bow       Noun         PartOfSpeech 1.00
+at        Preposition  Sense        1.00  at#preposition
+a         Determiner   Sense        1.00  a#determiner
+deer      Noun         Sense        1.00  deer#noun
+so        Adverb       PartOfSpeech 0.51
+we        Pronoun      Sense        1.00  we#pronoun
+will      Auxiliary    Sense        1.00  will#auxiliary
+record    Verb         PartOfSpeech 1.00
+a         Determiner   Sense        1.00  a#determiner
+record    Noun         PartOfSpeech 0.99
+then      Adverb       PartOfSpeech 1.00
+go        Verb         PartOfSpeech 1.00
+back      Adverb       Sense        1.00  back#to-former-place
+home      Noun         PartOfSpeech 0.53
+```
+
+<!-- output:bertbasecased -->
+```text
+The       Determiner   Sense        1.00  the#determiner
+hunter    Noun         PartOfSpeech 1.00
+fired     Verb         PartOfSpeech 1.00
+an        Determiner   Sense        1.00  an#determiner
+arrow     Noun         PartOfSpeech 1.00
+from      Preposition  Sense        1.00  from#preposition
+his       Determiner   Sense        1.00  his#determiner
+bow       Noun         PartOfSpeech 1.00
+at        Preposition  Sense        1.00  at#preposition
+a         Determiner   Sense        1.00  a#determiner
+deer      Noun         Sense        1.00  deer#noun
+so        Adverb       PartOfSpeech 0.51
+we        Pronoun      Sense        1.00  we#pronoun
+will      Auxiliary    Sense        1.00  will#auxiliary
+record    Verb         PartOfSpeech 0.98
+a         Determiner   Sense        1.00  a#determiner
+record    Noun         PartOfSpeech 0.91
+then      Adverb       PartOfSpeech 1.00
+go        Verb         PartOfSpeech 1.00
+back      Adverb       Sense        1.00  back#to-former-place
+home      Adverb       PartOfSpeech 0.79
+```
+
+## How the Models Decide
+
+**`Basic`** needs no files, no network and no ONNX Runtime. A hidden Markov tagger over the part-of-speech statistics of
+the project's open corpus chooses the analysis. Context cues separate analyses of one part of speech for the lemmas that
+have enough training sentences, and a tense model reads the tense of verbs whose past and non-past share a spelling
+(`put`, `read`). `Basic` names a sense only for an analysis whose lemma and part of speech have one sense. It never
+answers at the `Group` level.
+
+**The encoder models** compare the word in your sentence with example sentences of each sense, learned at build time.
+Each trained lemma ships as a small classifier with confidence thresholds measured for that lemma. The lemmas are those
+of the appendix, the same for both models. An analysis that belongs to several lemmas or tenses is first chosen by a
+per-form classifier. The scores are corrected to the usage of the senses (the WordNet 3.0 counts), so the most probable
+sense is the usual one unless the context says otherwise.
+
+**Fallback.** `FallbackWordSenseModel(primary, fallback)` combines two models. A word gets the complete result of the
+primary model when the primary scored senses for it, and otherwise the complete result of the fallback. A result is
+never a mixture. MiniLM and BertBaseCased are an encoder with `Basic` as the fallback, so an ambiguous word that the
+encoder was not trained for gets the `Basic` analysis at the `PartOfSpeech` level, with its senses ranked by usage. When
+the primary gives every feature variant of a slot the same probability, as an encoder does, the variants take the
+proportions of the fallback, which reads the tense. The constructor `FallbackWordSenseModel(primary, fallback,
+primaryWeight)` takes a weight: below 1, an answer at the part-of-speech level combines the slot probabilities of both
+models as `p_primary^w × p_fallback^(1−w)`. `MiniLM` uses 0.6 and `BertBaseCased` uses 1 (off).
+
+**Your own model.** Implement `IWordSenseModel` (`ClassifyAsync` and `Dispose`) to wrap another engine. Return a non-null
+array parallel to the input, `ClassifyResult.Unknown(word)` for an unknown word, and for a known word all analyses
+(probabilities summing to one, largest first), the selected one in `Details` and a level that carries only its own ids.
+Throw `ObjectDisposedException` after `Dispose`, and allow concurrent calls. Take analyses from `WordLexicon.Lookup` and
+senses from `WordLexicon.SensesOf`, with the word lower-cased and U+2019 replaced by `'`.
+
+# Configuration and Model Download
+
+`Basic` and the core package have no model files. The encoder files are downloaded once to `<store>/<model-id>/`. The
+default store is `%LOCALAPPDATA%\DemaConsulting\WordSense\models` on Windows and
+`~/.local/share/DemaConsulting/WordSense/models` on Linux and macOS (`$XDG_DATA_HOME` is honored). Each file is
+verified against its pinned SHA-256 and moved into place atomically, so a partial download is never used, and valid files
+are reused without network access. Each file is requested from a mirror first, when one is configured, and then from the
+GitHub LFS copy of this repository (`media.githubusercontent.com`). There is no other source.
+
+- **MiniLM** (`all-MiniLM-L6-v2-int8`): `model_int8.onnx` (22,972,370 bytes) and `vocab.txt` (231,508).
+- **BertBaseCased** (`bert-base-cased-int8`): `model_int8.onnx` (108,477,896 bytes), `vocab.txt` (213,450),
+  `config.json` (639) and `tokenizer.json` (668,923).
+
+The SHA-256 values are in `SHA256SUMS` of each model folder (`model/<model-id>/`).
+
+## Preparing a Model
+
+`EnsureModelAsync` is optional: `ClassifyAsync` ensures the files lazily, on the first word that needs the encoder. Call
+it to control when the download happens and to handle failures up front. Concurrent callers share one ensure, and a
+failed ensure can be retried.
+
+<!-- sample:download -->
 ```csharp
 using DemaConsulting.WordSense;
+using DemaConsulting.WordSense.MiniLM;
 
-using var model = new BasicWordSenseModel();
-ClassifyResult[] results = await model.ClassifyAsync(["to", "record", "the", "record"]);
-Console.WriteLine(results[1].Details?.PartOfSpeech.ToString() ?? "unknown");
-```
-
-## MiniLM
-
-`MiniLMWordSenseModel(string? modelDirectory = null, int maxSequenceLength = 128)` runs the int8 all-MiniLM-L6-v2
-encoder (hidden size 384, uncased) with the fine-sense weights and per-lemma thresholds that are embedded in its
-assembly, and answers every word that the encoder does not score with the Basic model (it is a
-`FallbackWordSenseModel` of the two; see "Composing Models"). The weights were trained with the sequence length 128;
-another value (8 to 512) is possible but unvalidated.
-
-## BertBaseCased
-
-`BertBaseCasedWordSenseModel(string? modelDirectory = null, int maxSequenceLength = 128)` runs the int8 bert-base-cased
-encoder (hidden size 768, cased) with its own embedded weights and thresholds, composed with the Basic model in the same
-way as MiniLM. The file `model_int8.onnx` of this model
-is the encoder derived from the upstream masked-language-model export, with the language-model head removed (see
-`model/bert-base-cased-int8/README.md` in the repository).
-
-## Working with an Encoder Model
-
-How the encoder models decide: each ambiguous word was taught from a set of example sentences per fine sense, and the
-model compares the word in your sentence with what it learned, roughly "which sense's examples does this look most
-like". The learning happened at build time and ships inside the package as a small trained classifier for each
-word, together with the confidence thresholds measured for that word. Only the words that were trained this way (the
-lemmas listed in the appendix, the same ones for MiniLM and BertBaseCased) are decided from context; any other word
-with several senses gets the part of speech that the Basic model chooses for it in the sentence (level `PartOfSpeech`),
-and only the Basic model's tagger covers those words. A word whose lemma and part of speech have one sense never needs
-the encoder.
-
-A form that belongs to several lemmas or tenses (`left`, `bases`, `rows`, `read`) first has its analysis chosen from the
-context by a small per-form classifier, and the fine classifier of the chosen lemma runs afterwards; when the choice is
-not clear the word is answered at the `PartOfSpeech` level.
-
-The probabilities of the fine senses reflect how often the senses are used, not how often the training sentences show
-them. The classifiers learn from sentences that are balanced by sense (every sense has about the same number of
-examples), so their raw output would favor rare senses; the build corrects it with a prior: the share of a sense among
-the training sentences of its lemma is divided out, and the share of the sense in the WordNet 3.0 counts (with 0.5 added
-to every count, and raised to the power 0.5, so that the prior only leans on the counts) is multiplied in. A sense
-without a count, such as a project sense, gets the added constant alone. The correction is part of the stored weights
-and costs nothing at run time. On SemCor it raised the share of words whose most probable sense is right (the *fine
-top-1* of the README table) for both encoder models, and it can lower the figure on a balanced set (a frequent sense is
-now favored where the test sentences show every sense equally often); the chapter "Accuracy and Model Choice" has the
-measurements.
-
-The public encoder models wrap an encoder model (`OnnxWordSenseModel`, which implements `IDownloadableWordSenseModel`,
-has the public properties `HiddenSize` and `ModelId` and is not used directly) and the Basic model in a
-`FallbackWordSenseModel`, and expose `HiddenSize`, `ModelId`, `EnsureModelAsync`, `ClassifyAsync` and `Dispose`.
-`IWordSenseModel` is `IDisposable`: the model owns the ONNX session, the downloader state and the Basic model, so
-dispose it (with `using`) when you no longer need it; disposing while calls are running is safe
-(see below). The
-Basic model has nothing to
-release but follows the same rules. The usual sequence is: classify as many texts as
-you like with `ClassifyAsync` (safe for concurrent use) and dispose the model. `EnsureModelAsync` is optional:
-`ClassifyAsync` ensures the model lazily on first need, with the default (or environment variable) download settings
-(and may throw the same exceptions, such as `ModelUnavailableException` or `ModelIntegrityException` for a supplied
-directory), so call `EnsureModelAsync` first to control when the download happens (startup, before going offline,
-through a mirror) and to handle its failures up front (a `DownloadOptions` passed while an ensure is already in flight
-is ignored); a model directory is passed to the constructor. Where your code holds the concrete model type, call the
-method directly:
-
-```csharp
+// Optional: ClassifyAsync ensures the files lazily. Call EnsureModelAsync to control when the download
+// happens and to handle its failures up front.
 using var model = new MiniLMWordSenseModel();
 await model.EnsureModelAsync();
+
+// Through a mirror: pass the options to the first ensure of the model
+using var mirrored = new MiniLMWordSenseModel();
+await mirrored.EnsureModelAsync(new DownloadOptions(new Uri("https://models.example.com/wordsense")));
 ```
 
-`EnsureModelAsync` is not a member of `IWordSenseModel`, which only classifies and disposes. Code that holds only an
-`IWordSenseModel` (a model chosen at run time, an injected one or a third-party implementation) asks for the capability:
+`EnsureModelAsync` belongs to the capability interface `IDownloadableWordSenseModel`, which the encoder models and
+`FallbackWordSenseModel` implement and `Basic` does not. Code that holds only an `IWordSenseModel` asks for it:
 
+<!-- sample:capability -->
 ```csharp
+using DemaConsulting.WordSense;
+using DemaConsulting.WordSense.MiniLM;
+
+// Code that holds only an IWordSenseModel asks for the capability. Basic has no files and does not offer it.
+using IWordSenseModel model = new MiniLMWordSenseModel();
 if (model is IDownloadableWordSenseModel downloadable)
 {
     await downloadable.EnsureModelAsync();
 }
 ```
 
-Text whose
-words the word table alone resolves (no word with several senses) never needs the model: nothing is downloaded, opened
-or verified, and a model that is never needed is never downloaded. Concurrent callers share one ensure, and a failed
-ensure can be retried by the next call. The ensured state belongs to one model instance: after a successful call the
-instance keeps the verified directory (including the `StoreRoot` of the `DownloadOptions` passed to that call), and a new
-instance starts again; after a failed call, a lazy ensure uses no `DownloadOptions`. The ONNX session and the weights are
-loaded at the first classification that needs
-them: about 0.4 s for MiniLM and about 0.5 s for BertBaseCased, on top of the word table (about 55 ms)
-and of the hashing of the model files in `EnsureModelAsync` (once per model instance; about 30 ms for MiniLM and about
-110 ms for BertBaseCased
-with a warm file cache; approximate, machine dependent). Concurrent classifications are not serialized: they share the
-one ONNX session and run in parallel, so throughput grows with the cores while the latency of one call stays the same.
-The ONNX models run on the CPU only. Disposing is idempotent
-and thread-safe. After `Dispose()`, `ClassifyAsync` throws `ObjectDisposedException` (for the
-Basic model as well, and even when the token is already cancelled), and so does `EnsureModelAsync` of a downloadable
-model: the Basic model throws it from the call itself, an encoder model throws it from `EnsureModelAsync` but reports
-it through the task returned by
-`ClassifyAsync`, so put the `await` inside the `try`. Disposing while `EnsureModelAsync` (or a lazy ensure) is
-downloading cancels the download: the pending task throws `OperationCanceledException` and no partial file remains. The
-hashing of files that are already in place is not interrupted: when no download is needed, the pending ensure completes
-normally (the model is disposed nevertheless, so every later call throws). A `ClassifyAsync` that is still waiting for
-its lazy ensure ends with `OperationCanceledException` (the download was cancelled) or, when the ensure finished first
-and the call had not yet opened the ONNX session, with `ObjectDisposedException`; only a classification that already
-runs on the session completes normally, and a call that never needs the model (no word with several senses and trained
-weights) is not affected.
-Disposal never deletes the downloaded files; they stay in the store and are reused. Disposing while a classification
-is running is safe for every model: the model is marked disposed at once (new calls throw), a running classification
-completes normally, and an encoder model releases its ONNX session when the last of them finishes (`Dispose` never
-waits). With a
-model directory, the files are verified against their
-SHA-256 without using the network, either by `EnsureModelAsync` or by the lazy ensure.
+## Offline Use
 
-Threads and cancellation: the Basic model does everything synchronously on the calling thread and returns a task that
-is already complete; an encoder model starts on the calling thread (argument checks, the lexicon load), hashes and
-downloads on the thread pool, and then opens the ONNX session and runs the inference synchronously on the thread that
-continues the call (it is not offloaded with `Task.Run`; do that yourself if the caller must not block). A
-cancellation token is checked before the work starts, while the ensure is awaited (it cancels the wait of that call
-only) and between the words that are encoded; a single
-ONNX run is never interrupted. Cancelling the token of `EnsureModelAsync` does not cancel the shared ensure: it keeps
-running even when no caller waits any more (only disposing the model cancels it), the next call joins it while it runs
-(its `DownloadOptions` are ignored), returns at once when it has succeeded, and starts a new ensure with its own
-`DownloadOptions` only after a failed one. An already cancelled token does not make `EnsureModelAsync` throw from the
-call: it returns a cancelled task (awaiting it throws `OperationCanceledException`), except
-that a task that has already completed is returned as it is; only a
-disposed model throws from the call. An empty
-element is an unknown word
-(`null`, 0) and an element that contains a space is
-looked up as one key, which no lexicon entry has, so it is unknown too: pass one token per element.
+Copy the model files into one flat folder (from `model/<model-id>/`, or from a machine that has run `EnsureModelAsync`)
+and pass it to the constructor: `new MiniLMWordSenseModel(modelDirectory: @"C:\models\all-MiniLM-L6-v2-int8")`. The
+files are verified against their SHA-256 without the network, and options and environment variables are ignored. You can
+also pre-populate the store: files copied to `<StoreRoot>/<model-id>/` that match their SHA-256 are kept and never
+requested.
 
-## Implementing `IWordSenseModel` Yourself
+## Mirrors and Options
 
-Anyone may implement `IWordSenseModel` (for example to wrap another engine) and use it wherever a supplied model fits.
-The interface has only `ClassifyAsync` and `Dispose`. An implementation must: throw `ArgumentNullException` for a null
-word list and `ArgumentException` for a null element;
-return a non-null array parallel to the input (empty for an empty list); throw `ObjectDisposedException` from
-`ClassifyAsync` after `Dispose`; make `Dispose` idempotent and thread-safe; allow concurrent `ClassifyAsync` calls;
-and honor the
-result semantics: an unknown word is `ClassifyResult.Unknown(word)` (`IsKnown` false, empty `Analyses`, `Details` null,
-level `None` and confidence 0); a word with one analysis whose lemma and part of speech have one sense gets it at level
-`Sense` with confidence 1 (that analysis and that sense, each with probability 1); and a known ambiguous word gets all
-its analyses in `Analyses` (probabilities summing to one, the largest first, ties in lexicon order, none left out), the
-selected analysis in `Details` and its best answer at the
-level the implementation can support (`PartOfSpeech`, `Group` or `Sense`, never `None`, with the ids that level
-carries and none others, a group or sense lying in the selected analysis) with a confidence from 0 to 1 that is the
-probability of the answer at its level (the analysis probability, times the sense probability or the summed member
-sense probabilities within the analysis, as described under "Levels and Confidence"); the senses of an analysis are
-sorted by probability (ties by ordinal sense id), sum to one and are never truncated, and are empty when you do not
-score them. `Dispose` must be safe
-while calls run; `ClassifyAsync` should ensure lazily and only when a word needs it; and enumerate the word list once.
-A model that fetches files may also implement the optional capability interface `IDownloadableWordSenseModel`, which
-adds `Task EnsureModelAsync(DownloadOptions? options = null, CancellationToken cancellationToken = default)`: callers
-that hold only an `IWordSenseModel` find it with `model is IDownloadableWordSenseModel`, and a model that needs no files
-(such as Basic) should not implement it. Such an `EnsureModelAsync` must be idempotent, thread-safe and retryable, must
-not throw for an already cancelled token but return a cancelled task (a task that has already
-completed may be returned as it is), and should report a failure with the typed exceptions of the library (see
-"Handling Failures").
-It must also: return in `Word` the input element as given; take the analyses from `WordLexicon.Lookup(key)` and the
-senses from `WordLexicon.SensesOf`, where the key is
-the word lower-cased with U+2019 replaced by `'` (the shipped models do this, and an implementation should too, so that
-every model finds the same analyses and senses); honor the cancellation token; and throw its exceptions either
-synchronously or through the returned task (`BasicWordSenseModel` throws
-from the call; `OnnxWordSenseModel` throws `ObjectDisposedException`
-from `EnsureModelAsync` and reports everything else through the task), so callers should `await` inside a `try`. The
-supplied implementations are `BasicWordSenseModel`, `OnnxWordSenseModel` (used through `MiniLMWordSenseModel` and
-`BertBaseCasedWordSenseModel`) and the composite `FallbackWordSenseModel`; `BasicWordSenseModel`,
-`MiniLMWordSenseModel`, `BertBaseCasedWordSenseModel` and `FallbackWordSenseModel` are
-sealed, and `OnnxWordSenseModel` cannot be subclassed outside the WordSense packages (its constructor is not
-accessible), so implement the interface yourself instead.
-
-## Composing Models
-
-`FallbackWordSenseModel(IWordSenseModel primary, IWordSenseModel fallback)` is a model that combines two models, for
-example your own with the Basic model:
-
-```csharp
-using DemaConsulting.WordSense;
-
-// Any model can be the primary one: it answers the words it scores, and the Basic model answers every other word
-static async Task<ClassifyResult[]> ClassifyWithBasicAsync(IWordSenseModel primary, string[] words)
-{
-    using var model = new FallbackWordSenseModel(primary, new BasicWordSenseModel());   // owns and disposes both
-
-    // Optional: the composite implements the capability and forwards it to the members that have it
-    if (model is IDownloadableWordSenseModel downloadable)
-    {
-        await downloadable.EnsureModelAsync();
-    }
-
-    return await model.ClassifyAsync(words);
-}
-```
-
-Both models classify the whole list of words (so each sees the same sentence), and the results are combined word by
-word: a word is answered with the complete result of the primary model when the primary model scored senses for it (the
-selected analysis lists senses, or the level is `Group` or `Sense`), and otherwise with the complete result of the
-fallback model. A result is never a mixture of the two, so its analyses, level, confidence and ids belong together, and
-its probabilities are those of one model (they are not comparable with those of the other), with two refinements that
-keep the primary result honest about what it did not decide. First: when the primary result gives every variant of a
-slot (a lemma and a
-part of speech: `read` as a past and as a present tense, `put` as an infinitive and as a past tense) exactly the same
-probability, which is what an encoder does because the variants share their senses, the variants take the relative
-proportions of the fallback model, which reads the tense from the context. The probability of the slot, the level, the
-confidence and the ids do not change. Second, and only with the optional constructor
-`FallbackWordSenseModel(primary, fallback, primaryWeight)` and a weight below 1: when the primary result is at the part
-of speech level (the encoder committed to no sense and no group, and the probability of its slots is the mass of its
-senses, not an estimate of the part of speech), the probability of every slot becomes proportional to
-`p_primary^w × p_fallback^(1−w)` over the slots of both results (a slot that a result lacks counts with 1e-6); the
-variants of a slot keep their shares, the analyses keep their senses, the selected analysis is the first analysis of the
-re-ordered result and the confidence is the probability of its slot. An answer at the sense or group level is never
-touched, and the weight 1 (the default of the two-argument constructor) turns the refinement off. MiniLM passes 0.6 and
-BertBaseCased passes 1. `FallbackWordSenseModel`
-implements `IDownloadableWordSenseModel`: its `EnsureModelAsync` forwards the same `DownloadOptions` concurrently only to
-the members that have the capability and skips the others (a model such as Basic); all capable members are started
-before any failure is reported, and the typed exception of a member reaches the caller unchanged. With no capable member
-it completes at once (a cancelled task for an already cancelled token). `ClassifyAsync` ensures lazily either way. The
-composite disposes both models. The MiniLM and BertBaseCased packages are this
-composition of their encoder model and the Basic model. A primary model that returns an array that is not parallel to
-the input violates the contract: the composite throws `InvalidDataException`.
-
-## Confidence
-
-The confidence of a result is the probability of the answer at its level (see "Levels and Confidence"): the
-probability of the lemma and part of speech of the selected analysis (the feature variants of one share it and never
-lower it), times the probability of the answered sense (or the summed probability of the
-member senses of the answered group) within it. An encoder model scores the fine senses of a word and the
-groups they form, picks the finest level whose margin passes the lemma's own threshold for that level, and a word that
-it is unsure about is still answered, at the `Group` or the `PartOfSpeech` level, with a correspondingly low
-confidence; the `Senses` of the selected analysis keep the ranking of the senses visible. A word that the encoder was
-not trained for (or could not judge) scored no senses, so the package answers it with the Basic model: its analysis at
-the `PartOfSpeech` level, with the probability of its lemma and part of speech as confidence and the senses of that
-analysis ranked by how often they are used (the usage prior: the WordNet 3.0 tag counts, the same in every sentence).
-
-The confidence is not calibrated: it is comparable only within one result, not across models, words or levels, and no
-value such as 0.5 means "the model met its target". Choose a threshold per model and level on your own text, and
-start by treating an answer as usable when its confidence is above your threshold and as a guess otherwise; `Details`,
-the level and the ids are still the model's best answer, so you can use them when you want an answer anyway.
-
-Test `IsKnown` (or `Level == SenseLevel.None`) for "no answer at all", not `Confidence == 0`; test `Level` to learn how
-precise the answer is.
-
-```csharp
-ClassifyResult[] results = await model.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
-const double threshold = 0.6;   // your own threshold: tune it per model and level on your own text
-foreach (var result in results.Where(r => r.IsKnown))
-{
-    var use = result.Confidence >= threshold ? "answer" : "guess";
-    Console.WriteLine($"{result.Word}: {result.Details!.PartOfSpeech}, {result.Level} ({result.Confidence:P0}, {use})");
-}
-```
-
-Because the confidence is relative to the level, a confidence of 0.9 at the `Group` level and one of 0.9 at the `Sense`
-level mean different things: first look at the `Level`, then at the `Confidence`. Do not reuse a threshold across
-models. The share of the words of a text that each model answers at each level, and the precision at each level,
-measured on SemCor (trained lemmas in the model table; all mapped words of a trained lemma or of an untrained lemma with
-two or more senses in the chapter "Accuracy and Model Choice") and on running text, are in the README model table and
-in that chapter.
-
-# Model Files
-
-The encoder files are downloaded once to `<store>/<model-id>/` (default store:
-`{LocalApplicationData}/DemaConsulting/WordSense/models`), each verified against its pinned SHA-256 and moved into
-place atomically, so a partial download is never used. Valid files in the store are reused without network access.
-Each file is requested from a mirror first (when one is configured) and then from the GitHub LFS copy of this
-repository (`media.githubusercontent.com`); there is no other source.
-
-| Model | Model id | File | Size (bytes) |
-| ----- | -------- | ---- | -----------: |
-| MiniLM | `all-MiniLM-L6-v2-int8` | `model_int8.onnx` | 22,972,370 |
-| MiniLM | `all-MiniLM-L6-v2-int8` | `vocab.txt` | 231,508 |
-| BertBaseCased | `bert-base-cased-int8` | `model_int8.onnx` | 108,477,896 |
-| BertBaseCased | `bert-base-cased-int8` | `vocab.txt` | 213,450 |
-| BertBaseCased | `bert-base-cased-int8` | `config.json` | 639 |
-| BertBaseCased | `bert-base-cased-int8` | `tokenizer.json` | 668,923 |
-
-The SHA-256 values are in `SHA256SUMS` of each model folder (`model/<model-id>/`) and below. **All files of a model are
-verified**,
-including `config.json` and `tokenizer.json` of BertBaseCased (the runtime reads only the ONNX file and `vocab.txt`; the
-other two are provenance files that must still match).
-
-| Model | File | SHA-256 |
-| ----- | ---- | ------- |
-| MiniLM | `model_int8.onnx` | `afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1` |
-| MiniLM | `vocab.txt` | `07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3` |
-| BertBaseCased | `model_int8.onnx` | `dcc10a647f1520c00e07fd2ee2b3ad383db94657bc97cba3e1915d27e98a962d` |
-| BertBaseCased | `vocab.txt` | `eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02` |
-| BertBaseCased | `config.json` | `19aa23b85dfc4ce3e199a4ab06d51acd4b7bfc9ae9bae62b78823dd5dfb0c286` |
-| BertBaseCased | `tokenizer.json` | `343989712a36cd8b253efeaf8baf6a08b9d2583f78e395e83832e8ee9f8d8ee1` |
-
-Basic and the core package have no model files. The download of MiniLM is 22 MiB (`model_int8.onnx` 22,972,370 bytes,
-`vocab.txt` 231,508 bytes) and that of BertBaseCased
-104 MiB (`model_int8.onnx` 108,477,896 bytes plus three small files). All sizes in this guide are in MiB (1 MiB =
-1,048,576 bytes). The default store is `%LOCALAPPDATA%\DemaConsulting\WordSense\models` on Windows and
-`~/.local/share/DemaConsulting/WordSense/models` on Linux and macOS (`$XDG_DATA_HOME` is honored when set); the
-`ModelId` values are `all-MiniLM-L6-v2-int8` and `bert-base-cased-int8`, and they are the sub-folder names in the store
-and on a mirror. The memory figures in the comparison table are what a model adds and do not include the 15 MiB of
-the word lexicon.
-
-## Offline and Air-Gapped Use
-
-On a machine without internet access, copy the model files of the table above into one folder (from
-`model/<model-id>/` of the repository, or from a machine that has run `EnsureModelAsync`) and pass the folder to the
-constructor. The folder is flat: the files sit directly in it, with no `<model-id>` subfolder (the store and a mirror
-use `<model-id>` folders, a supplied directory does not). Calling `EnsureModelAsync` is optional but recommended: it
-verifies every file against its pinned SHA-256 up front and never uses the network (without it, `ClassifyAsync`
-verifies lazily and may throw the same `ModelUnavailableException` or `ModelIntegrityException`).
-
-```csharp
-using DemaConsulting.WordSense;
-using DemaConsulting.WordSense.MiniLM;
-
-using var model = new MiniLMWordSenseModel(modelDirectory: @"C:\models\all-MiniLM-L6-v2-int8");
-await model.EnsureModelAsync();   // optional: verifies the files now instead of at the first classification
-```
-
-`BertBaseCasedWordSenseModel` works the same way with its four files in the folder. Code that holds only an
-`IWordSenseModel` uses the capability pattern (see "Working with an Encoder Model").
-
-Alternatively, copy the files to a mirror inside your network (next section).
-
-## Configuring a Mirror
-
-A mirror is a web location that serves `{BaseUri}/{model-id}/{file-name}` for every file of the model. It is tried
-before GitHub. A file that does not match its SHA-256 is discarded and the next source is tried. Pass a
-`DownloadOptions` to `EnsureModelAsync`; `DownloadOptions` is a sealed record with `BaseUri`, `BearerToken`,
-`Credentials`
-(an `ICredentials`, for HTTP Basic), `StoreRoot` (where the model folders are stored) and `Timeout` (per file, default
-5 minutes).
+A mirror serves `{BaseUri}/{model-id}/{file-name}` for every file of the model. It is tried before GitHub. A file that
+fails its SHA-256 is discarded and the next source is tried. Pass a `DownloadOptions` to `EnsureModelAsync`:
 
 ```csharp
 var mirror = new DownloadOptions(
     BaseUri: new Uri("https://models.example.com/wordsense"),
     BearerToken: "token",
-    Credentials: null,
-    StoreRoot: null,
-    Timeout: TimeSpan.FromMinutes(2));
-using var model = new MiniLMWordSenseModel();
+    Credentials: null,        // an ICredentials for HTTP Basic
+    StoreRoot: null,          // where the model folders are stored; null selects the default store
+    Timeout: TimeSpan.FromMinutes(2));   // per file; the default is 5 minutes
 await model.EnsureModelAsync(mirror);
 ```
 
-For code that holds only an `IWordSenseModel`, pass the same options through the capability
-(`await downloadable.EnsureModelAsync(mirror);` inside `if (model is IDownloadableWordSenseModel downloadable)`).
+Without an argument, the mirror comes from environment variables: `WORDSENSE_MIRROR_URL` (the base URI; the others are
+used only when it is set), `WORDSENSE_MIRROR_USER` and `WORDSENSE_MIRROR_PASSWORD` (HTTP Basic) and
+`WORDSENSE_MIRROR_BEARER_TOKEN` (exclusive with user and password).
 
-Without an argument, the mirror comes from environment variables (their names are the same as in earlier releases):
+- The base URI must be absolute `http` or `https`, without query, fragment or user-info.
+- A bearer token or credential is sent only to the mirror host, never to a redirect target on another host, and is
+  rejected for plain `http` unless the host is a loopback address.
+- A timeout of zero, negative or longer than about 49 days is rejected. `Timeout.InfiniteTimeSpan` means no limit.
+- Only `DownloadOptions.StoreRoot` sets the store; prefer an absolute path. A `DownloadOptions` always needs a `BaseUri`.
+- Downloads use `HttpClient` with the default .NET proxy behavior. Allow-list your mirror host and
+  `media.githubusercontent.com`. Redirects are followed (at most 10 hops), so their targets must be reachable too.
 
-| Variable | Meaning |
-| -------- | ------- |
-| `WORDSENSE_MIRROR_URL` | The base URI of the mirror; the other variables are used only when it is set |
-| `WORDSENSE_MIRROR_USER` | The user name for HTTP Basic authentication (needs the password) |
-| `WORDSENSE_MIRROR_PASSWORD` | The password |
-| `WORDSENSE_MIRROR_BEARER_TOKEN` | A bearer token (exclusive with user and password) |
+## Lifetime, Threads and Cancellation
 
-The base URI must be absolute `http` or `https` without query, fragment or user-info; a relative URI, another scheme,
-a query, a fragment or user-info (in `DownloadOptions.BaseUri` or in `WORDSENSE_MIRROR_URL`) throws
-`DownloadConfigurationException` through the task of `EnsureModelAsync` (the `DownloadOptions` constructor itself does
-not validate). A bearer token or
-credential is
-sent only to the host of the mirror, never to a redirect target on another host, and is rejected for plain `http`
-unless the host is a loopback address (`DownloadConfigurationException`). `ToString()` of a `DownloadOptions` never
-prints a secret. A mirror is ignored by a model that was given a model directory (a model that needs no files, such as
-Basic, has no `EnsureModelAsync`).
-
-Details of the variables (the settings are read only when a mirror is needed, that is by `EnsureModelAsync` without a
-`DownloadOptions` or by the lazy ensure of an ambiguous word): a blank value counts as unset; a user without a password
-(or the reverse), a user, password or token without `WORDSENSE_MIRROR_URL`, and a token together with a user all throw
-`DownloadConfigurationException` (reported through the task); with a model directory the variables are never read, so
-an invalid setting is ignored without an exception, and a passed `DownloadOptions` is not consulted either. A `Timeout`
-that is zero, negative or longer than about 49 days throws `DownloadConfigurationException` as well
-(`Timeout.InfiniteTimeSpan` means no limit); it
-applies only to a `DownloadOptions` you pass, because the variables have no timeout (5 minutes then). In every case the
-original `ArgumentException` or `ArgumentOutOfRangeException` is the `InnerException` (its `ParamName` says which
-setting is wrong), and `DownloadConfigurationException` is not itself an `ArgumentException`.
-
-**Relocating the store.** Downloaded files live in `<StoreRoot>/<model-id>/`; the default store root is
-`{LocalApplicationData}/DemaConsulting/WordSense/models`. Only `DownloadOptions.StoreRoot` changes it, for example
-`StoreRoot: "/var/lib/wordsense"` on Linux and macOS or `StoreRoot: @"C:\ProgramData\WordSense\models"` on Windows. A
-relative `StoreRoot` is allowed: it is resolved against the current directory of the process when the ensure runs, so
-prefer an absolute path (the directory is created when it does not exist; `null` selects the default store, but an empty
-or whitespace-only `StoreRoot`, or a path the platform rejects, is a
-`DownloadConfigurationException`, a directory that cannot be created or written an `IOException` or
-`UnauthorizedAccessException`). No environment
-variable does: the four `WORDSENSE_MIRROR_*` variables above are the only ones the library reads. `BaseUri` is a required
-constructor argument, so a `DownloadOptions` always names a mirror; setting only a store root is not possible today
-(without a mirror, the default store is used, or pass a model directory with files you placed yourself).
-
-**Pre-populated store (offline route).** Files that you copy into `<StoreRoot>/<model-id>/` (or into the default store,
-with no `DownloadOptions` at all) are hashed by `EnsureModelAsync`: a file that matches its pinned SHA-256 is kept and
-never requested, so when every file is present and valid nothing is downloaded and neither the mirror nor GitHub is
-contacted; a file that is missing or does not match is downloaded again and replaced. With a `StoreRoot` you must still
-pass a valid `BaseUri` (it is not contacted when the files are valid), and on a machine without network a missing or
-damaged file ends in `ModelUnavailableException` (its inner `HttpRequestException` lists every source tried); a model
-directory passed to the constructor never uses the network.
-
-**Network notes.** Downloads use `HttpClient` with the default .NET proxy behavior (the system proxy settings, and the
-`HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` variables on Linux and macOS); no proxy credentials are configured by the
-library. Allow-list your mirror host (if any) and, for the public source, `media.githubusercontent.com` (files under
-`model/{model-id}/{file}` in the WordSense repository); HTTP redirects are followed by the library itself
-(at most 10 hops, http or https only), so the host a redirect points to must be reachable as well. Several processes can
-share one store: every download goes to its own uniquely named temporary file, is verified and then moved into place,
-so nobody sees a partial file (at worst two processes download the same file). A file in the store that is missing or
-does not match its SHA-256 is downloaded again and replaced; it is never used.
+- Models are `IDisposable`: dispose them with `using`. Disposal never deletes the downloaded files and cancels a running
+  download. After `Dispose`, `ClassifyAsync` and `EnsureModelAsync` throw `ObjectDisposedException`: `Basic` from the
+  call, an encoder through the returned task, so put the `await` inside the `try`.
+- `ClassifyAsync` is safe for concurrent use. Calls share one ONNX session. The encoder models run on the CPU only.
+- `Basic` runs synchronously. An encoder runs inference on the thread that continues the call: offload it yourself if
+  the caller must not block.
+- A cancellation token cancels the wait of that call only. The shared ensure keeps running until it finishes or the model
+  is disposed. A single ONNX run is never interrupted.
 
 ## Handling Failures
 
-The library reports what it can diagnose as three typed exceptions, all derived from the abstract `WordSenseException`
-(in the core package); catch `WordSenseException` to handle everything the library reports for model files and download
-settings. The original exception is always the `InnerException`; each type has the constructors `()`, `(string)` and
-`(string, Exception)`.
+The library reports three typed exceptions, all derived from the abstract `WordSenseException`. The original exception
+is the `InnerException`. They come from `EnsureModelAsync`, from the lazy ensure of `ClassifyAsync` and, for the embedded
+data, from `WordLexicon` and `Basic`.
 
 <!-- markdownlint-disable MD013 -->
 
 | Exception | When | What to do |
 | --------- | ---- | ---------- |
-| `ModelUnavailableException` | A model file could not be obtained: a supplied model directory is missing or lacks a file (inner `FileNotFoundException` or `DirectoryNotFoundException`), or every download source failed, including a source that served bytes with a wrong SHA-256 (inner `HttpRequestException`, which lists every source tried) | Check the network, the proxy and the mirror, or supply a model directory; a retry is possible |
-| `ModelIntegrityException` | A file of a supplied model directory fails its pinned SHA-256, an embedded resource (the word image, the Basic statistics table, the encoder lemma weights) is missing, corrupt or not for this word image, or the ONNX or vocabulary file cannot be used (inner `InvalidDataException` — including an ONNX model whose hidden size differs from the model's weights —, an ONNX Runtime exception or an `ArgumentException`) | Replace the files or reinstall the packages, and keep all WordSense package versions equal; retrying does not help |
-| `DownloadConfigurationException` | The `DownloadOptions` or the `WORDSENSE_MIRROR_*` settings are invalid: a relative or non-http(s) base URI, a query, fragment or user-info in it, a bearer token together with credentials, credentials over plain http to a host that is not loopback, a timeout that is zero, negative or longer than about 49 days, an invalid `StoreRoot`, a user without a password, or a password, token or user without a URL in the environment (inner `ArgumentException` or `ArgumentOutOfRangeException`) | Fix the setting; it is not thrown when a model directory is supplied, because the options and the environment are then ignored |
+| `ModelUnavailableException` | The supplied model directory is missing or lacks a file, or every download source failed (the inner `HttpRequestException` lists them) | Check the network, proxy and mirror, or supply a model directory. A retry is possible |
+| `ModelIntegrityException` | A file fails its SHA-256, an embedded resource is missing, corrupt or mismatched, or a model file cannot be used | Replace the files, or reinstall and keep all package versions equal. Retrying does not help |
+| `DownloadConfigurationException` | The `DownloadOptions` or the `WORDSENSE_MIRROR_*` settings are invalid. The inner exception names the setting | Fix the setting. It is not thrown when a model directory is supplied |
 
 <!-- markdownlint-enable MD013 -->
 
-`DownloadConfigurationException` is not an `ArgumentException` (the types have a single inheritance chain), so code that
-caught `ArgumentException` around `EnsureModelAsync` or `ClassifyAsync` for a bad mirror setting catches
-`DownloadConfigurationException` now; the `ParamName` is on the inner exception.
-
-These exceptions come from `EnsureModelAsync` of the encoder models and from the lazy ensure of `ClassifyAsync`
-(the encoder models and `FallbackWordSenseModel` pass them through unchanged). The embedded word table and sense catalog
-report `ModelIntegrityException` from the `WordLexicon` members (`Count`, `Version`, `TryLookup`, `Lookup`, `Contains`,
-`FormsOf`, `SensesOf`, `TryGetSense`, `TryGetSenseByKey` and `TryGetGroup`), and the embedded table of the Basic model
-from `BasicWordSenseModel.ClassifyAsync` (thrown from the call). An encoder model reports its exceptions through the
-returned task, so use `await` inside the `try`:
-
-```csharp
-try
-{
-    await model.EnsureModelAsync(new DownloadOptions(new Uri("https://models.example.com/wordsense")));
-}
-catch (DownloadConfigurationException ex)
-{
-    Console.WriteLine($"Fix the mirror setting: {ex.InnerException?.Message}");
-}
-catch (ModelUnavailableException ex)
-{
-    Console.WriteLine($"Model files unavailable, try again later or use a model directory: {ex.Message}");
-}
-catch (ModelIntegrityException ex)
-{
-    Console.WriteLine($"Damaged or mismatched files, reinstall: {ex.Message}");
-}
-```
-
-Other exceptions are not wrapped:
-
-<!-- markdownlint-disable MD013 -->
-
-| Exception | When |
-| --------- | ---- |
-| `IOException`, `UnauthorizedAccessException` | The store cannot be created or written (the platform exception is kept) |
-| `ObjectDisposedException` | The model has been disposed (`EnsureModelAsync` and `ClassifyAsync`) |
-| `OperationCanceledException` | The token was cancelled (this call's wait only), or the model was disposed mid-download |
-| `ArgumentNullException`, `ArgumentException` | A null word list, or a null element (`ClassifyAsync`) |
-| `ArgumentOutOfRangeException` | A constructor range (for example `maxSequenceLength`) |
-| `InvalidDataException` | `FallbackWordSenseModel` got a non-parallel result array from a third-party model (a contract violation) |
-
-<!-- markdownlint-enable MD013 -->
-
-The Basic model throws only `ObjectDisposedException` and the argument exceptions (from the call), and
-`ModelIntegrityException` for a damaged embedded table. A failed call can
-be repeated, and concurrent calls share one
-ensure; cancelling does not stop the shared ensure (see "Threads and cancellation").
+`DownloadConfigurationException` is not an `ArgumentException`. Other exceptions are not wrapped: `IOException` or
+`UnauthorizedAccessException` when the store cannot be written, `ObjectDisposedException`, `OperationCanceledException`,
+`ArgumentNullException`, `ArgumentException` and `ArgumentOutOfRangeException` (for example `maxSequenceLength`).
 
 # Limitations
 
-- **Words are classified by what the table knows.** A word that is not found by `WordLexicon.Lookup` is unknown, and
-  so are
-  numbers written with digits (a token without a letter is never looked up), names, dialect spellings and archaic verb
-  endings (about 96% of the running words of a Project Gutenberg sample are known). Contractions are a closed list of
-  stored words and a possessive of a known word is found with `Poss=Yes`. There is no other morphology at use
-  time and no capitalization heuristic for looking a word up: a form that is not in the table is unknown.
-- **Only some multi-sense words are decided by the encoder models.** They choose from context only for the lemmas that
-  have trained weights (see the appendix); a common word such as `need`, `look`, `help`, `back` or
-  `right` may have none, and is then answered at the part of speech level by the Basic model, without a sense or
-  a group. The published encoder accuracy per level is measured on the trained lemmas only. Basic tags every sentence,
-  so it decides every multi-sense word by part of speech (and by context cues where it has them) but never names a fine
-  sense or a group for an analysis with several senses.
-- **Technical noun compounds and imperative fragments are the weak spot of Basic's part of speech.** Technical text
-  strings nouns together (`service call`, `spell check`, `dial travel`) and writes instructions without a determiner
-  (`Wash pump`), and a word that is mostly a verb in running text (`call`, `check`, `travel`) leans to the verb. Basic
-  knows whether a clause already has a verb and has a part-of-speech prior for every word (see "Accuracy of the Basic
-  Model"), which fix many of these cases, but on the benchmark sets (the open corpus and the treebank pooled, possessives
-  split) a noun that
-  ends a compound after a modifier noun is still right only 92.9% of the time on the development sets (91.1% on the
-  test sets; 98% after an adjective or a determiner), the first noun of a compound 89.4% (91.0% on the test sets), and
-  the verb that starts a fragment before a noun without a determiner 82.6% (56.5% on the test sets; 23 sentences in each
-  set, so read it as a rough figure). A verb that starts a sentence before
-  a determiner (`Run the report`) is right 93.0% of the time on the development sets (43 tokens) and 91.9% on the test
-  sets (37 tokens). The `Confidence` of such
-  an answer is often low (0.5 to 0.6) but can also be high and
-  wrong; the encoder models answer the words they are trained on from their own evidence. Use the confidence and the
-  `Analyses` list (the alternatives and their probabilities) before you act on the part of speech of a technical term.
-- **Fine senses are WordNet's.** The senses are those of Open English WordNet, which are fine: even a trained model can
-  often tell only the group, and a human annotator also disagrees on many close senses. A project sense (no OEWN key)
-  covers the closed-class and discourse uses that WordNet does not list.
-- **Group ids change between releases.** Sense ids are frozen, but the groups are curated again with each data release,
-  so a group id is valid for the release that produced it (see "Using the Analyses and Senses").
-- **There is no pronunciation data.** The library has no phonetic data of its own: the consumer maps the group or sense
-  id to its own pronunciation. A group never mixes two pronunciations.
-- **Confidence is a score, not a calibrated probability**: it is the probability of the answer at its level under one
-  model, comparable only within one result.
-- **English only**, and the context is a window of at most `maxSequenceLength` tokens around the target word.
-- **The encoder models need files**: a download on first use (22 MiB or 104 MiB) or a model directory, and ONNX Runtime
-  needs native libraries for the target platform. They run on the CPU only.
-- **Weights are fixed to the model file.** The weights format (`WSX3`) is dense, stored at reduced precision, keyed by
-  sense id, and pinned to the word image by its inventory hash; the weights of a model
-  are only valid for its exact pinned files; other files are refused by the SHA-256 check.
+- **The word table decides what is known.** A word that `WordLexicon.Lookup` does not find is unknown: numbers written
+  with digits, most names, dialect spellings and archaic verb endings.
+- **Only some ambiguous words are decided by an encoder.** The encoders choose from context for the lemmas with trained
+  weights (see the appendix). Any other ambiguous word, such as `need`, `look` or `help`, is answered at the
+  part-of-speech level by `Basic`, with its senses ranked by usage.
+- **Technical noun compounds and imperative fragments are the weak spot of `Basic`'s part of speech** (`service call`,
+  `Wash pump`). Check the confidence and the alternatives in `Analyses`.
+- **Fine senses are WordNet's.** Even a trained model can often tell only the group.
+- **Group ids change between releases.** Sense ids are frozen.
+- **There is no pronunciation data.** Map the sense id, group id or key to your own pronunciations.
+- **English only.** The encoder models need files and the ONNX Runtime native libraries, and run on the CPU only.
 
-# Licensing and Provenance
+# Licensing and Attribution
 
-WordSense is licensed under the MIT License. Because the packages embed derived data, their license expressions say
-so: the core, MiniLM and BertBaseCased packages are `MIT AND CC-BY-4.0` and the Onnx package is `MIT`, and each package
-that embeds derived data carries a
-`NOTICE.md` with the credits. The core package embeds data derived from Open English WordNet 2025 (CC BY 4.0), whose
-Princeton WordNet notice (it is derived from Princeton WordNet 3.1) is reproduced in the `NOTICE.md`, the inflected forms
-that the project authored (CC0 1.0, no third-party inflection database) and the statistics
-of its `Basic` model, trained on our own CC0 corpora (the open part-of-speech corpus and the sentence corpus), with no
-treebank involved; no package contains CC BY-SA material. The MiniLM and BertBaseCased packages embed weights that are
-statistical summaries of those corpora, whose scores are corrected to the usage of the senses with the WordNet 3.0 counts
-(see "Working with an Encoder Model") and which hold the sense ids of Open English WordNet (hence CC BY 4.0); their
-`NOTICE.md` reproduces the WordNet 3.0 notice, gives the Open English WordNet attribution and records that the encoder
-model files are downloaded from this repository, with the Apache License 2.0 text in `model/<model-id>/LICENSE`. The
-`all-MiniLM-L6-v2` and
-`bert-base-cased` models (Apache License 2.0) and ONNX Runtime (MIT) are used under their own licenses.
+WordSense is licensed under the MIT License. The core, MiniLM and BertBaseCased packages embed derived data and are
+`MIT AND CC-BY-4.0`. The Onnx package is `MIT`. Each package that embeds derived data carries a `NOTICE.md` with these
+credits. No package contains CC BY-SA material. The corpus is not shipped, and the weights are statistical summaries of
+it that do not contain its sentences. This is the project's reading and not legal advice.
 
-The word table is derived from Moby Part-of-Speech II by Grady Ward (<https://www.gutenberg.org/ebooks/3203>), which
-the author dedicated to the public domain; no attribution is required, but it is given here with thanks. Only a
-filtered list is committed, in `corpus/lexicon/`, with its source, checksum and filter rules in
-`corpus/lexicon/PROVENANCE.md`.
-
-The word data under `data/` is imported from Open English WordNet 2025 (<https://en-word.net>), which is licensed
-under CC BY 4.0; that data keeps the license and is credited here as the license requires. Its source file, pinned
-SHA-256 and what was left out are recorded in `data/PROVENANCE.md`. The sense frequency counts that size the training data
-of each sense, feed the usage prior of the encoder weights, rank the senses of the Basic model and give its tagger the word
-prior come from the WordNet 3.0 sense index (Princeton University,
-under the
-WordNet license, whose notice is reproduced in `data/PROVENANCE.md`); the senses of a lemma are ordered as Open English
-WordNet orders them. SemCor 3.0 (the sense-annotated Brown Corpus
-subset, a mapping to WordNet 3.0 of the Princeton SemCor 1.6; the WordNet license applies and its notice is reproduced in
-`data/PROVENANCE.md`), the sense-annotated text on which the
-models are measured, is downloaded to a cache by the builder, never committed, and used for evaluation only; it is
-credited here as the evaluation source. Project-authored additions to the data (the readable sense labels, the groups,
-the project senses) are MIT.
-The training corpus is not shipped in the NuGet packages; only the derived weights are embedded. Every corpus sentence
-has a row in `corpus/provenance/*.tsv` that names its source, and the licence follows from the source: the allowed
-sources are Tatoeba sentences of the official CC0 export (`CC0 1.0`), Project Gutenberg books published 1930 or earlier
-and works of US federal agencies (VOA Learning English staff articles, USGS, NPS, National Weather Service and FAA
-documents; public domain in the United States, 17 U.S.C. §105) and the sentences written for this project, including
-those written by language models, which the project owner dedicates to the public domain under CC0 1.0. The sources and
-the evidence for each are in `corpus/README.md` ("Sources"), and a test fails on any other source. Sentences under CC BY,
-CC BY-SA or any other attribution-bound license are not
-used, and neither is any Wikipedia, Wiktionary or Universal Dependencies text; the Universal Dependencies English-EWT
-treebank is downloaded for evaluation only, never committed, and trains nothing. The open part-of-speech corpus
-`corpus/open` is released under CC0 1.0 for our annotations and selection; its underlying sentences are public domain in
-the United States or CC0 per source (`corpus/open/sources.tsv`). The shipped weights are statistical summaries of many
-sentences and do not contain the sentences; this is the project's reading and not legal advice. The README of each model
-folder (`model/<model-id>/README.md`) describes how the model files were produced, and the chapter "Accuracy and Model
-Choice" gives the measured quality of each model.
-
-# Extending the Corpus
-
-The word table and the model weights are generated by the non-shipped builder `tools/WordSense.Builder` from the files
-in `corpus/`; the format of the files is described in `corpus/README.md` and the filling of the quotas with real and
-written sentences in `tools/quota-fill/README.md`. All commands run from the repository root with
-`dotnet run --project tools/WordSense.Builder -c Release -- <command> [--name value]`:
-
-<!-- markdownlint-disable MD013 -->
-
-| Command | What it does |
-| ------- | ------------ |
-| `import-moby` | Rebuilds `corpus/lexicon/lexicon.tsv` from the pinned Moby file given by `--input` |
-| `compile-image` | Compiles the tables of `data/` into the embedded word image (`wordsense.img`), with inflections |
-| `rebuild-forms` | Regenerates the form tables from the committed inputs (including the authored forms) and the pinned file in `artifacts/inputs` |
-| `audit-forms [--seed N]` | Audits a seeded stratified sample of generated forms against a checker; fails at 1% error |
-| `generate-facts [--seed N]` | Derives the source-derived lexicon facts and checks them against the word table |
-| `coverage --text DIR [--top N]` | Reports the token coverage of the `*.txt` files of `DIR`, the share of known words with trained senses and the top unknown words |
-| `import-wn30-counts --input FILE` | Imports the WordNet 3.0 sense counts into the sense frequency table (pinned input) |
-| `label-senses` | Generates the readable labels of the senses that have none and never changes a published label |
-| `tiers` | Reports the quota of anchor and holdout sentences of each sense of the trained lemmas, the senses that fall short and the sentences that are missing |
-| `weights <modelId>` | Trains the fine-sense weights and the per-lemma thresholds of an encoder model (`minilm` or `bert-base-cased`) |
-| `evaluate <modelId>` | Measures a model (`minilm`, `bert-base-cased` or `basic`) on holdout and real text, at each answer level |
-| `evaluate-senses [--model all] [--download]` | Measures the models on SemCor 3.0 (from the git-ignored cache, or downloaded after verifying its SHA-256; never committed): the trained lemmas, and all mapped words of a trained lemma or of an untrained lemma with two or more senses, with a tag-count baseline (circular on SemCor, as are the usage prior of the models and the word prior of the tagger) |
-| `evaluate-allwords [--model all]` | Measures the models on the independent all-words gold set (`corpus/allwords`): the fine top-1 of the usage ranking on untrained polysemous lemmas, with the first-sense, tag-count and random baselines and the smoothing sweep of the development half |
-| `allwords-sample --batches DIR`, `allwords-merge --batches DIR --first A --second B` | Draw the tokens of the gold set and write the blind labeling batches, and merge the answers of two labelers into the gold files |
-| `evaluate-running [--model all] [--gold FILE] [--report all\|running\|tense]` | Measures the part-of-speech accuracy of the models on the open corpus test split, the convention-mapped treebank test file and the challenge set, and the tense of the verbs whose past and non-past share a spelling (`put`, `cut`, `read`) on the open corpus and the treebank files |
-| `evaluate-suite` | Runs the reviewed suite against the three models and reports the pass rates and the regressions |
-| `check-leakage` | Checks that no sentence is shared by a training part and an evaluation part, by two evaluation parts, or by the corpus and an Open English WordNet example |
-| `open-counts` | Counts the tag statistics of the training split of the open part-of-speech corpus into `corpus/open/counts` |
-| `train-basic` | Retrains the whole Basic model from those counts and the anchors, and writes its table (`Resources/basic.bin`) |
-| `tune-basic [--sections all\|grid\|tense\|prior\|cue]` | Compares hyperparameter variants of Basic, the weight of its tense model, its word prior and its cue reliability on the development data only; `--sections` runs one section; writes nothing |
-| `evaluate-tagger [--gold FILE]` | Measures the part-of-speech accuracy of Basic on the open corpus test split (headline), the targeted challenge set and an optional gold file |
-| `appendix` | Regenerates the generated senses appendix of this guide |
-
-<!-- markdownlint-enable MD013 -->
-
-The options `--corpus`, `--repository`, `--output` and (for `weights` and `evaluate`) `--model` default to the
-repository layout.
-
-## Corpus Format
-
-- `anchors/*.tsv` (training) and `holdout/*.tsv` (evaluation) have four tab-separated columns and no header:
-  `lemma`, `sense_id`, `part_of_speech` and `sentence`. The sense id names one sense of the lemma in the data (see
-  `data/`), the part of speech must agree with the sense, and the sentence marks the target by one pair of braces:
-  `The {record} for the fastest mile was set in 1999.`
-- The sense inventory is the data under `data/`: the sense labels, the groups and the project senses. A sense label is
-  curated by hand for the trained lemmas and generated by `label-senses` for the others; a published label is never
-  changed or reused.
-- `choosers/anchors/*.tsv` and `choosers/holdout/*.tsv` hold the rows of the form choosers (`form`, `label`,
-  `sentence`): the same sentences as the fine-sense rows, labeled with the lemma of the analyses of the form they stand
-  for (or `lemma/features` for one analysis of a lemma whose analyses of the form differ in tense); the per-form
-  chooser is trained from them (the Basic model reads their anchors for its context cues too).
-- `provenance/*.tsv` has one row per sentence: `id` (first 12 hex characters of the SHA-256 of `lemma|sentence`),
-  `split`, `source` and `source_key`; the source must be one of the allowed sources listed in `corpus/README.md`.
-- `realtext/relabel-realtext.tsv` holds real sentences that are used for evaluation only and never for training.
-- `open/` is the open English part-of-speech corpus (see `corpus/open/README.md`): `representative/` is a random sample
-  that is the only input of usage statistics (the tag counts of the Basic tagger in `open/counts`) and of the real-text
-  part-of-speech evaluation, and `targeted/` holds deliberately chosen sentences (its test split, which includes the
-  simplified-technical-English instructions, is a challenge set that is reported on its own).
-- `suite/suite.tsv` and `suite/expectations.tsv` hold the reviewed suite sentences (with the expected analysis and the
-  acceptable fine senses of the target word) and the strongest grade each model is expected to keep for each row; the
-  test suite of each model fails when a row falls below its expectation (`corpus/suite/README.md` has the grading and the
-  policy: an expectation is raised for an improvement and never lowered to hide a regression).
-
-## Adding a Word
-
-1. Curate the senses of the lemma in the data: give each sense a readable label and, only where some senses of one part
-   of speech are closely related and easy to confuse, put those senses (at least two, never all of them) in a group (a
-   group never mixes two pronunciations); a lemma needs no group. A group needs your judgment that the senses mean the
-   same for practical purposes and evidence of confusion (a judge or a classifier mixes them up, or their glosses are
-   nearly identical), and the data table records whether it holds near-duplicate senses (`equivalent`) or a genuine
-   family of meanings (`related`); the data documentation has the details.
-2. Add anchor sentences for each sense to a new `anchors/my-batch.tsv`, as many as the quota of its tier asks for (`tiers`
-   reports it: 20 for a frequent sense, 10 for a rare one and 5 for a sense that WordNet 3.0 has never seen), with
-   different holdout sentences (ideally from different sources) in `holdout/my-batch.tsv`. The braced target may be any
-   form.
-3. Add a provenance row for every sentence to `provenance/my-batch.tsv` (columns `id`, `split`, `source`, `source_key`):
-   the source must be one of the allowed sources of `corpus/README.md` ("Sources": for example `llm-corpus` or `authored`
-   for sentences that you write and dedicate to CC0 1.0), and the source key names the document or the batch.
-4. Rebuild the word table, retrain each encoder model (this also chooses the thresholds of the lemma) and measure the
-   result:
-
-   ```text
-   dotnet run --project tools/WordSense.Builder -c Release -- compile-image
-   dotnet run --project tools/WordSense.Builder -c Release -- weights minilm
-   dotnet run --project tools/WordSense.Builder -c Release -- weights bert-base-cased
-   dotnet run --project tools/WordSense.Builder -c Release -- train-basic
-   dotnet run --project tools/WordSense.Builder -c Release -- evaluate minilm
-   dotnet run --project tools/WordSense.Builder -c Release -- evaluate bert-base-cased
-   dotnet run --project tools/WordSense.Builder -c Release -- evaluate basic
-   dotnet run --project tools/WordSense.Builder -c Release -- appendix
-   ```
-
-5. Check the reports (`check-leakage` must pass: a new sentence must not be in an evaluation part), run
-   `pwsh ./build.ps1` and commit the corpus files, the data, the tables, the weights and the
-   appendix together.
+- **Open English WordNet 2025** (<https://en-word.net>, CC BY 4.0): the word data under `data/` is imported from it and
+  keeps that license, and the sense ids, sense keys, lemmas and forms of the word image are derived from it. It carries
+  the notice of Princeton WordNet (WordNet 3.1 Copyright 2011 by Princeton University, all rights reserved), reproduced
+  in the `NOTICE.md` of the core package. See `data/PROVENANCE.md`.
+- **WordNet 3.0** (Princeton University): the sense frequency counts are used under the WordNet license, for the
+  training quotas, the usage correction of the encoder weights, the usage ranking and the word prior of `Basic`. The
+  notice is in `data/PROVENANCE.md` and in the `NOTICE.md` of the three data packages.
+- **Moby Part-of-Speech II** (Grady Ward, <https://www.gutenberg.org/ebooks/3203>): public domain. See
+  `corpus/lexicon/PROVENANCE.md`.
+- **Project-authored data**: the inflected forms, written sentences, annotations and the open part-of-speech corpus
+  `corpus/open` are CC0 1.0. The sense labels, groups and project senses are MIT.
+- **Real sentences**: only Tatoeba sentences of the official CC0 export, Project Gutenberg books published 1930 or
+  earlier, and works of US federal agencies (VOA Learning English, USGS, NPS, NOAA National Weather Service and FAA;
+  public domain under 17 U.S.C. §105). Every sentence has a row in `corpus/provenance/` that names its source. The
+  evidence is in `corpus/README.md` ("Sources"). No CC BY, CC BY-SA, Wikipedia or Wiktionary text is used.
+- **Evaluation only**: SemCor 3.0 (the WordNet license applies) and the Universal Dependencies English-EWT treebank (CC
+  BY-SA 4.0) are downloaded to a cache to measure the models, and never committed, redistributed or trained on.
+- **Models**: `all-MiniLM-L6-v2` and `bert-base-cased` are under the Apache License 2.0, and the int8 ONNX exports are
+  redistributed under it (`model/<model-id>/LICENSE`). ONNX Runtime (MIT) is a separate NuGet dependency.
 
 # Troubleshooting
 
-## The Model Cannot Be Downloaded
+**The model cannot be downloaded, or is slow.** Offline or behind a firewall, configure a mirror or pass a model
+directory. For timeouts, raise `DownloadOptions.Timeout` or use a mirror close to the host.
 
-`ModelUnavailableException` from `EnsureModelAsync` (or from the lazy ensure of `ClassifyAsync`) means that no source
-delivered a verified file; its inner `HttpRequestException` lists every source that was tried. Offline or behind a
-firewall, configure a mirror or pass a model directory to the constructor, then call again.
+**A model file does not match its SHA-256.** The file is stale, truncated, modified or a Git LFS pointer: replace it. A
+mirror must serve the exact pinned files; the upstream `onnx/model_int8.onnx` of bert-base-cased is a different file.
 
-## Timeouts or a Slow First Run
+**The model files are Git LFS pointers.** In a clone made without Git LFS, the files in `model/` are short text files
+that start with `version https://git-lfs`, and the tests that need the models skip (they fail when
+`WORDSENSE_REQUIRE_MODELS` is `true`, as in CI). Run `git lfs install` and `git lfs pull`.
 
-The model files are 22 MiB (MiniLM) or 104 MiB (BertBaseCased). Raise `DownloadOptions.Timeout` (default 5 minutes per
-file), check the proxy settings of the host, or use a mirror close to it.
+**A word returns nothing.** `IsKnown` is false for a word that is not in the table. Check
+`WordLexicon.Contains(word.ToLowerInvariant())`.
 
-## A Model File Does Not Match Its SHA-256
+**A word has no sense id.** That is not an error: the level is `PartOfSpeech`. The lemma has no trained weights for that
+model, or the model does not decide senses (`Basic`). A `Group` result has a group id and no sense id: the member senses
+are in `WordLexicon.TryGetGroup`.
 
-`ModelIntegrityException` (inner `InvalidDataException`) from a model directory means that a file is stale, truncated,
-modified or a Git LFS pointer: replace the files. In the store, a bad file is replaced by a new download. A mirror that
-serves bytes with a wrong SHA-256 is not an integrity error but a failed source (`ModelUnavailableException`): the
-mirror must serve the exact pinned files; the
-upstream `onnx/model_int8.onnx` of bert-base-cased is a different file than the one this library uses. A
-`ModelIntegrityException` for an embedded resource (the word image, the Basic table or the lemma weights) means a
-damaged package or mixed package versions: reinstall and keep all WordSense packages at the same version.
-
-## Git LFS Pointer Instead of the Model
-
-In a clone made without Git LFS, the files in `model/` are short text files that start with `version https://git-lfs`,
-and the tests that need the models skip (they fail when the environment variable `WORDSENSE_REQUIRE_MODELS` is `true`,
-as in CI). Run `git lfs install` and `git lfs pull`. Package users are not affected: the
-downloader fetches the real files.
-
-## The Mirror Configuration Is Rejected
-
-A `DownloadConfigurationException` means that `WORDSENSE_MIRROR_URL` (or `DownloadOptions.BaseUri`) is not an absolute
-http(s) URL without query, fragment or user-info, that
-only one of user and password is set, that both a user and a bearer token are given, that credentials are used
-with plain http for a host that is not loopback, that the timeout is zero, negative or longer than about 49 days, or
-that the `StoreRoot` is not a valid path. The inner exception (an `ArgumentException` or an
-`ArgumentOutOfRangeException`) names the setting; fix it, or supply a model directory (the settings are then ignored).
-Code written for an earlier release that caught `ArgumentException` here must catch `DownloadConfigurationException`.
-
-## A Word Returns Nothing
-
-`IsKnown` is `false` (and `Details` is `null`, the level `None`) for a word that is unknown. Check
-`WordLexicon.Contains(word.ToLowerInvariant())`: when it is `false` the word is unknown to the table (a hyphenated
-word kept as one token is also unknown). When it is `true`, the word has an
-answer from every shipped model, at the part of speech level or finer, with a low confidence if the model is unsure.
-
-## A Word Has No Sense Id
-
-A result with `SenseId` and `GroupId` both `null` is not an error: the level is `PartOfSpeech`, which means that the
-model could tell the analysis (lemma and part of speech) but not a sense. Either the lemma has no trained weights for
-that model (see the appendix for the trained lemmas) or the model does not decide senses (Basic). A result at the
-`Group` level has a group id and no sense id: the fine senses of that group were too close to tell apart; the member
-senses are in `WordLexicon.TryGetGroup`. The ranked senses are still in the `Senses` of the analyses: scored by an
-encoder model for a lemma it was trained for, and ranked by usage (never decided) for every other lemma and part of
-speech with two or more senses.
-
-## A Stored Group Id Is Not Found
-
-A group id that you saved in an earlier release may be gone: group ids are versioned per data release (a group can be
-renamed, merged or dropped), and the changelog and the release notes list the changes. Compare the
-`WordLexicon.Version` that you saved with the current one, and map the stored ids again. Sense ids are frozen and keep
-resolving.
+**A stored group id is not found.** Group ids are versioned per data release. Compare the saved `WordLexicon.Version` with
+the current one and map the stored ids again. Sense ids keep resolving.
 
 # References
 

@@ -3,13 +3,14 @@ using System.Text;
 namespace DemaConsulting.WordSense.MiniLM.Tests;
 
 /// <summary>
-///     The code of the README usage samples, compiled and run by <see cref="ReadmeSampleTests"/>.
+///     The code of the usage samples of the README and the user guide, compiled and run by <see cref="ReadmeSampleTests"/>.
 /// </summary>
 /// <remarks>
 ///     The README code block (marked <c>&lt;!-- sample:readme --&gt;</c>) must equal the using directives, a blank
 ///     line and the text between the <c>&lt;sample:readme&gt;</c> markers, and the lines the sample writes for each
-///     model must equal the text blocks marked <c>&lt;!-- output:basic --&gt;</c>, <c>&lt;!-- output:minilm --&gt;</c>
-///     and <c>&lt;!-- output:bertbasecased --&gt;</c>. The member named <c>Console</c> only captures the lines, so the
+///     model must equal the text blocks marked <c>&lt;!-- output:basic --&gt;</c> (README), <c>&lt;!-- output:minilm --&gt;</c>
+///     and <c>&lt;!-- output:bertbasecased --&gt;</c> (user guide). The download and capability samples are in the user guide.
+///     The member named <c>Console</c> only captures the lines, so the
 ///     sample reads like ordinary console code. The nested <c>BasicWordSenseModel</c> stands in for the model that
 ///     the sample creates: it wraps the Basic, MiniLM or BertBaseCased model chosen by the run, and the encoder models
 ///     use the committed model directory, so that the test needs no download.
@@ -42,32 +43,21 @@ internal sealed class ReadmeSample
         // The sample shows the alternative model lines as comments on purpose
 #pragma warning disable S125
         // <sample:readme>
-        // Basic is part of the core package and needs no download; MiniLM and BertBaseCased need their package and using,
-        // and download on first use
+        // Basic is in the core package and needs no download. MiniLM and BertBaseCased need their package and
+        // download their model files on first use.
         using var model = new BasicWordSenseModel();
         // using var model = new MiniLMWordSenseModel();         // using DemaConsulting.WordSense.MiniLM;
         // using var model = new BertBaseCasedWordSenseModel();  // using DemaConsulting.WordSense.BertBaseCased;
 
-        // Classify the words of a sentence whose "bow" and "record" are heteronyms and whose "go", "back" and "home"
-        // are among the trained words of the encoder models
         var words = "The hunter fired an arrow from his bow at a deer so we will record a record then go back home".Split(' ');
         var results = await model.ClassifyAsync(words);
 
-        // Print the part of speech (or unknown), the level, the confidence, the sense id (at the sense level) or the
-        // group id (at the group level) and the runner-up part of speech with its probability, when the word has one
-        // (the analyses that share a part of speech, such as the singular and the plural of "deer", share its probability)
+        // Print the part of speech, level, confidence and sense or group id
         foreach (var result in results)
         {
             var pos = result.Details?.PartOfSpeech.ToString() ?? "unknown";
             var sense = result.SenseId ?? result.GroupId ?? "";
-            var next = result.Analyses
-                .Where(a => a.Details.PartOfSpeech != result.Details?.PartOfSpeech)
-                .GroupBy(a => a.Details.PartOfSpeech)
-                .Select(g => (Pos: g.Key, Probability: g.Sum(a => a.Probability)))
-                .OrderByDescending(g => g.Probability)
-                .Select(g => $"{g.Pos} {g.Probability:F2}")
-                .FirstOrDefault("");
-            Console.WriteLine($"{result.Word,-9} {pos,-12} {result.Level,-12} {result.Confidence,4:F2}  {sense,-14} {next}".TrimEnd());
+            Console.WriteLine($"{result.Word,-9} {pos,-12} {result.Level,-12} {result.Confidence,4:F2}  {sense}".TrimEnd());
         }
 
         // </sample:readme>
@@ -75,36 +65,33 @@ internal sealed class ReadmeSample
     }
 
     /// <summary>
-    ///     The README sample that fetches and verifies the model files up front. It is compiled but never run, because
-    ///     it would use the network; the README code block must equal it (see <see cref="ReadmeSampleTests"/>).
+    ///     The user guide sample that fetches and verifies the model files up front. It is compiled but never run, because
+    ///     it would use the network; the guide code block must equal it (see <see cref="ReadmeSampleTests"/>).
     /// </summary>
     /// <returns>A task that completes when the sample has run.</returns>
     internal static async Task DownloadAsync()
     {
         // <sample:download>
-        // The concrete model type has the method: call it directly. It is optional, because ClassifyAsync ensures the
-        // files lazily; use it to control when the download happens (startup, before going offline) and to handle
-        // failures up front (ModelUnavailableException, ModelIntegrityException, DownloadConfigurationException)
+        // Optional: ClassifyAsync ensures the files lazily. Call EnsureModelAsync to control when the download
+        // happens and to handle its failures up front.
         using var model = new MiniLMWordSenseModel();
         await model.EnsureModelAsync();
 
-        // Through a mirror, when the public download host is blocked: pass the options to the first ensure of the model,
-        // because a model that has its files does not fetch them again
+        // Through a mirror: pass the options to the first ensure of the model
         using var mirrored = new MiniLMWordSenseModel();
         await mirrored.EnsureModelAsync(new DownloadOptions(new Uri("https://models.example.com/wordsense")));
         // </sample:download>
     }
 
     /// <summary>
-    ///     The README sample for code that holds only an <see cref="IWordSenseModel"/>. It is compiled but never run,
-    ///     because it would use the network; the README code block must equal it (see <see cref="ReadmeSampleTests"/>).
+    ///     The user guide sample for code that holds only an <see cref="IWordSenseModel"/>. It is compiled but never run,
+    ///     because it would use the network; the guide code block must equal it (see <see cref="ReadmeSampleTests"/>).
     /// </summary>
     /// <returns>A task that completes when the sample has run.</returns>
     internal static async Task CapabilityAsync()
     {
         // <sample:capability>
-        // Code that holds only an IWordSenseModel (Basic, MiniLM, BertBaseCased or your own) asks for the capability:
-        // Basic has no files and does not offer EnsureModelAsync
+        // Code that holds only an IWordSenseModel asks for the capability. Basic has no files and does not offer it.
         using IWordSenseModel model = new MiniLMWordSenseModel();
         if (model is IDownloadableWordSenseModel downloadable)
         {
