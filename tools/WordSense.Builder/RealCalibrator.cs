@@ -39,6 +39,8 @@ internal sealed record StratumReport(string Name, int Rows, double FineShift, bo
 /// <param name="AnswersAfter">The sense answers with the final thresholds.</param>
 /// <param name="CorrectAfter">The correct ones among them.</param>
 /// <param name="Strata">What was done in each stratum, in the order of their names.</param>
+/// <param name="ClosedWins">The rows that were left out because the closed-class slot of Basic wins the split at run time (the answer is at the part-of-speech level, so no threshold applies).</param>
+/// <param name="ClosedGoldRows">The rows observed whose true sense is a closed-class sense: the open-class slot wins, so a sense answer is wrong.</param>
 internal sealed record CalibrationReport(
     int Rows,
     int Lemmas,
@@ -47,7 +49,9 @@ internal sealed record CalibrationReport(
     int CorrectBefore,
     int AnswersAfter,
     int CorrectAfter,
-    IReadOnlyList<StratumReport> Strata)
+    IReadOnlyList<StratumReport> Strata,
+    int ClosedWins = 0,
+    int ClosedGoldRows = 0)
 {
     /// <summary>
     ///     Tells whether two reports hold the same values (the strata are compared one by one).
@@ -57,7 +61,7 @@ internal sealed record CalibrationReport(
     public bool Equals(CalibrationReport? other) =>
         other is not null && Rows == other.Rows && Lemmas == other.Lemmas && OwnThresholds == other.OwnThresholds
         && AnswersBefore == other.AnswersBefore && CorrectBefore == other.CorrectBefore && AnswersAfter == other.AnswersAfter
-        && CorrectAfter == other.CorrectAfter && Strata.SequenceEqual(other.Strata);
+        && CorrectAfter == other.CorrectAfter && ClosedWins == other.ClosedWins && ClosedGoldRows == other.ClosedGoldRows && Strata.SequenceEqual(other.Strata);
 
     /// <summary>
     ///     Gets a hash code of the values.
@@ -118,7 +122,8 @@ internal sealed record CalibrationReport(
         var text = $"real-text calibration: {Rows.ToString(inv)} rows of {Lemmas.ToString(inv)} lemmas; fine pooled shift {FineShift.ToString("0.000", inv)}" +
                $" ({(FineReached ? "reaches the target" : "target not reached")}), {OwnThresholds.ToString(inv)} lemmas with a threshold of their own;" +
                $" sense answers {AnswersBefore.ToString(inv)} at {P(CorrectBefore, AnswersBefore)} before, {AnswersAfter.ToString(inv)} at {P(CorrectAfter, AnswersAfter)} after (all calibration rows);" +
-               $" group shift {GroupShift.ToString("0.000", inv)} ({(Strata.Count > 0 ? GroupText(Strata[0]) : "unverified, kept")} on {GroupAnswers.ToString(inv)} answers).";
+               $" group shift {GroupShift.ToString("0.000", inv)} ({(Strata.Count > 0 ? GroupText(Strata[0]) : "unverified, kept")} on {GroupAnswers.ToString(inv)} answers)." +
+               $" {ClosedWins.ToString(inv)} rows left out because the closed-class slot of Basic wins; {ClosedGoldRows.ToString(inv)} observed rows have a closed-class true sense (counted wrong).";
         if (Strata.Count <= 1)
         {
             return text;
@@ -181,9 +186,10 @@ internal static class RealCalibrator
     /// <param name="rows">The calibration rows.</param>
     /// <param name="features">The centered, unit-length feature of each row.</param>
     /// <param name="options">The settings.</param>
+    /// <param name="basic">The result of Basic for the sentence of each row (the target word is read from it), parallel to <paramref name="rows"/>, or null when it is not available; a null entry is a row without it. A row whose closed-class slot wins in the composite model is left out (see <see cref="Observe"/>); without Basic every row is kept.</param>
     /// <returns>The weights with the final thresholds, and the report.</returns>
-    /// <exception cref="ArgumentException">Thrown when there is not one feature per row.</exception>
-    public static (WeightsData Data, CalibrationReport Report) Apply(WeightsData data, IReadOnlyList<CorpusRow> rows, IReadOnlyList<float[]> features, CalibrationOptions options)
+    /// <exception cref="ArgumentException">Thrown when there is not one feature (or one Basic result) per row.</exception>
+    public static (WeightsData Data, CalibrationReport Report) Apply(WeightsData data, IReadOnlyList<CorpusRow> rows, IReadOnlyList<float[]> features, CalibrationOptions options, IReadOnlyList<ClassifyResult?>? basic = null)
     {
         ArgumentNullException.ThrowIfNull(data);
         ArgumentNullException.ThrowIfNull(rows);
@@ -194,15 +200,37 @@ internal static class RealCalibrator
             throw new ArgumentException("There must be one feature per calibration row.", nameof(features));
         }
 
+        if (basic is not null && basic.Count != rows.Count)
+        {
+            throw new ArgumentException("There must be one Basic result per calibration row.", nameof(basic));
+        }
+
         var lemmas = data.Lemmas.ToDictionary(l => l.Lemma, StringComparer.Ordinal);
         var groupsOf = lemmas.ToDictionary(l => l.Key, l => GroupsOf(l.Value.SenseIds), StringComparer.Ordinal);
         var observed = new List<Observation>();
+        var closedWins = 0;
+        var closedGold = 0;
         for (var i = 0; i < rows.Count; i++)
         {
-            if (lemmas.TryGetValue(rows[i].Lemma, out var lemma) && Observe(lemma, groupsOf[lemma.Lemma], rows[i], features[i]) is { } observation)
+            if (!lemmas.TryGetValue(rows[i].Lemma, out var lemma))
             {
-                observed.Add(observation);
+                continue;
             }
+
+            var observation = Observe(lemma, groupsOf[lemma.Lemma], rows[i], features[i], basic?[i]);
+            if (observation is null)
+            {
+                continue;
+            }
+
+            if (observation.ClosedWins)
+            {
+                closedWins++;
+                continue;
+            }
+
+            closedGold += observation.GoldIsClosed ? 1 : 0;
+            observed.Add(observation);
         }
 
         var own = new TrainingOptions(TargetPrecision: options.TargetPrecision, MinAnswered: options.MinOwnAnswered);
@@ -292,7 +320,7 @@ internal static class RealCalibrator
             groupShifts[s].Reached)).ToList();
         var report = new CalibrationReport(
             observed.Count, observed.Select(o => o.Lemma).Distinct(StringComparer.Ordinal).Count(), ownThreshold.Count,
-            before, correctBefore, after, correctAfter, reports);
+            before, correctBefore, after, correctAfter, reports, closedWins, closedGold);
         return (data with { Lemmas = updated }, report);
     }
 
@@ -350,34 +378,66 @@ internal static class RealCalibrator
     }
 
     /// <summary>
-    ///     Scores a calibration row the way the classifier does at run time: only the open-class senses of the parts of
-    ///     speech that the target word has for the lemma are candidates (a closed-class sense is not scored, and a sense of
+    ///     Lists the columns that the classifier scores for the target word of a row: only the open-class senses of the
+    ///     parts of speech that the word has for the lemma are candidates (a closed-class sense is not scored, and a sense of
     ///     another part of speech of the lemma that the word does not have is not a candidate either).
     /// </summary>
     /// <param name="lemma">The weights of the lemma of the row.</param>
-    /// <param name="groups">The group index of every column of the lemma.</param>
     /// <param name="row">The row.</param>
-    /// <param name="feature">The feature of the row.</param>
-    /// <returns>The observation, or null when the classifier would not score the row (the word is no form of the lemma, or fewer than two candidate senses).</returns>
-    private static Observation? Observe(WeightedLemma lemma, int[] groups, CorpusRow row, float[] feature)
+    /// <returns>The columns in ascending order, or null when the word is not in the lexicon.</returns>
+    internal static List<int>? CandidateColumns(WeightedLemma lemma, CorpusRow row)
     {
+        ArgumentNullException.ThrowIfNull(lemma);
+        ArgumentNullException.ThrowIfNull(row);
         if (!WordLexicon.TryLookup(row.Words[row.TargetWordIndex], out var analyses))
         {
             return null;
         }
 
         var columnOf = lemma.SenseIds.Select((id, index) => (id, index)).ToDictionary(p => p.id, p => p.index, StringComparer.Ordinal);
-        var columns = OnnxClassifier.OpenClassColumns(id => columnOf.GetValueOrDefault(id, -1), lemma.Lemma, analyses.Where(a => string.Equals(a.Lemma, lemma.Lemma, StringComparison.Ordinal)).Select(a => a.PartOfSpeech));
-        if (columns.Count < 2)
+        return OnnxClassifier.OpenClassColumns(id => columnOf.GetValueOrDefault(id, -1), lemma.Lemma, analyses.Where(a => string.Equals(a.Lemma, lemma.Lemma, StringComparison.Ordinal)).Select(a => a.PartOfSpeech));
+    }
+
+    /// <summary>
+    ///     Scores a calibration row the way the classifier and the composite model do at run time.
+    /// </summary>
+    /// <remarks>
+    ///     <para>
+    ///     Only the candidate columns of <see cref="CandidateColumns"/> are scored. A row whose true sense is a closed-class
+    ///     sense (no column among the candidates) is an observation that is wrong when it reaches the sense level.
+    ///     </para>
+    ///     <para>
+    ///     At run time a row reaches the sense level only if an open-class slot wins the closed-class split of the
+    ///     composite model: the closed-class slots take the probability of Basic, and the encoder decides inside the
+    ///     open-class part (<c>FallbackWordSenseModel.SplitClosedClass</c>). When the closed-class slot of Basic wins, the
+    ///     answer is at the part-of-speech level and no threshold applies, so the row says nothing about a threshold and
+    ///     is left out; when an open-class slot wins, the answer is a sense answer and a row whose true sense is
+    ///     closed-class is wrong. The check runs the split itself on a result built from the slot masses of the lemma and the
+    ///     result of Basic for the sentence. Without the result of Basic the closed-class slots cannot be compared, and
+    ///     the row is kept (a closed-class true sense counts as wrong), which can only make the thresholds more
+    ///     conservative.
+    ///     </para>
+    /// </remarks>
+    /// <param name="lemma">The weights of the lemma of the row.</param>
+    /// <param name="groups">The group index of every column of the lemma.</param>
+    /// <param name="row">The row.</param>
+    /// <param name="feature">The feature of the row.</param>
+    /// <param name="basic">The result of Basic for the sentence of the row, or null.</param>
+    /// <returns>The observation, or null when the classifier would not score the row (the word is no form of the lemma, or fewer than two candidate senses).</returns>
+    private static Observation? Observe(WeightedLemma lemma, int[] groups, CorpusRow row, float[] feature, ClassifyResult? basic)
+    {
+        if (CandidateColumns(lemma, row) is not { Count: >= 2 } columns)
         {
             return null;
         }
 
+        var columnOf = lemma.SenseIds.Select((id, index) => (id, index)).ToDictionary(p => p.id, p => p.index, StringComparer.Ordinal);
         var all = new float[lemma.SenseIds.Count];
         lemma.Weights.Scores(feature, all);
         var scores = columns.Select(c => all[c]).ToArray();
         var (best, margin) = LemmaWeights.Rank(scores);
         var label = columnOf.GetValueOrDefault(row.SenseId, -1);
+        var closedWins = basic is { } basicResult && ClosedSlotWins(lemma, row, columns, scores, best, basicResult);
         var groupMargin = double.NaN;
         var groupCorrect = false;
         var candidateGroups = columns.Select(c => groups[c]).ToArray();
@@ -388,9 +448,53 @@ internal static class RealCalibrator
             groupCorrect = label >= 0 && groups[label] == candidateGroups[best];
         }
 
-        return new Observation(lemma.Lemma, margin, columns[best] == label, groupMargin, groupCorrect);
+        var goldIsClosed = WordLexicon.TryGetSense(row.SenseId, out var gold) && SenseFusion.IsClosedClass(gold.PartOfSpeech);
+        return new Observation(lemma.Lemma, margin, columns[best] == label, groupMargin, groupCorrect, closedWins, goldIsClosed);
     }
 
+    /// <summary>
+    ///     Tells whether a closed-class slot wins the closed-class split of the composite model for a row.
+    /// </summary>
+    /// <param name="lemma">The weights of the lemma of the row.</param>
+    /// <param name="row">The row.</param>
+    /// <param name="columns">The candidate columns of the row.</param>
+    /// <param name="scores">The scores of the candidate columns.</param>
+    /// <param name="best">The position of the best candidate column.</param>
+    /// <param name="basic">The result of Basic for the sentence of the row.</param>
+    /// <returns>True when the answer of the composite model for the row is at the part-of-speech level with a closed-class slot selected.</returns>
+    private static bool ClosedSlotWins(WeightedLemma lemma, CorpusRow row, List<int> columns, float[] scores, int best, ClassifyResult basic)
+    {
+        if (!WordLexicon.TryLookup(row.Words[row.TargetWordIndex], out var analyses))
+        {
+            return false;
+        }
+
+        // The result of the encoder as the classifier builds it: the open-class slots of the lemma with the mass of their
+        // senses, and the closed-class slots of the lemma without probability and without senses
+        var probabilities = LemmaWeights.Softmax(scores);
+        PartOfSpeech SlotOf(int position) => WordLexicon.TryGetSense(lemma.SenseIds[columns[position]], out var sense) ? sense.PartOfSpeech : PartOfSpeech.Noun;
+        var candidates = new List<AnalysisCandidate>();
+        foreach (var details in analyses.Where(a => string.Equals(a.Lemma, lemma.Lemma, StringComparison.Ordinal)))
+        {
+            if (candidates.Exists(c => SenseFusion.SameSlot(c.Details, details)))
+            {
+                continue;
+            }
+
+            var mass = SenseFusion.IsClosedClass(details.PartOfSpeech) ? 0.0 : Enumerable.Range(0, columns.Count).Where(p => SlotOf(p) == details.PartOfSpeech).Sum(p => probabilities[p]);
+            candidates.Add(new AnalysisCandidate(details, mass, []));
+        }
+
+        var selectedIndex = candidates.FindIndex(c => c.Details.PartOfSpeech == SlotOf(best));
+        if (selectedIndex < 0)
+        {
+            return false;
+        }
+
+        var primary = new ClassifyResult(row.Words[row.TargetWordIndex], true, [.. candidates], candidates[selectedIndex].Details, SenseLevel.Sense, 1.0, null, lemma.SenseIds[columns[best]]);
+        var split = FallbackWordSenseModel.SplitClosedClass(primary, basic, out var applied);
+        return applied && split.Details is { } winner && SenseFusion.IsClosedClass(winner.PartOfSpeech);
+    }
 
     private static int[] GroupsOf(IReadOnlyList<string> senseIds)
     {
@@ -434,5 +538,5 @@ internal static class RealCalibrator
         return Math.Max(result, floor);
     }
 
-    private sealed record Observation(string Lemma, float Margin, bool Correct, double GroupMargin, bool GroupCorrect);
+    private sealed record Observation(string Lemma, float Margin, bool Correct, double GroupMargin, bool GroupCorrect, bool ClosedWins = false, bool GoldIsClosed = false);
 }

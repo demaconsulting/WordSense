@@ -213,6 +213,84 @@ public sealed class RealCalibratorTests
         Assert.Equal(0, report.Rows);
     }
 
+    private static ClassifyResult BasicLittle(double determiner)
+    {
+        var details = WordLexicon.Lookup("little");
+        var determinerDetails = details.First(d => d.PartOfSpeech == PartOfSpeech.Determiner);
+        var adjectiveDetails = details.First(d => d.PartOfSpeech == PartOfSpeech.Adjective);
+        return new ClassifyResult("little", true, [new(determinerDetails, determiner, []), new(adjectiveDetails, 1 - determiner, [])], determiner >= 0.5 ? determinerDetails : adjectiveDetails, SenseLevel.PartOfSpeech, Math.Max(determiner, 1 - determiner), null, null);
+    }
+
+    private static (WeightedLemma Lemma, SenseInfo Adjective, SenseInfo Determiner) LittleWithDeterminer()
+    {
+        // Two open-class adjective senses that score 3 and 0, and the determiner column that is never a candidate
+        var senses = Enum.GetValues<PartOfSpeech>().SelectMany(pos => WordLexicon.SensesOf("little", pos)).ToArray();
+        var determiner = Assert.Single(senses, s => s.PartOfSpeech == PartOfSpeech.Determiner);
+        var adjectives = senses.Where(s => s.PartOfSpeech == PartOfSpeech.Adjective).Take(2).ToArray();
+        var lemma = new WeightedLemma("little", [adjectives[0].SenseId, adjectives[1].SenseId, determiner.SenseId], new LemmaWeights([3f, 0f, 2f], [0f, 0f, 0f], 1, 1f));
+        return (lemma, adjectives[0], determiner);
+    }
+
+    /// <summary>
+    ///     A row whose closed-class slot wins the closed-class split of the composite model (Basic says the determiner)
+    ///     is left out: its answer is at the part-of-speech level at run time, so no threshold applies to it.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealCalibrator_Apply_ClosedClassSlotWins_RowIsLeftOut()
+    {
+        // Arrange: the encoder puts all its mass on the adjective slot; Basic says determiner 0.9
+        var (lemma, adjective, _) = LittleWithDeterminer();
+
+        // Act
+        var (_, report) = RealCalibrator.Apply(Data(lemma), [SenseFixtures.Row(adjective, 1)], [[1f]], new CalibrationOptions(MinOwnRows: 1000, MinPooledAnswered: 1), [BasicLittle(0.9)]);
+
+        // Assert
+        Assert.Equal(0, report.Rows);
+        Assert.Equal(1, report.ClosedWins);
+    }
+
+    /// <summary>
+    ///     A row whose open-class slot wins the split is a sense answer: it is observed, and a row whose true sense is the
+    ///     closed-class sense is wrong. Without the result of Basic the row is kept in the same way.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealCalibrator_Apply_OpenClassSlotWins_RowIsObserved_ClosedTrueSenseIsWrong()
+    {
+        // Arrange: Basic says determiner 0.1, so the adjective slot wins
+        var (lemma, adjective, determiner) = LittleWithDeterminer();
+        var options = new CalibrationOptions(MinOwnRows: 1000, MinPooledAnswered: 1);
+
+        // Act
+        var (_, right) = RealCalibrator.Apply(Data(lemma), [SenseFixtures.Row(adjective, 1)], [[1f]], options, [BasicLittle(0.1)]);
+        var (_, closedTruth) = RealCalibrator.Apply(Data(lemma), [SenseFixtures.Row(determiner, 2)], [[1f]], options, [BasicLittle(0.1)]);
+        var (_, withoutBasic) = RealCalibrator.Apply(Data(lemma), [SenseFixtures.Row(determiner, 3)], [[1f]], options);
+
+        // Assert
+        Assert.Equal(1, right.Rows);
+        Assert.Equal(1, right.CorrectBefore);
+        Assert.Equal(0, right.ClosedWins);
+        Assert.Equal(1, closedTruth.Rows);
+        Assert.Equal(1, closedTruth.AnswersBefore);
+        Assert.Equal(0, closedTruth.CorrectBefore);
+        Assert.Equal(1, closedTruth.ClosedGoldRows);
+        Assert.Equal(1, withoutBasic.Rows);
+        Assert.Equal(0, withoutBasic.CorrectBefore);
+        Assert.Equal(0, withoutBasic.ClosedWins);
+    }
+
+    /// <summary>
+    ///     The Basic results must be one per row.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealCalibrator_Apply_BasicResultsOfAnotherLength_Throws()
+    {
+        // Arrange
+        var (lemma, adjective, _) = LittleWithDeterminer();
+
+        // Act and Assert
+        Assert.Throws<ArgumentException>(() => RealCalibrator.Apply(Data(lemma), [SenseFixtures.Row(adjective, 1)], [[1f]], new CalibrationOptions(), []));
+    }
+
     /// <summary>
     ///     A lemma with enough calibration rows keeps the higher of its own threshold and the adjusted one; a lemma
     ///     with fewer rows gets the pooled shift.

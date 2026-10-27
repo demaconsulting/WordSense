@@ -626,7 +626,18 @@ sections:
           - WordSense-WordSenseBuilder-FormChoosers
           - WordSense-WordSenseBuilder-Thresholds
           - WordSense-WordSenseBuilder-RealCalibration
+          - WordSense-WordSenseBuilder-RealCalibration-Provenance
+          - WordSense-WordSenseBuilder-RealCalibration-Thresholds
+          - WordSense-WordSenseBuilder-RealCalibration-NeverStaysNever
+          - WordSense-WordSenseBuilder-RealCalibration-Deterministic
+          - WordSense-WordSenseBuilder-RealCalibration-Group
+          - WordSense-WordSenseBuilder-RealCalibration-Strata
+          - WordSense-WordSenseBuilder-RealCalibration-InferenceMargin
+          - WordSense-WordSenseBuilder-RealCalibration-ClosedSlotWins
+          - WordSense-WordSenseBuilder-RealCalibration-ClosedSlotLoses
+          - WordSense-WordSenseBuilder-RealCalibration-BasicResults
           - WordSense-WordSenseBuilder-CalibrationShift
+          - WordSense-WordSenseBuilder-PrecisionGate
           - WordSense-WordSenseBuilder-Tiers
           - WordSense-WordSenseBuilder-EmbeddingCache
           - WordSense-WordSenseBuilder-FitCache
@@ -638,6 +649,7 @@ sections:
           - WordSense-WordSenseBuilder-EvaluateTagger
           - WordSense-WordSenseBuilder-Hyperparameters
           - WordSense-WordSenseBuilder-Appendix
+          - WordSense-WordSenseBuilder-Appendix-LemmaCounts
           - WordSense-WordSenseBuilder-Coverage
           - WordSense-WordSenseBuilder-Corpus
           - WordSense-WordSenseBuilder-CorpusLicenses
@@ -697,6 +709,7 @@ sections:
           generating the appendix from the data and the corpus, keep both honest.
         children:
           - WordSense-WordSenseBuilder-Appendix
+          - WordSense-WordSenseBuilder-Appendix-LemmaCounts
         tests:
           - WordSense_Readme_CodeBlocks_MatchCompiledSamples
           - WordSense_Readme_DownloadBlock_MatchesCompiledSample

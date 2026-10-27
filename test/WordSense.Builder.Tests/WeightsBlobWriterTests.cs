@@ -222,4 +222,28 @@ public sealed class WeightsBlobWriterTests
         Assert.Contains("89.00%", failure.Message, StringComparison.Ordinal);
         Assert.Throws<ArgumentException>(() => PrecisionGate.Measure(weights, weights, rows, [[1, 0]]));
     }
+
+    /// <summary>
+    ///     The gate ranks only the senses that the classifier scores for the word, as inference does: a closed-class
+    ///     sense that outscores the true open-class sense never makes the row wrong, and a row whose true sense is the
+    ///     closed-class sense is wrong.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_WeightsBlobWriter_PrecisionGate_RanksOnlyTheOpenClassColumns()
+    {
+        // Arrange: the determiner column scores 2 and the adjective column 1 for the feature
+        var senses = Enum.GetValues<PartOfSpeech>().SelectMany(pos => WordLexicon.SensesOf("little", pos)).ToArray();
+        var determiner = Assert.Single(senses, s => s.PartOfSpeech == PartOfSpeech.Determiner);
+        var adjective = senses.First(s => s.PartOfSpeech == PartOfSpeech.Adjective);
+        var weights = new WeightsData("m", InventoryHash, 1, [0f], [new WeightedLemma("little", [adjective.SenseId, determiner.SenseId], new LemmaWeights([1f, 2f], [0f, 0f], 1))]);
+        double[][] pooled = [[1], [1]];
+
+        // Act
+        var openTruth = PrecisionGate.Measure(weights, weights, [SenseFixtures.Row(adjective, 1)], [pooled[0]]);
+        var closedTruth = PrecisionGate.Measure(weights, weights, [SenseFixtures.Row(determiner, 2)], [pooled[1]]);
+
+        // Assert
+        Assert.Equal(new GateResult(1, 1, 1), openTruth);
+        Assert.Equal(new GateResult(1, 0, 0), closedTruth);
+    }
 }

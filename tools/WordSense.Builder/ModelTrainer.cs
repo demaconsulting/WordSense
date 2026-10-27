@@ -507,7 +507,16 @@ internal static class ModelTrainer
 
         var pooled = await EncodeAsync(name, "real calibration sentences", rows, encoder, output, clock, cancellationToken).ConfigureAwait(false);
         var features = Features(pooled, data.Mean, rows.Select(r => r.Sentence).ToList());
-        var (calibrated, report) = RealCalibrator.Apply(data, rows, features, calibrationOptions);
+        // The result of Basic for each row decides which rows reach the sense level at run time (the closed-class split)
+        using var basicModel = new BasicWordSenseModel();
+        var basic = new List<ClassifyResult?>(rows.Count);
+        foreach (var row in rows)
+        {
+            var results = await basicModel.ClassifyAsync(row.Words, cancellationToken).ConfigureAwait(false);
+            basic.Add(results[row.TargetWordIndex]);
+        }
+
+        var (calibrated, report) = RealCalibrator.Apply(data, rows, features, calibrationOptions, basic);
         output.WriteLine($"{name}: {report.Describe()}");
         return calibrated;
     }

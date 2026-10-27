@@ -18,9 +18,9 @@ apply: the usage prior's tag counts include SemCor, and the all-words developmen
   scored tokens; downloaded for evaluation only) and the 32-sentence simplified-technical-English (STE) challenge set,
   which is small and chosen for hard cases, so read it as a regression check. "Ambiguous" counts the tokens whose word
   has two or more parts of speech in the dictionary (12,808 of the open corpus tokens).
-- **SemCor.** The 114,856 single-word annotations of the 1,207 trained lemmas that SemCor 3.0 can evaluate (WordNet 3.0
-  keys mapped to the catalog; 97.1% of the keys map). Always choosing the most used sense (the highest WordNet 3.0 tag
-  count) is right for 65.7% of these words, an optimistic baseline (see "Caveats").
+- **SemCor.** The 114,856 single-word annotations of the 1,207 lemmas with sense classifiers (the trained lemmas) that
+  SemCor 3.0 can evaluate (WordNet 3.0 keys mapped to the catalog; 97.1% of the keys map). Always choosing the most
+  used sense (the highest WordNet 3.0 tag count) is right for 65.7% of these words, an optimistic baseline (see "Caveats").
 - **All-words gold set.** 397 test tokens (and 407 development tokens) of untrained polysemous lemmas from the open
   corpus, labeled blind by two language models that saw every sense with its gloss and never a frequency. A token is kept
   when both agree (91.7% agreement). It measures the usage prior, which SemCor cannot. See `corpus/allwords/README.md`.
@@ -43,8 +43,8 @@ seen the answers (see "Caveats"). The levels of the encoder answers on the real 
 
 | Model | Sense (share, precision) | Group (share, precision) | Part of speech (share, precision) | Fine top-1 |
 | --- | ---: | ---: | ---: | ---: |
-| MiniLM | 12.8%, 96.1% | 0.7%, 93.8% | 86.5%, 95.6% | 62.8% |
-| BERT base cased | 35.3%, 95.8% | 0.5%, 86.4% | 64.2%, 95.9% | 72.2% |
+| MiniLM | 13.4%, 96.3% | 0.7%, 93.8% | 85.9%, 95.6% | 62.8% |
+| BERT base cased | 36.6%, 95.4% | 0.5%, 86.4% | 63.0%, 96.0% | 72.2% |
 
 ## Part of Speech
 
@@ -190,9 +190,9 @@ an untrained lemma with fewer than two senses, which every model answers at the 
 | Basic | untrained (69,467) | 8.77% | 68.68% | 69.64% |
 | Basic | all (184,323) | 7.43% | 47.18% | 59.09% |
 | MiniLM | untrained | 4.12% | 86.44% | 69.43% |
-| MiniLM | all | 10.32% | 82.59% | 59.41% |
+| MiniLM | all | 10.75% | 82.33% | 59.42% |
 | BertBaseCased | untrained | 4.15% | 85.78% | 69.48% |
-| BertBaseCased | all | 21.42% | 82.09% | 61.78% |
+| BertBaseCased | all | 22.71% | 81.23% | 61.78% |
 | First sense with the highest WordNet 3.0 tag count | trained | | | 65.74% |
 | First sense with the highest WordNet 3.0 tag count | untrained | | | 76.20% |
 | First sense with the highest WordNet 3.0 tag count | all | | | 69.68% |
@@ -219,9 +219,10 @@ Basic chose is right too.
   precise than the classifier alone). The shift is the lowest one at which the pooled answers reach the target while at
   least 30% of them (and at least 30) are kept; if none does, the builder reports the target as "not reached" and uses
   the largest shift that keeps 30%. A lemma with at least 20 calibration rows also gets a threshold of its own. On the
-  4,910 calibration rows the target is reached for BertBaseCased (shifts 3.00 and 2.16: 2,109 of 3,373 sense answers
-  kept, at a precision of 97.2%) and for the stage 1 lemmas of MiniLM (shift 2.16), but not for its base lemmas (shift
-  3.12; 742 of 1,793 answers kept over both stages, at 96.8%). The fine top-1 does not depend on the target.
+  4,868 calibration rows (rows whose word the composite answers at the part-of-speech level because the closed-class
+  slot of Basic wins are left out) the target is reached for BertBaseCased (shifts 3.00 and 1.81: 2,197 of 3,349 sense
+  answers kept, at a precision of 97.2%) and for the stage 1 lemmas of MiniLM (shift 1.99), but not for its base lemmas
+  (shift 3.12; 779 of 1,776 answers kept over both stages, at 96.8%). The fine top-1 does not depend on the target.
 - **CPU variation.** The int8 arithmetic of the encoder models differs slightly between CPUs and operating systems. The
   confidences move a little (the tests compare them within 0.10 for the encoder models and within 0.01 for Basic, which
   is deterministic managed code). A word whose margin lies close to its threshold can be answered one level more or less

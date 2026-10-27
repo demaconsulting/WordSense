@@ -13,8 +13,8 @@ with several analyses is decided from its sentence by the model you choose (see 
 
 <!-- markdownlint-disable MD051 -->
 <!-- The appendix is a separate file that pandoc concatenates, so its heading anchor only exists in the PDF. -->
-The [appendix](#appendix-supported-senses) lists every trained lemma with its senses, groups and OEWN keys, and the
-heteronyms by their keys.
+The [appendix](#appendix-supported-senses) lists every lemma that has anchor sentences with its senses, groups and OEWN
+keys, and the heteronyms by their keys.
 <!-- markdownlint-enable MD051 -->
 
 # Installation
@@ -317,8 +317,9 @@ confidence (an encoder model keeps such an answer for a word with several analys
 It never answers at the `Group` level.
 
 **The encoder models** compare the word in your sentence with example sentences of each sense, learned at build time.
-Each trained lemma ships as a small classifier with confidence thresholds measured for that lemma. The lemmas are those
-of the appendix, the same for both models. An analysis that belongs to several lemmas or tenses is first chosen by a
+Each trained lemma ships as a small classifier with confidence thresholds measured for that lemma.
+The lemmas are those of the appendix that have anchor sentences for two or more senses, the same for both models. An
+analysis that belongs to several lemmas or tenses is first chosen by a
 per-form classifier. The scores are corrected to the usage of the senses (the WordNet 3.0 counts), so the most probable
 sense is the usual one unless the context says otherwise.
 

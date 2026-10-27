@@ -321,40 +321,106 @@ sections:
 
               - id: WordSense-Core-WordSenseContracts-FallbackClosedClass
                 title: >-
-                  FallbackWordSenseModel shall take the probability of every closed-class slot (a lemma and a part of
-                  speech other than noun, verb, adjective and adverb) of a primary result that scored senses and lists
-                  the closed-class slots without probability from the fallback result, normalized over the slots of the
-                  primary result, and share the rest among the
-                  open-class slots in the proportions of the primary result: it shall keep the level, group, sense and
-                  selected analysis of an open-class answer, scaling the confidence by the new probability of the
-                  slot; answer at the part-of-speech level with the new probabilities, the first analysis of the slot
-                  selected and no sense or group when a closed-class slot is the most probable (the composite decided a
-                  part of speech, even when the fallback names the only sense of the slot); and leave a primary result
-                  without a closed-class slot, without an open-class slot, that gives a closed-class slot a
-                  probability of its own, or whose fallback lists none of its slots as it is.
+                  FallbackWordSenseModel shall treat the closed-class slots of a primary result that scored senses as
+                  the child requirements state. The child requirements use these terms: a slot is the analyses of a
+                  result with the same lemma and part of speech, a closed-class slot is a slot of a part of speech
+                  other than noun, verb, adjective and adverb (an auxiliary, determiner, pronoun, preposition,
+                  conjunction or interjection), and an open-class slot is any other slot.
                 tags: [unit]
                 justification: |
                   A closed class has no WordNet senses, so the mass of the senses of a trained lemma says nothing about
                   whether the word is an auxiliary, a determiner or a pronoun (the auxiliary have against the verb
-                  have):
-                  the tagger of the Basic model decides the closed-class part of the probability, as it does for a lemma
-                  without weights, and the encoder decides the senses inside the open-class part.
+                  have): the tagger of the Basic model decides the closed-class part of the probability, as it does for
+                  a lemma without weights, and the encoder decides the senses inside the open-class part. A parent
+                  requirement carries the terms once; the child requirements state each behavior that can be tested on
+                  its own.
+                children:
+                  - WordSense-Core-WordSenseContracts-FallbackClosedClass-Probability
+                  - WordSense-Core-WordSenseContracts-FallbackClosedClass-Weighted
+                  - WordSense-Core-WordSenseContracts-FallbackClosedClass-OpenAnswer
+                  - WordSense-Core-WordSenseContracts-FallbackClosedClass-ClosedAnswer
+                  - WordSense-Core-WordSenseContracts-FallbackClosedClass-OwnEstimate
+                  - WordSense-Core-WordSenseContracts-FallbackClosedClass-NothingToSplit
                 tests:
                   - WordSenseContracts_FallbackWordSenseModel_ClosedClassSlots_TakeTheProbabilityOfTheFallbackAndOpenClassKeepsTheSense
+
+              - id: WordSense-Core-WordSenseContracts-FallbackClosedClass-Probability
+                title: >-
+                  FallbackWordSenseModel shall take the probability of every closed-class slot of a primary result that
+                  lists the closed-class slots without probability from the fallback result, normalized over the slots
+                  of the primary result, and share the rest among the open-class slots in the proportions of the
+                  primary result.
+                tags: [unit]
+                justification: |
+                  The tagger of the Basic model is the evidence for the part of speech; the encoder keeps the evidence
+                  for the senses inside the open-class part.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_ClosedClassSlots_TakeTheProbabilityOfTheFallbackAndOpenClassKeepsTheSense
+
+              - id: WordSense-Core-WordSenseContracts-FallbackClosedClass-Weighted
+                title: >-
+                  FallbackWordSenseModel shall keep the probability of every closed-class slot that the split gave it
+                  (the probability of the fallback result) when the primary weight is below 1, and shall combine the
+                  weighted slot probabilities of the primary and the fallback result among the open-class slots only,
+                  which share the probability that the closed-class slots leave.
+                tags: [unit]
+                justification: |
+                  The closed-class probability is the fallback's own estimate by construction; combining it again with
+                  the fallback would count the fallback twice and move the closed-class mass away from its estimate.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_ClosedClassSlots_KeepTheFallbackProbabilityWhenWeighted
+
+              - id: WordSense-Core-WordSenseContracts-FallbackClosedClass-OpenAnswer
+                title: >-
+                  FallbackWordSenseModel shall keep the level, group, sense and selected analysis of the primary result
+                  when an open-class slot is the most probable after the split, and shall scale its confidence by the
+                  new probability of the slot.
+                tags: [unit]
+                justification: |
+                  The confidence is the probability of the slot times the probability of the sense within it, so a new
+                  slot probability must scale it.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_ClosedClassSlots_TakeTheProbabilityOfTheFallbackAndOpenClassKeepsTheSense
+
+              - id: WordSense-Core-WordSenseContracts-FallbackClosedClass-ClosedAnswer
+                title: >-
+                  FallbackWordSenseModel shall answer at the part-of-speech level with the new slot probabilities, the
+                  first analysis of the slot selected and no sense or group when a closed-class slot is the most
+                  probable after the split, even when the fallback names the only sense of the slot.
+                tags: [unit]
+                justification: |
+                  The composite decided a part of speech, not a sense.
+                tests:
                   - WordSenseContracts_FallbackWordSenseModel_ClosedClassSlotMostProbable_AnswersAtPartOfSpeechLevel
                   - WordSenseContracts_FallbackWordSenseModel_ClosedClassSlotMostProbable_FallbackSelectedAnother_AnswersAtPartOfSpeechLevel
+
+              - id: WordSense-Core-WordSenseContracts-FallbackClosedClass-OwnEstimate
+                title: >-
+                  FallbackWordSenseModel shall leave a primary result that gives a closed-class slot a probability of
+                  its own as it is.
+                tags: [unit]
+                justification: |
+                  A model that has an estimate for a closed-class slot (a tagger, or a classifier that scored it)
+                  needs no estimate from the fallback.
+                tests:
                   - WordSenseContracts_FallbackWordSenseModel_ClosedClassSplit_NotApplicable_LeavesThePrimaryResult
-                  - MiniLM_Classifier_EndToEnd_Have_AuxiliaryStaysAuxiliaryAndVerbGetsAVerbSense
-                  - BertBaseCased_Classifier_EndToEnd_Have_AuxiliaryStaysAuxiliaryAndVerbGetsAVerbSense
+
+              - id: WordSense-Core-WordSenseContracts-FallbackClosedClass-NothingToSplit
+                title: >-
+                  FallbackWordSenseModel shall leave a primary result without a closed-class slot, without an open-class
+                  slot, or whose fallback result lists none of its slots as it is.
+                tags: [unit]
+                justification: |
+                  There is nothing to split, and no estimate to take from the fallback.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_ClosedClassSplit_NotApplicable_LeavesThePrimaryResult
 
               - id: WordSense-Core-WordSenseContracts-FallbackSingleSense
                 title: >-
-                  FallbackWordSenseModel shall answer a word that the primary model did not score at the
-                  part-of-speech level, with the same analyses, selected analysis and confidence and no group or sense
-                  id, when the fallback result is at the sense level through the single-sense rule (its selected
-                  analysis lists exactly one sense), the word has more than one slot (lemma and part of speech) and the
-                  confidence is below 0.97; it shall keep a fallback result with a confidence of at least 0.97, a word
-                  with a single slot, and any other fallback result as they are.
+                  FallbackWordSenseModel shall treat a sense-level answer of the fallback result for a word that the
+                  primary model did not score as the child requirements state. The child requirements use these terms:
+                  a single-sense answer is a fallback result at the sense level whose selected analysis lists exactly
+                  one sense, and the target is the confidence 0.97.
                 tags: [unit]
                 justification: |
                   The Basic model names the only sense of its most probable analysis at any confidence, which is the
@@ -362,14 +428,57 @@ sections:
                   sense answers that are calibrated to a precision target of 0.97 on real text, and a word whose own
                   lemma the encoder did not score (a form such as the adjective growing of the verb grow, or the
                   comparative more read as the adjective much) would otherwise carry a sense answer from a one-sense
-                  analysis at a confidence of 0.2 or 0.5. Below the target the composite answers the part of speech it
-                  has evidence for, with the same analysis.
+                  analysis at a confidence of 0.2 or 0.5. A parent requirement carries the terms once; the child
+                  requirements state each behavior that can be tested on its own.
+                children:
+                  - WordSense-Core-WordSenseContracts-FallbackSingleSense-BelowTarget
+                  - WordSense-Core-WordSenseContracts-FallbackSingleSense-AtTarget
+                  - WordSense-Core-WordSenseContracts-FallbackSingleSense-SingleSlot
+                  - WordSense-Core-WordSenseContracts-FallbackSingleSense-OtherResults
                 tests:
                   - WordSenseContracts_FallbackWordSenseModel_SingleSenseAnswerBelowTarget_AnswersAtPartOfSpeechLevel
-                  - WordSenseContracts_FallbackWordSenseModel_SingleSenseAnswerAtTarget_StaysAtSenseLevel
-                  - WordSenseContracts_FallbackWordSenseModel_SingleAnalysis_StaysAtSenseLevel
-                  - WordSenseContracts_FallbackWordSenseModel_SenseLevelWithoutExactlyOneSense_IsLeftAsItIs
 
+              - id: WordSense-Core-WordSenseContracts-FallbackSingleSense-BelowTarget
+                title: >-
+                  FallbackWordSenseModel shall answer a single-sense answer of the fallback for a word with more than
+                  one slot at the part-of-speech level when its confidence is below the target, with the same
+                  analyses, selected analysis and confidence and no group or sense id.
+                tags: [unit]
+                justification: |
+                  Below the target the composite answers the part of speech it has evidence for, with the same
+                  analysis.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_SingleSenseAnswerBelowTarget_AnswersAtPartOfSpeechLevel
+
+              - id: WordSense-Core-WordSenseContracts-FallbackSingleSense-AtTarget
+                title: >-
+                  FallbackWordSenseModel shall keep a single-sense answer of the fallback with a confidence of at least
+                  the target (the target itself included) as it is.
+                tags: [unit]
+                justification: |
+                  An answer that reaches the target keeps the promise of the sense level.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_SingleSenseAnswerAtTarget_StaysAtSenseLevel
+
+              - id: WordSense-Core-WordSenseContracts-FallbackSingleSense-SingleSlot
+                title: >-
+                  FallbackWordSenseModel shall keep a single-sense answer of the fallback for a word with a single slot
+                  (the probability of the slot is 1) as it is, at any confidence.
+                tags: [unit]
+                justification: |
+                  A word without ambiguity of the part of speech needs no confidence to name its only sense.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_SingleAnalysis_StaysAtSenseLevel
+
+              - id: WordSense-Core-WordSenseContracts-FallbackSingleSense-OtherResults
+                title: >-
+                  FallbackWordSenseModel shall keep every other result of the fallback, including a sense-level result
+                  whose selected analysis lists no sense or several, as it is.
+                tags: [unit]
+                justification: |
+                  Only the single-sense rule of the Basic model is guarded.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_SenseLevelWithoutExactlyOneSense_IsLeftAsItIs
               - id: WordSense-Core-WordSenseContracts-FallbackReconcile
                 title: >-
                   FallbackWordSenseModel shall combine the slot probabilities of a primary result that committed to

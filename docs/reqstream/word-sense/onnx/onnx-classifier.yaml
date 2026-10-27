@@ -50,26 +50,38 @@ sections:
                 title: >-
                   OnnxClassifier shall score the fine senses of every analysis of the looked-up word that has an
                   open-class part of speech (noun, verb, adjective, adverb), so that a sense of each of those parts of
-                  speech the word can have is reachable, and no sense of any other lemma, and shall derive the
-                  probability of each analysis from the same scores, so that the senses of an analysis are its
-                  probabilities given the analysis; an analysis of a closed class (auxiliary, determiner, pronoun,
-                  preposition, conjunction, interjection) shall be listed with probability 0 and without senses, and its
-                  senses shall not compete.
+                  speech the word can have is reachable, and no sense of any other lemma.
                 tags: [unit]
                 justification: |
                   A word that is a verb and a noun must be able to be answered as each; answering with a sense of a
-                  lemma
-                  that the word cannot be would be wrong. Deriving the analysis probabilities from the sense scores
-                  keeps the analyses and the senses of one result consistent with each other. A closed class has no
-                  WordNet senses and its project senses are few, so the mass of its senses says nothing about whether
-                  the
-                  word is used in that way; the tagger of the fallback model decides it
-                  (WordSense-Core-WordSenseContracts-FallbackClosedClass).
+                  lemma that the word cannot be would be wrong.
                 tests:
                   - OnnxClassifier_ClassifyAsync_WordWithSeveralAnalyses_RanksTheSensesOfEveryAnalysis
-                  - OnnxClassifier_ClassifyAsync_ClosedClassUseOfLike_IsNotScored
                   - OnnxClassifier_ClassifyAsync_InflectedForm_RanksTheSensesOfItsLemma
 
+              - id: WordSense-Onnx-OnnxClassifier-AnalysisProbability
+                title: >-
+                  OnnxClassifier shall derive the probability of each analysis from the same scores as the senses, so
+                  that the senses of an analysis are its probabilities given the analysis.
+                tags: [unit]
+                justification: |
+                  Deriving the analysis probabilities from the sense scores keeps the analyses and the senses of one
+                  result consistent with each other.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_WordWithSeveralAnalyses_RanksTheSensesOfEveryAnalysis
+
+              - id: WordSense-Onnx-OnnxClassifier-ClosedClass
+                title: >-
+                  OnnxClassifier shall list an analysis of a closed class (auxiliary, determiner, pronoun,
+                  preposition, conjunction, interjection) with probability 0 and without senses, and its senses shall
+                  not compete with the senses of the open-class analyses.
+                tags: [unit]
+                justification: |
+                  A closed class has no WordNet senses and its project senses are few, so the mass of its senses says
+                  nothing about whether the word is used in that way; the tagger of the fallback model decides it
+                  (WordSense-Core-WordSenseContracts-FallbackClosedClass).
+                tests:
+                  - OnnxClassifier_ClassifyAsync_ClosedClassUseOfLike_IsNotScored
               - id: WordSense-Onnx-OnnxClassifier-Candidates
                 title: >-
                   OnnxClassifier shall list, for a trained lemma, the senses of every analysis of the word in the

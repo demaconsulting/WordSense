@@ -273,13 +273,9 @@ instead of `--model`.
    The senses of each lemma and part of speech
    are ordered as Open English WordNet orders them: by the position of the sense in its entry, then the homograph number
    of the entry, the project senses last, then by the sense id bytes (the WordNet 3.0 tag counts do not order the senses;
-   they only feed the usage prior of the encoder training and the tiers). The order was moved from the tag counts to
-   the OEWN order because a spike that compiled the image in that order and retrained and re-evaluated all three
-   models gave every figure identical to the last digit (the weights differed only in the order of their columns; the
-   SemCor first-sense baseline moved from 60.68% to 60.69%); of the 1,245 blocks of two or more senses of the 826
-   trained lemmas, 659 changed their order and 175 their first sense, in 126 of them because the old first sense had
-   the count 0 (an alphabetical tie) and in 48 because two counts were equal. The WordNet order is made from tag counts
-   that include SemCor, so the first-sense baseline of the independent evaluation stays optimistic. The counts still
+   they only feed the usage prior of the encoder training and the tiers). The OEWN order follows the frequency order of
+   Princeton WordNet, which is made from tag counts that include SemCor, so the first-sense baseline of the independent
+   evaluation stays optimistic. The counts still
    number the slugs of senses that share a label (`SenseLabelGenerator`; sense ids are frozen, so that numbering must
    not change).
 4. Check the invariants before writing: a sense without a label, a sense in two groups, a group of fewer than two senses
@@ -348,7 +344,8 @@ for at least two of its senses to get weights; a lemma with fewer is not an erro
    weights. The held-out chooser rows are only scored: the summary prints the top-1 accuracy of the choosers, the
    share of the sentences answered at the thresholds and the precision of those answers.
 9. Check the half-precision storage: encode the held-out rows of the trained lemmas through the same cache, score them
-   with the full-precision weights and with the weights read back from the written blob, print both fine top-1
+   with the full-precision weights and with the weights read back from the written blob (ranking for each row only the
+   senses that the classifier scores for its word, the open-class senses, as inference does), print both fine top-1
    accuracies, and fail without writing when they differ by more than 0.2 percentage point. Then write the weights blob
    (`WSX3`, float16 weights) to the package's `Resources/weights.bin`. The summary of the run counts the lemmas that
    have a finite fine threshold and a finite group threshold and names the lemmas that got no weights.
@@ -430,7 +427,14 @@ Each stratum is calibrated with its own rows alone, so adding a stage never move
 each stage meets the target on its own rows. The margin of a calibration row is computed as inference computes it: over
 the open-class senses of the part of speech that the target word has for the lemma (`OnnxClassifier.OpenClassColumns`),
 so the closed-class senses of a lemma such as `little` or `have` are left out; a row whose word is not a form of the
-lemma, or that has fewer than two such candidates, is not observed. The rest of this paragraph describes one stratum.
+lemma, or that has fewer than two such candidates, is not observed. A row whose answer is at the part-of-speech level at
+run time is left out too: the trainer runs Basic over every calibration sentence, and when the closed-class slot of the
+Basic result wins the closed-class split of the composite model (FallbackWordSenseModel.SplitClosedClass, run on a
+result built
+from the slot masses of the lemma and the Basic result), no sense threshold applies to the row. When an open-class slot
+wins, the row is observed, and a row whose true sense is a closed-class sense is a wrong answer. Without the Basic results
+every row is kept (and a closed-class true sense counts as wrong). The summary reports the rows left out. The rest of this
+paragraph describes one stratum.
 The usable answers are the calibration rows of those
 lemmas whose distance `d = margin - t_cv` (the margin of the best sense minus the first threshold of its lemma) is finite
 and not negative; there are `n` of them, and the answers with `d >= s` are the answers that the shift `s` keeps (answers
@@ -856,9 +860,12 @@ evaluation only and never committed) adds a line.
 
 Writes a deterministic Markdown appendix: the explanation of parts of speech, groups and forms, the
 summary of the dictionary words, the section "Keys and Heteronyms" (the key format, the levels of the heteronyms and the
-heteronym lists, see below), an alphabetical list of the trained lemmas, each with its senses (id, group, OEWN sense
-key and gloss), the tier and anchor counts of each sense and every analysis of its forms (there is no pronunciation
-section). The forms of a lemma are listed for every spelling that the image lists as a form of an entry of the lemma,
+heteronym lists, see below), an alphabetical list of the lemmas that have anchor sentences (each with its senses (id,
+group, OEWN sense key and gloss), the tier and anchor counts of each sense and every analysis of its forms; there is no
+pronunciation section). The summary and the list state two counts: the lemmas that have anchor sentences, and, of those,
+the lemmas that have a sense classifier in the encoder models (anchor sentences for two or more senses, the rule of
+`WeightsTrainer`). The forms of a lemma are listed for every spelling that the image lists as a form of an entry of the
+lemma,
 the spelling of the lemma itself included, and for every analysis of that spelling whose lemma is the lemma, with its
 features in parentheses (`read (verb, Tense=Past+VerbForm=Part)`; the part of speech comes first when the forms have
 several, none when only one). Lines are wrapped to

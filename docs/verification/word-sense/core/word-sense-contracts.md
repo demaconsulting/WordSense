@@ -111,7 +111,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   (`..._ClosedClassSlots_TakeTheProbabilityOfTheFallbackAndOpenClassKeepsTheSense`,
   `..._ClosedClassSlotMostProbable_AnswersAtPartOfSpeechLevel`,
   `..._ClosedClassSlotMostProbable_FallbackSelectedAnother_AnswersAtPartOfSpeechLevel`,
-  `..._ClosedClassSplit_NotApplicable_LeavesThePrimaryResult`): an encoder result that gives the verb `have` all the mass
+  `..._ClosedClassSplit_NotApplicable_LeavesThePrimaryResult`,
+  `..._ClosedClassSlots_KeepTheFallbackProbabilityWhenWeighted`): an encoder result that gives the verb `have` all the mass
   (sense level, confidence 0.8) and lists the auxiliary and the pronoun with probability 0, combined with a fallback
   that says verb 0.7, auxiliary 0.2 and pronoun 0.1, has these slot probabilities, keeps the sense level, the sense id and
   the verb as the selected analysis, has the confidence 0.8 × 0.7 and lists the senses of the auxiliary from the
@@ -120,7 +121,11 @@ All scenarios below pass on every platform and target framework of the CI matrix
   between a verb and a noun and a fallback of verb 0.4, auxiliary 0.35 and pronoun 0.25 that selects the verb, the answer
   is at the part-of-speech level with the auxiliary selected (0.35 against 0.2 and 0.2) and no sense; a primary result
   without an open-class slot, one that gives a closed-class slot a probability of its own, a fallback that lists none of
-  the slots, and a result without a closed-class slot are left as they are. Through the shipped
+  the slots, and a result without a closed-class slot are left as they are; with the primary weight 0.6, an encoder
+  result that splits its open mass evenly between a verb and a noun and a fallback of auxiliary 0.85, verb 0.10 and noun
+  0.05 keeps the auxiliary at exactly 0.85 (the answer is at the part-of-speech level, the confidence 0.85), and the verb
+  and the noun share the other 0.15 as `0.10^0.4` against `0.05^0.4` (0.0853 and 0.0647), not as a second combination
+  of the closed-class slot with the fallback. Through the shipped
   models (`MiniLM_Classifier_EndToEnd_Have_AuxiliaryStaysAuxiliaryAndVerbGetsAVerbSense` and the BertBaseCased
   counterpart) the `has` of "He has been there all day ." is an auxiliary, and the `have` of "I have a car ." is a verb
   that lists only verb senses scored in context.

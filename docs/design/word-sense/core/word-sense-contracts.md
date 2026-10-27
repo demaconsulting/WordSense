@@ -229,7 +229,12 @@ whether an id is null: a result at the `PartOfSpeech` level is a valid answer th
   slot with `SensesRankedByUsage` true, or none for a slot without senses) gets the log score
   `w × ln(max(p_primary, 1e-6)) + (1 − w) × ln(max(p_fallback, 1e-6))`,
   where a slot's probability is the sum of its analyses and a slot a result lacks counts with the floor 1e-6; the scores
-  are normalized with a softmax (the maximum subtracted) into the new slot probabilities. Inside a slot every
+  are normalized with a softmax (the maximum subtracted) into the new slot probabilities. When SplitClosedClass was
+  applied to the result, the closed-class slots carry the probability of the fallback result by construction and keep it:
+  the softmax runs over the other slots only, which share the probability that the closed-class slots leave
+  ((1 − sum of the closed-class probabilities) × exp(score) / sum of exp(score)), so the closed-class slots end with
+  exactly the probability of the fallback result (combining it again would count the fallback twice) and the open-class
+  slots keep the encoder evidence combined with the fallback evidence. Inside a slot every
   analysis keeps its share of its own result (`p / slot mass`, equal shares when the mass is 0), its senses and the kind
   of its ranking (`SensesRankedByUsage`). The
   slots are listed by the new probability, the largest first (a tie keeping the order of the slots), and the analyses

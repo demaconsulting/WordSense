@@ -35,7 +35,8 @@ internal readonly record struct GateResult(int Rows, int FullCorrect, int Reduce
 ///     The weights are stored in half precision to halve the blob. The gate scores held-out rows with the
 ///     full-precision weights of the trainer and with the weights that the real reader returns from the written blob,
 ///     on the same features, and compares the share of rows whose best sense is the true one. The held-out rows are
-///     read here only to measure the reduction; they never influence a weight or a threshold.
+///     read here only to measure the reduction; they never influence a weight or a threshold. Only the senses that the
+///     classifier scores for the word of a row are ranked, as at run time (no closed-class sense).
 /// </remarks>
 internal static class PrecisionGate
 {
@@ -75,8 +76,8 @@ internal static class PrecisionGate
             }
 
             counted++;
-            fullCorrect += IsRight(fullLemma, FeatureExtractor.Center(pooled[i], full.Mean), rows[i].SenseId) ? 1 : 0;
-            reducedCorrect += IsRight(reducedLemma, FeatureExtractor.Center(pooled[i], reduced.Mean), rows[i].SenseId) ? 1 : 0;
+            fullCorrect += IsRight(fullLemma, FeatureExtractor.Center(pooled[i], full.Mean), rows[i]) ? 1 : 0;
+            reducedCorrect += IsRight(reducedLemma, FeatureExtractor.Center(pooled[i], reduced.Mean), rows[i]) ? 1 : 0;
         }
 
         return new GateResult(counted, fullCorrect, reducedCorrect);
@@ -107,21 +108,24 @@ internal static class PrecisionGate
     }
 
     /// <summary>
-    ///     Tells whether the best sense of a lemma for a feature is the true sense.
+    ///     Tells whether the best sense of a lemma for a feature is the true sense, ranking the senses that the classifier
+    ///     scores for the word of the row (the open-class senses of the parts of speech the word has for the lemma, see
+    ///     <see cref="RealCalibrator.CandidateColumns"/>), as inference does: a closed-class sense is never the best sense.
     /// </summary>
     /// <param name="lemma">The weights of the lemma.</param>
     /// <param name="feature">The feature, or null when the vector has no magnitude.</param>
-    /// <param name="senseId">The true sense.</param>
-    /// <returns>True when the best column is the true sense.</returns>
-    private static bool IsRight(WeightedLemma lemma, float[]? feature, string senseId)
+    /// <param name="row">The row: its target word selects the candidate senses and its sense is the true sense.</param>
+    /// <returns>True when the best candidate column is the true sense; false when the word has no candidate column.</returns>
+    private static bool IsRight(WeightedLemma lemma, float[]? feature, CorpusRow row)
     {
-        if (feature is null || feature.Length != lemma.Weights.Dimension)
+        if (feature is null || feature.Length != lemma.Weights.Dimension || RealCalibrator.CandidateColumns(lemma, row) is not { Count: > 0 } columns)
         {
             return false;
         }
 
         var scores = new float[lemma.Weights.SenseCount];
         lemma.Weights.Scores(feature, scores);
-        return string.Equals(lemma.SenseIds[LemmaWeights.Rank(scores).Best], senseId, StringComparison.Ordinal);
+        var best = columns[LemmaWeights.Rank(columns.Select(c => scores[c]).ToArray()).Best];
+        return string.Equals(lemma.SenseIds[best], row.SenseId, StringComparison.Ordinal);
     }
 }

@@ -15,7 +15,7 @@ project senses last, each with the gloss of its synset.
 
 ### Parts of Speech
 
-`PartOfSpeech` has ten values. The trained lemmas have senses of 10 of them:
+`PartOfSpeech` has ten values. The listed lemmas have senses of 10 of them:
 
 | Part of speech | Lemmas | Senses |
 | -------------- | -----: | -----: |
@@ -44,10 +44,12 @@ like the lemma.
 ### Dictionary Words
 
 The word table knows 365,007 spellings (lemmas and inflected forms) of 223,830 entries, and its sense catalog lists
-129,255 senses in 184 curated groups. Every word of the table that is not listed below has no trained classifier.
+129,255 senses in 184 curated groups. Every word of the table that is not listed below has no anchor sentences and no
+sense classifier.
 
-The lemmas listed below are the 1,243 trained lemmas (the lemmas that have anchor sentences), with 10,871 senses (205 of
-them project senses) and 184 groups.
+The lemmas listed below are the 1,243 lemmas that have anchor sentences, with 10,871 senses (205 of them project senses)
+and 184 groups. The encoder models train a sense classifier for 1,207 of them, the lemmas with anchor sentences for two
+or more senses; the other lemmas have one anchored sense and no classifier.
 
 ## Keys and Heteronyms
 
@@ -824,9 +826,9 @@ The senses of one analysis belong to entries that sound different, so only the s
 
 ## Supported Lemmas
 
-The library supports 1,243 lemmas with 10,871 senses in total, listed alphabetically. Each lemma lists its parts of
-speech and forms. Under it, every sense gives its id and part of speech, its group, its Open English WordNet sense key
-(a project sense has none) and its gloss.
+The list holds the 1,243 lemmas that have anchor sentences (1,207 of them with a sense classifier) and their 10,871
+senses in total, listed alphabetically. Each lemma lists its parts of speech and forms. Under it, every sense gives its
+id and part of speech, its group, its Open English WordNet sense key (a project sense has none) and its gloss.
 
 ### Lemmas Starting With A
 

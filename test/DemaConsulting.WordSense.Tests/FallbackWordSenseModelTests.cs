@@ -998,6 +998,34 @@ public class FallbackWordSenseModelTests
     }
 
     /// <summary>
+    ///     With a primary weight below 1 the closed-class slots keep exactly the probability of the fallback, and the
+    ///     open-class slots share the rest in the proportions of the weighted combination of the encoder and the fallback.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_ClosedClassSlots_KeepTheFallbackProbabilityWhenWeighted()
+    {
+        // Arrange: the encoder splits the open mass evenly between the verb and the noun (0.5 and 0.5, so 0.075 each after
+        // the split); Basic says auxiliary 0.85, verb 0.10, noun 0.05; w = 0.6
+        var primary = new ClassifyResult("have", true, [new(HaveVerb, 0.5, [new("have#own", 1)]), new(HaveNoun, 0.5, [new("have#noun", 1)]), new(HaveAux, 0.0, [])], HaveVerb, SenseLevel.Sense, 0.45, null, "have#own");
+        var fallback = new ClassifyResult("have", true, [new(HaveAux, 0.85, []), new(HaveVerb, 0.10, []), new(HaveNoun, 0.05, [])], HaveAux, SenseLevel.PartOfSpeech, 0.85, null, null);
+
+        // Act
+        var result = await CombineWeighted(primary, fallback, 0.6);
+
+        // Assert: the auxiliary is Basic's 0.85; the open mass 0.15 is shared as 0.5^0.6 x 0.10^0.4 against 0.5^0.6 x 0.05^0.4
+        var verb = Math.Pow(0.10, 0.4);
+        var noun = Math.Pow(0.05, 0.4);
+        Assert.Equal(0.85, SlotOf(result, PartOfSpeech.Auxiliary), 12);
+        Assert.Equal(0.15 * verb / (verb + noun), SlotOf(result, PartOfSpeech.Verb), 12);
+        Assert.Equal(0.15 * noun / (verb + noun), SlotOf(result, PartOfSpeech.Noun), 12);
+        Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 12);
+        Assert.Equal(SenseLevel.PartOfSpeech, result.Level);
+        Assert.Equal(HaveAux, result.Details);
+        Assert.Equal(0.85, result.Confidence, 12);
+    }
+
+    /// <summary>
     ///     A primary result without a closed-class slot, one with only closed-class slots, one that gives a closed-class
     ///     slot a probability of its own (a tagger), and a fallback that lists no slot of the primary result are left as
     ///     they are.

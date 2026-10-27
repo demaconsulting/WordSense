@@ -136,6 +136,47 @@ internal static class Corpus
     }
 
     /// <summary>
+    ///     Counts, for every lemma of the rows of every <c>*.tsv</c> sentence file in a directory, the distinct senses that
+    ///     have a sentence, without validating the rows.
+    /// </summary>
+    /// <remarks>
+    ///     The appendix states how many lemmas have a classifier in the encoder models (a lemma with sentences for two or
+    ///     more senses, the rule of <c>WeightsTrainer</c>); like <see cref="ReadLemmas"/> it reads the first two columns
+    ///     and leaves the checking of the rows to the reader that trains.
+    /// </remarks>
+    /// <param name="directory">The directory; a missing directory has no lemmas.</param>
+    /// <returns>The number of distinct senses with a sentence of each lemma (the first two columns of every non-empty row, trimmed).</returns>
+    public static Dictionary<string, int> CountAnchoredSenses(string directory)
+    {
+        var senses = new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
+        if (!Directory.Exists(directory))
+        {
+            return [];
+        }
+
+        foreach (var file in Directory.GetFiles(directory, "*.tsv"))
+        {
+            foreach (var line in File.ReadLines(file, new UTF8Encoding(false)))
+            {
+                var columns = line.Split('\t');
+                var lemma = columns[0].Trim();
+                if (lemma.Length == 0 || columns.Length < 2)
+                {
+                    continue;
+                }
+
+                if (!senses.TryGetValue(lemma, out var set))
+                {
+                    senses[lemma] = set = new HashSet<string>(StringComparer.Ordinal);
+                }
+
+                set.Add(columns[1].Trim());
+            }
+        }
+
+        return senses.ToDictionary(p => p.Key, p => p.Value.Count, StringComparer.Ordinal);
+    }
+    /// <summary>
     ///     Reads one sentence file and validates every row.
     /// </summary>
     /// <param name="path">The file path.</param>

@@ -305,11 +305,25 @@ All scenarios below pass on every platform and target framework of the CI matrix
   the other stratum, and one pooled stratum gives both lemmas the same threshold; the stage of a lemma is the stage of the
   highest wave file that holds one of its anchors (`quota-w4c` is wave 4, `quota-w49` the base stage, `quota-w50` and
   `quota-w51` stage 1, `quota-w100` stage 2, `batch-1` no wave).
-- **Margin as inference computes it** (`RealCalibrator_ClosedClassSenses_AreNotCandidatesOfTheMargin`,
-  `RealCalibrator_FewerThanTwoCandidates_IsNotObserved`): for a lemma that has a closed-class sense, the margin of a
-  calibration row ignores that sense, so a row whose best open-class sense wins over a closed-class one is observed with
+- **Margin as inference computes it** (`RealCalibrator_Apply_ClosedClassSenses_AreNotCandidatesOfTheMargin`,
+  `RealCalibrator_Apply_FewerThanTwoCandidates_IsNotObserved`): for a lemma that has a closed-class sense, the margin
+  of a calibration row ignores that sense, so a row whose best open-class sense wins over a closed-class one is
+  observed with
   the open-class margin; a row whose word is not a form of the lemma, or that has fewer than two candidates, is not
   observed.
+- **Closed-class slot of Basic** (`RealCalibrator_Apply_ClosedClassSlotWins_RowIsLeftOut`,
+  `RealCalibrator_Apply_OpenClassSlotWins_RowIsObserved_ClosedTrueSenseIsWrong`,
+  `RealCalibrator_Apply_BasicResultsOfAnotherLength_Throws`): for `little` with an adjective sense that scores 3, a
+  second adjective sense and a determiner column, a Basic result that says determiner 0.9 wins the closed-class split, so
+  the row is not observed and the report counts it in `ClosedWins`; with determiner 0.1 the adjective slot wins and the
+  row is observed (right for an adjective true sense; wrong, and counted in `ClosedGoldRows`, for the determiner true
+  sense); without the Basic results the row is observed as well; a list of Basic results of another length than the
+  rows is refused.
+- **Half-precision gate ranks the open-class columns** (`WeightsBlobWriter_PrecisionGate_RanksOnlyTheOpenClassColumns`,
+  `WeightsBlobWriter_ReducedPrecision_StaysWithinTheAccuracyGate`,
+  `WeightsBlobWriter_PrecisionGate_MeasuresDescribesAndEnforces`): a determiner column that outscores the true adjective
+  sense does not make the row wrong, and a row whose true sense is the determiner is wrong for both sets of weights; the
+  reduced weights stay within 0.2 percentage point of the full ones.
 - **Basic cue tables learn the base stage only** (`Program_TrainBasic_AnchorsOfALaterStage_DoNotChangeTheTable`): the
   table trained after a `quota-w50` anchor file is added is byte-identical to the table trained before.
 - **Own threshold** (`RealCalibrator_Apply_LemmaWithEnoughRows_KeepsTheHigherOfItsOwnAndTheAdjustedThreshold`): a lemma

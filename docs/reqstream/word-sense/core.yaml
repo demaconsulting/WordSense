@@ -85,14 +85,8 @@ sections:
           - id: WordSense-Core-Fallback
             title: >-
               The core subsystem shall provide a public composite model that combines two models, answering each word
-              with the result of the primary model (with the proportions of the fallback model for the tied variants
-              of one of its slots, and, for a primary weight below 1, with the slot probabilities of both models
-              combined where the primary result stays at the part-of-speech level, and with the probability of every
-              closed-class slot taken from the fallback model) where it scored senses for the word
-              and otherwise with the complete result of the fallback model (answered at the part-of-speech level
-              instead when it names the only sense of one of several analyses at a confidence below the precision
-              target 0.97), preparing the members that can be prepared,
-              and owning the lifetime of both.
+              with the result of the primary model where it scored senses for the word and otherwise with the complete
+              result of the fallback model, preparing the members that can be prepared, and owning the lifetime of both.
             tags: [subsystem]
             justification: |
               Model packages differ in what they can score; a composite in the core package lets any pair of
@@ -113,6 +107,8 @@ sections:
               - WordSenseContracts_FallbackWordSenseModel_Dispose_DisposesBothOnce
               - WordSenseContracts_FallbackWordSenseModel_TiedVariantsOfASlot_TakeTheProportionsOfTheFallback
               - WordSenseCore_Fallback_PartOfSpeechLevelPrimary_IsReconciledWithTheBasicModel
+              - MiniLM_Classifier_EndToEnd_Have_AuxiliaryStaysAuxiliaryAndVerbGetsAVerbSense
+              - BertBaseCased_Classifier_EndToEnd_Have_AuxiliaryStaysAuxiliaryAndVerbGetsAVerbSense
 
           - id: WordSense-Core-Candidates-RankingKind
             title: >-
