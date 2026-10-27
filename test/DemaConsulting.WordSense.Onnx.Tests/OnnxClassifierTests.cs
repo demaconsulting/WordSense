@@ -1204,4 +1204,32 @@ public class OnnxClassifierTests
 
     private static AnalysisCandidate AnalysisOfLemma(ClassifyResult result, string lemma) =>
         result.Analyses.First(a => a.Details.Lemma == lemma);
+
+    /// <summary>
+    ///     The candidate selection that the build tool shares with inference: the columns of a lemma that are scored for
+    ///     the form of a word (the open-class senses of the parts of speech that the form has for the lemma), and whether
+    ///     the encoder runs for the form at all (a form of several lemmas needs its chooser).
+    /// </summary>
+    [Fact]
+    public void OnnxClassifier_CandidatesOf_FormColumnsAndPlan_AreThoseOfInference()
+    {
+        // Arrange: the lemma leave (its verb senses) with and without a chooser for the form left
+        var withoutChooser = Fixtures.Table(Fixtures.Lemma("leave", fine: 1f));
+        var withChooser = LeaveOnlyTable();
+        var senseIds = withChooser.Find("leave")!;
+
+        // Act
+        var (runsWithout, columnsWithout) = OnnxClassifier.CandidatesOf("left", "leave", withoutChooser);
+        var (runsWith, columnsWith) = OnnxClassifier.CandidatesOf("left", "leave", withChooser);
+        var unknown = OnnxClassifier.FormColumns("zzqxjw", "leave", senseIds.ColumnOf);
+        var notTheLemma = OnnxClassifier.CandidatesOf("left", "just", withChooser);
+
+        // Assert
+        Assert.False(runsWithout);
+        Assert.True(runsWith);
+        Assert.Equal(columnsWithout, columnsWith);
+        Assert.All(columnsWith, c => Assert.Equal(PartOfSpeech.Verb, senseIds.Senses[c].PartOfSpeech));
+        Assert.Null(unknown);
+        Assert.Empty(notTheLemma.Columns);
+    }
 }

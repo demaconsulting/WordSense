@@ -633,6 +633,7 @@ sections:
           - WordSense-WordSenseBuilder-RealCalibration-Group
           - WordSense-WordSenseBuilder-RealCalibration-Strata
           - WordSense-WordSenseBuilder-RealCalibration-InferenceMargin
+          - WordSense-WordSenseBuilder-RealCalibration-FormPlan
           - WordSense-WordSenseBuilder-RealCalibration-ClosedSlotWins
           - WordSense-WordSenseBuilder-RealCalibration-ClosedSlotLoses
           - WordSense-WordSenseBuilder-RealCalibration-BasicResults

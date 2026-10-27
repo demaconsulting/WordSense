@@ -212,22 +212,56 @@ public sealed class ThresholdsTests
     [Fact]
     public void WordSenseBuilder_Thresholds_Choose_ClosedClassColumns_AreLeftOutOfTheMargins()
     {
-        // Arrange: senses 0 and 2 share a direction (indistinguishable), sense 1 is separable; sense 2 is closed-class
+        // Arrange: senses 0 and 2 share a direction (indistinguishable), sense 1 is separable; sense 2 is closed-class, so every
+        // anchor has the candidates 0 and 1
         var (features, labels) = Anchors([0, 1, 0], 12, 0.35);
         int[] groups = [-1, -1, -1];
+        var openOnly = Enumerable.Repeat(new[] { 0, 1 }, features.Length).ToArray();
+        var everyColumn = Enumerable.Repeat(new[] { 0, 1, 2 }, features.Length).ToArray();
 
         // Act
         var all = Thresholds.Choose("have", features, labels, 3, groups, Options);
-        var open = Thresholds.Choose("have", features, labels, 3, groups, Options, null, null, [false, false, true]);
-        var none = Thresholds.Choose("have", features, labels, 3, groups, Options, null, null, [false, false, false]);
+        var open = Thresholds.Choose("have", features, labels, 3, groups, Options, null, null, openOnly);
+        var explicitAll = Thresholds.Choose("have", features, labels, 3, groups, Options, null, null, everyColumn);
 
         // Assert
         Assert.True(open.Fine < LemmaWeights.Never, "the open senses are answered right once the closed column is out of the margin");
         Assert.True(open.Fine <= all.Fine);
-        Assert.Equal(all, none);
-        Assert.Throws<ArgumentException>(() => Thresholds.Choose("have", features, labels, 3, groups, Options, null, null, [true]));
+        Assert.Equal(all, explicitAll);
+        Assert.Throws<ArgumentException>(() => Thresholds.Choose("have", features, labels, 3, groups, Options, null, null, [[0, 1]]));
     }
 
+    /// <summary>
+    ///     The margin of an anchor is taken over the candidates of the form of its own target word, not over every open
+    ///     column of the lemma: two senses that the classifier never ranks together for any form (a verb form and a noun
+    ///     form of one lemma) do not make each other look wrong, an anchor with fewer than two candidates is not tested,
+    ///     and neither is an anchor whose true sense is not among its candidates.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Thresholds_Choose_RowSpecificCandidates_AreTheColumnsOfTheFormOfTheAnchor()
+    {
+        // Arrange: senses 0 and 2 share a direction (a noun and a verb sense), sense 1 is separable; an anchor of sense 0 is a
+        // form that has the senses 0 and 1, an anchor of sense 2 a form that has the senses 1 and 2, and an anchor of sense 1
+        // alternates between the two forms
+        var (features, labels) = Anchors([0, 1, 0], 12, 0.35);
+        int[] groups = [-1, -1, -1];
+        var rowCandidates = labels.Select((label, i) => label switch { 0 => new[] { 0, 1 }, 2 => new[] { 1, 2 }, _ => i % 2 == 0 ? new[] { 0, 1 } : new[] { 1, 2 } }).ToArray();
+        var oneCandidate = Enumerable.Repeat(new[] { 1 }, features.Length).ToArray();
+        var goldOutside = Enumerable.Repeat(new[] { 1, 2 }, features.Length).ToArray();
+
+        // Act
+        var all = Thresholds.Choose("has", features, labels, 3, groups, Options);
+        var perRow = Thresholds.Choose("has", features, labels, 3, groups, Options, null, null, rowCandidates);
+        var untested = Thresholds.Choose("has", features, labels, 3, groups, Options, null, null, oneCandidate);
+        var outside = Thresholds.Choose("has", features, labels, 3, groups, Options, null, null, goldOutside);
+
+        // Assert
+        Assert.True(perRow.Fine < LemmaWeights.Never, "no form ranks the two indistinguishable senses together");
+        Assert.True(perRow.Fine <= all.Fine);
+        Assert.Equal(LemmaWeights.Never, untested.Fine);
+        Assert.Equal(LemmaWeights.Never, untested.Group);
+        Assert.True(outside.Fine < LemmaWeights.Never, "the anchors of the senses 1 and 2 are tested, those of the sense 0 are not");
+    }
     /// <summary>
     ///     The arrays must agree in length.
     /// </summary>

@@ -252,9 +252,13 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Both thresholds are written** (`ModelTrainer_TrainDataAsync_WritesBothThresholdsPerLemma`): the weights blob
   holds `t_fine` of every trained lemma and `t_group` of every trained lemma that has groups.
 - **Closed-class columns are left out** (`Thresholds_Choose_ClosedClassColumns_AreLeftOutOfTheMargins`): on a lemma with
-  two open senses and a closed-class sense that cannot be told from one of them, the threshold with the closed column
-  flagged is finite and not above the threshold without the flag, a flag list that marks no column gives the threshold
-  of no flags at all, and a flag list of the wrong length is refused.
+  two open senses and a closed-class sense that cannot be told from one of them, the threshold with the candidates of
+  every anchor limited to the open senses is finite and not above the threshold without them, candidates that list every
+  column give the threshold of no candidates at all, and a candidate list of the wrong length is refused.
+- **Row-specific candidates** (`Thresholds_Choose_RowSpecificCandidates_AreTheColumnsOfTheFormOfTheAnchor`): two senses
+  that no form ranks together (a noun sense and a verb sense of one lemma) do not make each other look wrong when each
+  anchor lists the candidates of its own form; an anchor with one candidate, and an anchor whose true sense is not among
+  its candidates, are not tested.
 
 #### Usage prior
 
@@ -311,6 +315,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   observed with
   the open-class margin; a row whose word is not a form of the lemma, or that has fewer than two candidates, is not
   observed.
+- **Form plan** (`RealCalibrator_Apply_FormOfSeveralLemmas_IsObservedOnlyWithAChooser`): `left` is a form of the lemmas
+  `left` and `leave`; a calibration row of `leave` with this form is not observed without a chooser for the form (the
+  encoder does not run, the lexicon answers) and is observed with one.
 - **Closed-class slot of Basic** (`RealCalibrator_Apply_ClosedClassSlotWins_RowIsLeftOut`,
   `RealCalibrator_Apply_OpenClassSlotWins_RowIsObserved_ClosedTrueSenseIsWrong`,
   `RealCalibrator_Apply_BasicResultsOfAnotherLength_Throws`): for `little` with an adjective sense that scores 3, a
@@ -319,6 +326,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
   row is observed (right for an adjective true sense; wrong, and counted in `ClosedGoldRows`, for the determiner true
   sense); without the Basic results the row is observed as well; a list of Basic results of another length than the
   rows is refused.
+- **Half-precision gate leaves out forms with fewer than two candidates**
+  (`WeightsBlobWriter_PrecisionGate_LeavesOutFormsWithFewerThanTwoCandidates`): for the lemma `own` with a verb and an
+  adjective column, the row of `owns` (only a verb, one candidate) is not counted and the row of `own` (two candidates)
+  is.
 - **Half-precision gate ranks the open-class columns** (`WeightsBlobWriter_PrecisionGate_RanksOnlyTheOpenClassColumns`,
   `WeightsBlobWriter_ReducedPrecision_StaysWithinTheAccuracyGate`,
   `WeightsBlobWriter_PrecisionGate_MeasuresDescribesAndEnforces`): a determiner column that outscores the true adjective

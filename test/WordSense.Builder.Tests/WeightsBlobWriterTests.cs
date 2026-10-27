@@ -203,9 +203,10 @@ public sealed class WeightsBlobWriterTests
     public void WordSenseBuilder_WeightsBlobWriter_PrecisionGate_MeasuresDescribesAndEnforces()
     {
         // Arrange
-        var noun = SenseFixtures.Senses("walk", PartOfSpeech.Noun, 1)[0];
+        var nouns = SenseFixtures.Senses("walk", PartOfSpeech.Noun, 2);
+        var noun = nouns[0];
         var other = SenseFixtures.Senses("run", PartOfSpeech.Noun, 1)[0];
-        var weights = new WeightsData("m", InventoryHash, 2, [0f, 0f], [new WeightedLemma("walk", [noun.SenseId, "walk#other"], new LemmaWeights([1f, 0f, -1f, 0f], [0f, 0f], 2))]);
+        var weights = new WeightsData("m", InventoryHash, 2, [0f, 0f], [new WeightedLemma("walk", [noun.SenseId, nouns[1].SenseId], new LemmaWeights([1f, 0f, -1f, 0f], [0f, 0f], 2))]);
         CorpusRow[] rows = [SenseFixtures.Row(noun, 1), SenseFixtures.Row(other, 2)];
         double[][] pooled = [[1, 0.1], [1, 0.1]];
 
@@ -231,11 +232,12 @@ public sealed class WeightsBlobWriterTests
     [Fact]
     public void WordSenseBuilder_WeightsBlobWriter_PrecisionGate_RanksOnlyTheOpenClassColumns()
     {
-        // Arrange: the determiner column scores 2 and the adjective column 1 for the feature
+        // Arrange: two adjective columns that score 1 and 0, and the determiner column that scores 2 for the feature
         var senses = Enum.GetValues<PartOfSpeech>().SelectMany(pos => WordLexicon.SensesOf("little", pos)).ToArray();
         var determiner = Assert.Single(senses, s => s.PartOfSpeech == PartOfSpeech.Determiner);
-        var adjective = senses.First(s => s.PartOfSpeech == PartOfSpeech.Adjective);
-        var weights = new WeightsData("m", InventoryHash, 1, [0f], [new WeightedLemma("little", [adjective.SenseId, determiner.SenseId], new LemmaWeights([1f, 2f], [0f, 0f], 1))]);
+        var adjectives = senses.Where(s => s.PartOfSpeech == PartOfSpeech.Adjective).Take(2).ToArray();
+        var adjective = adjectives[0];
+        var weights = new WeightsData("m", InventoryHash, 1, [0f], [new WeightedLemma("little", [adjectives[0].SenseId, adjectives[1].SenseId, determiner.SenseId], new LemmaWeights([1f, 0f, 2f], [0f, 0f, 0f], 1))]);
         double[][] pooled = [[1], [1]];
 
         // Act
@@ -245,5 +247,27 @@ public sealed class WeightsBlobWriterTests
         // Assert
         Assert.Equal(new GateResult(1, 1, 1), openTruth);
         Assert.Equal(new GateResult(1, 0, 0), closedTruth);
+    }
+    /// <summary>
+    ///     A row whose form the classifier does not score is not counted: a form with fewer than two candidate columns
+    ///     for the lemma (<c>owns</c> is only a verb, so only the verb sense of the lemma is a candidate) is never ranked at
+    ///     run time, while a form with two candidates (<c>own</c>) is.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_WeightsBlobWriter_PrecisionGate_LeavesOutFormsWithFewerThanTwoCandidates()
+    {
+        // Arrange: the lemma own with one verb sense and one adjective sense as columns
+        var verb = WordLexicon.SensesOf("own", PartOfSpeech.Verb)[0];
+        var adjective = WordLexicon.SensesOf("own", PartOfSpeech.Adjective)[0];
+        var weights = new WeightsData("m", InventoryHash, 1, [0f], [new WeightedLemma("own", [verb.SenseId, adjective.SenseId], new LemmaWeights([2f, 1f], [0f, 0f], 1))]);
+        var owns = new CorpusRow("own", verb.SenseId, PartOfSpeech.Verb, "He {owns} it.", "a.tsv", ["He", "owns", "it", "."], 1);
+        var own = new CorpusRow("own", verb.SenseId, PartOfSpeech.Verb, "They {own} it.", "a.tsv", ["They", "own", "it", "."], 1);
+        double[][] pooled = [[1], [1]];
+
+        // Act
+        var result = PrecisionGate.Measure(weights, weights, [owns, own], pooled);
+
+        // Assert: only the form with two candidates counts, and its best candidate is the verb sense (score 2)
+        Assert.Equal(new GateResult(1, 1, 1), result);
     }
 }

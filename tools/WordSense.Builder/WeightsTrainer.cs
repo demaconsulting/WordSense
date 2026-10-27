@@ -228,10 +228,13 @@ internal static class WeightsTrainer
         var anchorCounts = Enumerable.Range(0, columns.Count).Select(c => labels.Count(l => l == c)).ToArray();
         var offsets = usage is null ? null : SensePrior.Offsets(columns, anchorCounts, usage);
 
-        // The senses of a closed class are never scored at run time, so the thresholds leave them out (null when there are none)
-        var closed = columns.Select(c => SenseFusion.IsClosedClass(c.PartOfSpeech)).ToArray();
-        var closedColumns = closed.Any(c => c) ? closed : null;
-        var key = fitCache is null ? null : FitCache.KeyOf(options, lemma, senseIds, groups, labels, x, offsets, closedColumns);
+        // The classifier scores an anchor over the candidate columns of the form of its target word (the open-class senses of the
+        // parts of speech that the form has for the lemma), so the thresholds are chosen on those (null when every anchor is
+        // scored over all the columns)
+        var columnOf = senseIds.Select((id, column) => (id, column)).ToDictionary(p => p.id, p => p.column, StringComparer.Ordinal);
+        var rowCandidates = index.Select(i => OnnxClassifier.FormColumns(anchors[i].Words[anchors[i].TargetWordIndex], lemma, id => columnOf.GetValueOrDefault(id, -1))?.ToArray() ?? []).ToArray();
+        var candidates = rowCandidates.All(c => c.Length == senseIds.Length) ? null : rowCandidates;
+        var key = fitCache is null ? null : FitCache.KeyOf(options, lemma, senseIds, groups, labels, x, offsets, candidates);
         if (key is not null && fitCache!.TryGet(key, out var cached))
         {
             return Entry(lemma, senseIds, cached);
@@ -240,7 +243,7 @@ internal static class WeightsTrainer
         var fitter = new LemmaFitter(x, options.Solver, options.Parallelism);
         var (weights, fitted) = fitter.Fit(Enumerable.Range(0, x.Length).ToArray(), labels, senseIds.Length, options.C);
         var bias = SensePrior.Apply(fitted, offsets);
-        var thresholds = Thresholds.Choose(lemma, x, labels, senseIds.Length, groups, options, fitter, offsets, closedColumns);
+        var thresholds = Thresholds.Choose(lemma, x, labels, senseIds.Length, groups, options, fitter, offsets, candidates);
         var fit = new LemmaFit(weights, bias, thresholds.Fine, thresholds.Group, x[0].Length);
         fitCache?.Add(key!, fit);
         return Entry(lemma, senseIds, fit);

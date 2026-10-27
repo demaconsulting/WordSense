@@ -190,9 +190,9 @@ an untrained lemma with fewer than two senses, which every model answers at the 
 | Basic | untrained (69,467) | 8.77% | 68.68% | 69.64% |
 | Basic | all (184,323) | 7.43% | 47.18% | 59.09% |
 | MiniLM | untrained | 4.12% | 86.44% | 69.43% |
-| MiniLM | all | 10.75% | 82.33% | 59.42% |
-| BertBaseCased | untrained | 4.15% | 85.78% | 69.48% |
-| BertBaseCased | all | 22.71% | 81.23% | 61.78% |
+| MiniLM | all | 10.81% | 82.33% | 59.42% |
+| BertBaseCased | untrained | 4.15% | 85.81% | 69.48% |
+| BertBaseCased | all | 22.24% | 81.38% | 61.78% |
 | First sense with the highest WordNet 3.0 tag count | trained | | | 65.74% |
 | First sense with the highest WordNet 3.0 tag count | untrained | | | 76.20% |
 | First sense with the highest WordNet 3.0 tag count | all | | | 69.68% |
@@ -219,10 +219,11 @@ Basic chose is right too.
   precise than the classifier alone). The shift is the lowest one at which the pooled answers reach the target while at
   least 30% of them (and at least 30) are kept; if none does, the builder reports the target as "not reached" and uses
   the largest shift that keeps 30%. A lemma with at least 20 calibration rows also gets a threshold of its own. On the
-  4,868 calibration rows (rows whose word the composite answers at the part-of-speech level because the closed-class
-  slot of Basic wins are left out) the target is reached for BertBaseCased (shifts 3.00 and 1.81: 2,197 of 3,349 sense
-  answers kept, at a precision of 97.2%) and for the stage 1 lemmas of MiniLM (shift 1.99), but not for its base lemmas
-  (shift 3.12; 779 of 1,776 answers kept over both stages, at 96.8%). The fine top-1 does not depend on the target.
+  4,205 calibration rows (only the rows of a word form the classifier scores, with the candidates it ranks at run time;
+  rows whose word the composite answers at the part-of-speech level because the closed-class slot of Basic wins are
+  left out) the target is reached for BertBaseCased (shifts 2.98 and 1.89: 1,763 of 2,822 sense answers kept, at a
+  precision of 97.2%) and for the stage 1 lemmas of MiniLM (shift 1.96), but not for its base lemmas (shift 3.07; 633 of
+  1,476 answers kept over both stages, at 96.7%). The fine top-1 does not depend on the target.
 - **CPU variation.** The int8 arithmetic of the encoder models differs slightly between CPUs and operating systems. The
   confidences move a little (the tests compare them within 0.10 for the encoder models and within 0.01 for Basic, which
   is deterministic managed code). A word whose margin lies close to its threshold can be answered one level more or less

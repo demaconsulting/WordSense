@@ -19,8 +19,11 @@ internal readonly record struct LemmaThresholds(float Fine, float Group);
 ///     does not depend on the process) and dealt to the folds in turn. A sense with a single anchor is never tested:
 ///     it stays in the training part of every fold. Each fold is scored by the one-versus-rest classifier fitted on the
 ///     other folds, which gives every tested anchor out-of-fold scores over the columns that the classifier scores at
-///     run time: the closed-class senses of a lemma (no WordNet senses, see <c>SenseFusion.IsClosedClass</c>) are not
-///     scored there, so they are left out of every margin and an anchor of a closed-class sense is not tested. Nothing but
+///     run time for the form of its target word: the open-class senses of the parts of speech that the form has for the
+///     lemma (<c>OnnxClassifier.FormColumns</c>). The closed-class senses of a lemma (no WordNet senses, see
+///     <c>SenseFusion.IsClosedClass</c>) and the senses of a part of speech that the form does not have are therefore left
+///     out of the margin of that anchor, an anchor of a form with fewer than two such columns is not tested (the
+///     classifier does not score it), and neither is an anchor whose true sense is not among them. Nothing but
 ///     the anchors of the lemma is read: the held-out, real-text, suite and independent evaluation sentences cannot
 ///     influence a threshold, so the accuracy measured on them stays independent of the thresholds.
 ///     </para>
@@ -60,45 +63,41 @@ internal static class Thresholds
     /// <param name="options">The training settings: C, the folds, the precision target and the minimum number of answers.</param>
     /// <param name="fitter">The fitter of the anchors of the lemma (it shares its Gram matrix with the final fit), or null to create one.</param>
     /// <param name="offsets">The usage-prior offset of each column (see <see cref="SensePrior"/>), added to the biases of every fold so that the margins are those of the corrected scores, or null for none.</param>
-    /// <param name="closedColumns">Whether each column is a closed-class sense (no WordNet sense, never scored by the classifier at run time), or null when none is. A closed column is left out of every margin, as the classifier leaves it out, and an anchor of a closed-class sense is not tested.</param>
+    /// <param name="candidates">For each anchor the columns that the classifier scores for the form of its target word, ascending (see <c>OnnxClassifier.FormColumns</c>), or null when every anchor is scored over all the columns. The margin of an anchor is taken over its candidates, as at run time; an anchor with fewer than two candidates, or whose true sense is not among them (a closed-class sense), is not tested.</param>
     /// <returns>The fine and the group threshold; either is <see cref="LemmaWeights.Never"/> when its level never reaches the target.</returns>
     /// <exception cref="ArgumentException">Thrown when the arrays disagree in length.</exception>
-    public static LemmaThresholds Choose(string lemma, float[][] features, int[] labels, int senseCount, int[] groups, TrainingOptions options, LemmaFitter? fitter = null, IReadOnlyList<double>? offsets = null, IReadOnlyList<bool>? closedColumns = null)
+    public static LemmaThresholds Choose(string lemma, float[][] features, int[] labels, int senseCount, int[] groups, TrainingOptions options, LemmaFitter? fitter = null, IReadOnlyList<double>? offsets = null, IReadOnlyList<int[]>? candidates = null)
     {
         ArgumentNullException.ThrowIfNull(lemma);
         ArgumentNullException.ThrowIfNull(features);
         ArgumentNullException.ThrowIfNull(labels);
         ArgumentNullException.ThrowIfNull(groups);
         ArgumentNullException.ThrowIfNull(options);
-        if (features.Length != labels.Length || groups.Length != senseCount || (closedColumns is not null && closedColumns.Count != senseCount))
+        if (features.Length != labels.Length || groups.Length != senseCount || (candidates is not null && candidates.Count != features.Length))
         {
-            throw new ArgumentException("There must be one label per feature and one group index (and closed-class flag) per column.", nameof(labels));
+            throw new ArgumentException("There must be one label (and one candidate list) per feature and one group index per column.", nameof(labels));
         }
 
-        // The columns that the classifier scores, in column order; the margins and the groups are those of these columns
-        var open = Enumerable.Range(0, senseCount).Where(c => closedColumns is null || !closedColumns[c]).ToArray();
-        var openGroups = open.Select(c => groups[c]).ToArray();
-        var outOfFold = ScoreOutOfFold(lemma, features, labels, senseCount, options, fitter ?? new LemmaFitter(features, options.Solver, options.Parallelism), offsets, open);
+        var outOfFold = ScoreOutOfFold(lemma, features, labels, senseCount, groups, options, fitter ?? new LemmaFitter(features, options.Solver, options.Parallelism), offsets, candidates);
         var fine = ChooseThreshold(outOfFold.Select(o => ((double)o.FineMargin, o.FineCorrect)).ToList(), options);
-        if (!openGroups.Any(g => g >= 0))
+        if (!outOfFold.Any(o => o.Groups.Any(g => g >= 0)))
         {
             return new LemmaThresholds(fine, LemmaWeights.Never);
         }
 
         // The anchors that fall through the fine level are the ones a group answer is for
-        var fallThrough = outOfFold.Where(o => o.FineMargin < fine && openGroups[o.Best] >= 0).ToList();
+        var fallThrough = outOfFold.Where(o => o.FineMargin < fine && o.Groups[o.Best] >= 0).ToList();
         var answers = new List<(double Margin, bool Correct)>(fallThrough.Count);
         foreach (var anchor in fallThrough)
         {
             var probabilities = LemmaWeights.Softmax(anchor.Scores);
-            var groupScores = LemmaWeights.GroupScores(probabilities, openGroups);
-            var margin = LemmaWeights.GroupMargin(groupScores, openGroups, anchor.Best);
-            answers.Add((margin, openGroups[anchor.Label] == openGroups[anchor.Best]));
+            var groupScores = LemmaWeights.GroupScores(probabilities, anchor.Groups);
+            var margin = LemmaWeights.GroupMargin(groupScores, anchor.Groups, anchor.Best);
+            answers.Add((margin, anchor.Groups[anchor.Label] == anchor.Groups[anchor.Best]));
         }
 
         return new LemmaThresholds(fine, ChooseThreshold(answers, options));
     }
-
     /// <summary>
     ///     Picks the lowest margin whose answers reach the precision target with enough answers.
     /// </summary>
@@ -144,21 +143,18 @@ internal static class Thresholds
     /// <param name="features">The features of the anchors.</param>
     /// <param name="labels">The column of each anchor.</param>
     /// <param name="senseCount">The number of columns.</param>
+    /// <param name="groups">The group index of each column.</param>
     /// <param name="options">The settings.</param>
     /// <param name="fitter">The fitter that trains the classifier of each fold.</param>
     /// <param name="offsets">The usage-prior offsets added to the biases of each fold, or null.</param>
-    /// <param name="open">The columns that the classifier scores, ascending; every margin is taken over these columns.</param>
-    /// <returns>For each tested anchor its scores over the open columns, the best open column (as a position in <paramref name="open"/>), the fine margin and whether the best column is the true one; an anchor of a column that is not open is not tested.</returns>
-    private static List<OutOfFold> ScoreOutOfFold(string lemma, float[][] features, int[] labels, int senseCount, TrainingOptions options, LemmaFitter fitter, IReadOnlyList<double>? offsets, int[] open)
+    /// <param name="candidates">The candidate columns of each anchor, or null for all the columns.</param>
+    /// <returns>For each tested anchor its scores over its candidate columns, the best candidate (as a position among them), the fine margin, whether the best candidate is the true one, and the group of each candidate; an anchor with fewer than two candidates or whose true sense is not a candidate is not tested.</returns>
+    private static List<OutOfFold> ScoreOutOfFold(string lemma, float[][] features, int[] labels, int senseCount, int[] groups, TrainingOptions options, LemmaFitter fitter, IReadOnlyList<double>? offsets, IReadOnlyList<int[]>? candidates)
     {
         var folds = Math.Max(2, options.Folds);
         var assignment = AssignFolds(lemma, labels, senseCount, folds);
-        var positionOf = new int[senseCount];
-        Array.Fill(positionOf, -1);
-        for (var p = 0; p < open.Length; p++)
-        {
-            positionOf[open[p]] = p;
-        }
+        var everyColumn = Enumerable.Range(0, senseCount).ToArray();
+        int[] CandidatesOf(int anchor) => candidates is null ? everyColumn : candidates[anchor];
 
         // The folds are independent; each one writes its own list, and the lists are joined in the order of the folds
         var perFold = new List<OutOfFold>[folds];
@@ -166,7 +162,7 @@ internal static class Thresholds
         {
             var observed = new List<OutOfFold>();
             perFold[fold] = observed;
-            var test = Enumerable.Range(0, features.Length).Where(i => assignment[i] == fold && positionOf[labels[i]] >= 0).ToArray();
+            var test = Enumerable.Range(0, features.Length).Where(i => assignment[i] == fold && CandidatesOf(i).Length >= 2 && Array.IndexOf(CandidatesOf(i), labels[i]) >= 0).ToArray();
             if (test.Length == 0)
             {
                 return;
@@ -179,15 +175,16 @@ internal static class Thresholds
             foreach (var i in test)
             {
                 model.Scores(features[i], scores);
-                var candidates = open.Select(c => scores[c]).ToArray();
-                var (best, margin) = LemmaWeights.Rank(candidates);
-                observed.Add(new OutOfFold(candidates, best, margin, positionOf[labels[i]], best == positionOf[labels[i]]));
+                var columns = CandidatesOf(i);
+                var scored = columns.Select(c => scores[c]).ToArray();
+                var (best, margin) = LemmaWeights.Rank(scored);
+                var label = Array.IndexOf(columns, labels[i]);
+                observed.Add(new OutOfFold(scored, best, margin, label, best == label, [.. columns.Select(c => groups[c])]));
             }
         });
 
         return [.. perFold.SelectMany(f => f)];
     }
-
     /// <summary>
     ///     Assigns the anchors to folds: stratified by sense, shuffled by a seeded hash; a sense with one anchor gets -1
     ///     and is never tested.
@@ -254,10 +251,11 @@ internal static class Thresholds
     /// <summary>
     ///     The out-of-fold result of one anchor.
     /// </summary>
-    /// <param name="Scores">The scores of the open columns.</param>
-    /// <param name="Best">The best open column, as a position among the open columns.</param>
+    /// <param name="Scores">The scores of the candidate columns.</param>
+    /// <param name="Best">The best candidate, as a position among the candidates.</param>
     /// <param name="FineMargin">The margin of the best score over the second best.</param>
-    /// <param name="Label">The true column, as a position among the open columns.</param>
-    /// <param name="FineCorrect">Whether the best column is the true one.</param>
-    private sealed record OutOfFold(float[] Scores, int Best, float FineMargin, int Label, bool FineCorrect);
+    /// <param name="Label">The true column, as a position among the candidates.</param>
+    /// <param name="FineCorrect">Whether the best candidate is the true one.</param>
+    /// <param name="Groups">The group index of each candidate, or -1 for a sense in no group.</param>
+    private sealed record OutOfFold(float[] Scores, int Best, float FineMargin, int Label, bool FineCorrect, int[] Groups);
 }

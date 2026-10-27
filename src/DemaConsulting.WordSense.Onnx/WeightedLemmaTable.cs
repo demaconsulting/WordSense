@@ -77,24 +77,28 @@ internal sealed class WeightedLemmaTable
     ///     Initializes a new instance of the <see cref="WeightedLemmaTable"/> class.
     /// </summary>
     /// <param name="data">The trained weights.</param>
+    /// <param name="strict">Whether to check that the weights were trained for the inventory of the word image and that a group threshold belongs to a lemma with a group; the build tool, which scores the weights it is training against the image it runs with, passes false (the shape of the weights, the senses and the choosers are always checked).</param>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="data"/> is null.</exception>
     /// <exception cref="InvalidDataException">
-    ///     Thrown when the weights were trained for another inventory, a lemma or a sense occurs twice, a sense is
+    ///     Thrown when the weights were trained for another inventory (when it is checked), a lemma or a sense occurs twice, a sense is
     ///     unknown to the word image or belongs to another lemma, the sense ids and the weights of a lemma disagree, or a
     ///     lemma has a group threshold although none of its senses is in a group.
     /// </exception>
-    public WeightedLemmaTable(WeightsData data)
+    public WeightedLemmaTable(WeightsData data, bool strict = true)
     {
         ArgumentNullException.ThrowIfNull(data);
         Data = data;
-        CheckInventory(data);
+        if (strict)
+        {
+            CheckInventory(data);
+        }
 
         var lemmas = new Dictionary<string, ResolvedLemma>(StringComparer.Ordinal);
         var senses = new HashSet<string>(StringComparer.Ordinal);
         var choosers = new Dictionary<string, FormChooser>(StringComparer.Ordinal);
         foreach (var entry in data.Lemmas)
         {
-            var resolved = ResolveSenses(entry, data.Dimension, senses);
+            var resolved = ResolveSenses(entry, data.Dimension, senses, strict);
             if (!lemmas.TryAdd(entry.Lemma, new ResolvedLemma(entry, resolved)))
             {
                 throw new InvalidDataException($"The weights have the lemma '{entry.Lemma}' twice.");
@@ -136,11 +140,12 @@ internal sealed class WeightedLemmaTable
     /// <param name="entry">The trained lemma.</param>
     /// <param name="dimension">The dimension of the weights of the model.</param>
     /// <param name="seen">The sense ids of the lemmas that were resolved before; the senses of this lemma are added.</param>
+    /// <param name="strict">Whether a group threshold of a lemma without a grouped sense is an error.</param>
     /// <returns>The catalog entry of every sense, in the column order of the weights.</returns>
     /// <exception cref="InvalidDataException">
     ///     Thrown when the rows, the dimension or the sense ids of the lemma disagree with the word image.
     /// </exception>
-    private static ImmutableArray<SenseInfo> ResolveSenses(WeightedLemma entry, int dimension, HashSet<string> seen)
+    private static ImmutableArray<SenseInfo> ResolveSenses(WeightedLemma entry, int dimension, HashSet<string> seen, bool strict)
     {
         if (entry.SenseIds.Count != entry.Weights.SenseCount)
         {
@@ -173,7 +178,7 @@ internal sealed class WeightedLemmaTable
             resolved.Add(sense);
         }
 
-        if (entry.Weights.GroupThreshold < LemmaWeights.Never && resolved.All(s => s.GroupId is null))
+        if (strict && entry.Weights.GroupThreshold < LemmaWeights.Never && resolved.All(s => s.GroupId is null))
         {
             throw new InvalidDataException($"The weights of '{entry.Lemma}' have a group threshold, but none of its senses is in a group.");
         }

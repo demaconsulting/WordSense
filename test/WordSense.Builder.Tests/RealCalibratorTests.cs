@@ -292,6 +292,34 @@ public sealed class RealCalibratorTests
     }
 
     /// <summary>
+    ///     A row is scored with the plan that the classifier has for the form of its target word: a form of several lemmas
+    ///     without a chooser is answered from the lexicon, so the encoder does not run and the row is not an observation;
+    ///     with a chooser for the form the encoder runs and the row is observed.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealCalibrator_Apply_FormOfSeveralLemmas_IsObservedOnlyWithAChooser()
+    {
+        // Arrange: "left" is a form of the lemmas left and leave; the lemma leave has two verb senses (columns 0 and 1)
+        var leaves = SenseFixtures.Senses("leave", PartOfSpeech.Verb, 2);
+        Assert.True(WordLexicon.Lookup("left").Select(d => d.Lemma).Distinct().Count() > 1, "left must be a form of several lemmas");
+        var ids = leaves.Select(s => s.SenseId).ToArray();
+        var weights = new LemmaWeights([1f, -1f], [0f, 0f], 1, 1f);
+        var withoutChooser = new WeightedLemma("leave", ids, weights);
+        var chooser = new FormChooser("left", ["left", "leave"], new LemmaWeights([-1f, 1f], [0f, 0f], 1, 1f));
+        var withChooser = new WeightedLemma("leave", ids, weights, [chooser]);
+        var row = new CorpusRow("leave", ids[0], PartOfSpeech.Verb, "They {left} early.", "a.tsv", ["They", "left", "early", "."], 1);
+        var options = new CalibrationOptions(MinOwnRows: 1000, MinPooledAnswered: 1);
+
+        // Act
+        var (_, none) = RealCalibrator.Apply(Data(withoutChooser), [row], [[1f]], options);
+        var (_, chosen) = RealCalibrator.Apply(Data(withChooser), [row], [[1f]], options);
+
+        // Assert
+        Assert.Equal(0, none.Rows);
+        Assert.Equal(1, chosen.Rows);
+    }
+
+    /// <summary>
     ///     A lemma with enough calibration rows keeps the higher of its own threshold and the adjusted one; a lemma
     ///     with fewer rows gets the pooled shift.
     /// </summary>

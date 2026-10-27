@@ -35,8 +35,9 @@ internal readonly record struct GateResult(int Rows, int FullCorrect, int Reduce
 ///     The weights are stored in half precision to halve the blob. The gate scores held-out rows with the
 ///     full-precision weights of the trainer and with the weights that the real reader returns from the written blob,
 ///     on the same features, and compares the share of rows whose best sense is the true one. The held-out rows are
-///     read here only to measure the reduction; they never influence a weight or a threshold. Only the senses that the
-///     classifier scores for the word of a row are ranked, as at run time (no closed-class sense).
+///     read here only to measure the reduction; they never influence a weight or a threshold. A row counts only when the
+///     classifier scores its form (the encoder runs for it and at least two senses of its lemma are candidates), and only
+///     the candidate senses of the form are ranked, as at run time (no closed-class sense).
 /// </remarks>
 internal static class PrecisionGate
 {
@@ -52,7 +53,7 @@ internal static class PrecisionGate
     /// <param name="reduced">The weights read back from the written blob.</param>
     /// <param name="rows">The held-out rows.</param>
     /// <param name="pooled">The pooled encoder vector of each row, parallel to <paramref name="rows"/>.</param>
-    /// <returns>The counts; rows whose lemma has no weights are left out. A sense without a column counts as wrong for both.</returns>
+    /// <returns>The counts; rows whose lemma has no weights, and rows whose form the classifier does not score, are left out. A sense without a column counts as wrong for both.</returns>
     /// <exception cref="ArgumentException">Thrown when the lists differ in length.</exception>
     public static GateResult Measure(WeightsData full, WeightsData reduced, IReadOnlyList<CorpusRow> rows, IReadOnlyList<double[]> pooled)
     {
@@ -65,19 +66,27 @@ internal static class PrecisionGate
             throw new ArgumentException("There must be one vector per row.", nameof(pooled));
         }
 
-        var fullByLemma = full.Lemmas.ToDictionary(l => l.Lemma, StringComparer.Ordinal);
+        // The classifier reads the weights as a table; the form choosers decide which forms it scores at all
+        var fullTable = new WeightedLemmaTable(full, strict: false);
         var reducedByLemma = reduced.Lemmas.ToDictionary(l => l.Lemma, StringComparer.Ordinal);
         int counted = 0, fullCorrect = 0, reducedCorrect = 0;
         for (var i = 0; i < rows.Count; i++)
         {
-            if (!fullByLemma.TryGetValue(rows[i].Lemma, out var fullLemma) || !reducedByLemma.TryGetValue(rows[i].Lemma, out var reducedLemma))
+            if (fullTable.Find(rows[i].Lemma) is not { } fullLemma || !reducedByLemma.TryGetValue(rows[i].Lemma, out var reducedLemma))
+            {
+                continue;
+            }
+
+            // A form that the classifier does not score (the encoder does not run, or fewer than two candidate senses) is not counted
+            var (encoderRuns, columns) = OnnxClassifier.CandidatesOf(rows[i].Words[rows[i].TargetWordIndex], rows[i].Lemma, fullTable);
+            if (!encoderRuns || columns.Count < 2)
             {
                 continue;
             }
 
             counted++;
-            fullCorrect += IsRight(fullLemma, FeatureExtractor.Center(pooled[i], full.Mean), rows[i]) ? 1 : 0;
-            reducedCorrect += IsRight(reducedLemma, FeatureExtractor.Center(pooled[i], reduced.Mean), rows[i]) ? 1 : 0;
+            fullCorrect += IsRight(fullLemma.Weights, FeatureExtractor.Center(pooled[i], full.Mean), columns, rows[i].SenseId) ? 1 : 0;
+            reducedCorrect += IsRight(reducedLemma, FeatureExtractor.Center(pooled[i], reduced.Mean), columns, rows[i].SenseId) ? 1 : 0;
         }
 
         return new GateResult(counted, fullCorrect, reducedCorrect);
@@ -108,17 +117,18 @@ internal static class PrecisionGate
     }
 
     /// <summary>
-    ///     Tells whether the best sense of a lemma for a feature is the true sense, ranking the senses that the classifier
-    ///     scores for the word of the row (the open-class senses of the parts of speech the word has for the lemma, see
-    ///     <see cref="RealCalibrator.CandidateColumns"/>), as inference does: a closed-class sense is never the best sense.
+    ///     Tells whether the best sense of a lemma for a feature is the true sense, ranking only the candidate senses that
+    ///     the classifier scores for the form of the word (<see cref="OnnxClassifier.CandidatesOf"/>), as inference does: a
+    ///     closed-class sense is never the best sense.
     /// </summary>
     /// <param name="lemma">The weights of the lemma.</param>
     /// <param name="feature">The feature, or null when the vector has no magnitude.</param>
-    /// <param name="row">The row: its target word selects the candidate senses and its sense is the true sense.</param>
-    /// <returns>True when the best candidate column is the true sense; false when the word has no candidate column.</returns>
-    private static bool IsRight(WeightedLemma lemma, float[]? feature, CorpusRow row)
+    /// <param name="columns">The candidate columns of the form of the row, at least two.</param>
+    /// <param name="senseId">The true sense.</param>
+    /// <returns>True when the best candidate column is the true sense.</returns>
+    private static bool IsRight(WeightedLemma lemma, float[]? feature, IReadOnlyList<int> columns, string senseId)
     {
-        if (feature is null || feature.Length != lemma.Weights.Dimension || RealCalibrator.CandidateColumns(lemma, row) is not { Count: > 0 } columns)
+        if (feature is null || feature.Length != lemma.Weights.Dimension)
         {
             return false;
         }
@@ -126,6 +136,6 @@ internal static class PrecisionGate
         var scores = new float[lemma.Weights.SenseCount];
         lemma.Weights.Scores(feature, scores);
         var best = columns[LemmaWeights.Rank(columns.Select(c => scores[c]).ToArray()).Best];
-        return string.Equals(lemma.SenseIds[best], row.SenseId, StringComparison.Ordinal);
+        return string.Equals(lemma.SenseIds[best], senseId, StringComparison.Ordinal);
     }
 }

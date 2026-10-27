@@ -260,14 +260,17 @@ internal static class ModelTrainer
         var fitClock = Stopwatch.StartNew();
         var trained = WeightsTrainer.TrainDense(modelId, inventoryHash, pooled, anchors, options, frozenMean, fitCache, usage);
         var data = trained.Data;
-        if (calibration is { Count: > 0 })
-        {
-            data = await CalibrateAsync(name, data, calibration, calibrationOptions ?? new CalibrationOptions(), encoder, output, clock, cancellationToken).ConfigureAwait(false);
-        }
 
+        // The form choosers come first: the calibration scores a row with the plan that the classifier has for its form, and the
+        // chooser of a form decides whether the encoder runs for it (the choosers do not read the thresholds of the lemmas)
         if (chooserAnchors is { Count: > 0 })
         {
             data = await TrainChoosersAsync(name, data, chooserAnchors, chooserHoldout ?? [], options, encoder, fitCache, output, clock, cancellationToken).ConfigureAwait(false);
+        }
+
+        if (calibration is { Count: > 0 })
+        {
+            data = await CalibrateAsync(name, data, calibration, calibrationOptions ?? new CalibrationOptions(), encoder, output, clock, cancellationToken).ConfigureAwait(false);
         }
 
         if (fitCache is not null)

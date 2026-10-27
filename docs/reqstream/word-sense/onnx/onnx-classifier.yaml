@@ -82,6 +82,18 @@ sections:
                   (WordSense-Core-WordSenseContracts-FallbackClosedClass).
                 tests:
                   - OnnxClassifier_ClassifyAsync_ClosedClassUseOfLike_IsNotScored
+              - id: WordSense-Onnx-OnnxClassifier-SharedCandidates
+                title: >-
+                  OnnxClassifier shall provide to the build tool the candidate selection that it uses itself for the
+                  form of a word and a trained lemma (the open-class senses of the parts of speech that the form has
+                  for the lemma, and whether the encoder runs for the form), and the scores of a word for a lemma as
+                  it works them out before any threshold decides a level.
+                tags: [unit]
+                justification: |
+                  The thresholds, the calibration and the precision gate that the build tool computes are only valid
+                  when they rank the senses that inference ranks, so the rule has one implementation that both use.
+                tests:
+                  - OnnxClassifier_CandidatesOf_FormColumnsAndPlan_AreThoseOfInference
               - id: WordSense-Onnx-OnnxClassifier-Candidates
                 title: >-
                   OnnxClassifier shall list, for a trained lemma, the senses of every analysis of the word in the

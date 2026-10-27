@@ -188,8 +188,11 @@ sections:
             title: >-
               The builder shall choose for every trained lemma a first fine threshold, and for a lemma that has groups
               also a first group threshold, by cross-validation on the anchors of the lemma only, over the columns that
-              the classifier scores at run time (the closed-class senses of a lemma are left out of every margin and
-              their anchors are not tested), so that the answers
+              the classifier scores for the form of each anchor's target word (the closed-class senses of a lemma and
+              the senses of a part of speech that the form does not have are left out of the margin of that anchor,
+              and an anchor with fewer than two such columns, or whose true sense is not among them, is not tested),
+              so that the
+              answers
               above each threshold reach a configured precision target (95 percent by default), deterministically; a
               level for which no threshold reaches the target shall never be answered for that lemma. These first
               thresholds are the input of the real-text calibration (WordSense-WordSenseBuilder-RealCalibration), which
@@ -207,6 +210,7 @@ sections:
               - WordSenseBuilder_Thresholds_Choose_NeverReadsHoldoutOrEvaluationSentences
               - WordSenseBuilder_Thresholds_Choose_TargetNeverReached_NeverAnswersThatLevel
               - WordSenseBuilder_Thresholds_Choose_ClosedClassColumns_AreLeftOutOfTheMargins
+              - WordSenseBuilder_Thresholds_Choose_RowSpecificCandidates_AreTheColumnsOfTheFormOfTheAnchor
               - WordSenseBuilder_ModelTrainer_TrainDataAsync_WritesBothThresholdsPerLemma
 
           - id: WordSense-WordSenseBuilder-RealCalibration
@@ -319,11 +323,22 @@ sections:
               - WordSenseBuilder_RealCalibrator_Apply_ClosedClassSenses_AreNotCandidatesOfTheMargin
               - WordSenseBuilder_RealCalibrator_Apply_FewerThanTwoCandidates_IsNotObserved
 
+          - id: WordSense-WordSenseBuilder-RealCalibration-FormPlan
+            title: >-
+              The builder shall score a calibration row with the plan that the classifier has for the form of its target
+              word (every analysis of the form and its form chooser), and shall not observe a row for which the
+              classifier does not run the encoder (a form of several lemmas without a chooser).
+            tags: [unit]
+            justification: |
+              Such a form is answered from the lexicon at run time, so its row says nothing about a threshold; a
+              calibration that scored it with the classifier of its lemma alone would observe answers that never occur.
+            tests:
+              - WordSenseBuilder_RealCalibrator_Apply_FormOfSeveralLemmas_IsObservedOnlyWithAChooser
           - id: WordSense-WordSenseBuilder-RealCalibration-ClosedSlotWins
             title: >-
               The builder shall leave a calibration row out of the real-text calibration when the closed-class slot of
-              the Basic result wins the closed-class split of the composite model for the row, and shall report how many
-              rows it left out.
+              the Basic result wins the closed-class split of the composite model applied to the result that the
+              classifier builds for the form, and shall report how many rows it left out.
             tags: [unit]
             justification: |
               Such a word is answered at the part-of-speech level at run time, so no sense threshold applies to it and
@@ -357,8 +372,9 @@ sections:
           - id: WordSense-WordSenseBuilder-PrecisionGate
             title: >-
               The builder shall refuse to write weights whose half-precision storage changes the fine top-1 accuracy
-              on the held-out rows by more than 0.2 percentage points, ranking for each row only the senses that the
-              classifier scores for its word (the open-class senses).
+              on the held-out rows by more than 0.2 percentage points, counting only the rows whose form the classifier
+              scores (the encoder runs for it and it has at least two candidate senses of the lemma) and ranking for
+              each row only those candidate senses (the open-class senses of the form).
             tags: [unit]
             justification: |
               The weights are stored in half precision to halve the blob; the gate proves that the reduction does not
@@ -368,6 +384,7 @@ sections:
               - WordSenseBuilder_WeightsBlobWriter_ReducedPrecision_StaysWithinTheAccuracyGate
               - WordSenseBuilder_WeightsBlobWriter_PrecisionGate_MeasuresDescribesAndEnforces
               - WordSenseBuilder_WeightsBlobWriter_PrecisionGate_RanksOnlyTheOpenClassColumns
+              - WordSenseBuilder_WeightsBlobWriter_PrecisionGate_LeavesOutFormsWithFewerThanTwoCandidates
           - id: WordSense-WordSenseBuilder-CalibrationShift
             title: >-
               The one pooled shift of the real-text calibration (of each stratum) shall be chosen as follows, for the

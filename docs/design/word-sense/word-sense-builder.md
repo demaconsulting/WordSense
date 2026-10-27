@@ -327,8 +327,9 @@ for at least two of its senses to get weights; a lemma with fewer is not an erro
    *kernel* form, see below) whenever the training part has fewer anchors than the encoder has dimensions, and in the
    feature space otherwise.
    Add the usage prior (see Usage prior below) to the fitted biases.
-6. Choose the first thresholds of the lemma (see Thresholds below), on the scores with the prior; after all lemmas are
-   fitted, move them to the real-text precision target (see Real-text calibration below).
+6. Choose the first thresholds of the lemma (see Thresholds below), on the scores with the prior, over the candidate
+   columns of the form of each anchor's target word (OnnxClassifier.FormColumns). After all lemmas are fitted and the form
+   choosers are trained (step 8), move the thresholds to the real-text precision target (see Real-text calibration below).
 7. The lemmas are fitted concurrently (`TrainingOptions.DefaultParallelism`, the processors minus two, 2 to 16
    threads), and inside a lemma the senses of a fit and the folds of the cross-validation are fitted concurrently too;
    each result is written to its own slot, so the weights do not depend on the thread count. A lemma whose
@@ -342,11 +343,14 @@ for at least two of its senses to get weights; a lemma with fewer is not an erro
    table refuses such a chooser when the weights load) or when no lemma of the form has weights; the summary lists
    those forms with the reason. A chooser is stored with the first lemma of the form, in ordinal order, that has
    weights. The held-out chooser rows are only scored: the summary prints the top-1 accuracy of the choosers, the
-   share of the sentences answered at the thresholds and the precision of those answers.
+   share of the sentences answered at the thresholds and the precision of those answers. The choosers do not read the
+   thresholds of the lemmas, so they are trained before the calibration: the calibration scores a row with the plan
+   that the classifier has for its form, and a chooser decides whether the encoder runs for a form of several lemmas.
 9. Check the half-precision storage: encode the held-out rows of the trained lemmas through the same cache, score them
-   with the full-precision weights and with the weights read back from the written blob (ranking for each row only the
-   senses that the classifier scores for its word, the open-class senses, as inference does), print both fine top-1
-   accuracies, and fail without writing when they differ by more than 0.2 percentage point. Then write the weights blob
+   with the full-precision weights and with the weights read back from the written blob (counting only the rows whose
+   form the classifier scores, and ranking for each row only the candidate senses of its form, as inference does),
+   print both fine top-1 accuracies, and fail without writing when they differ by more than 0.2 percentage point.
+   Then write the weights blob
    (`WSX3`, float16 weights) to the package's `Resources/weights.bin`. The summary of the run counts the lemmas that
    have a finite fine threshold and a finite group threshold and names the lemmas that got no weights.
 
@@ -394,11 +398,14 @@ A run takes about two minutes when the embedding cache is warm, and `--no-prior`
 
 **Thresholds (`Thresholds.Choose`).** For every trained lemma the anchors are split into k = 5 folds by a seeded,
 deterministic shuffle; each fold is scored by a fit on the other folds, which gives out-of-fold margins for every
-anchor. The fine threshold `t_fine` is the lowest margin such that the answers at or above it (equal margins together)
+tested anchor. The fine threshold `t_fine` is the lowest margin such that the answers at or above it (equal margins together)
 reach the precision target on the out-of-fold anchors (95 percent by default) with at least three answers; the margins
-are taken over the columns that the classifier scores at run time, so the closed-class senses of a lemma (no WordNet
-senses, `SenseFusion.IsClosedClass`) are left out of every margin and an anchor of a closed-class sense is not tested
-(the fits still learn from it); `t_group`
+are taken over the columns that the classifier scores at run time for the form of the target word of the anchor (the
+open-class senses of the parts of speech that the form has for the lemma, `OnnxClassifier.FormColumns`), so the
+closed-class senses of a lemma (no WordNet senses, `SenseFusion.IsClosedClass`) and the senses of a part of speech that
+the form does not have (the noun senses of `has`) are left out of the margin of that anchor; an anchor of a form with
+fewer than two such columns, which the classifier does not score, and an anchor whose true sense is not among them (a
+closed-class sense) are not tested (the fits still learn from them); `t_group`
 is chosen in the same way on the group answers, only for a lemma that has groups and over the anchors whose best sense
 is in a group and whose fine margin is below `t_fine` (the rows that fall through to the group level; every anchor
 when `t_fine` is "never"), with the group margin defined as at run time (the group probability minus the largest
@@ -424,16 +431,20 @@ anchors, with 50 waves to a stage; waves 1 to 49 are the base stage): the rows o
 labelers that agree, a blind check) and are answered right at a lower margin, so one shift over both stages lowered the
 thresholds of the base lemmas by 0.65 (MiniLM) and 1.05 (BertBaseCased) and cost them about 1.5 points of precision.
 Each stratum is calibrated with its own rows alone, so adding a stage never moves the thresholds of an earlier one and
-each stage meets the target on its own rows. The margin of a calibration row is computed as inference computes it: over
-the open-class senses of the part of speech that the target word has for the lemma (`OnnxClassifier.OpenClassColumns`),
-so the closed-class senses of a lemma such as `little` or `have` are left out; a row whose word is not a form of the
-lemma, or that has fewer than two such candidates, is not observed. A row whose answer is at the part-of-speech level at
-run time is left out too: the trainer runs Basic over every calibration sentence, and when the closed-class slot of the
-Basic result wins the closed-class split of the composite model (FallbackWordSenseModel.SplitClosedClass, run on a
-result built
-from the slot masses of the lemma and the Basic result), no sense threshold applies to the row. When an open-class slot
-wins, the row is observed, and a row whose true sense is a closed-class sense is a wrong answer. Without the Basic results
-every row is kept (and a closed-class true sense counts as wrong). The summary reports the rows left out. The rest of this
+each stage meets the target on its own rows. A calibration row is scored as inference scores it:
+`OnnxClassifier.ScoreForm` takes the plan that the classifier has for the form
+of the target word (every analysis of the form, its form chooser, the lemmas it scores) and gives the margin of the lemma
+over the open-class senses of the parts of speech that the form has for it (`OnnxClassifier.FormColumns`), so the
+closed-class senses of a lemma such as `little` or `have` and the senses of a part of speech that the form does not have
+are left out. A row for which the classifier does not run the encoder (a form of several lemmas without a chooser,
+answered from the lexicon), or whose lemma has fewer than two such candidates, is not observed. A row whose answer is
+at the
+part-of-speech level at run time is left out too: the trainer runs Basic over every calibration sentence, and when the
+closed-class slot of the Basic result wins the closed-class split of the composite model
+(`FallbackWordSenseModel.SplitClosedClass`, run on the result that the classifier builds for the form), no sense
+threshold applies to the row. When an open-class slot wins, the row is observed, and a row whose true sense is a
+closed-class sense is a wrong answer. Without the Basic results every row is kept (and a closed-class true sense
+counts as wrong). The summary reports the rows left out. The rest of this
 paragraph describes one stratum.
 The usable answers are the calibration rows of those
 lemmas whose distance `d = margin - t_cv` (the margin of the best sense minus the first threshold of its lemma) is finite

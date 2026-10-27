@@ -206,7 +206,9 @@ internal static class RealCalibrator
         }
 
         var lemmas = data.Lemmas.ToDictionary(l => l.Lemma, StringComparer.Ordinal);
-        var groupsOf = lemmas.ToDictionary(l => l.Key, l => GroupsOf(l.Value.SenseIds), StringComparer.Ordinal);
+
+        // The table the classifier scores the weights with at run time (the weights are those of the run, so the inventory is not checked)
+        var table = new WeightedLemmaTable(data, strict: false);
         var observed = new List<Observation>();
         var closedWins = 0;
         var closedGold = 0;
@@ -217,7 +219,7 @@ internal static class RealCalibrator
                 continue;
             }
 
-            var observation = Observe(lemma, groupsOf[lemma.Lemma], rows[i], features[i], basic?[i]);
+            var observation = Observe(table, lemma, rows[i], features[i], basic?[i]);
             if (observation is null)
             {
                 continue;
@@ -378,149 +380,58 @@ internal static class RealCalibrator
     }
 
     /// <summary>
-    ///     Lists the columns that the classifier scores for the target word of a row: only the open-class senses of the
-    ///     parts of speech that the word has for the lemma are candidates (a closed-class sense is not scored, and a sense of
-    ///     another part of speech of the lemma that the word does not have is not a candidate either).
-    /// </summary>
-    /// <param name="lemma">The weights of the lemma of the row.</param>
-    /// <param name="row">The row.</param>
-    /// <returns>The columns in ascending order, or null when the word is not in the lexicon.</returns>
-    internal static List<int>? CandidateColumns(WeightedLemma lemma, CorpusRow row)
-    {
-        ArgumentNullException.ThrowIfNull(lemma);
-        ArgumentNullException.ThrowIfNull(row);
-        if (!WordLexicon.TryLookup(row.Words[row.TargetWordIndex], out var analyses))
-        {
-            return null;
-        }
-
-        var columnOf = lemma.SenseIds.Select((id, index) => (id, index)).ToDictionary(p => p.id, p => p.index, StringComparer.Ordinal);
-        return OnnxClassifier.OpenClassColumns(id => columnOf.GetValueOrDefault(id, -1), lemma.Lemma, analyses.Where(a => string.Equals(a.Lemma, lemma.Lemma, StringComparison.Ordinal)).Select(a => a.PartOfSpeech));
-    }
-
-    /// <summary>
     ///     Scores a calibration row the way the classifier and the composite model do at run time.
     /// </summary>
     /// <remarks>
     ///     <para>
-    ///     Only the candidate columns of <see cref="CandidateColumns"/> are scored. A row whose true sense is a closed-class
-    ///     sense (no column among the candidates) is an observation that is wrong when it reaches the sense level.
+    ///     The row is scored by <see cref="OnnxClassifier.ScoreForm"/>, the classifier's own plan for the form of the
+    ///     target word: every analysis of the form, its form chooser and the lemmas it scores, and the senses that it
+    ///     ranks (the open-class senses of the parts of speech that the form has for the lemma). A form for which the
+    ///     classifier does not run the encoder (a form of several lemmas without a chooser, which is answered from the
+    ///     lexicon) or does not score the lemma (fewer than two candidate senses) is not an observation, as at run time.
+    ///     A row whose true sense is a closed-class sense has no column among the candidates and is wrong when it reaches
+    ///     the sense level.
     ///     </para>
     ///     <para>
     ///     At run time a row reaches the sense level only if an open-class slot wins the closed-class split of the
     ///     composite model: the closed-class slots take the probability of Basic, and the encoder decides inside the
-    ///     open-class part (<c>FallbackWordSenseModel.SplitClosedClass</c>). When the closed-class slot of Basic wins, the
+    ///     open-class part (<c>FallbackWordSenseModel.SplitClosedClass</c>). The split is run on the result that the
+    ///     classifier builds for the form and the Basic result for the sentence. When a closed-class slot wins, the
     ///     answer is at the part-of-speech level and no threshold applies, so the row says nothing about a threshold and
-    ///     is left out; when an open-class slot wins, the answer is a sense answer and a row whose true sense is
-    ///     closed-class is wrong. The check runs the split itself on a result built from the slot masses of the lemma and the
-    ///     result of Basic for the sentence. Without the result of Basic the closed-class slots cannot be compared, and
-    ///     the row is kept (a closed-class true sense counts as wrong), which can only make the thresholds more
-    ///     conservative.
+    ///     is left out; when an open-class slot wins, the answer is a sense answer. Without the result of Basic the
+    ///     closed-class slots cannot be compared, and the row is kept (a closed-class true sense counts as wrong), which
+    ///     can only make the thresholds more conservative.
     ///     </para>
     /// </remarks>
+    /// <param name="table">The weights as the classifier reads them, with the form choosers.</param>
     /// <param name="lemma">The weights of the lemma of the row.</param>
-    /// <param name="groups">The group index of every column of the lemma.</param>
     /// <param name="row">The row.</param>
     /// <param name="feature">The feature of the row.</param>
     /// <param name="basic">The result of Basic for the sentence of the row, or null.</param>
-    /// <returns>The observation, or null when the classifier would not score the row (the word is no form of the lemma, or fewer than two candidate senses).</returns>
-    private static Observation? Observe(WeightedLemma lemma, int[] groups, CorpusRow row, float[] feature, ClassifyResult? basic)
+    /// <returns>The observation, or null when the classifier would not score the lemma for the form of the row.</returns>
+    private static Observation? Observe(WeightedLemmaTable table, WeightedLemma lemma, CorpusRow row, float[] feature, ClassifyResult? basic)
     {
-        if (CandidateColumns(lemma, row) is not { Count: >= 2 } columns)
+        if (OnnxClassifier.ScoreForm(row.Words[row.TargetWordIndex], lemma.Lemma, table, feature) is not { } scoring)
         {
             return null;
         }
 
-        var columnOf = lemma.SenseIds.Select((id, index) => (id, index)).ToDictionary(p => p.id, p => p.index, StringComparer.Ordinal);
-        var all = new float[lemma.SenseIds.Count];
-        lemma.Weights.Scores(feature, all);
-        var scores = columns.Select(c => all[c]).ToArray();
-        var (best, margin) = LemmaWeights.Rank(scores);
-        var label = columnOf.GetValueOrDefault(row.SenseId, -1);
-        var closedWins = basic is { } basicResult && ClosedSlotWins(lemma, row, columns, scores, best, basicResult);
-        var groupMargin = double.NaN;
-        var groupCorrect = false;
-        var candidateGroups = columns.Select(c => groups[c]).ToArray();
-        if (candidateGroups[best] >= 0)
+        var resolved = table.Find(lemma.Lemma)!;
+        var label = resolved.ColumnOf(row.SenseId);
+        var bestGroup = resolved.Senses[scoring.BestColumn].GroupId;
+        var goldGroup = label >= 0 ? resolved.Senses[label].GroupId : null;
+        var groupMargin = bestGroup is null ? double.NaN : scoring.GroupMargin;
+        var groupCorrect = bestGroup is not null && string.Equals(goldGroup, bestGroup, StringComparison.Ordinal);
+        var closedWins = false;
+        if (basic is { } basicResult)
         {
-            var groupScores = LemmaWeights.GroupScores(LemmaWeights.Softmax(scores), candidateGroups);
-            groupMargin = LemmaWeights.GroupMargin(groupScores, candidateGroups, best);
-            groupCorrect = label >= 0 && groups[label] == candidateGroups[best];
+            var split = FallbackWordSenseModel.SplitClosedClass(scoring.Result, basicResult, out var applied);
+            closedWins = applied && split.Details is { } winner && SenseFusion.IsClosedClass(winner.PartOfSpeech);
         }
 
         var goldIsClosed = WordLexicon.TryGetSense(row.SenseId, out var gold) && SenseFusion.IsClosedClass(gold.PartOfSpeech);
-        return new Observation(lemma.Lemma, margin, columns[best] == label, groupMargin, groupCorrect, closedWins, goldIsClosed);
+        return new Observation(lemma.Lemma, scoring.FineMargin, scoring.BestColumn == label, groupMargin, groupCorrect, closedWins, goldIsClosed);
     }
-
-    /// <summary>
-    ///     Tells whether a closed-class slot wins the closed-class split of the composite model for a row.
-    /// </summary>
-    /// <param name="lemma">The weights of the lemma of the row.</param>
-    /// <param name="row">The row.</param>
-    /// <param name="columns">The candidate columns of the row.</param>
-    /// <param name="scores">The scores of the candidate columns.</param>
-    /// <param name="best">The position of the best candidate column.</param>
-    /// <param name="basic">The result of Basic for the sentence of the row.</param>
-    /// <returns>True when the answer of the composite model for the row is at the part-of-speech level with a closed-class slot selected.</returns>
-    private static bool ClosedSlotWins(WeightedLemma lemma, CorpusRow row, List<int> columns, float[] scores, int best, ClassifyResult basic)
-    {
-        if (!WordLexicon.TryLookup(row.Words[row.TargetWordIndex], out var analyses))
-        {
-            return false;
-        }
-
-        // The result of the encoder as the classifier builds it: the open-class slots of the lemma with the mass of their
-        // senses, and the closed-class slots of the lemma without probability and without senses
-        var probabilities = LemmaWeights.Softmax(scores);
-        PartOfSpeech SlotOf(int position) => WordLexicon.TryGetSense(lemma.SenseIds[columns[position]], out var sense) ? sense.PartOfSpeech : PartOfSpeech.Noun;
-        var candidates = new List<AnalysisCandidate>();
-        foreach (var details in analyses.Where(a => string.Equals(a.Lemma, lemma.Lemma, StringComparison.Ordinal)))
-        {
-            if (candidates.Exists(c => SenseFusion.SameSlot(c.Details, details)))
-            {
-                continue;
-            }
-
-            var mass = SenseFusion.IsClosedClass(details.PartOfSpeech) ? 0.0 : Enumerable.Range(0, columns.Count).Where(p => SlotOf(p) == details.PartOfSpeech).Sum(p => probabilities[p]);
-            candidates.Add(new AnalysisCandidate(details, mass, []));
-        }
-
-        var selectedIndex = candidates.FindIndex(c => c.Details.PartOfSpeech == SlotOf(best));
-        if (selectedIndex < 0)
-        {
-            return false;
-        }
-
-        var primary = new ClassifyResult(row.Words[row.TargetWordIndex], true, [.. candidates], candidates[selectedIndex].Details, SenseLevel.Sense, 1.0, null, lemma.SenseIds[columns[best]]);
-        var split = FallbackWordSenseModel.SplitClosedClass(primary, basic, out var applied);
-        return applied && split.Details is { } winner && SenseFusion.IsClosedClass(winner.PartOfSpeech);
-    }
-
-    private static int[] GroupsOf(IReadOnlyList<string> senseIds)
-    {
-        var indexes = new Dictionary<string, int>(StringComparer.Ordinal);
-        var groups = new int[senseIds.Count];
-        for (var i = 0; i < senseIds.Count; i++)
-        {
-            string? groupId = WordLexicon.TryGetSense(senseIds[i], out var sense) ? sense.GroupId : null;
-            if (groupId is null)
-            {
-                groups[i] = -1;
-                continue;
-            }
-
-            if (!indexes.TryGetValue(groupId, out var index))
-            {
-                index = indexes.Count;
-                indexes[groupId] = index;
-            }
-
-            groups[i] = index;
-        }
-
-        return groups;
-    }
-
     /// <summary>
     ///     Converts a value to the float that is stored, never above the value and never below the first threshold.
     /// </summary>
