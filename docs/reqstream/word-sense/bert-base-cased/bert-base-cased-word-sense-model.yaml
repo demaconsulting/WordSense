@@ -84,7 +84,7 @@ sections:
                   usage prior of the Basic model.
                 tags: [unit]
                 justification: |
-                  About 83 percent of the ambiguous words of running text have no trained weights; the ranking gives a
+                  About 56 percent of the ambiguous words of running text have no trained weights; the ranking gives a
                   consumer the likely senses of them.
                 tests:
                   - BertBaseCasedWordSenseModel_Classify_UntrainedPolysemousWord_ListsSensesRankedByUsagePrior

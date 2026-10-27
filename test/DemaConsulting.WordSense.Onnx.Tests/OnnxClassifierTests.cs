@@ -331,12 +331,13 @@ public class OnnxClassifierTests
     }
 
     /// <summary>
-    ///     A preposition use of a word that is also a verb and a noun is reachable: its sense can win and its analysis
-    ///     is then the selected one.
+    ///     A closed-class use of a word that is also a verb and a noun (the preposition <c>like</c>) is not scored: its
+    ///     analysis is listed with probability 0 and without senses, even when its sense has the highest score, and the
+    ///     probability goes to the open-class analyses, whose senses are the only ones scored.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task OnnxClassifier_ClassifyAsync_PrepositionUseOfLike_IsReachable()
+    public async Task OnnxClassifier_ClassifyAsync_ClosedClassUseOfLike_IsNotScored()
     {
         // Arrange: weights over all senses of "like"; the preposition sense scores highest
         var preposition = Assert.Single(WordLexicon.SensesOf("like", PartOfSpeech.Preposition));
@@ -346,13 +347,12 @@ public class OnnxClassifierTests
         // Act
         var result = await RunAsync(table, vector, "like");
 
-        // Assert: the preposition analysis is selected and answered at the sense level
-        Assert.Equal(PartOfSpeech.Preposition, result.Details!.PartOfSpeech);
-        Assert.Equal(SenseLevel.Sense, result.Level);
-        Assert.Equal(preposition.SenseId, result.SenseId);
-        var mass = Math.Exp(6) / (Math.Exp(6) + Fixtures.SenseIds("like").Length - 1);
-        Assert.Equal(mass, Analysis(result, PartOfSpeech.Preposition).Probability, Tolerance);
-        Assert.Equal(mass, result.Confidence, Tolerance);
+        // Assert: the preposition has no mass and no senses; the answer lies in an open-class analysis
+        var closed = Analysis(result, PartOfSpeech.Preposition);
+        Assert.Equal(0.0, closed.Probability);
+        Assert.True(closed.Senses.IsEmpty);
+        Assert.NotEqual(PartOfSpeech.Preposition, result.Details!.PartOfSpeech);
+        Assert.DoesNotContain(result.Analyses.SelectMany(a => a.Senses), s => s.SenseId == preposition.SenseId);
         Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
     }
 

@@ -24,7 +24,10 @@ internal delegate ValueTask<double[]?[]> PooledEncode(IReadOnlyList<string> word
 ///     tells that the sense is unresolved). A word whose lemma has trained weights
 ///     and several scored senses is pending: the words are joined by single spaces into one text, the encoder runs once
 ///     for the pending words, the pooled vector of each is centered on the global mean of the weights and scaled to unit
-///     length, and the classifier scores the fine senses of every analysis of the word (and no sense of another lemma).
+///     length, and the classifier scores the fine senses of every analysis of the word that has an open-class part of speech
+///     (noun, verb, adjective, adverb) and no sense of another lemma; a closed-class analysis (auxiliary, determiner, pronoun,
+///     preposition, conjunction, interjection) is listed with probability 0 and without senses, and the fallback model of a
+///     composition gives it its probability.
 ///     The softmax of the scores gives the probability of every sense. The senses belong to a lemma and part of speech
 ///     (a <i>slot</i>), not to the analyses of a slot that differ only in features (<c>cut</c> as an infinitive and as a
 ///     past tense, <c>deer</c> as a singular and a plural), so the probability of a slot is the mass of its senses and
@@ -251,14 +254,32 @@ internal sealed class OnnxClassifier
     /// <param name="lemma">The trained lemma.</param>
     /// <param name="slots">The lemma and part of speech slots of the word that belong to the lemma.</param>
     /// <returns>The column indexes in ascending (inventory) order.</returns>
-    private static List<int> CandidateColumns(ResolvedLemma lemma, IEnumerable<Slot> slots)
+    /// <remarks>
+    ///     The slots of a closed class (an auxiliary, determiner, pronoun, preposition, conjunction or interjection: no
+    ///     WordNet senses) are not scored: the encoder has no evidence of its own for the part of speech of a word, and the
+    ///     probability of such a slot comes from the fallback model (see <see cref="FallbackWordSenseModel"/>).
+    /// </remarks>
+    private static List<int> CandidateColumns(ResolvedLemma lemma, IEnumerable<Slot> slots) =>
+        OpenClassColumns(lemma.ColumnOf, lemma.Weights.Lemma, slots.Select(s => s.PartOfSpeech));
+
+    /// <summary>
+    ///     Lists the columns of a trained lemma that are scored for a word: the senses of the open-class parts of speech
+    ///     that the word has for the lemma, and no sense of a closed class.
+    /// </summary>
+    /// <param name="columnOf">Gives the column of a sense id of the lemma, or a negative number for a sense without a column.</param>
+    /// <param name="lemma">The lemma.</param>
+    /// <param name="partsOfSpeech">The parts of speech that the word has for the lemma.</param>
+    /// <returns>The column indexes in ascending (inventory) order; the build tool uses the same rule to calibrate the thresholds.</returns>
+    internal static List<int> OpenClassColumns(Func<string, int> columnOf, string lemma, IEnumerable<PartOfSpeech> partsOfSpeech)
     {
+        ArgumentNullException.ThrowIfNull(columnOf);
+        ArgumentNullException.ThrowIfNull(partsOfSpeech);
         var columns = new List<int>();
-        foreach (var slot in slots)
+        foreach (var partOfSpeech in partsOfSpeech.Distinct().Where(p => !SenseFusion.IsClosedClass(p)))
         {
-            foreach (var sense in slot.Senses)
+            foreach (var sense in WordLexicon.SensesOf(lemma, partOfSpeech))
             {
-                if (lemma.ColumnOf(sense.SenseId) is var column and >= 0)
+                if (columnOf(sense.SenseId) is var column and >= 0)
                 {
                     columns.Add(column);
                 }

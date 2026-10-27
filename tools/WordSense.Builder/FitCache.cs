@@ -107,8 +107,9 @@ internal sealed class FitCache
     /// <param name="labels">The column index of each feature.</param>
     /// <param name="features">The features.</param>
     /// <param name="offsets">The usage-prior offset of each column (the stored bias contains it), or null when the lemma is trained without the prior.</param>
+    /// <param name="closedColumns">Whether each column is a closed-class sense (the thresholds leave it out), or null when none is.</param>
     /// <returns>The key as hexadecimal text.</returns>
-    public static string KeyOf(TrainingOptions options, string lemma, IReadOnlyList<string> senseIds, IReadOnlyList<int> groups, int[] labels, float[][] features, IReadOnlyList<double>? offsets = null)
+    public static string KeyOf(TrainingOptions options, string lemma, IReadOnlyList<string> senseIds, IReadOnlyList<int> groups, int[] labels, float[][] features, IReadOnlyList<double>? offsets = null, IReadOnlyList<bool>? closedColumns = null)
     {
         using var hash = IncrementalHash.CreateHash(HashAlgorithmName.SHA256);
         var number = new byte[8];
@@ -154,6 +155,16 @@ internal sealed class FitCache
         foreach (var offset in offsets ?? [])
         {
             Append(BitConverter.DoubleToInt64Bits(offset));
+        }
+
+        // The thresholds leave the closed-class columns out; a lemma without any keeps the key it always had
+        if (closedColumns is not null && closedColumns.Any(c => c))
+        {
+            Append(-2);
+            foreach (var closed in closedColumns)
+            {
+                Append(closed ? 1 : 0);
+            }
         }
 
         Append(features.Length);

@@ -127,7 +127,7 @@ H-conflict-1	fine	fine	fine
 H-conflict-2	answer	fine	fine
 H-conflict-3	miss	miss	fine
 H-conflict-4	fine	answer	answer
-H-defense-1	answer	fine	answer
+H-defense-1	answer	fine	fine
 H-defense-2	fine	fine	fine
 H-defense-3	answer	fine	fine
 H-defense-4	answer	fine	fine
@@ -163,8 +163,8 @@ M-look-3	fine	fine	fine
 M-look-4	fine	fine	fine
 M-way-1	fine	fine	fine
 M-way-2	fine	fine	fine
-M-way-3	miss	miss	miss
-M-way-4	miss	miss	miss
+M-way-3	miss	fine	fine
+M-way-4	miss	miss	fine
 M-help-1	fine	fine	fine
 M-help-2	fine	fine	fine
 M-help-3	fine	fine	fine
@@ -260,7 +260,7 @@ C-content-2	answer	fine	fine
 C-content-3	miss	fine	fine
 C-content-4	fine	fine	fine
 C-content-5	fine	fine	fine
-C-content-6	answer	fine	miss
+C-content-6	answer	fine	fine
 C-produce-1	fine	fine	fine
 C-produce-2	fine	fine	fine
 C-produce-3	fine	fine	fine

@@ -26,7 +26,60 @@ internal sealed record CorpusRow(string Lemma, string SenseId, PartOfSpeech Part
 /// </remarks>
 internal static class Corpus
 {
+    /// <summary>
+    ///     The number of waves of the corpus that make one stage: waves 1 to 49 are the base stage (the rank waves), waves
+    ///     50 to 99 the first added stage, and so on.
+    /// </summary>
+    public const int WavesPerStage = 50;
+
+    /// <summary>
+    ///     The name of the base stage.
+    /// </summary>
+    public const string BaseStage = "base";
+
     private const int ColumnCount = 4;
+
+    private const string WavePrefix = "quota-w";
+
+    /// <summary>
+    ///     Gets the stage of every lemma from the file names of the anchors: the stage of the highest wave
+    ///     (<c>quota-w{wave}-…</c>, the wave counted as its leading digits) that holds an anchor of the lemma, divided by
+    ///     <see cref="WavesPerStage"/>; files that are not wave files do not count.
+    /// </summary>
+    /// <param name="anchors">The anchor rows.</param>
+    /// <returns>The function that names the stage of a lemma: <see cref="BaseStage"/> for stage 0 and for a lemma without a wave file, else <c>stage N</c>.</returns>
+    public static Func<string, string> StagesOf(IEnumerable<CorpusRow> anchors)
+    {
+        ArgumentNullException.ThrowIfNull(anchors);
+        var stageOf = new Dictionary<string, int>(StringComparer.Ordinal);
+        foreach (var row in anchors)
+        {
+            if (WaveOf(row.Source) is { } wave)
+            {
+                var stage = wave / WavesPerStage;
+                stageOf[row.Lemma] = stageOf.TryGetValue(row.Lemma, out var known) ? Math.Max(known, stage) : stage;
+            }
+        }
+
+        return lemma => stageOf.TryGetValue(lemma, out var stage) && stage > 0 ? $"stage {stage.ToString(System.Globalization.CultureInfo.InvariantCulture)}" : BaseStage;
+    }
+
+    private static int? WaveOf(string fileName)
+    {
+        if (!fileName.StartsWith(WavePrefix, StringComparison.Ordinal))
+        {
+            return null;
+        }
+
+        var digits = fileName.AsSpan(WavePrefix.Length);
+        var count = 0;
+        while (count < digits.Length && char.IsAsciiDigit(digits[count]))
+        {
+            count++;
+        }
+
+        return count > 0 ? int.Parse(digits[..count], System.Globalization.CultureInfo.InvariantCulture) : null;
+    }
 
     /// <summary>
     ///     Reads every <c>*.tsv</c> sentence file in a directory, in file-name order.

@@ -50,10 +50,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `OnlyAmbiguousWordsAreEncoded`; scoring increment): the encoder runs once for a text in which at least one word has
   several senses and usable weights, only for those words, and never for a text in which no word does.
 - **Senses of every analysis** (`WordWithSeveralAnalyses_RanksTheSensesOfEveryAnalysis`,
-  `PrepositionUseOfLike_IsReachable`, `InflectedForm_RanksTheSensesOfItsLemma`; scoring increment): a word with
-  several analyses ranks the fine senses of all of them, so the preposition use of `like` can be the answer beside its
-  verb and noun senses; an inflected form ranks the senses of its lemma; no sense of another lemma competes; the
-  probability of a lemma and part of speech is the mass of its senses.
+  `ClosedClassUseOfLike_IsNotScored`, `InflectedForm_RanksTheSensesOfItsLemma`; scoring increment): a word with
+  several analyses ranks the fine senses of all its open-class analyses; the preposition use of `like` is listed with
+  probability 0 and without senses, even when its sense has the highest score; an inflected form ranks the senses of its
+  lemma; no sense of another lemma competes; the probability of a lemma and part of speech is the mass of its senses.
 - **Slots** (`FeaturesOfOneLemmaAndPartOfSpeech_ShareTheSlotProbability`,
   `SlotWithSeveralVariants_IsSelectedByItsTotalProbability`): the two verb analyses of `read` split the probability of
   the verb equally, list the same senses, and the confidence of a sense answer is the probability of the sense (the

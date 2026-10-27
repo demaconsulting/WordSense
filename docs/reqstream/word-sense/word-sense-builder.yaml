@@ -187,7 +187,9 @@ sections:
           - id: WordSense-WordSenseBuilder-Thresholds
             title: >-
               The builder shall choose for every trained lemma a first fine threshold, and for a lemma that has groups
-              also a first group threshold, by cross-validation on the anchors of the lemma only, so that the answers
+              also a first group threshold, by cross-validation on the anchors of the lemma only, over the columns that
+              the classifier scores at run time (the closed-class senses of a lemma are left out of every margin and
+              their anchors are not tested), so that the answers
               above each threshold reach a configured precision target (95 percent by default), deterministically; a
               level for which no threshold reaches the target shall never be answered for that lemma. These first
               thresholds are the input of the real-text calibration (WordSense-WordSenseBuilder-RealCalibration), which
@@ -204,6 +206,7 @@ sections:
               - WordSenseBuilder_Thresholds_Choose_IsDeterministicForSeed
               - WordSenseBuilder_Thresholds_Choose_NeverReadsHoldoutOrEvaluationSentences
               - WordSenseBuilder_Thresholds_Choose_TargetNeverReached_NeverAnswersThatLevel
+              - WordSenseBuilder_Thresholds_Choose_ClosedClassColumns_AreLeftOutOfTheMargins
               - WordSenseBuilder_ModelTrainer_TrainDataAsync_WritesBothThresholdsPerLemma
 
           - id: WordSense-WordSenseBuilder-RealCalibration
@@ -215,8 +218,12 @@ sections:
               trained lemmas so that the answers on the real calibration sentences reach the precision target: a
               lemma with enough calibration rows gets a threshold of its own that is never lower than its adjusted
               cross-validation threshold, every other lemma gets its cross-validation threshold plus one pooled shift
-              that is fitted on the calibration rows of all those lemmas, a level that was never answered stays never
-              answered, and the group threshold moves the same way only when the calibration rows can verify it. The
+              that is fitted on the calibration rows of the lemmas of its stratum (the stage of the corpus that holds
+              its anchors: the waves 1 to 49 are the base stage, the waves 50 to 99 the first added stage, and so on;
+              the lemmas of a stratum are calibrated with the rows of that stratum alone, so that adding a stage never
+              moves the thresholds of an earlier one and each stage meets the target on its own rows), a level that
+              was never answered stays never answered, and the group threshold moves the same way only when the
+              calibration rows can verify it. The
               test split and the written held-out sentences shall never influence a threshold, and the calibration shall
               be deterministic. The provenance files that decide the split shall be read strictly: a file whose header
               is not exact, a row without its four non-empty columns, a split or a source that is not allowed, or an id
@@ -228,7 +235,15 @@ sections:
               percent against 95 percent measured on the held-out real sentences). Calibrating on held-out real
               sentences whose documents are disjoint from the test split keeps the headline real-text figures
               independent of the thresholds, and one pooled shift is the robust choice because a lemma has only a few
-              calibration rows. A provenance row that is skipped silently would move a sentence between the real and
+              calibration rows. The rows of a later stage were collected another way (two labelers that agree, a blind
+              check) and are answered right at a lower margin than the rows of the base stage: one pooled shift over
+              both
+              lowered the base thresholds by 0.65 (MiniLM) and 1.05 (BertBaseCased) and cost the base lemmas about
+              1.5 points of precision at a larger share of answers, so each stage is calibrated on its own rows. The
+              margin of a calibration row is computed as inference computes it, over the open-class senses of the part
+              of speech of the target word; a margin that included the closed-class senses, which inference does not
+              score, would not be the margin the threshold is applied to. A
+              provenance row that is skipped silently would move a sentence between the real and
               the written sets, or between the calibration and the test side, without a trace.
             tests:
               - WordSenseBuilder_RealSplit_Classify_SplitsRealRowsByDocument
@@ -238,6 +253,15 @@ sections:
               - WordSenseBuilder_RealSplit_Classify_ReportsTestRowsInDocumentsWithoutAnchors
               - WordSenseBuilder_RealSplit_Classify_AnchorOfAnotherLemma_DoesNotCountAsAnchorDocument
               - WordSenseBuilder_RealCalibrator_Apply_RaisesThresholdsUntilThePooledPrecisionReachesTheTarget
+              - WordSenseBuilder_RealCalibrator_Apply_Strata_AreCalibratedByTheirOwnRows
+              - WordSenseBuilder_Corpus_StagesOf_NamesTheStageOfTheHighestWaveFile
+              - WordSenseBuilder_RealCalibrator_ClosedClassSenses_AreNotCandidatesOfTheMargin
+              - WordSenseBuilder_RealCalibrator_FewerThanTwoCandidates_IsNotObserved
+              - WordSenseBuilder_RealCalibrator_Apply_LemmaWithEnoughRows_KeepsTheHigherOfItsOwnAndTheAdjustedThreshold
+              - WordSenseBuilder_RealCalibrator_Apply_NoCalibrationRows_KeepsTheThresholds
+              - WordSenseBuilder_RealCalibrator_Apply_NeverStaysNever_AndIsDeterministic
+              - WordSenseBuilder_RealCalibrator_Apply_GroupThreshold_MovesOnlyWithEnoughAnswers
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_CalibrationRows_MoveTheThresholds
               - WordSenseBuilder_RealCalibrator_Apply_LemmaWithEnoughRows_KeepsTheHigherOfItsOwnAndTheAdjustedThreshold
               - WordSenseBuilder_RealCalibrator_Apply_NoCalibrationRows_KeepsTheThresholds
               - WordSenseBuilder_RealCalibrator_Apply_NeverStaysNever_AndIsDeterministic
@@ -246,8 +270,11 @@ sections:
 
           - id: WordSense-WordSenseBuilder-CalibrationShift
             title: >-
-              The one pooled shift of the real-text calibration shall be chosen as follows, for the fine level and, with
+              The one pooled shift of the real-text calibration (of each stratum) shall be chosen as follows, for the
+              fine
+              level and, with
               its own answers, for the group level. The pooled answers are those of the calibration rows of the lemmas
+              of the stratum
               that have a finite first threshold and no threshold of their own, and an answer is usable when its
               distance (its margin minus the first threshold of its lemma) is finite and not negative; a shift keeps
               the usable answers whose distance is at least the shift, and answers of equal distance are kept or
@@ -567,7 +594,9 @@ sections:
           - id: WordSense-WordSenseBuilder-TrainBasic
             title: >-
               The builder shall retrain the whole basic model with one command from the committed tag counts of the
-              open corpus, the fine-sense anchors and the form-chooser anchors, rolling the analysis labels of the
+              open corpus, the fine-sense anchors of the base stage and the form-chooser anchors, rolling the analysis
+              labels
+              of the
               training sentences of the context cues up from the fine senses (a lemma and a part of speech) and from the
               chooser labels (a lemma or a tense of a form) without any analysis prior, and shall write the embedded
               table of the basic package deterministically; it shall name the command that makes the counts when they
@@ -583,6 +612,7 @@ sections:
               - WordSense-WordSenseBuilder-TrainBasic-TenseClasses
               - WordSense-WordSenseBuilder-TrainBasic-TenseWeights
               - WordSense-WordSenseBuilder-TrainBasic-TrainSplitOnly
+              - WordSense-WordSenseBuilder-TrainBasic-BaseStageCues
               - WordSense-WordSenseBuilder-TrainBasic-NounVerbTable
               - WordSense-WordSenseBuilder-TrainBasic-NounVerbWritten
               - WordSense-WordSenseBuilder-TrainBasic-NounVerbGrid
@@ -890,6 +920,22 @@ sections:
               spelling; the gerund and the present participle are never spelled like a past.
             tests:
               - WordSenseBuilder_BasicTrainer_TenseClassOf_SeparatesPastFromTheFormsThatShareItsSpelling
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-BaseStageCues
+            title: >-
+              The builder shall train the cue tables of the basic model from the anchors of the base stage only (the
+              lemmas whose anchors are in the waves 1 to 49), so that anchors of a stage added later change no byte of
+              the table.
+            tags: [unit]
+            justification: |
+              The anchors of a later stage are balanced per sense for the encoder weights, and the quota of a
+              closed-class
+              sense (need#auxiliary) over-weights the rare analyses of the high-usage lemmas: with them the cue table of
+              need answers "we need rest" as an auxiliary (0.57), the confidence of the noun in "Please open the door
+              handle ." falls below 0.8, and no part-of-speech accuracy of the basic model on the open corpus or the
+              treebank rises (94.59 and 92.43 percent against 94.59 and 92.37).
+            tests:
+              - WordSenseBuilder_Program_TrainBasic_AnchorsOfALaterStage_DoNotChangeTheTable
 
           - id: WordSense-WordSenseBuilder-TrainBasic-TenseWeights
             title: >-

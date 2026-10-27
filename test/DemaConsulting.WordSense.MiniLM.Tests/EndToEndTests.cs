@@ -33,6 +33,37 @@ public class EndToEndTests
     }
 
     /// <summary>
+    ///     The auxiliary <c>have</c> stays an auxiliary and the verb <c>have</c> gets a verb sense: the closed-class part
+    ///     of speech comes from the Basic model, and the encoder scores the senses inside the open-class part.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task MiniLM_Classifier_EndToEnd_Have_AuxiliaryStaysAuxiliaryAndVerbGetsAVerbSense()
+    {
+        // Arrange
+        using var model = new MiniLMWordSenseModel(ModelFolder.Require());
+        model.Encoder.IntraOpThreads = 2;
+
+        // Act
+        var auxiliary = (await model.ClassifyAsync(["He", "has", "been", "there", "all", "day", "."], TestContext.Current.CancellationToken))[1];
+        var verb = (await model.ClassifyAsync(["I", "have", "a", "car", "."], TestContext.Current.CancellationToken))[1];
+
+        // Assert: the auxiliary is the selected analysis; the verb lists only verb senses, scored in context
+        Assert.Equal(PartOfSpeech.Auxiliary, auxiliary.Details?.PartOfSpeech);
+        Assert.Equal(1.0, auxiliary.Analyses.Sum(a => a.Probability), 9);
+        Assert.Equal(PartOfSpeech.Verb, verb.Details?.PartOfSpeech);
+        Assert.Equal(1.0, verb.Analyses.Sum(a => a.Probability), 9);
+        var selected = verb.Analyses.First(a => a.Details.Equals(verb.Details));
+        Assert.False(selected.Senses.IsEmpty);
+        Assert.False(selected.SensesRankedByUsage);
+        Assert.All(selected.Senses, s =>
+        {
+            Assert.True(WordLexicon.TryGetSense(s.SenseId, out var sense));
+            Assert.Equal(PartOfSpeech.Verb, sense.PartOfSpeech);
+        });
+    }
+
+    /// <summary>
     ///     The tense of <c>read</c> and <c>put</c> follows the context: the encoder cannot tell the variants of the slot
     ///     apart, so the Basic model splits them, and the slot keeps the probability the encoder gave it.
     /// </summary>

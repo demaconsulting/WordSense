@@ -133,7 +133,7 @@ sections:
                   those senses ranked by the usage prior.
                 tags: [unit]
                 justification: |
-                  About 83 percent of the ambiguous words of running text have a lemma that no encoder model scores the
+                  About 56 percent of the ambiguous words of running text have a lemma that no encoder model scores the
                   senses of, so without the usage prior the analyses of those words list no senses; the usage of the
                   senses is the one piece of evidence that exists for every lemma, it is the strongest single predictor
                   of the sense of a word (the most frequent sense is right for about two thirds of the words of the

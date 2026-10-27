@@ -903,11 +903,223 @@ public class FallbackWordSenseModelTests
         Assert.Equal([1.0, 0.0, 1.0, 0.6], weights);
     }
 
+    private static readonly WordDetails HaveVerb = new("have", PartOfSpeech.Verb, "VerbForm=Inf");
+    private static readonly WordDetails HaveAux = new("have", PartOfSpeech.Auxiliary, string.Empty);
+    private static readonly WordDetails HavePron = new("have", PartOfSpeech.Pronoun, string.Empty);
+    private static readonly WordDetails HaveNoun = new("have", PartOfSpeech.Noun, "Number=Sing");
+
+    // An encoder that answered the verb sense: it lists the closed-class slots without probability and without senses
+    private static ClassifyResult EncoderHave() =>
+        new("have", true, [new(HaveVerb, 1.0, [new("have#own", 0.9), new("have#get", 0.1)]), new(HaveAux, 0.0, []), new(HavePron, 0.0, [])], HaveVerb, SenseLevel.Sense, 0.8, null, "have#own");
+
+    private static ClassifyResult BasicHave(double verb, double aux, double pronoun, WordDetails selected) =>
+        new("have", true, [new(HaveVerb, verb, [new("have#own", 1)]), new(HaveAux, aux, [new("have#auxiliary", 1)]), new(HavePron, pronoun, [new("have#pronoun", 1)])], selected, SenseLevel.PartOfSpeech, 0.5, null, null);
+
+    /// <summary>
+    ///     The probability of a closed-class slot (an auxiliary, a pronoun) of a result that scored senses is the
+    ///     probability the fallback gives it; the open-class slot takes the rest, keeps the level, the group and the sense,
+    ///     and its confidence is scaled by its new probability.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_ClosedClassSlots_TakeTheProbabilityOfTheFallbackAndOpenClassKeepsTheSense()
+    {
+        // Arrange: the encoder says the verb with all the mass; Basic says verb 0.7, auxiliary 0.2, pronoun 0.1
+        var primary = EncoderHave();
+        var fallback = BasicHave(0.7, 0.2, 0.1, HaveVerb);
+
+        // Act
+        var result = await Combine(primary, fallback);
+
+        // Assert
+        Assert.Equal(0.7, SlotOf(result, PartOfSpeech.Verb), 9);
+        Assert.Equal(0.2, SlotOf(result, PartOfSpeech.Auxiliary), 9);
+        Assert.Equal(0.1, SlotOf(result, PartOfSpeech.Pronoun), 9);
+        Assert.Equal(SenseLevel.Sense, result.Level);
+        Assert.Equal("have#own", result.SenseId);
+        Assert.Equal(HaveVerb, result.Details);
+        Assert.Equal(0.8 * 0.7, result.Confidence, 9);
+        Assert.Equal(["have#own", "have#get"], result.Analyses.First(a => a.Details == HaveVerb).Senses.Select(s => s.SenseId));
+        Assert.Equal(["have#auxiliary"], result.Analyses.First(a => a.Details == HaveAux).Senses.Select(s => s.SenseId));
+        Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
+    }
+
+    /// <summary>
+    ///     When a closed-class slot is the most probable one the answer is at the part-of-speech level with the
+    ///     probabilities of the fallback for the closed-class slots, the closed-class analysis selected and no sense: the
+    ///     composite decided a part of speech, even when the fallback names the only sense of the slot.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_ClosedClassSlotMostProbable_AnswersAtPartOfSpeechLevel()
+    {
+        // Arrange: "he has been": Basic says auxiliary and names its only sense
+        var primary = EncoderHave();
+        var fallback = new ClassifyResult("have", true, [new(HaveAux, 0.85, [new("have#auxiliary", 1)]), new(HaveVerb, 0.1, [new("have#own", 1)]), new(HavePron, 0.05, [new("have#pronoun", 1)])], HaveAux, SenseLevel.Sense, 0.85, null, "have#auxiliary");
+
+        // Act
+        var result = await Combine(primary, fallback);
+
+        // Assert
+        Assert.Equal(SenseLevel.PartOfSpeech, result.Level);
+        Assert.Equal(HaveAux, result.Details);
+        Assert.Equal(0.85, result.Confidence, 9);
+        Assert.Null(result.SenseId);
+        Assert.Null(result.GroupId);
+        Assert.Equal(0.1, SlotOf(result, PartOfSpeech.Verb), 9);
+        Assert.Equal(0.05, SlotOf(result, PartOfSpeech.Pronoun), 9);
+        Assert.Equal(["have#auxiliary"], result.Analyses[0].Senses.Select(s => s.SenseId));
+    }
+
+    /// <summary>
+    ///     When a closed-class slot is the most probable one although the fallback selected another slot, the answer is
+    ///     at the part-of-speech level with the combined slot probabilities and no sense.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_ClosedClassSlotMostProbable_FallbackSelectedAnother_AnswersAtPartOfSpeechLevel()
+    {
+        // Arrange: the encoder splits the open mass between the verb and the noun; Basic has verb 0.4, auxiliary 0.35, pronoun 0.25
+        var primary = new ClassifyResult("have", true, [new(HaveVerb, 0.5, [new("have#own", 1)]), new(HaveNoun, 0.5, [new("have#noun", 1)]), new(HaveAux, 0.0, []), new(HavePron, 0.0, [])], HaveVerb, SenseLevel.Sense, 0.45, null, "have#own");
+        var fallback = new ClassifyResult("have", true, [new(HaveVerb, 0.4, []), new(HaveAux, 0.35, []), new(HavePron, 0.25, []), new(HaveNoun, 0.0, [])], HaveVerb, SenseLevel.PartOfSpeech, 0.4, null, null);
+
+        // Act
+        var result = await Combine(primary, fallback);
+
+        // Assert: verb 0.4 x 0.5 = 0.2 and noun 0.2 against the auxiliary 0.35
+        Assert.Equal(SenseLevel.PartOfSpeech, result.Level);
+        Assert.Equal(HaveAux, result.Details);
+        Assert.Equal(0.35, result.Confidence, 9);
+        Assert.Null(result.SenseId);
+        Assert.Null(result.GroupId);
+        Assert.Equal(0.2, SlotOf(result, PartOfSpeech.Verb), 9);
+        Assert.Equal(0.2, SlotOf(result, PartOfSpeech.Noun), 9);
+        Assert.Equal(0.25, SlotOf(result, PartOfSpeech.Pronoun), 9);
+    }
+
+    /// <summary>
+    ///     A primary result without a closed-class slot, one with only closed-class slots, one that gives a closed-class
+    ///     slot a probability of its own (a tagger), and a fallback that lists no slot of the primary result are left as
+    ///     they are.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_ClosedClassSplit_NotApplicable_LeavesThePrimaryResult()
+    {
+        // Arrange
+        var open = EncoderUse();
+        var closedOnly = new ClassifyResult("have", true, [new(HaveAux, 1.0, [new("have#auxiliary", 1)]), new(HavePron, 0.0, [new("have#pronoun", 1)])], HaveAux, SenseLevel.Sense, 1, null, "have#auxiliary");
+        var elsewhere = new ClassifyResult("have", true, [new(new WordDetails("has", PartOfSpeech.Verb, "Tense=Pres"), 1.0, [])], new WordDetails("has", PartOfSpeech.Verb, "Tense=Pres"), SenseLevel.PartOfSpeech, 1, null, null);
+        var ownEstimate = new ClassifyResult("have", true, [new(HaveVerb, 0.7, [new("have#own", 1)]), new(HaveAux, 0.3, [new("have#auxiliary", 1)])], HaveVerb, SenseLevel.Sense, 0.7, null, "have#own");
+        var fallback = BasicHave(0.7, 0.2, 0.1, HaveVerb);
+
+        // Act
+        var openResult = await Combine(open, BasicUse());
+        var closedResult = await Combine(closedOnly, fallback);
+        var elsewhereResult = await Combine(EncoderHave(), elsewhere);
+        var ownEstimateResult = await Combine(ownEstimate, BasicHave(0.1, 0.8, 0.1, HaveAux));
+
+        // Assert
+        Assert.Equal(0.7, SlotOf(openResult, PartOfSpeech.Noun), 9);
+        Assert.Equal(closedOnly, closedResult);
+        Assert.Equal(EncoderHave(), elsewhereResult);
+        Assert.Equal(ownEstimate, ownEstimateResult);
+    }
+
     private enum EnsureFailureKind
     {
         None,
         Synchronous,
         Asynchronous,
+    }
+
+    private static readonly WordDetails MuchAdj = new("much", PartOfSpeech.Adjective, "Degree=Pos");
+    private static readonly WordDetails MoreAdv = new("more", PartOfSpeech.Adverb, "Degree=Cmp");
+
+    // Basic's answer for a form that the encoder does not score: the top slot has exactly one sense, so it names it
+    private static ClassifyResult BasicSingleSense(double top) =>
+        new("more", true, [new(MuchAdj, top, [new("much#great-amount", 1)]), new(MoreAdv, 1 - top, [])], MuchAdj, SenseLevel.Sense, top, null, "much#great-amount");
+
+    /// <summary>
+    ///     A sense-level answer of the fallback for a word with several analyses that the primary model did not score is
+    ///     answered at the part-of-speech level, with the same analysis and confidence, when its confidence is below
+    ///     0.97.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_SingleSenseAnswerBelowTarget_AnswersAtPartOfSpeechLevel()
+    {
+        // Arrange
+        var fallback = BasicSingleSense(0.6);
+        using var model = new FallbackWordSenseModel(new StubModel(ClassifyResult.Unknown("more")), new StubModel(fallback));
+
+        // Act
+        var result = (await model.ClassifyAsync(["more"], TestContext.Current.CancellationToken))[0];
+
+        // Assert
+        Assert.Equal(SenseLevel.PartOfSpeech, result.Level);
+        Assert.Equal(MuchAdj, result.Details);
+        Assert.Equal(0.6, result.Confidence, 9);
+        Assert.Null(result.SenseId);
+        Assert.Null(result.GroupId);
+        Assert.Equal(fallback.Analyses, result.Analyses);
+    }
+
+    /// <summary>
+    ///     A sense-level answer of the fallback for a word with several analyses stays at the sense level when its
+    ///     confidence reaches 0.97 (the target itself included).
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_SingleSenseAnswerAtTarget_StaysAtSenseLevel()
+    {
+        // Arrange
+        var atTarget = BasicSingleSense(0.97);
+        var above = BasicSingleSense(0.995);
+        using var model = new FallbackWordSenseModel(new StubModel(ClassifyResult.Unknown("more"), ClassifyResult.Unknown("more")), new StubModel(atTarget, above));
+
+        // Act
+        var results = await model.ClassifyAsync(["more", "more"], TestContext.Current.CancellationToken);
+
+        // Assert
+        Assert.Equal([atTarget, above], results);
+    }
+
+    /// <summary>
+    ///     A word with a single analysis (the probability of its slot is 1) stays at the sense level.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_SingleAnalysis_StaysAtSenseLevel()
+    {
+        // Arrange
+        var single = new ClassifyResult("much", true, [new(MuchAdj, 1.0, [new("much#great-amount", 1)])], MuchAdj, SenseLevel.Sense, 1.0, null, "much#great-amount");
+        using var model = new FallbackWordSenseModel(new StubModel(ClassifyResult.Unknown("much")), new StubModel(single));
+
+        // Act
+        var result = (await model.ClassifyAsync(["much"], TestContext.Current.CancellationToken))[0];
+
+        // Assert
+        Assert.Equal(single, result);
+    }
+
+    /// <summary>
+    ///     A selected analysis that lists no sense or several senses is not the single-sense rule of Basic, so a
+    ///     low-confidence result that is nevertheless at the sense level is left as it is.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_SenseLevelWithoutExactlyOneSense_IsLeftAsItIs()
+    {
+        // Arrange
+        var two = new ClassifyResult("more", true, [new(MuchAdj, 0.6, [new("much#a", 0.5), new("much#b", 0.5)]), new(MoreAdv, 0.4, [])], MuchAdj, SenseLevel.Sense, 0.6, null, "much#a");
+        using var model = new FallbackWordSenseModel(new StubModel(ClassifyResult.Unknown("more")), new StubModel(two));
+
+        // Act
+        var result = (await model.ClassifyAsync(["more"], TestContext.Current.CancellationToken))[0];
+
+        // Assert
+        Assert.Equal(two, result);
     }
 
     private sealed class StubModel(params ClassifyResult[] results) : IDownloadableWordSenseModel

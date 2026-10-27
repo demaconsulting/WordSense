@@ -52,7 +52,13 @@ internal static class BasicModelBuilder
             throw new InvalidDataException($"The tag counts are missing in {countsDirectory}; run the 'open-counts' command first.");
         }
 
-        var anchors = Corpus.ReadDirectory(Path.Join(corpus, "anchors"));
+        // The cue tables learn from the base-stage anchors only: the anchors of the stages added later are balanced per sense
+        // for the encoder weights and, with the quota of the closed-class senses (need#auxiliary), over-weight the rare
+        // analyses of the high-usage lemmas (a cue table of need answers "we need rest" as an auxiliary); with them the
+        // Basic table gains no part-of-speech accuracy on any measured set
+        var allAnchors = Corpus.ReadDirectory(Path.Join(corpus, "anchors"));
+        var stageOf = Corpus.StagesOf(allAnchors);
+        var anchors = allAnchors.Where(a => stageOf(a.Lemma) == Corpus.BaseStage).ToList();
         var choosers = ChooserCorpus.ReadDirectory(Path.Join(corpus, "choosers", "anchors"));
         var training = OpenCorpus.ReadSplit(corpus, OpenCorpus.Representative, "train").Select(OpenCorpus.ToTagged).ToList();
         Func<string, System.Collections.Immutable.ImmutableArray<WordDetails>> lexicon = key => WordLexicon.TryLookup(key, out var found) ? found : [];

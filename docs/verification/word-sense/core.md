@@ -188,7 +188,14 @@ reconciled (`FallbackWordSenseModel_BasicAsPrimary_UsageRankedSenses_AreNotRefin
 `FallbackWordSenseModel_PrimaryWithContextScoredSenses_StillReconciled`); the variants of a slot that the primary model
 gives the
 same probability take the proportions of the fallback and keep the probability of the slot
-(`FallbackWordSenseModel_TiedVariantsOfASlot_TakeTheProportionsOfTheFallback`).
+(`FallbackWordSenseModel_TiedVariantsOfASlot_TakeTheProportionsOfTheFallback`); the closed-class slots of the primary
+result (an auxiliary, a determiner, a pronoun) take their probability from the fallback result and the open-class
+slots share the rest
+(`FallbackWordSenseModel_ClosedClassSlots_TakeTheProbabilityOfTheFallbackAndOpenClassKeepsTheSense`); a fallback result
+that names the only sense of one of several analyses of a word that the primary model did not score is kept at the
+sense level only at a confidence of at least 0.97 and otherwise answered at the part-of-speech level
+(`FallbackWordSenseModel_SingleSenseAnswerBelowTarget_AnswersAtPartOfSpeechLevel`,
+`FallbackWordSenseModel_SingleSenseAnswerAtTarget_StaysAtSenseLevel`).
 
 Through the public composite model with the built-in Basic model as its fallback
 (`WordSenseCore_Fallback_PartOfSpeechLevelPrimary_IsReconciledWithTheBasicModel`, in `ContractsTests`), a primary model

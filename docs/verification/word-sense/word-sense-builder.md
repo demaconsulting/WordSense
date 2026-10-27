@@ -251,6 +251,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
   precision never reaches the target gets no threshold for that level, so that level is never answered.
 - **Both thresholds are written** (`ModelTrainer_TrainDataAsync_WritesBothThresholdsPerLemma`): the weights blob
   holds `t_fine` of every trained lemma and `t_group` of every trained lemma that has groups.
+- **Closed-class columns are left out** (`Thresholds_Choose_ClosedClassColumns_AreLeftOutOfTheMargins`): on a lemma with
+  two open senses and a closed-class sense that cannot be told from one of them, the threshold with the closed column
+  flagged is finite and not above the threshold without the flag, a flag list that marks no column gives the threshold
+  of no flags at all, and a flag list of the wrong length is refused.
 
 #### Usage prior
 
@@ -295,6 +299,19 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Pooled shift** (`RealCalibrator_Apply_RaisesThresholdsUntilThePooledPrecisionReachesTheTarget`): on calibration rows
   where the cross-validation thresholds are too low, the thresholds are raised by one shift and the pooled precision of
   the answers reaches the target; thresholds that already meet it are not moved.
+- **Strata** (`RealCalibrator_Apply_Strata_AreCalibratedByTheirOwnRows`, `Corpus_StagesOf_NamesTheStageOfTheHighestWaveFile`):
+  with a base stratum of poor precision (shift 3) and a stage 1 stratum that is always right (shift 0), each stratum gets
+  its own shift, the report lists the strata in the order of their names, the base thresholds are the same with or without
+  the other stratum, and one pooled stratum gives both lemmas the same threshold; the stage of a lemma is the stage of the
+  highest wave file that holds one of its anchors (`quota-w4c` is wave 4, `quota-w49` the base stage, `quota-w50` and
+  `quota-w51` stage 1, `quota-w100` stage 2, `batch-1` no wave).
+- **Margin as inference computes it** (`RealCalibrator_ClosedClassSenses_AreNotCandidatesOfTheMargin`,
+  `RealCalibrator_FewerThanTwoCandidates_IsNotObserved`): for a lemma that has a closed-class sense, the margin of a
+  calibration row ignores that sense, so a row whose best open-class sense wins over a closed-class one is observed with
+  the open-class margin; a row whose word is not a form of the lemma, or that has fewer than two candidates, is not
+  observed.
+- **Basic cue tables learn the base stage only** (`Program_TrainBasic_AnchorsOfALaterStage_DoNotChangeTheTable`): the
+  table trained after a `quota-w50` anchor file is added is byte-identical to the table trained before.
 - **Own threshold** (`RealCalibrator_Apply_LemmaWithEnoughRows_KeepsTheHigherOfItsOwnAndTheAdjustedThreshold`): a lemma
   with at least 20 calibration rows keeps the higher of its own threshold and the adjusted one; a lemma with fewer rows
   gets the pooled shift.

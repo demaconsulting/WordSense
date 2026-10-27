@@ -108,7 +108,7 @@ internal static class ModelTrainer
         var caching = new CachingEncoder(encoder.EncodeAsync, cache);
         var data = await TrainDataAsync(
             info.Name, model.ModelId, WordLexicon.Current.InventoryHash.ToArray(), anchors, options, caching, frozenMean, fitCache, output, clock, cancellationToken, holdout, chooserAnchors, chooserHoldout,
-            RealSplit.Classify(corpus, holdout).Calibration, new CalibrationOptions(settings.CalibrationTarget), usage).ConfigureAwait(false);
+            RealSplit.Classify(corpus, holdout).Calibration, new CalibrationOptions(settings.CalibrationTarget, Stratum: Corpus.StagesOf(anchors)), usage).ConfigureAwait(false);
 
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
         File.WriteAllBytes(path, WeightsBlobWriter.Write(data));

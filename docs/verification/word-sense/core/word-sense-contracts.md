@@ -107,6 +107,31 @@ All scenarios below pass on every platform and target framework of the CI matrix
   the fallback lacks gets `sqrt(0.5 * 1e-6)` of the unnormalized mass), and a slot only the fallback lists enters the
   result with its own analyses, with the senses and the ranking kind (`SensesRankedByUsage`) that the fallback result
   lists for them.
+- **Fallback takes the closed-class probability from the fallback result**
+  (`..._ClosedClassSlots_TakeTheProbabilityOfTheFallbackAndOpenClassKeepsTheSense`,
+  `..._ClosedClassSlotMostProbable_AnswersAtPartOfSpeechLevel`,
+  `..._ClosedClassSlotMostProbable_FallbackSelectedAnother_AnswersAtPartOfSpeechLevel`,
+  `..._ClosedClassSplit_NotApplicable_LeavesThePrimaryResult`): an encoder result that gives the verb `have` all the mass
+  (sense level, confidence 0.8) and lists the auxiliary and the pronoun with probability 0, combined with a fallback
+  that says verb 0.7, auxiliary 0.2 and pronoun 0.1, has these slot probabilities, keeps the sense level, the sense id and
+  the verb as the selected analysis, has the confidence 0.8 × 0.7 and lists the senses of the auxiliary from the
+  fallback; with a fallback that says auxiliary 0.85 and names its only sense the answer is at the part-of-speech level
+  with the auxiliary selected, the confidence 0.85 and no sense; with open mass split
+  between a verb and a noun and a fallback of verb 0.4, auxiliary 0.35 and pronoun 0.25 that selects the verb, the answer
+  is at the part-of-speech level with the auxiliary selected (0.35 against 0.2 and 0.2) and no sense; a primary result
+  without an open-class slot, one that gives a closed-class slot a probability of its own, a fallback that lists none of
+  the slots, and a result without a closed-class slot are left as they are. Through the shipped
+  models (`MiniLM_Classifier_EndToEnd_Have_AuxiliaryStaysAuxiliaryAndVerbGetsAVerbSense` and the BertBaseCased
+  counterpart) the `has` of "He has been there all day ." is an auxiliary, and the `have` of "I have a car ." is a verb
+  that lists only verb senses scored in context.
+- **Fallback keeps a low-confidence single-sense answer below the sense level**
+  (`..._SingleSenseAnswerBelowTarget_AnswersAtPartOfSpeechLevel`, `..._SingleSenseAnswerAtTarget_StaysAtSenseLevel`,
+  `..._SingleAnalysis_StaysAtSenseLevel`, `..._SenseLevelWithoutExactlyOneSense_IsLeftAsItIs`): for a word that the
+  primary model did not score, a fallback result at the sense level for a word with two slots (`more` as the adjective
+  `much` 0.6, the adverb 0.4) is answered at the part-of-speech level with the same analyses, selected analysis and
+  confidence 0.6 and no group or sense id; the same result at the confidence 0.97 (the target itself) and 0.995 stays at
+  the sense level and is returned unchanged; a word with a single analysis and confidence 1 stays at the sense level; a
+  sense-level result whose selected analysis lists two senses is not the single-sense rule and is returned unchanged.
 - **Fallback does not take a usage ranking for a score**
   (`..._BasicAsPrimary_UsageRankedSenses_AreNotRefinedOrReconciled`, `..._BasicWithBasic_ReturnsTheBasicAnswerAsItIs`,
   `..._PrimaryWithContextScoredSenses_StillReconciled`, `..._Reconcile_KeepsTheRankingKindOfEveryAnalysis`): the real

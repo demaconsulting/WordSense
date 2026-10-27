@@ -316,6 +316,34 @@ public sealed class ProgramTests : IDisposable
     }
 
     /// <summary>
+    ///     The cue tables of the basic model learn from the anchors of the base stage only: adding anchors of a later stage
+    ///     (a <c>quota-w50</c> file) does not change the table.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_Program_TrainBasic_AnchorsOfALaterStage_DoNotChangeTheTable()
+    {
+        // Arrange: a base-stage corpus and the same training split, then a stage 1 file for another lemma
+        var corpus = PrepareCorpus();
+        _dir.Write("corpus/open/representative/data/train.tsv", OpenHeader + PutTrainSentence);
+        var first = Path.Join(_dir.Root, "out", "first.bin");
+        var second = Path.Join(_dir.Root, "out", "second.bin");
+        var run = SenseFixtures.Senses("run", PartOfSpeech.Noun, 2);
+        var runVerb = SenseFixtures.Senses("run", PartOfSpeech.Verb, 1)[0];
+        await RunAsync("open-counts", "--corpus", corpus);
+
+        // Act
+        var (firstCode, _, firstError) = await RunAsync("train-basic", "--repository", _dir.Root, "--corpus", corpus, "--output", first);
+        _dir.Write("corpus/anchors/quota-w50-real.tsv", $"run\t{run[0].SenseId}\tNoun\tThe {{run}} was long.\nrun\t{runVerb.SenseId}\tVerb\tThey will {{run}} home.\n");
+        var (secondCode, _, secondError) = await RunAsync("train-basic", "--repository", _dir.Root, "--corpus", corpus, "--output", second);
+
+        // Assert
+        Assert.True(firstCode == 0, firstError);
+        Assert.True(secondCode == 0, secondError);
+        Assert.Equal(await File.ReadAllBytesAsync(first, TestContext.Current.CancellationToken), await File.ReadAllBytesAsync(second, TestContext.Current.CancellationToken));
+    }
+
+    /// <summary>
     ///     The tuning command scores only development inputs, the development split of the open corpus and the development
     ///     file of the treebank, and trains from the training split: with test and training files of the treebank, and test
     ///     splits of the open corpus, that cannot be read, it still succeeds, and the report names only development sets.

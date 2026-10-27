@@ -66,7 +66,10 @@ The probabilities are computed per slot, never per variant:
 1. **Resolve.** Every word is looked up (`WordLexicon.TryLookup`, which finds the lower-case spelling). No analysis gives
    `ClassifyResult.Unknown(word)`: not known, no analyses, no details, level `None`, confidence 0. The fine senses of
    the word are those (`SensesOf`) of the lemma and part of speech of every analysis of the word, in lexicon order; no
-   sense of another lemma is ever one of them.
+   sense of another lemma is ever one of them. The senses of a closed-class analysis (auxiliary, determiner, pronoun,
+   preposition, conjunction, interjection; `SenseFusion.IsClosedClass`) are not among the senses that are scored: its
+   analysis is listed with probability 0 and without senses, and `FallbackWordSenseModel` gives it the probability of
+   the Basic model.
 2. **Single analysis and single sense.** A word with one analysis whose lemma and part of speech have exactly one sense
    gives that analysis with probability 1 and that sense with probability 1 at the `Sense` level with confidence 1 and no
    encoder run, in every model.

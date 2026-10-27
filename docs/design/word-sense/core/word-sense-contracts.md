@@ -185,10 +185,32 @@ whether an id is null: a result at the `PartOfSpeech` level is a valid answer th
   non-empty `Senses` that are not only ranked by usage (`SensesRankedByUsage` is false); any other result (the word is
   unknown to the primary model, or it only chose between analyses, or the senses of its selected analysis are only the
   usage prior, as those of the Basic model) is replaced by the fallback result, so a composite whose primary model is the
-  Basic model never refines or reconciles a ranking by usage as if it were a score. The result of a word is the result
+  Basic model never refines or reconciles a ranking by usage as if it were a score. The fallback result that replaces
+  the primary result passes through `GuardSingleSense`: when it is at the `Sense` level, its confidence is below the
+  target 0.97 (the precision target that the encoder models are calibrated to on real text), it lists more than one slot
+  (lemma and part of speech) and its selected analysis lists exactly one sense (the single-sense rule of the Basic model,
+  which answers at the `Sense` level at any confidence), it is answered at the `PartOfSpeech` level instead, with the
+  same analyses, selected analysis and confidence and no group or sense id; a word with a single slot (the probability
+  of the slot is 1) and every other fallback result are used as they are, and the Basic model alone is not affected.
+  The result of a word is the result
   of one model, never a mixture of the two
-  (its analyses, selected analysis, level, confidence and ids belong together), with two refinements (`Refine` and
-  `Reconcile`, in this order). `Refine`: for a
+  (its analyses, selected analysis, level, confidence and ids belong together), with three refinements (`SplitClosedClass`,
+  `Refine` and `Reconcile`, in this order). `SplitClosedClass`: a slot of the primary result whose part of speech is
+  closed class (not a noun, verb, adjective or adverb; `SenseFusion.IsClosedClass`) has no probability of its own, since
+  a sense classifier has no evidence for it. When the primary result lists closed-class slots without probability (the
+  encoder does not score them) and open-class slots, and
+  the fallback result lists any of them, the probability of every closed-class slot is the probability of the slot in the
+  fallback result, normalized over the slots of the primary result (`f_k`), and every open-class slot gets
+  `(1 − sum of f over the closed-class slots) × p_k / sum of p over the open-class slots`, so the primary result decides
+  only inside the open-class part. The analyses of a closed-class slot are those of the fallback result with their
+  senses; the analyses of an open-class slot keep their shares and senses. When an open-class slot is still the most
+  probable, the result keeps its level, group id, sense id and selected analysis, and its confidence is scaled by the new
+  probability of the slot. When a closed-class slot is the most probable, the result is at the `PartOfSpeech` level with
+  the new probabilities, the first analysis of the most probable slot selected and no group or sense id (the composite
+  decided a part of speech, even when the fallback names the only sense of the slot). A primary result
+  without a closed-class slot or without an open-class slot, one that gives a closed-class slot a probability of its
+  own (the Basic model as the primary model), a fallback result without analyses or without any of the
+  slots, are left as they are. `Refine`: for a
   slot of the primary result (lemma and part of speech) with two or more analyses whose probabilities are all equal
   within 1e-9 (the encoder has no evidence for the split of a slot, which shares its senses, so it gives the feature
   variants the same probability), the composite looks up the same analyses (equal `WordDetails`) in the fallback result

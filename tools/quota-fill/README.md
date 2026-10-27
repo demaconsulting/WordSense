@@ -39,6 +39,14 @@ CC0 export `tools/quota-fill/cache/cc0.tar.bz2` and the FAA PDFs (`tools/quota-f
 
 ## Quotas and document roles
 
+**Stages.** The waves are numbered in blocks of 50 per stage: waves 1 to 49 are the base stage, waves 50 to 99 stage 1
+(`quota-w50-*` to `quota-w55-*`), and so on. The stage of a lemma is the stage of the highest `quota-w<wave>` file that
+holds one of its anchors (the wave counts as its leading digits, so `quota-w4c-*` is wave 4; other files such as
+`batch-1.tsv` do not count). The builder uses the stage in two places (`Corpus.StagesOf`, see the builder design): the
+real-text calibration of the thresholds is fitted and applied per stage, so a stage never moves the thresholds of an
+earlier one, and the cue tables of the basic model learn from the anchors of the base stage only. A wave of a new stage
+takes the next block of numbers.
+
 A sense needs rows by its tier, from the WordNet 3.0 tag count (`lexindex.QUOTA`): **C** (5 or more tags) 20 anchors and
 5 held-out rows, **U** (1 to 4 tags, and every project sense) 10 and 3, **R** (no tag) 5 and 2. An R sense of a lemma
 with 15 or more senses needs 3 and 1 (`lexindex.quota_of`).

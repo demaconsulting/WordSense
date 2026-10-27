@@ -398,7 +398,10 @@ A run takes about two minutes when the embedding cache is warm, and `--no-prior`
 **Thresholds (`Thresholds.Choose`).** For every trained lemma the anchors are split into k = 5 folds by a seeded,
 deterministic shuffle; each fold is scored by a fit on the other folds, which gives out-of-fold margins for every
 anchor. The fine threshold `t_fine` is the lowest margin such that the answers at or above it (equal margins together)
-reach the precision target on the out-of-fold anchors (95 percent by default) with at least three answers; `t_group`
+reach the precision target on the out-of-fold anchors (95 percent by default) with at least three answers; the margins
+are taken over the columns that the classifier scores at run time, so the closed-class senses of a lemma (no WordNet
+senses, `SenseFusion.IsClosedClass`) are left out of every margin and an anchor of a closed-class sense is not tested
+(the fits still learn from it); `t_group`
 is chosen in the same way on the group answers, only for a lemma that has groups and over the anchors whose best sense
 is in a group and whose fine margin is below `t_fine` (the rows that fall through to the group level; every anchor
 when `t_fine` is "never"), with the group margin defined as at run time (the group probability minus the largest
@@ -418,7 +421,17 @@ data, not by a seed. The written held-out sentences and the rows without provena
 calibration rows of the trained lemmas are encoded through the same cache and scored by the final full-precision
 weights. For the fine level, a lemma with at least 20 calibration rows gets a threshold of its own (the lowest margin
 that reaches the precision target with at least five answers); every lemma that has a finite first threshold and no
-threshold of its own contributes to one pooled shift `s >= 0`. The usable answers are the calibration rows of those
+threshold of its own contributes to the pooled shift `s >= 0` of its stratum. The strata are the stages of the corpus
+(`Corpus.StagesOf`: the stage of a lemma is the stage of the highest wave file, `quota-w{wave}-…`, that holds one of its
+anchors, with 50 waves to a stage; waves 1 to 49 are the base stage): the rows of a stage were collected another way (two
+labelers that agree, a blind check) and are answered right at a lower margin, so one shift over both stages lowered the
+thresholds of the base lemmas by 0.65 (MiniLM) and 1.05 (BertBaseCased) and cost them about 1.5 points of precision.
+Each stratum is calibrated with its own rows alone, so adding a stage never moves the thresholds of an earlier one and
+each stage meets the target on its own rows. The margin of a calibration row is computed as inference computes it: over
+the open-class senses of the part of speech that the target word has for the lemma (`OnnxClassifier.OpenClassColumns`),
+so the closed-class senses of a lemma such as `little` or `have` are left out; a row whose word is not a form of the
+lemma, or that has fewer than two such candidates, is not observed. The rest of this paragraph describes one stratum.
+The usable answers are the calibration rows of those
 lemmas whose distance `d = margin - t_cv` (the margin of the best sense minus the first threshold of its lemma) is finite
 and not negative; there are `n` of them, and the answers with `d >= s` are the answers that the shift `s` keeps (answers
 of equal distance are kept or dropped together). The shift is the lowest `s` whose kept answers reach the precision target
@@ -443,7 +456,8 @@ level too (after "verified"). A calibration row whose sense has no anchor counts
 written held-out sentences never reach the choice. The report of the run prints the rows used, the fine shift (with
 "reaches the target" or "target not reached"), the number of lemmas with a threshold of their own, the sense answers
 before and after (counted over all observed calibration rows, the lemmas with a threshold of their own included, not
-only the pooled rows, so they are not the pooled answers that decided the shift) and the group shift with its state. The
+only the pooled rows, so they are not the pooled answers that decided the shift) and the group shift with its state (the
+report adds one line per stratum with its rows, fine shift and group shift). The
 calibration target is
 0.97 (`--calibration-target`), two points above the 95% aimed at on the whole pipeline (and used for the cross-validation
 of the first thresholds), because the precision of the
@@ -682,8 +696,10 @@ that fall short, most frequent first.
 
 1. Read the tag counts of `corpus/open/counts` (made by `open-counts` from the training split of the representative
    open corpus, including the clause counts; the command stops with the name of `open-counts` when they are missing),
-   the fine-sense anchors of
-   `corpus/anchors` and the chooser anchors of `corpus/choosers/anchors`. The holdout, the test splits, the targeted
+   the fine-sense anchors of the base stage in
+   `corpus/anchors` (the lemmas whose anchors are in the waves 1 to 49, `Corpus.StagesOf`; the anchors of a stage added
+   later are balanced per sense for the encoder weights and leave the table unchanged) and the chooser anchors of
+   `corpus/choosers/anchors`. The holdout, the test splits, the targeted
    part and the treebank are not read.
 2. `BasicTrainer.Train` selects from the counts the closed-class words (enough occurrences and a dominant closed-class
    share), every dictionary-ambiguous word of the counts (the most frequent ones, ties by spelling, when
@@ -737,7 +753,7 @@ that fall short, most frequent first.
    the
    cue scores of the table by it. A table that predicts its held-out sentences at or below chance is therefore as good as
    none, one at 0.8 on two analyses is fully reliable, and the choice needs no hand list of tables. In the shipped table
-   111 of the 913 tables are damped (those with a held-out accuracy below 0.6); `learning`, whose held-out accuracy of
+   111 of the 916 tables are damped (those with a held-out accuracy below 0.6); `learning`, whose held-out accuracy of
    0.298 is below chance, gets 0. On the development sets any target from 0.5 to 1.0 gives the same figures (the cue
    changes the answer on about 5 percent of the tokens it covers), and the reviewed suite loses rows from a target of
    0.7 on, so the target is 0.6.
@@ -757,8 +773,8 @@ that fall short, most frequent first.
    A table that covers no token keeps its anchor reliability. On the development sets the pseudo count and the
    combination make no difference (the cue changes few answers). The reviewed suite is the guard for the pseudo count:
    20 or less turns the row `M-feel-2` of Basic into a miss (the table of `feel` has 0 tokens helped and 2 hurt), and 50
-   does not. In the shipped table 682 of the 913 tables cover a token of the training split (357 tokens
-   helped and 215 hurt in all), 162 tables are damped (111 by the anchors, 61 by the running text, some by both).
+   does not. In the shipped table 163 of the 916 tables are damped (111 by the anchors and 62 by the running text,
+   where more tokens are hurt than helped).
 3. `BasicTablesWriter.Write` serializes the table, `BasicTables.Load` checks that it reads back, and the file is
    written with its size and SHA-256 reported. The table carries the inventory hash of the word image that it was
    trained against and is rebuilt whenever the inventory changes.

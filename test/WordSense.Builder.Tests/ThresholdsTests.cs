@@ -205,6 +205,30 @@ public sealed class ThresholdsTests
     }
 
     /// <summary>
+    ///     The closed-class columns of a lemma are left out of the margins and their anchors are not tested, as the
+    ///     classifier does not score them at run time: a closed-class sense that cannot be told from an open one does not
+    ///     make the open senses look wrong, and the threshold is no higher than without the exclusion.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Thresholds_Choose_ClosedClassColumns_AreLeftOutOfTheMargins()
+    {
+        // Arrange: senses 0 and 2 share a direction (indistinguishable), sense 1 is separable; sense 2 is closed-class
+        var (features, labels) = Anchors([0, 1, 0], 12, 0.35);
+        int[] groups = [-1, -1, -1];
+
+        // Act
+        var all = Thresholds.Choose("have", features, labels, 3, groups, Options);
+        var open = Thresholds.Choose("have", features, labels, 3, groups, Options, null, null, [false, false, true]);
+        var none = Thresholds.Choose("have", features, labels, 3, groups, Options, null, null, [false, false, false]);
+
+        // Assert
+        Assert.True(open.Fine < LemmaWeights.Never, "the open senses are answered right once the closed column is out of the margin");
+        Assert.True(open.Fine <= all.Fine);
+        Assert.Equal(all, none);
+        Assert.Throws<ArgumentException>(() => Thresholds.Choose("have", features, labels, 3, groups, Options, null, null, [true]));
+    }
+
+    /// <summary>
     ///     The arrays must agree in length.
     /// </summary>
     [Fact]

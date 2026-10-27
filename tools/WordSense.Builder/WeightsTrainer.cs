@@ -227,7 +227,11 @@ internal static class WeightsTrainer
         // The usage prior is an offset on the score of each sense; it is folded into the stored bias
         var anchorCounts = Enumerable.Range(0, columns.Count).Select(c => labels.Count(l => l == c)).ToArray();
         var offsets = usage is null ? null : SensePrior.Offsets(columns, anchorCounts, usage);
-        var key = fitCache is null ? null : FitCache.KeyOf(options, lemma, senseIds, groups, labels, x, offsets);
+
+        // The senses of a closed class are never scored at run time, so the thresholds leave them out (null when there are none)
+        var closed = columns.Select(c => SenseFusion.IsClosedClass(c.PartOfSpeech)).ToArray();
+        var closedColumns = closed.Any(c => c) ? closed : null;
+        var key = fitCache is null ? null : FitCache.KeyOf(options, lemma, senseIds, groups, labels, x, offsets, closedColumns);
         if (key is not null && fitCache!.TryGet(key, out var cached))
         {
             return Entry(lemma, senseIds, cached);
@@ -236,7 +240,7 @@ internal static class WeightsTrainer
         var fitter = new LemmaFitter(x, options.Solver, options.Parallelism);
         var (weights, fitted) = fitter.Fit(Enumerable.Range(0, x.Length).ToArray(), labels, senseIds.Length, options.C);
         var bias = SensePrior.Apply(fitted, offsets);
-        var thresholds = Thresholds.Choose(lemma, x, labels, senseIds.Length, groups, options, fitter, offsets);
+        var thresholds = Thresholds.Choose(lemma, x, labels, senseIds.Length, groups, options, fitter, offsets, closedColumns);
         var fit = new LemmaFit(weights, bias, thresholds.Fine, thresholds.Group, x[0].Length);
         fitCache?.Add(key!, fit);
         return Entry(lemma, senseIds, fit);

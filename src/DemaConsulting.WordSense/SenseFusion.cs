@@ -161,6 +161,16 @@ internal static class SenseFusion
         a.PartOfSpeech == b.PartOfSpeech && string.Equals(a.Lemma, b.Lemma, StringComparison.Ordinal);
 
     /// <summary>
+    ///     Tells whether a part of speech is closed class: not a noun, verb, adjective or adverb. The words of a closed
+    ///     class (auxiliaries, determiners, pronouns, prepositions, conjunctions, interjections) have no WordNet senses, so
+    ///     a sense classifier has no evidence of its own for them and their slot probabilities come from the tagger.
+    /// </summary>
+    /// <param name="partOfSpeech">The part of speech.</param>
+    /// <returns>True when the part of speech is closed class.</returns>
+    internal static bool IsClosedClass(PartOfSpeech partOfSpeech) =>
+        partOfSpeech is not (PartOfSpeech.Noun or PartOfSpeech.Verb or PartOfSpeech.Adjective or PartOfSpeech.Adverb);
+
+    /// <summary>
     ///     Gets the index of the largest probability, preferring the lowest index on ties.
     /// </summary>
     /// <param name="probabilities">The probabilities.</param>

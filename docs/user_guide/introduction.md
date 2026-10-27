@@ -312,8 +312,9 @@ home      Adverb       PartOfSpeech 0.79
 **`Basic`** needs no files, no network and no ONNX Runtime. A hidden Markov tagger over the part-of-speech statistics of
 the project's open corpus chooses the analysis. Context cues separate analyses of one part of speech for the lemmas that
 have enough training sentences, and a tense model reads the tense of verbs whose past and non-past share a spelling
-(`put`, `read`). `Basic` names a sense only for an analysis whose lemma and part of speech have one sense. It never
-answers at the `Group` level.
+(`put`, `read`). `Basic` names a sense only for an analysis whose lemma and part of speech have one sense, at any
+confidence (an encoder model keeps such an answer for a word with several analyses only at 0.97 or more, see Fallback).
+It never answers at the `Group` level.
 
 **The encoder models** compare the word in your sentence with example sentences of each sense, learned at build time.
 Each trained lemma ships as a small classifier with confidence thresholds measured for that lemma. The lemmas are those
@@ -328,7 +329,11 @@ encoder was not trained for gets the `Basic` analysis at the `PartOfSpeech` leve
 the primary gives every feature variant of a slot the same probability, as an encoder does, the variants take the
 proportions of the fallback, which reads the tense. The constructor `FallbackWordSenseModel(primary, fallback,
 primaryWeight)` takes a weight: below 1, an answer at the part-of-speech level combines the slot probabilities of both
-models as `p_primary^w × p_fallback^(1−w)`. `MiniLM` uses 0.6 and `BertBaseCased` uses 1 (off).
+models as `p_primary^w × p_fallback^(1−w)`. `MiniLM` uses 0.6 and `BertBaseCased` uses 1 (off). The encoders score no
+closed-class use of a word (an auxiliary, determiner, pronoun, preposition, conjunction or interjection), so those slots
+take their probability from the fallback, and the answer is at the `PartOfSpeech` level when one of them is the most
+probable. A one-sense answer of the fallback for a word with several analyses stays at the `Sense` level only at a
+confidence of 0.97 or more; below that it is the same analysis at the `PartOfSpeech` level.
 
 **Your own model.** Implement `IWordSenseModel` (`ClassifyAsync` and `Dispose`) to wrap another engine. Return a non-null
 array parallel to the input, `ClassifyResult.Unknown(word)` for an unknown word, and for a known word all analyses
@@ -459,7 +464,7 @@ data, from `WordLexicon` and `Basic`.
 - **The word table decides what is known.** A word that `WordLexicon.Lookup` does not find is unknown: numbers written
   with digits, most names, dialect spellings and archaic verb endings.
 - **Only some ambiguous words are decided by an encoder.** The encoders choose from context for the lemmas with trained
-  weights (see the appendix). Any other ambiguous word, such as `need`, `look` or `help`, is answered at the
+  weights (see the appendix). Any other ambiguous word, such as `sheet`, `trade` or `crack`, is answered at the
   part-of-speech level by `Basic`, with its senses ranked by usage.
 - **`Basic` decides the part of speech from the words next to a word and from word statistics, not from the whole
   sentence** (a hidden Markov model with context cues). A clue further away is out of its reach.

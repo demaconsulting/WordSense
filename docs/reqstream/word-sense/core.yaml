@@ -87,8 +87,11 @@ sections:
               The core subsystem shall provide a public composite model that combines two models, answering each word
               with the result of the primary model (with the proportions of the fallback model for the tied variants
               of one of its slots, and, for a primary weight below 1, with the slot probabilities of both models
-              combined where the primary result stays at the part-of-speech level) where it scored senses for the word
-              and otherwise with the complete result of the fallback model, preparing the members that can be prepared,
+              combined where the primary result stays at the part-of-speech level, and with the probability of every
+              closed-class slot taken from the fallback model) where it scored senses for the word
+              and otherwise with the complete result of the fallback model (answered at the part-of-speech level
+              instead when it names the only sense of one of several analyses at a confidence below the precision
+              target 0.97), preparing the members that can be prepared,
               and owning the lifetime of both.
             tags: [subsystem]
             justification: |
@@ -98,6 +101,8 @@ sections:
             children:
               - WordSense-Core-WordSenseContracts-Fallback
               - WordSense-Core-WordSenseContracts-FallbackSlotSplit
+              - WordSense-Core-WordSenseContracts-FallbackClosedClass
+              - WordSense-Core-WordSenseContracts-FallbackSingleSense
               - WordSense-Core-WordSenseContracts-FallbackReconcile
               - WordSense-Core-WordSenseContracts-FallbackEnsure
             tests:
@@ -235,7 +240,7 @@ sections:
               those senses ranked by the usage prior.
             tags: [subsystem]
             justification: |
-              About 83 percent of the ambiguous words of running text have a lemma that no encoder was trained for; the
+              About 56 percent of the ambiguous words of running text have a lemma that no encoder was trained for; the
               usage of the senses is the one piece of evidence that exists for every lemma, so ranking by it gives a
               consumer the likely senses.
             children:

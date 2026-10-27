@@ -80,6 +80,140 @@ public sealed class RealCalibratorTests
     }
 
     /// <summary>
+    ///     With strata of lemmas the shift is fitted per stratum: a stratum of poor precision gets its own shift, a stratum
+    ///     whose answers already reach the target gets none, and the thresholds of a stratum are the same with or without
+    ///     the other one (adding lemmas never moves the thresholds of the lemmas trained before).
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealCalibrator_Apply_Strata_AreCalibratedByTheirOwnRows()
+    {
+        // Arrange: walk (base) is half wrong below margin 3 and right from 4; run (stage 1) is always right
+        var (w, r) = (Walk, Jog);
+        var walkRows = new List<(CorpusRow Row, float[] Feature)>();
+        var runRows = new List<(CorpusRow Row, float[] Feature)>();
+        for (var i = 0; i < 15; i++)
+        {
+            walkRows.Add(Observation(w[0], w[1], 1f + (i * 0.05f), i % 2 == 0 && i < 14, i));
+            runRows.Add(Observation(r[0], r[1], 1f + (i * 0.05f), true, 100 + i));
+        }
+
+        for (var i = 0; i < 10; i++)
+        {
+            walkRows.Add(Observation(w[0], w[1], 4f + i, true, 200 + i));
+            runRows.Add(Observation(r[0], r[1], 4f + i, true, 300 + i));
+        }
+
+        var data = Data(Lemma(w[0], w[1], 1f), Lemma(r[0], r[1], 1f));
+        var options = new CalibrationOptions(MinOwnRows: 1000, MinPooledAnswered: 10, Stratum: lemma => lemma == "run" ? "stage 1" : "base");
+
+        // Act
+        var both = Run(data, [.. walkRows, .. runRows], options);
+        var baseOnly = Run(Data(Lemma(w[0], w[1], 1f)), walkRows, options);
+
+        // Assert: one shift per stratum, in the order of the names; walk is calibrated as if run were not there
+        Assert.Equal(["base", "stage 1"], both.Report.Strata.Select(s => s.Name));
+        Assert.Equal(3.0, both.Report.Strata[0].FineShift, 3);
+        Assert.Equal(0.0, both.Report.Strata[1].FineShift, 3);
+        Assert.InRange(both.Data.Lemmas.Single(l => l.Lemma == "walk").Weights.FineThreshold, 3.99f, 4.01f);
+        Assert.Equal(1f, both.Data.Lemmas.Single(l => l.Lemma == "run").Weights.FineThreshold);
+        Assert.Equal(baseOnly.Data.Lemmas.Single().Weights.FineThreshold, both.Data.Lemmas.Single(l => l.Lemma == "walk").Weights.FineThreshold);
+        Assert.Equal(baseOnly.Report.Strata[0], both.Report.Strata[0] with { Rows = baseOnly.Report.Strata[0].Rows });
+        Assert.Contains("stratum 'stage 1'", both.Report.Describe(), StringComparison.Ordinal);
+
+        // A single pooled stratum (no function) calibrates both lemmas with the same shift
+        var pooled = Run(data, [.. walkRows, .. runRows], new CalibrationOptions(MinOwnRows: 1000, MinPooledAnswered: 10));
+        Assert.Single(pooled.Report.Strata);
+        Assert.Equal(pooled.Data.Lemmas[0].Weights.FineThreshold, pooled.Data.Lemmas[1].Weights.FineThreshold);
+    }
+
+    /// <summary>
+    ///     The stage of a lemma is the stage of the highest wave file that holds one of its anchors; files that are not
+    ///     wave files do not count, and a lemma without a wave file is in the base stage.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Corpus_StagesOf_NamesTheStageOfTheHighestWaveFile()
+    {
+        // Arrange
+        var walk = Walk;
+        CorpusRow Row(SenseInfo sense, string file) => SenseFixtures.Row(sense, 1) with { Source = file };
+        var rows = new[]
+        {
+            Row(walk[0], "quota-w4c-real.tsv"),
+            Row(Jog[0], "quota-w49-written.tsv"),
+            Row(Jog[1], "quota-w50-real.tsv"),
+            Row(SenseFixtures.Senses("stand", PartOfSpeech.Noun, 2)[0], "quota-w51-written.tsv"),
+            Row(SenseFixtures.Senses("stand", PartOfSpeech.Noun, 2)[1], "quota-w3-real.tsv"),
+            Row(SenseFixtures.Senses("hold", PartOfSpeech.Noun, 1)[0], "batch-1.tsv"),
+            Row(SenseFixtures.Senses("keep", PartOfSpeech.Noun, 1)[0], "quota-w100-real.tsv"),
+        };
+
+        // Act
+        var stage = Corpus.StagesOf(rows);
+
+        // Assert
+        Assert.Equal("base", stage("walk"));
+        Assert.Equal("stage 1", stage("run"));
+        Assert.Equal("stage 1", stage("stand"));
+        Assert.Equal("base", stage("hold"));
+        Assert.Equal("stage 2", stage("keep"));
+        Assert.Equal("base", stage("unknown"));
+    }
+
+    private static float ScoreOf(SenseInfo sense, SenseInfo best, SenseInfo determiner)
+    {
+        if (sense.SenseId == best.SenseId)
+        {
+            return 3f;
+        }
+
+        return sense.SenseId == determiner.SenseId ? 2.5f : 0f;
+    }
+
+    /// <summary>
+    ///     The calibration scores a row as the classifier does: a closed-class sense is not a candidate, so the margin of
+    ///     the best open-class sense is the gap to the next open-class sense, not to the closed-class one.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealCalibrator_Apply_ClosedClassSenses_AreNotCandidatesOfTheMargin()
+    {
+        // Arrange: little has open-class senses and the determiner; the best open sense scores 3, the determiner 2.5, the rest 0
+        var senses = Enum.GetValues<PartOfSpeech>().SelectMany(pos => WordLexicon.SensesOf("little", pos)).ToArray();
+        var determiner = Assert.Single(senses, s => s.PartOfSpeech == PartOfSpeech.Determiner);
+        var best = senses.First(s => s.PartOfSpeech == PartOfSpeech.Adjective);
+        var weights = senses.Select(s => ScoreOf(s, best, determiner)).ToArray();
+        var lemma = new WeightedLemma("little", [.. senses.Select(s => s.SenseId)], new LemmaWeights(weights, new float[senses.Length], 1, 1f));
+        var rows = new List<(CorpusRow Row, float[] Feature)> { (SenseFixtures.Row(best, 1), [1f]) };
+
+        // Act
+        var (_, report) = Run(Data(lemma), rows, new CalibrationOptions(MinOwnRows: 1000, MinPooledAnswered: 1));
+
+        // Assert: with all senses the margin would be 0.5 (below the threshold 1); among the open-class candidates it is 3
+        Assert.Equal(1, report.Rows);
+        Assert.Equal(1, report.AnswersBefore);
+        Assert.Equal(1, report.CorrectBefore);
+    }
+
+    /// <summary>
+    ///     A row whose word has fewer than two open-class candidate senses for the lemma is not a calibration answer, as
+    ///     the classifier does not score it.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealCalibrator_Apply_FewerThanTwoCandidates_IsNotObserved()
+    {
+        // Arrange: the lemma has only the determiner and one adjective sense as columns
+        var senses = Enum.GetValues<PartOfSpeech>().SelectMany(pos => WordLexicon.SensesOf("little", pos)).ToArray();
+        var determiner = Assert.Single(senses, s => s.PartOfSpeech == PartOfSpeech.Determiner);
+        var adjective = senses.First(s => s.PartOfSpeech == PartOfSpeech.Adjective);
+        var lemma = new WeightedLemma("little", [adjective.SenseId, determiner.SenseId], new LemmaWeights([3f, 2f], [0f, 0f], 1, 1f));
+
+        // Act
+        var (_, report) = Run(Data(lemma), [(SenseFixtures.Row(adjective, 1), [1f])], new CalibrationOptions(MinOwnRows: 1000, MinPooledAnswered: 1));
+
+        // Assert: one open-class candidate only
+        Assert.Equal(0, report.Rows);
+    }
+
+    /// <summary>
     ///     A lemma with enough calibration rows keeps the higher of its own threshold and the adjusted one; a lemma
     ///     with fewer rows gets the pooled shift.
     /// </summary>
