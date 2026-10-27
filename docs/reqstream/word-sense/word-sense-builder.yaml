@@ -191,9 +191,10 @@ sections:
               the classifier scores for the form of each anchor's target word (the closed-class senses of a lemma and
               the senses of a part of speech that the form does not have are left out of the margin of that anchor,
               and an anchor with fewer than two such columns, or whose true sense is not among them, is not tested),
-              so that the
-              answers
-              above each threshold reach a configured precision target (95 percent by default), deterministically; a
+              leaving out the anchors that inference answers without the threshold of the lemma whatever the sentence
+              (a form for which the classifier does not run the encoder) and counting a best sense of another part of
+              speech than the true sense as a wrong answer, so that the answers above each threshold reach a
+              configured precision target (95 percent by default), deterministically; a
               level for which no threshold reaches the target shall never be answered for that lemma. These first
               thresholds are the input of the real-text calibration (WordSense-WordSenseBuilder-RealCalibration), which
               is the only step that may read held-out sentences to move them.
@@ -211,6 +212,7 @@ sections:
               - WordSenseBuilder_Thresholds_Choose_TargetNeverReached_NeverAnswersThatLevel
               - WordSenseBuilder_Thresholds_Choose_ClosedClassColumns_AreLeftOutOfTheMargins
               - WordSenseBuilder_Thresholds_Choose_RowSpecificCandidates_AreTheColumnsOfTheFormOfTheAnchor
+              - WordSenseBuilder_WeightsTrainer_ChooserForms_AreTheFormsWhoseRowsTrainAChooser
               - WordSenseBuilder_ModelTrainer_TrainDataAsync_WritesBothThresholdsPerLemma
 
           - id: WordSense-WordSenseBuilder-RealCalibration
@@ -334,6 +336,21 @@ sections:
               calibration that scored it with the classifier of its lemma alone would observe answers that never occur.
             tests:
               - WordSenseBuilder_RealCalibrator_Apply_FormOfSeveralLemmas_IsObservedOnlyWithAChooser
+
+          - id: WordSense-WordSenseBuilder-RealCalibration-Outcome
+            title: >-
+              The builder shall observe a calibration row only when the threshold of the lemma decides the level that
+              the classifier answers for it (the outcome of the shared scoring), and shall leave out and report the
+              rows that the classifier answers without that threshold: a form whose chooser is not confident, a
+              selected analysis of another lemma, and a best sense of another part of speech than the selected
+              analysis.
+            tags: [unit]
+            justification: |
+              At run time these rows are answered at the part-of-speech level (or by the threshold of another
+              lemma), so they say nothing about the threshold of the lemma; observing them would calibrate a
+              threshold on answers that never occur.
+            tests:
+              - WordSenseBuilder_RealCalibrator_Apply_ChooserNotConfidentOrOtherLemmaSelected_RowIsLeftOut
           - id: WordSense-WordSenseBuilder-RealCalibration-ClosedSlotWins
             title: >-
               The builder shall leave a calibration row out of the real-text calibration when the closed-class slot of

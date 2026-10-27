@@ -320,6 +320,36 @@ public sealed class RealCalibratorTests
     }
 
     /// <summary>
+    ///     A row whose form chooser is not confident, or whose selected analysis is of another lemma, is answered at the
+    ///     part-of-speech level (or by the threshold of the other lemma) at run time, so no threshold of the lemma decides
+    ///     it and it is not an observation.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealCalibrator_Apply_ChooserNotConfidentOrOtherLemmaSelected_RowIsLeftOut()
+    {
+        // Arrange: the chooser of "left" has the labels left and leave (threshold 1); the scores are -x and +x
+        var leaves = SenseFixtures.Senses("leave", PartOfSpeech.Verb, 2);
+        var ids = leaves.Select(s => s.SenseId).ToArray();
+        var chooser = new FormChooser("left", ["left", "leave"], new LemmaWeights([-1f, 1f], [0f, 0f], 1, 1f));
+        var data = Data(new WeightedLemma("leave", ids, new LemmaWeights([1f, -1f], [0f, 0f], 1, 1f), [chooser]));
+        var row = new CorpusRow("leave", ids[0], PartOfSpeech.Verb, "They {left} early.", "a.tsv", ["They", "left", "early", "."], 1);
+        var options = new CalibrationOptions(MinOwnRows: 1000, MinPooledAnswered: 1);
+
+        // Act: a margin of 0.4 is below the threshold, a margin of 2 for "left" selects the other lemma, a margin of 2 for "leave" decides
+        var (_, unsure) = RealCalibrator.Apply(data, [row], [[0.2f]], options);
+        var (_, elsewhere) = RealCalibrator.Apply(data, [row], [[-1f]], options);
+        var (_, decided) = RealCalibrator.Apply(data, [row], [[1f]], options);
+
+        // Assert
+        Assert.Equal(0, unsure.Rows);
+        Assert.Equal(1, unsure.ChooserUnsure);
+        Assert.Equal(0, elsewhere.Rows);
+        Assert.Equal(1, elsewhere.SelectedElsewhere);
+        Assert.Equal(1, decided.Rows);
+        Assert.Equal(0, decided.ChooserUnsure + decided.SelectedElsewhere + decided.NotScored + decided.OutsidePartOfSpeech);
+    }
+
+    /// <summary>
     ///     A lemma with enough calibration rows keeps the higher of its own threshold and the adjusted one; a lemma
     ///     with fewer rows gets the pooled shift.
     /// </summary>

@@ -262,6 +262,7 @@ public sealed class ThresholdsTests
         Assert.Equal(LemmaWeights.Never, untested.Group);
         Assert.True(outside.Fine < LemmaWeights.Never, "the anchors of the senses 1 and 2 are tested, those of the sense 0 are not");
     }
+
     /// <summary>
     ///     The arrays must agree in length.
     /// </summary>

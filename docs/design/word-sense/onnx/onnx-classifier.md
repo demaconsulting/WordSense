@@ -80,9 +80,14 @@ The probabilities are computed per slot, never per variant:
    answer_). Otherwise the word is pending.
    The rule that selects the scored columns of a lemma for a form (`OpenClassColumns`: the open-class senses of the parts
    of speech that the form has for the lemma) and the plan above (`CandidatesOf`: whether the encoder runs for the form,
-   and the columns) have one implementation, which the build tool also calls (`FormColumns`, `CandidatesOf` and
-   `ScoreForm`, which returns the scores, margins and result that the word gets before any threshold decides a level), so
-   the thresholds, the calibration and the half-precision gate rank the senses that inference ranks.
+   and the columns) have one implementation, which the build tool also calls (`FormColumns`, `CandidatesOf`,
+   `EncoderRuns` and `ScoreForm`, which returns the scores, margins and result that the word gets before any threshold
+   decides a level), so the thresholds, the calibration and the half-precision gate rank the senses that inference
+   ranks. The decision whether the threshold of a lemma decides the level at all is one function too (`Judge`, the
+   `FormOutcome` of `ScoreForm`): inference answers at the part-of-speech level for every outcome but the threshold
+   deciding (the chooser is not confident, the selected analysis is of another lemma, or the lemma is not scored, or
+   the best sense is of another part of speech than the selected analysis), and the calibration observes only the rows
+   whose outcome is that the threshold decides.
 4. **Encode.** When at least one word is pending, the words are joined by single spaces into one text and the encoder
    runs once for the pending words. Each pooled vector goes through `FeatureExtractor.Center` (subtract the global
    mean, scale to unit length). A word without word pieces, or a vector whose dimension differs from the weights, is

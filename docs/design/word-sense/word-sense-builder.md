@@ -328,7 +328,9 @@ for at least two of its senses to get weights; a lemma with fewer is not an erro
    feature space otherwise.
    Add the usage prior (see Usage prior below) to the fitted biases.
 6. Choose the first thresholds of the lemma (see Thresholds below), on the scores with the prior, over the candidate
-   columns of the form of each anchor's target word (OnnxClassifier.FormColumns). After all lemmas are fitted and the form
+   columns of the form of each anchor's target word (OnnxClassifier.FormColumns), leaving out the anchors of a form for
+   which the classifier does not run the encoder (`OnnxClassifier.EncoderRuns`, with the forms that get a chooser from
+   `WeightsTrainer.ChooserForms`). After all lemmas are fitted and the form
    choosers are trained (step 8), move the thresholds to the real-text precision target (see Real-text calibration below).
 7. The lemmas are fitted concurrently (`TrainingOptions.DefaultParallelism`, the processors minus two, 2 to 16
    threads), and inside a lemma the senses of a fit and the folds of the cross-validation are fitted concurrently too;
@@ -348,7 +350,9 @@ for at least two of its senses to get weights; a lemma with fewer is not an erro
    that the classifier has for its form, and a chooser decides whether the encoder runs for a form of several lemmas.
 9. Check the half-precision storage: encode the held-out rows of the trained lemmas through the same cache, score them
    with the full-precision weights and with the weights read back from the written blob (counting only the rows whose
-   form the classifier scores, and ranking for each row only the candidate senses of its form, as inference does),
+   form the classifier scores, and ranking for each row only the candidate senses of its form, as inference does; the
+   ranking exists for every outcome of a scored form, so the gate does not leave out the rows that an outcome answers
+   at the part-of-speech level),
    print both fine top-1 accuracies, and fail without writing when they differ by more than 0.2 percentage point.
    Then write the weights blob
    (`WSX3`, float16 weights) to the package's `Resources/weights.bin`. The summary of the run counts the lemmas that
@@ -405,7 +409,13 @@ open-class senses of the parts of speech that the form has for the lemma, `OnnxC
 closed-class senses of a lemma (no WordNet senses, `SenseFusion.IsClosedClass`) and the senses of a part of speech that
 the form does not have (the noun senses of `has`) are left out of the margin of that anchor; an anchor of a form with
 fewer than two such columns, which the classifier does not score, and an anchor whose true sense is not among them (a
-closed-class sense) are not tested (the fits still learn from them); `t_group`
+closed-class sense) are not tested (the fits still learn from them); an anchor of a form of several lemmas that has no
+chooser, which the classifier answers from the lexicon, is not tested either. What a
+sentence decides (the chooser and its confidence, the analysis that is selected, the closed-class slot of Basic) is not
+known for an anchor and is applied by the real-text calibration; a best sense of another part of speech than the true
+one counts as a wrong answer here (the anchor does not say which analysis is selected, and the first thresholds are
+the conservative starting point), while the calibration leaves such a row out when the selected analysis makes the
+answer a part-of-speech one; `t_group`
 is chosen in the same way on the group answers, only for a lemma that has groups and over the anchors whose best sense
 is in a group and whose fine margin is below `t_fine` (the rows that fall through to the group level; every anchor
 when `t_fine` is "never"), with the group margin defined as at run time (the group probability minus the largest
@@ -436,10 +446,14 @@ each stage meets the target on its own rows. A calibration row is scored as infe
 of the target word (every analysis of the form, its form chooser, the lemmas it scores) and gives the margin of the lemma
 over the open-class senses of the parts of speech that the form has for it (`OnnxClassifier.FormColumns`), so the
 closed-class senses of a lemma such as `little` or `have` and the senses of a part of speech that the form does not have
-are left out. A row for which the classifier does not run the encoder (a form of several lemmas without a chooser,
-answered from the lexicon), or whose lemma has fewer than two such candidates, is not observed. A row whose answer is
-at the
-part-of-speech level at run time is left out too: the trainer runs Basic over every calibration sentence, and when the
+are left out. The scoring carries one outcome (`OnnxClassifier.FormOutcome`), the decision that inference itself
+takes before it consults a threshold, and a row is observed only when the threshold of its lemma decides the level:
+a row for which the classifier does not run the encoder (a form of several lemmas without a chooser, answered from the
+lexicon), or whose lemma has fewer than two such candidates, a row whose form chooser is not confident (answered at
+the part-of-speech level), a row whose selected analysis belongs to another lemma (the threshold of that lemma
+decides) and a row whose best sense is of another part of speech than the selected analysis (answered at the
+part-of-speech level) are not observed. A row that the composite model answers at the part-of-speech level for a further
+reason is left out too: the trainer runs Basic over every calibration sentence, and when the
 closed-class slot of the Basic result wins the closed-class split of the composite model
 (`FallbackWordSenseModel.SplitClosedClass`, run on the result that the classifier builds for the form), no sense
 threshold applies to the row. When an open-class slot wins, the row is observed, and a row whose true sense is a

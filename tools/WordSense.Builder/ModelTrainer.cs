@@ -258,7 +258,8 @@ internal static class ModelTrainer
 
         output.WriteLine($"{name}: fitting the classifiers of {pooled.Length} sentences on {options.Parallelism} threads ({clock.Elapsed:hh\\:mm\\:ss}).");
         var fitClock = Stopwatch.StartNew();
-        var trained = WeightsTrainer.TrainDense(modelId, inventoryHash, pooled, anchors, options, frozenMean, fitCache, usage);
+        // The cross-validation scores an anchor only where the classifier runs the encoder, and that depends on the choosers of the forms
+        var trained = WeightsTrainer.TrainDense(modelId, inventoryHash, pooled, anchors, options with { ChooserForms = WeightsTrainer.ChooserForms(chooserAnchors) }, frozenMean, fitCache, usage);
         var data = trained.Data;
 
         // The form choosers come first: the calibration scores a row with the plan that the classifier has for its form, and the

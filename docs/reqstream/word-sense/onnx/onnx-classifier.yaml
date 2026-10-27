@@ -94,6 +94,21 @@ sections:
                   when they rank the senses that inference ranks, so the rule has one implementation that both use.
                 tests:
                   - OnnxClassifier_CandidatesOf_FormColumnsAndPlan_AreThoseOfInference
+                  - OnnxClassifier_EncoderRuns_FormOfSeveralLemmas_NeedsItsChooser
+              - id: WordSense-Onnx-OnnxClassifier-SharedOutcome
+                title: >-
+                  OnnxClassifier shall tell the build tool, for a word and a lemma, whether the threshold of the lemma
+                  decides the level of the answer, by the one decision that it uses itself to answer: the encoder does
+                  not run for the form, the lemma is not scored, the chooser is not confident, the selected analysis
+                  is of another lemma, or the best sense is of another part of speech than the selected analysis; for
+                  every outcome but the threshold deciding it answers at the part-of-speech level.
+                tags: [unit]
+                justification: |
+                  The calibration may only observe the rows on which a threshold is applied at run time, so the early
+                  exits of the classifier are named once and the build tool reads the same decision.
+                tests:
+                  - OnnxClassifier_ScoreForm_ChooserBelowItsThreshold_TheLemmaThresholdDoesNotDecide
+                  - OnnxClassifier_ScoreForm_OtherEarlyExits_AreOutcomesThatInferenceShares
               - id: WordSense-Onnx-OnnxClassifier-Candidates
                 title: >-
                   OnnxClassifier shall list, for a trained lemma, the senses of every analysis of the word in the

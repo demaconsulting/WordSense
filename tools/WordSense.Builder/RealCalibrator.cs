@@ -41,6 +41,10 @@ internal sealed record StratumReport(string Name, int Rows, double FineShift, bo
 /// <param name="Strata">What was done in each stratum, in the order of their names.</param>
 /// <param name="ClosedWins">The rows that were left out because the closed-class slot of Basic wins the split at run time (the answer is at the part-of-speech level, so no threshold applies).</param>
 /// <param name="ClosedGoldRows">The rows observed whose true sense is a closed-class sense: the open-class slot wins, so a sense answer is wrong.</param>
+/// <param name="NotScored">The rows left out because the classifier does not score the lemma for the form of the target word (the encoder does not run for it, or the lemma has fewer than two candidate senses): the lexicon answers.</param>
+/// <param name="ChooserUnsure">The rows left out because the margin of the form chooser is below its threshold: the answer is at the part-of-speech level.</param>
+/// <param name="SelectedElsewhere">The rows left out because the selected analysis belongs to another lemma: the threshold of that lemma decides.</param>
+/// <param name="OutsidePartOfSpeech">The rows left out because the best sense is of another part of speech than the selected analysis: the answer is at the part-of-speech level.</param>
 internal sealed record CalibrationReport(
     int Rows,
     int Lemmas,
@@ -51,7 +55,11 @@ internal sealed record CalibrationReport(
     int CorrectAfter,
     IReadOnlyList<StratumReport> Strata,
     int ClosedWins = 0,
-    int ClosedGoldRows = 0)
+    int ClosedGoldRows = 0,
+    int NotScored = 0,
+    int ChooserUnsure = 0,
+    int SelectedElsewhere = 0,
+    int OutsidePartOfSpeech = 0)
 {
     /// <summary>
     ///     Tells whether two reports hold the same values (the strata are compared one by one).
@@ -61,7 +69,9 @@ internal sealed record CalibrationReport(
     public bool Equals(CalibrationReport? other) =>
         other is not null && Rows == other.Rows && Lemmas == other.Lemmas && OwnThresholds == other.OwnThresholds
         && AnswersBefore == other.AnswersBefore && CorrectBefore == other.CorrectBefore && AnswersAfter == other.AnswersAfter
-        && CorrectAfter == other.CorrectAfter && ClosedWins == other.ClosedWins && ClosedGoldRows == other.ClosedGoldRows && Strata.SequenceEqual(other.Strata);
+        && CorrectAfter == other.CorrectAfter && ClosedWins == other.ClosedWins && ClosedGoldRows == other.ClosedGoldRows
+        && NotScored == other.NotScored && ChooserUnsure == other.ChooserUnsure && SelectedElsewhere == other.SelectedElsewhere
+        && OutsidePartOfSpeech == other.OutsidePartOfSpeech && Strata.SequenceEqual(other.Strata);
 
     /// <summary>
     ///     Gets a hash code of the values.
@@ -123,7 +133,9 @@ internal sealed record CalibrationReport(
                $" ({(FineReached ? "reaches the target" : "target not reached")}), {OwnThresholds.ToString(inv)} lemmas with a threshold of their own;" +
                $" sense answers {AnswersBefore.ToString(inv)} at {P(CorrectBefore, AnswersBefore)} before, {AnswersAfter.ToString(inv)} at {P(CorrectAfter, AnswersAfter)} after (all calibration rows);" +
                $" group shift {GroupShift.ToString("0.000", inv)} ({(Strata.Count > 0 ? GroupText(Strata[0]) : "unverified, kept")} on {GroupAnswers.ToString(inv)} answers)." +
-               $" {ClosedWins.ToString(inv)} rows left out because the closed-class slot of Basic wins; {ClosedGoldRows.ToString(inv)} observed rows have a closed-class true sense (counted wrong).";
+               $" Rows left out because no threshold of the lemma decides them: {NotScored.ToString(inv)} not scored for the form, {ChooserUnsure.ToString(inv)} chooser not confident," +
+               $" {SelectedElsewhere.ToString(inv)} selected analysis of another lemma, {OutsidePartOfSpeech.ToString(inv)} best sense of another part of speech, {ClosedWins.ToString(inv)} closed-class slot of Basic wins;" +
+               $" {ClosedGoldRows.ToString(inv)} observed rows have a closed-class true sense (counted wrong).";
         if (Strata.Count <= 1)
         {
             return text;
@@ -212,6 +224,7 @@ internal static class RealCalibrator
         var observed = new List<Observation>();
         var closedWins = 0;
         var closedGold = 0;
+        int notScored = 0, chooserUnsure = 0, selectedElsewhere = 0, outsidePartOfSpeech = 0;
         for (var i = 0; i < rows.Count; i++)
         {
             if (!lemmas.TryGetValue(rows[i].Lemma, out var lemma))
@@ -219,13 +232,24 @@ internal static class RealCalibrator
                 continue;
             }
 
-            var observation = Observe(table, lemma, rows[i], features[i], basic?[i]);
-            if (observation is null)
+            var observation = Observe(table, lemma, rows[i], features[i], basic?[i], out var outcome);
+            switch (outcome)
             {
-                continue;
+                case OnnxClassifier.FormOutcome.EncoderDoesNotRun or OnnxClassifier.FormOutcome.LemmaNotScored:
+                    notScored++;
+                    continue;
+                case OnnxClassifier.FormOutcome.ChooserNotConfident:
+                    chooserUnsure++;
+                    continue;
+                case OnnxClassifier.FormOutcome.SelectedElsewhere:
+                    selectedElsewhere++;
+                    continue;
+                case OnnxClassifier.FormOutcome.BestOutsideSelectedPartOfSpeech:
+                    outsidePartOfSpeech++;
+                    continue;
             }
 
-            if (observation.ClosedWins)
+            if (observation!.ClosedWins)
             {
                 closedWins++;
                 continue;
@@ -322,7 +346,7 @@ internal static class RealCalibrator
             groupShifts[s].Reached)).ToList();
         var report = new CalibrationReport(
             observed.Count, observed.Select(o => o.Lemma).Distinct(StringComparer.Ordinal).Count(), ownThreshold.Count,
-            before, correctBefore, after, correctAfter, reports, closedWins, closedGold);
+            before, correctBefore, after, correctAfter, reports, closedWins, closedGold, notScored, chooserUnsure, selectedElsewhere, outsidePartOfSpeech);
         return (data with { Lemmas = updated }, report);
     }
 
@@ -386,11 +410,14 @@ internal static class RealCalibrator
     ///     <para>
     ///     The row is scored by <see cref="OnnxClassifier.ScoreForm"/>, the classifier's own plan for the form of the
     ///     target word: every analysis of the form, its form chooser and the lemmas it scores, and the senses that it
-    ///     ranks (the open-class senses of the parts of speech that the form has for the lemma). A form for which the
-    ///     classifier does not run the encoder (a form of several lemmas without a chooser, which is answered from the
-    ///     lexicon) or does not score the lemma (fewer than two candidate senses) is not an observation, as at run time.
-    ///     A row whose true sense is a closed-class sense has no column among the candidates and is wrong when it reaches
-    ///     the sense level.
+    ///     ranks (the open-class senses of the parts of speech that the form has for the lemma). The scoring carries the
+    ///     outcome that inference reaches for the word (<see cref="OnnxClassifier.FormOutcome"/>), and only the rows
+    ///     whose outcome is that the threshold of the lemma decides are observations: a form for which the encoder does
+    ///     not run (a form of several lemmas without a chooser, answered from the lexicon) or that does not score the
+    ///     lemma (fewer than two candidate senses), a form whose chooser is not confident, a form whose selected analysis
+    ///     is of another lemma and a word whose best sense is of another part of speech than the selected analysis are
+    ///     all answered without a sense threshold of the lemma, as at run time. A row whose true sense is a closed-class
+    ///     sense has no column among the candidates and is wrong when it reaches the sense level.
     ///     </para>
     ///     <para>
     ///     At run time a row reaches the sense level only if an open-class slot wins the closed-class split of the
@@ -408,10 +435,13 @@ internal static class RealCalibrator
     /// <param name="row">The row.</param>
     /// <param name="feature">The feature of the row.</param>
     /// <param name="basic">The result of Basic for the sentence of the row, or null.</param>
-    /// <returns>The observation, or null when the classifier would not score the lemma for the form of the row.</returns>
-    private static Observation? Observe(WeightedLemmaTable table, WeightedLemma lemma, CorpusRow row, float[] feature, ClassifyResult? basic)
+    /// <param name="outcome">What inference does with the row: only <see cref="OnnxClassifier.FormOutcome.ThresholdDecides"/> rows are observed.</param>
+    /// <returns>The observation, or null when the threshold of the lemma does not decide the level of the answer for the row.</returns>
+    private static Observation? Observe(WeightedLemmaTable table, WeightedLemma lemma, CorpusRow row, float[] feature, ClassifyResult? basic, out OnnxClassifier.FormOutcome outcome)
     {
-        if (OnnxClassifier.ScoreForm(row.Words[row.TargetWordIndex], lemma.Lemma, table, feature) is not { } scoring)
+        var scoring = OnnxClassifier.ScoreForm(row.Words[row.TargetWordIndex], lemma.Lemma, table, feature);
+        outcome = scoring.Outcome;
+        if (!scoring.ThresholdDecides)
         {
             return null;
         }

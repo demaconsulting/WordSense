@@ -23,7 +23,14 @@ internal readonly record struct LemmaThresholds(float Fine, float Group);
 ///     lemma (<c>OnnxClassifier.FormColumns</c>). The closed-class senses of a lemma (no WordNet senses, see
 ///     <c>SenseFusion.IsClosedClass</c>) and the senses of a part of speech that the form does not have are therefore left
 ///     out of the margin of that anchor, an anchor of a form with fewer than two such columns is not tested (the
-///     classifier does not score it), and neither is an anchor whose true sense is not among them. Nothing but
+///     classifier does not score it), and neither is an anchor whose true sense is not among them. The anchors that
+///     inference answers without the threshold of the lemma, whatever the sentence, are not answers either: those of
+///     a form for which the classifier does not run the encoder (a form of several lemmas without a chooser, see
+///     <c>OnnxClassifier.EncoderRuns</c>). What the
+///     sentence decides (the form chooser and its confidence, the analysis that is selected, the closed-class slot
+///     of Basic) is applied by the real-text calibration, which scores a sentence as inference does. A best sense of
+///     another part of speech than the true sense is counted as a wrong answer: the anchor does not say which
+///     analysis the classifier selects, and the first thresholds are the conservative starting point. Nothing but
 ///     the anchors of the lemma is read: the held-out, real-text, suite and independent evaluation sentences cannot
 ///     influence a threshold, so the accuracy measured on them stays independent of the thresholds.
 ///     </para>

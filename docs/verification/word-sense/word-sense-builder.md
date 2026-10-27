@@ -259,6 +259,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   that no form ranks together (a noun sense and a verb sense of one lemma) do not make each other look wrong when each
   anchor lists the candidates of its own form; an anchor with one candidate, and an anchor whose true sense is not among
   its candidates, are not tested.
+- **Forms that get a chooser** (`WeightsTrainer_ChooserForms_AreTheFormsWhoseRowsTrainAChooser`): a form whose rows name
+  two labels is listed, a form whose rows name one label is not, and no rows list no form (the cross-validation leaves
+  out the anchors of a form of several lemmas that is not listed).
 
 #### Usage prior
 
@@ -318,6 +321,11 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Form plan** (`RealCalibrator_Apply_FormOfSeveralLemmas_IsObservedOnlyWithAChooser`): `left` is a form of the lemmas
   `left` and `leave`; a calibration row of `leave` with this form is not observed without a chooser for the form (the
   encoder does not run, the lexicon answers) and is observed with one.
+- **Rows that no threshold of the lemma decides**
+  (`RealCalibrator_Apply_ChooserNotConfidentOrOtherLemmaSelected_RowIsLeftOut`): for the form `left` with a chooser of
+  threshold 1, a chooser margin of 0.4 is not confident (the row is not observed and `ChooserUnsure` counts it), a
+  chooser that prefers the lemma `left` selects another lemma (not observed, `SelectedElsewhere`), and a margin of 2 for
+  `leave` is observed with no row counted as left out.
 - **Closed-class slot of Basic** (`RealCalibrator_Apply_ClosedClassSlotWins_RowIsLeftOut`,
   `RealCalibrator_Apply_OpenClassSlotWins_RowIsObserved_ClosedTrueSenseIsWrong`,
   `RealCalibrator_Apply_BasicResultsOfAnotherLength_Throws`): for `little` with an adjective sense that scores 3, a

@@ -27,6 +27,7 @@ sections:
               - WordSense-Onnx-OnnxClassifier-AnalysisProbability
               - WordSense-Onnx-OnnxClassifier-ClosedClass
               - WordSense-Onnx-OnnxClassifier-SharedCandidates
+              - WordSense-Onnx-OnnxClassifier-SharedOutcome
               - WordSense-Onnx-OnnxClassifier-Slots
               - WordSense-Onnx-OnnxClassifier-SingleSense
               - WordSense-Onnx-OnnxClassifier-MultiLemmaForm

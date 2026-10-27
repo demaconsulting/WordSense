@@ -1232,4 +1232,96 @@ public class OnnxClassifierTests
         Assert.Null(unknown);
         Assert.Empty(notTheLemma.Columns);
     }
+
+    private static float[] Centered(WeightedLemmaTable table, double[] vector) => FeatureExtractor.Center(vector, table.Data.Mean)!;
+
+    /// <summary>
+    ///     A form whose chooser is not confident is answered at the part-of-speech level (a form like <c>left</c> with
+    ///     tied chooser scores), so the threshold of the lemma does not decide it; with a confident chooser it does.
+    /// </summary>
+    [Fact]
+    public async Task OnnxClassifier_ScoreForm_ChooserBelowItsThreshold_TheLemmaThresholdDoesNotDecide()
+    {
+        // Arrange: the chooser prefers "leave" by 0.5, which a threshold of 2 refuses and 0.4 accepts
+        var verb = WordLexicon.SensesOf("leave", PartOfSpeech.Verb);
+        var vector = Fixtures.Feature((Fixtures.Column("leave", verb[0].SenseId), 3), (Fixtures.Label(0), 0.5));
+        var unsureTable = LeftTable(2f);
+        var sureTable = LeftTable(0.4f);
+
+        // Act
+        var unsure = OnnxClassifier.ScoreForm("left", "leave", unsureTable, Centered(unsureTable, vector));
+        var sure = OnnxClassifier.ScoreForm("left", "leave", sureTable, Centered(sureTable, vector));
+        var unsureResult = await RunAsync(unsureTable, vector, "left");
+        var sureResult = await RunAsync(sureTable, vector, "left");
+
+        // Assert: the scoring tells what inference does with the same word
+        Assert.Equal(OnnxClassifier.FormOutcome.ChooserNotConfident, unsure.Outcome);
+        Assert.False(unsure.ThresholdDecides);
+        Assert.Equal(SenseLevel.PartOfSpeech, unsureResult.Level);
+        Assert.Equal(OnnxClassifier.FormOutcome.ThresholdDecides, sure.Outcome);
+        Assert.True(sure.ThresholdDecides);
+        Assert.Equal(SenseLevel.Sense, sureResult.Level);
+        Assert.Equal(verb[0].SenseId, sureResult.SenseId);
+    }
+
+    /// <summary>
+    ///     Every way in which inference answers a word without the threshold of the lemma is an outcome of the scoring: the
+    ///     selected analysis of another lemma, a best sense of another part of speech, a form without a chooser, and a
+    ///     lemma that is not a lemma of the form.
+    /// </summary>
+    [Fact]
+    public async Task OnnxClassifier_ScoreForm_OtherEarlyExits_AreOutcomesThatInferenceShares()
+    {
+        // Arrange
+        var table = LeftTable(0.5f);
+        var preferLeft = Fixtures.Feature((Fixtures.Label(1), 4));
+        var noChooser = Fixtures.Table(Fixtures.Lemma("leave", fine: 1f), Fixtures.Lemma("left", fine: 1f));
+        var justTable = JustTable(0.5f, 0f);
+        var adjective = JustFeature((AdjectiveIds[0], 1));
+
+        // Act
+        var elsewhere = OnnxClassifier.ScoreForm("left", "leave", table, Centered(table, preferLeft));
+        var elsewhereResult = await RunAsync(table, preferLeft, "left");
+        var lexiconOnly = OnnxClassifier.ScoreForm("left", "leave", noChooser, Centered(noChooser, preferLeft));
+        var notAFormOfTheLemma = OnnxClassifier.ScoreForm("left", "just", table, Centered(table, preferLeft));
+        var outside = OnnxClassifier.ScoreForm("just", "just", justTable, Centered(justTable, adjective));
+        var outsideResult = await RunAsync(justTable, adjective);
+
+        // Assert: the selected lemma is "left", so the threshold of "leave" does not decide
+        Assert.Equal(OnnxClassifier.FormOutcome.SelectedElsewhere, elsewhere.Outcome);
+        Assert.Equal("left", elsewhereResult.Details!.Lemma);
+        Assert.Equal(SenseLevel.PartOfSpeech, elsewhereResult.Level);
+        Assert.Equal(OnnxClassifier.FormOutcome.EncoderDoesNotRun, lexiconOnly.Outcome);
+        Assert.Equal(OnnxClassifier.FormOutcome.LemmaNotScored, notAFormOfTheLemma.Outcome);
+
+        // The adjective sense leads but the adverb analysis is selected: the answer is at the part-of-speech level
+        Assert.Equal(OnnxClassifier.FormOutcome.BestOutsideSelectedPartOfSpeech, outside.Outcome);
+        Assert.False(outside.ThresholdDecides);
+        Assert.Equal(SenseLevel.PartOfSpeech, outsideResult.Level);
+    }
+
+    /// <summary>
+    ///     The build tool leaves out of the cross-validation the anchors of a form for which the encoder does not run:
+    ///     the one rule that inference uses for the plan of a word.
+    /// </summary>
+    [Fact]
+    public void OnnxClassifier_EncoderRuns_FormOfSeveralLemmas_NeedsItsChooser()
+    {
+        // Arrange
+        var columns = OnnxClassifier.FormColumns("left", "leave", LeaveOnlyTable().Find("leave")!.ColumnOf)!;
+
+        // Act
+        var withChooser = OnnxClassifier.EncoderRuns("left", "leave", columns.Count, form => form == "left");
+        var withoutChooser = OnnxClassifier.EncoderRuns("left", "leave", columns.Count, _ => false);
+        var oneLemma = OnnxClassifier.EncoderRuns("just", "just", 5, _ => false);
+        var unknown = OnnxClassifier.EncoderRuns("zzqxjw", "just", 5, _ => true);
+        var tooFewColumns = OnnxClassifier.EncoderRuns("just", "just", 1, _ => false);
+
+        // Assert
+        Assert.True(withChooser);
+        Assert.False(withoutChooser);
+        Assert.True(oneLemma);
+        Assert.False(unknown);
+        Assert.False(tooFewColumns);
+    }
 }
