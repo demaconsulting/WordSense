@@ -84,7 +84,8 @@ PRONOUNS = set("i you he she it we they me him us them who whom which what there
 CONJUNCTIONS = set("and or but nor so yet if because while although though when whenever where".split())
 FUNCTION_WORDS = DETERMINERS | PREPOSITIONS | AUXILIARIES | PRONOUNS | CONJUNCTIONS | {"not", "n't", "very", "too", "also", "just",
                                                                                       "only", "then", "now", "still", "even"}
-MODALS = set("can could may might must shall should will would cannot".split())
+MODALS = set("can could may might must shall should will would cannot can't couldn't won't wouldn't shouldn't mustn't shan't "
+             "mightn't".split())
 ADVERBS_AFTER_MODAL = set("not never always also simply first then still just quickly easily soon often usually only".split())
 NUMBER_WORDS = set("one two three four five six seven eight nine ten eleven twelve twenty thirty forty fifty sixty hundred "
                    "thousand million half double twice dozen".split())
@@ -140,7 +141,7 @@ def check_shape(shape, sentence, lemma):
             return "the target is not the first word of an imperative"
         return None
     if shape == "v-after-modal":
-        if prev in MODALS or prev == "to":
+        if prev in MODALS or prev == "to" or (prev is not None and prev.endswith(("'ll", "\u2019ll"))):
             return None
         if t >= 2 and words[t - 2] in MODALS and prev in ADVERBS_AFTER_MODAL:
             return None

@@ -1,0 +1,561 @@
+id	shape	lemma	gold	target_index	sentence
+n-obj-light-001	n-obj-light	air	Noun	7	The nurse gave the patient some fresh {air} after surgery .
+n-obj-light-002	n-obj-light	alert	Noun	5	The dispatcher gave an immediate {alert} to nearby residents .
+n-obj-light-003	n-obj-light	appeal	Noun	5	The lawyer made a forceful {appeal} for emergency funding .
+n-obj-light-004	n-obj-light	attack	Noun	8	The general ordered troops to make a sudden {attack} .
+n-obj-light-005	n-obj-light	average	Noun	5	The statistician took a weighted {average} of the survey results .
+n-obj-light-006	n-obj-light	balance	Noun	5	The gymnast performed a steady {balance} on the beam .
+n-obj-light-007	n-obj-light	ball	Noun	5	The children had a lively {ball} after the concert .
+n-obj-light-008	n-obj-light	bed	Noun	5	The gardener made a narrow {bed} for the seedlings .
+n-obj-light-009	n-obj-light	best	Noun	4	The runner gave her {best} during the final lap .
+n-obj-light-010	n-obj-light	blood	Noun	4	The surgeon took some {blood} before breakfast .
+n-obj-light-011	n-obj-light	blow	Noun	5	The boxer gave a sudden {blow} during the final round .
+n-obj-light-012	n-obj-light	bump	Noun	7	The mechanic gave the bumper a gentle {bump} during testing .
+n-obj-light-013	n-obj-light	claim	Noun	5	The witness made a detailed {claim} during testimony .
+n-obj-light-014	n-obj-light	clean	Noun	5	The staff did a thorough {clean} before reopening the restaurant .
+n-obj-light-015	n-obj-light	climb	Noun	5	The hikers made a steep {climb} before breakfast .
+n-obj-light-016	n-obj-light	concern	Noun	5	The committee had a serious {concern} about the bridge inspection .
+n-obj-light-017	n-obj-light	control	Noun	5	The operator performed a safety {control} before powering the machine .
+n-obj-light-018	n-obj-light	course	Noun	5	The team ran a difficult {course} before lunch .
+n-obj-light-019	n-obj-light	discard	Noun	5	The system performed a secure {discard} of deleted files after encryption .
+n-obj-light-020	n-obj-light	display	Noun	5	The gallery had a special {display} of regional paintings .
+n-obj-light-021	n-obj-light	dispute	Noun	5	The mediator had a formal {dispute} recorded for the hearing .
+n-obj-light-022	n-obj-light	document	Noun	7	The lawyer gave the witness a legal {document} to sign .
+n-obj-light-023	n-obj-light	edge	Noun	7	The carpenter gave the tabletop a smooth {edge} .
+n-obj-light-024	n-obj-light	exercise	Noun	5	The coach had a demanding {exercise} ready for the entire squad .
+n-obj-light-025	n-obj-light	fire	Noun	5	The crew made a controlled {fire} beside the remote research station .
+n-obj-light-026	n-obj-light	flash	Noun	5	The photographer took a sudden {flash} inside the dark studio .
+n-obj-light-027	n-obj-light	go	Noun	5	The team had a final {go} at the difficult puzzle .
+n-obj-light-028	n-obj-light	guess	Noun	5	The team made a cautious {guess} about the missing shipment .
+n-obj-light-029	n-obj-light	hit	Noun	5	The batter took a clean {hit} into center field .
+n-obj-light-030	n-obj-light	hold	Noun	5	The hikers took a brief {hold} beside the cliff .
+n-obj-light-031	n-obj-light	image	Noun	7	The designer made a high - resolution {image} for the museum display .
+n-obj-light-032	n-obj-light	job	Noun	5	The contractor did a careful {job} repairing the roof .
+n-obj-light-033	n-obj-light	labor	Noun	5	The contractor had some difficult {labor} ahead before winter arrived .
+n-obj-light-034	n-obj-light	leak	Noun	4	We had a serious {leak} during the storm .
+n-obj-light-035	n-obj-light	love	Noun	5	The children had a lasting {love} for astronomy .
+n-obj-light-036	n-obj-light	measure	Noun	5	The engineer took a careful {measure} of the bridge's span .
+n-obj-light-037	n-obj-light	name	Noun	5	The witness gave a false {name} during questioning .
+n-obj-light-038	n-obj-light	offer	Noun	5	The charity made a generous {offer} to the displaced family .
+n-obj-light-039	n-obj-light	overcall	Noun	5	The referee made an unnecessary {overcall} during the final hand .
+n-obj-light-040	n-obj-light	pace	Noun	7	The coach gave the runners a steady {pace} during practice .
+n-obj-light-041	n-obj-light	pain	Noun	5	The patient had a sharp {pain} after the injection .
+n-obj-light-042	n-obj-light	paper	Noun	4	The students gave a {paper} on coastal erosion .
+n-obj-light-043	n-obj-light	pattern	Noun	5	The designer made a repeating {pattern} for the tiled floor .
+n-obj-light-044	n-obj-light	piece	Noun	5	The sculptor made a delicate {piece} for the gallery .
+n-obj-light-045	n-obj-light	plan	Noun	4	We made a detailed {plan} before launching the community garden .
+n-obj-light-046	n-obj-light	portion	Noun	7	The nurse gave each patient a small {portion} of soup .
+n-obj-light-047	n-obj-light	price	Noun	5	The retailer made a final {price} adjustment before launch .
+n-obj-light-048	n-obj-light	process	Noun	5	The factory performed a safety {process} before restarting .
+n-obj-light-049	n-obj-light	purchase	Noun	5	The manager made a large {purchase} for the new laboratory .
+n-obj-light-050	n-obj-light	raise	Noun	4	The manager gave a {raise} to every technician .
+n-obj-light-051	n-obj-light	reason	Noun	5	The committee gave a thoughtful {reason} for rejecting the proposal .
+n-obj-light-052	n-obj-light	reboot	Noun	5	The technician performed a complete {reboot} after midnight .
+n-obj-light-053	n-obj-light	relapse	Noun	5	The patient had a serious {relapse} after stopping treatment .
+n-obj-light-054	n-obj-light	release	Noun	5	The studio gave an early {release} to selected reviewers .
+n-obj-light-055	n-obj-light	report	Noun	5	The manager made a detailed {report} after interviewing witnesses .
+n-obj-light-056	n-obj-light	reshuffle	Noun	5	The committee made a major {reshuffle} after the election .
+n-obj-light-057	n-obj-light	review	Noun	5	The committee performed a thorough {review} of the grant proposal .
+n-obj-light-058	n-obj-light	roll	Noun	4	The director made another {roll} after adjusting the camera angle .
+n-obj-light-059	n-obj-light	rule	Noun	5	The referee made a final {rule} after reviewing the footage .
+n-obj-light-060	n-obj-light	run	Noun	5	The director made a quick {run} through the rehearsal .
+n-obj-light-061	n-obj-light	say	Noun	5	The host had a brief {say} before introducing the speaker .
+n-obj-light-062	n-obj-light	screw	Noun	7	The mechanic gave each panel a final {screw} before testing .
+n-obj-light-063	n-obj-light	service	Noun	5	The mechanic performed a complete {service} on the delivery van .
+n-obj-light-064	n-obj-light	shape	Noun	7	The tailor gave the jacket a careful {shape} with steam .
+n-obj-light-065	n-obj-light	share	Noun	7	The manager gave each partner a generous {share} of the profits .
+n-obj-light-066	n-obj-light	shelter	Noun	5	The hikers took a temporary {shelter} beneath the rock ledge .
+n-obj-light-067	n-obj-light	slice	Noun	5	The chef made a thin {slice} for each guest .
+n-obj-light-068	n-obj-light	spark	Noun	7	The speaker gave the audience a creative {spark} .
+n-obj-light-069	n-obj-light	square	Noun	5	The architect made a perfect {square} for the courtyard plan .
+n-obj-light-070	n-obj-light	stay	Noun	5	The travelers had a brief {stay} near the mountain village .
+n-obj-light-071	n-obj-light	still	Noun	5	The director took a dramatic {still} for the poster .
+n-obj-light-072	n-obj-light	take	Noun	5	The photographer took a careful {take} of the final scene .
+n-obj-light-073	n-obj-light	throw	Noun	5	The coach gave a careful {throw} during warmups .
+n-obj-light-074	n-obj-light	touch	Noun	5	The technician made a gentle {touch} to the sensor housing .
+n-obj-light-075	n-obj-light	transform	Noun	5	The software performed a Fourier {transform} on the audio sample .
+n-obj-light-076	n-obj-light	try	Noun	4	The engineer made a {try} at repairing the antique radio .
+n-obj-light-077	n-obj-light	update	Noun	5	The manager gave a brief {update} after the meeting .
+n-obj-light-078	n-obj-light	value	Noun	5	The analyst gave a high {value} to transparent reporting .
+n-obj-light-079	n-obj-light	voice	Noun	5	The singer gave a clear {voice} to the character .
+n-obj-light-080	n-obj-light	word	Noun	5	The lawyer gave a precise {word} of caution .
+n-compound-head-001	n-compound-head	advocate	Noun	4	The patient - rights {advocate} addressed reporters outside the hospital .
+n-compound-head-002	n-compound-head	balance	Noun	5	The accountant updated the ledger {balance} after receiving new invoices .
+n-compound-head-003	n-compound-head	ball	Noun	2	The tennis {ball} bounced over the fence .
+n-compound-head-004	n-compound-head	black	Noun	6	The artist mixed a deep charcoal {black} .
+n-compound-head-005	n-compound-head	block	Noun	2	The city {block} hosted a summer street fair .
+n-compound-head-006	n-compound-head	brush	Noun	2	The paint {brush} rested in a jar overnight .
+n-compound-head-007	n-compound-head	burn	Noun	2	The campfire {burn} left a black ring on the stone .
+n-compound-head-008	n-compound-head	burst	Noun	2	A pressure {burst} damaged the pipe beneath the platform .
+n-compound-head-009	n-compound-head	buy	Noun	2	The bargain {buy} sold out before noon .
+n-compound-head-010	n-compound-head	case	Noun	2	The phone {case} protected the device during the fall .
+n-compound-head-011	n-compound-head	catch	Noun	2	The baseball {catch} ended the inning in spectacular fashion .
+n-compound-head-012	n-compound-head	center	Noun	2	The shopping {center} closed early during the storm .
+n-compound-head-013	n-compound-head	church	Noun	2	The village {church} tower survived the storm .
+n-compound-head-014	n-compound-head	color	Noun	2	The sunset {color} faded after dusk .
+n-compound-head-015	n-compound-head	complement	Noun	2	The protein {complement} supports immune defense against infection .
+n-compound-head-016	n-compound-head	contact	Noun	2	The office {contact} answered promptly after the alarm .
+n-compound-head-017	n-compound-head	coordinate	Noun	2	The map {coordinate} marked the hidden entrance .
+n-compound-head-018	n-compound-head	design	Noun	2	The product {design} won approval from the review panel .
+n-compound-head-019	n-compound-head	dictate	Noun	2	The policy {dictate} shaped every department's decision .
+n-compound-head-020	n-compound-head	discard	Noun	2	The plastic {discard} belonged in a separate bin .
+n-compound-head-021	n-compound-head	dive	Noun	6	The platform crew inspected the rescue {dive} equipment .
+n-compound-head-022	n-compound-head	doubt	Noun	2	The witness {doubt} delayed the final decision .
+n-compound-head-023	n-compound-head	drop	Noun	2	The water {drop} glittered in the sunlight .
+n-compound-head-024	n-compound-head	dump	Noun	2	The landfill {dump} closed after inspectors found leaking drums .
+n-compound-head-025	n-compound-head	floor	Noun	2	The warehouse {floor} needs polishing before the inspection .
+n-compound-head-026	n-compound-head	forward	Noun	6	The team captain praised the power {forward} after practice .
+n-compound-head-027	n-compound-head	front	Noun	2	The theater {front} opened onto a crowded plaza .
+n-compound-head-028	n-compound-head	harm	Noun	2	The chemical {harm} became apparent after several months .
+n-compound-head-029	n-compound-head	head	Noun	2	The arrow {head} gleamed under the museum lights .
+n-compound-head-030	n-compound-head	heat	Noun	2	The engine {heat} damaged nearby wiring .
+n-compound-head-031	n-compound-head	hit	Noun	2	The baseball {hit} traveled over the center - field fence .
+n-compound-head-032	n-compound-head	join	Noun	2	The metal {join} held under extreme pressure .
+n-compound-head-033	n-compound-head	kill	Noun	2	The predator {kill} ended the study early .
+n-compound-head-034	n-compound-head	lock	Noun	2	The garage {lock} jammed during yesterday's storm .
+n-compound-head-035	n-compound-head	low	Noun	2	The market {low} surprised investors before the recovery .
+n-compound-head-036	n-compound-head	major	Noun	2	The history {major} won a research fellowship .
+n-compound-head-037	n-compound-head	match	Noun	2	The championship {match} drew millions of viewers .
+n-compound-head-038	n-compound-head	matter	Noun	2	The border {matter} remained unresolved .
+n-compound-head-039	n-compound-head	misprint	Noun	2	A newspaper {misprint} changed the election result headline .
+n-compound-head-040	n-compound-head	name	Noun	2	The family {name} appeared on every official document .
+n-compound-head-041	n-compound-head	orbit	Noun	2	The satellite {orbit} shifted after the engine burn .
+n-compound-head-042	n-compound-head	overcharge	Noun	2	The billing {overcharge} appeared on last month's statement .
+n-compound-head-043	n-compound-head	overuse	Noun	4	The report examined caffeine {overuse} among university athletes .
+n-compound-head-044	n-compound-head	pardon	Noun	2	The prisoner {pardon} drew national attention .
+n-compound-head-045	n-compound-head	point	Noun	2	The arrow {point} snapped during the demonstration .
+n-compound-head-046	n-compound-head	poison	Noun	2	The garden {poison} warning listed emergency treatment instructions .
+n-compound-head-047	n-compound-head	practice	Noun	3	The orchestra's rehearsal {practice} improved over winter .
+n-compound-head-048	n-compound-head	process	Noun	2	The hiring {process} includes three interviews .
+n-compound-head-049	n-compound-head	question	Noun	2	The interview {question} surprised the seasoned diplomat .
+n-compound-head-050	n-compound-head	range	Noun	2	The mountain {range} appeared beyond the morning fog .
+n-compound-head-051	n-compound-head	relapse	Noun	2	A patient {relapse} shocked the ward .
+n-compound-head-052	n-compound-head	release	Noun	2	The software {release} fixed several login problems .
+n-compound-head-053	n-compound-head	remark	Noun	2	The keynote {remark} surprised everyone in the newsroom .
+n-compound-head-054	n-compound-head	rerelease	Noun	5	The label announced an album {rerelease} for autumn .
+n-compound-head-055	n-compound-head	resort	Noun	2	The mountain {resort} closed its lifts after heavy snowfall .
+n-compound-head-056	n-compound-head	reuse	Noun	4	The program encourages material {reuse} through repair workshops .
+n-compound-head-057	n-compound-head	screw	Noun	2	The wood {screw} loosened beneath the cabinet hinge .
+n-compound-head-058	n-compound-head	seat	Noun	2	The window {seat} offered a view of the runway .
+n-compound-head-059	n-compound-head	serve	Noun	3	Her powerful tennis {serve} won the final point .
+n-compound-head-060	n-compound-head	shape	Noun	2	The kidney {shape} varies among healthy adults .
+n-compound-head-061	n-compound-head	shelter	Noun	2	The animal {shelter} opened a new wing downtown .
+n-compound-head-062	n-compound-head	ship	Noun	2	The cargo {ship} departed before the storm reached the harbor .
+n-compound-head-063	n-compound-head	short	Noun	2	The marathon {shorts} dried quickly after the rain stopped .
+n-compound-head-064	n-compound-head	shoulder	Noun	2	The road {shoulder} narrowed near the mountain tunnel .
+n-compound-head-065	n-compound-head	shower	Noun	2	The meteor {shower} peaked just before dawn .
+n-compound-head-066	n-compound-head	site	Noun	2	The construction {site} closed during the thunderstorm .
+n-compound-head-067	n-compound-head	spread	Noun	2	The butter {spread} cooled beside the breakfast table .
+n-compound-head-068	n-compound-head	step	Noun	2	The stair {step} cracked beneath the heavy toolbox .
+n-compound-head-069	n-compound-head	stock	Noun	5	The warehouse tracked its emergency {stock} carefully .
+n-compound-head-070	n-compound-head	take	Noun	2	The video {take} captured an unexpected interruption .
+n-compound-head-071	n-compound-head	time	Noun	2	The flight {time} shortened after the new route opened .
+n-compound-head-072	n-compound-head	tissue	Noun	2	The paper {tissue} softened in the rain .
+n-compound-head-073	n-compound-head	title	Noun	2	The book {title} appeared on every review copy .
+n-compound-head-074	n-compound-head	tree	Noun	5	The family planted an apple {tree} beside the fence .
+n-compound-head-075	n-compound-head	turn	Noun	2	The staircase {turn} was hidden behind a curtain .
+n-compound-head-076	n-compound-head	use	Noun	2	The software {use} policy forbids personal accounts .
+n-compound-head-077	n-compound-head	wash	Noun	2	The kitchen {wash} removed grease from the restaurant's pans .
+n-compound-head-078	n-compound-head	wonder	Noun	2	The world {wonder} attracted tourists throughout the year .
+n-compound-head-079	n-compound-head	worry	Noun	2	The election {worries} dominated conversations at dinner .
+n-compound-head-080	n-compound-head	wound	Noun	2	The battlefield {wound} required immediate surgical care .
+n-modifier-001	n-modifier	ball	Noun	1	The {ball} bearing failed during the laboratory test .
+n-modifier-002	n-modifier	bank	Noun	1	The {bank} loan officer called before noon .
+n-modifier-003	n-modifier	battle	Noun	1	The {battle} strategy changed after the scouts returned .
+n-modifier-004	n-modifier	carbonate	Noun	1	The {carbonate} deposits formed beneath the ancient reef .
+n-modifier-005	n-modifier	case	Noun	1	The {case} study compared infection rates across three counties .
+n-modifier-006	n-modifier	cause	Noun	1	The {cause} analysis identified several preventable failures .
+n-modifier-007	n-modifier	chase	Noun	1	The {chase} sequence required careful coordination among six stunt drivers .
+n-modifier-008	n-modifier	class	Noun	1	The {class} project won a regional science award .
+n-modifier-009	n-modifier	command	Noun	1	The {command} structure rejected unauthorized instructions .
+n-modifier-010	n-modifier	commune	Noun	1	The {commune} garden supplies vegetables to every household .
+n-modifier-011	n-modifier	contract	Noun	1	The {contract} dispute delayed construction for three months .
+n-modifier-012	n-modifier	credit	Noun	1	The {credit} card expired before the replacement arrived .
+n-modifier-013	n-modifier	defect	Noun	1	The {defect} report prompted an immediate safety inspection .
+n-modifier-014	n-modifier	demand	Noun	1	The {demand} forecast predicted shortages before the holiday rush .
+n-modifier-015	n-modifier	design	Noun	1	The {design} team tested the prototype outdoors .
+n-modifier-016	n-modifier	doctor	Noun	1	The {doctor} shortage affected rural hospitals .
+n-modifier-017	n-modifier	drain	Noun	1	The {drain} pipe clogged beneath the kitchen sink .
+n-modifier-018	n-modifier	exercise	Noun	1	The {exercise} program helped workers recover from injuries .
+n-modifier-019	n-modifier	experiment	Noun	1	The {experiment} results challenged the team's original hypothesis .
+n-modifier-020	n-modifier	fear	Noun	1	The {fear} response eased after the lights came on .
+n-modifier-021	n-modifier	field	Noun	1	The {field} hospital treated injured climbers throughout the night .
+n-modifier-022	n-modifier	floor	Noun	1	The {floor} lamp illuminated the reading chair .
+n-modifier-023	n-modifier	flower	Noun	1	The {flower} market opened before sunrise downtown .
+n-modifier-024	n-modifier	foot	Noun	1	The {foot} pedal controls the sewing machine's speed .
+n-modifier-025	n-modifier	gain	Noun	1	The {gain} control adjusted the amplifier's output automatically .
+n-modifier-026	n-modifier	gift	Noun	1	The {gift} boxes waited beside the decorated tree .
+n-modifier-027	n-modifier	glass	Noun	1	The {glass} panel reflected the morning sunlight .
+n-modifier-028	n-modifier	grant	Noun	1	The {grant} application requires two independent references .
+n-modifier-029	n-modifier	gun	Noun	1	The {gun} cabinet remains locked during demonstrations .
+n-modifier-030	n-modifier	increase	Noun	1	The {increase} rate exceeded expectations during the second quarter .
+n-modifier-031	n-modifier	kill	Noun	1	The {kill} switch stopped the machine immediately .
+n-modifier-032	n-modifier	laugh	Noun	1	The {laugh} track sounded artificial on television .
+n-modifier-033	n-modifier	man	Noun	1	The {man} - hours estimate exceeded the original budget .
+n-modifier-034	n-modifier	march	Noun	1	The {march} route crossed downtown before noon .
+n-modifier-035	n-modifier	murder	Noun	1	The {murder} investigation reopened after new evidence surfaced .
+n-modifier-036	n-modifier	need	Noun	1	The {need} assessment guided the charity's response .
+n-modifier-037	n-modifier	note	Noun	1	The {note} card listed three urgent reminders .
+n-modifier-038	n-modifier	number	Noun	1	The {number} sequence identifies each specimen in the archive .
+n-modifier-039	n-modifier	paint	Noun	1	The {paint} fumes required open windows .
+n-modifier-040	n-modifier	paper	Noun	1	The {paper} archive survived the basement flood .
+n-modifier-041	n-modifier	phase	Noun	1	The {phase} transition occurred below the predicted temperature .
+n-modifier-042	n-modifier	power	Noun	1	The {power} grid failed during the coastal hurricane .
+n-modifier-043	n-modifier	program	Noun	1	The {program} director announced new evening classes .
+n-modifier-044	n-modifier	pump	Noun	1	The {pump} station supplies water to nearby farms .
+n-modifier-045	n-modifier	push	Noun	1	The {push} notification interrupted the meeting twice .
+n-modifier-046	n-modifier	put	Noun	1	The {put} option protects investors during market declines .
+n-modifier-047	n-modifier	record	Noun	1	The {record} player needs a replacement needle .
+n-modifier-048	n-modifier	reform	Noun	1	The {reform} proposal passed after months of public debate .
+n-modifier-049	n-modifier	remake	Noun	1	The {remake} schedule changed after the director resigned .
+n-modifier-050	n-modifier	reply	Noun	1	The {reply} message arrived before the meeting ended .
+n-modifier-051	n-modifier	research	Noun	1	The {research} team published its findings in a medical journal .
+n-modifier-052	n-modifier	return	Noun	4	The store posted its {return} policy beside the checkout .
+n-modifier-053	n-modifier	school	Noun	1	The {school} board approved a new reading program .
+n-modifier-054	n-modifier	shelter	Noun	1	The {shelter} entrance closes at nine each evening .
+n-modifier-055	n-modifier	sight	Noun	1	The {sight} glass needs cleaning before the inspection .
+n-modifier-056	n-modifier	sky	Noun	1	The {sky} color deepened as the sun sank below the horizon .
+n-modifier-057	n-modifier	sleep	Noun	1	The {sleep} study revealed unusual breathing patterns overnight .
+n-modifier-058	n-modifier	smoke	Noun	1	The {smoke} alarm sounded during the overnight drill .
+n-modifier-059	n-modifier	soil	Noun	1	The {soil} samples revealed contamination near the old factory .
+n-modifier-060	n-modifier	soldier	Noun	1	The {soldier} uniform hung beside the barracks entrance .
+n-modifier-061	n-modifier	spell	Noun	1	The {spell} check caught three errors in the manuscript .
+n-modifier-062	n-modifier	stamp	Noun	1	The {stamp} collection includes rare issues from three continents .
+n-modifier-063	n-modifier	stop	Noun	1	The {stop} signal flashed beside the railway crossing .
+n-modifier-064	n-modifier	style	Noun	1	Her {style} choices made the presentation memorable .
+n-modifier-065	n-modifier	suit	Noun	1	The {suit} jacket needed alterations before the ceremony .
+n-modifier-066	n-modifier	talk	Noun	1	The {talk} show featured scientists discussing ocean currents .
+n-modifier-067	n-modifier	target	Noun	1	The {target} audience filled the auditorium before noon .
+n-modifier-068	n-modifier	text	Noun	1	The {text} message arrived during the meeting .
+n-modifier-069	n-modifier	throw	Noun	1	The {throw} blanket warmed the child during the flight .
+n-modifier-070	n-modifier	thunder	Noun	1	The {thunder} storm rattled windows across the valley .
+n-modifier-071	n-modifier	time	Noun	1	The {time} limit expires when the examination begins .
+n-modifier-072	n-modifier	tower	Noun	1	The {tower} crane lifted steel beams above the construction site .
+n-modifier-073	n-modifier	transfer	Noun	1	The {transfer} fee appeared on the bank statement .
+n-modifier-074	n-modifier	trouble	Noun	1	The {trouble} report identified repeated outages in the network .
+n-modifier-075	n-modifier	war	Noun	1	The {war} memorial reopened after careful stone restoration .
+n-modifier-076	n-modifier	wash	Noun	1	The {wash} cycle uses less water than the older setting .
+n-modifier-077	n-modifier	water	Noun	1	The {water} pressure dropped during construction .
+n-modifier-078	n-modifier	wax	Noun	1	The {wax} seal kept the envelope firmly closed .
+n-modifier-079	n-modifier	wish	Noun	1	The {wish} list grew longer before the holiday .
+n-modifier-080	n-modifier	work	Noun	1	The {work} schedule changed after the client approved funding .
+n-subject-initial-001	n-subject-initial	action	Noun	0	{Actions} speak louder than promises during emergencies .
+n-subject-initial-002	n-subject-initial	age	Noun	0	{Ages} vary considerably among the trees in this grove .
+n-subject-initial-003	n-subject-initial	attribute	Noun	0	{Attributes} vary across samples collected from different regions .
+n-subject-initial-004	n-subject-initial	author	Noun	0	{Authors} revise manuscripts repeatedly before publication .
+n-subject-initial-005	n-subject-initial	battle	Noun	0	{Battles} often reshape borders and political alliances .
+n-subject-initial-006	n-subject-initial	benefit	Noun	0	{Benefits} encourage workers to adopt the wellness program .
+n-subject-initial-007	n-subject-initial	blue	Noun	0	{Blues} filled the club when the guitarist started playing .
+n-subject-initial-008	n-subject-initial	body	Noun	0	{Bodies} orbit the planet in stable paths .
+n-subject-initial-009	n-subject-initial	break	Noun	0	{Breaks} interrupt concentration during long laboratory sessions .
+n-subject-initial-010	n-subject-initial	button	Noun	0	{Buttons} fell from the antique coat during cleaning .
+n-subject-initial-011	n-subject-initial	captain	Noun	0	{Captains} inspect every vessel before departure .
+n-subject-initial-012	n-subject-initial	carbonate	Noun	0	{Carbonates} dissolve readily in many acidic solutions .
+n-subject-initial-013	n-subject-initial	catch	Noun	0	{Catches} behind the plate often decide close baseball games .
+n-subject-initial-014	n-subject-initial	charge	Noun	0	{Charges} accumulate when the account remains overdue .
+n-subject-initial-015	n-subject-initial	check	Noun	0	{Checks} arrive every Friday from the accounting department .
+n-subject-initial-016	n-subject-initial	class	Noun	0	{Classes} begin at eight on Monday mornings .
+n-subject-initial-017	n-subject-initial	combat	Noun	0	{Combat} remains difficult in dense urban terrain .
+n-subject-initial-018	n-subject-initial	command	Noun	0	{Commands} control the robot's movements during testing .
+n-subject-initial-019	n-subject-initial	contest	Noun	0	{Contests} attract thousands of entries each summer .
+n-subject-initial-020	n-subject-initial	cost	Noun	0	{Costs} increased sharply after the supplier changed materials .
+n-subject-initial-021	n-subject-initial	delay	Noun	0	{Delays} frustrated commuters throughout the stormy morning .
+n-subject-initial-022	n-subject-initial	detail	Noun	0	{Details} emerged after the committee released its report .
+n-subject-initial-023	n-subject-initial	doctor	Noun	0	{Doctors} reviewed the unusual scan before recommending surgery .
+n-subject-initial-024	n-subject-initial	doubt	Noun	0	{Doubt} often grows when evidence remains incomplete .
+n-subject-initial-025	n-subject-initial	dream	Noun	0	{Dreams} often influence the stories people tell themselves .
+n-subject-initial-026	n-subject-initial	effect	Noun	0	{Effects} vary widely between indoor and outdoor experiments .
+n-subject-initial-027	n-subject-initial	end	Noun	0	{Ends} fray quickly when the rope remains wet .
+n-subject-initial-028	n-subject-initial	exercise	Noun	0	{Exercises} strengthen the back when performed consistently .
+n-subject-initial-029	n-subject-initial	file	Noun	0	{Files} fill the archive cabinet by late afternoon .
+n-subject-initial-030	n-subject-initial	firm	Noun	0	{Firms} are hiring engineers despite the uncertain economy .
+n-subject-initial-031	n-subject-initial	fit	Noun	0	{Fits} vary slightly between these hand - sewn jackets .
+n-subject-initial-032	n-subject-initial	floor	Noun	0	{Floors} creak loudly in this old theater .
+n-subject-initial-033	n-subject-initial	focus	Noun	0	{Foci} shifted toward the brightest stars during the exposure .
+n-subject-initial-034	n-subject-initial	form	Noun	0	{Forms} arrived before the office opened this morning .
+n-subject-initial-035	n-subject-initial	front	Noun	0	{Fronts} move eastward across the plains each spring .
+n-subject-initial-036	n-subject-initial	group	Noun	0	{Groups} gather outside the theater before each performance .
+n-subject-initial-037	n-subject-initial	heat	Noun	0	{Heat} travels through copper more efficiently than through wood .
+n-subject-initial-038	n-subject-initial	hook	Noun	0	{Hooks} rust quickly in salty air .
+n-subject-initial-039	n-subject-initial	leak	Noun	0	{Leaks} appeared beneath the roof after yesterday's storm .
+n-subject-initial-040	n-subject-initial	lie	Noun	0	{Lies} damage trust long after the truth emerges .
+n-subject-initial-041	n-subject-initial	look	Noun	0	{Looks} can mislead investigators during a rushed inspection .
+n-subject-initial-042	n-subject-initial	man	Noun	0	{Men} gathered outside the station before dawn .
+n-subject-initial-043	n-subject-initial	misconduct	Noun	0	{Misconduct} damages public trust and weakens institutions .
+n-subject-initial-044	n-subject-initial	model	Noun	0	{Models} guide researchers through complex climate projections .
+n-subject-initial-045	n-subject-initial	object	Noun	0	{Objects} appear larger through the observatory's new lens .
+n-subject-initial-046	n-subject-initial	oversteer	Noun	0	{Oversteer} becomes dangerous on wet hairpins .
+n-subject-initial-047	n-subject-initial	pain	Noun	0	{Pain} faded after the nurse applied a cold compress .
+n-subject-initial-048	n-subject-initial	pardon	Noun	0	{Pardons} were announced by the governor on Friday .
+n-subject-initial-049	n-subject-initial	pattern	Noun	0	{Patterns} emerge when thousands of observations are plotted together .
+n-subject-initial-050	n-subject-initial	plane	Noun	0	{Planes} circled above the airport during the storm .
+n-subject-initial-051	n-subject-initial	post	Noun	0	{Posts} appeared on the community board after the meeting .
+n-subject-initial-052	n-subject-initial	press	Noun	0	{Presses} are inspected monthly at the printing plant .
+n-subject-initial-053	n-subject-initial	purpose	Noun	0	{Purpose} guides the design of every reliable instrument .
+n-subject-initial-054	n-subject-initial	question	Noun	0	{Questions} often reveal hidden assumptions in scientific interviews .
+n-subject-initial-055	n-subject-initial	rebel	Noun	0	{Rebels} seized the outpost before dawn .
+n-subject-initial-056	n-subject-initial	release	Noun	0	{Releases} happen every Friday after the editorial meeting .
+n-subject-initial-057	n-subject-initial	replay	Noun	0	{Replays} clarified the referee's disputed decision .
+n-subject-initial-058	n-subject-initial	resit	Noun	0	{Resits} require advance registration at the university .
+n-subject-initial-059	n-subject-initial	rifle	Noun	0	{Rifles} require careful cleaning after field use .
+n-subject-initial-060	n-subject-initial	risk	Noun	0	{Risks} increase when teams ignore the warning signs .
+n-subject-initial-061	n-subject-initial	run	Noun	0	{Runs} along the river attract thousands each autumn .
+n-subject-initial-062	n-subject-initial	school	Noun	0	{Schools} reopened after the winter storm passed .
+n-subject-initial-063	n-subject-initial	service	Noun	0	{Services} resumed across the city after the outage .
+n-subject-initial-064	n-subject-initial	share	Noun	0	{Shares} rose sharply after the company announced record earnings .
+n-subject-initial-065	n-subject-initial	shoulder	Noun	0	{Shoulders} ached after the climbers carried heavy packs .
+n-subject-initial-066	n-subject-initial	shower	Noun	0	{Showers} cooled the runners after the midday race .
+n-subject-initial-067	n-subject-initial	site	Noun	0	{Sites} close early during the winter season .
+n-subject-initial-068	n-subject-initial	sleep	Noun	0	{Sleep} improves memory and emotional balance .
+n-subject-initial-069	n-subject-initial	smell	Noun	0	{Smells} drifted from the bakery before dawn .
+n-subject-initial-070	n-subject-initial	soldier	Noun	0	{Soldiers} guarded the bridge throughout the night .
+n-subject-initial-071	n-subject-initial	space	Noun	0	{Spaces} separate the columns in this printed ledger .
+n-subject-initial-072	n-subject-initial	spell	Noun	0	{Spells} can change the story's direction .
+n-subject-initial-073	n-subject-initial	step	Noun	0	{Steps} lead from the dock to the quiet lakeshore .
+n-subject-initial-074	n-subject-initial	storm	Noun	0	{Storms} frequently disrupt ferry service along the northern coast .
+n-subject-initial-075	n-subject-initial	stress	Noun	0	{Stresses} accumulate in the metal after repeated heating and cooling .
+n-subject-initial-076	n-subject-initial	style	Noun	0	{Styles} vary widely across regional newspapers and online magazines .
+n-subject-initial-077	n-subject-initial	suit	Noun	0	{Suits} hang neatly in the tailor's window .
+n-subject-initial-078	n-subject-initial	time	Noun	0	{Time} heals some injuries , but memories can remain vivid .
+n-subject-initial-079	n-subject-initial	wear	Noun	0	{Wear} varies widely among these hiking boots .
+n-subject-initial-080	n-subject-initial	white	Noun	0	{Whites} fade faster than dark fabrics under sunlight .
+n-measure-001	n-measure	access	Noun	6	The archive granted 300 hours of {access} to visiting researchers .
+n-measure-002	n-measure	advance	Noun	6	The publisher offered a 30 percent {advance} to the novelist .
+n-measure-003	n-measure	age	Noun	5	The artifact has an estimated {age} of 900 years .
+n-measure-004	n-measure	aggregate	Noun	4	The survey recorded an {aggregate} of 875 responses .
+n-measure-005	n-measure	air	Noun	6	The tank contains 80 liters of {air} at standard pressure .
+n-measure-006	n-measure	author	Noun	4	The anthology credits 12 {authors} from the region .
+n-measure-007	n-measure	balance	Noun	2	The account {balance} reached $ 2 , 400 after the refund .
+n-measure-008	n-measure	benefit	Noun	4	Employees receive two annual {benefits} after probation .
+n-measure-009	n-measure	bow	Noun	5	The violinist played three measured {bows} during rehearsal .
+n-measure-010	n-measure	burst	Noun	5	The pipe released two sudden {bursts} of steam .
+n-measure-011	n-measure	carbonate	Noun	6	The formula contains 12 grams of {carbonate} per liter .
+n-measure-012	n-measure	character	Noun	4	The password requires twelve {characters} , including two symbols .
+n-measure-013	n-measure	charge	Noun	5	The invoice lists three separate {charges} for shipping and handling .
+n-measure-014	n-measure	climb	Noun	6	She completed a 900 - meter {climb} before sunset .
+n-measure-015	n-measure	compound	Noun	5	The chemical reaction produced four {compounds} in the flask .
+n-measure-016	n-measure	cost	Noun	5	The renovation incurred a total {cost} of 2 . 4 million dollars .
+n-measure-017	n-measure	counterbalance	Noun	4	The machine uses two {counterbalances} to steady its rotating arm .
+n-measure-018	n-measure	drain	Noun	6	The project needs 40 feet of {drain} along the foundation .
+n-measure-019	n-measure	fall	Noun	7	The temperature showed a 14 - degree {fall} overnight .
+n-measure-020	n-measure	farm	Noun	4	The family owns three {farms} across northern Iowa .
+n-measure-021	n-measure	film	Noun	5	The archive holds 28 original {films} from the festival .
+n-measure-022	n-measure	finger	Noun	6	The climber's glove covered all five {fingers} securely .
+n-measure-023	n-measure	finish	Noun	5	The factory completed four separate {finishes} on the prototype panels .
+n-measure-024	n-measure	flood	Noun	5	The valley experienced three major {floods} in one decade .
+n-measure-025	n-measure	flow	Noun	1	A {flow} of 20 liters per minute cooled the reactor .
+n-measure-026	n-measure	foot	Noun	4	The hallway stretches 40 {feet} beyond the main entrance .
+n-measure-027	n-measure	form	Noun	4	The printer produced twenty {forms} for the registration desk .
+n-measure-028	n-measure	frame	Noun	6	The carpenter cut 8 meters of {frame} for the greenhouse .
+n-measure-029	n-measure	grass	Noun	6	The landscaper planted twenty kilograms of {grass} beside the new walkway .
+n-measure-030	n-measure	image	Noun	7	The archive contains 2 , 400 digital {images} from the expedition .
+n-measure-031	n-measure	labor	Noun	6	The project required 600 hours of {labor} during construction .
+n-measure-032	n-measure	last	Noun	5	The workshop stored eight wooden {lasts} beneath the workbench .
+n-measure-033	n-measure	level	Noun	4	The gauge recorded 72 {levels} during the experiment .
+n-measure-034	n-measure	look	Noun	7	The portrait received 8 , 000 online {looks} during its first week .
+n-measure-035	n-measure	march	Noun	7	The parade covered a twelve - mile {march} through downtown .
+n-measure-036	n-measure	match	Noun	5	The final score showed three {matches} remaining in the series .
+n-measure-037	n-measure	notice	Noun	5	The museum displayed three historical {notices} beside the entrance .
+n-measure-038	n-measure	perfume	Noun	6	The boutique sold 18 bottles of {perfume} yesterday .
+n-measure-039	n-measure	permit	Noun	5	The city issued 42 building {permits} during the first quarter .
+n-measure-040	n-measure	picture	Noun	4	The gallery displayed twelve {pictures} from the restored collection .
+n-measure-041	n-measure	point	Noun	5	The survey awarded five bonus {points} for complete answers .
+n-measure-042	n-measure	precipitate	Noun	6	The beaker contained 15 milliliters of {precipitate} .
+n-measure-043	n-measure	pump	Noun	4	The machine completed 40 {pumps} per minute .
+n-measure-044	n-measure	push	Noun	6	The device records 35 newtons of {push} during testing .
+n-measure-045	n-measure	raise	Noun	5	The theater recorded three curtain {raises} during opening night .
+n-measure-046	n-measure	rate	Noun	7	The loan carries a fixed 6 percent {rate} for five years .
+n-measure-047	n-measure	recoil	Noun	5	The rifle produced two sharp {recoils} during testing .
+n-measure-048	n-measure	repeat	Noun	4	The trainer required five {repeats} of each balance exercise .
+n-measure-049	n-measure	report	Noun	5	The archive contains 14 annual {reports} from the observatory .
+n-measure-050	n-measure	request	Noun	3	We received 27 {requests} before the support line closed .
+n-measure-051	n-measure	risk	Noun	6	The insurer assigned a 12 percent {risk} to the claim .
+n-measure-052	n-measure	rock	Noun	6	The museum displayed 12 tons of {rock} from the excavation .
+n-measure-053	n-measure	root	Noun	6	The botanist measured 6 centimeters of {root} beneath the seedling .
+n-measure-054	n-measure	sample	Noun	4	The lab analyzed 24 {samples} from the river .
+n-measure-055	n-measure	save	Noun	4	The computer stored five {saves} from the racing game .
+n-measure-056	n-measure	screen	Noun	4	The lab installed four {screens} along the control wall .
+n-measure-057	n-measure	seal	Noun	5	The crate contains four rubber {seals} for the hydraulic valves .
+n-measure-058	n-measure	serve	Noun	1	Each {serve} contains 12 grams of protein .
+n-measure-059	n-measure	ship	Noun	5	The fleet contains seven cargo {ships} assigned to the route .
+n-measure-060	n-measure	size	Noun	4	The package has a {size} of 40 centimeters by 30 centimeters .
+n-measure-061	n-measure	soil	Noun	6	The laboratory analyzed 3 kilograms of {soil} from the hillside .
+n-measure-062	n-measure	speed	Noun	5	The boat reached a top {speed} of 42 knots .
+n-measure-063	n-measure	stay	Noun	8	The hotel recorded an average three - night {stay} during July .
+n-measure-064	n-measure	step	Noun	7	The staircase has thirty - two narrow {steps} to the attic .
+n-measure-065	n-measure	stock	Noun	8	The company purchased 3 , 600 shares of {stock} during the offering .
+n-measure-066	n-measure	stress	Noun	6	The test applied 15 pounds of {stress} to each beam .
+n-measure-067	n-measure	supply	Noun	4	The warehouse held 300 {supplies} for the relief teams .
+n-measure-068	n-measure	table	Noun	4	The restaurant ordered six {tables} for its expanded dining room .
+n-measure-069	n-measure	take	Noun	5	The director approved three camera {takes} before lunch .
+n-measure-070	n-measure	talk	Noun	5	The conference included four short {talks} on climate policy .
+n-measure-071	n-measure	tissue	Noun	5	The surgeon removed two damaged {tissues} during the procedure .
+n-measure-072	n-measure	transport	Noun	5	The contract covers three separate {transports} between the ports .
+n-measure-073	n-measure	travel	Noun	2	Her annual {travel} reached 42 , 000 miles across five countries .
+n-measure-074	n-measure	wall	Noun	6	The builders installed 18 meters of {wall} around the garden .
+n-measure-075	n-measure	wash	Noun	5	The mechanic ordered two complete {washes} for the fleet vehicles .
+n-measure-076	n-measure	water	Noun	7	The reservoir holds 6 million liters of {water} .
+n-measure-077	n-measure	wear	Noun	6	The machine showed two millimeters of {wear} after testing .
+n-measure-078	n-measure	wind	Noun	10	The tower endured 85 - mile - per - hour {winds} overnight .
+n-measure-079	n-measure	wonder	Noun	5	The museum displays seven natural {wonders} in its new exhibit .
+n-measure-080	n-measure	wound	Noun	5	The surgeon closed four deep {wounds} before midnight .
+v-imperative-initial-001	v-imperative-initial	air	Verb	0	{Air} the room before bringing in the new furniture .
+v-imperative-initial-002	v-imperative-initial	alert	Verb	0	{Alert} the nurse immediately if the patient's breathing changes .
+v-imperative-initial-003	v-imperative-initial	annex	Verb	0	{Annex} the signed map to the official report .
+v-imperative-initial-004	v-imperative-initial	author	Verb	0	{Author} a concise summary before submitting the proposal .
+v-imperative-initial-005	v-imperative-initial	benefit	Verb	0	{Benefit} from the workshop by practicing each technique afterward .
+v-imperative-initial-006	v-imperative-initial	break	Verb	0	{Break} the seal only after recording the package number .
+v-imperative-initial-007	v-imperative-initial	brown	Verb	0	{Brown} the onions slowly until their edges caramelize .
+v-imperative-initial-008	v-imperative-initial	brush	Verb	0	{Brush} the horses before leading them into the barn .
+v-imperative-initial-009	v-imperative-initial	case	Verb	0	{Case} the wires before installing the protective conduit .
+v-imperative-initial-010	v-imperative-initial	catch	Verb	0	{Catch} the last train before the service closes .
+v-imperative-initial-011	v-imperative-initial	class	Verb	0	{Class} the incoming emails by urgency before replying .
+v-imperative-initial-012	v-imperative-initial	come	Verb	0	{Come} inside before the temperature drops further .
+v-imperative-initial-013	v-imperative-initial	compare	Verb	0	{Compare} both proposals before selecting a vendor .
+v-imperative-initial-014	v-imperative-initial	costume	Verb	0	{Costume} the actors in muted colors for the period drama .
+v-imperative-initial-015	v-imperative-initial	count	Verb	0	{Count} the samples twice before recording the measurements .
+v-imperative-initial-016	v-imperative-initial	employ	Verb	0	{Employ} local guides when navigating the mountain reserve .
+v-imperative-initial-017	v-imperative-initial	excerpt	Verb	0	{Excerpt} the relevant paragraphs for tomorrow's briefing .
+v-imperative-initial-018	v-imperative-initial	flash	Verb	0	{Flash} the card beneath the scanner until it beeps .
+v-imperative-initial-019	v-imperative-initial	flow	Verb	0	{Flow} slowly through the narrow canyon .
+v-imperative-initial-020	v-imperative-initial	focus	Verb	0	{Focus} the telescope before recording the image .
+v-imperative-initial-021	v-imperative-initial	foot	Verb	0	{Foot} the bill before the conference registration closes .
+v-imperative-initial-022	v-imperative-initial	force	Verb	0	{Force} the valve open only after releasing pressure .
+v-imperative-initial-023	v-imperative-initial	forward	Verb	0	{Forward} the signed contract to our legal department today .
+v-imperative-initial-024	v-imperative-initial	front	Verb	0	{Front} the renovation costs with a short - term loan .
+v-imperative-initial-025	v-imperative-initial	glass	Verb	0	{Glass} the greenhouse panels before the winter winds arrive .
+v-imperative-initial-026	v-imperative-initial	grass	Verb	0	{Grass} the slope with native seed before winter .
+v-imperative-initial-027	v-imperative-initial	ground	Verb	0	{Ground} the coffee beans just before brewing the espresso .
+v-imperative-initial-028	v-imperative-initial	guess	Verb	0	{Guess} the answer before checking the solution .
+v-imperative-initial-029	v-imperative-initial	guesstimate	Verb	0	{Guesstimate} the travel time before choosing a route .
+v-imperative-initial-030	v-imperative-initial	hold	Verb	0	{Hold} the ladder steady while I replace the bulb .
+v-imperative-initial-031	v-imperative-initial	honor	Verb	0	{Honor} the agreement by delivering the equipment on schedule .
+v-imperative-initial-032	v-imperative-initial	hook	Verb	0	{Hook} the trailer securely before driving onto the highway .
+v-imperative-initial-033	v-imperative-initial	hurry	Verb	0	{Hurry} across the platform before the train doors close .
+v-imperative-initial-034	v-imperative-initial	import	Verb	0	{Import} the readings before closing the laboratory software .
+v-imperative-initial-035	v-imperative-initial	iron	Verb	0	{Iron} the linen shirts before the guests arrive .
+v-imperative-initial-036	v-imperative-initial	keep	Verb	0	{Keep} the samples chilled until the courier arrives .
+v-imperative-initial-037	v-imperative-initial	leak	Verb	0	{Leak} the documents only after legal review .
+v-imperative-initial-038	v-imperative-initial	move	Verb	0	{Move} the camera closer to the specimen .
+v-imperative-initial-039	v-imperative-initial	muscle	Verb	0	{Muscle} the canoe through the reeds before sunset .
+v-imperative-initial-040	v-imperative-initial	nail	Verb	0	{Nail} the loose board before someone trips .
+v-imperative-initial-041	v-imperative-initial	open	Verb	0	{Open} the emergency valve slowly and check the pressure gauge .
+v-imperative-initial-042	v-imperative-initial	order	Verb	0	{Order} the replacement filter from the supplier today .
+v-imperative-initial-043	v-imperative-initial	part	Verb	0	{Part} the components gently before packing the equipment .
+v-imperative-initial-044	v-imperative-initial	pattern	Verb	0	{Pattern} the fabric carefully before cutting the panels .
+v-imperative-initial-045	v-imperative-initial	preserve	Verb	0	{Preserve} the samples in a cool , dark cabinet .
+v-imperative-initial-046	v-imperative-initial	raise	Verb	0	{Raise} the safety barrier before testing the machine .
+v-imperative-initial-047	v-imperative-initial	recall	Verb	0	{Recall} the password through the secure recovery portal .
+v-imperative-initial-048	v-imperative-initial	repeat	Verb	0	{Repeat} the calibration twice after replacing the sensor .
+v-imperative-initial-049	v-imperative-initial	report	Verb	0	{Report} the broken valve to the supervisor immediately .
+v-imperative-initial-050	v-imperative-initial	retake	Verb	0	{Retake} the photograph near the window for better lighting .
+v-imperative-initial-051	v-imperative-initial	return	Verb	0	{Return} the borrowed equipment to reception by Friday .
+v-imperative-initial-052	v-imperative-initial	saturate	Verb	0	{Saturate} the soil thoroughly before transplanting the seedlings .
+v-imperative-initial-053	v-imperative-initial	save	Verb	0	{Save} your receipts before filing the expense report .
+v-imperative-initial-054	v-imperative-initial	see	Verb	0	{See} the attached chart before signing the report .
+v-imperative-initial-055	v-imperative-initial	set	Verb	0	{Set} the timer for fifteen minutes before mixing ingredients .
+v-imperative-initial-056	v-imperative-initial	shape	Verb	0	{Shape} the clay slowly around the wooden frame .
+v-imperative-initial-057	v-imperative-initial	shelter	Verb	0	{Shelter} vulnerable seedlings from the afternoon heat .
+v-imperative-initial-058	v-imperative-initial	shoot	Verb	0	{Shoot} the film outdoors before the forecast changes .
+v-imperative-initial-059	v-imperative-initial	short	Verb	0	{Short} the circuit briefly to test the alarm .
+v-imperative-initial-060	v-imperative-initial	show	Verb	0	{Show} the technician where the warning light appeared .
+v-imperative-initial-061	v-imperative-initial	sight	Verb	0	{Sight} the rifle carefully before entering the competition .
+v-imperative-initial-062	v-imperative-initial	smile	Verb	0	{Smile} for the photographer beside the festival entrance .
+v-imperative-initial-063	v-imperative-initial	smoke	Verb	0	{Smoke} the vegetables over applewood chips .
+v-imperative-initial-064	v-imperative-initial	sort	Verb	0	{Sort} the samples by color before recording results .
+v-imperative-initial-065	v-imperative-initial	speed	Verb	0	{Speed} up before the traffic light changes .
+v-imperative-initial-066	v-imperative-initial	spread	Verb	0	{Spread} the seeds evenly across the prepared soil .
+v-imperative-initial-067	v-imperative-initial	start	Verb	0	{Start} the backup before installing the update .
+v-imperative-initial-068	v-imperative-initial	stick	Verb	0	{Stick} the label beside the barcode before shelving the package .
+v-imperative-initial-069	v-imperative-initial	substitute	Verb	0	{Substitute} oat milk for cream in the recipe .
+v-imperative-initial-070	v-imperative-initial	supplement	Verb	0	{Supplement} your diet with fresh vegetables and whole grains .
+v-imperative-initial-071	v-imperative-initial	sweep	Verb	0	{Sweep} the porch before guests arrive this evening .
+v-imperative-initial-072	v-imperative-initial	test	Verb	0	{Test} the backup generator before the storm arrives .
+v-imperative-initial-073	v-imperative-initial	time	Verb	0	{Time} the reaction carefully with a digital stopwatch .
+v-imperative-initial-074	v-imperative-initial	train	Verb	0	{Train} new operators on the emergency shutdown procedure .
+v-imperative-initial-075	v-imperative-initial	trigger	Verb	0	{Trigger} the alarm only during an actual emergency .
+v-imperative-initial-076	v-imperative-initial	view	Verb	0	{View} the satellite images before selecting a landing site .
+v-imperative-initial-077	v-imperative-initial	water	Verb	0	{Water} the seedlings every morning before the sun rises .
+v-imperative-initial-078	v-imperative-initial	weight	Verb	0	{Weight} the package before printing its shipping label .
+v-imperative-initial-079	v-imperative-initial	win	Verb	0	{Win} the final point to secure the regional title .
+v-imperative-initial-080	v-imperative-initial	word	Verb	0	{Word} the warning carefully so nobody misunderstands it .
+v-after-modal-001	v-after-modal	access	Verb	2	Employees must {access} the archive through two - factor authentication .
+v-after-modal-002	v-after-modal	age	Verb	3	The cells may {age} faster under intense ultraviolet exposure .
+v-after-modal-003	v-after-modal	annex	Verb	4	The city plans to {annex} the neighboring district next year .
+v-after-modal-004	v-after-modal	answer	Verb	2	She can {answer} the technical question before lunch .
+v-after-modal-005	v-after-modal	arm	Verb	3	The device will {arm} automatically after the doors close .
+v-after-modal-006	v-after-modal	ball	Verb	3	The chef will {ball} the melon with a scoop .
+v-after-modal-007	v-after-modal	blood	Verb	3	The hunter will {blood} the young hound after its first catch .
+v-after-modal-008	v-after-modal	burst	Verb	3	The valve may {burst} under extreme pressure .
+v-after-modal-009	v-after-modal	buy	Verb	2	We should {buy} fresh batteries for the recorder .
+v-after-modal-010	v-after-modal	catch	Verb	2	Drivers should {catch} the early ferry to avoid delays .
+v-after-modal-011	v-after-modal	climb	Verb	3	Experienced hikers can {climb} the ridge before noon .
+v-after-modal-012	v-after-modal	come	Verb	2	We will {come} back when the roads reopen .
+v-after-modal-013	v-after-modal	command	Verb	3	The console can {command} every drone simultaneously .
+v-after-modal-014	v-after-modal	commune	Verb	2	Visitors may {commune} with nature in the quiet retreat .
+v-after-modal-015	v-after-modal	concern	Verb	4	The safety review may {concern} every department in the building .
+v-after-modal-016	v-after-modal	conduct	Verb	3	The researchers will {conduct} interviews at three rural clinics .
+v-after-modal-017	v-after-modal	convict	Verb	3	The jury could {convict} him on the eyewitness testimony .
+v-after-modal-018	v-after-modal	count	Verb	3	The program can {count} every word in the transcript .
+v-after-modal-019	v-after-modal	course	Verb	3	The river will {course} through the valley after spring rains .
+v-after-modal-020	v-after-modal	cure	Verb	3	Researchers hope to {cure} the infection with a targeted therapy .
+v-after-modal-021	v-after-modal	discard	Verb	2	You should {discard} any samples showing contamination .
+v-after-modal-022	v-after-modal	display	Verb	3	The tablet can {display} maps without an internet connection .
+v-after-modal-023	v-after-modal	egress	Verb	2	Passengers must {egress} through the marked doors during an emergency .
+v-after-modal-024	v-after-modal	experience	Verb	3	New employees will {experience} several training sessions this month .
+v-after-modal-025	v-after-modal	fail	Verb	3	The backup may {fail} if its battery remains uncharged .
+v-after-modal-026	v-after-modal	finish	Verb	2	We must {finish} the safety inspection before noon .
+v-after-modal-027	v-after-modal	get	Verb	2	You can {get} fresh batteries at the station kiosk .
+v-after-modal-028	v-after-modal	grant	Verb	3	The foundation may {grant} funds after reviewing the proposal .
+v-after-modal-029	v-after-modal	gun	Verb	3	The director will {gun} the engine before the steep ascent .
+v-after-modal-030	v-after-modal	hang	Verb	2	You should {hang} the lantern beside the tent .
+v-after-modal-031	v-after-modal	horse	Verb	3	The trainer will {horse} the young stallion before the parade .
+v-after-modal-032	v-after-modal	host	Verb	3	Our server can {host} thousands of visitors simultaneously .
+v-after-modal-033	v-after-modal	image	Verb	3	The software will {image} every disk before deployment .
+v-after-modal-034	v-after-modal	implant	Verb	2	Surgeons may {implant} the device during tomorrow's procedure .
+v-after-modal-035	v-after-modal	implicate	Verb	4	The new evidence may {implicate} another official in the scheme .
+v-after-modal-036	v-after-modal	inch	Verb	3	The glacier may {inch} forward during the colder months .
+v-after-modal-037	v-after-modal	intercept	Verb	3	The defender can {intercept} the pass near midfield .
+v-after-modal-038	v-after-modal	kill	Verb	3	The pesticide may {kill} beneficial insects near the orchard .
+v-after-modal-039	v-after-modal	know	Verb	2	Visitors should {know} the trail closes at dusk .
+v-after-modal-040	v-after-modal	last	Verb	4	These rechargeable batteries will {last} through the entire expedition .
+v-after-modal-041	v-after-modal	letter	Verb	2	You should {letter} the editor about the correction .
+v-after-modal-042	v-after-modal	lower	Verb	3	The technician can {lower} the temperature remotely .
+v-after-modal-043	v-after-modal	make	Verb	4	The new design should {make} maintenance easier for field technicians .
+v-after-modal-044	v-after-modal	match	Verb	3	The fabric should {match} the curtains in the adjoining room .
+v-after-modal-045	v-after-modal	mention	Verb	3	The report will {mention} the risks associated with flooding .
+v-after-modal-046	v-after-modal	misfire	Verb	3	The engine might {misfire} during the first cold start .
+v-after-modal-047	v-after-modal	model	Verb	3	The software can {model} airflow around the new turbine .
+v-after-modal-048	v-after-modal	murder	Verb	6	The detective knew the suspect might {murder} again .
+v-after-modal-049	v-after-modal	officer	Verb	3	The commander will {officer} the patrol boat tonight .
+v-after-modal-050	v-after-modal	overshoot	Verb	3	The rocket might {overshoot} its landing zone during strong winds .
+v-after-modal-051	v-after-modal	party	Verb	3	The students will {party} after their final examination ends .
+v-after-modal-052	v-after-modal	portion	Verb	3	The chef will {portion} the stew into six containers .
+v-after-modal-053	v-after-modal	progress	Verb	3	The seedlings may {progress} slowly during the cold week .
+v-after-modal-054	v-after-modal	purchase	Verb	3	The department must {purchase} replacement filters this week .
+v-after-modal-055	v-after-modal	rebore	Verb	3	The mechanic may {rebore} the cylinder instead of replacing it .
+v-after-modal-056	v-after-modal	release	Verb	3	The label will {release} the album worldwide next month .
+v-after-modal-057	v-after-modal	repeat	Verb	3	The teacher may {repeat} the instructions after lunch .
+v-after-modal-058	v-after-modal	rerun	Verb	2	We should {rerun} the analysis with corrected temperature readings .
+v-after-modal-059	v-after-modal	rest	Verb	2	You should {rest} before driving across the desert .
+v-after-modal-060	v-after-modal	reuse	Verb	2	We can {reuse} these containers for tomorrow's experiment .
+v-after-modal-061	v-after-modal	ride	Verb	2	We can {ride} the trail before sunset .
+v-after-modal-062	v-after-modal	right	Verb	3	The technician will {right} the overturned display before customers arrive .
+v-after-modal-063	v-after-modal	save	Verb	2	We should {save} the original files before updating the software .
+v-after-modal-064	v-after-modal	sentence	Verb	3	The judge will {sentence} the defendant after reviewing the evidence .
+v-after-modal-065	v-after-modal	serve	Verb	3	The volunteers can {serve} meals from the mobile kitchen .
+v-after-modal-066	v-after-modal	set	Verb	2	We can {set} the equipment beside the entrance .
+v-after-modal-067	v-after-modal	share	Verb	3	The team should {share} preliminary results with the community .
+v-after-modal-068	v-after-modal	shelter	Verb	4	The emergency crew can {shelter} families during the storm .
+v-after-modal-069	v-after-modal	slough	Verb	3	The snake must {slough} its skin before winter begins .
+v-after-modal-070	v-after-modal	stress	Verb	3	The trainer will {stress} proper breathing during every exercise .
+v-after-modal-071	v-after-modal	suffix	Verb	3	The parser must {suffix} each token before indexing .
+v-after-modal-072	v-after-modal	take	Verb	3	The hikers must {take} the eastern trail before sunset .
+v-after-modal-073	v-after-modal	think	Verb	2	We might {think} differently after reviewing the evidence .
+v-after-modal-074	v-after-modal	trigger	Verb	4	A loose cable could {trigger} the alarm during testing .
+v-after-modal-075	v-after-modal	trouble	Verb	3	The repair could {trouble} nearby residents for several hours .
+v-after-modal-076	v-after-modal	underuse	Verb	2	Researchers may {underuse} this valuable diagnostic tool .
+v-after-modal-077	v-after-modal	unpeople	Verb	6	The novel imagines machines that could {unpeople} entire cities .
+v-after-modal-078	v-after-modal	value	Verb	2	Investors may {value} stability more than rapid growth .
+v-after-modal-079	v-after-modal	worry	Verb	3	You should not {worry} about tomorrow's weather .
+v-after-modal-080	v-after-modal	wreck	Verb	4	A sudden leak could {wreck} the engine .

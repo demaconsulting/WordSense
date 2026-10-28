@@ -101,6 +101,79 @@ public sealed class ShapeProbeTests : IDisposable
     }
 
     /// <summary>
+    ///     The committed probe file is valid: between 400 and 600 rows, every shape well represented, many lemmas, and the
+    ///     target of every row is a form of its lemma with the gold part of speech in the lexicon.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_ShapeProbe_CommittedFile_IsValid()
+    {
+        // Act
+        var rows = ShapeProbeFile.Read(Path.Join(DataFixture.RepositoryRoot(), "corpus"));
+
+        // Assert
+        Assert.InRange(rows.Count, 400, 600);
+        foreach (var (shape, _) in ShapeProbeFile.Shapes)
+        {
+            Assert.True(rows.Count(r => r.Shape == shape) >= 60, shape);
+        }
+
+        Assert.True(rows.Select(r => r.Lemma).Distinct(StringComparer.Ordinal).Count() >= 300);
+        foreach (var row in rows)
+        {
+            var key = BasicClassifier.Normalize(row.Words[row.TargetIndex]);
+            Assert.True(WordLexicon.TryLookup(key, out var analyses) && analyses.Any(a => a.Lemma == row.Lemma && a.PartOfSpeech == row.Gold), row.Id);
+        }
+    }
+
+    /// <summary>
+    ///     The command reports the accuracy of the model for every shape and the harmful rate.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_Program_EvaluateShapes_ReportsEveryShapeForTheModel()
+    {
+        // Arrange
+        using var output = new StringWriter();
+        using var error = new StringWriter();
+        var report = Path.Join(_dir.Root, "report.md");
+        var outcomes = Path.Join(_dir.Root, "outcomes.tsv");
+
+        // Act
+        var code = await Program.RunAsync(["evaluate-shapes", "--model", "basic", "--repository", DataFixture.RepositoryRoot(), "--output", report, "--outcomes", outcomes], output, error, TestContext.Current.CancellationToken);
+
+        // Assert
+        Assert.Equal(0, code);
+        var text = await File.ReadAllTextAsync(report, TestContext.Current.CancellationToken);
+        Assert.Contains("### Shape probe", text, StringComparison.Ordinal);
+        foreach (var (shape, _) in ShapeProbeFile.Shapes)
+        {
+            Assert.Contains("| " + shape + " |", text, StringComparison.Ordinal);
+        }
+
+        Assert.Contains("| all noun shapes |", text, StringComparison.Ordinal);
+        Assert.StartsWith("id\tshape\tlemma", await File.ReadAllTextAsync(outcomes, TestContext.Current.CancellationToken), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A corpus without a probe file is reported by the command.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_Program_EvaluateShapes_WithoutProbeFile_Fails()
+    {
+        // Arrange
+        using var output = new StringWriter();
+        using var error = new StringWriter();
+
+        // Act
+        var code = await Program.RunAsync(["evaluate-shapes", "--model", "basic", "--repository", DataFixture.RepositoryRoot(), "--corpus", Path.Join(_dir.Root, "none")], output, error, TestContext.Current.CancellationToken);
+
+        // Assert
+        Assert.Equal(1, code);
+        Assert.Contains("shape probe set is not in", error.ToString(), StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     The classification of a model gives the part of speech and the confidence of the target word of each row.
     /// </summary>
     /// <returns>A task that completes when the check is done.</returns>

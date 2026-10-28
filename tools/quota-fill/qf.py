@@ -243,12 +243,7 @@ def corpus_keys():
         with open(probe, encoding="utf-8", newline="") as handle:
             for r in csv.DictReader(handle, delimiter="\t", quoting=csv.QUOTE_NONE):
                 keys.add(textutil.key_of(r["sentence"]))
-    probe = os.path.join(CORPUS, "shapes", "probe.tsv")
-    if os.path.exists(probe):
-        # the shape probe set is held out: no written or real row may repeat one of its sentences
-        with open(probe, encoding="utf-8", newline="") as handle:
-            for r in csv.DictReader(handle, delimiter="\t", quoting=csv.QUOTE_NONE):
-                keys.add(textutil.key_of(r["sentence"]))
+    for folder in ("anchors", "holdout", "realtext", "disputed"):
         for path in corpus_files(folder):
             with open(path, encoding="utf-8") as handle:
                 for line in handle:

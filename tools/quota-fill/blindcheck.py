@@ -200,7 +200,7 @@ def cmd_apply(args):
         if b == sense:
             decision[key] = ("keep", sense)
             c["confirmed second"] += 1
-        elif b and a == b and b in world["by_lemma"].get(lemma, []) and senses[b]["lemma"] == lemma:
+        elif b and a == b and b in world["by_lemma"].get(lemma, []) and senses[b]["lemma"] == lemma and kind != "shape":
             decision[key] = ("relabel", b)
             c["relabeled"] += 1
         else:
