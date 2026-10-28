@@ -11705,12 +11705,6 @@ vary#alter	oewn-vary__2.30.01..	vary%2:30:01::	oewn-00122978-v	v	Verb	become dif
 vary#depart	oewn-vary__2.42.00..	vary%2:42:00::	oewn-02667330-v	v	Verb	be at variance with; be out of line with	20	C	wn30-tag-count	oewn				varied,varies,vary,varying
 vary#differ	oewn-vary__2.42.01..	vary%2:42:01::	oewn-02668375-v	v	Verb	be subject to change in accordance with a variable	7	C	wn30-tag-count	oewn				varied,varies,vary,varying
 vary#motley	oewn-vary__2.30.04..	vary%2:30:04::	oewn-00437832-v	v	Verb	make something more diverse and varied	5	C	wn30-tag-count	oewn				varied,varies,vary,varying
-English#adjective	oewn-english__3.01.00..	english%3:01:00::	oewn-03014852-a	a	Adjective	of or relating to or characteristic of England or its culture or people	33	C	wn30-tag-count	oewn				English
-English#adjective-2	oewn-english__3.01.01..	english%3:01:01::	oewn-03015124-a	a	Adjective	of or relating to the English language	0	R	wn30-tag-count	oewn				English
-English#english-language	oewn-english__1.10.00..	english%1:10:00::	oewn-06959794-n	n	Noun	an Indo-European language belonging to the West Germanic branch; the official language of Britain and the United States and most of the commonwealth countries	18	C	wn30-tag-count	oewn				English
-English#arts	oewn-english__1.09.00..	english%1:09:00::	oewn-06165130-n	n	Noun	the discipline that studies the English language and literature	3	U	wn30-tag-count	oewn				English
-English#english-people	oewn-english__1.18.00..	english%1:18:00::	oewn-09752082-n	n	Noun	the people of England	3	U	wn30-tag-count	oewn				English
-English#side	oewn-english__1.11.00..	english%1:11:00::	oewn-07457169-n	n	Noun	(sports) the spin given to a ball by striking it on one side or releasing it with a sharp twist	0	R	wn30-tag-count	oewn				English
 eliminate#do-away-with	oewn-eliminate__2.30.01..	eliminate%2:30:01::	oewn-00472642-v	v	Verb	terminate, end, or take out	40	C	wn30-tag-count	oewn				eliminate,eliminated,eliminates,eliminating
 eliminate#obviate	oewn-eliminate__2.42.01..	eliminate%2:42:01::	oewn-02635337-v	v	Verb	get rid of something	13	C	wn30-tag-count	oewn				eliminate,eliminated,eliminates,eliminating
 eliminate#annihilate	oewn-eliminate__2.30.00..	eliminate%2:30:00::	oewn-00471632-v	v	Verb	kill in large numbers	2	U	wn30-tag-count	oewn				eliminate,eliminated,eliminates,eliminating
@@ -12189,8 +12183,6 @@ volume#book	oewn-volume__1.06.00..	volume%1:06:00::	oewn-02873453-n	n	Noun	physi
 volume#publication	oewn-volume__1.10.00..	volume%1:10:00::	oewn-06425309-n	n	Noun	a publication that is one of a set of several similar publications	4	U	wn30-tag-count	oewn				volume,volumes
 volume#amount-2	oewn-volume__1.23.01..	volume%1:23:01::	oewn-13801456-n	n	Noun	a relative amount	2	U	wn30-tag-count	oewn				volume,volumes
 volume#intensity	oewn-volume__1.07.02..	volume%1:07:02::	oewn-04997456-n	n	Noun	the magnitude of sound (usually in a specified direction)	1	U	wn30-tag-count	oewn				volume,volumes
-Catholic#adjective	oewn-catholic__3.01.00..	catholic%3:01:00::	oewn-02932264-a	a	Adjective	of or relating to or supporting Catholicism	25	C	wn30-tag-count	oewn				Catholic,Catholics
-Catholic#noun	oewn-catholic__1.18.00..	catholic%1:18:00::	oewn-09699321-n	n	Noun	a member of a Catholic church	25	C	wn30-tag-count	oewn				Catholic,Catholics
 circumstance#condition	oewn-circumstance__1.26.01..	circumstance%1:26:01::	oewn-13965927-n	n	Noun	a condition that accompanies or influences some event or activity	39	C	wn30-tag-count	oewn				circumstance,circumstanced,circumstances,circumstancing
 circumstance#context	oewn-circumstance__1.26.02..	circumstance%1:26:02::	oewn-14536419-n	n	Noun	the set of facts or circumstances that surround a situation or event	8	C	wn30-tag-count	oewn				circumstance,circumstanced,circumstances,circumstancing
 circumstance#condition-2	oewn-circumstance__1.09.00..	circumstance%1:09:00::	oewn-05831106-n	n	Noun	information that should be kept in mind when making a decision	3	U	wn30-tag-count	oewn				circumstance,circumstanced,circumstances,circumstancing
@@ -12443,9 +12435,6 @@ structure#cognition	oewn-structure__1.09.00..	structure%1:09:00::	oewn-05734290-
 structure#anatomical-structure	oewn-structure__1.08.00..	structure%1:08:00::	oewn-05232895-n	n	Noun	a particular complex anatomical part of a living thing and its construction and arrangement	3	U	wn30-tag-count	oewn				structure,structured,structures,structuring
 structure#social-organisation	oewn-structure__1.14.00..	structure%1:14:00::	oewn-08395550-n	n	Noun	the people in a society considered as a system organized by a characteristic pattern of relationships	0	R	wn30-tag-count	oewn				structure,structured,structures,structuring
 structure#verb	oewn-structure__2.30.00..	structure%2:30:00::	oewn-00405129-v	v	Verb	give a structure to	1	U	wn30-tag-count	oewn				structure,structured,structures,structuring
-Protestant#adjective	oewn-protestant__3.01.00..	protestant%3:01:00::	oewn-02963959-a	a	Adjective	of or relating to Protestants or Protestantism	27	C	wn30-tag-count	oewn				Protestant,Protestants
-Protestant#christian	oewn-protestant__1.18.00..	protestant%1:18:00::	oewn-09698712-n	n	Noun	an adherent of Protestantism	15	C	wn30-tag-count	oewn				Protestant,Protestants
-Protestant#protestant-church	oewn-protestant__1.14.00..	protestant%1:14:00::	oewn-08104536-n	n	Noun	the Protestant churches and denominations collectively	5	C	wn30-tag-count	oewn				Protestant,Protestants
 column#file	oewn-column__1.14.00..	column%1:14:00::	oewn-08446009-n	n	Noun	a line of units following one after another	18	C	wn30-tag-count	oewn				column,columns
 column#chromatography-column	oewn-column__1.06.02..	column%1:06:02::	oewn-03078578-n	n	Noun	a vertical glass tube used in column chromatography; a mixture is poured in the top and washed through a stationary substance where components of the mixture are adsorbed selectively to form colored bands	10	C	wn30-tag-count	oewn				column,columns
 column#array	oewn-column__1.14.01..	column%1:14:01::	oewn-08450585-n	n	Noun	a vertical array of numbers or other information	8	C	wn30-tag-count	oewn				column,columns
@@ -12527,8 +12516,6 @@ yard#enclosure	oewn-yard__1.06.00..	yard%1:06:00::	oewn-04617860-n	n	Noun	an enc
 yard#parcel-2	oewn-yard__1.15.01..	yard%1:15:01::	oewn-08702414-n	n	Noun	a tract of land where logs are accumulated	0	R	wn30-tag-count	oewn				yard,yards
 yard#railway-yard	oewn-yard__1.06.03..	yard%1:06:03::	oewn-04618511-n	n	Noun	an area having a network of railway tracks and sidings for storage and maintenance of cars and engines	0	R	wn30-tag-count	oewn				yard,yards
 yard#spar	oewn-yard__1.06.01..	yard%1:06:01::	oewn-04618033-n	n	Noun	a long horizontal spar tapered at the end and used to support and spread a square sail or lateen	0	R	wn30-tag-count	oewn				yard,yards
-Christian#adjective	oewn-christian__3.01.00..	christian%3:01:00::	oewn-02963612-a	a	Adjective	relating to or characteristic of Christianity	36	C	wn30-tag-count	oewn				Christian,Christians
-Christian#noun	oewn-christian__1.18.00..	christian%1:18:00::	oewn-09697405-n	n	Noun	a religious person who believes Jesus is the Christ and who is a member of a Christian denomination	10	C	wn30-tag-count	oewn				Christian,Christians
 adopt#espouse	oewn-adopt__2.40.02..	adopt%2:40:02::	oewn-02351891-v	v	Verb	choose and follow; as of theories, ideas, policies, strategies or plans	34	C	wn30-tag-count	oewn				adopt,adopted,adopting,adopts
 adopt#borrow	oewn-adopt__2.40.00..	adopt%2:40:00::	oewn-02351720-v	v	Verb	take up and practice as one's own	6	C	wn30-tag-count	oewn				adopt,adopted,adopting,adopts
 adopt#acquire	oewn-adopt__2.30.01..	adopt%2:30:01::	oewn-00525762-v	v	Verb	take on a certain form, attribute, or aspect	2	U	wn30-tag-count	oewn				adopt,adopted,adopting,adopts
