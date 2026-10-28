@@ -64,6 +64,18 @@ internal static class Corpus
         return lemma => stageOf.TryGetValue(lemma, out var stage) && stage > 0 ? $"stage {stage.ToString(System.Globalization.CultureInfo.InvariantCulture)}" : BaseStage;
     }
 
+    /// <summary>
+    ///     Tells whether a corpus file belongs to the base stage by the same rule as <see cref="StagesOf"/>: its wave
+    ///     (<c>quota-w{wave}-…</c>) divided by <see cref="WavesPerStage"/> is 0, or it is not a wave file.
+    /// </summary>
+    /// <param name="fileName">The name of the file a row came from.</param>
+    /// <returns>True for a file of the base stage.</returns>
+    public static bool IsBaseStageFile(string fileName)
+    {
+        ArgumentNullException.ThrowIfNull(fileName);
+        return WaveOf(fileName) is not { } wave || wave / WavesPerStage == 0;
+    }
+
     private static int? WaveOf(string fileName)
     {
         if (!fileName.StartsWith(WavePrefix, StringComparison.Ordinal))

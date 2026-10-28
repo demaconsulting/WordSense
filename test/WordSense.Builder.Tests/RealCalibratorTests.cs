@@ -159,6 +159,21 @@ public sealed class RealCalibratorTests
         Assert.Equal("base", stage("unknown"));
     }
 
+    /// <summary>
+    ///     The stage rule of a file name for rows that name no lemma (the chooser rows): the file of a wave from 50 on is
+    ///     not of the base stage, and a file that is not a wave file is.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Corpus_IsBaseStageFile_FollowsTheWaveOfTheFile()
+    {
+        Assert.True(Corpus.IsBaseStageFile("quota-w1-forms.tsv"));
+        Assert.True(Corpus.IsBaseStageFile("quota-w49-forms-written.tsv"));
+        Assert.True(Corpus.IsBaseStageFile("batch-1.tsv"));
+        Assert.False(Corpus.IsBaseStageFile("quota-w50-forms.tsv"));
+        Assert.False(Corpus.IsBaseStageFile("quota-w54-forms-written.tsv"));
+        Assert.False(Corpus.IsBaseStageFile("quota-w100-forms.tsv"));
+    }
+
     private static float ScoreOf(SenseInfo sense, SenseInfo best, SenseInfo determiner)
     {
         if (sense.SenseId == best.SenseId)

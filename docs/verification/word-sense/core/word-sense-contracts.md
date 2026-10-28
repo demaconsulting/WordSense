@@ -112,7 +112,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `..._ClosedClassSlotMostProbable_AnswersAtPartOfSpeechLevel`,
   `..._ClosedClassSlotMostProbable_FallbackSelectedAnother_AnswersAtPartOfSpeechLevel`,
   `..._ClosedClassSplit_NotApplicable_LeavesThePrimaryResult`,
-  `..._ClosedClassSlots_KeepTheFallbackProbabilityWhenWeighted`): an encoder result that gives the verb `have` all the mass
+  `..._ClosedClassSlots_KeepTheFallbackProbabilityWhenWeighted`,
+`..._ClosedClassSlotWithZeroProbability_StaysZeroWhenWeighted`): an encoder result at the part-of-speech level that
+lists the auxiliary with probability 0, combined with a fallback that gives the auxiliary 0 or omits it, keeps the
+auxiliary at 0 with weight 0.6; an encoder result that gives the verb `have` all the mass
   (sense level, confidence 0.8) and lists the auxiliary and the pronoun with probability 0, combined with a fallback
   that says verb 0.7, auxiliary 0.2 and pronoun 0.1, has these slot probabilities, keeps the sense level, the sense id and
   the verb as the selected analysis, has the confidence 0.8 × 0.7 and lists the senses of the auxiliary from the

@@ -343,8 +343,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `WeightsBlobWriter_PrecisionGate_MeasuresDescribesAndEnforces`): a determiner column that outscores the true adjective
   sense does not make the row wrong, and a row whose true sense is the determiner is wrong for both sets of weights; the
   reduced weights stay within 0.2 percentage point of the full ones.
-- **Basic cue tables learn the base stage only** (`Program_TrainBasic_AnchorsOfALaterStage_DoNotChangeTheTable`): the
-  table trained after a `quota-w50` anchor file is added is byte-identical to the table trained before.
+- **Basic cue tables learn the base stage only** (`Program_TrainBasic_AnchorsOfALaterStage_DoNotChangeTheTable`,
+  `Program_TrainBasic_ChooserRowsOfALaterStage_DoNotChangeTheTable`, `Corpus_IsBaseStageFile_FollowsTheWaveOfTheFile`):
+  the table trained after a `quota-w50` anchor file, or a `quota-w50` chooser file, is added is byte-identical to the
+  table trained before; the files of the waves 1 to 49 and the files that are not wave files are of the base stage.
 - **Own threshold** (`RealCalibrator_Apply_LemmaWithEnoughRows_KeepsTheHigherOfItsOwnAndTheAdjustedThreshold`): a lemma
   with at least 20 calibration rows keeps the higher of its own threshold and the adjusted one; a lemma with fewer rows
   gets the pooled shift.

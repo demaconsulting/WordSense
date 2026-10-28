@@ -50,7 +50,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `OnlyAmbiguousWordsAreEncoded`; scoring increment): the encoder runs once for a text in which at least one word has
   several senses and usable weights, only for those words, and never for a text in which no word does.
 - **Senses of every analysis** (`WordWithSeveralAnalyses_RanksTheSensesOfEveryAnalysis`,
-  `ClosedClassUseOfLike_IsNotScored`, `InflectedForm_RanksTheSensesOfItsLemma`; scoring increment): a word with
+  `ClosedClassUseOfLike_IsNotScored`, `ClosedClassSlotOfAnUnscoredLemma_HasNoProbability`,
+  `InflectedForm_RanksTheSensesOfItsLemma`; scoring increment): the determiner of `more` (a lemma without weights) has
+  probability 0 while the open-class slots of untrained lemmas still share the mass; a word with
   several analyses ranks the fine senses of all its open-class analyses; the preposition use of `like` is listed with
   probability 0 and without senses, even when its sense has the highest score; an inflected form ranks the senses of its
   lemma; no sense of another lemma competes; the probability of a lemma and part of speech is the mass of its senses.

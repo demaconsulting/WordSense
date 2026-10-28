@@ -1233,6 +1233,33 @@ public class OnnxClassifierTests
         Assert.Empty(notTheLemma.Columns);
     }
 
+    /// <summary>
+    ///     A closed-class slot of a lemma that has no weights has no evidence of its own either: it gets probability 0
+    ///     (the fallback model takes it), while an open-class slot of an untrained lemma still shares the mass.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxClassifier_ClassifyAsync_ClosedClassSlotOfAnUnscoredLemma_HasNoProbability()
+    {
+        // Arrange: "more" is a form of the trained lemma "much" and of the untrained lemmas "many" and "more", one of
+        // which is a determiner (closed class); its chooser prefers the lemma "more" (the label 1)
+        var adverb = WordLexicon.SensesOf("much", PartOfSpeech.Adverb)[0];
+        var table = Fixtures.Table(Fixtures.Lemma("much", fine: 1f, choosers: [Fixtures.Chooser("more", ["many", "more", "much"], 0.5f)]));
+        var vector = Fixtures.Feature((Fixtures.Column("much", adverb.SenseId), 3), (Fixtures.Label(1), 4));
+        var lexicon = WordLexicon.Lookup("more");
+        Assert.Contains(lexicon, d => d.Lemma == "more" && d.PartOfSpeech == PartOfSpeech.Determiner);
+
+        // Act
+        var result = await RunAsync(table, vector, "more");
+
+        // Assert
+        var determiner = result.Analyses.Where(a => a.Details.PartOfSpeech == PartOfSpeech.Determiner).ToArray();
+        Assert.NotEmpty(determiner);
+        Assert.All(determiner, a => Assert.Equal(0.0, a.Probability));
+        Assert.Contains(result.Analyses, a => a.Details.Lemma == "more" && a.Details.PartOfSpeech == PartOfSpeech.Adverb && a.Probability > 0);
+        Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
+    }
+
     private static float[] Centered(WeightedLemmaTable table, double[] vector) => FeatureExtractor.Center(vector, table.Data.Mean)!;
 
     /// <summary>

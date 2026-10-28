@@ -111,19 +111,23 @@ sections:
                   - OnnxClassifier_ScoreForm_OtherEarlyExits_AreOutcomesThatInferenceShares
               - id: WordSense-Onnx-OnnxClassifier-Candidates
                 title: >-
-                  OnnxClassifier shall list, for a trained lemma, the senses of every analysis of the word in the
-                  Senses of that analysis, ranked by the softmax-normalized per-lemma fine scores given the analysis so
-                  that their probabilities sum to one, keeping the inventory order on equal probabilities, never
-                  truncated and whatever level is answered, and shall list no scored senses for a lemma without
+                  OnnxClassifier shall list, for a trained lemma, the senses of every open-class analysis of the word in
+                  the Senses of that analysis, ranked by the softmax-normalized per-lemma fine scores given the analysis
+                  so that their probabilities sum to one, keeping the inventory order on equal probabilities, never
+                  truncated and whatever level is answered, shall list no senses for an analysis of a closed class
+                  (see WordSense-Onnx-OnnxClassifier-ClosedClass), and shall list no scored senses for a lemma without
                   weights (the single sense with probability 1 of an analysis with exactly one sense excepted).
                 tags: [unit]
                 justification: |
-                  The fine scores exist for every sense whatever level is answered; listing them ranked inside their
-                  analyses lets a consumer apply its own grouping, and a lemma without scores has nothing honest to
-                  list. A non-empty list for the selected analysis is also what makes a composite model use the result
-                  of the encoder instead of its fallback.
+                  The fine scores exist for every open-class sense of the form whatever level is answered; listing them
+                  ranked inside their analyses lets a consumer apply its own grouping, and a lemma without scores, or
+                  a closed-class use that has no WordNet senses, has nothing honest to list. A non-empty list for the
+                  selected analysis is also what makes a composite model use the result of the encoder instead of its
+                  fallback.
                 tests:
                   - OnnxClassifier_ClassifyAsync_TrainedLemma_ListsRankedCandidatesSummingToOne
+                  - OnnxClassifier_ClassifyAsync_ClosedClassUseOfLike_IsNotScored
+                  - OnnxClassifier_ClassifyAsync_ClosedClassSlotOfAnUnscoredLemma_HasNoProbability
                   - OnnxClassifier_ClassifyAsync_SingleSenseWord_ListsItsOneUnscoredSense
                   - OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_ListsNoCandidates
 

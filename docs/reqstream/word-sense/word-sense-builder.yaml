@@ -1057,9 +1057,9 @@ sections:
 
           - id: WordSense-WordSenseBuilder-TrainBasic-BaseStageCues
             title: >-
-              The builder shall train the cue tables of the basic model from the anchors of the base stage only (the
-              lemmas whose anchors are in the waves 1 to 49), so that anchors of a stage added later change no byte of
-              the table.
+              The builder shall train the cue tables of the basic model from the anchors and the form-chooser rows
+              of the base stage only (the lemmas whose anchors, and the chooser files, are in the waves 1 to 49), so
+              that rows of a stage added later change no byte of the table.
             tags: [unit]
             justification: |
               The anchors of a later stage are balanced per sense for the encoder weights, and the quota of a
@@ -1070,6 +1070,8 @@ sections:
               treebank rises (94.59 and 92.43 percent against 94.59 and 92.37).
             tests:
               - WordSenseBuilder_Program_TrainBasic_AnchorsOfALaterStage_DoNotChangeTheTable
+              - WordSenseBuilder_Program_TrainBasic_ChooserRowsOfALaterStage_DoNotChangeTheTable
+              - WordSenseBuilder_Corpus_IsBaseStageFile_FollowsTheWaveOfTheFile
 
           - id: WordSense-WordSenseBuilder-TrainBasic-TenseWeights
             title: >-

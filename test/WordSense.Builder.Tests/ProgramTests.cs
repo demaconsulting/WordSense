@@ -344,6 +344,32 @@ public sealed class ProgramTests : IDisposable
     }
 
     /// <summary>
+    ///     The form-chooser rows of a later stage (a <c>quota-w50</c> file) do not change the cue tables either.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_Program_TrainBasic_ChooserRowsOfALaterStage_DoNotChangeTheTable()
+    {
+        // Arrange: a base-stage corpus with chooser rows of a form of two lemmas, then a stage 1 file of rows of the same form
+        var corpus = PrepareCorpus();
+        _dir.Write("corpus/open/representative/data/train.tsv", OpenHeader + PutTrainSentence);
+        var first = Path.Join(_dir.Root, "out", "first.bin");
+        var second = Path.Join(_dir.Root, "out", "second.bin");
+        _dir.Write("corpus/choosers/anchors/quota-w1-forms.tsv", "used\tuse\tShe {used} a spoon.\nused\tused\tThe {used} car was cheap.\n");
+        await RunAsync("open-counts", "--corpus", corpus);
+
+        // Act
+        var (firstCode, _, firstError) = await RunAsync("train-basic", "--repository", _dir.Root, "--corpus", corpus, "--output", first);
+        _dir.Write("corpus/choosers/anchors/quota-w50-forms.tsv", "used\tused\tHe bought a {used} bike.\nused\tuse\tThey {used} the same plan.\nused\tused\tA {used} book sold.\n");
+        var (secondCode, _, secondError) = await RunAsync("train-basic", "--repository", _dir.Root, "--corpus", corpus, "--output", second);
+
+        // Assert
+        Assert.True(firstCode == 0, firstError);
+        Assert.True(secondCode == 0, secondError);
+        Assert.Equal(await File.ReadAllBytesAsync(first, TestContext.Current.CancellationToken), await File.ReadAllBytesAsync(second, TestContext.Current.CancellationToken));
+    }
+
+    /// <summary>
     ///     The tuning command scores only development inputs, the development split of the open corpus and the development
     ///     file of the treebank, and trains from the training split: with test and training files of the treebank, and test
     ///     splits of the open corpus, that cannot be read, it still succeeds, and the report names only development sets.

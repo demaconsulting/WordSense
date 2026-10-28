@@ -754,13 +754,22 @@ internal sealed class OnnxClassifier
         new(word, true, analyses, selected, SenseLevel.PartOfSpeech, probability, null, null);
 
     /// <summary>
-    ///     Gets the mass of the senses of a slot, or 1 when the senses are not scored.
+    ///     Gets the mass of the senses of a slot: 0 for a slot of a closed class (its senses are never scored, so it has no
+    ///     evidence of its own, whether or not its lemma is scored: the fallback model takes it, see <see cref="FallbackWordSenseModel"/>),
+    ///     and 1 for an open-class slot whose senses are not scored (an untrained lemma).
     /// </summary>
     /// <param name="lemmaScores">The scored lemmas.</param>
     /// <param name="slot">The slot.</param>
     /// <returns>The mass.</returns>
-    private static double SlotMass(Dictionary<string, LemmaScores> lemmaScores, Slot slot) =>
-        lemmaScores.TryGetValue(slot.Lemma, out var scores) ? scores.MassOf(slot) : 1.0;
+    private static double SlotMass(Dictionary<string, LemmaScores> lemmaScores, Slot slot)
+    {
+        if (SenseFusion.IsClosedClass(slot.PartOfSpeech))
+        {
+            return 0.0;
+        }
+
+        return lemmaScores.TryGetValue(slot.Lemma, out var scores) ? scores.MassOf(slot) : 1.0;
+    }
 
     /// <summary>
     ///     Lists the senses of an analysis ranked by their probability given the analysis.

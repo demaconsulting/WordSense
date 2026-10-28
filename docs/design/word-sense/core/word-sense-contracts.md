@@ -230,7 +230,8 @@ whether an id is null: a result at the `PartOfSpeech` level is a valid answer th
   `w × ln(max(p_primary, 1e-6)) + (1 − w) × ln(max(p_fallback, 1e-6))`,
   where a slot's probability is the sum of its analyses and a slot a result lacks counts with the floor 1e-6; the scores
   are normalized with a softmax (the maximum subtracted) into the new slot probabilities. When SplitClosedClass was
-  applied to the result, the closed-class slots carry the probability of the fallback result by construction and keep it:
+  applied to the result, the closed-class slots of the primary result carry the probability of the fallback result by
+  construction (0 when the fallback gives the slot none or omits it) and keep it, a zero one too:
   the softmax runs over the other slots only, which share the probability that the closed-class slots leave
   ((1 − sum of the closed-class probabilities) × exp(score) / sum of exp(score)), so the closed-class slots end with
   exactly the probability of the fallback result (combining it again would count the fallback twice) and the open-class

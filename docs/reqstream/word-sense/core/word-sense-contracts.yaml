@@ -360,7 +360,8 @@ sections:
               - id: WordSense-Core-WordSenseContracts-FallbackClosedClass-Weighted
                 title: >-
                   FallbackWordSenseModel shall keep the probability of every closed-class slot that the split gave it
-                  (the probability of the fallback result) when the primary weight is below 1, and shall combine the
+                  (the probability of the fallback result, 0 when the fallback gives the slot none or omits it) when
+                  the primary weight is below 1, and shall combine the
                   weighted slot probabilities of the primary and the fallback result among the open-class slots only,
                   which share the probability that the closed-class slots leave.
                 tags: [unit]
@@ -369,6 +370,7 @@ sections:
                   the fallback would count the fallback twice and move the closed-class mass away from its estimate.
                 tests:
                   - WordSenseContracts_FallbackWordSenseModel_ClosedClassSlots_KeepTheFallbackProbabilityWhenWeighted
+                  - WordSenseContracts_FallbackWordSenseModel_ClosedClassSlotWithZeroProbability_StaysZeroWhenWeighted
 
               - id: WordSense-Core-WordSenseContracts-FallbackClosedClass-OpenAnswer
                 title: >-

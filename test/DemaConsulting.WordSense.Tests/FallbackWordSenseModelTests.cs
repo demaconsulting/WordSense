@@ -1026,6 +1026,35 @@ public class FallbackWordSenseModelTests
     }
 
     /// <summary>
+    ///     A closed-class slot that Basic gives probability 0 (or omits) keeps probability 0 after the weighted
+    ///     combination: the split fixes every closed-class slot it reassigned, the zero ones too.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_ClosedClassSlotWithZeroProbability_StaysZeroWhenWeighted()
+    {
+        // Arrange: the encoder stays at the part-of-speech level with an even open split; Basic gives the auxiliary 0 or omits it
+        var primary = new ClassifyResult("have", true, [new(HaveVerb, 0.5, [new("have#own", 1)]), new(HaveNoun, 0.5, [new("have#noun", 1)]), new(HaveAux, 0.0, [])], HaveVerb, SenseLevel.PartOfSpeech, 0.5, null, null);
+        var listedZero = new ClassifyResult("have", true, [new(HaveVerb, 0.6, []), new(HaveNoun, 0.4, []), new(HaveAux, 0.0, [])], HaveVerb, SenseLevel.PartOfSpeech, 0.6, null, null);
+        var omitted = new ClassifyResult("have", true, [new(HaveVerb, 0.6, []), new(HaveNoun, 0.4, [])], HaveVerb, SenseLevel.PartOfSpeech, 0.6, null, null);
+
+        // Act
+        var withZero = await CombineWeighted(primary, listedZero, 0.6);
+        var withoutSlot = await CombineWeighted(primary, omitted, 0.6);
+
+        // Assert: the auxiliary keeps 0 and the open slots share everything, in the proportions of the weighted combination
+        var verb = Math.Pow(0.6, 0.4);
+        var noun = Math.Pow(0.4, 0.4);
+        foreach (var result in new[] { withZero, withoutSlot })
+        {
+            Assert.Equal(0.0, SlotOf(result, PartOfSpeech.Auxiliary));
+            Assert.Equal(verb / (verb + noun), SlotOf(result, PartOfSpeech.Verb), 12);
+            Assert.Equal(noun / (verb + noun), SlotOf(result, PartOfSpeech.Noun), 12);
+            Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 12);
+        }
+    }
+
+    /// <summary>
     ///     A primary result without a closed-class slot, one with only closed-class slots, one that gives a closed-class
     ///     slot a probability of its own (a tagger), and a fallback that lists no slot of the primary result are left as
     ///     they are.

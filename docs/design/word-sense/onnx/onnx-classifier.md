@@ -52,7 +52,9 @@ The probabilities are computed per slot, never per variant:
 1. The probability of a sense given its slot comes from the softmax of the fine scores, renormalized in the slot.
 2. The probability of a slot is the mass of its senses in that softmax; for a form with a chooser it is the share of the
    probability of the chooser's labels that the slot's analyses carry (a label shares its probability among its slots in
-   proportion to the mass of their senses).
+   proportion to the mass of their senses). A slot of a closed class has no scored senses and so mass 0, whether or not
+   its lemma has weights (the fallback model takes its probability); an open-class slot whose lemma has no weights counts
+   as mass 1 so that it still shares the probability.
 3. The variants of a slot split its probability: by the labels of the chooser when it has one per variant (`read` as a
    past and a present tense), otherwise equally, the lexicon order breaking ties. This prior is documented, not
    learned, and it reaches neither the level nor the confidence.

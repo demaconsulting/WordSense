@@ -59,7 +59,9 @@ internal static class BasicModelBuilder
         var allAnchors = Corpus.ReadDirectory(Path.Join(corpus, "anchors"));
         var stageOf = Corpus.StagesOf(allAnchors);
         var anchors = allAnchors.Where(a => stageOf(a.Lemma) == Corpus.BaseStage).ToList();
-        var choosers = ChooserCorpus.ReadDirectory(Path.Join(corpus, "choosers", "anchors"));
+
+        // The chooser rows of the stages added later are left out for the same reason (the rows of whiting and aging are stage 1 rows)
+        var choosers = ChooserCorpus.ReadDirectory(Path.Join(corpus, "choosers", "anchors")).Where(c => Corpus.IsBaseStageFile(c.Source)).ToList();
         var training = OpenCorpus.ReadSplit(corpus, OpenCorpus.Representative, "train").Select(OpenCorpus.ToTagged).ToList();
         Func<string, System.Collections.Immutable.ImmutableArray<WordDetails>> lexicon = key => WordLexicon.TryLookup(key, out var found) ? found : [];
         var trained = BasicTrainer.Train(

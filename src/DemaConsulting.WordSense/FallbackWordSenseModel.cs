@@ -395,7 +395,7 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
     ///     and a result of a single slot are returned as they are.
     ///     <para>
     ///     When the closed-class split has been applied to the primary result (<paramref name="closedFixed"/>), the probability of every closed-class slot of the primary result is
-    ///     the probability of the fallback result by construction and is never weighted again: combining it again with the
+    ///     the probability of the fallback result by construction (0 when Basic gives the slot none or omits it) and is never weighted again: combining it again with the
     ///     fallback result would count the fallback twice and move the closed mass. The combination is then made inside the
     ///     open-class part only: the other slots share the probability that the closed-class slots leave, in the proportions
     ///     of the combination, so the closed-class slots keep exactly the probability of the fallback and the open-class
@@ -434,8 +434,10 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
             return primary;
         }
 
-        // The closed-class slots that carry the probability of the fallback result keep it; the other slots share the rest
-        var isFixed = slots.Select(s => closedFixed && s.Primary > 0.0 && SenseFusion.IsClosedClass(s.Analyses[0].Details.PartOfSpeech)).ToArray();
+        // The closed-class slots of the primary result that the split reassigned keep their probability, a probability of 0 too (Basic
+        // gave the slot none, or omitted it); the other slots share the rest. A closed-class slot that only the fallback result lists
+        // was not part of the split and is combined like any other
+        var isFixed = slots.Select((s, k) => closedFixed && k < primarySlots.Count && SenseFusion.IsClosedClass(s.Analyses[0].Details.PartOfSpeech)).ToArray();
         var fixedMass = Enumerable.Range(0, slots.Count).Where(k => isFixed[k]).Sum(k => slots[k].Primary);
         if (Enumerable.Range(0, slots.Count).All(k => isFixed[k]))
         {
