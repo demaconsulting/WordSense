@@ -127,7 +127,7 @@ def check_shape(shape, sentence, lemma):
             return "no noun after the target"
         return None
     if shape == "n-subject-initial":
-        if t != 0 or nxt is None or nxt in (PREPOSITIONS | DETERMINERS | PRONOUNS | CONJUNCTIONS | {"to", "not"}):
+        if t != 0 or nxt is None or nxt in (DETERMINERS | PRONOUNS | CONJUNCTIONS | {"not"}):
             return "the target is not the first word followed by its verb"
         return None
     if shape == "n-measure":
