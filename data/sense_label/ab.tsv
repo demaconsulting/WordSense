@@ -284,10 +284,10 @@ oewn-about__4.02.06..	around	curated
 oewn-about__5.00.00.active.01	adjective	curated
 oewn-above--mentioned__5.00.00.preceding.00	adjective	generated
 oewn-above--named__5.00.00.preceding.00	adjective	generated
-oewn-above__1.10.00..	noun	generated
-oewn-above__4.02.00..	supra	generated
-oewn-above__4.02.01..	higher-up	generated
-oewn-above__5.00.00.preceding.00	adjective	generated
+oewn-above__1.10.00..	noun	curated
+oewn-above__4.02.00..	supra	curated
+oewn-above__4.02.01..	higher-up	curated
+oewn-above__5.00.00.preceding.00	adjective	curated
 oewn-aboveboard__4.02.00..	adverb	generated
 oewn-aboveboard__5.00.00.straight.04	adjective	generated
 oewn-aboveground__5.00.00.surface.00	adjective	generated
