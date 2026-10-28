@@ -148,8 +148,8 @@ internal sealed record LeakageReport(IReadOnlyList<(string Name, LeakageRole Rol
 ///     </para>
 ///     <para>
 ///     The parts are the fine-sense anchors, the chooser anchors, the training split of the open corpus (training); the
-///     held-out sentences, the chooser held-out sentences, the real-text relabeling file, the reviewed suite, the
-///     development and test splits of the representative open corpus, the two halves of the all-words gold set (views of
+///     held-out sentences, the chooser held-out sentences, the real-text relabeling file, the reviewed suite, the shape probe
+///     set, the development and test splits of the representative open corpus, the two halves of the all-words gold set (views of
 ///     those splits), the challenge set, the example sentences of Open
 ///     English WordNet (which the writers of the sentences saw, and which are CC BY 4.0, so none may be in the
 ///     CC0 corpus) and, when they are given, the independent evaluation sentences (SemCor, the treebank test file).
@@ -184,6 +184,7 @@ internal static class LeakageCheck
             ReadDirectory("chooser holdout", LeakageRole.Evaluation, Path.Join(corpus, "choosers", "holdout")),
             ReadDirectory("real text", LeakageRole.Evaluation, Path.Join(corpus, "realtext")),
             ReadSuite(Path.Join(corpus, "suite", SuiteFile.SuiteName)),
+            ReadShapeProbe(corpus),
             ReadOpen(corpus, OpenCorpus.Representative, "train", "open corpus train", LeakageRole.Training),
             ReadOpen(corpus, OpenCorpus.Representative, "dev", "open corpus dev", LeakageRole.Evaluation),
             ReadOpen(corpus, OpenCorpus.Representative, "test", "open corpus test", LeakageRole.Evaluation),
@@ -367,6 +368,9 @@ internal static class LeakageCheck
 
         return new LeakageSet("suite", LeakageRole.Evaluation, sentences);
     }
+
+    private static LeakageSet ReadShapeProbe(string corpus) =>
+        new("shape probe", LeakageRole.Evaluation, [.. ShapeProbeFile.Read(corpus).Select(r => (r.Id, string.Join(' ', r.Words)))]);
 
     private static LeakageSet ReadOpen(string corpus, string part, string split, string name, LeakageRole role)
     {
