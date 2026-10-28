@@ -344,11 +344,12 @@ public sealed class ProgramTests : IDisposable
     }
 
     /// <summary>
-    ///     The form-chooser rows of a later stage (a <c>quota-w50</c> file) do not change the cue tables either.
+    ///     The form-chooser rows of every stage feed the cue tables (unlike the sense anchors of a later stage): adding a
+    ///     <c>quota-w50</c> chooser file changes the table.
     /// </summary>
     /// <returns>A task that completes when the check is done.</returns>
     [Fact]
-    public async Task WordSenseBuilder_Program_TrainBasic_ChooserRowsOfALaterStage_DoNotChangeTheTable()
+    public async Task WordSenseBuilder_Program_TrainBasic_ChooserRowsOfALaterStage_ChangeTheTable()
     {
         // Arrange: a base-stage corpus with chooser rows of a form of two lemmas, then a stage 1 file of rows of the same form
         var corpus = PrepareCorpus();
@@ -366,7 +367,7 @@ public sealed class ProgramTests : IDisposable
         // Assert
         Assert.True(firstCode == 0, firstError);
         Assert.True(secondCode == 0, secondError);
-        Assert.Equal(await File.ReadAllBytesAsync(first, TestContext.Current.CancellationToken), await File.ReadAllBytesAsync(second, TestContext.Current.CancellationToken));
+        Assert.NotEqual(await File.ReadAllBytesAsync(first, TestContext.Current.CancellationToken), await File.ReadAllBytesAsync(second, TestContext.Current.CancellationToken));
     }
 
     /// <summary>

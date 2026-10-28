@@ -726,10 +726,11 @@ that fall short, most frequent first.
 1. Read the tag counts of `corpus/open/counts` (made by `open-counts` from the training split of the representative
    open corpus, including the clause counts; the command stops with the name of `open-counts` when they are missing),
    the fine-sense anchors of the base stage in
-   `corpus/anchors` (the lemmas whose anchors are in the waves 1 to 49, `Corpus.StagesOf`; the anchors of a stage added
-   later are balanced per sense for the encoder weights and leave the table unchanged) and the chooser anchors of
-   `corpus/choosers/anchors` that are in a base-stage file (`Corpus.IsBaseStageFile`, the wave of the file below 50).
-   The holdout, the test splits, the targeted
+   `corpus/anchors` (the lemmas whose anchors are in the waves 1 to 49, `Corpus.StagesOf`; the sense anchors of a stage
+   added later are balanced per sense for the encoder weights and leave the table unchanged) and all the chooser anchors
+   of `corpus/choosers/anchors`, whatever their stage (lemma evidence for forms shared by several lemmas, which is not
+   balanced per sense). The cue tables thus train on the base-stage sense anchors plus all chooser rows. The holdout,
+   the test splits, the targeted
    part and the treebank are not read.
 2. `BasicTrainer.Train` selects from the counts the closed-class words (enough occurrences and a dominant closed-class
    share), every dictionary-ambiguous word of the counts (the most frequent ones, ties by spelling, when
@@ -783,7 +784,7 @@ that fall short, most frequent first.
    the
    cue scores of the table by it. A table that predicts its held-out sentences at or below chance is therefore as good as
    none, one at 0.8 on two analyses is fully reliable, and the choice needs no hand list of tables. In the shipped table
-   111 of the 913 tables are damped (those with a held-out accuracy below 0.6); `learning`, whose held-out accuracy of
+   111 of the 916 tables are damped (those with a held-out accuracy below 0.6); `learning`, whose held-out accuracy of
    0.298 is below chance, gets 0. On the development sets any target from 0.5 to 1.0 gives the same figures (the cue
    changes the answer on about 5 percent of the tokens it covers), and the reviewed suite loses rows from a target of
    0.7 on, so the target is 0.6.
@@ -803,7 +804,7 @@ that fall short, most frequent first.
    A table that covers no token keeps its anchor reliability. On the development sets the pseudo count and the
    combination make no difference (the cue changes few answers). The reviewed suite is the guard for the pseudo count:
    20 or less turns the row `M-feel-2` of Basic into a miss (the table of `feel` has 0 tokens helped and 2 hurt), and 50
-   does not. In the shipped table 162 of the 913 tables are damped (111 by the anchors and 61 by the running text,
+   does not. In the shipped table 163 of the 916 tables are damped (111 by the anchors and 62 by the running text,
    where more tokens are hurt than helped).
 3. `BasicTablesWriter.Write` serializes the table, `BasicTables.Load` checks that it reads back, and the file is
    written with its size and SHA-256 reported. The table carries the inventory hash of the word image that it was

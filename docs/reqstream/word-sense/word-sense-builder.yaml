@@ -1057,9 +1057,9 @@ sections:
 
           - id: WordSense-WordSenseBuilder-TrainBasic-BaseStageCues
             title: >-
-              The builder shall train the cue tables of the basic model from the anchors and the form-chooser rows
-              of the base stage only (the lemmas whose anchors, and the chooser files, are in the waves 1 to 49), so
-              that rows of a stage added later change no byte of the table.
+              The builder shall train the cue tables of the basic model from the base-stage sense anchors plus all the
+              form-chooser rows (the lemmas whose anchors are in the waves 1 to 49 are of the base stage; the chooser
+              rows of every stage count), so that sense anchors of a stage added later change no byte of the table.
             tags: [unit]
             justification: |
               The anchors of a later stage are balanced per sense for the encoder weights, and the quota of a
@@ -1067,11 +1067,12 @@ sections:
               sense (need#auxiliary) over-weights the rare analyses of the high-usage lemmas: with them the cue table of
               need answers "we need rest" as an auxiliary (0.57), the confidence of the noun in "Please open the door
               handle ." falls below 0.8, and no part-of-speech accuracy of the basic model on the open corpus or the
-              treebank rises (94.59 and 92.43 percent against 94.59 and 92.37).
+              treebank rises (94.59 and 92.43 percent against 94.59 and 92.37). The chooser rows are lemma evidence for
+              the forms that several lemmas share and are not balanced per sense, so the rows of every stage are kept:
+              they raise the lemma level of all three models on the heteronym benchmark.
             tests:
               - WordSenseBuilder_Program_TrainBasic_AnchorsOfALaterStage_DoNotChangeTheTable
-              - WordSenseBuilder_Program_TrainBasic_ChooserRowsOfALaterStage_DoNotChangeTheTable
-              - WordSenseBuilder_Corpus_IsBaseStageFile_FollowsTheWaveOfTheFile
+              - WordSenseBuilder_Program_TrainBasic_ChooserRowsOfALaterStage_ChangeTheTable
 
           - id: WordSense-WordSenseBuilder-TrainBasic-TenseWeights
             title: >-

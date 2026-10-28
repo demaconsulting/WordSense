@@ -44,7 +44,8 @@ CC0 export `tools/quota-fill/cache/cc0.tar.bz2` and the FAA PDFs (`tools/quota-f
 holds one of its anchors (the wave counts as its leading digits, so `quota-w4c-*` is wave 4; other files such as
 `batch-1.tsv` do not count). The builder uses the stage in two places (`Corpus.StagesOf`, see the builder design): the
 real-text calibration of the thresholds is fitted and applied per stage, so a stage never moves the thresholds of an
-earlier one, and the cue tables of the basic model learn from the anchors of the base stage only. A wave of a new stage
+earlier one, and the cue tables of the basic model learn from the sense anchors of the base stage plus all the form-chooser
+rows (the chooser rows of every stage count, the sense anchors of a later stage do not). A wave of a new stage
 takes the next block of numbers.
 
 A sense needs rows by its tier, from the WordNet 3.0 tag count (`lexindex.QUOTA`): **C** (5 or more tags) 20 anchors and

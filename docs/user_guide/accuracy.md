@@ -58,8 +58,8 @@ noun-verb tokens):
 | Set | Basic |
 | --- | ---: |
 | Open corpus test | 94.59% (92.72%; 95.41%) |
-| Treebank test (convention-mapped) | 92.37% (89.75%; 92.83%) |
-| Treebank test, MiniLM and BertBaseCased | 92.58 to 92.71% |
+| Treebank test (convention-mapped) | 92.38% (89.76%; 92.88%) |
+| Treebank test, MiniLM and BertBaseCased | 92.59 to 92.73% |
 | Independent benchmark, all-token part of speech, pooled | 91.3% |
 | Targeted challenge set | 98.65% |
 
@@ -74,9 +74,9 @@ is the cross-domain one. Three features of the tagger matter:
   senses. The emission of a tag is `(corpus count + β × target) / (corpus total + β)`, with β = 7 and a target of 70%
   generic tag distribution and 30% word prior. It is not read from the treebank, and every setting was chosen on
   development data only.
-- **Cue reliability.** Each of the 913 cue tables has a reliability that scales its weight. It comes from
+- **Cue reliability.** Each of the 916 cue tables has a reliability that scales its weight. It comes from
   cross-validation on the table's own anchors and from the net help of its cues on the training split of the open corpus.
-  162 of the 913 tables are damped. The tables learn from the anchors of the base stage only.
+  163 of the 916 tables are damped. The tables learn from the sense anchors of the base stage and all the form-chooser rows.
 - **Noun/verb context.** A model shared by all words that have a noun and a verb reading corrects the split between the
   two from the word and the grammatical class of the two tokens on each side. It is fitted on held-out predictions of the
   rest of the model, so it adds only what the tagger and the cue tables miss.
@@ -187,12 +187,12 @@ an untrained lemma with fewer than two senses, which every model answers at the 
 
 | Model | Words | Sense answered | Sense precision | Fine top-1 |
 | --- | --- | ---: | ---: | ---: |
-| Basic | untrained (69,467) | 8.77% | 68.69% | 69.64% |
+| Basic | untrained (69,467) | 8.77% | 68.68% | 69.64% |
 | Basic | all (184,323) | 7.43% | 47.18% | 59.09% |
-| MiniLM | untrained | 4.12% | 86.40% | 69.43% |
-| MiniLM | all | 11.43% | 82.25% | 59.42% |
-| BertBaseCased | untrained | 4.15% | 85.74% | 69.48% |
-| BertBaseCased | all | 22.71% | 81.07% | 61.77% |
+| MiniLM | untrained | 4.12% | 86.41% | 69.43% |
+| MiniLM | all | 11.43% | 82.25% | 59.41% |
+| BertBaseCased | untrained | 4.15% | 85.75% | 69.48% |
+| BertBaseCased | all | 22.71% | 81.07% | 61.78% |
 | First sense with the highest WordNet 3.0 tag count | trained | | | 65.74% |
 | First sense with the highest WordNet 3.0 tag count | untrained | | | 76.20% |
 | First sense with the highest WordNet 3.0 tag count | all | | | 69.68% |
