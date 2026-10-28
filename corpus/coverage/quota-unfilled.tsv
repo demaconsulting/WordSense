@@ -830,3 +830,109 @@ words#language-3	Noun	U	5	10	2	3	22	8	language that is spoken or written
 worry#care	Verb	C	0	20	2	5	31	4	be concerned with
 worry#concern-2	Verb	R	0	5	0	2	8	0	be on the mind of
 worry#trouble	Noun	C	18	20	5	5	33	30	a strong feeling of anxiety
+apparently#evidently	Adverb	R	0	5	1	2	9	1	unmistakably (‘plain’ is often used informally for ‘plainly’)
+arise#bob-up	Verb	C	14	20	5	5	36	19	originate or come into being
+arise#develop	Verb	C	2	20	5	5	9	7	come into existence; take on form or shape
+around#adverb-4	Adverb	U	9	10	3	3	21	20	to a particular destination either specified or understood
+bad#high-risk	Adjective	R	2	3	1	1	8	8	not financially safe or secure
+basic#canonic	Adjective	C	19	20	3	5	39	31	reduced to the simplest and most significant form possible without loss of generality
+blow#black-eye	Noun	U	9	10	3	3	21	16	an unfortunate happening that hinders or impedes; something that is thwarting or frustrating
+blow#discharge	Verb	U	9	10	3	3	17	17	free of obstruction by blowing air through
+blow#drop	Verb	R	0	3	1	1	7	3	spend lavishly or wastefully on
+blow#shock	Noun	U	7	10	3	3	18	8	an unpleasant or disappointing surprise
+blow#squander	Verb	R	0	3	1	1	8	1	spend thoughtlessly; throw away
+building#people	Noun	R	4	5	2	2	13	12	the occupants of a building
+cold#adjective-3	Adjective	U	8	10	3	3	22	22	having lost freshness through passage of time
+cold#dusty	Adjective	R	2	3	1	1	8	8	lacking originality or spontaneity; no longer new
+education#acquisition	Noun	C	19	20	5	5	33	24	the gradual process of acquiring knowledge
+education#breeding	Noun	U	9	10	3	3	22	22	the result of good upbringing (especially knowledge of correct social behavior)
+effective#adjective	Adjective	C	19	20	5	5	31	29	works well as a means or remedy
+effective#adjective-3	Adjective	R	4	5	2	2	13	13	ready for service
+effective#effectual	Adjective	C	10	20	5	5	32	14	producing or capable of producing an intended result or having a striking effect
+eliminate#do-away-with	Verb	C	14	20	5	5	39	19	terminate, end, or take out
+eliminate#egest	Verb	U	9	10	3	3	20	19	eliminate from the body
+eliminate#obviate	Verb	C	18	20	4	5	39	29	get rid of something
+emerge#appear	Verb	C	19	20	5	5	31	31	come out into view, as from concealment
+emerge#come-up	Verb	U	10	10	2	3	17	16	come up to the surface of or rise
+final#last	Adjective	C	15	20	5	5	37	20	conclusive in a process or progression
+firm#adjective-2	Adjective	U	9	10	3	3	22	21	securely established
+firm#adjective-3	Adjective	U	9	10	3	3	17	15	(of especially a person's physical features) not shaking or trembling
+fit#accommodate-2	Verb	C	19	20	4	5	40	40	insert or adjust several objects or people
+fit#conform	Verb	U	1	10	1	3	18	15	conform to some shape or size
+fit#form	Verb	C	20	20	4	5	23	19	make fit
+flow#action	Noun	U	3	10	3	3	17	8	any uninterrupted stream or discharge
+flow#be	Verb	R	3	5	2	2	10	5	be abundantly present
+flow#flowing	Noun	C	19	20	5	5	11	11	the motion characteristic of fluids (liquids or gases)
+flow#stream	Noun	C	0	20	4	5	32	4	the act of flowing or streaming; continuous progression
+front#breast	Verb	U	9	10	3	3	18	17	confront bodily
+front#figurehead	Noun	U	7	10	3	3	10	10	a person used as a cover for some questionable activity
+front#forepart	Noun	C	9	20	1	5	2	0	the side that is forward or prominent
+front#place	Noun	R	0	5	2	2	2	2	the part of something that is nearest to the normal viewer
+front#side	Noun	U	1	10	3	3	5	4	the side that is seen or that goes first
+further#advance	Verb	U	9	10	3	3	7	7	contribute to the progress or growth of
+further#cultivate	Verb	C	16	20	5	5	25	21	promote the growth of
+heavy#character	Noun	R	0	3	0	1	5	0	a serious (or tragic) role in a play
+heavy#fleshy	Adjective	U	8	10	3	3	20	16	usually describes a large person who is fat but has a large frame to carry it
+heavy#leaden	Adjective	R	3	3	0	1	7	7	lacking lightness or liveliness
+heavy#lumbering	Adjective	R	2	3	1	1	8	6	slow and laborious because of weight
+hot#adjective-6	Adjective	R	3	3	0	1	7	7	marked by excited activity
+hot#blistering	Adjective	U	9	10	3	3	21	21	very fast; capable of quick response and great speed
+instead#rather	Adverb	C	11	20	4	5	40	18	on the contrary
+language#linguistic-process	Noun	U	6	10	3	3	14	10	the cognitive processes involved in producing and understanding linguistic communication
+language#speech	Noun	U	9	10	3	3	14	12	the mental faculty or power of vocal communication
+local#public-transport	Noun	U	9	10	3	3	19	19	public transport consisting of a bus or train that stops at all stations or stops
+march#exhibit	Verb	U	9	10	3	3	21	16	walk ostentatiously
+military#adjective	Adjective	C	18	20	5	5	40	40	of or relating to the study of the principles of warfare
+miss#drop	Verb	C	12	20	5	5	28	16	leave undone or leave out
+miss#fail-2	Verb	C	19	20	5	5	34	31	fail to reach or get to
+miss#misfire	Noun	U	9	10	3	3	17	17	a failure to hit (or meet or find etc.)
+organization#administration	Noun	C	17	20	5	5	31	24	the persons (or committees or departments etc.) who make up a body for the purpose of administering something
+organization#arrangement	Noun	C	19	20	5	5	38	31	an organized structure for arranging or classifying
+organization#organisation-2	Noun	U	8	10	3	3	22	22	the act of organizing a business or an activity related to a business
+outside#adjective	Adjective	C	17	20	4	5	14	7	relating to or being on or near the outer side or limit
+outside#adjective-2	Adjective	U	4	10	3	3	22	7	originating or belonging beyond some bounds
+outside#exterior	Noun	C	15	20	5	5	36	18	the region that is outside of something
+outside#external-2	Adjective	U	10	10	2	3	22	22	from or between other countries
+party#affair	Noun	C	0	20	2	5	28	2	a gathering of people for pleasure
+payment#defrayal	Noun	C	18	20	5	5	24	22	the act of paying money
+piece#art-object	Noun	U	10	10	2	3	16	16	a work of art of some artistic value
+piece#part-2	Noun	C	19	20	5	5	31	30	an item that is an instance of some type
+piece#patch-2	Verb	U	7	10	2	3	22	10	to join or unite the pieces of
+policy#argument	Noun	C	12	20	3	5	34	20	a line of argument rationalizing the course of action of a government
+possibility#opening	Noun	C	17	20	5	5	27	14	a possible alternative
+pound#ram	Verb	U	9	10	3	3	22	20	strike or drive against with a heavy impact
+practice#apply	Verb	U	6	10	2	3	22	16	avail oneself to
+practice#cognition	Noun	U	0	10	0	3	21	0	knowledge of how something is usually done
+practice#practise	Verb	C	16	20	5	5	38	21	engage in a rehearsal (of)
+private#intimate	Adjective	R	4	5	2	2	10	9	concerning things deeply private and personal
+procedure#process	Noun	C	17	20	5	5	28	28	a particular course of action intended to achieve a result
+production#exhibition	Noun	U	9	10	3	3	20	19	(law) the act of exhibiting in a court of law
+production#industry	Noun	R	4	5	2	2	12	8	(economics) manufacturing or mining or growing something (usually in large quantities) for sale
+production#product	Noun	C	17	20	5	5	11	11	an artifact that has been created by someone or some process
+property#attribute-2	Noun	R	0	5	1	2	13	1	a construct whereby objects or individuals can be distinguished
+publish#print	Verb	C	20	20	4	5	40	40	put into print
+reaction#idea	Noun	C	6	20	2	5	38	34	an idea evoked by some experience
+research#enquiry	Noun	C	1	20	3	5	27	5	a search for knowledge
+settle#conciliate	Verb	C	10	20	5	5	39	16	come to terms
+settle#determine	Verb	C	3	20	2	5	32	26	settle conclusively; come to terms
+settle#ensconce	Verb	R	2	3	1	1	8	8	fix firmly
+settle#form	Verb	R	0	3	0	1	8	2	form a community
+settle#settle-down	Verb	C	11	20	2	5	20	8	settle into a position, usually on a surface or ground
+shelter#construction	Noun	C	17	20	4	5	35	22	a structure that provides privacy and protection from danger
+shelter#protection	Noun	U	9	10	3	3	22	12	protective covering that provides protection from the weather
+ship#embark	Verb	R	4	5	2	2	11	10	go on board
+shot#scene	Noun	U	9	10	3	3	22	22	a consecutive series of pictures that constitutes a unit of action in a film
+shot#stab	Noun	R	2	3	1	1	8	8	informal words for any attempt or effort
+somewhat#fairly	Adverb	C	0	20	0	5	1	0	to certain extent or degree
+somewhat#more-or-less	Adverb	C	0	20	0	5	0	0	to a small degree or extent
+speed#belt-along	Verb	C	1	20	5	5	26	6	move hurridly
+speed#fastness	Noun	C	20	20	4	5	38	38	a rate (usually rapid) at which something happens
+story#narration	Noun	C	17	20	5	5	34	27	a message that tells the particulars of an act or occurrence or course of events; presented in writing or drama or cinema or as a radio or t
+suffer#abide	Verb	C	19	20	5	5	32	32	put up with something or somebody unpleasant
+suffer#lose	Verb	R	4	5	2	2	13	10	be set at a disadvantage
+text#school-text	Noun	R	4	5	2	2	13	13	a book prepared for use in schools or colleges
+trade#craft-2	Noun	U	9	10	3	3	16	15	people who perform a particular kind of skilled work
+treatment#therapy	Noun	R	4	5	2	2	13	12	(medicine) the act of caring for someone (as by medication or remedial training etc.)
+vary#alter	Verb	C	5	20	5	5	37	9	become different in some particular way, without permanently losing one's or its former characteristics or essence
+wish#druthers	Noun	R	4	5	2	2	13	11	the particular preference that you have
+wish#express	Verb	C	3	20	1	5	38	38	make or express a wish
