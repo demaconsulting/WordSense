@@ -1577,8 +1577,9 @@ sections:
               The builder shall validate the corpus format (a lemma, a sense id, a part of speech and a sentence for
               every row), the agreement of the part of speech of a row with its sense, and, by normalized sentence, the
               disjointness of the training sentences (the anchors, the chooser anchors and the training split of the
-              open corpus) from the held-out, chooser held-out, real-text and suite sentences, the development and test
-              splits and the challenge set of the open corpus, the independent evaluation sentences and the example
+              open corpus) from the held-out, chooser held-out, real-text, suite and shape probe sentences, the
+              development and test splits and the challenge set of the open corpus, the independent evaluation sentences
+              and the example
               sentences of Open English WordNet, and of those evaluation sentences from each other; it shall report the
               sentences that two parts share and a run of eight words that they share, and fail when a sentence is
               shared by a training part and an evaluation part, by two evaluation parts, or by the corpus and a
@@ -2201,12 +2202,70 @@ sections:
               - MiniLMSuite_ExpectedPasses_StillPass
               - BertBaseCasedSuite_ExpectedPasses_StillPass
 
+          - id: WordSense-WordSenseBuilder-ShapeProbe
+            title: >-
+              The builder shall read the shape probe set (one sentence per row with its shape, lemma, gold part of
+              speech and braced target word), shall treat a corpus without the file as having no rows, and shall
+              reject a row
+              with the wrong number of columns, an unknown shape, a gold part of speech that is not that of its shape,
+              a target word that is missing, doubled or not at its index, an empty id or lemma, or a repeated id, and a
+              file with another header.
+            tags: [unit]
+            justification: |
+              The probe set is evaluation data with one noun or verb answer per row; a malformed row would score a model
+              against the wrong gold.
+            tests:
+              - WordSenseBuilder_ShapeProbe_ReadRows_ParsesRows
+              - WordSenseBuilder_ShapeProbe_ReadRows_MalformedRow_IsRejected
+              - WordSenseBuilder_ShapeProbe_Read_MissingFile_IsEmpty
+              - WordSenseBuilder_ShapeProbe_CommittedFile_IsValid
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-Evaluation
+            title: >-
+              The builder shall classify the sentence of every probe row with a model, count an answer as right when
+              the part of speech of the selected analysis is the gold, count an answer as harmful when a gold noun is
+              answered as a verb with a confidence of at least 0.45, and report the accuracy per shape and per model
+              and the
+              harmful rate per model, and write the answer of every model for every row on request.
+            tags: [unit]
+            justification: |
+              A consumer that trusts a verb answer for a noun acts on it, so the harmful rate is reported next to the
+              accuracy of each shape.
+            tests:
+              - WordSenseBuilder_ShapeProbe_AnswerAsync_ReadsTheTargetWord
+              - WordSenseBuilder_ShapeProbe_Answer_IsCorrectAndHarmful
+              - WordSenseBuilder_ShapeProbe_Render_ReportsAccuracyAndHarmfulRate
+              - WordSenseBuilder_ShapeProbe_RenderOutcomes_WritesOneLinePerModelAndRow
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-Command
+            title: >-
+              The builder shall provide the command evaluate-shapes that reports the shape probe results of the selected
+              models and optionally writes the outcomes, and shall fail with a message when the shape probe set is not
+              in the corpus directory.
+            tags: [unit]
+            justification: |
+              An evaluation of an absent probe set would report nothing and look like success.
+            tests:
+              - WordSenseBuilder_Program_EvaluateShapes_ReportsEveryShapeForTheModel
+              - WordSenseBuilder_Program_EvaluateShapes_WithoutProbeFile_Fails
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-Leakage
+            title: >-
+              The leakage check shall include the shape probe set as an evaluation part, so that a probe sentence that a
+              training part or another evaluation part also has is a leak.
+            tags: [unit]
+            justification: |
+              The probe set is held out; a model that trained on a probe sentence would be measured on its training
+              data.
+            tests:
+              - WordSenseBuilder_Corpus_Disjointness_CoversSuiteEvaluationAndOewnExamples
+
           - id: WordSense-WordSenseBuilder-Usage
             title: >-
               The builder shall provide the commands compile-image, import-moby, weights, evaluate, evaluate-senses,
               evaluate-allwords, allwords-sample, allwords-merge,
-              evaluate-running, evaluate-suite, check-leakage, tiers, open-counts, evaluate-tagger, coverage,
-              train-basic, tune-basic, label-senses, import-wn30-counts, appendix, keys and heteronyms, print
+              evaluate-running, evaluate-suite, evaluate-shapes, check-leakage, tiers, open-counts, evaluate-tagger,
+              coverage, train-basic, tune-basic, label-senses, import-wn30-counts, appendix, keys and heteronyms, print
               usage when given no
               arguments, and shall report an unknown or removed command (the treebank commands ud-counts and
               ud-irregular included), a malformed option, an option value that is not a valid number or is out of range

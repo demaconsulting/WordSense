@@ -91,6 +91,13 @@ count (the tier follows the tag count), the label that the data holds (a generat
 senses of the data (a sense without a sense key, tier U). After `seed-inventory` these labels are curated and never
 change.
 
+## Shape fit (`shape-fit.tsv`)
+
+`shape-fit.tsv` (`sense_id`, `shapes`) lists, for each noun and verb sense of the lemmas in scope, the sentence shapes of
+its own part of speech in which the sense is used naturally (comma-separated; empty when none). A judge model fills it
+from the glosses (`tools/quota-fill/shapes.py fit-export` and `fit-apply`). It decides where the writers add anchors
+(`tools/quota-fill/README.md`, "Shape coverage"); the builder does not read it.
+
 ## Part of speech of a curated sense
 
 The `part_of_speech` of a curated sense must be the part of speech of its sense in `data/` (the part of speech of its

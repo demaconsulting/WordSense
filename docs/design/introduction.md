@@ -241,6 +241,8 @@ data/                                              — word-data tables (TSV), s
 corpus/                                            — builder inputs: anchor and holdout sentences (fine-sense rows) with
                                                       their provenance (CC0 1.0, public domain in the United States or
                                                       project-authored), dictionary lexicon, the suite
+corpus/shapes/                                     — the shape probe set (CC0 1.0): held-out noun and verb sentences
+                                                      in seven common shapes, evaluation only
 corpus/open/                                       — the open English part-of-speech corpus (CC0 1.0 annotations):
                                                       the representative part, the targeted part and the tag counts
                                                       (corpus/open/counts) that train the Basic tagger

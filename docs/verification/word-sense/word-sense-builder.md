@@ -22,10 +22,12 @@ the stored biases, the thresholds and the fit-cache key, and the options); `Real
 document and the real-text calibration of the thresholds on one-dimensional synthetic lemmas; `ChooserCorpusTests.cs`
 and `ChooserTrainingTests.cs` cover the chooser rows and the training of the form choosers; `TiersTests.cs`,
 `SenseEvaluatorTests.cs`, `RunningTextEvaluatorTests.cs`, `TenseEvaluatorTests.cs`, `ChallengeSetFloorTests.cs`, `SuiteFileTests.cs`,
-`LeakageCheckTests.cs` and `ModelTableTests.cs` cover the quota report, the two independent evaluations, the suite
-reader and its grading, the leakage check and the model table file with small synthetic corpora, a stub model and
+`ShapeProbeTests.cs`, `LeakageCheckTests.cs` and `ModelTableTests.cs` cover the quota report, the two independent
+evaluations, the suite reader and its grading, the shape probe reader and report, the leakage check and the model table
+file with small synthetic corpora, a stub model and
 cached-file fixtures; `EvaluatorTests.cs` covers the per-level evaluation with a stub model. Commands that need a real
-encoder (`weights`, `evaluate`, `evaluate-senses`, `evaluate-running` and `evaluate-suite` for the encoder models) are
+encoder (`weights`, `evaluate`, `evaluate-senses`, `evaluate-running`, `evaluate-suite` and `evaluate-shapes` for the
+encoder models) are
 verified through the data they produce: the weights embedded in the model packages are loaded and matched in the
 MiniLM and BertBaseCased tests, the expectations of the suite are checked by the suite tests of the three model test
 projects (`BasicSuiteTests`, `MiniLMSuiteTests`, `BertBaseCasedSuiteTests`) and the floors of the challenge set by
@@ -591,6 +593,33 @@ and, for the measurement, a stub model.
   `MiniLMSuite_ExpectedPasses_StillPass` and `BertBaseCasedSuite_ExpectedPasses_StillPass` in the test projects of the
   models (see their verification documents); the encoder tests skip when the model files are not present.
 
+#### shape probe
+
+- **Rows** (`WordSenseBuilder_ShapeProbe_ReadRows_ParsesRows`): a well-formed file gives the rows with their shape,
+  lemma, gold part of speech, the words without braces and the index of the target.
+- **Malformed rows** (`WordSenseBuilder_ShapeProbe_ReadRows_MalformedRow_IsRejected`): a wrong number of columns, an
+  unknown shape, a gold that does not follow from the shape, a target that is missing, doubled or not at its index, an
+  empty id, a repeated id and a wrong header are rejected with the line.
+- **Missing file** (`WordSenseBuilder_ShapeProbe_Read_MissingFile_IsEmpty`): a corpus without `shapes/probe.tsv` has no
+  rows; with the file it has its rows.
+- **Committed file** (`WordSenseBuilder_ShapeProbe_CommittedFile_IsValid`): `corpus/shapes/probe.tsv` reads, has between
+  400 and 600 rows, at least 60 for each shape and at least 300 lemmas, and the target of every row is a form of its lemma
+  with the gold part of speech in the lexicon.
+- **Scoring** (`WordSenseBuilder_ShapeProbe_Answer_IsCorrectAndHarmful`): an answer is right when its part of speech is
+  the gold, and a word that is not answered is wrong; it is harmful only for a gold noun answered as a verb with a
+  confidence of at least 0.45 (0.44 is not).
+- **Classification** (`WordSenseBuilder_ShapeProbe_AnswerAsync_ReadsTheTargetWord`): with a stub model, the model gets the
+  words of the sentence and the answer is the part of speech and the confidence of the target word.
+- **Report** (`WordSenseBuilder_ShapeProbe_Render_ReportsAccuracyAndHarmfulRate`): with two stub answer sets, the
+  accuracy per shape, per gold and overall, and the harmful count and share per noun shape are rendered; a shape without
+  rows shows `n/a`.
+- **Outcomes** (`WordSenseBuilder_ShapeProbe_RenderOutcomes_WritesOneLinePerModelAndRow`): one line for every model and
+  row with the answer, the confidence and the two flags; a word that is not answered is `none`.
+- **Command** (`WordSenseBuilder_Program_EvaluateShapes_ReportsEveryShapeForTheModel`,
+  `WordSenseBuilder_Program_EvaluateShapes_WithoutProbeFile_Fails`): on the committed corpus the Basic model is measured,
+  every shape and `all noun shapes` are reported and the outcomes file is written; a corpus without the probe set exits
+  with code 1 and a message that names the file.
+
 #### open-counts
 
 - **Corpus reader** (`WordSenseBuilder_OpenCorpus_ReadFile_ReadsSentencesAndTokens`,
@@ -894,7 +923,8 @@ and, for the measurement, a stub model.
   sentence that a training part has too is a leak, and so is a gold sentence of the development half that the test split
   of the open corpus has.
 - **Committed corpus** (`WordSenseBuilder_Corpus_Disjointness_CoversSuiteEvaluationAndOewnExamples`): the anchors,
-  chooser, held-out and real-text sentences, the suite, the open corpus development and test splits, the two halves of
+  chooser, held-out and real-text sentences, the suite, the shape probe set, the open corpus development and test
+  splits, the two halves of
   the all-words gold set, the challenge set
   and the Open English WordNet examples of the repository share no sentence in a way that leaks.
 - **Command** (`WordSenseBuilder_Program_CheckLeakage_ExitsWithOneOnALeak`): `check-leakage` prints the report and
@@ -904,7 +934,7 @@ and, for the measurement, a stub model.
 
 - **No arguments or unknown command**: exit code 1 and the usage text listing `compile-image`, `import-moby`,
   `weights <modelId>`, `evaluate <modelId>`, `evaluate-senses`, `evaluate-allwords`, `allwords-sample`,
-  `allwords-merge`, `evaluate-running`, `evaluate-suite`, `check-leakage`,
+  `allwords-merge`, `evaluate-running`, `evaluate-suite`, `evaluate-shapes`, `check-leakage`,
   `tiers`, `open-counts`, `evaluate-tagger`, `coverage`, `train-basic`, `tune-basic`, `label-senses`,
   `import-wn30-counts`, `appendix`, `keys` and `heteronyms`
   (`Program_NoArguments_PrintsUsage`, `Program_UnknownCommand_ReportsCommandAndUsage`,

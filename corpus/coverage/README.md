@@ -30,6 +30,11 @@ from a corpus that was never sized by tier, so they cover the frequent senses an
 
 ## Quota filling
 
+`shape-coverage.tsv` is the shape report of the noun/verb lemmas: for every lemma, part of speech and sentence shape that
+has a fitting sense (`../curation/shape-fit.tsv`), the fitting senses, the number of kept written rows of that shape
+(from the shape tag of the provenance) and the status (`met` with at least 2 rows, otherwise `short`).
+`tools/quota-fill/coverage.py` writes it; the shapes are described in "Shape coverage" of `tools/quota-fill/README.md`.
+
 `quota-coverage.tsv` has the same columns measured on the corpus as it is now (`tools/quota-fill/coverage.py` writes it)
 and `quota-unfilled.tsv` lists the senses of the lemmas of the finished waves that the harvest and the writing could not
 bring to their quota, with the number of sentences written for them and how many of those the blind labeler placed in the
