@@ -1,8 +1,11 @@
 group_id	lemma	pos	label	origin	kind
+fall#group:allocation	fall	v	allocation	curated	equivalent
+fall#group:inheritance	fall	v	inheritance	curated	equivalent
 first#group:first-in-order	first	n	first-in-order	curated	equivalent
 first#group:initial	first	a	initial	curated	related
 first#group:initially	first	r	initially	curated	equivalent
 first#group:top	first	a	top	curated	related
+follow#group:compliance	follow	v	compliance	curated	equivalent
 fool#group:deception	fool	v	deception	curated	equivalent
 forward#group:ahead-in-time	forward	r	ahead-in-time	curated	equivalent
 forward#group:toward-front	forward	r	toward-front	curated	equivalent

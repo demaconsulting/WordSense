@@ -7,7 +7,8 @@ of the quota filling (harvest of real sentences and writing of the missing ones)
 
 The tiers size the data of a sense by its WordNet 3.0 tag count: **C** (five or more tags) needs 20 anchors and 5
 held-out sentences, **U** (one to four tags, and a project sense) 10 and 3, **R** (no tag) 5 and 2. A sense is `met` when
-it has both quotas, `short` when it has at least one sentence but misses a quota and `empty` when it has none.
+it has both quotas, `short` when it has at least one sentence but misses a quota and `empty` when it has none. In
+`quota-coverage.tsv`, the report of the current scope, an R sense of a lemma with 15 or more senses needs 3 and 1.
 
 <!-- markdownlint-disable MD013 -->
 
@@ -37,8 +38,8 @@ thin to write to) and are candidates for the review of the senses and groups. `q
 recomputed after the Tatoeba CC BY rows were removed, because the senses that fell short only for lack of the removed rows
 are not unfillable. The method is in the "Method of the quota filling" section of `../README.md`.
 
-Current state of `quota-coverage.tsv`: 6,198 of 7,036 senses meet their quota (748 short, 90 empty); 3,179 anchors
-and 793 held-out sentences are missing (the tier waves 4c, 4u and 4r filled the short senses of the three tiers; the
-senses left are the ones that the harvest and the writing could not bring to their quota). The scope includes the 176
-senses of the 12 technical lemmas and the 6 project senses (`../curation/README.md`). All quota-filled sentences are
-targeted (see "Quota-Filled Rows (targeted)" in `../README.md`).
+Current state of `quota-coverage.tsv`: 6,227 of 10,872 senses meet their quota (719 short, 3,926 empty); 3,044 anchors
+and 751 held-out sentences are missing for the senses of the lemmas of the earlier waves, and the 3,836 senses of the
+stage 1 lemmas (`../curation/README.md`) have no rows yet (44,293 anchors and 12,241 held-out sentences are missing). The
+scope includes the 176 senses of the 12 technical lemmas and the 6 project senses (`../curation/README.md`). All
+quota-filled sentences are targeted (see "Quota-Filled Rows (targeted)" in `../README.md`).

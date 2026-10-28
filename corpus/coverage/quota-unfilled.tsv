@@ -231,3 +231,468 @@ remove#dispose-of	Verb	U	2	10	3	3	19	5	dispose of
 remove#bump-off	Verb	R	4	5	2	2	7	6	kill intentionally and with premeditation
 clean#unrestricted	Adjective	U	8	10	3	3	13	11	free of restrictions or qualifications
 clean#unarmed	Adjective	R	0	5	2	2	10	2	not carrying concealed weapons
+able#able-bodied	Adjective	R	4	5	2	2	14	7	having a strong healthy body
+about#around	Adverb	C	15	20	5	5	49	22	all around or on all sides
+action#drive	Noun	U	1	10	3	3	36	4	the trait of being active and energetic and forceful
+add#add-together	Verb	U	3	10	3	3	21	16	make an addition by combining numbers
+add#add-together-2	Verb	U	8	10	2	3	21	20	determine the sum of
+admit#allow	Verb	R	1	5	2	2	21	6	give access or entrance to
+admit#include	Verb	U	9	10	3	3	29	12	allow participation in or the right to be part of; permit to exercise the rights, functions, and responsibilities of
+age#develop	Verb	U	8	10	3	3	25	12	begin to seem older; get older
+ago#adjective	Adjective	R	0	5	0	2	26	0	gone by; or in the past
+agree#accord	Verb	U	9	10	3	3	22	13	go together
+air#aerate	Verb	U	4	10	3	3	13	9	expose to fresh air
+all#adjective	Adjective	C	0	20	0	5	0	0	(quantifier) used with either mass or count nouns to indicate the whole number or amount of or every one of a class
+all#determiner	Determiner	U	0	10	0	3	0	0	marks the whole quantity or number of something, with no part or member excluded
+allow#allow-for	Verb	U	4	10	3	3	12	4	make a possibility or provide opportunity for; permit to be attainable or cause to remain
+allow#appropriate	Verb	C	19	20	5	5	34	30	give or assign a resource to a particular person or cause
+allow#permit	Verb	R	5	5	0	2	0	0	allow the presence of or allow (an activity) without opposing or prohibiting
+alone#adjective	Adjective	C	20	20	4	5	9	4	isolated from others
+alone#entirely	Adverb	C	19	20	5	5	36	33	without any others being included or involved
+alone#lone	Adjective	U	6	10	3	3	10	6	lacking companions or companionship
+always#adverb	Adverb	R	0	5	0	2	0	0	forever; throughout all time
+always#adverb-2	Adverb	R	0	5	0	2	0	0	at any time or in any event
+always#constantly	Adverb	R	0	5	0	2	0	0	invariably
+always#constantly-2	Adverb	R	2	5	0	2	0	0	without variation or change, in every case
+always#e-er	Adverb	C	0	20	1	5	0	0	at all times; all the time and on every occasion
+announce#annunciate	Verb	U	9	10	3	3	18	11	foreshadow or presage
+answer#agree	Verb	R	0	3	1	1	0	0	match or correspond
+answer#reply-2	Noun	C	0	20	2	5	32	2	the speech act of replying to a question
+answer#resolve	Verb	C	0	20	0	5	3	0	understand the meaning of
+apply#lend-oneself	Verb	U	10	10	2	3	22	13	be applicable to; as to an analysis
+apply#practice	Verb	U	8	10	3	3	22	11	avail oneself to
+attempt#set-about	Verb	C	0	20	0	5	73	0	enter upon an activity or enterprise
+attention#faculty	Noun	U	7	10	3	3	28	10	the faculty or power of mental concentration
+available#usable	Adjective	R	4	5	2	2	17	8	convenient for use or disposal
+away#out	Adverb	C	18	20	5	5	29	20	from one's possession
+be#comprise	Verb	C	20	20	2	5	39	39	form or compose
+be#equal	Verb	C	16	20	5	5	36	21	be identical or equivalent to
+be#follow	Verb	C	18	20	5	5	46	39	work in a specific place, with a specific subject, or in a specific function
+be#live	Verb	U	0	10	0	3	43	0	have life, be alive
+become#change	Verb	C	0	20	0	5	76	0	come into existence
+begin#mouth	Verb	C	15	20	4	5	31	30	begin to speak or say
+better#best-2	Adverb	U	9	10	3	3	28	19	from a position of superiority or authority
+better#good	Noun	U	9	10	3	3	22	17	something superior in quality or condition or effect
+big#bighearted	Adjective	R	2	3	1	1	13	9	given or giving freely
+big#swelled	Adjective	R	2	3	1	1	8	4	feeling self-importance
+body#torso	Noun	C	19	20	5	5	38	23	the body excluding the head and neck and limbs
+bring#alter	Verb	C	15	20	2	5	14	13	cause to come into a particular state or condition
+bring#land	Verb	C	0	20	0	5	40	26	bring into a different state
+bring#verb	Verb	U	9	10	2	3	28	22	be accompanied by
+build#develop	Verb	R	4	5	1	2	18	12	give form to, according to a plan
+carry#communicate	Verb	U	9	10	3	3	17	5	pass on a communication
+carry#feature	Verb	R	2	3	1	1	14	3	have a certain range
+carry#feature-3	Verb	R	2	3	1	1	14	3	have as an inherent or characteristic feature or have as a consequence
+catch#becharm	Verb	R	3	3	0	1	12	10	attract; cause to be enamored
+catch#capture	Verb	C	19	20	5	5	23	14	succeed in catching or seizing, especially after a chase
+catch#find	Verb	R	0	3	0	1	16	0	become aware of
+center#centre-12	Noun	R	0	3	0	1	13	0	(American football) the position of the player on the line of scrimmage who puts the ball in play
+charge#accuse	Verb	C	15	20	5	5	35	6	blame for, make a claim of wrongdoing or misbehavior against
+charge#appoint	Verb	U	0	10	0	3	19	0	assign a duty, responsibility or obligation to
+charge#billing	Noun	R	2	3	1	1	13	3	request for payment of a debt
+charge#burden	Verb	R	0	3	0	1	5	0	impose a task upon, assign a responsibility to
+chela#hindoo	Noun	U	9	10	3	3	12	12	a Hindu disciple of a swami
+claim#assertion	Noun	C	3	20	5	5	9	8	an assertion of a right (as to money or property)
+claim#call	Noun	R	4	5	2	2	13	8	a demand
+claim#demand	Noun	C	16	20	5	5	38	37	demand for something as rightful or due
+claim#take	Verb	U	7	10	3	3	22	20	lay claim to; as of an idea
+clear#adjective-2	Adjective	C	7	20	2	5	54	2	free from confusion or doubt
+clear#clean-2	Adjective	R	2	3	1	1	14	6	free of restrictions or qualifications
+clear#create	Verb	C	15	20	5	5	60	20	make a way or path by removing objects
+clear#discharge	Verb	R	1	3	1	1	15	2	free from payment of customs duties, as of a shipment
+compare#inflect	Verb	R	0	5	2	2	4	2	to form the comparative or superlative form on an adjective or adverb
+complete#consummate	Adjective	U	1	10	3	3	32	13	perfect and complete in every respect; having all necessary qualities
+condition#check	Verb	U	6	10	2	3	22	13	develop (a child's or animal's) behavior by instruction and practice; especially to teach self-control
+consider#believe	Verb	U	4	10	1	3	14	0	judge or regard; look upon; judge
+consider#look-at	Verb	R	0	5	2	2	11	2	look at carefully; study mentally
+consider#reckon	Verb	C	19	20	3	5	0	0	deem to be
+consider#study	Verb	C	0	20	1	5	16	1	give careful consideration to
+consider#verb	Verb	R	1	5	0	2	20	0	regard or treat with consideration, respect, and esteem
+contain#hold	Verb	R	4	5	2	2	13	3	be capable of holding or containing
+control#activity-2	Noun	C	19	20	5	5	42	36	the activity of managing or exerting control over something
+control#ascendance	Noun	U	5	10	3	3	32	16	the state that exists when one person or group has power over another
+control#ascertain	Verb	R	0	3	1	1	14	6	be careful or certain to do something; make certain of something
+control#relation	Noun	C	8	20	4	5	59	14	a relation of constraint of one entity (thing or person or group) by another
+course#trend	Noun	C	14	20	5	5	56	17	general line of orientation
+cut#disunite-2	Verb	U	2	10	2	3	41	7	make an incision or separation
+dead#adjective-3	Adjective	U	6	10	3	3	27	11	physically inactive
+dead#adjective-4	Adjective	U	4	10	3	3	36	7	unerringly accurate
+death#destruction	Noun	U	0	10	0	3	42	0	a final state
+design#create-2	Verb	R	0	5	2	2	23	2	create designs
+determine#define	Verb	C	9	20	5	5	48	15	decide upon or fix definitely
+develop#break	Verb	R	0	3	0	1	16	0	happen
+develop#come-about	Verb	U	7	10	3	3	30	13	be gradually disclosed or unfolded; become manifest
+develop#evolve	Verb	C	18	20	5	5	45	40	work out
+develop#grow-2	Verb	U	9	10	3	3	27	10	grow emotionally or mature
+die#endure	Verb	U	3	10	3	3	32	14	suffer or face the pain of death
+direct#conduct	Verb	C	3	20	5	5	54	8	take somebody somewhere
+direct#exact	Adjective	R	2	3	1	1	11	5	lacking compromising or mitigating elements
+direct#send	Verb	C	19	20	5	5	44	25	cause to go somewhere
+direction#centering	Noun	R	2	5	0	2	20	4	the concentration of attention or energy on something
+direction#guidance	Noun	U	1	10	3	3	41	5	the act of setting and holding a course
+direction#way	Noun	C	18	20	5	5	50	27	a line leading to a place or point
+distance#point	Noun	R	4	5	2	2	14	6	a remote point in time
+distance#spacing	Noun	C	19	20	5	5	39	35	the property created by the space between two objects or points
+do#acquit	Verb	U	0	10	3	3	26	3	behave in a certain manner; show a certain behavior; conduct or comport oneself
+do#make	Verb	C	19	20	5	5	40	26	engage in
+do#manage	Verb	U	8	10	3	3	28	12	carry on or function
+do#perform	Verb	C	4	20	5	5	42	6	get (something) done
+door#construction	Noun	R	4	5	2	2	10	7	a structure where people live or work (usually ordered along a street or road)
+down#adjective	Adjective	C	13	20	5	5	55	18	being or moving lower in position or less in some value
+down#adverb-3	Adverb	R	2	3	1	1	13	10	in an inactive or inoperative state
+drop#descent	Noun	R	2	3	1	1	15	7	the act of dropping something
+drop#dismiss	Verb	R	1	3	1	1	12	2	stop associating with
+early#adjective-3	Adjective	C	12	20	5	5	47	18	very young
+enemy#people	Noun	C	15	20	5	5	21	21	any hostile group of people
+enjoy#apply	Verb	C	0	20	0	5	0	0	have benefit from
+enjoy#bask	Verb	C	0	20	0	5	0	0	derive or receive pleasure from; get enjoyment from; take pleasure in
+enjoy#delight	Verb	C	0	20	0	5	0	0	take delight in
+enjoy#love	Verb	C	0	20	0	5	0	0	get pleasure from
+enter#infix	Verb	R	4	5	2	2	17	8	put or introduce into something
+establish#constitute	Verb	C	11	20	5	5	49	18	set up or lay the groundwork for
+evidence#bear-witness	Verb	U	0	10	0	3	4	0	provide evidence for
+evidence#tell	Verb	U	10	10	2	3	22	22	give evidence
+expect#await-2	Verb	R	2	5	2	2	13	3	look forward to the birth of a child
+experiment#experimentation-2	Noun	C	8	20	5	5	54	13	the testing of an idea
+explain#say	Verb	C	8	20	5	5	40	14	define
+express#evince	Verb	C	18	20	3	5	23	3	give expression to
+express#express-mail	Noun	R	3	5	2	2	15	5	mail that is distributed by a rapid and efficient system
+fact#info	Noun	C	19	20	5	5	40	29	a statement or assertion of verified information about something that is the case or has happened
+fact#realism	Noun	C	12	20	3	5	35	25	an event known to have happened or something known to have existed
+fall#accrue	Verb	R	0	3	0	1	0	0	come into the possession of
+fall#alter	Verb	R	0	3	0	1	0	0	lose one's chastity
+fall#autumn	Noun	C	11	20	1	5	0	0	the season when the leaves fall from the trees
+fall#be-born	Verb	R	0	3	0	1	0	0	be born, used chiefly of lambs
+fall#begin	Verb	R	3	3	0	1	0	0	begin vigorously
+fall#buy-the-farm	Verb	U	1	10	0	3	0	0	die, as in battle or in a hunt
+fall#capitulation	Noun	U	0	10	0	3	0	0	the act of surrendering (usually under agreed conditions)
+fall#change	Verb	R	2	3	0	1	0	0	assume a disappointed or sad expression
+fall#change-2	Verb	R	0	3	0	1	0	0	be cast down
+fall#come	Verb	C	9	20	0	5	0	0	come under, be classified or included
+fall#come-2	Verb	U	0	10	0	3	0	0	to be given by assignment or distribution
+fall#come-3	Verb	R	0	3	0	1	0	0	to be given by right or inheritance
+fall#come-down	Verb	C	19	20	5	5	40	35	move downward and lower, but not necessarily all the way
+fall#devolve	Verb	R	0	3	0	1	0	0	be inherited by
+fall#go-2	Verb	U	7	10	3	3	20	10	move in a specified direction
+fall#light	Verb	R	1	3	0	1	0	0	fall to somebody by assignment or lot; passed
+family#home	Noun	C	19	20	5	5	27	25	a social unit living together
+family#kin	Noun	U	9	10	3	3	16	12	a person having kinship with another or others
+far#adjective-3	Adjective	U	0	10	3	3	7	3	being the animal or vehicle on the right or being on the right side of an animal or vehicle
+far#interjection	Interjection	U	0	10	0	3	0	0	used to express surprise or disbelief (rare)
+fear#awe	Noun	R	3	5	2	2	8	5	a feeling of profound respect for someone or something
+fear#care	Noun	C	15	20	5	5	38	21	an anxious feeling
+fear#know	Verb	R	0	5	0	2	0	0	be uneasy or apprehensive about
+fear#revere	Verb	R	0	5	0	2	0	0	regard with feelings of respect and reverence; consider hallowed or exalted or be in awe of
+feeling#belief	Noun	C	1	20	0	5	0	0	a vague idea in which some confidence is placed
+feeling#feel	Noun	C	0	20	0	5	0	0	the general atmosphere of a place or situation and the effect that it has on people
+feeling#intuitive-feeling	Noun	R	0	5	0	2	0	0	an intuitive understanding of something
+feeling#somaesthesia	Noun	C	8	20	2	5	0	0	a physical sensation that you experience
+feeling#tactile-sensation	Noun	U	2	10	0	3	0	0	the sensation produced by pressure receptors in the skin
+fellow#associate	Noun	C	16	20	5	5	32	21	a friend who is frequently in the company of another
+fellow#beau	Noun	R	3	5	2	2	7	5	a man who is the lover of a man or woman
+field#champaign	Noun	C	10	20	5	5	60	16	extensive tract of level open land
+find#acquire	Verb	C	17	20	5	5	60	22	obtain through effort or management
+find#detect	Verb	C	19	20	4	5	25	24	discover or determine the existence, presence, or fact of by perception with the eyes
+find#get	Verb	C	19	20	5	5	40	39	receive a specified treatment (abstract)
+follow#bring	Verb	C	19	20	5	5	51	24	to bring something about at a later time than
+form#cast	Noun	U	2	10	3	3	28	7	the visual appearance of something or someone
+form#configuration	Noun	C	18	20	5	5	33	29	any spatial attributes (especially as defined by outline)
+form#forge	Verb	C	19	20	5	5	40	31	make something, usually for a specific function
+form#pattern	Noun	C	18	20	5	5	44	25	a perceptual structure
+four#adjective	Adjective	C	0	20	0	5	80	0	being one more than three
+friend#acquaintance	Noun	U	3	10	3	3	10	7	a person with whom you are acquainted
+full#adverb	Adverb	U	9	10	3	3	3	3	to the greatest degree or extent; completely or entirely; (‘full’ in this sense is used as a combining form)
+full#entire	Adjective	C	17	20	4	5	31	19	constituting the full quantity or extent; complete
+full#good	Adjective	U	9	10	3	3	21	12	having the normally expected amount
+game#score	Noun	R	1	5	2	2	18	4	(games) the score at a particular point or the score needed to win
+general#cosmopolitan	Adjective	R	3	5	2	2	13	9	of worldwide scope or applicability
+get#experience	Verb	C	7	20	5	5	67	14	go through (mental or physical states or experiences)
+get#stir	Verb	R	0	3	1	1	14	1	evoke an emotional response
+girl#female-child	Noun	C	18	20	5	5	0	0	a youthful female person
+girl#fille	Noun	C	0	20	0	5	0	0	a young female
+girl#girlfriend	Noun	C	13	20	5	5	41	15	a girl or young woman with whom a man is romantically involved
+give#afford	Verb	C	19	20	5	5	46	46	be the cause or source of
+give#commit	Verb	C	19	20	5	5	44	36	give entirely to a specific person, activity, or cause
+give#devote	Verb	C	20	20	4	5	44	40	dedicate
+give#establish	Verb	C	18	20	5	5	46	26	bring about
+give#have	Verb	C	19	20	5	5	32	26	organize or be responsible for
+give#render	Verb	C	12	20	5	5	60	31	bestow
+give#sacrifice	Verb	C	15	20	5	5	38	21	endure the loss of
+give#show	Verb	R	2	3	1	1	12	3	present to view
+give#transfer-2	Verb	C	13	20	5	5	27	5	transfer possession of something concrete or abstract to somebody
+give#yield	Verb	C	7	20	5	5	57	13	cause to happen or be responsible for
+good#adjective-2	Adjective	C	0	20	0	5	13	0	morally admirable
+good#adjective-3	Adjective	U	5	10	3	3	15	9	agreeable or pleasing
+good#adjective-5	Adjective	R	0	3	0	1	7	7	generally admired
+good#admirable	Adjective	C	0	20	3	5	8	5	deserving of esteem and respect
+good#beneficial	Adjective	C	14	20	5	5	32	16	promoting or enhancing well-being
+good#commodity	Noun	R	2	3	1	1	7	7	a raw material that is sold in large quantities, usually to other businesses for manufacturing or production purposes
+good#dear	Adjective	U	4	10	3	3	13	10	with or in a close or intimate relationship
+good#goodness-2	Noun	C	13	20	5	5	59	18	that which is pleasing or valuable or useful
+good#just	Adjective	U	0	10	0	3	3	0	of moral excellence
+government#administration	Noun	C	19	20	5	5	23	20	the act of governing; exercising authority
+ground#run-aground-2	Verb	R	2	3	1	1	12	3	bring to the ground
+ground#surface	Noun	R	0	3	1	1	12	1	(art) the surface (as a wall or canvas) prepared to take the paint for a painting
+happen#bechance	Verb	C	10	20	5	5	65	15	happen, occur, or be the case in the course of events or by chance
+hard#adjective	Adjective	C	15	20	5	5	48	26	dispassionate
+have#accept	Verb	C	8	20	5	5	57	13	receive willingly something given or offered
+have#get-2	Verb	C	17	20	5	5	71	23	undergo (as of injuries and illnesses)
+have#interact	Verb	C	19	20	5	5	45	40	have a personal or business relationship with someone
+have#receive	Verb	C	15	20	5	5	66	21	get something; come into possession of
+have#take	Verb	U	9	10	3	3	19	12	have sex with; archaic use
+here#adjective	Adjective	U	9	10	2	3	28	24	being here now
+here#adverb-3	Adverb	U	9	10	3	3	24	16	at this time; now
+history#continuum	Noun	C	19	20	5	5	35	23	the continuum of events occurring in succession leading from the past to the present and even into the future
+hit#strike-3	Verb	R	2	3	1	1	14	3	produce by manipulating keys or strings of musical instruments
+hold#affirm	Verb	U	8	10	3	3	27	11	assert or affirm
+hold#contain	Verb	U	1	10	1	3	18	2	be capable of holding or containing
+hold#continue	Verb	U	10	10	2	3	22	17	remain in a certain state, position, or condition
+hold#deem	Verb	C	16	20	5	5	31	15	keep in mind or convey as a conviction or view
+hold#have-3	Verb	U	6	10	3	3	35	11	have as a major characteristic
+human#adjective-2	Adjective	C	15	20	4	5	38	38	relating to a person
+individual#private	Adjective	U	4	10	3	3	16	9	concerning one person exclusively
+individual#single	Adjective	U	9	10	3	3	19	13	characteristic of or meant for a single person or thing
+involve#ask	Verb	C	4	20	5	5	32	10	require as useful, just, or proper
+involve#complicate	Verb	R	4	5	2	2	10	6	make complex or intricate or complicated
+join#conjoin	Verb	C	19	20	5	5	49	28	make contact or come together
+keep#have-2	Verb	R	2	3	1	1	14	3	have as a supply
+keep#maintain-3	Verb	U	1	10	3	3	36	3	supply with necessities and support
+kind#tolerant	Adjective	R	4	5	2	2	19	16	tolerant and forgiving under provocation
+know#acknowledge	Verb	C	11	20	5	5	27	18	accept (someone) to be what is claimed or accept their power and authority
+know#bang	Verb	R	3	5	2	2	8	4	have sexual intercourse with
+last#activity	Noun	U	7	10	3	3	30	10	a person's dying act; the final thing a person can do
+last#final	Adjective	U	9	10	3	3	27	20	conclusive in a process or progression
+leg#distance	Noun	R	4	5	2	2	8	6	(nautical) the distance traveled by a sailing vessel on a single tack
+less#adjective	Adjective	C	1	20	0	5	5	0	(comparative of ‘little’ usually used with mass nouns) a quantifier meaning not as great in amount or degree
+less#adjective-3	Adjective	R	4	5	2	2	13	8	(usually preceded by ‘no’) lower in quality
+less#determiner	Determiner	U	0	10	0	3	0	0	marks a smaller amount or degree of something
+let#cause	Verb	C	0	20	3	5	35	3	actively cause something to happen
+let#get	Verb	U	3	10	3	3	20	5	cause to move; cause to be in a certain position or condition
+level#adjective	Adjective	U	2	10	1	3	1	0	being on a precise horizontal plane
+level#adjective-2	Adjective	U	0	10	0	3	0	0	oriented at right angles to the plumb
+level#charge	Verb	R	0	3	0	1	8	0	direct into a position for use
+level#grade	Noun	C	17	20	5	5	34	19	a relative position or degree of value in a graded group
+level#horizontal-surface	Noun	U	8	10	2	3	22	20	a flat surface at right angles to a plumb line
+life#organic-phenomenon	Noun	U	4	10	3	3	33	7	the organic phenomenon that distinguishes living organisms from nonliving ones
+life#period	Noun	C	19	20	5	5	32	18	the period between birth and the present time
+light#brightness	Noun	C	0	20	0	5	75	0	the quality of being luminous; emitting or reflecting light
+light#clean	Adjective	U	0	10	3	3	26	3	(of sound or color) free from anything that dulls or dims
+light#friend	Noun	U	9	10	3	3	28	22	a person regarded very fondly
+light#lighting	Noun	U	2	10	1	3	42	6	having abundant light or illumination
+listen#comprehend	Verb	C	18	20	5	5	42	31	hear with intention
+listen#hear	Verb	C	16	20	5	5	47	26	listen and pay attention
+location#emplacement	Noun	U	7	10	3	3	30	10	the act of putting something in a certain place
+look#agree	Verb	R	0	5	0	2	14	0	accord in appearance with
+lose#act-3	Verb	U	9	10	3	3	21	13	fail to get or obtain
+lose#suffer	Verb	R	0	5	0	2	26	0	be set at a disadvantage
+love#bang	Verb	R	2	5	2	2	13	4	have sexual intercourse with
+love#love-life	Noun	R	0	5	2	2	4	2	sexual activities (often including sexual intercourse) between two people
+low#abject	Adjective	U	9	10	3	3	22	22	of the most contemptible kind
+low#adjective-3	Adjective	C	18	20	5	5	28	26	unrefined in character
+maintain#assert	Verb	C	19	20	5	5	45	36	state categorically
+make#alter-2	Verb	R	0	3	0	1	15	0	cause to be enjoyable or pleasurable
+make#amount	Verb	R	2	3	1	1	14	3	amount to
+make#assemble	Verb	U	6	10	3	3	42	9	form by assembling individuals or constituents
+make#assure	Verb	R	0	3	0	1	16	0	assure the success of
+make#become	Verb	C	0	20	1	5	78	1	be or be capable of being changed or made into
+make#ca-ca	Verb	U	0	10	0	3	0	0	have a bowel movement
+make#cause-2	Verb	C	19	20	5	5	74	24	give rise to; cause to happen or occur, not always intentionally
+make#cause-3	Verb	C	16	20	5	5	50	20	compel or make somebody or something to act in a certain way
+make#commit	Verb	U	9	10	3	3	21	8	carry out or commit
+make#consider	Verb	R	0	3	0	1	10	0	consider as being
+make#create	Verb	C	3	20	5	5	64	9	make or cause to be or to become
+make#develop	Verb	R	1	3	1	1	14	2	develop into
+make#develop-2	Verb	R	0	3	0	1	16	6	favor the development of
+make#do	Verb	C	11	20	5	5	55	23	engage in
+make#get-to	Verb	C	17	20	5	5	50	23	reach a goal
+man#individual	Noun	C	10	20	5	5	54	18	the generic use of the word to refer to any human being
+man#male	Noun	U	7	10	3	3	37	10	an adult male person who has a manly character (virile and courageous competent)
+mass#bulk	Noun	U	0	10	3	3	34	3	the property of something that is great in magnitude
+material#adjective-2	Adjective	U	5	10	1	3	16	15	derived from or composed of matter
+material#adjective-3	Adjective	U	9	10	3	3	13	13	directly relevant to a matter especially a law case
+matter#consequence	Noun	U	9	10	3	3	12	1	(used with negation) having consequence
+meaning#substance	Noun	C	0	20	0	5	48	7	the idea that is intended
+meet#assemble	Verb	C	12	20	5	5	61	18	collect in one place
+more#adjective	Adjective	C	6	20	0	5	31	0	(comparative of ‘many’ used with count nouns) quantifier meaning greater in number
+more#determiner	Determiner	U	0	10	0	3	22	22	specifies an additional or greater number or amount
+more#more-than	Adjective	C	19	20	5	5	6	0	(comparative of ‘much’ used with mass nouns) a quantifier meaning greater in size or amount or extent or degree; above; more than
+much#adjective	Adjective	C	0	20	0	5	80	0	(quantifier used with mass nouns) great in quantity or degree or extent
+much#adverb-2	Adverb	C	16	20	5	5	48	30	incredibly
+name#define	Verb	U	9	10	3	3	34	16	mention and identify by name
+name#identify	Verb	C	15	20	5	5	45	21	give the name or identifying characteristics of; refer to by name or some other identifying characteristic property
+need#ask	Verb	C	11	20	5	5	55	16	require as useful, just, or proper
+night#period-3	Noun	R	2	5	1	2	19	4	the time between sunset and midnight
+no#adjective	Adjective	C	0	20	0	5	4	0	(quantifier) used with either mass nouns or plural count nouns for indicating a complete or almost complete lack or zero quantity of
+no#adverb	Adverb	U	9	10	3	3	28	20	not in any degree or manner; not at all
+normal#adjective-2	Adjective	U	0	10	3	3	21	3	in accordance with scientific laws
+now#adverb	Adverb	C	0	20	2	5	31	0	in the historical present; at this point in the narration of a series of past events
+number#add-up	Verb	C	13	20	5	5	31	5	add up in number or quantity
+number#list	Verb	U	1	10	3	3	22	4	enumerate
+observe#follow	Verb	U	5	10	3	3	29	8	follow with the eyes or the mind
+observe#keep	Verb	U	4	10	3	3	30	7	stick to correctly or closely
+observe#note	Verb	C	9	20	5	5	58	19	observe with care or pay close attention to
+often#a-great-deal	Adverb	U	0	10	0	3	22	0	frequently or in great quantities
+often#frequently	Adverb	C	20	20	2	5	7	7	many times at short intervals
+old#adjective-3	Adjective	C	11	20	5	5	39	14	(used for emphasis) very familiar
+old#bang-up	Adjective	R	0	5	0	2	1	0	excellent
+old#noun	Noun	R	5	5	0	2	2	0	past times
+old#older	Adjective	U	8	10	3	3	18	10	skilled through long experience
+once#adverb	Adverb	C	0	20	0	5	40	0	as soon as
+one#1-2	Adjective	C	0	20	0	5	70	0	used of a single unit or thing; not two or more
+one#adjective	Adjective	U	9	10	3	3	23	12	of the same kind or quality
+one#matchless	Adjective	R	4	5	2	2	13	12	eminent beyond or above comparison
+one#right	Adjective	U	8	10	3	3	15	12	(informal) very; used informally as an intensifier
+one#unitary	Adjective	U	3	10	3	3	23	11	having the indivisible character of a unit
+open#adjective	Adjective	C	17	20	5	5	34	28	affording free passage or access
+open#adjective-2	Adjective	C	13	20	5	5	54	22	open to or in view of all
+open#adjective-7	Adjective	U	9	10	3	3	23	13	without undue constriction as from e.g. tenseness or inhibition
+open#exposed	Adjective	C	19	20	5	5	53	24	with no protection or shield
+operate#engage	Verb	R	0	5	0	2	26	0	keep engaged
+order#dictate	Verb	C	15	20	2	5	73	27	issue commands or orders for
+order#govern	Verb	U	3	10	3	3	40	6	bring into conformity with rules or principles or usage; impose regulations
+order#interjection	Interjection	U	9	10	3	3	21	13	used to demand silence, attention, or proper conduct in a meeting or court
+order#ordering-2	Noun	R	0	3	0	1	0	0	the act of putting things in a sequential arrangement
+other#adjective	Adjective	C	20	20	4	5	45	41	not the same one or ones already mentioned or implied; quantifier, other
+other#early	Adjective	R	4	5	2	2	21	7	belonging to the distant past
+people#dwell	Verb	R	0	5	0	2	0	0	furnish with people
+people#populate	Verb	U	0	10	0	3	0	0	fill with people
+plan#cerebrate	Verb	C	7	20	1	5	13	0	make plans for something
+prepare#develop	Verb	U	3	10	3	3	21	6	create by training and teaching
+probably#believably	Adverb	R	0	5	0	2	16	0	easy to believe on the basis of available evidence
+provide#cater	Verb	C	19	20	5	5	26	21	give what is desired or needed, especially support, food or sustenance
+provide#offer	Verb	U	0	10	1	3	1	1	mount or put up
+purpose#resolve	Verb	R	4	5	2	2	12	7	reach a decision
+question#enquiry	Noun	C	0	20	0	5	74	0	an instance of questioning
+question#query	Verb	C	13	20	3	5	21	1	pose a question
+quite#adverb-2	Adverb	R	1	5	2	2	21	3	actually or truly or to an extreme
+raise#bring-up	Verb	C	19	20	5	5	20	19	raise from a lower to a higher position
+raise#enhance	Verb	U	9	10	3	3	25	12	increase the level of
+raise#enrol	Verb	R	2	3	1	1	12	5	register formally as a participant or member
+raise#lift	Verb	U	5	10	3	3	8	0	move upwards
+rather#kind-of	Adverb	C	0	20	0	5	0	0	to some (great or small) extent
+rather#quite	Adverb	R	0	5	0	2	0	0	to a degree (not used with a negative)
+real#material	Adjective	R	3	5	2	2	12	5	having substance or capable of being treated as fact; not imaginary
+real#tangible	Adjective	U	0	10	3	3	36	17	capable of being treated as fact
+real#veridical	Adjective	R	4	5	2	2	15	8	coinciding with reality
+really#genuinely	Adverb	C	0	20	3	5	57	11	in accordance with truth or fact or reality
+really#in-truth	Adverb	R	5	5	1	2	19	8	in fact (used as intensifiers or sentence modifiers)
+receive#celebrate	Verb	R	4	5	2	2	13	6	have or give a reception
+receive#convert	Verb	U	6	10	3	3	36	9	convert into sounds or pictures
+recognize#acknowledge-2	Verb	U	9	10	3	3	27	16	express obligation, thanks, or gratitude for
+reduce#break	Verb	C	19	20	5	5	29	18	bring to humbler or weaker state or condition
+reduce#impoverish	Verb	U	9	10	3	3	26	13	lessen and make more modest
+reduce#shrink	Verb	U	9	10	3	3	22	19	reduce in size; reduce physically
+reflect#attest-2	Verb	R	1	5	2	2	20	3	give evidence of a certain behavior
+reflect#shine	Verb	C	0	20	0	5	80	0	be bright by reflecting or casting light
+remain#continue	Verb	C	14	20	5	5	60	19	continue in a place, position, or situation
+remember#think-back	Verb	C	19	20	5	5	43	39	recapture the past; indulge in memories
+report#account-2	Noun	C	13	20	5	5	45	30	the act of informing by verbal report
+represent#correspond	Verb	C	15	20	5	5	45	20	take the place of or be parallel or equivalent to
+represent#exemplify	Verb	C	0	20	3	5	2	2	be typical of
+represent#express	Verb	C	14	20	5	5	52	21	serve as a means of expressing something
+represent#inform	Verb	C	0	20	0	5	10	0	be representative or typical for
+require#ask	Verb	C	18	20	5	5	40	34	require as useful, just, or proper
+require#command	Verb	C	20	20	4	5	40	40	make someone do something
+rest#lie	Verb	U	8	10	3	3	22	11	have a place in relation to something else
+rest#pillow	Verb	U	9	10	3	3	21	16	rest on or as if on a pillow
+rest#recline	Verb	U	0	10	1	3	20	1	be at rest
+rest#repose	Verb	U	6	10	3	3	22	9	be inherent or innate in
+same#adjective-2	Adjective	C	19	20	5	5	5	5	closely similar or comparable in kind or quality or quantity or degree
+save#bring-through	Verb	U	0	10	0	3	0	0	bring into safety
+save#conjunction	Conjunction	U	8	10	0	3	0	0	introduces an exception or qualification: except that; unless
+save#deliver	Verb	U	9	10	3	3	0	0	save from sins
+save#drop	Verb	U	0	10	0	3	0	0	spend less; buy at a reduced price
+save#economise	Verb	U	1	10	0	3	0	0	spend sparingly, avoid the waste of
+save#hold-open	Verb	U	0	10	0	3	0	0	retain rights to
+save#noun	Noun	R	0	5	0	2	0	0	(sports) the act of preventing the opposition from scoring
+save#preserve	Verb	C	5	20	5	5	0	0	to keep up and reserve for personal or special use
+save#spare	Verb	U	0	10	0	3	0	0	refrain from harming
+say#express	Verb	U	8	10	3	3	6	2	utter aloud
+section#division	Noun	U	5	10	3	3	23	4	one of the portions into which something is regarded as divided and which together constitute a whole
+section#squad	Noun	U	2	10	3	3	29	6	a small team of policemen working as part of a police platoon
+see#consider-2	Verb	U	0	10	1	3	40	1	deliberate or decide
+see#discover	Verb	C	20	20	4	5	46	35	get to know or become aware of, usually accidentally
+send#get-off	Verb	C	18	20	4	5	41	40	transfer
+send#place	Verb	C	16	20	5	5	49	23	assign to a station
+send#send-out	Verb	C	0	20	0	5	0	0	to cause or order to be taken, directed, or transmitted to another place
+set#define	Verb	C	18	20	5	5	42	18	decide upon or fix definitely
+set#laid	Adjective	U	9	10	3	3	25	24	set down according to a plan
+several#adjective	Adjective	C	0	20	0	5	0	0	(used with count nouns) of an indefinite number more than 2 or 3 but not many
+several#adjective-2	Adjective	C	0	20	0	5	0	0	distinct and individual
+several#determiner	Determiner	U	9	10	2	3	22	22	indicates a small but indefinite number greater than two
+shoot#buck	Verb	U	1	10	3	3	42	10	move quickly and violently
+shoot#photograph	Verb	U	8	10	2	3	21	14	record on photographic film
+short#shortstop	Noun	R	2	3	1	1	6	3	the fielding position of the player on a baseball team who is stationed between second and third base
+single#case-by-case	Adjective	C	18	20	5	5	39	39	being or characteristic of a single thing or person
+six#adjective	Adjective	C	0	20	0	5	80	0	being one more than five
+small#adjective-2	Adjective	R	0	5	2	2	22	2	have fine or very small constituent particles
+small#humble	Adjective	U	4	10	3	3	29	7	low or inferior in station or quality
+small#minor	Adjective	C	10	20	4	5	50	16	relatively moderate, limited, or small
+so#adverb-2	Adverb	C	0	20	0	5	80	0	in a manner that facilitates
+so#and-so	Adverb	U	0	10	1	3	20	3	subsequently or soon afterward (often used as sentence connectors)
+so#indeed	Adverb	R	2	5	2	2	20	4	in truth (often tends to intensify)
+social#adjective	Adjective	C	10	20	5	5	59	17	living together or enjoying life in communities or organized groups
+some#adjective	Adjective	C	0	20	0	5	0	0	(quantifier) used with either mass nouns or plural count nouns to indicate an unspecified number or quantity
+some#adjective-2	Adjective	C	0	20	0	5	0	0	relatively many but unspecified in number
+speak#mouth	Verb	C	13	20	5	5	17	9	express in speech
+stage#degree	Noun	C	10	20	5	5	56	15	a specific identifiable position in a continuum or series or especially in a process
+start#begin-2	Verb	C	19	20	5	5	37	30	set in motion, cause to start
+start#beginning-2	Noun	C	17	20	5	5	36	22	the time at which something is supposed to begin
+start#commence	Verb	C	0	20	4	5	64	5	get off the ground
+start#get-going	Verb	C	0	20	0	5	78	0	begin or set in motion
+stay#continue	Verb	C	14	20	5	5	50	16	continue in a place, position, or situation
+step#go	Verb	C	19	20	5	5	24	22	shift or move by taking a step
+stop#alter	Verb	C	19	20	5	5	45	29	cause to end
+stop#arrest	Noun	U	6	10	3	3	37	9	the state of inactivity following an interruption
+stop#bar	Verb	R	1	3	1	1	13	2	render unsuitable for passage
+stop#stoppage	Noun	U	8	10	3	3	22	11	the act of stopping something
+student#assimilator	Noun	C	19	20	5	5	20	12	someone (especially a child) who learns (as from a teacher) or takes up knowledge or beliefs
+suggest#hint	Verb	C	1	20	3	5	69	7	drop a hint; intimate by a hint
+sure#adjective-3	Adjective	R	0	5	1	2	22	1	infallible or unfailing
+surface#come-up	Verb	U	8	10	3	3	36	11	come to the surface
+take#accept-2	Verb	C	14	20	5	5	61	21	make use of or accept for some purpose
+take#buy	Verb	U	9	10	3	3	26	11	buy, select
+take#carry	Verb	U	8	10	3	3	25	11	have with oneself; have on one's person
+take#choose	Verb	C	14	20	4	5	37	24	pick out, select, or choose from a number of alternatives
+take#claim-2	Verb	U	9	10	3	3	21	16	lay claim to; as of an idea
+take#drive	Verb	R	0	3	0	1	8	5	proceed along in a vehicle
+take#experience	Verb	C	9	20	4	5	38	16	experience or feel or submit to
+take#fill	Verb	C	19	20	5	5	38	37	assume, as of positions or roles
+take#have	Verb	U	2	10	2	3	11	6	have sex with; archaic use
+teach#accustom	Verb	U	9	10	3	3	28	23	accustom gradually to some action or attitude
+tell#assure	Verb	C	15	20	5	5	42	13	inform positively and with certainty and confidence
+then#adjective	Adjective	U	0	10	0	3	0	0	at a specific prior time
+therefore#consequently	Adverb	R	0	5	0	2	0	0	as a consequence
+therefore#hence	Adverb	C	0	20	0	5	0	0	(used to introduce a logical conclusion) from that fact or reason or as a result
+thing#abstract	Noun	C	18	20	5	5	45	29	a special abstraction
+thing#entity	Noun	C	16	20	3	5	78	39	an entity that is not named specifically
+thing#situation	Noun	C	20	20	4	5	8	0	a special situation
+think#center	Verb	U	1	10	2	3	36	15	focus one's attention on a certain state
+think#cerebrate-2	Verb	R	2	5	2	2	21	4	decide by pondering, reasoning, or reflecting
+throw#chance	Noun	U	8	10	3	3	26	12	a single chance or instance
+town#township	Noun	U	7	10	3	3	27	11	an administrative division of a county
+turn#change-by-reversal	Verb	C	8	20	5	5	57	18	change to the contrary
+turn#change-state	Verb	C	5	20	5	5	68	17	undergo a transformation or a change of position or action
+turn#turning	Noun	C	19	20	5	5	46	26	the act of changing or reversing the direction of the course
+turn#turning-2	Noun	U	9	10	2	3	25	15	a movement in a new direction
+two#adjective	Adjective	C	20	20	4	5	77	40	being one more than one
+up#adjective-5	Adjective	R	0	3	1	1	5	1	open
+up#improving	Adjective	U	2	10	3	3	22	5	getting higher or more vigorous
+up#upward-3	Adverb	R	0	3	0	1	0	0	to a later time
+various#assorted	Adjective	C	16	20	5	5	38	22	of many different kinds purposefully arranged but lacking any uniformity
+various#respective	Adjective	C	19	20	5	5	46	36	considered individually
+very#adjective	Adjective	C	17	20	5	5	69	22	precisely as stated
+very#adverb	Adverb	C	0	20	4	5	40	4	precisely so
+wait#waiting	Noun	U	9	10	3	3	39	19	the act of waiting (remaining inactive in one place while expecting something)
+want#look-for	Verb	U	9	10	3	3	22	17	hunt or look for; want for a particular reason
+want#need-2	Verb	C	18	20	5	5	33	33	have need of
+way#condition	Noun	C	19	20	5	5	52	24	the condition of things generally
+way#path	Noun	C	18	20	5	5	48	28	a course of conduct
+wear#assume	Verb	R	0	5	0	2	26	0	put clothing on one's body
+wear#wearing	Noun	R	3	5	2	2	18	4	the act of having on your person as a covering or adornment
+whole#adverb	Adverb	U	4	10	3	3	41	7	to a complete degree or to the full or entire extent; Completely or entirely
+whole#concept	Noun	C	19	20	5	5	29	15	all of something including all its component elements or parts
+win#acquire	Verb	C	14	20	5	5	43	10	win something through one's efforts
+wonder#question	Verb	C	7	20	4	5	53	12	place in doubt or express doubtful speculation
+world#human-beings	Noun	R	1	5	2	2	13	3	all of the living human inhabitants of the earth
+young#unseasoned	Adjective	R	4	5	2	2	16	13	not tried or tested by experience

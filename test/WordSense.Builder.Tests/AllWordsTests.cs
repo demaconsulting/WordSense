@@ -33,14 +33,19 @@ public sealed class AllWordsTests : IDisposable
     private static readonly Lazy<Dictionary<string, List<AllWordsItem>>> CommittedHalves = new(() => Splits.ToDictionary(s => s, s => AllWordsGold.Read(Corpus, s)));
 
     /// <summary>
-    ///     The committed gold tokens are of untrained lemmas whose part of speech has two or more senses, and each names a
+    ///     The committed gold tokens are of lemmas that had no anchor when the set was drawn (the anchors of the stage 1 waves,
+    ///     files <c>quota-w5*</c>, come later and are not counted) whose part of speech has two or more senses, and each names a
     ///     sense of its lemma and part of speech and a word that is at its index (the reader checks the last two).
     /// </summary>
     [Fact]
     public void WordSenseBuilder_AllWords_CommittedGold_TokensAreOfUntrainedPolysemousLemmasWithTheirSense()
     {
-        // Arrange
-        var trained = WordSense.Builder.Corpus.ReadLemmas(Path.Join(Corpus, "anchors"));
+        // Arrange: the stage 1 lemmas were untrained at the draw; their anchors are the point of the independent check
+        var trained = Directory.GetFiles(Path.Join(Corpus, "anchors"), "*.tsv")
+            .Where(f => !Path.GetFileName(f).StartsWith("quota-w5", StringComparison.Ordinal))
+            .SelectMany(f => File.ReadLines(f))
+            .Select(l => l.Split('\t')[0])
+            .ToHashSet(StringComparer.Ordinal);
 
         // Act
         var halves = CommittedHalves.Value;

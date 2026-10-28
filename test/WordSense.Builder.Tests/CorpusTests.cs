@@ -187,6 +187,27 @@ public sealed class CorpusTests : IDisposable
     }
 
     /// <summary>
+    ///     The anchored senses of a lemma are the distinct values of the second column of its rows, read without
+    ///     validation; a row without a second column counts no sense.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Corpus_CountAnchoredSenses_CountsDistinctSensesWithoutValidation()
+    {
+        // Arrange: walk has two distinct senses in two files (one of them twice), run has a row without a sense
+        Write("senses/a.tsv", "walk\twalk#a\tNoun\tx\n\nrun\n");
+        Write("senses/b.tsv", "walk\twalk#b\n walk \t walk#a \n zzyzx\tzzyzx#a\n");
+
+        // Act
+        var counts = Corpus.CountAnchoredSenses(Path.Join(_dir.Root, "senses"));
+
+        // Assert
+        Assert.Equal(2, counts["walk"]);
+        Assert.Equal(1, counts["zzyzx"]);
+        Assert.DoesNotContain("run", counts.Keys);
+        Assert.Empty(Corpus.CountAnchoredSenses(Path.Join(_dir.Root, "missing")));
+    }
+
+    /// <summary>
     ///     The senses of a lemma are listed for every part of speech in enumeration order, each in catalog order.
     /// </summary>
     [Fact]

@@ -251,6 +251,17 @@ All scenarios below pass on every platform and target framework of the CI matrix
   precision never reaches the target gets no threshold for that level, so that level is never answered.
 - **Both thresholds are written** (`ModelTrainer_TrainDataAsync_WritesBothThresholdsPerLemma`): the weights blob
   holds `t_fine` of every trained lemma and `t_group` of every trained lemma that has groups.
+- **Closed-class columns are left out** (`Thresholds_Choose_ClosedClassColumns_AreLeftOutOfTheMargins`): on a lemma with
+  two open senses and a closed-class sense that cannot be told from one of them, the threshold with the candidates of
+  every anchor limited to the open senses is finite and not above the threshold without them, candidates that list every
+  column give the threshold of no candidates at all, and a candidate list of the wrong length is refused.
+- **Row-specific candidates** (`Thresholds_Choose_RowSpecificCandidates_AreTheColumnsOfTheFormOfTheAnchor`): two senses
+  that no form ranks together (a noun sense and a verb sense of one lemma) do not make each other look wrong when each
+  anchor lists the candidates of its own form; an anchor with one candidate, and an anchor whose true sense is not among
+  its candidates, are not tested.
+- **Forms that get a chooser** (`WeightsTrainer_ChooserForms_AreTheFormsWhoseRowsTrainAChooser`): a form whose rows name
+  two labels is listed, a form whose rows name one label is not, and no rows list no form (the cross-validation leaves
+  out the anchors of a form of several lemmas that is not listed).
 
 #### Usage prior
 
@@ -284,8 +295,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   Tatoeba sentence is its own document.
 - **Only real rows are split** (`RealSplit_Classify_WrittenAndUnknownRows_AreNeverRealRows`): a row whose source is
   written for the project, and a row without provenance, is in neither split.
-- **Anchor documents** (`RealSplit_Classify_ReportsTestRowsInDocumentsWithoutAnchors`): the test rows whose document
-  supplies no anchor are listed apart.
+- **Anchor documents** (`RealSplit_Classify_ReportsTestRowsInDocumentsWithoutAnchors`,
+  `RealSplit_Classify_AnchorOfAnotherLemma_DoesNotCountAsAnchorDocument`): the test rows whose document supplies no
+  anchor of the lemma of the row are listed apart; an anchor of another lemma from the same document does not count.
 - **Strict provenance** (`RealSplit_ReadProvenance_MalformedFile_IsRefusedWithPathAndLine`,
   `RealSplit_ReadProvenance_IdInTwoFiles_IsRefused`): a provenance file with a header other than
   `id split source source_key`, a short or long row, an empty field, a split other than `anchors`, `holdout` or
@@ -294,6 +306,48 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Pooled shift** (`RealCalibrator_Apply_RaisesThresholdsUntilThePooledPrecisionReachesTheTarget`): on calibration rows
   where the cross-validation thresholds are too low, the thresholds are raised by one shift and the pooled precision of
   the answers reaches the target; thresholds that already meet it are not moved.
+- **Strata** (`RealCalibrator_Apply_Strata_AreCalibratedByTheirOwnRows`, `Corpus_StagesOf_NamesTheStageOfTheHighestWaveFile`):
+  with a base stratum of poor precision (shift 3) and a stage 1 stratum that is always right (shift 0), each stratum gets
+  its own shift, the report lists the strata in the order of their names, the base thresholds are the same with or without
+  the other stratum, and one pooled stratum gives both lemmas the same threshold; the stage of a lemma is the stage of the
+  highest wave file that holds one of its anchors (`quota-w4c` is wave 4, `quota-w49` the base stage, `quota-w50` and
+  `quota-w51` stage 1, `quota-w100` stage 2, `batch-1` no wave).
+- **Margin as inference computes it** (`RealCalibrator_Apply_ClosedClassSenses_AreNotCandidatesOfTheMargin`,
+  `RealCalibrator_Apply_FewerThanTwoCandidates_IsNotObserved`): for a lemma that has a closed-class sense, the margin
+  of a calibration row ignores that sense, so a row whose best open-class sense wins over a closed-class one is
+  observed with
+  the open-class margin; a row whose word is not a form of the lemma, or that has fewer than two candidates, is not
+  observed.
+- **Form plan** (`RealCalibrator_Apply_FormOfSeveralLemmas_IsObservedOnlyWithAChooser`): `left` is a form of the lemmas
+  `left` and `leave`; a calibration row of `leave` with this form is not observed without a chooser for the form (the
+  encoder does not run, the lexicon answers) and is observed with one.
+- **Rows that no threshold of the lemma decides**
+  (`RealCalibrator_Apply_ChooserNotConfidentOrOtherLemmaSelected_RowIsLeftOut`): for the form `left` with a chooser of
+  threshold 1, a chooser margin of 0.4 is not confident (the row is not observed and `ChooserUnsure` counts it), a
+  chooser that prefers the lemma `left` selects another lemma (not observed, `SelectedElsewhere`), and a margin of 2 for
+  `leave` is observed with no row counted as left out.
+- **Closed-class slot of Basic** (`RealCalibrator_Apply_ClosedClassSlotWins_RowIsLeftOut`,
+  `RealCalibrator_Apply_OpenClassSlotWins_RowIsObserved_ClosedTrueSenseIsWrong`,
+  `RealCalibrator_Apply_BasicResultsOfAnotherLength_Throws`): for `little` with an adjective sense that scores 3, a
+  second adjective sense and a determiner column, a Basic result that says determiner 0.9 wins the closed-class split, so
+  the row is not observed and the report counts it in `ClosedWins`; with determiner 0.1 the adjective slot wins and the
+  row is observed (right for an adjective true sense; wrong, and counted in `ClosedGoldRows`, for the determiner true
+  sense); without the Basic results the row is observed as well; a list of Basic results of another length than the
+  rows is refused.
+- **Half-precision gate leaves out forms with fewer than two candidates**
+  (`WeightsBlobWriter_PrecisionGate_LeavesOutFormsWithFewerThanTwoCandidates`): for the lemma `own` with a verb and an
+  adjective column, the row of `owns` (only a verb, one candidate) is not counted and the row of `own` (two candidates)
+  is.
+- **Half-precision gate ranks the open-class columns** (`WeightsBlobWriter_PrecisionGate_RanksOnlyTheOpenClassColumns`,
+  `WeightsBlobWriter_ReducedPrecision_StaysWithinTheAccuracyGate`,
+  `WeightsBlobWriter_PrecisionGate_MeasuresDescribesAndEnforces`): a determiner column that outscores the true adjective
+  sense does not make the row wrong, and a row whose true sense is the determiner is wrong for both sets of weights; the
+  reduced weights stay within 0.2 percentage point of the full ones.
+- **Basic cue tables learn the base-stage sense anchors and all chooser rows**
+  (`Program_TrainBasic_AnchorsOfALaterStage_DoNotChangeTheTable`,
+  `Program_TrainBasic_ChooserRowsOfALaterStage_ChangeTheTable`): the table trained after a `quota-w50` sense anchor file
+  is added is byte-identical to the table trained before, and the table trained after a `quota-w50` chooser file is
+  added differs from it.
 - **Own threshold** (`RealCalibrator_Apply_LemmaWithEnoughRows_KeepsTheHigherOfItsOwnAndTheAdjustedThreshold`): a lemma
   with at least 20 calibration rows keeps the higher of its own threshold and the adjusted one; a lemma with fewer rows
   gets the pooled shift.
@@ -336,7 +390,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
 #### tiers
 
 - **Quota follows the tag count** (`WordSenseBuilder_Tiers_Quota_FollowsTheTagCount`): five or more gives 20 anchor
-  and 5 held-out sentences, one to four (and a project sense) gives 10 and 3, none gives 5 and 2.
+  and 5 held-out sentences, one to four (and a project sense) gives 10 and 3, none gives 5 and 2, or 3 and 1 for a
+  lemma with 15 or more senses.
+- **Large lemmas** (`WordSenseBuilder_Tiers_Build_LargeLemma_AsksFewerSentencesForUntaggedSenses`): an untagged sense of
+  "cut" (70 senses) has the quota 3 and 1, one of "record" (12 senses) 5 and 2.
 - **Report** (`WordSenseBuilder_Tiers_Report_ListsShortAndEmptySensesWithTheMissingSentences`): every sense of a trained
   lemma has its tier and status; a sense with fewer sentences than its quota is `short`, one without any is `empty` and
   both are listed with the missing sentences; a sense that meets its quota is `met`.
@@ -404,7 +461,8 @@ and, for the measurement, a stub model.
 - **Committed gold set** (`WordSenseBuilder_AllWords_CommittedGold_TokensAreOfUntrainedPolysemousLemmasWithTheirSense`,
   `..._CommittedGold_HasAtMostThreeTokensPerLemmaAndOnePerSentence`, `..._CommittedGold_TokensComeFromTheirOwnSplit`,
   `..._CommittedGold_HalvesShareNoDocument`): both halves have at least 300 tokens; every token names a sense of its lemma
-  and part of speech and a word that is at its index, its lemma is not trained and its part of speech has two or more
+  and part of speech and a word that is at its index, its lemma had no anchor when the set was drawn (the anchors of the
+  stage 1 waves, `quota-w5*`, are not counted) and its part of speech has two or more
   senses; no lemma has more than three tokens and no sentence is used twice; the development tokens are sentences of the
   development split and the test tokens of the test split of the representative open corpus; and the documents of the
   two halves are disjoint.

@@ -1,6 +1,8 @@
 group_id	sense_id
 geminate#group:pairing	oewn-geminate__2.30.00..
 geminate#group:pairing	oewn-geminate__2.35.00..
+girl#group:young-female	oewn-girl__1.18.00..
+girl#group:young-female	oewn-girl__1.18.02..
 go#group:course	oewn-go__2.30.01..
 go#group:course	oewn-go__2.41.00..
 go#group:course	oewn-go__2.42.03..
@@ -20,5 +22,9 @@ go#group:state	oewn-go__2.42.07..
 go#group:travel	oewn-go__2.38.00..
 go#group:travel	oewn-go__2.38.01..
 go#group:travel	oewn-go__2.38.09..
+good#group:moral-excellence	oewn-good__3.00.02..
+good#group:moral-excellence	oewn-good__5.00.00.righteous.00
+good#group:pleasing	oewn-good__5.00.00.nice.00
+good#group:pleasing	oewn-good__5.00.00.pleasing.00
 grasp#group:comprehension	oewn-grasp__1.07.00..
 grasp#group:comprehension	oewn-grasp__1.09.00..

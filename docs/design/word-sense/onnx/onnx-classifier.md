@@ -52,7 +52,14 @@ The probabilities are computed per slot, never per variant:
 1. The probability of a sense given its slot comes from the softmax of the fine scores, renormalized in the slot.
 2. The probability of a slot is the mass of its senses in that softmax; for a form with a chooser it is the share of the
    probability of the chooser's labels that the slot's analyses carry (a label shares its probability among its slots in
-   proportion to the mass of their senses).
+   proportion to the mass of their senses). A slot of a closed class has no scored senses and so mass 0, whether or not
+   its lemma has weights (the fallback model takes its probability); an open-class slot whose lemma has no weights counts
+   as mass 1 so that it still shares the probability. No fallback gives a closed-class slot mass either: when no slot of
+   a chooser label has mass, the label shares its probability equally among its open-class slots, and a label that
+   stands for closed-class slots only is dropped (the other labels are renormalized with the analyses); when nothing has
+   mass, the open-class analyses share the probability equally, and a form without an open-class analysis (`that's`)
+   shares it equally among all, as there is nothing else to answer. The fallback model then takes the closed-class
+   slots from Basic (`SplitClosedClass` refuses a slot that the encoder gave a probability).
 3. The variants of a slot split its probability: by the labels of the chooser when it has one per variant (`read` as a
    past and a present tense), otherwise equally, the lexicon order breaking ties. This prior is documented, not
    learned, and it reaches neither the level nor the confidence.
@@ -66,7 +73,10 @@ The probabilities are computed per slot, never per variant:
 1. **Resolve.** Every word is looked up (`WordLexicon.TryLookup`, which finds the lower-case spelling). No analysis gives
    `ClassifyResult.Unknown(word)`: not known, no analyses, no details, level `None`, confidence 0. The fine senses of
    the word are those (`SensesOf`) of the lemma and part of speech of every analysis of the word, in lexicon order; no
-   sense of another lemma is ever one of them.
+   sense of another lemma is ever one of them. The senses of a closed-class analysis (auxiliary, determiner, pronoun,
+   preposition, conjunction, interjection; `SenseFusion.IsClosedClass`) are not among the senses that are scored: its
+   analysis is listed with probability 0 and without senses, and `FallbackWordSenseModel` gives it the probability of
+   the Basic model.
 2. **Single analysis and single sense.** A word with one analysis whose lemma and part of speech have exactly one sense
    gives that analysis with probability 1 and that sense with probability 1 at the `Sense` level with confidence 1 and no
    encoder run, in every model.
@@ -75,6 +85,16 @@ The probabilities are computed per slot, never per variant:
    column in the lemma's weights is dropped. When fewer than two senses with a column remain, or the lemma has no
    weights, or a multi-lemma form has no chooser, the word is answered from the lexicon alone (see _Lexicon-only
    answer_). Otherwise the word is pending.
+   The rule that selects the scored columns of a lemma for a form (`OpenClassColumns`: the open-class senses of the parts
+   of speech that the form has for the lemma) and the plan above (`CandidatesOf`: whether the encoder runs for the form,
+   and the columns) have one implementation, which the build tool also calls (`FormColumns`, `CandidatesOf`,
+   `EncoderRuns` and `ScoreForm`, which returns the scores, margins and result that the word gets before any threshold
+   decides a level), so the thresholds, the calibration and the half-precision gate rank the senses that inference
+   ranks. The decision whether the threshold of a lemma decides the level at all is one function too (`Judge`, the
+   `FormOutcome` of `ScoreForm`): inference answers at the part-of-speech level for every outcome but the threshold
+   deciding (the chooser is not confident, the selected analysis is of another lemma, or the lemma is not scored, or
+   the best sense is of another part of speech than the selected analysis), and the calibration observes only the rows
+   whose outcome is that the threshold decides.
 4. **Encode.** When at least one word is pending, the words are joined by single spaces into one text and the encoder
    runs once for the pending words. Each pooled vector goes through `FeatureExtractor.Center` (subtract the global
    mean, scale to unit length). A word without word pieces, or a vector whose dimension differs from the weights, is

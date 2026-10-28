@@ -1,2 +1,5 @@
 group_id	lemma	pos	label	origin	kind
+make#group:goal-attainment	make	v	goal-attainment	curated	equivalent
+make#group:numerical-total	make	v	numerical-total	curated	equivalent
+material#group:physical-substance	material	a	physical-substance	curated	equivalent
 multiply#group:reproduction	multiply	v	reproduction	curated	equivalent

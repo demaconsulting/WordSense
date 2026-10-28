@@ -7,8 +7,9 @@ apply: the usage prior's tag counts include SemCor, and the all-words developmen
 
 ## What the Models Are Measured On
 
-- **Real-text sense.** The test half of the 2,397 real held-out sentences (Project Gutenberg, VOA, USGS, NPS and National
-  Weather Service text, and Tatoeba sentences under CC0), split by document. The other half calibrates the thresholds.
+- **Real-text sense.** The test half (4,626 sentences) of the 9,602 real held-out sentences (Project Gutenberg, VOA,
+  USGS, NPS and National Weather Service text, and Tatoeba sentences under CC0), split by document. The other half
+  calibrates the thresholds.
   The sentences were found or written for specific senses, so the set is balanced by sense: it measures the classifier,
   not the share of each sense in running text. The table gives the share answered at the sense level and the precision
   of those answers. The *fine top-1* is the share of sentences whose most probable sense is right.
@@ -17,9 +18,9 @@ apply: the usage prior's tag counts include SemCor, and the all-words developmen
   scored tokens; downloaded for evaluation only) and the 32-sentence simplified-technical-English (STE) challenge set,
   which is small and chosen for hard cases, so read it as a regression check. "Ambiguous" counts the tokens whose word
   has two or more parts of speech in the dictionary (12,808 of the open corpus tokens).
-- **SemCor.** The 31,556 single-word annotations of the 825 trained lemmas that SemCor 3.0 can evaluate (WordNet 3.0 keys
-  mapped to the catalog; 97.1% of the keys map). Always choosing the first OEWN sense is right for 60.7% of these words,
-  an optimistic baseline (see "Caveats").
+- **SemCor.** The 114,856 single-word annotations of the 1,207 lemmas with sense classifiers (the trained lemmas) that
+  SemCor 3.0 can evaluate (WordNet 3.0 keys mapped to the catalog; 97.1% of the keys map). Always choosing the most
+  used sense (the highest WordNet 3.0 tag count) is right for 65.7% of these words, an optimistic baseline (see "Caveats").
 - **All-words gold set.** 397 test tokens (and 407 development tokens) of untrained polysemous lemmas from the open
   corpus, labeled blind by two language models that saw every sense with its gloss and never a frequency. A token is kept
   when both agree (91.7% agreement). It measures the usage prior, which SemCor cannot. See `corpus/allwords/README.md`.
@@ -35,15 +36,15 @@ in the model part of the first use and 2 MiB in memory. Read them as an order of
 models. RAM is the growth of the process from before the model was created to after warm-up, without the word table
 (about 15 MiB).
 
-Part of speech has the same quality in all three models (94.6 to 94.7% on the open corpus test split) and is the
-dependable part of an answer. BertBaseCased commits to a sense most often, and its most probable sense is right for
-65.0% of the SemCor words, above the first-sense baseline of 60.7%. MiniLM's is right for 58.7%, below it. The levels of
-the encoder answers on the real test sentences:
+Part of speech has the same quality in all three models (94.6% on the open corpus test split) and is the dependable
+part of an answer. BertBaseCased commits to a sense most often, and its most probable sense is right for 57.1% of the
+SemCor words of the trained lemmas, MiniLM's for 53.4%. Both are below the most-used-sense baseline of 65.7%, which has
+seen the answers (see "Caveats"). The levels of the encoder answers on the real test sentences:
 
 | Model | Sense (share, precision) | Group (share, precision) | Part of speech (share, precision) | Fine top-1 |
 | --- | ---: | ---: | ---: | ---: |
-| MiniLM | 7.9%, 96.3% | 1.2%, 96.4% | 90.9%, 96.6% | 62.5% |
-| BERT base cased | 27.1%, 94.5% | 0.8%, 88.9% | 72.1%, 97.3% | 72.2% |
+| MiniLM | 13.4%, 96.3% | 0.7%, 93.8% | 85.9%, 95.6% | 62.8% |
+| BERT base cased | 36.6%, 95.4% | 0.5%, 86.4% | 63.0%, 96.0% | 72.2% |
 
 ## Part of Speech
 
@@ -57,8 +58,8 @@ noun-verb tokens):
 | Set | Basic |
 | --- | ---: |
 | Open corpus test | 94.59% (92.72%; 95.41%) |
-| Treebank test (convention-mapped) | 92.37% (89.75%; 92.83%) |
-| Treebank test, MiniLM and BertBaseCased | 92.69 to 92.74% |
+| Treebank test (convention-mapped) | 92.38% (89.76%; 92.88%) |
+| Treebank test, MiniLM and BertBaseCased | 92.59 to 92.73% |
 | Independent benchmark, all-token part of speech, pooled | 91.3% |
 | Targeted challenge set | 98.65% |
 
@@ -73,9 +74,9 @@ is the cross-domain one. Three features of the tagger matter:
   senses. The emission of a tag is `(corpus count + β × target) / (corpus total + β)`, with β = 7 and a target of 70%
   generic tag distribution and 30% word prior. It is not read from the treebank, and every setting was chosen on
   development data only.
-- **Cue reliability.** Each of the 913 cue tables has a reliability that scales its weight. It comes from
+- **Cue reliability.** Each of the 916 cue tables has a reliability that scales its weight. It comes from
   cross-validation on the table's own anchors and from the net help of its cues on the training split of the open corpus.
-  162 of the 913 tables are damped.
+  163 of the 916 tables are damped. The tables learn from the sense anchors of the base stage and all the form-chooser rows.
 - **Noun/verb context.** A model shared by all words that have a noun and a verb reading corrects the split between the
   two from the word and the grammatical class of the two tokens on each side. It is fitted on held-out predictions of the
   rest of the model, so it adds only what the tagger and the cue tables miss.
@@ -124,13 +125,27 @@ For that case `FallbackWordSenseModel` combines the slot probabilities of the en
 `p_encoder^w × p_basic^(1−w)`. The primary weight `w` is 0.6 for MiniLM and 1 (no combination) for BertBaseCased,
 chosen on development data only. On the part-of-speech heteronyms of the independent benchmark (the treebank, SemCor
 and a read set; not part of the repository) BertBaseCased is right for 99.2% of the words, MiniLM for 97.5% and Basic for
-95.2%. A weight of 0.6 would lower BertBaseCased to 98.8%. An answer at the sense or group level is never touched.
+95.2%. A weight of 0.6 would lower BertBaseCased to 98.8%.
+
+Two more rules apply to the combination:
+
+- **Closed-class slots.** The encoders score no closed-class use of a word (an auxiliary, determiner, pronoun,
+  preposition, conjunction or interjection: no WordNet senses). The probability of such a slot is Basic's, and the
+  encoder decides only inside the open-class part. When a closed-class slot is the most probable, the answer is at the
+  part-of-speech level (`have` as an auxiliary or a verb).
+- **One-sense answers.** For a word the encoder did not score, Basic answers at the sense level when its most probable
+  analysis has one sense. In the composite that answer stays at the sense level only at a confidence of 0.97 or more,
+  or when the word has a single analysis; below that it is the same analysis at the part-of-speech level (`more` read as
+  `much`).
+
+Otherwise an answer at the sense or group level is never touched.
 
 ## The Usage Prior
 
-About 83% of the ambiguous words of running text are of a lemma that no encoder was trained for. For every analysis whose
-lemma and part of speech have two or more senses, Basic (and so the encoder models) ranks the senses by how often they
-are used. The probability of a sense is `(count + k) / sum(count + k)`, where `count` is the WordNet 3.0 tag count (0 for
+About 56% of the ambiguous words of running text (the open corpus test split) are of a lemma that no encoder was trained
+for. For every analysis whose lemma and part of speech have two or more senses, Basic (and so the encoder models) ranks
+the senses by how often they are used. The probability of a sense is `(count + k) / sum(count + k)`, where `count` is
+the WordNet 3.0 tag count (0 for
 a project sense and for a sense that WordNet never tagged), `k = 1`, and the sum runs over the senses of the lemma and
 part of speech. Senses with the same count keep the OEWN order. The ranking is the same in every sentence and is never
 an answer. The development half of the gold set chose `k` by the mean log loss of the gold sense.
@@ -142,64 +157,76 @@ weights and costs nothing at run time.
 
 **Independent measurement.** The fine top-1 counts a token when the first ranked sense of the selected analysis is the
 gold sense. The baselines are told the gold lemma and part of speech. The models choose their own, and pick the right
-lemma and part of speech for 94.84% (development half) and 95.72% (test half) of the tokens. Where the analysis is
-right, their fine top-1 is 66.32% (development) and 68.42% (test). All figures are the output of
-`evaluate-allwords --model all`.
+lemma and part of speech for 94.8 to 95.1% (development half) and 95.7 to 96.0% (test half) of the tokens. All figures
+are the output of `evaluate-allwords --model all`.
 
 | Model or baseline | Development half | Test half |
 | --- | ---: | ---: |
-| Basic, MiniLM and BertBaseCased | 62.90% | 65.49% |
+| Basic | 62.90% | 65.49% |
+| MiniLM | 66.58% | 70.53% |
+| BertBaseCased | 69.53% | 70.78% |
 | First sense in OEWN order | 66.58% | 68.51% |
 | Sense with the highest WordNet 3.0 tag count | 66.58% | 68.51% |
 | Random sense | 27.99% | 27.23% |
 
-The three models score the same because they answer an untrained lemma with the same Basic result. The prior is a base
-rate: right where the common sense is meant and wrong where the context calls for another. A consumer that needs the
-sense of an untrained lemma from its context needs a model trained for the lemma. The set is probably easier than
-running text, because it holds tokens that two language models agreed on.
+The tokens are of lemmas that had no anchor when the set was drawn; 179 of the 407 development tokens and 153 of the
+397 test tokens are now of a trained lemma. Basic answers every token with the prior. MiniLM and BertBaseCased answer the
+tokens of a trained lemma with their classifier (corrected to usage) and every other token with the prior, so they
+score above Basic and, for MiniLM on the development half, equal to the baselines. The prior is a base rate: right
+where the common sense is meant and wrong where the context calls for another. A consumer that needs the sense of an
+untrained lemma from its context needs a model trained for the lemma. The set is probably easier than running text,
+because it holds tokens that two language models agreed on.
 
 ## SemCor Beyond the Trained Lemmas
 
 The SemCor cell of the model table covers the trained lemmas only. The builder (`evaluate-senses`) also measures all
 words: every SemCor annotation whose key maps to the catalog and whose lemma is trained or has two or more senses. Of the
-203,959 mapped words, 31,556 are of a trained lemma, 152,767 of an untrained lemma with two or more senses and 19,636 of
+203,959 mapped words, 114,856 are of a trained lemma, 69,467 of an untrained lemma with two or more senses and 19,636 of
 an untrained lemma with fewer than two senses, which every model answers at the sense level and which are left out. The
-184,323 words of the all-words set are 17.1% trained.
+184,323 words of the all-words set are 62.3% trained.
 
 | Model | Words | Sense answered | Sense precision | Fine top-1 |
 | --- | --- | ---: | ---: | ---: |
-| Basic | untrained (152,767) | 8.35% | 45.12% | 59.62% |
+| Basic | untrained (69,467) | 8.77% | 68.68% | 69.64% |
 | Basic | all (184,323) | 7.43% | 47.18% | 59.09% |
-| MiniLM | untrained | 8.34% | 45.11% | 59.52% |
-| MiniLM | all | 8.33% | 52.60% | 59.38% |
-| BertBaseCased | untrained | 8.37% | 45.00% | 59.54% |
-| BertBaseCased | all | 11.53% | 61.63% | 60.47% |
-| First sense with the highest WordNet 3.0 tag count | trained | | | 60.76% |
-| First sense with the highest WordNet 3.0 tag count | untrained | | | 71.53% |
+| MiniLM | untrained | 4.12% | 86.41% | 69.43% |
+| MiniLM | all | 11.43% | 82.25% | 59.41% |
+| BertBaseCased | untrained | 4.15% | 85.75% | 69.48% |
+| BertBaseCased | all | 22.71% | 81.07% | 61.78% |
+| First sense with the highest WordNet 3.0 tag count | trained | | | 65.74% |
+| First sense with the highest WordNet 3.0 tag count | untrained | | | 76.20% |
 | First sense with the highest WordNet 3.0 tag count | all | | | 69.68% |
 
-The trained rows are the SemCor cell of the model table. For an untrained lemma, every model answers a word with one
-analysis and one sense at the sense level and every other word at the part-of-speech level with its senses ranked. The
-precision of those sense answers is low because the sense is right only when the part of speech that Basic chose is right
-too.
+The trained rows are the SemCor cell of the model table. For an untrained lemma, Basic answers a word whose chosen
+analysis has one sense at the sense level and every other word at the part-of-speech level with its senses ranked. The
+encoder models answer a one-sense word with several analyses at the sense level only at a confidence of 0.97 or more.
+The precision of the sense answers is lower for Basic because the sense is right only when the part of speech that
+Basic chose is right too.
 
 ## Caveats
 
 - **SemCor is circular for the usage prior.** The WordNet 3.0 counts include SemCor's own, so the fine top-1 of the models
   on SemCor, the word prior of the tagger and the tag-count and first-sense baselines have seen the answers (the OEWN
   order matches the WordNet 3.0 top-count sense in 10,047 of the 10,062 blocks with a unique maximum). Read them as
-  optimistic references. The untrained fine top-1 (59.5% against 71.5% for a baseline that is told the lemma and part of
+  optimistic references. The untrained fine top-1 (69.5% against 76.2% for a baseline that is told the lemma and part of
   speech) shows that the prior is applied, not how good it is. The gold set is the independent measurement.
 - **The sense level is a candidate to check.** SemCor is very unlike the training sentences, and the sense answers are
   less precise there than on the held-out text, which is balanced by sense and is not the precision on running text.
 - **The share of sense answers depends on the calibration target.** The builder chooses the thresholds of a lemma by
-  cross-validation on its anchors (precision target 95%), then raises them with one pooled shift so that the answers
-  reach 0.97 on the calibration half of the held-out sentences (the whole pipeline is about two points less precise than
-  the classifier alone). The shift is the lowest one at which the pooled answers reach the target while at least 30% of
-  them (and at least 30) are kept; if none does, the builder reports the target as "not reached" and uses the largest
-  shift that keeps 30%. A lemma with at least 20 calibration rows also gets a threshold of its own. The target is reached
-  for BertBaseCased (shift 3.00: 608 of 1,314 sense answers kept, at a precision of 97.5%) and not for MiniLM (shift 3.14:
-  163 of 627 answers kept, at 95.7%). The fine top-1 does not depend on the target.
+  cross-validation on its anchors (precision target 95%), then raises them with one pooled shift per stage (the lemmas
+  of the base stage and those of stage 1) so that the
+  answers reach 0.97 on the calibration half of the held-out sentences (the whole pipeline is about two points less
+  precise than the classifier alone). The shift is the lowest one at which the pooled answers reach the target while at
+  least 30% of them (and at least 30) are kept; if none does, the builder reports the target as "not reached" and uses
+  the largest shift that keeps 30%. A lemma with at least 20 calibration rows also gets a threshold of its own. On the
+  4,962 calibration rows the builder observes only the rows on which a threshold of the lemma decides the level at run
+  time: it leaves out the rows of a word form that the classifier does not score (the lexicon answers), of a form
+  chooser that is not confident, of a selected analysis of another lemma, of a best sense of another part of speech
+  than the selected analysis, and of a word whose closed-class slot wins in Basic (the answer is at the part-of-speech
+  level). That leaves 4,071 rows for MiniLM and 4,151 for BertBaseCased, and the target is reached for BertBaseCased
+  (shifts 2.89 and 1.82: 1,787 of 2,806 sense answers kept, at a precision of 97.2%) and for the stage 1 lemmas of
+  MiniLM (shift 1.71), but not for its base lemmas (shift 2.98; 685 of 1,448 answers kept over both stages, at 96.9%).
+  The fine top-1 does not depend on the target.
 - **CPU variation.** The int8 arithmetic of the encoder models differs slightly between CPUs and operating systems. The
   confidences move a little (the tests compare them within 0.10 for the encoder models and within 0.01 for Basic, which
   is deterministic managed code). A word whose margin lies close to its threshold can be answered one level more or less

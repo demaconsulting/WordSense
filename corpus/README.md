@@ -117,9 +117,11 @@ anchor rows of the choosers (a form whose label names one analysis).
    high-confidence answers are kept (about 88% of the candidates get a label).
 3. *Selection.* For each sense with a deficit, round robin over forms and documents (at most 3 sentences of a sense and
    10 of a lemma from one document), no near-duplicate (token Jaccard 0.8) of a corpus or suite sentence of the lemma.
-   Held-out sentences are filled first with real text, the anchors take the rest. A document gives either anchors or
-   held-out rows (an evaluation document is chosen by hash, one in four), so the held-out rows are disjoint from the
-   anchors by document; a document of the older rows that already supplies both may supply more anchors. The tier
+   Held-out sentences are filled first with real text, the anchors take the rest. The role of a document is per lemma:
+   an evaluation document (chosen by hash, one in four) gives held-out rows only, and every other document gives
+   anchors only. A document that supplies anchors for other lemmas may therefore supply held-out rows for a lemma, but
+   within one lemma a document never gives both anchors and held-out rows; a document of the older rows that already
+   supplies both for the lemma may supply more anchors. The tier
    waves use the technical FAA text for the technical senses only (`--faa-tech-only`), and an FAA sentence with a
    figure reference or a word split by the PDF extraction is always dropped.
 4. *Extra real anchors.* The senses that took part in a fine top-1 error of the encoders on the real *calibration* rows
@@ -156,11 +158,13 @@ document (`source_key`: `pg<ebook>#<ordinal>` for a Gutenberg book, `<document i
 the Tatoeba sentence id, or `quota-w<N>-written` for a sentence written by a model). The license follows from the source
 (see "Sources").
 
-**Files.** `quota-w3-*` fills the lemmas of ranks 121-200 and the technical lemmas. `quota-w32-written.tsv` is the second
+**Files.** `quota-w3-*` fills the lemmas of ranks 121-200 and the technical lemmas. `quota-w50-*` is the pilot of the
+stage 1 lemmas (23 lemmas; real rows labeled by two blind labelers that agree, checked blind, then written rows).
+`quota-w32-written.tsv` is the second
 round for senses that stayed short (written with another prompt). `quota-w33-real.tsv` and `quota-w33-written.tsv` are
 the technical senses of `curation/tech-senses.tsv`. `quota-w<N>-forms*.tsv` follow the document roles like the
-fine-sense rows (an evaluation document gives held-out rows only, every other document anchors only), so a chooser row
-cannot link anchors and the real held-out split of one document.
+fine-sense rows (an evaluation document gives held-out rows only, every other document anchors only, per lemma), so a
+chooser row cannot link the anchors and the real held-out rows of one lemma through a document.
 
 **The encoder corpus is a balanced classifier corpus.** `anchors/`, `holdout/` and `choosers/` hold the number of
 sentences that the quota of a sense asks for, not a sample of running text (see "Two kinds of corpus, two uses").
@@ -169,10 +173,12 @@ sentences that the quota of a sense asks for, not a sample of running text (see 
 `tools/WordSense.Builder/RealSplit.cs`). The *calibration* half chooses the per-lemma thresholds of the encoder weights.
 The *test* half never influences a weight or a threshold and is the headline of `evaluate`, which also reports the
 calibration half, the written held-out sentences and the whole holdout as secondary or diagnostic sets. The documents of
-the two halves are disjoint. The harvest also keeps the documents that supply held-out rows apart from the documents
-that supply anchors (an *evaluation document* is chosen by the hash `SHA-256("evaldoc|" + document)`, one in four; the
-other documents supply anchors only). The older rows share some documents between anchors and held-out sentences, and
-`evaluate` reports the test rows of documents without anchors apart. The representative measurements are the open
+the two halves are disjoint. The harvest also keeps the documents that supply held-out rows of a lemma apart from the
+documents that supply anchors of that lemma (an *evaluation document* is chosen by the hash
+`SHA-256("evaldoc|" + document)`, one in four; the other documents supply anchors only; a document may supply anchors
+for one lemma and held-out rows for another). The older rows share some documents between anchors and held-out
+sentences, and `evaluate` reports the test rows of documents without anchors of the lemma of the row apart. The
+representative measurements are the open
 English part-of-speech corpus (`open/representative`) and SemCor (the independent evaluation).
 
 ## Real Sentences and Provenance
@@ -254,7 +260,7 @@ the challenge set overlap nothing.
   third judge who saw both answers. The third judge settled 15 of them and 64 stayed undecided; the undecided rows are
   never used as evidence. A blind re-judging of every 20th accepted row (790 rows) found no disagreement. Rows added
   later are checked by the blind labeler of the quota filling (see the method above).
-- **Quota status.** `coverage/quota-coverage.tsv` has the quota status of every sense. 6,198 of the 7,035 senses of the
+- **Quota status.** `coverage/quota-coverage.tsv` has the quota status of every sense. 9,598 of the 10,871 senses of the
   trained lemmas meet their quota (`WordSense.Builder tiers`).
 - **Tier waves `4u` and `4r`.** They fill the short senses of the uncommon and the rare tier (harvested with `--tier U`
   and `--tier R`, and `--faa-tech-only`):
@@ -278,7 +284,7 @@ the challenge set overlap nothing.
 
   Real held-out text is nearly exhausted: the evaluation documents (one in four, chosen by hash) of the sentence pool
   supply held-out rows only, and one that already supplies anchors supplies none. The held-out sentences of these two
-  waves are therefore mostly written and blind-labeled, and the real test split has 2,397 sentences.
+  waves are therefore mostly written and blind-labeled, and the real test split has 4,626 sentences.
 - **Open corpus annotation.** The figures are in `open/quality.md`.
 - **Leakage.** `check-leakage` finds no evaluation sentence in a training part of the committed corpus (the overlap that
   remains is listed in "Disjointness of the Parts").

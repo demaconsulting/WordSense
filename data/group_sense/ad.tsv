@@ -1,3 +1,7 @@
 group_id	sense_id
+add#group:summing	oewn-add__2.31.00..
+add#group:summing	oewn-add__2.32.00..
+admit#group:entry	oewn-admit__2.41.01..
+admit#group:entry	oewn-admit__2.42.00..
 advance#group:forward-progress	oewn-advance__1.04.00..
 advance#group:forward-progress	oewn-advance__1.11.00..

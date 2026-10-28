@@ -1,3 +1,5 @@
 group_id	lemma	pos	label	origin	kind
+observe#group:adherence	observe	v	adherence	curated	equivalent
 only#group:merely	only	r	merely	curated	related
 only#group:outcome	only	r	outcome	curated	equivalent
+open#group:unprotected	open	a	unprotected	curated	equivalent

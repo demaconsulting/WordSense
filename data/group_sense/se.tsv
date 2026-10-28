@@ -1,0 +1,5 @@
+group_id	sense_id
+send#group:dispatch	oewn-send__2.32.00..
+send#group:dispatch	oewn-send__2.35.00..
+set#group:fixing	oewn-set__2.31.04..
+set#group:fixing	oewn-set__2.32.00..

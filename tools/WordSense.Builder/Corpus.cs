@@ -26,7 +26,60 @@ internal sealed record CorpusRow(string Lemma, string SenseId, PartOfSpeech Part
 /// </remarks>
 internal static class Corpus
 {
+    /// <summary>
+    ///     The number of waves of the corpus that make one stage: waves 1 to 49 are the base stage (the rank waves), waves
+    ///     50 to 99 the first added stage, and so on.
+    /// </summary>
+    public const int WavesPerStage = 50;
+
+    /// <summary>
+    ///     The name of the base stage.
+    /// </summary>
+    public const string BaseStage = "base";
+
     private const int ColumnCount = 4;
+
+    private const string WavePrefix = "quota-w";
+
+    /// <summary>
+    ///     Gets the stage of every lemma from the file names of the anchors: the stage of the highest wave
+    ///     (<c>quota-w{wave}-…</c>, the wave counted as its leading digits) that holds an anchor of the lemma, divided by
+    ///     <see cref="WavesPerStage"/>; files that are not wave files do not count.
+    /// </summary>
+    /// <param name="anchors">The anchor rows.</param>
+    /// <returns>The function that names the stage of a lemma: <see cref="BaseStage"/> for stage 0 and for a lemma without a wave file, else <c>stage N</c>.</returns>
+    public static Func<string, string> StagesOf(IEnumerable<CorpusRow> anchors)
+    {
+        ArgumentNullException.ThrowIfNull(anchors);
+        var stageOf = new Dictionary<string, int>(StringComparer.Ordinal);
+        foreach (var row in anchors)
+        {
+            if (WaveOf(row.Source) is { } wave)
+            {
+                var stage = wave / WavesPerStage;
+                stageOf[row.Lemma] = stageOf.TryGetValue(row.Lemma, out var known) ? Math.Max(known, stage) : stage;
+            }
+        }
+
+        return lemma => stageOf.TryGetValue(lemma, out var stage) && stage > 0 ? $"stage {stage.ToString(System.Globalization.CultureInfo.InvariantCulture)}" : BaseStage;
+    }
+
+    private static int? WaveOf(string fileName)
+    {
+        if (!fileName.StartsWith(WavePrefix, StringComparison.Ordinal))
+        {
+            return null;
+        }
+
+        var digits = fileName.AsSpan(WavePrefix.Length);
+        var count = 0;
+        while (count < digits.Length && char.IsAsciiDigit(digits[count]))
+        {
+            count++;
+        }
+
+        return count > 0 ? int.Parse(digits[..count], System.Globalization.CultureInfo.InvariantCulture) : null;
+    }
 
     /// <summary>
     ///     Reads every <c>*.tsv</c> sentence file in a directory, in file-name order.
@@ -82,6 +135,47 @@ internal static class Corpus
         return lemmas;
     }
 
+    /// <summary>
+    ///     Counts, for every lemma of the rows of every <c>*.tsv</c> sentence file in a directory, the distinct senses that
+    ///     have a sentence, without validating the rows.
+    /// </summary>
+    /// <remarks>
+    ///     The appendix states how many lemmas have a classifier in the encoder models (a lemma with sentences for two or
+    ///     more senses, the rule of <c>WeightsTrainer</c>); like <see cref="ReadLemmas"/> it reads the first two columns
+    ///     and leaves the checking of the rows to the reader that trains.
+    /// </remarks>
+    /// <param name="directory">The directory; a missing directory has no lemmas.</param>
+    /// <returns>The number of distinct senses with a sentence of each lemma (the first two columns of every non-empty row, trimmed).</returns>
+    public static Dictionary<string, int> CountAnchoredSenses(string directory)
+    {
+        var senses = new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
+        if (!Directory.Exists(directory))
+        {
+            return [];
+        }
+
+        foreach (var file in Directory.GetFiles(directory, "*.tsv"))
+        {
+            foreach (var line in File.ReadLines(file, new UTF8Encoding(false)))
+            {
+                var columns = line.Split('\t');
+                var lemma = columns[0].Trim();
+                if (lemma.Length == 0 || columns.Length < 2)
+                {
+                    continue;
+                }
+
+                if (!senses.TryGetValue(lemma, out var set))
+                {
+                    senses[lemma] = set = new HashSet<string>(StringComparer.Ordinal);
+                }
+
+                set.Add(columns[1].Trim());
+            }
+        }
+
+        return senses.ToDictionary(p => p.Key, p => p.Value.Count, StringComparer.Ordinal);
+    }
     /// <summary>
     ///     Reads one sentence file and validates every row.
     /// </summary>

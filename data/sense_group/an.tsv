@@ -1,2 +1,3 @@
 group_id	lemma	pos	label	origin	kind
 animate#group:livening	animate	v	livening	curated	equivalent
+answer#group:stimulus-response	answer	v	stimulus-response	curated	equivalent

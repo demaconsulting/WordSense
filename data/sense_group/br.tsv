@@ -1,3 +1,4 @@
 group_id	lemma	pos	label	origin	kind
 break#group:falling-apart	break	v	falling-apart	curated	equivalent
 break#group:happening	break	v	happening	curated	equivalent
+bring#group:state-change	bring	v	state-change	curated	equivalent

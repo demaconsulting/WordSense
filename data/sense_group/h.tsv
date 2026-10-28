@@ -1,5 +1,6 @@
 group_id	lemma	pos	label	origin	kind
 handle#group:management	handle	v	management	curated	equivalent
+have#group:experiencing	have	v	experiencing	curated	equivalent
 help#group:assistance	help	n	assistance	curated	related
 help#group:improve	help	v	improve	curated	equivalent
 home#group:domestic	home	a	domestic	curated	related

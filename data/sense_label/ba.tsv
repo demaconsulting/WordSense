@@ -1472,10 +1472,10 @@ oewn-battle--ax__1.18.00..	battle-axe-2	generated
 oewn-battle--axe__1.06.00..	battle-ax	generated
 oewn-battle--axe__1.18.00..	battle-ax-2	generated
 oewn-battle--scarred__5.00.00.injured.00	adjective	generated
-oewn-battle__1.04.00..	conflict	generated
-oewn-battle__1.04.01..	struggle	generated
-oewn-battle__1.04.02..	conflict-2	generated
-oewn-battle__2.33.00..	verb	generated
+oewn-battle__1.04.00..	conflict	curated
+oewn-battle__1.04.01..	struggle	curated
+oewn-battle__1.04.02..	conflict-2	curated
+oewn-battle__2.33.00..	verb	curated
 oewn-battledore__1.04.00..	battledore-and-shuttlecock	generated
 oewn-battledore__1.06.00..	badminton-racket	generated
 oewn-battlefield__1.15.00..	noun	generated

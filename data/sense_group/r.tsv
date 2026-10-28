@@ -1,6 +1,13 @@
 group_id	lemma	pos	label	origin	kind
+raise#group:increasing-level	raise	v	increasing-level	curated	equivalent
+raise#group:upward-motion	raise	v	upward-motion	curated	equivalent
+rather#group:degree	rather	r	degree	curated	equivalent
+real#group:factual	real	a	factual	curated	equivalent
+really#group:in-fact	really	r	in-fact	curated	equivalent
+reduce#group:smaller-size	reduce	v	smaller-size	curated	equivalent
 refresh#group:freshness-change	refresh	v	freshness-change	curated	equivalent
 rent#group:lease-terms	rent	v	lease-terms	curated	equivalent
+represent#group:typicality	represent	v	typicality	curated	equivalent
 resign#group:quit-position	resign	v	quit-position	curated	equivalent
 return#group:returning	return	v	returning	curated	equivalent
 review#group:examination	review	n	examination	curated	related

@@ -1,3 +1,5 @@
 group_id	sense_id
+apply#group:applicability	oewn-apply__2.42.00..
+apply#group:applicability	oewn-apply__2.42.01..
 approach#group:spatial-approach	oewn-approach__1.04.00..
 approach#group:spatial-approach	oewn-approach__1.11.00..

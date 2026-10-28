@@ -1,10 +1,12 @@
 group_id	lemma	pos	label	origin	kind
+start#group:setting-motion	start	v	setting-motion	curated	equivalent
 stick#group:loyalty	stick	v	loyalty	curated	equivalent
 stick#group:piercing	stick	v	piercing	curated	equivalent
 stick#group:sticking	stick	v	sticking	curated	equivalent
 stick#group:wooden-tools	stick	n	wooden-tools	curated	equivalent
 still#group:calm	still	v	calm	curated	equivalent
 still#group:distillation	still	n	distillation	curated	related
+stop#group:ending	stop	v	ending	curated	equivalent
 stretch#group:body-stretch	stretch	v	body-stretch	curated	equivalent
 stroke#group:gentle-touch	stroke	n	gentle-touch	curated	equivalent
 struggle#group:strenuous	struggle	n	strenuous	curated	equivalent

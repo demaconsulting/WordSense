@@ -1,2 +1,4 @@
 group_id	lemma	pos	label	origin	kind
+add#group:summing	add	v	summing	curated	equivalent
+admit#group:entry	admit	v	entry	curated	equivalent
 advance#group:forward-progress	advance	n	forward-progress	curated	equivalent

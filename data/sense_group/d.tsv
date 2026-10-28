@@ -1,6 +1,11 @@
 group_id	lemma	pos	label	origin	kind
 dance#group:social-dance	dance	n	social-dance	curated	equivalent
 deliberate#group:planned-intent	deliberate	a	planned-intent	curated	equivalent
+describe#group:giving-description	describe	v	giving-description	curated	equivalent
+determine#group:finding-out	determine	v	finding-out	curated	equivalent
+determine#group:fixing	determine	v	fixing	curated	equivalent
+different#group:separate	different	a	separate	curated	equivalent
 discord#group:general-disagreement	discord	n	general-disagreement	curated	equivalent
 draw#group:pulling	draw	v	pulling	curated	equivalent
+drop#group:ending-association	drop	v	ending-association	curated	equivalent
 dust#group:fine-particles	dust	n	fine-particles	curated	equivalent

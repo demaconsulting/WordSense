@@ -48,36 +48,90 @@ sections:
 
               - id: WordSense-Onnx-OnnxClassifier-AnalysisSenses
                 title: >-
-                  OnnxClassifier shall score the fine senses of every analysis of the looked-up word, so that a sense
-                  of each part of speech the word can have is reachable (a preposition use of like beside its verb
-                  and noun senses, for example), and no sense of any other lemma, and shall derive the probability of
-                  each analysis from the same scores, so that the senses of an analysis are its probabilities given
-                  the analysis.
+                  OnnxClassifier shall score the fine senses of every analysis of the looked-up word that has an
+                  open-class part of speech (noun, verb, adjective, adverb), so that a sense of each of those parts of
+                  speech the word can have is reachable, and no sense of any other lemma.
                 tags: [unit]
                 justification: |
-                  A word that is a verb, a noun and a preposition must be able to be answered as each; answering with a
-                  sense of a lemma that the word cannot be would be wrong. Deriving the analysis probabilities from the
-                  sense scores keeps the analyses and the senses of one result consistent with each other.
+                  A word that is a verb and a noun must be able to be answered as each; answering with a sense of a
+                  lemma that the word cannot be would be wrong.
                 tests:
                   - OnnxClassifier_ClassifyAsync_WordWithSeveralAnalyses_RanksTheSensesOfEveryAnalysis
-                  - OnnxClassifier_ClassifyAsync_PrepositionUseOfLike_IsReachable
                   - OnnxClassifier_ClassifyAsync_InflectedForm_RanksTheSensesOfItsLemma
 
+              - id: WordSense-Onnx-OnnxClassifier-AnalysisProbability
+                title: >-
+                  OnnxClassifier shall derive the probability of each analysis from the same scores as the senses, so
+                  that the senses of an analysis are its probabilities given the analysis.
+                tags: [unit]
+                justification: |
+                  Deriving the analysis probabilities from the sense scores keeps the analyses and the senses of one
+                  result consistent with each other.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_WordWithSeveralAnalyses_RanksTheSensesOfEveryAnalysis
+
+              - id: WordSense-Onnx-OnnxClassifier-ClosedClass
+                title: >-
+                  OnnxClassifier shall list an analysis of a closed class (auxiliary, determiner, pronoun,
+                  preposition, conjunction, interjection) with probability 0 and without senses, and its senses shall
+                  not compete with the senses of the open-class analyses; no fallback of the probability (a chooser
+                  label without mass, a word without mass) shall give a closed-class slot any, and a chooser label that
+                  stands for closed-class slots only shall give its probability to no slot.
+                tags: [unit]
+                justification: |
+                  A closed class has no WordNet senses and its project senses are few, so the mass of its senses says
+                  nothing about whether the word is used in that way; the tagger of the fallback model decides it
+                  (WordSense-Core-WordSenseContracts-FallbackClosedClass).
+                tests:
+                  - OnnxClassifier_ClassifyAsync_ClosedClassUseOfLike_IsNotScored
+                  - OnnxClassifier_ClassifyAsync_ClosedOnlyChooserLabel_GivesItsProbabilityToNoSlot
+                  - OnnxClassifier_ClassifyAsync_EveryLabelClosedOnly_SharesEquallyAndIsFinite
+              - id: WordSense-Onnx-OnnxClassifier-SharedCandidates
+                title: >-
+                  OnnxClassifier shall provide to the build tool the candidate selection that it uses itself for the
+                  form of a word and a trained lemma (the open-class senses of the parts of speech that the form has
+                  for the lemma, and whether the encoder runs for the form), and the scores of a word for a lemma as
+                  it works them out before any threshold decides a level.
+                tags: [unit]
+                justification: |
+                  The thresholds, the calibration and the precision gate that the build tool computes are only valid
+                  when they rank the senses that inference ranks, so the rule has one implementation that both use.
+                tests:
+                  - OnnxClassifier_CandidatesOf_FormColumnsAndPlan_AreThoseOfInference
+                  - OnnxClassifier_EncoderRuns_FormOfSeveralLemmas_NeedsItsChooser
+              - id: WordSense-Onnx-OnnxClassifier-SharedOutcome
+                title: >-
+                  OnnxClassifier shall tell the build tool, for a word and a lemma, whether the threshold of the lemma
+                  decides the level of the answer, by the one decision that it uses itself to answer: the encoder does
+                  not run for the form, the lemma is not scored, the chooser is not confident, the selected analysis
+                  is of another lemma, or the best sense is of another part of speech than the selected analysis; for
+                  every outcome but the threshold deciding it answers at the part-of-speech level.
+                tags: [unit]
+                justification: |
+                  The calibration may only observe the rows on which a threshold is applied at run time, so the early
+                  exits of the classifier are named once and the build tool reads the same decision.
+                tests:
+                  - OnnxClassifier_ScoreForm_ChooserBelowItsThreshold_TheLemmaThresholdDoesNotDecide
+                  - OnnxClassifier_ScoreForm_OtherEarlyExits_AreOutcomesThatInferenceShares
               - id: WordSense-Onnx-OnnxClassifier-Candidates
                 title: >-
-                  OnnxClassifier shall list, for a trained lemma, the senses of every analysis of the word in the
-                  Senses of that analysis, ranked by the softmax-normalized per-lemma fine scores given the analysis so
-                  that their probabilities sum to one, keeping the inventory order on equal probabilities, never
-                  truncated and whatever level is answered, and shall list no scored senses for a lemma without
+                  OnnxClassifier shall list, for a trained lemma, the senses of every open-class analysis of the word in
+                  the Senses of that analysis, ranked by the softmax-normalized per-lemma fine scores given the analysis
+                  so that their probabilities sum to one, keeping the inventory order on equal probabilities, never
+                  truncated and whatever level is answered, shall list no senses for an analysis of a closed class
+                  (see WordSense-Onnx-OnnxClassifier-ClosedClass), and shall list no scored senses for a lemma without
                   weights (the single sense with probability 1 of an analysis with exactly one sense excepted).
                 tags: [unit]
                 justification: |
-                  The fine scores exist for every sense whatever level is answered; listing them ranked inside their
-                  analyses lets a consumer apply its own grouping, and a lemma without scores has nothing honest to
-                  list. A non-empty list for the selected analysis is also what makes a composite model use the result
-                  of the encoder instead of its fallback.
+                  The fine scores exist for every open-class sense of the form whatever level is answered; listing them
+                  ranked inside their analyses lets a consumer apply its own grouping, and a lemma without scores, or
+                  a closed-class use that has no WordNet senses, has nothing honest to list. A non-empty list for the
+                  selected analysis is also what makes a composite model use the result of the encoder instead of its
+                  fallback.
                 tests:
                   - OnnxClassifier_ClassifyAsync_TrainedLemma_ListsRankedCandidatesSummingToOne
+                  - OnnxClassifier_ClassifyAsync_ClosedClassUseOfLike_IsNotScored
+                  - OnnxClassifier_ClassifyAsync_ClosedClassSlotOfAnUnscoredLemma_HasNoProbability
                   - OnnxClassifier_ClassifyAsync_SingleSenseWord_ListsItsOneUnscoredSense
                   - OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_ListsNoCandidates
 

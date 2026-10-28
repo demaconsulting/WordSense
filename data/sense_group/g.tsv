@@ -1,5 +1,6 @@
 group_id	lemma	pos	label	origin	kind
 geminate#group:pairing	geminate	v	pairing	curated	equivalent
+girl#group:young-female	girl	n	young-female	curated	equivalent
 go#group:course	go	v	course	curated	related
 go#group:die-fail	go	v	die-fail	curated	related
 go#group:extend	go	v	extend	curated	equivalent
@@ -8,4 +9,6 @@ go#group:sound	go	v	sound	curated	equivalent
 go#group:spent	go	v	spent	curated	equivalent
 go#group:state	go	v	state	curated	related
 go#group:travel	go	v	travel	curated	related
+good#group:moral-excellence	good	a	moral-excellence	curated	equivalent
+good#group:pleasing	good	a	pleasing	curated	equivalent
 grasp#group:comprehension	grasp	n	comprehension	curated	equivalent

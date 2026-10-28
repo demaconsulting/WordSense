@@ -1,6 +1,8 @@
 group_id	sense_id
 handle#group:management	oewn-handle__2.35.01..
 handle#group:management	oewn-handle__2.41.00..
+have#group:experiencing	oewn-have__2.30.01..
+have#group:experiencing	oewn-have__2.39.06..
 help#group:assistance	oewn-help__1.04.00..
 help#group:assistance	oewn-help__1.07.00..
 help#group:improve	oewn-help__2.29.00..

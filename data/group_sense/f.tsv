@@ -1,4 +1,8 @@
 group_id	sense_id
+fall#group:allocation	oewn-fall__2.40.03..
+fall#group:allocation	oewn-fall__2.40.08..
+fall#group:inheritance	oewn-fall__2.40.12..
+fall#group:inheritance	oewn-fall__2.40.13..
 first#group:first-in-order	oewn-first__1.23.00..
 first#group:first-in-order	oewn-first__1.24.00..
 first#group:initial	oewn-first__3.00.00..
@@ -8,6 +12,8 @@ first#group:initially	oewn-first__4.02.00..
 first#group:initially	oewn-first__4.02.02..
 first#group:top	oewn-first__3.00.03..
 first#group:top	oewn-first__5.00.00.best.00
+follow#group:compliance	oewn-follow__2.30.00..
+follow#group:compliance	oewn-follow__2.41.00..
 fool#group:deception	oewn-fool__2.32.01..
 fool#group:deception	oewn-fool__2.41.00..
 forward#group:ahead-in-time	oewn-forward__4.02.02..

@@ -1,13 +1,15 @@
 # Curated sense inventory (input of `seed-inventory`)
 
-`senses.tsv` and `groups.tsv` are the reviewed curation of 770 lemmas (263 curated groups). The import into `data/` keeps
-140 groups (see "Groups").
+`senses.tsv` and `groups.tsv` are the reviewed curation of 1,157 lemmas (307 curated groups). The import into `data/` keeps
+184 groups (see "Groups").
 
 - the first set, 20 lemmas (297 senses, 179 curated groups, 56 of them kept by the import): `back`, `even`, `first`,
   `forward`, `go`, `help`, `home`, `however`, `just`, `little`, `long`, `only`, `own`, `please`, `pretty`, `review`,
   `right`, `still`, `test` and `well`;
 - the second set, 738 lemmas (6,283 senses), the lemmas of the legacy corpus: 6,580 senses in all;
-- the 12 technical lemmas (176 senses and 6 project senses), see "Technical lemmas".
+- the 12 technical lemmas (176 senses and 6 project senses), see "Technical lemmas";
+- the stage 1 set, 387 lemmas (3,836 senses, 58 of them project senses): the 371 most used polysemous lemmas that no
+  anchor trains, and the 16 heteronym lemmas of sense level that are not among them (see "Stage 1 lemmas").
 
 The ids of senses are public ids (`lemma#label`). The columns `tier`, `tag_count` and the others of `senses.tsv` are the
 per-sense data of the curation (the tier sizes the training data of the sense). `group_id` and `group_reason` record the
@@ -77,6 +79,18 @@ a minor one): real FAA text first, then written technical sentences. The quota f
 `bleed` (bleed air), the verb `torque` as a sense, the noun `lock` as a mechanism, `arm` as a moment arm, a ground roll
 and `clean` as aerodynamically clean.
 
+## Stage 1 lemmas
+
+The stage 1 set is the encoder expansion of the most used polysemous lemmas. A polysemous lemma is a lemma with two or
+more labeled senses; the usage of a lemma is the sum of the WordNet 3.0 tag counts of its senses. The set is the 500 most
+used polysemous lemmas that have only letters and are lower case (a numeral, and a capitalized lemma such as
+`American`, which a lower-case harvest never finds, are replaced by the next lemmas in the ranking), minus the lemmas that
+an anchor trains already, plus the 16 sense-level heteronym lemmas (`heteronyms.tsv`) that are not in it. Their rows were
+added with `tools/quota-fill/curate_new.py apply --lemmas FILE`: the Open English WordNet sense, its gloss and its tag
+count (the tier follows the tag count), the label that the data holds (a generated label, kept as it is), and the project
+senses of the data (a sense without a sense key, tier U). After `seed-inventory` these labels are curated and never
+change.
+
 ## Part of speech of a curated sense
 
 The `part_of_speech` of a curated sense must be the part of speech of its sense in `data/` (the part of speech of its
@@ -117,10 +131,20 @@ The importer applies these rules to the curated groups, in this order:
 - A group that remains needs a `kind` of the `group_kind` vocabulary of `data/schema.yaml`, non-empty `evidence` and a
   slug of lower-case ASCII letters, digits and hyphens; otherwise the import stops and writes nothing.
 
-The result is 140 groups of 307 senses: 110 `equivalent` and 30 `related`. The first set has 56 groups of 138 senses
-(26 `equivalent` and 30 `related`) and the second set 84 `equivalent` groups of 169 senses. The importer replaces the
+The result is 184 groups of 397 senses: 154 `equivalent` and 30 `related`. The first set has 56 groups of 138 senses
+(26 `equivalent` and 30 `related`), the second set 84 `equivalent` groups of 169 senses and the stage 1 set 44
+`equivalent` groups of 90 senses. The importer replaces the
 groups of the lemmas of the curation as a whole and removes any group row whose origin is not `curated`. After the
 import the tables are edited in `data/`, and these files only record what was imported.
+
+**Groups of the stage 1 set.** `gpt-6.1-sol` proposed groups from the full glosses for every lemma and part of speech of
+the set with four or more senses (363 units, 3,232 senses; `tools/quota-fill/prompts/group-proposer.md`): 190 groups.
+`claude-sonnet-5.5` reviewed them blind (`group-reviewer.md`: it saw the glosses of the unit and the proposed groups,
+nothing else, and 20 control groups of two senses with no word in common, which it rejected). It accepted 183 and
+rejected 7. Only the 44 groups that the reviewer judged `equivalent` are kept: the 139 `related` ones were accepted
+too readily to change answers. The evidence is `curated:gloss near-identical glosses`; no judge data exists for the
+stage 1 lemmas yet, so these groups rest on the glosses and are candidates to drop or to extend when a confusion pass of
+trained encoders is available.
 
 **Decisions on the first set.** `test#group:trial` is `related` (18/65 in-group confusion). `only#group:merely` is
 `related`, and the `D` flag of `only#exclusively` is cleared, because it is a major adverb reading (226 WordNet tags)

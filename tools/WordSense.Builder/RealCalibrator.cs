@@ -12,7 +12,21 @@ namespace WordSense.Builder;
 /// <param name="MinOwnAnswered">The number of answers a threshold of its own must keep.</param>
 /// <param name="MinPooledAnswered">The number of answers the pooled shift of a level must keep at least, and the number of group answers that are needed to verify the group thresholds.</param>
 /// <param name="MinPooledShare">The share of all pooled answers the pooled shift of a level must keep at least (the larger of this and <paramref name="MinPooledAnswered"/> counts): the target is checked, and a fallback chosen, only on a sample so large that a handful of rows cannot decide it.</param>
-internal sealed record CalibrationOptions(double TargetPrecision = 0.95, int MinOwnRows = 20, int MinOwnAnswered = 5, int MinPooledAnswered = 30, double MinPooledShare = 0.3);
+/// <param name="Stratum">The stratum of a lemma, or null for one stratum of all lemmas. The pooled shifts are fitted and applied within a stratum, so the rows of one stratum never move the thresholds of another.</param>
+internal sealed record CalibrationOptions(double TargetPrecision = 0.95, int MinOwnRows = 20, int MinOwnAnswered = 5, int MinPooledAnswered = 30, double MinPooledShare = 0.3, Func<string, string>? Stratum = null);
+
+/// <summary>
+///     What the calibration did in one stratum of lemmas.
+/// </summary>
+/// <param name="Name">The name of the stratum (empty when there is one stratum).</param>
+/// <param name="Rows">The calibration rows of the stratum.</param>
+/// <param name="FineShift">The pooled shift of the fine thresholds.</param>
+/// <param name="FineReached">Whether the shift reached the precision target.</param>
+/// <param name="GroupShift">The pooled shift of the group thresholds.</param>
+/// <param name="GroupAnswers">The calibration group answers that could verify the group thresholds.</param>
+/// <param name="GroupVerified">Whether the group thresholds were moved (enough answers) or kept unverified.</param>
+/// <param name="GroupReached">Whether the group shift reached the precision target (false when the group thresholds were kept unverified).</param>
+internal sealed record StratumReport(string Name, int Rows, double FineShift, bool FineReached, double GroupShift, int GroupAnswers, bool GroupVerified, bool GroupReached);
 
 /// <summary>
 ///     What a real-text calibration did.
@@ -20,53 +34,116 @@ internal sealed record CalibrationOptions(double TargetPrecision = 0.95, int Min
 /// <param name="Rows">The calibration rows scored (rows of trained lemmas).</param>
 /// <param name="Lemmas">The lemmas that have calibration rows.</param>
 /// <param name="OwnThresholds">The lemmas whose threshold came from their own rows.</param>
-/// <param name="FineShift">The pooled shift of the fine thresholds.</param>
-/// <param name="FineReached">Whether the shift reached the precision target.</param>
 /// <param name="AnswersBefore">The sense answers of the calibration rows with the first thresholds.</param>
 /// <param name="CorrectBefore">The correct ones among them.</param>
 /// <param name="AnswersAfter">The sense answers with the final thresholds.</param>
 /// <param name="CorrectAfter">The correct ones among them.</param>
-/// <param name="GroupShift">The pooled shift of the group thresholds.</param>
-/// <param name="GroupAnswers">The calibration group answers that could verify the group thresholds.</param>
-/// <param name="GroupVerified">Whether the group thresholds were moved (enough answers) or kept unverified.</param>
-/// <param name="GroupReached">Whether the group shift reached the precision target (false when the group thresholds were kept unverified).</param>
+/// <param name="Strata">What was done in each stratum, in the order of their names.</param>
+/// <param name="ClosedWins">The rows that were left out because the closed-class slot of Basic wins the split at run time (the answer is at the part-of-speech level, so no threshold applies).</param>
+/// <param name="ClosedGoldRows">The rows observed whose true sense is a closed-class sense: the open-class slot wins, so a sense answer is wrong.</param>
+/// <param name="NotScored">The rows left out because the classifier does not score the lemma for the form of the target word (the encoder does not run for it, or the lemma has fewer than two candidate senses): the lexicon answers.</param>
+/// <param name="ChooserUnsure">The rows left out because the margin of the form chooser is below its threshold: the answer is at the part-of-speech level.</param>
+/// <param name="SelectedElsewhere">The rows left out because the selected analysis belongs to another lemma: the threshold of that lemma decides.</param>
+/// <param name="OutsidePartOfSpeech">The rows left out because the best sense is of another part of speech than the selected analysis: the answer is at the part-of-speech level.</param>
 internal sealed record CalibrationReport(
     int Rows,
     int Lemmas,
     int OwnThresholds,
-    double FineShift,
-    bool FineReached,
     int AnswersBefore,
     int CorrectBefore,
     int AnswersAfter,
     int CorrectAfter,
-    double GroupShift,
-    int GroupAnswers,
-    bool GroupVerified,
-    bool GroupReached)
+    IReadOnlyList<StratumReport> Strata,
+    int ClosedWins = 0,
+    int ClosedGoldRows = 0,
+    int NotScored = 0,
+    int ChooserUnsure = 0,
+    int SelectedElsewhere = 0,
+    int OutsidePartOfSpeech = 0)
 {
     /// <summary>
-    ///     Describes the calibration in one line for the training summary. The sense answers before and after cover every
-    ///     observed calibration row, the lemmas with a threshold of their own included, not only the pooled rows.
+    ///     Tells whether two reports hold the same values (the strata are compared one by one).
     /// </summary>
-    /// <returns>The line.</returns>
+    /// <param name="other">The other report.</param>
+    /// <returns>True when every value is equal.</returns>
+    public bool Equals(CalibrationReport? other) =>
+        other is not null && Rows == other.Rows && Lemmas == other.Lemmas && OwnThresholds == other.OwnThresholds
+        && AnswersBefore == other.AnswersBefore && CorrectBefore == other.CorrectBefore && AnswersAfter == other.AnswersAfter
+        && CorrectAfter == other.CorrectAfter && ClosedWins == other.ClosedWins && ClosedGoldRows == other.ClosedGoldRows
+        && NotScored == other.NotScored && ChooserUnsure == other.ChooserUnsure && SelectedElsewhere == other.SelectedElsewhere
+        && OutsidePartOfSpeech == other.OutsidePartOfSpeech && Strata.SequenceEqual(other.Strata);
+
+    /// <summary>
+    ///     Gets a hash code of the values.
+    /// </summary>
+    /// <returns>The hash code.</returns>
+    public override int GetHashCode() => HashCode.Combine(Rows, Lemmas, OwnThresholds, AnswersBefore, CorrectBefore, AnswersAfter, CorrectAfter, Strata.Count);
+
+    /// <summary>
+    ///     Gets the pooled shift of the fine thresholds of the first stratum (the only one without strata).
+    /// </summary>
+    public double FineShift => Strata.Count > 0 ? Strata[0].FineShift : 0.0;
+
+    /// <summary>
+    ///     Gets a value that tells whether the fine shift of the first stratum reached the target.
+    /// </summary>
+    public bool FineReached => Strata.Count > 0 && Strata[0].FineReached;
+
+    /// <summary>
+    ///     Gets the pooled shift of the group thresholds of the first stratum.
+    /// </summary>
+    public double GroupShift => Strata.Count > 0 ? Strata[0].GroupShift : 0.0;
+
+    /// <summary>
+    ///     Gets the group answers that could verify the group thresholds of the first stratum.
+    /// </summary>
+    public int GroupAnswers => Strata.Count > 0 ? Strata[0].GroupAnswers : 0;
+
+    /// <summary>
+    ///     Gets a value that tells whether the group thresholds of the first stratum were moved.
+    /// </summary>
+    public bool GroupVerified => Strata.Count > 0 && Strata[0].GroupVerified;
+
+    /// <summary>
+    ///     Gets a value that tells whether the group shift of the first stratum reached the target.
+    /// </summary>
+    public bool GroupReached => Strata.Count > 0 && Strata[0].GroupReached;
+
+    private static string GroupText(StratumReport s)
+    {
+        if (!s.GroupVerified)
+        {
+            return "unverified, kept";
+        }
+
+        return s.GroupReached ? "verified" : "verified, target not reached";
+    }
+
+    /// <summary>
+    ///     Describes the calibration in one line for the training summary (one line more per stratum when there are
+    ///     several). The sense answers before and after cover every observed calibration row, the lemmas with a threshold
+    ///     of their own included, not only the pooled rows.
+    /// </summary>
+    /// <returns>The text.</returns>
     public string Describe()
     {
         var inv = CultureInfo.InvariantCulture;
         string P(int correct, int answers) => answers == 0 ? "n/a" : (100.0 * correct / answers).ToString("0.00", inv) + "%";
-        string group;
-        if (!GroupVerified)
-        {
-            group = "unverified, kept";
-        }
-        else
-        {
-            group = GroupReached ? "verified" : "verified, target not reached";
-        }
-        return $"real-text calibration: {Rows.ToString(inv)} rows of {Lemmas.ToString(inv)} lemmas; fine pooled shift {FineShift.ToString("0.000", inv)}" +
+        var text = $"real-text calibration: {Rows.ToString(inv)} rows of {Lemmas.ToString(inv)} lemmas; fine pooled shift {FineShift.ToString("0.000", inv)}" +
                $" ({(FineReached ? "reaches the target" : "target not reached")}), {OwnThresholds.ToString(inv)} lemmas with a threshold of their own;" +
                $" sense answers {AnswersBefore.ToString(inv)} at {P(CorrectBefore, AnswersBefore)} before, {AnswersAfter.ToString(inv)} at {P(CorrectAfter, AnswersAfter)} after (all calibration rows);" +
-               $" group shift {GroupShift.ToString("0.000", inv)} ({group} on {GroupAnswers.ToString(inv)} answers).";
+               $" group shift {GroupShift.ToString("0.000", inv)} ({(Strata.Count > 0 ? GroupText(Strata[0]) : "unverified, kept")} on {GroupAnswers.ToString(inv)} answers)." +
+               $" Rows left out because no threshold of the lemma decides them: {NotScored.ToString(inv)} not scored for the form, {ChooserUnsure.ToString(inv)} chooser not confident," +
+               $" {SelectedElsewhere.ToString(inv)} selected analysis of another lemma, {OutsidePartOfSpeech.ToString(inv)} best sense of another part of speech, {ClosedWins.ToString(inv)} closed-class slot of Basic wins;" +
+               $" {ClosedGoldRows.ToString(inv)} observed rows have a closed-class true sense (counted wrong).";
+        if (Strata.Count <= 1)
+        {
+            return text;
+        }
+
+        var lines = Strata.Select(s => $"\n  stratum '{s.Name}': {s.Rows.ToString(inv)} rows; fine pooled shift {s.FineShift.ToString("0.000", inv)} ({(s.FineReached ? "reaches the target" : "target not reached")});" +
+            $" group shift {s.GroupShift.ToString("0.000", inv)} ({GroupText(s)} on {s.GroupAnswers.ToString(inv)} answers).");
+        return text + string.Concat(lines);
     }
 }
 
@@ -93,6 +170,13 @@ internal sealed record CalibrationReport(
 ///     best sense in a group, only when enough such answers exist to verify them.
 ///     </para>
 ///     <para>
+///     The shifts are fitted per stratum of lemmas (<see cref="CalibrationOptions.Stratum"/>) when a stratum function is
+///     given: the lemmas of a stratum are calibrated with the rows of that stratum alone, so a lemma set added later, whose
+///     rows were collected another way and whose precision at a margin differs, never moves the thresholds of the lemmas
+///     trained before, and each stratum meets the target on its own rows. The trainer strata are the stages of the corpus
+///     (<see cref="Corpus.StagesOf"/>).
+///     </para>
+///     <para>
 ///     The function is deterministic and free of side effects.
 ///     </para>
 /// </remarks>
@@ -114,9 +198,10 @@ internal static class RealCalibrator
     /// <param name="rows">The calibration rows.</param>
     /// <param name="features">The centered, unit-length feature of each row.</param>
     /// <param name="options">The settings.</param>
+    /// <param name="basic">The result of Basic for the sentence of each row (the target word is read from it), parallel to <paramref name="rows"/>, or null when it is not available; a null entry is a row without it. A row whose closed-class slot wins in the composite model is left out (see <see cref="Observe"/>); without Basic every row is kept.</param>
     /// <returns>The weights with the final thresholds, and the report.</returns>
-    /// <exception cref="ArgumentException">Thrown when there is not one feature per row.</exception>
-    public static (WeightsData Data, CalibrationReport Report) Apply(WeightsData data, IReadOnlyList<CorpusRow> rows, IReadOnlyList<float[]> features, CalibrationOptions options)
+    /// <exception cref="ArgumentException">Thrown when there is not one feature (or one Basic result) per row.</exception>
+    public static (WeightsData Data, CalibrationReport Report) Apply(WeightsData data, IReadOnlyList<CorpusRow> rows, IReadOnlyList<float[]> features, CalibrationOptions options, IReadOnlyList<ClassifyResult?>? basic = null)
     {
         ArgumentNullException.ThrowIfNull(data);
         ArgumentNullException.ThrowIfNull(rows);
@@ -127,15 +212,51 @@ internal static class RealCalibrator
             throw new ArgumentException("There must be one feature per calibration row.", nameof(features));
         }
 
+        if (basic is not null && basic.Count != rows.Count)
+        {
+            throw new ArgumentException("There must be one Basic result per calibration row.", nameof(basic));
+        }
+
         var lemmas = data.Lemmas.ToDictionary(l => l.Lemma, StringComparer.Ordinal);
-        var groupsOf = lemmas.ToDictionary(l => l.Key, l => GroupsOf(l.Value.SenseIds), StringComparer.Ordinal);
+
+        // The table the classifier scores the weights with at run time (the weights are those of the run, so the inventory is not checked)
+        var table = new WeightedLemmaTable(data, strict: false);
         var observed = new List<Observation>();
+        var closedWins = 0;
+        var closedGold = 0;
+        int notScored = 0, chooserUnsure = 0, selectedElsewhere = 0, outsidePartOfSpeech = 0;
         for (var i = 0; i < rows.Count; i++)
         {
-            if (lemmas.TryGetValue(rows[i].Lemma, out var lemma))
+            if (!lemmas.TryGetValue(rows[i].Lemma, out var lemma))
             {
-                observed.Add(Observe(lemma, groupsOf[lemma.Lemma], rows[i], features[i]));
+                continue;
             }
+
+            var observation = Observe(table, lemma, rows[i], features[i], basic?[i], out var outcome);
+            switch (outcome)
+            {
+                case OnnxClassifier.FormOutcome.EncoderDoesNotRun or OnnxClassifier.FormOutcome.LemmaNotScored:
+                    notScored++;
+                    continue;
+                case OnnxClassifier.FormOutcome.ChooserNotConfident:
+                    chooserUnsure++;
+                    continue;
+                case OnnxClassifier.FormOutcome.SelectedElsewhere:
+                    selectedElsewhere++;
+                    continue;
+                case OnnxClassifier.FormOutcome.BestOutsideSelectedPartOfSpeech:
+                    outsidePartOfSpeech++;
+                    continue;
+            }
+
+            if (observation!.ClosedWins)
+            {
+                closedWins++;
+                continue;
+            }
+
+            closedGold += observation.GoldIsClosed ? 1 : 0;
+            observed.Add(observation);
         }
 
         var own = new TrainingOptions(TargetPrecision: options.TargetPrecision, MinAnswered: options.MinOwnAnswered);
@@ -149,10 +270,17 @@ internal static class RealCalibrator
             }
         }
 
-        // The pooled shift is fitted on the lemmas that have a finite first threshold and none of their own
-        var pooled = observed.Where(o => !ownThreshold.ContainsKey(o.Lemma) && lemmas[o.Lemma].Weights.FineThreshold < LemmaWeights.Never)
-            .Select(o => ((double)o.Margin - lemmas[o.Lemma].Weights.FineThreshold, o.Correct)).ToList();
-        var (fineShift, fineReached) = ChooseShift(pooled, options.TargetPrecision, options.MinPooledAnswered, options.MinPooledShare);
+        // The pooled shift of every stratum is fitted on the lemmas of the stratum that have a finite first threshold and none
+        // of their own; a lemma is never calibrated with the rows of another stratum
+        var stratumOf = options.Stratum ?? (_ => string.Empty);
+        var strata = observed.Select(o => stratumOf(o.Lemma)).Distinct(StringComparer.Ordinal).Order(StringComparer.Ordinal).ToList();
+        var fineShifts = new Dictionary<string, (double Shift, bool Reached)>(StringComparer.Ordinal);
+        foreach (var stratum in strata)
+        {
+            var pooled = observed.Where(o => stratumOf(o.Lemma) == stratum && !ownThreshold.ContainsKey(o.Lemma) && lemmas[o.Lemma].Weights.FineThreshold < LemmaWeights.Never)
+                .Select(o => ((double)o.Margin - lemmas[o.Lemma].Weights.FineThreshold, o.Correct)).ToList();
+            fineShifts[stratum] = ChooseShift(pooled, options.TargetPrecision, options.MinPooledAnswered, options.MinPooledShare);
+        }
 
         var fine = new Dictionary<string, float>(StringComparer.Ordinal);
         foreach (var lemma in lemmas.Values)
@@ -164,21 +292,30 @@ internal static class RealCalibrator
                 continue;
             }
 
-            var shifted = RoundDown((double)first + fineShift, first);
+            var shift = fineShifts.TryGetValue(stratumOf(lemma.Lemma), out var chosen) ? chosen.Shift : 0.0;
+            var shifted = RoundDown((double)first + shift, first);
             fine[lemma.Lemma] = ownThreshold.TryGetValue(lemma.Lemma, out var o) ? Math.Max(shifted, o) : shifted;
         }
 
         // The group answers are the rows that fall through the final fine threshold and whose best sense is in a group;
-        // only usable ones (a finite, non-negative distance, as in ChooseShift) count towards the verification
-        var groupRows = observed.Where(o => !double.IsNaN(o.GroupMargin) && o.Margin < fine[o.Lemma] && lemmas[o.Lemma].Weights.GroupThreshold < LemmaWeights.Never)
-            .Select(o => (Distance: o.GroupMargin - lemmas[o.Lemma].Weights.GroupThreshold, Correct: o.GroupCorrect)).Where(a => double.IsFinite(a.Distance) && a.Distance >= 0).ToList();
-        var groupVerified = groupRows.Count >= options.MinPooledAnswered;
-        var (groupShift, groupReached) = groupVerified ? ChooseShift(groupRows, options.TargetPrecision, options.MinPooledAnswered, options.MinPooledShare) : (0.0, false);
+        // only usable ones (a finite, non-negative distance, as in ChooseShift) count towards the verification, per stratum
+        var groupShifts = new Dictionary<string, (double Shift, bool Reached, int Answers, bool Verified)>(StringComparer.Ordinal);
+        foreach (var stratum in strata)
+        {
+            var groupRows = observed.Where(o => stratumOf(o.Lemma) == stratum && !double.IsNaN(o.GroupMargin) && o.Margin < fine[o.Lemma] && lemmas[o.Lemma].Weights.GroupThreshold < LemmaWeights.Never)
+                .Select(o => (Distance: o.GroupMargin - lemmas[o.Lemma].Weights.GroupThreshold, Correct: o.GroupCorrect)).Where(a => double.IsFinite(a.Distance) && a.Distance >= 0).ToList();
+            var verified = groupRows.Count >= options.MinPooledAnswered;
+            var (shift, reached) = verified ? ChooseShift(groupRows, options.TargetPrecision, options.MinPooledAnswered, options.MinPooledShare) : (0.0, false);
+            groupShifts[stratum] = (shift, reached, groupRows.Count, verified);
+        }
 
         var updated = data.Lemmas.Select(l =>
         {
             var w = l.Weights;
-            var group = w.GroupThreshold >= LemmaWeights.Never || !groupVerified ? w.GroupThreshold : RoundDown((double)w.GroupThreshold + groupShift, w.GroupThreshold);
+            var verified = groupShifts.TryGetValue(stratumOf(l.Lemma), out var chosen) && chosen.Verified;
+            var group = w.GroupThreshold >= LemmaWeights.Never || !verified
+                ? w.GroupThreshold
+                : RoundDown((double)w.GroupThreshold + chosen.Shift, w.GroupThreshold);
             return l with { Weights = new LemmaWeights(w.Weights, w.Bias, w.Dimension, fine[l.Lemma], group) };
         }).ToList();
 
@@ -198,9 +335,18 @@ internal static class RealCalibrator
             }
         }
 
+        var reports = strata.Select(s => new StratumReport(
+            s,
+            observed.Count(o => stratumOf(o.Lemma) == s),
+            fineShifts[s].Shift,
+            fineShifts[s].Reached,
+            groupShifts[s].Shift,
+            groupShifts[s].Answers,
+            groupShifts[s].Verified,
+            groupShifts[s].Reached)).ToList();
         var report = new CalibrationReport(
-            observed.Count, observed.Select(o => o.Lemma).Distinct(StringComparer.Ordinal).Count(), ownThreshold.Count, fineShift, fineReached,
-            before, correctBefore, after, correctAfter, groupShift, groupRows.Count, groupVerified, groupReached);
+            observed.Count, observed.Select(o => o.Lemma).Distinct(StringComparer.Ordinal).Count(), ownThreshold.Count,
+            before, correctBefore, after, correctAfter, reports, closedWins, closedGold, notScored, chooserUnsure, selectedElsewhere, outsidePartOfSpeech);
         return (data with { Lemmas = updated }, report);
     }
 
@@ -257,49 +403,65 @@ internal static class RealCalibrator
         return (lastShift, false);
     }
 
-    private static Observation Observe(WeightedLemma lemma, int[] groups, CorpusRow row, float[] feature)
+    /// <summary>
+    ///     Scores a calibration row the way the classifier and the composite model do at run time.
+    /// </summary>
+    /// <remarks>
+    ///     <para>
+    ///     The row is scored by <see cref="OnnxClassifier.ScoreForm"/>, the classifier's own plan for the form of the
+    ///     target word: every analysis of the form, its form chooser and the lemmas it scores, and the senses that it
+    ///     ranks (the open-class senses of the parts of speech that the form has for the lemma). The scoring carries the
+    ///     outcome that inference reaches for the word (<see cref="OnnxClassifier.FormOutcome"/>), and only the rows
+    ///     whose outcome is that the threshold of the lemma decides are observations: a form for which the encoder does
+    ///     not run (a form of several lemmas without a chooser, answered from the lexicon) or that does not score the
+    ///     lemma (fewer than two candidate senses), a form whose chooser is not confident, a form whose selected analysis
+    ///     is of another lemma and a word whose best sense is of another part of speech than the selected analysis are
+    ///     all answered without a sense threshold of the lemma, as at run time. A row whose true sense is a closed-class
+    ///     sense has no column among the candidates and is wrong when it reaches the sense level.
+    ///     </para>
+    ///     <para>
+    ///     At run time a row reaches the sense level only if an open-class slot wins the closed-class split of the
+    ///     composite model: the closed-class slots take the probability of Basic, and the encoder decides inside the
+    ///     open-class part (<c>FallbackWordSenseModel.SplitClosedClass</c>). The split is run on the result that the
+    ///     classifier builds for the form and the Basic result for the sentence. When a closed-class slot wins, the
+    ///     answer is at the part-of-speech level and no threshold applies, so the row says nothing about a threshold and
+    ///     is left out; when an open-class slot wins, the answer is a sense answer. Without the result of Basic the
+    ///     closed-class slots cannot be compared, and the row is kept (a closed-class true sense counts as wrong), which
+    ///     can only make the thresholds more conservative.
+    ///     </para>
+    /// </remarks>
+    /// <param name="table">The weights as the classifier reads them, with the form choosers.</param>
+    /// <param name="lemma">The weights of the lemma of the row.</param>
+    /// <param name="row">The row.</param>
+    /// <param name="feature">The feature of the row.</param>
+    /// <param name="basic">The result of Basic for the sentence of the row, or null.</param>
+    /// <param name="outcome">What inference does with the row: only <see cref="OnnxClassifier.FormOutcome.ThresholdDecides"/> rows are observed.</param>
+    /// <returns>The observation, or null when the threshold of the lemma does not decide the level of the answer for the row.</returns>
+    private static Observation? Observe(WeightedLemmaTable table, WeightedLemma lemma, CorpusRow row, float[] feature, ClassifyResult? basic, out OnnxClassifier.FormOutcome outcome)
     {
-        var scores = new float[lemma.SenseIds.Count];
-        lemma.Weights.Scores(feature, scores);
-        var (best, margin) = LemmaWeights.Rank(scores);
-        var label = lemma.SenseIds.ToList().IndexOf(row.SenseId);
-        var groupMargin = double.NaN;
-        var groupCorrect = false;
-        if (groups[best] >= 0)
+        var scoring = OnnxClassifier.ScoreForm(row.Words[row.TargetWordIndex], lemma.Lemma, table, feature);
+        outcome = scoring.Outcome;
+        if (!scoring.ThresholdDecides)
         {
-            var groupScores = LemmaWeights.GroupScores(LemmaWeights.Softmax(scores), groups);
-            groupMargin = LemmaWeights.GroupMargin(groupScores, groups, best);
-            groupCorrect = label >= 0 && groups[label] == groups[best];
+            return null;
         }
 
-        return new Observation(lemma.Lemma, margin, best == label, groupMargin, groupCorrect);
-    }
-
-    private static int[] GroupsOf(IReadOnlyList<string> senseIds)
-    {
-        var indexes = new Dictionary<string, int>(StringComparer.Ordinal);
-        var groups = new int[senseIds.Count];
-        for (var i = 0; i < senseIds.Count; i++)
+        var resolved = table.Find(lemma.Lemma)!;
+        var label = resolved.ColumnOf(row.SenseId);
+        var bestGroup = resolved.Senses[scoring.BestColumn].GroupId;
+        var goldGroup = label >= 0 ? resolved.Senses[label].GroupId : null;
+        var groupMargin = bestGroup is null ? double.NaN : scoring.GroupMargin;
+        var groupCorrect = bestGroup is not null && string.Equals(goldGroup, bestGroup, StringComparison.Ordinal);
+        var closedWins = false;
+        if (basic is { } basicResult)
         {
-            string? groupId = WordLexicon.TryGetSense(senseIds[i], out var sense) ? sense.GroupId : null;
-            if (groupId is null)
-            {
-                groups[i] = -1;
-                continue;
-            }
-
-            if (!indexes.TryGetValue(groupId, out var index))
-            {
-                index = indexes.Count;
-                indexes[groupId] = index;
-            }
-
-            groups[i] = index;
+            var split = FallbackWordSenseModel.SplitClosedClass(scoring.Result, basicResult, out var applied);
+            closedWins = applied && split.Details is { } winner && SenseFusion.IsClosedClass(winner.PartOfSpeech);
         }
 
-        return groups;
+        var goldIsClosed = WordLexicon.TryGetSense(row.SenseId, out var gold) && SenseFusion.IsClosedClass(gold.PartOfSpeech);
+        return new Observation(lemma.Lemma, scoring.FineMargin, scoring.BestColumn == label, groupMargin, groupCorrect, closedWins, goldIsClosed);
     }
-
     /// <summary>
     ///     Converts a value to the float that is stored, never above the value and never below the first threshold.
     /// </summary>
@@ -317,5 +479,5 @@ internal static class RealCalibrator
         return Math.Max(result, floor);
     }
 
-    private sealed record Observation(string Lemma, float Margin, bool Correct, double GroupMargin, bool GroupCorrect);
+    private sealed record Observation(string Lemma, float Margin, bool Correct, double GroupMargin, bool GroupCorrect, bool ClosedWins = false, bool GoldIsClosed = false);
 }

@@ -153,7 +153,8 @@ public sealed class BuilderTests : IDisposable
         Assert.Contains($"| {"`Noun`",-14} | {1,6} | {4,6} |", text, StringComparison.Ordinal);
         Assert.Contains($"| {"`Verb`",-14} | {1,6} | {2,6} |", text, StringComparison.Ordinal);
         Assert.Contains($"| {"`Determiner`",-14} | {1,6} | {1,6} |", text, StringComparison.Ordinal);
-        Assert.Contains("The library supports 2 lemmas with 7 senses in total", text, StringComparison.Ordinal);
+        Assert.Contains("The list holds the 2 lemmas that have anchor sentences (1 of them with a sense classifier) and their 7 senses in total", text.ReplaceLineEndings(" "), StringComparison.Ordinal);
+        Assert.Contains("The encoder models train a sense classifier for 1 of them", text.ReplaceLineEndings(" "), StringComparison.Ordinal);
         Assert.Contains("not listed: `zzyzx`.", text.ReplaceLineEndings(" "), StringComparison.Ordinal);
         Assert.True(text.IndexOf("- **bank**;", StringComparison.Ordinal) < text.IndexOf("- **the**;", StringComparison.Ordinal));
         Assert.Contains(

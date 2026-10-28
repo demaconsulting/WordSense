@@ -24,7 +24,10 @@ internal delegate ValueTask<double[]?[]> PooledEncode(IReadOnlyList<string> word
 ///     tells that the sense is unresolved). A word whose lemma has trained weights
 ///     and several scored senses is pending: the words are joined by single spaces into one text, the encoder runs once
 ///     for the pending words, the pooled vector of each is centered on the global mean of the weights and scaled to unit
-///     length, and the classifier scores the fine senses of every analysis of the word (and no sense of another lemma).
+///     length, and the classifier scores the fine senses of every analysis of the word that has an open-class part of speech
+///     (noun, verb, adjective, adverb) and no sense of another lemma; a closed-class analysis (auxiliary, determiner, pronoun,
+///     preposition, conjunction, interjection) is listed with probability 0 and without senses, and the fallback model of a
+///     composition gives it its probability.
 ///     The softmax of the scores gives the probability of every sense. The senses belong to a lemma and part of speech
 ///     (a <i>slot</i>), not to the analyses of a slot that differ only in features (<c>cut</c> as an infinitive and as a
 ///     past tense, <c>deer</c> as a singular and a plural), so the probability of a slot is the mass of its senses and
@@ -196,17 +199,63 @@ internal sealed class OnnxClassifier
             return (LexiconOnly(word, details), null);
         }
 
-        var lemmas = slots.Select(s => s.Lemma).Distinct(StringComparer.Ordinal).ToList();
         var chooser = ChooserOf(table, word, details);
+        var runs = RunsEncoder(slots, chooser is not null, lemma => table.Find(lemma) is { } resolved ? CandidateColumns(resolved, slots.Where(s => s.Lemma == lemma)).Count : 0);
+        return runs ? (null, new Pending(details, slots, table, chooser)) : (LexiconOnly(word, details), null);
+    }
 
-        // A form of several lemmas needs its chooser; without one the lexicon answers it
-        if (lemmas.Count > 1 && chooser is null)
+    /// <summary>
+    ///     Decides whether the encoder runs for a word that has several analyses or several senses: the one rule that
+    ///     inference and the build tool share.
+    /// </summary>
+    /// <param name="slots">The slots of the word.</param>
+    /// <param name="hasChooser">Whether the form of the word has a chooser.</param>
+    /// <param name="candidateCountOf">Gives the number of candidate senses that the classifier scores for a lemma of the word (0 for a lemma without weights).</param>
+    /// <returns>True when the encoder runs: a form of several lemmas needs its chooser (the lexicon answers it otherwise), and a form of one lemma needs a chooser or a lemma with at least two candidates.</returns>
+    private static bool RunsEncoder(List<Slot> slots, bool hasChooser, Func<string, int> candidateCountOf)
+    {
+        var lemmas = slots.Select(s => s.Lemma).Distinct(StringComparer.Ordinal).ToList();
+        if (lemmas.Count > 1 && !hasChooser)
         {
-            return (LexiconOnly(word, details), null);
+            return false;
         }
 
-        var scored = lemmas.Any(lemma => table.Find(lemma) is { } resolved && CandidateColumns(resolved, slots.Where(s => s.Lemma == lemma)).Count >= 2);
-        return scored || chooser is not null ? (null, new Pending(details, slots, table, chooser)) : (LexiconOnly(word, details), null);
+        return hasChooser || lemmas.Any(lemma => candidateCountOf(lemma) >= 2);
+    }
+
+    /// <summary>
+    ///     Tells whether the encoder runs for the form of a word, before any weights exist for the other lemmas of the form:
+    ///     the build tool uses it to leave out the anchors that inference never scores (see <see cref="RunsEncoder"/>).
+    /// </summary>
+    /// <param name="word">The word as written.</param>
+    /// <param name="lemma">The lemma that is being trained.</param>
+    /// <param name="candidateCount">The number of candidate columns of the lemma for the form of the word (see <see cref="FormColumns"/>).</param>
+    /// <param name="formHasChooser">Tells whether a normalized form gets a chooser.</param>
+    /// <returns>True when inference scores the lemma for the word: the lexicon has it, it is not a one-analysis, one-sense word, and the encoder runs.</returns>
+    /// <remarks>
+    ///     A chooser counts for the word when its form has exactly the analyses of the word, as at run time. The lemma
+    ///     being trained is the only one whose weights are consulted: a form of several lemmas runs the encoder with a
+    ///     chooser whatever the weights of the other lemmas, and a form of one lemma has no other lemma.
+    /// </remarks>
+    internal static bool EncoderRuns(string word, string lemma, int candidateCount, Func<string, bool> formHasChooser)
+    {
+        ArgumentNullException.ThrowIfNull(word);
+        ArgumentNullException.ThrowIfNull(lemma);
+        ArgumentNullException.ThrowIfNull(formHasChooser);
+        if (!WordLexicon.TryLookup(word, out var details) || details.IsEmpty)
+        {
+            return false;
+        }
+
+        var slots = GroupIntoSlots(details);
+        if (details.Length == 1 && slots[0].Senses.Length == 1)
+        {
+            return false;
+        }
+
+        var key = word.ToLowerInvariant().Replace('\u2019', '\'');
+        var hasChooser = formHasChooser(key) && WordLexicon.TryLookup(key, out var keyDetails) && keyDetails.SequenceEqual(details);
+        return RunsEncoder(slots, hasChooser, other => string.Equals(other, lemma, StringComparison.Ordinal) ? candidateCount : 0);
     }
 
     /// <summary>
@@ -251,14 +300,32 @@ internal sealed class OnnxClassifier
     /// <param name="lemma">The trained lemma.</param>
     /// <param name="slots">The lemma and part of speech slots of the word that belong to the lemma.</param>
     /// <returns>The column indexes in ascending (inventory) order.</returns>
-    private static List<int> CandidateColumns(ResolvedLemma lemma, IEnumerable<Slot> slots)
+    /// <remarks>
+    ///     The slots of a closed class (an auxiliary, determiner, pronoun, preposition, conjunction or interjection: no
+    ///     WordNet senses) are not scored: the encoder has no evidence of its own for the part of speech of a word, and the
+    ///     probability of such a slot comes from the fallback model (see <see cref="FallbackWordSenseModel"/>).
+    /// </remarks>
+    private static List<int> CandidateColumns(ResolvedLemma lemma, IEnumerable<Slot> slots) =>
+        OpenClassColumns(lemma.ColumnOf, lemma.Weights.Lemma, slots.Select(s => s.PartOfSpeech));
+
+    /// <summary>
+    ///     Lists the columns of a trained lemma that are scored for a word: the senses of the open-class parts of speech
+    ///     that the word has for the lemma, and no sense of a closed class.
+    /// </summary>
+    /// <param name="columnOf">Gives the column of a sense id of the lemma, or a negative number for a sense without a column.</param>
+    /// <param name="lemma">The lemma.</param>
+    /// <param name="partsOfSpeech">The parts of speech that the word has for the lemma.</param>
+    /// <returns>The column indexes in ascending (inventory) order; the build tool uses the same rule to calibrate the thresholds.</returns>
+    internal static List<int> OpenClassColumns(Func<string, int> columnOf, string lemma, IEnumerable<PartOfSpeech> partsOfSpeech)
     {
+        ArgumentNullException.ThrowIfNull(columnOf);
+        ArgumentNullException.ThrowIfNull(partsOfSpeech);
         var columns = new List<int>();
-        foreach (var slot in slots)
+        foreach (var partOfSpeech in partsOfSpeech.Distinct().Where(p => !SenseFusion.IsClosedClass(p)))
         {
-            foreach (var sense in slot.Senses)
+            foreach (var sense in WordLexicon.SensesOf(lemma, partOfSpeech))
             {
-                if (lemma.ColumnOf(sense.SenseId) is var column and >= 0)
+                if (columnOf(sense.SenseId) is var column and >= 0)
                 {
                     columns.Add(column);
                 }
@@ -267,6 +334,167 @@ internal sealed class OnnxClassifier
 
         columns.Sort();
         return columns;
+    }
+
+    /// <summary>
+    ///     Lists the columns of a trained lemma that the classifier scores for the form of a word, with no table: the
+    ///     open-class senses of the parts of speech that the form has for the lemma (see <see cref="OpenClassColumns"/>).
+    /// </summary>
+    /// <param name="word">The word as written.</param>
+    /// <param name="lemma">The lemma.</param>
+    /// <param name="columnOf">Gives the column of a sense id of the lemma, or a negative number for a sense without a column.</param>
+    /// <returns>The columns in ascending order (fewer than two when the classifier would not score the form), or null when the word is not in the lexicon.</returns>
+    /// <remarks>
+    ///     The build tool uses this rule, and <see cref="CandidatesOf"/> and <see cref="ScoreForm"/> for the parts that
+    ///     need the weights, for everything that it measures about the scores of a form (the thresholds, the calibration
+    ///     and the half-precision gate), so training scores a row with the candidates that inference ranks.
+    /// </remarks>
+    internal static List<int>? FormColumns(string word, string lemma, Func<string, int> columnOf)
+    {
+        ArgumentNullException.ThrowIfNull(word);
+        ArgumentNullException.ThrowIfNull(lemma);
+        ArgumentNullException.ThrowIfNull(columnOf);
+        if (!WordLexicon.TryLookup(word, out var details) || details.IsEmpty)
+        {
+            return null;
+        }
+
+        return OpenClassColumns(columnOf, lemma, details.Where(d => string.Equals(d.Lemma, lemma, StringComparison.Ordinal)).Select(d => d.PartOfSpeech));
+    }
+
+    /// <summary>
+    ///     Tells what the classifier does with the form of a word for a trained lemma: whether the encoder runs for the form,
+    ///     and the columns of the lemma that it scores.
+    /// </summary>
+    /// <param name="word">The word as written.</param>
+    /// <param name="lemma">The lemma.</param>
+    /// <param name="table">The trained weights.</param>
+    /// <returns>The plan: the encoder runs when the form has a chooser or a scored lemma (a form of several lemmas without a chooser, a form of one analysis and one sense and a form that no lemma scores are answered from the lexicon); the columns are those of the lemma (fewer than two when the lemma is not scored for the form).</returns>
+    internal static (bool EncoderRuns, IReadOnlyList<int> Columns) CandidatesOf(string word, string lemma, WeightedLemmaTable table)
+    {
+        ArgumentNullException.ThrowIfNull(word);
+        ArgumentNullException.ThrowIfNull(lemma);
+        ArgumentNullException.ThrowIfNull(table);
+        var columns = table.Find(lemma) is { } resolved ? FormColumns(word, lemma, resolved.ColumnOf) ?? [] : [];
+        return (Plan(word, table).Pending is not null, columns);
+    }
+
+    /// <summary>
+    ///     Whether the threshold of a lemma decides the level of the answer for a word, and if not, why not: every way
+    ///     in which inference answers a scored word without consulting the threshold of the lemma.
+    /// </summary>
+    internal enum FormOutcome
+    {
+        /// <summary>The classifier does not run the encoder for the form (an unknown word, a word of one analysis and one sense, a form of several lemmas without a chooser, a form that no lemma scores): the lexicon answers.</summary>
+        EncoderDoesNotRun,
+
+        /// <summary>The encoder runs but does not score the lemma for the form (fewer than two candidate senses): its senses are not ranked.</summary>
+        LemmaNotScored,
+
+        /// <summary>The margin of the form chooser is below its threshold: the answer is at the part-of-speech level.</summary>
+        ChooserNotConfident,
+
+        /// <summary>The selected analysis belongs to another lemma: the threshold of that lemma decides, not this one.</summary>
+        SelectedElsewhere,
+
+        /// <summary>The best sense is of another part of speech than the selected analysis: the answer is at the part-of-speech level.</summary>
+        BestOutsideSelectedPartOfSpeech,
+
+        /// <summary>The thresholds of the lemma decide between the sense, the group and the part-of-speech level.</summary>
+        ThresholdDecides,
+    }
+
+    /// <summary>
+    ///     What the classifier works out for a word and a lemma before any threshold decides the level.
+    /// </summary>
+    /// <param name="Outcome">Whether the threshold of the lemma decides the level of the answer, or why it does not. The other members are meaningful only for <see cref="FormOutcome.ThresholdDecides"/>; otherwise they are empty or not a number.</param>
+    /// <param name="Result">The result as the classifier builds it from the plan of the word (every analysis of the form, the form chooser, the slot masses), at the part-of-speech level: the analyses, their probabilities and the selected analysis are those of the real answer.</param>
+    /// <param name="Columns">The columns of the lemma that are scored for the form.</param>
+    /// <param name="BestColumn">The column of the best sense.</param>
+    /// <param name="FineMargin">The margin of the best score over the second best among the candidates.</param>
+    /// <param name="GroupMargin">The group margin of the best sense among the candidates.</param>
+    internal sealed record FormScoring(FormOutcome Outcome, ClassifyResult Result, IReadOnlyList<int> Columns, int BestColumn, float FineMargin, double GroupMargin)
+    {
+        /// <summary>
+        ///     Gets a value that tells whether the threshold of the lemma decides the level of the answer.
+        /// </summary>
+        public bool ThresholdDecides => Outcome == FormOutcome.ThresholdDecides;
+
+        /// <summary>
+        ///     Builds the scoring of a word that inference does not answer by the thresholds of the lemma, for a reason that precedes the thresholds.
+        /// </summary>
+        /// <param name="outcome">The outcome, not <see cref="FormOutcome.ThresholdDecides"/>.</param>
+        /// <returns>The scoring without a result.</returns>
+        public static FormScoring Without(FormOutcome outcome) => new(outcome, default, [], -1, float.NaN, double.NaN);
+    }
+
+    /// <summary>
+    ///     Scores a word for a trained lemma exactly as <see cref="ClassifyAsync"/> does, without the thresholds, and tells
+    ///     whether the threshold of the lemma decides the level of the answer.
+    /// </summary>
+    /// <param name="word">The word as written.</param>
+    /// <param name="lemma">The lemma whose classifier is read.</param>
+    /// <param name="table">The trained weights.</param>
+    /// <param name="feature">The unit-length feature of the word in context.</param>
+    /// <returns>The scoring, with the outcome that inference reaches for the word (see <see cref="FormOutcome"/>).</returns>
+    /// <remarks>
+    ///     Inference and the build tool share the decision: <c>Decide</c> answers at the part-of-speech level for every
+    ///     outcome but <see cref="FormOutcome.ThresholdDecides"/>, and the calibration observes only the rows of that outcome.
+    /// </remarks>
+    internal static FormScoring ScoreForm(string word, string lemma, WeightedLemmaTable table, float[] feature)
+    {
+        ArgumentNullException.ThrowIfNull(word);
+        ArgumentNullException.ThrowIfNull(lemma);
+        ArgumentNullException.ThrowIfNull(table);
+        ArgumentNullException.ThrowIfNull(feature);
+        if (Plan(word, table).Pending is not { } plan)
+        {
+            return FormScoring.Without(FormOutcome.EncoderDoesNotRun);
+        }
+
+        var weighed = Weigh(plan, feature);
+        if (!weighed.LemmaScores.TryGetValue(lemma, out var scores))
+        {
+            return FormScoring.Without(FormOutcome.LemmaNotScored);
+        }
+
+        var outcome = Judge(weighed, lemma);
+        if (outcome != FormOutcome.ThresholdDecides)
+        {
+            return FormScoring.Without(outcome);
+        }
+
+        var result = PartOfSpeechAnswer(word, weighed.Analyses, weighed.Selected, weighed.SelectedProbability);
+        return new FormScoring(outcome, result, [.. scores.Columns], scores.Columns[scores.Best], scores.FineMargin, scores.GroupMargin);
+    }
+
+    /// <summary>
+    ///     Says whether the threshold of a lemma decides the level of the answer of a weighed word: the one decision that
+    ///     <see cref="Decide"/> and <see cref="ScoreForm"/> share.
+    /// </summary>
+    /// <param name="weighed">The weighed word.</param>
+    /// <param name="lemma">The lemma whose threshold is asked about.</param>
+    /// <returns>The outcome, in the order in which inference checks it.</returns>
+    private static FormOutcome Judge(Weighed weighed, string lemma)
+    {
+        if (!weighed.ChooserConfident)
+        {
+            return FormOutcome.ChooserNotConfident;
+        }
+
+        if (!string.Equals(weighed.SelectedSlot.Lemma, lemma, StringComparison.Ordinal))
+        {
+            return FormOutcome.SelectedElsewhere;
+        }
+
+        if (!weighed.LemmaScores.TryGetValue(lemma, out var scores))
+        {
+            return FormOutcome.LemmaNotScored;
+        }
+
+        return scores.Senses[scores.Best].PartOfSpeech == weighed.SelectedSlot.PartOfSpeech
+            ? FormOutcome.ThresholdDecides
+            : FormOutcome.BestOutsideSelectedPartOfSpeech;
     }
 
     /// <summary>
@@ -326,6 +554,30 @@ internal sealed class OnnxClassifier
     /// </remarks>
     private static ClassifyResult Decide(string word, Pending plan, float[] feature)
     {
+        var weighed = Weigh(plan, feature);
+        var selectedSlot = weighed.SelectedSlot;
+        var analysisProbability = weighed.SelectedProbability;
+
+        // Only when the threshold of the lemma of the selected analysis decides does a level above the part of speech
+        // exist (the same decision as the calibration observes: see ScoreForm)
+        if (Judge(weighed, selectedSlot.Lemma) != FormOutcome.ThresholdDecides)
+        {
+            return PartOfSpeechAnswer(word, weighed.Analyses, weighed.Selected, analysisProbability);
+        }
+
+        // The level of the selected analysis, with the thresholds of its lemma
+        return AnswerAtLevel(word, weighed.Analyses, weighed.Selected, selectedSlot, analysisProbability, weighed.LemmaScores[selectedSlot.Lemma]);
+    }
+
+    /// <summary>
+    ///     Works out everything that does not depend on a threshold for a pending word: the scored lemmas, the probability of
+    ///     every analysis, the order of the analyses and the selected analysis.
+    /// </summary>
+    /// <param name="plan">The pending word.</param>
+    /// <param name="feature">The unit-length feature of the word in context.</param>
+    /// <returns>The weighed word.</returns>
+    private static Weighed Weigh(Pending plan, float[] feature)
+    {
         var details = plan.Details;
         var lemmaScores = ScoreLemmas(plan, feature);
 
@@ -342,7 +594,7 @@ internal sealed class OnnxClassifier
             WeighBySlots(plan, lemmaScores, weightOf);
         }
 
-        Normalize(weightOf);
+        Normalize(plan, weightOf);
 
         // The probability of every slot, and the order: the most probable slot first (ties keep the lexicon order of the
         // first analysis of the slot), and in a slot the most probable analysis first (ties keep the lexicon order)
@@ -361,14 +613,7 @@ internal sealed class OnnxClassifier
 
         var selected = order[0];
         var selectedSlot = plan.SlotOf(selected);
-        var analysisProbability = slotProbability[selectedSlot];
-        if (!chooserConfident || !lemmaScores.TryGetValue(selectedSlot.Lemma, out var scores))
-        {
-            return PartOfSpeechAnswer(word, analyses.MoveToImmutable(), details[selected], analysisProbability);
-        }
-
-        // The level of the selected analysis, with the thresholds of its lemma
-        return AnswerAtLevel(word, analyses.MoveToImmutable(), details[selected], selectedSlot, analysisProbability, scores);
+        return new Weighed(analyses.MoveToImmutable(), details[selected], selectedSlot, slotProbability[selectedSlot], chooserConfident, lemmaScores);
     }
 
     /// <summary>
@@ -441,17 +686,21 @@ internal sealed class OnnxClassifier
     /// <param name="weightOf">The probability of every analysis; filled in here.</param>
     /// <remarks>
     ///     The label shares its probability among the slots of its analyses by the mass of their senses, and a slot
-    ///     shares it equally among its analyses that the label stands for.
+    ///     shares it equally among its analyses that the label stands for. A closed-class slot has no mass and never
+    ///     receives any, not even when no slot of the label has mass: the label then shares its probability equally among
+    ///     its open-class slots, and a label that stands for closed-class slots only is dropped (its probability goes
+    ///     to no slot, and the other labels are renormalized with the analyses).
     /// </remarks>
     private static void SpreadLabelProbability(Pending plan, List<int> indexes, double labelProbability, Dictionary<string, LemmaScores> lemmaScores, double[] weightOf)
     {
         var slotsOfLabel = indexes.Select(plan.SlotOf).Distinct().ToList();
         var masses = slotsOfLabel.Select(s => SlotMass(lemmaScores, s)).ToArray();
         var total = masses.Sum();
+        var openSlots = slotsOfLabel.Count(s => !SenseFusion.IsClosedClass(s.PartOfSpeech));
         for (var k = 0; k < slotsOfLabel.Count; k++)
         {
             var inSlot = indexes.Where(i => plan.SlotOf(i) == slotsOfLabel[k]).ToList();
-            var share = total > 0 ? masses[k] / total : 1.0 / slotsOfLabel.Count;
+            var share = total > 0 ? masses[k] / total : EqualShare(slotsOfLabel[k], openSlots);
             foreach (var i in inSlot)
             {
                 weightOf[i] = labelProbability * share / inSlot.Count;
@@ -469,14 +718,25 @@ internal sealed class OnnxClassifier
     {
         var masses = plan.Slots.Select(s => SlotMass(lemmaScores, s)).ToArray();
         var total = masses.Sum();
+        var openSlots = plan.Slots.Count(s => !SenseFusion.IsClosedClass(s.PartOfSpeech));
         for (var s = 0; s < plan.Slots.Count; s++)
         {
             foreach (var i in plan.Slots[s].Analyses)
             {
-                weightOf[i] = (total > 0 ? masses[s] / total : 1.0 / plan.Slots.Count) / plan.Slots[s].Analyses.Count;
+                weightOf[i] = (total > 0 ? masses[s] / total : EqualShare(plan.Slots[s], openSlots)) / plan.Slots[s].Analyses.Count;
             }
         }
     }
+
+    /// <summary>
+    ///     Gets the share of a slot when no slot has mass: equal among the open-class slots, none for a closed-class slot
+    ///     (it has no evidence of its own, and the fallback model takes its probability).
+    /// </summary>
+    /// <param name="slot">The slot.</param>
+    /// <param name="openSlots">The number of open-class slots that share the probability.</param>
+    /// <returns>The share.</returns>
+    private static double EqualShare(Slot slot, int openSlots) =>
+        SenseFusion.IsClosedClass(slot.PartOfSpeech) || openSlots == 0 ? 0.0 : 1.0 / openSlots;
 
     /// <summary>
     ///     Decides the level of the answer for the selected analysis, with the thresholds of its lemma.
@@ -509,13 +769,22 @@ internal sealed class OnnxClassifier
         new(word, true, analyses, selected, SenseLevel.PartOfSpeech, probability, null, null);
 
     /// <summary>
-    ///     Gets the mass of the senses of a slot, or 1 when the senses are not scored.
+    ///     Gets the mass of the senses of a slot: 0 for a slot of a closed class (its senses are never scored, so it has no
+    ///     evidence of its own, whether or not its lemma is scored: the fallback model takes it, see <see cref="FallbackWordSenseModel"/>),
+    ///     and 1 for an open-class slot whose senses are not scored (an untrained lemma).
     /// </summary>
     /// <param name="lemmaScores">The scored lemmas.</param>
     /// <param name="slot">The slot.</param>
     /// <returns>The mass.</returns>
-    private static double SlotMass(Dictionary<string, LemmaScores> lemmaScores, Slot slot) =>
-        lemmaScores.TryGetValue(slot.Lemma, out var scores) ? scores.MassOf(slot) : 1.0;
+    private static double SlotMass(Dictionary<string, LemmaScores> lemmaScores, Slot slot)
+    {
+        if (SenseFusion.IsClosedClass(slot.PartOfSpeech))
+        {
+            return 0.0;
+        }
+
+        return lemmaScores.TryGetValue(slot.Lemma, out var scores) ? scores.MassOf(slot) : 1.0;
+    }
 
     /// <summary>
     ///     Lists the senses of an analysis ranked by their probability given the analysis.
@@ -540,14 +809,38 @@ internal sealed class OnnxClassifier
         return label >= 0 ? label : throw new InvalidDataException($"The chooser of '{chooser.Form}' has no label for the analysis {analysis.Lemma}/{analysis.Features}.");
     }
 
-    private static void Normalize(double[] values)
+    /// <summary>
+    ///     Scales the probabilities of the analyses to sum to one. When nothing has mass (a label that stands for
+    ///     closed-class slots only took all of it), the open-class analyses share it equally; a form without an open-class
+    ///     analysis shares it equally among all, as there is nothing else to answer.
+    /// </summary>
+    /// <param name="plan">The pending word.</param>
+    /// <param name="values">The probability of every analysis; rewritten here.</param>
+    private static void Normalize(Pending plan, double[] values)
     {
         var sum = values.Sum();
-        for (var i = 0; i < values.Length; i++)
+        if (sum > 0)
         {
-            values[i] = sum > 0 ? values[i] / sum : 1.0 / values.Length;
+            for (var i = 0; i < values.Length; i++)
+            {
+                values[i] /= sum;
+            }
+
+            return;
+        }
+
+        var open = Enumerable.Range(0, values.Length).Where(i => !SenseFusion.IsClosedClass(plan.SlotOf(i).PartOfSpeech)).ToArray();
+        var sharers = open.Length > 0 ? open : Enumerable.Range(0, values.Length).ToArray();
+        foreach (var i in sharers)
+        {
+            values[i] = 1.0 / sharers.Length;
         }
     }
+
+    /// <summary>
+    ///     A pending word weighed with its feature, before any threshold decides a level.
+    /// </summary>
+    private sealed record Weighed(ImmutableArray<AnalysisCandidate> Analyses, WordDetails Selected, Slot SelectedSlot, double SelectedProbability, bool ChooserConfident, Dictionary<string, LemmaScores> LemmaScores);
 
     /// <summary>
     ///     The analyses of a word that share a lemma and a part of speech, and so their senses.
@@ -586,7 +879,13 @@ internal sealed class OnnxClassifier
             FineMargin = fineMargin;
             GroupMargin = groupMargin;
             Senses = columns.Select(c => lemma.Senses[c]).ToImmutableArray();
+            Columns = columns;
         }
+
+        /// <summary>
+        ///     Gets the scored columns of the lemma, in column order.
+        /// </summary>
+        public int[] Columns { get; }
 
         public ResolvedLemma Lemma { get; }
 

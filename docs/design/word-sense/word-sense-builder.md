@@ -273,13 +273,9 @@ instead of `--model`.
    The senses of each lemma and part of speech
    are ordered as Open English WordNet orders them: by the position of the sense in its entry, then the homograph number
    of the entry, the project senses last, then by the sense id bytes (the WordNet 3.0 tag counts do not order the senses;
-   they only feed the usage prior of the encoder training and the tiers). The order was moved from the tag counts to
-   the OEWN order because a spike that compiled the image in that order and retrained and re-evaluated all three
-   models gave every figure identical to the last digit (the weights differed only in the order of their columns; the
-   SemCor first-sense baseline moved from 60.68% to 60.69%); of the 1,245 blocks of two or more senses of the 826
-   trained lemmas, 659 changed their order and 175 their first sense, in 126 of them because the old first sense had
-   the count 0 (an alphabetical tie) and in 48 because two counts were equal. The WordNet order is made from tag counts
-   that include SemCor, so the first-sense baseline of the independent evaluation stays optimistic. The counts still
+   they only feed the usage prior of the encoder training and the tiers). The OEWN order follows the frequency order of
+   Princeton WordNet, which is made from tag counts that include SemCor, so the first-sense baseline of the independent
+   evaluation stays optimistic. The counts still
    number the slugs of senses that share a label (`SenseLabelGenerator`; sense ids are frozen, so that numbering must
    not change).
 4. Check the invariants before writing: a sense without a label, a sense in two groups, a group of fewer than two senses
@@ -331,8 +327,11 @@ for at least two of its senses to get weights; a lemma with fewer is not an erro
    *kernel* form, see below) whenever the training part has fewer anchors than the encoder has dimensions, and in the
    feature space otherwise.
    Add the usage prior (see Usage prior below) to the fitted biases.
-6. Choose the first thresholds of the lemma (see Thresholds below), on the scores with the prior; after all lemmas are
-   fitted, move them to the real-text precision target (see Real-text calibration below).
+6. Choose the first thresholds of the lemma (see Thresholds below), on the scores with the prior, over the candidate
+   columns of the form of each anchor's target word (OnnxClassifier.FormColumns), leaving out the anchors of a form for
+   which the classifier does not run the encoder (`OnnxClassifier.EncoderRuns`, with the forms that get a chooser from
+   `WeightsTrainer.ChooserForms`). After all lemmas are fitted and the form
+   choosers are trained (step 8), move the thresholds to the real-text precision target (see Real-text calibration below).
 7. The lemmas are fitted concurrently (`TrainingOptions.DefaultParallelism`, the processors minus two, 2 to 16
    threads), and inside a lemma the senses of a fit and the folds of the cross-validation are fitted concurrently too;
    each result is written to its own slot, so the weights do not depend on the thread count. A lemma whose
@@ -346,10 +345,16 @@ for at least two of its senses to get weights; a lemma with fewer is not an erro
    table refuses such a chooser when the weights load) or when no lemma of the form has weights; the summary lists
    those forms with the reason. A chooser is stored with the first lemma of the form, in ordinal order, that has
    weights. The held-out chooser rows are only scored: the summary prints the top-1 accuracy of the choosers, the
-   share of the sentences answered at the thresholds and the precision of those answers.
+   share of the sentences answered at the thresholds and the precision of those answers. The choosers do not read the
+   thresholds of the lemmas, so they are trained before the calibration: the calibration scores a row with the plan
+   that the classifier has for its form, and a chooser decides whether the encoder runs for a form of several lemmas.
 9. Check the half-precision storage: encode the held-out rows of the trained lemmas through the same cache, score them
-   with the full-precision weights and with the weights read back from the written blob, print both fine top-1
-   accuracies, and fail without writing when they differ by more than 0.2 percentage point. Then write the weights blob
+   with the full-precision weights and with the weights read back from the written blob (counting only the rows whose
+   form the classifier scores, and ranking for each row only the candidate senses of its form, as inference does; the
+   ranking exists for every outcome of a scored form, so the gate does not leave out the rows that an outcome answers
+   at the part-of-speech level),
+   print both fine top-1 accuracies, and fail without writing when they differ by more than 0.2 percentage point.
+   Then write the weights blob
    (`WSX3`, float16 weights) to the package's `Resources/weights.bin`. The summary of the run counts the lemmas that
    have a finite fine threshold and a finite group threshold and names the lemmas that got no weights.
 
@@ -397,8 +402,20 @@ A run takes about two minutes when the embedding cache is warm, and `--no-prior`
 
 **Thresholds (`Thresholds.Choose`).** For every trained lemma the anchors are split into k = 5 folds by a seeded,
 deterministic shuffle; each fold is scored by a fit on the other folds, which gives out-of-fold margins for every
-anchor. The fine threshold `t_fine` is the lowest margin such that the answers at or above it (equal margins together)
-reach the precision target on the out-of-fold anchors (95 percent by default) with at least three answers; `t_group`
+tested anchor. The fine threshold `t_fine` is the lowest margin such that the answers at or above it (equal margins together)
+reach the precision target on the out-of-fold anchors (95 percent by default) with at least three answers; the margins
+are taken over the columns that the classifier scores at run time for the form of the target word of the anchor (the
+open-class senses of the parts of speech that the form has for the lemma, `OnnxClassifier.FormColumns`), so the
+closed-class senses of a lemma (no WordNet senses, `SenseFusion.IsClosedClass`) and the senses of a part of speech that
+the form does not have (the noun senses of `has`) are left out of the margin of that anchor; an anchor of a form with
+fewer than two such columns, which the classifier does not score, and an anchor whose true sense is not among them (a
+closed-class sense) are not tested (the fits still learn from them); an anchor of a form of several lemmas that has no
+chooser, which the classifier answers from the lexicon, is not tested either. What a
+sentence decides (the chooser and its confidence, the analysis that is selected, the closed-class slot of Basic) is not
+known for an anchor and is applied by the real-text calibration; a best sense of another part of speech than the true
+one counts as a wrong answer here (the anchor does not say which analysis is selected, and the first thresholds are
+the conservative starting point), while the calibration leaves such a row out when the selected analysis makes the
+answer a part-of-speech one; `t_group`
 is chosen in the same way on the group answers, only for a lemma that has groups and over the anchors whose best sense
 is in a group and whose fine margin is below `t_fine` (the rows that fall through to the group level; every anchor
 when `t_fine` is "never"), with the group margin defined as at run time (the group probability minus the largest
@@ -418,7 +435,32 @@ data, not by a seed. The written held-out sentences and the rows without provena
 calibration rows of the trained lemmas are encoded through the same cache and scored by the final full-precision
 weights. For the fine level, a lemma with at least 20 calibration rows gets a threshold of its own (the lowest margin
 that reaches the precision target with at least five answers); every lemma that has a finite first threshold and no
-threshold of its own contributes to one pooled shift `s >= 0`. The usable answers are the calibration rows of those
+threshold of its own contributes to the pooled shift `s >= 0` of its stratum. The strata are the stages of the corpus
+(`Corpus.StagesOf`: the stage of a lemma is the stage of the highest wave file, `quota-w{wave}-…`, that holds one of its
+anchors, with 50 waves to a stage; waves 1 to 49 are the base stage): the rows of a stage were collected another way (two
+labelers that agree, a blind check) and are answered right at a lower margin, so one shift over both stages lowered the
+thresholds of the base lemmas by 0.65 (MiniLM) and 1.05 (BertBaseCased) and cost them about 1.5 points of precision.
+Each stratum is calibrated with its own rows alone, so adding a stage never moves the thresholds of an earlier one and
+each stage meets the target on its own rows. A calibration row is scored as inference scores it:
+`OnnxClassifier.ScoreForm` takes the plan that the classifier has for the form
+of the target word (every analysis of the form, its form chooser, the lemmas it scores) and gives the margin of the lemma
+over the open-class senses of the parts of speech that the form has for it (`OnnxClassifier.FormColumns`), so the
+closed-class senses of a lemma such as `little` or `have` and the senses of a part of speech that the form does not have
+are left out. The scoring carries one outcome (`OnnxClassifier.FormOutcome`), the decision that inference itself
+takes before it consults a threshold, and a row is observed only when the threshold of its lemma decides the level:
+a row for which the classifier does not run the encoder (a form of several lemmas without a chooser, answered from the
+lexicon), or whose lemma has fewer than two such candidates, a row whose form chooser is not confident (answered at
+the part-of-speech level), a row whose selected analysis belongs to another lemma (the threshold of that lemma
+decides) and a row whose best sense is of another part of speech than the selected analysis (answered at the
+part-of-speech level) are not observed. A row that the composite model answers at the part-of-speech level for a further
+reason is left out too: the trainer runs Basic over every calibration sentence, and when the
+closed-class slot of the Basic result wins the closed-class split of the composite model
+(`FallbackWordSenseModel.SplitClosedClass`, run on the result that the classifier builds for the form), no sense
+threshold applies to the row. When an open-class slot wins, the row is observed, and a row whose true sense is a
+closed-class sense is a wrong answer. Without the Basic results every row is kept (and a closed-class true sense
+counts as wrong). The summary reports the rows left out. The rest of this
+paragraph describes one stratum.
+The usable answers are the calibration rows of those
 lemmas whose distance `d = margin - t_cv` (the margin of the best sense minus the first threshold of its lemma) is finite
 and not negative; there are `n` of them, and the answers with `d >= s` are the answers that the shift `s` keeps (answers
 of equal distance are kept or dropped together). The shift is the lowest `s` whose kept answers reach the precision target
@@ -443,7 +485,8 @@ level too (after "verified"). A calibration row whose sense has no anchor counts
 written held-out sentences never reach the choice. The report of the run prints the rows used, the fine shift (with
 "reaches the target" or "target not reached"), the number of lemmas with a threshold of their own, the sense answers
 before and after (counted over all observed calibration rows, the lemmas with a threshold of their own included, not
-only the pooled rows, so they are not the pooled answers that decided the shift) and the group shift with its state. The
+only the pooled rows, so they are not the pooled answers that decided the shift) and the group shift with its state (the
+report adds one line per stratum with its rows, fine shift and group shift). The
 calibration target is
 0.97 (`--calibration-target`), two points above the 95% aimed at on the whole pipeline (and used for the cross-validation
 of the first thresholds), because the precision of the
@@ -454,7 +497,8 @@ are wrong according to a blind judge, which caps the precision that can be measu
 real test split as the headline set.
 
 **Tiers (`Tiers`).** The quota of a sense follows its WordNet 3.0 tag count: five or more, 20 anchor and 5 held-out
-sentences; one to four, 10 and 3; none, 5 and 2. The report lists every sense of every trained lemma with its counts
+sentences; one to four, 10 and 3; none, 5 and 2 (3 and 1 when the lemma has 15 or more senses). The report lists every
+sense of every trained lemma with its counts
 and quota, the senses that fall short and the senses that are excluded (a sense that cannot be trained), each with the
 reason.
 
@@ -672,7 +716,8 @@ expectations of a new suite or model. The challenge set has a floor test of the 
 
 Reads the tag counts of the senses from the `sense_frequency` table of `data/`, the anchors and the held-out
 sentences, and for every sense of every lemma that has anchors computes the tier (`C`: five or more tags, 20 anchors
-and 5 held-out sentences; `U`: one to four tags or a project sense, 10 and 3; `R`: none, 5 and 2), the counts and the
+and 5 held-out sentences; `U`: one to four tags or a project sense, 10 and 3; `R`: none, 5 and 2, or 3 and 1 when the
+lemma has 15 or more senses), the counts and the
 status (`met`, `short`, `empty`); the summary lists the totals per tier, the sentences that are missing and the senses
 that fall short, most frequent first.
 
@@ -680,8 +725,12 @@ that fall short, most frequent first.
 
 1. Read the tag counts of `corpus/open/counts` (made by `open-counts` from the training split of the representative
    open corpus, including the clause counts; the command stops with the name of `open-counts` when they are missing),
-   the fine-sense anchors of
-   `corpus/anchors` and the chooser anchors of `corpus/choosers/anchors`. The holdout, the test splits, the targeted
+   the fine-sense anchors of the base stage in
+   `corpus/anchors` (the lemmas whose anchors are in the waves 1 to 49, `Corpus.StagesOf`; the sense anchors of a stage
+   added later are balanced per sense for the encoder weights and leave the table unchanged) and all the chooser anchors
+   of `corpus/choosers/anchors`, whatever their stage (lemma evidence for forms shared by several lemmas, which is not
+   balanced per sense). The cue tables thus train on the base-stage sense anchors plus all chooser rows. The holdout,
+   the test splits, the targeted
    part and the treebank are not read.
 2. `BasicTrainer.Train` selects from the counts the closed-class words (enough occurrences and a dominant closed-class
    share), every dictionary-ambiguous word of the counts (the most frequent ones, ties by spelling, when
@@ -735,7 +784,7 @@ that fall short, most frequent first.
    the
    cue scores of the table by it. A table that predicts its held-out sentences at or below chance is therefore as good as
    none, one at 0.8 on two analyses is fully reliable, and the choice needs no hand list of tables. In the shipped table
-   111 of the 913 tables are damped (those with a held-out accuracy below 0.6); `learning`, whose held-out accuracy of
+   111 of the 916 tables are damped (those with a held-out accuracy below 0.6); `learning`, whose held-out accuracy of
    0.298 is below chance, gets 0. On the development sets any target from 0.5 to 1.0 gives the same figures (the cue
    changes the answer on about 5 percent of the tokens it covers), and the reviewed suite loses rows from a target of
    0.7 on, so the target is 0.6.
@@ -755,8 +804,8 @@ that fall short, most frequent first.
    A table that covers no token keeps its anchor reliability. On the development sets the pseudo count and the
    combination make no difference (the cue changes few answers). The reviewed suite is the guard for the pseudo count:
    20 or less turns the row `M-feel-2` of Basic into a miss (the table of `feel` has 0 tokens helped and 2 hurt), and 50
-   does not. In the shipped table 682 of the 913 tables cover a token of the training split (357 tokens
-   helped and 215 hurt in all), 162 tables are damped (111 by the anchors, 61 by the running text, some by both).
+   does not. In the shipped table 163 of the 916 tables are damped (111 by the anchors and 62 by the running text,
+   where more tokens are hurt than helped).
 3. `BasicTablesWriter.Write` serializes the table, `BasicTables.Load` checks that it reads back, and the file is
    written with its size and SHA-256 reported. The table carries the inventory hash of the word image that it was
    trained against and is rebuilt whenever the inventory changes.
@@ -838,9 +887,12 @@ evaluation only and never committed) adds a line.
 
 Writes a deterministic Markdown appendix: the explanation of parts of speech, groups and forms, the
 summary of the dictionary words, the section "Keys and Heteronyms" (the key format, the levels of the heteronyms and the
-heteronym lists, see below), an alphabetical list of the trained lemmas, each with its senses (id, group, OEWN sense
-key and gloss), the tier and anchor counts of each sense and every analysis of its forms (there is no pronunciation
-section). The forms of a lemma are listed for every spelling that the image lists as a form of an entry of the lemma,
+heteronym lists, see below), an alphabetical list of the lemmas that have anchor sentences (each with its senses (id,
+group, OEWN sense key and gloss), the tier and anchor counts of each sense and every analysis of its forms; there is no
+pronunciation section). The summary and the list state two counts: the lemmas that have anchor sentences, and, of those,
+the lemmas that have a sense classifier in the encoder models (anchor sentences for two or more senses, the rule of
+`WeightsTrainer`). The forms of a lemma are listed for every spelling that the image lists as a form of an entry of the
+lemma,
 the spelling of the lemma itself included, and for every analysis of that spelling whose lemma is the lemma, with its
 features in parentheses (`read (verb, Tense=Past+VerbForm=Part)`; the part of speech comes first when the forms have
 several, none when only one). Lines are wrapped to

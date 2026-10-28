@@ -50,10 +50,28 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `OnlyAmbiguousWordsAreEncoded`; scoring increment): the encoder runs once for a text in which at least one word has
   several senses and usable weights, only for those words, and never for a text in which no word does.
 - **Senses of every analysis** (`WordWithSeveralAnalyses_RanksTheSensesOfEveryAnalysis`,
-  `PrepositionUseOfLike_IsReachable`, `InflectedForm_RanksTheSensesOfItsLemma`; scoring increment): a word with
-  several analyses ranks the fine senses of all of them, so the preposition use of `like` can be the answer beside its
-  verb and noun senses; an inflected form ranks the senses of its lemma; no sense of another lemma competes; the
-  probability of a lemma and part of speech is the mass of its senses.
+  `ClosedClassUseOfLike_IsNotScored`, `ClosedClassSlotOfAnUnscoredLemma_HasNoProbability`,
+  `ClosedOnlyChooserLabel_GivesItsProbabilityToNoSlot`, `EveryLabelClosedOnly_SharesEquallyAndIsFinite`,
+  `InflectedForm_RanksTheSensesOfItsLemma`; scoring increment): a chooser label that stands for the auxiliary `be` only
+  (`there's`) gives its probability to no slot, so the adverb takes all of it and the auxiliary stays at 0; a form whose
+  two labels are both closed-only (`that's`) shares equally and stays finite; the determiner of `more` (a lemma without
+  weights) has probability 0 while the open-class slots of untrained lemmas still share the mass; a word with
+  several analyses ranks the fine senses of all its open-class analyses; the preposition use of `like` is listed with
+  probability 0 and without senses, even when its sense has the highest score; an inflected form ranks the senses of its
+  lemma; no sense of another lemma competes; the probability of a lemma and part of speech is the mass of its senses.
+- **Shared candidate selection** (`CandidatesOf_FormColumnsAndPlan_AreThoseOfInference`): for the lemma `leave` and the
+  form `left` (a form of two lemmas) the encoder runs only when the table has the chooser of the form; the columns are the
+  verb senses of `leave` in both cases; an unknown word has no columns and a lemma that the table does not have has none.
+  `EncoderRuns_FormOfSeveralLemmas_NeedsItsChooser` gives the same answer from the chooser forms alone (no table): a
+  form of several lemmas runs the encoder only with a chooser, a form of one lemma with two candidates runs it, and an
+  unknown word, or one with fewer than two candidates, does not.
+- **Outcome of the scoring** (`ScoreForm_ChooserBelowItsThreshold_TheLemmaThresholdDoesNotDecide`,
+  `ScoreForm_OtherEarlyExits_AreOutcomesThatInferenceShares`): the form `left` with tied chooser scores (a margin below
+  the chooser threshold) has the outcome "chooser not confident" and is answered at the part-of-speech level, and
+  decides by the threshold of `leave` when the chooser is confident; a chooser that prefers the lemma `left` has the
+  outcome "selected analysis of another lemma" for `leave`; a form without a chooser has "the encoder does not run";
+  a lemma that is not a lemma of the form is "not scored"; an adjective sense that leads while the adverb analysis is
+  selected is "best sense of another part of speech" and is answered at the part-of-speech level.
 - **Slots** (`FeaturesOfOneLemmaAndPartOfSpeech_ShareTheSlotProbability`,
   `SlotWithSeveralVariants_IsSelectedByItsTotalProbability`): the two verb analyses of `read` split the probability of
   the verb equally, list the same senses, and the confidence of a sense answer is the probability of the sense (the

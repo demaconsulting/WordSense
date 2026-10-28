@@ -1,4 +1,6 @@
 group_id	sense_id
+night#group:nighttime	oewn-night__1.28.00..
+night#group:nighttime	oewn-night__1.28.02..
 nominate#group:candidate-nomination	oewn-nominate__2.32.00..
 nominate#group:candidate-nomination	oewn-nominate__2.41.02..
 nominate#group:role-assignment	oewn-nominate__2.41.00..

@@ -163,8 +163,8 @@ M-look-3	fine	fine	fine
 M-look-4	fine	fine	fine
 M-way-1	fine	fine	fine
 M-way-2	fine	fine	fine
-M-way-3	miss	miss	miss
-M-way-4	miss	miss	miss
+M-way-3	miss	fine	fine
+M-way-4	miss	miss	fine
 M-help-1	fine	fine	fine
 M-help-2	fine	fine	fine
 M-help-3	fine	fine	fine
@@ -215,7 +215,7 @@ M-start-1	fine	fine	fine
 M-start-2	fine	fine	fine
 M-start-3	fine	fine	fine
 M-start-4	fine	fine	fine
-M-love-1	fine	fine	fine
+M-love-1	fine	fine	miss
 M-love-2	fine	fine	fine
 M-love-3	fine	fine	fine
 M-love-4	fine	fine	fine
@@ -260,7 +260,7 @@ C-content-2	answer	fine	fine
 C-content-3	miss	fine	fine
 C-content-4	fine	fine	fine
 C-content-5	fine	fine	fine
-C-content-6	answer	fine	miss
+C-content-6	answer	fine	fine
 C-produce-1	fine	fine	fine
 C-produce-2	fine	fine	fine
 C-produce-3	fine	fine	fine

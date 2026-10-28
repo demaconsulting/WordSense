@@ -1,7 +1,8 @@
 """Lexicon index and quota status for the quota filling.
 
 form_index(): lower-case form -> set of (lemma, pos letter) analyses, from data/form and data/entry.
-quota_status(): per sense of the lemmas in scope: tier, tag count, anchors, holdout and the deficits.
+quota_status(): per sense of the lemmas in scope: tier, tag count, anchors, holdout and the deficits. The quota follows the
+tier (C 20 + 5, U 10 + 3, R 5 + 2); an R sense of a lemma with 15 or more senses needs 3 + 1.
 """
 import csv
 import glob
@@ -13,6 +14,17 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import lexdata
 
 QUOTA = {"C": (20, 5), "U": (10, 3), "R": (5, 2)}
+# A sense without a tag count (tier R) of a lemma with this many senses or more needs fewer rows: such a sense carries
+# no usage, and the very polysemous lemmas have many of them.
+LARGE_LEMMA_SENSES = 15
+QUOTA_R_LARGE = (3, 1)
+
+
+def quota_of(tier, lemma_senses):
+    """(anchors, held-out rows) a sense of this tier needs; `lemma_senses` is the number of senses of its lemma."""
+    if tier == "R" and lemma_senses >= LARGE_LEMMA_SENSES:
+        return QUOTA_R_LARGE
+    return QUOTA[tier]
 
 
 def tier_of(sense):
@@ -73,6 +85,9 @@ def curation_tiers():
 def quota_status(senses, scope_ids=None):
     scope_ids = scope_ids or read_scope()
     tiers = curation_tiers()
+    size = {}
+    for s in senses.values():
+        size[s["lemma"]] = size.get(s["lemma"], 0) + 1
     anchors, holdout = {}, {}
     for _, _lemma, sid, _pos, _s in corpus_rows("anchors"):
         anchors[sid] = anchors.get(sid, 0) + 1
@@ -82,7 +97,7 @@ def quota_status(senses, scope_ids=None):
     for sid in scope_ids:
         s = senses[sid]
         tier, tags = tiers.get(sid) or (tier_of(s), str(s["tag_count"]))
-        aq, hq = QUOTA[tier]
+        aq, hq = quota_of(tier, size[s["lemma"]])
         a, h = anchors.get(sid, 0), holdout.get(sid, 0)
         status = "met" if a >= aq and h >= hq else ("empty" if a + h == 0 else "short")
         rows.append({"sense_id": sid, "part_of_speech": s["pos_name"], "tier": tier,         "tag_count": tags,
@@ -113,5 +128,6 @@ if __name__ == "__main__":
             p = line.rstrip("\n").split("\t")
             old[p[0]] = p
     diff = [r["sense_id"] for r in rows if [r["sense_id"], r["part_of_speech"], r["tier"], str(r["tag_count"]), str(r["anchors"]),
-            str(r["anchor_quota"]), str(r["holdout"]), str(r["holdout_quota"]), r["status"]] != old[r["sense_id"]]]
+            str(r["anchor_quota"]), str(r["holdout"]), str(r["holdout_quota"]), r["status"]] != old.get(r["sense_id"], [])
+            and r["sense_id"] in old]
     print("rows differing from the committed report:", len(diff), diff[:5])

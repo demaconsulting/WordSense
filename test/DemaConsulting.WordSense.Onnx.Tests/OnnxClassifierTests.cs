@@ -331,12 +331,13 @@ public class OnnxClassifierTests
     }
 
     /// <summary>
-    ///     A preposition use of a word that is also a verb and a noun is reachable: its sense can win and its analysis
-    ///     is then the selected one.
+    ///     A closed-class use of a word that is also a verb and a noun (the preposition <c>like</c>) is not scored: its
+    ///     analysis is listed with probability 0 and without senses, even when its sense has the highest score, and the
+    ///     probability goes to the open-class analyses, whose senses are the only ones scored.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task OnnxClassifier_ClassifyAsync_PrepositionUseOfLike_IsReachable()
+    public async Task OnnxClassifier_ClassifyAsync_ClosedClassUseOfLike_IsNotScored()
     {
         // Arrange: weights over all senses of "like"; the preposition sense scores highest
         var preposition = Assert.Single(WordLexicon.SensesOf("like", PartOfSpeech.Preposition));
@@ -346,13 +347,12 @@ public class OnnxClassifierTests
         // Act
         var result = await RunAsync(table, vector, "like");
 
-        // Assert: the preposition analysis is selected and answered at the sense level
-        Assert.Equal(PartOfSpeech.Preposition, result.Details!.PartOfSpeech);
-        Assert.Equal(SenseLevel.Sense, result.Level);
-        Assert.Equal(preposition.SenseId, result.SenseId);
-        var mass = Math.Exp(6) / (Math.Exp(6) + Fixtures.SenseIds("like").Length - 1);
-        Assert.Equal(mass, Analysis(result, PartOfSpeech.Preposition).Probability, Tolerance);
-        Assert.Equal(mass, result.Confidence, Tolerance);
+        // Assert: the preposition has no mass and no senses; the answer lies in an open-class analysis
+        var closed = Analysis(result, PartOfSpeech.Preposition);
+        Assert.Equal(0.0, closed.Probability);
+        Assert.True(closed.Senses.IsEmpty);
+        Assert.NotEqual(PartOfSpeech.Preposition, result.Details!.PartOfSpeech);
+        Assert.DoesNotContain(result.Analyses.SelectMany(a => a.Senses), s => s.SenseId == preposition.SenseId);
         Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
     }
 
@@ -1204,4 +1204,199 @@ public class OnnxClassifierTests
 
     private static AnalysisCandidate AnalysisOfLemma(ClassifyResult result, string lemma) =>
         result.Analyses.First(a => a.Details.Lemma == lemma);
+
+    /// <summary>
+    ///     The candidate selection that the build tool shares with inference: the columns of a lemma that are scored for
+    ///     the form of a word (the open-class senses of the parts of speech that the form has for the lemma), and whether
+    ///     the encoder runs for the form at all (a form of several lemmas needs its chooser).
+    /// </summary>
+    [Fact]
+    public void OnnxClassifier_CandidatesOf_FormColumnsAndPlan_AreThoseOfInference()
+    {
+        // Arrange: the lemma leave (its verb senses) with and without a chooser for the form left
+        var withoutChooser = Fixtures.Table(Fixtures.Lemma("leave", fine: 1f));
+        var withChooser = LeaveOnlyTable();
+        var senseIds = withChooser.Find("leave")!;
+
+        // Act
+        var (runsWithout, columnsWithout) = OnnxClassifier.CandidatesOf("left", "leave", withoutChooser);
+        var (runsWith, columnsWith) = OnnxClassifier.CandidatesOf("left", "leave", withChooser);
+        var unknown = OnnxClassifier.FormColumns("zzqxjw", "leave", senseIds.ColumnOf);
+        var notTheLemma = OnnxClassifier.CandidatesOf("left", "just", withChooser);
+
+        // Assert
+        Assert.False(runsWithout);
+        Assert.True(runsWith);
+        Assert.Equal(columnsWithout, columnsWith);
+        Assert.All(columnsWith, c => Assert.Equal(PartOfSpeech.Verb, senseIds.Senses[c].PartOfSpeech));
+        Assert.Null(unknown);
+        Assert.Empty(notTheLemma.Columns);
+    }
+
+    /// <summary>
+    ///     A closed-class slot of a lemma that has no weights has no evidence of its own either: it gets probability 0
+    ///     (the fallback model takes it), while an open-class slot of an untrained lemma still shares the mass.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxClassifier_ClassifyAsync_ClosedClassSlotOfAnUnscoredLemma_HasNoProbability()
+    {
+        // Arrange: "more" is a form of the trained lemma "much" and of the untrained lemmas "many" and "more", one of
+        // which is a determiner (closed class); its chooser prefers the lemma "more" (the label 1)
+        var adverb = WordLexicon.SensesOf("much", PartOfSpeech.Adverb)[0];
+        var table = Fixtures.Table(Fixtures.Lemma("much", fine: 1f, choosers: [Fixtures.Chooser("more", ["many", "more", "much"], 0.5f)]));
+        var vector = Fixtures.Feature((Fixtures.Column("much", adverb.SenseId), 3), (Fixtures.Label(1), 4));
+        var lexicon = WordLexicon.Lookup("more");
+        Assert.Contains(lexicon, d => d.Lemma == "more" && d.PartOfSpeech == PartOfSpeech.Determiner);
+
+        // Act
+        var result = await RunAsync(table, vector, "more");
+
+        // Assert
+        var determiner = result.Analyses.Where(a => a.Details.PartOfSpeech == PartOfSpeech.Determiner).ToArray();
+        Assert.NotEmpty(determiner);
+        Assert.All(determiner, a => Assert.Equal(0.0, a.Probability));
+        Assert.Contains(result.Analyses, a => a.Details.Lemma == "more" && a.Details.PartOfSpeech == PartOfSpeech.Adverb && a.Probability > 0);
+        Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
+    }
+
+    /// <summary>
+    ///     A chooser label that stands for closed-class slots only gives its probability to no slot, not even when no slot
+    ///     of the label has mass: the probability is dropped and the other labels are renormalized, so the closed-class
+    ///     slot stays at 0 and the composite model can take it from Basic.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxClassifier_ClassifyAsync_ClosedOnlyChooserLabel_GivesItsProbabilityToNoSlot()
+    {
+        // Arrange: "there's" is a form of "there" (an adverb) and of "be" (an auxiliary: a closed-only label); the chooser prefers "be"
+        var table = Fixtures.Table(Fixtures.Lemma("there", fine: 1f, choosers: [Fixtures.Chooser("there's", ["be", "there"], 0.5f)]));
+        var vector = Fixtures.Feature((Fixtures.Label(0), 4));
+
+        // Act
+        var result = await RunAsync(table, vector, "there's");
+
+        // Assert: the auxiliary has no probability, and the adverb takes all of it
+        var auxiliary = Analysis(result, PartOfSpeech.Auxiliary);
+        var adverb = Analysis(result, PartOfSpeech.Adverb);
+        Assert.Equal(0.0, auxiliary.Probability);
+        Assert.Equal(1.0, adverb.Probability, 12);
+        Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 12);
+        Assert.Equal(PartOfSpeech.Adverb, result.Details!.PartOfSpeech);
+    }
+
+    /// <summary>
+    ///     A form whose every label is closed-only has no open-class evidence at all: no probability is divided by zero,
+    ///     the probabilities still sum to one (equally, as there is nothing else to answer), and the chooser does not
+    ///     favor a label by giving it mass.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxClassifier_ClassifyAsync_EveryLabelClosedOnly_SharesEquallyAndIsFinite()
+    {
+        // Arrange: "that's" is a form of "that" (a pronoun) and of "be" (an auxiliary): two closed-only labels
+        var table = Fixtures.Table(Fixtures.Lemma("be", fine: 1f, choosers: [Fixtures.Chooser("that's", ["be", "that"], 0.5f)]));
+        var vector = Fixtures.Feature((Fixtures.Label(0), 4));
+
+        // Act
+        var result = await RunAsync(table, vector, "that's");
+
+        // Assert
+        Assert.All(result.Analyses, a => Assert.True(double.IsFinite(a.Probability)));
+        Assert.All(result.Analyses, a => Assert.Equal(1.0 / result.Analyses.Length, a.Probability, 12));
+        Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 12);
+        Assert.Equal(SenseLevel.PartOfSpeech, result.Level);
+    }
+
+    private static float[] Centered(WeightedLemmaTable table, double[] vector) => FeatureExtractor.Center(vector, table.Data.Mean)!;
+
+    /// <summary>
+    ///     A form whose chooser is not confident is answered at the part-of-speech level (a form like <c>left</c> with
+    ///     tied chooser scores), so the threshold of the lemma does not decide it; with a confident chooser it does.
+    /// </summary>
+    [Fact]
+    public async Task OnnxClassifier_ScoreForm_ChooserBelowItsThreshold_TheLemmaThresholdDoesNotDecide()
+    {
+        // Arrange: the chooser prefers "leave" by 0.5, which a threshold of 2 refuses and 0.4 accepts
+        var verb = WordLexicon.SensesOf("leave", PartOfSpeech.Verb);
+        var vector = Fixtures.Feature((Fixtures.Column("leave", verb[0].SenseId), 3), (Fixtures.Label(0), 0.5));
+        var unsureTable = LeftTable(2f);
+        var sureTable = LeftTable(0.4f);
+
+        // Act
+        var unsure = OnnxClassifier.ScoreForm("left", "leave", unsureTable, Centered(unsureTable, vector));
+        var sure = OnnxClassifier.ScoreForm("left", "leave", sureTable, Centered(sureTable, vector));
+        var unsureResult = await RunAsync(unsureTable, vector, "left");
+        var sureResult = await RunAsync(sureTable, vector, "left");
+
+        // Assert: the scoring tells what inference does with the same word
+        Assert.Equal(OnnxClassifier.FormOutcome.ChooserNotConfident, unsure.Outcome);
+        Assert.False(unsure.ThresholdDecides);
+        Assert.Equal(SenseLevel.PartOfSpeech, unsureResult.Level);
+        Assert.Equal(OnnxClassifier.FormOutcome.ThresholdDecides, sure.Outcome);
+        Assert.True(sure.ThresholdDecides);
+        Assert.Equal(SenseLevel.Sense, sureResult.Level);
+        Assert.Equal(verb[0].SenseId, sureResult.SenseId);
+    }
+
+    /// <summary>
+    ///     Every way in which inference answers a word without the threshold of the lemma is an outcome of the scoring: the
+    ///     selected analysis of another lemma, a best sense of another part of speech, a form without a chooser, and a
+    ///     lemma that is not a lemma of the form.
+    /// </summary>
+    [Fact]
+    public async Task OnnxClassifier_ScoreForm_OtherEarlyExits_AreOutcomesThatInferenceShares()
+    {
+        // Arrange
+        var table = LeftTable(0.5f);
+        var preferLeft = Fixtures.Feature((Fixtures.Label(1), 4));
+        var noChooser = Fixtures.Table(Fixtures.Lemma("leave", fine: 1f), Fixtures.Lemma("left", fine: 1f));
+        var justTable = JustTable(0.5f, 0f);
+        var adjective = JustFeature((AdjectiveIds[0], 1));
+
+        // Act
+        var elsewhere = OnnxClassifier.ScoreForm("left", "leave", table, Centered(table, preferLeft));
+        var elsewhereResult = await RunAsync(table, preferLeft, "left");
+        var lexiconOnly = OnnxClassifier.ScoreForm("left", "leave", noChooser, Centered(noChooser, preferLeft));
+        var notAFormOfTheLemma = OnnxClassifier.ScoreForm("left", "just", table, Centered(table, preferLeft));
+        var outside = OnnxClassifier.ScoreForm("just", "just", justTable, Centered(justTable, adjective));
+        var outsideResult = await RunAsync(justTable, adjective);
+
+        // Assert: the selected lemma is "left", so the threshold of "leave" does not decide
+        Assert.Equal(OnnxClassifier.FormOutcome.SelectedElsewhere, elsewhere.Outcome);
+        Assert.Equal("left", elsewhereResult.Details!.Lemma);
+        Assert.Equal(SenseLevel.PartOfSpeech, elsewhereResult.Level);
+        Assert.Equal(OnnxClassifier.FormOutcome.EncoderDoesNotRun, lexiconOnly.Outcome);
+        Assert.Equal(OnnxClassifier.FormOutcome.LemmaNotScored, notAFormOfTheLemma.Outcome);
+
+        // The adjective sense leads but the adverb analysis is selected: the answer is at the part-of-speech level
+        Assert.Equal(OnnxClassifier.FormOutcome.BestOutsideSelectedPartOfSpeech, outside.Outcome);
+        Assert.False(outside.ThresholdDecides);
+        Assert.Equal(SenseLevel.PartOfSpeech, outsideResult.Level);
+    }
+
+    /// <summary>
+    ///     The build tool leaves out of the cross-validation the anchors of a form for which the encoder does not run:
+    ///     the one rule that inference uses for the plan of a word.
+    /// </summary>
+    [Fact]
+    public void OnnxClassifier_EncoderRuns_FormOfSeveralLemmas_NeedsItsChooser()
+    {
+        // Arrange
+        var columns = OnnxClassifier.FormColumns("left", "leave", LeaveOnlyTable().Find("leave")!.ColumnOf)!;
+
+        // Act
+        var withChooser = OnnxClassifier.EncoderRuns("left", "leave", columns.Count, form => form == "left");
+        var withoutChooser = OnnxClassifier.EncoderRuns("left", "leave", columns.Count, _ => false);
+        var oneLemma = OnnxClassifier.EncoderRuns("just", "just", 5, _ => false);
+        var unknown = OnnxClassifier.EncoderRuns("zzqxjw", "just", 5, _ => true);
+        var tooFewColumns = OnnxClassifier.EncoderRuns("just", "just", 1, _ => false);
+
+        // Assert
+        Assert.True(withChooser);
+        Assert.False(withoutChooser);
+        Assert.True(oneLemma);
+        Assert.False(unknown);
+        Assert.False(tooFewColumns);
+    }
 }

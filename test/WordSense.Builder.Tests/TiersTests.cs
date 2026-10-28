@@ -20,18 +20,46 @@ public sealed class TiersTests : IDisposable
         $"{sense.Lemma}\t{sense.SenseId}\t{sense.PartOfSpeech}\tThe {{{sense.Lemma}}} {number.ToString(CultureInfo.InvariantCulture)} here.";
 
     /// <summary>
-    ///     Five or more tags make tier C (20 anchors and 5 held-out), one to four tier U (10 and 3), none tier R (5 and 2), and a
-    ///     project sense, which has no key, tier U.
+    ///     Five or more tags make tier C (20 anchors and 5 held-out), one to four tier U (10 and 3), none tier R (5 and 2, or 3
+    ///     and 1 for a lemma with 15 or more senses), and a project sense, which has no key, tier U.
     /// </summary>
     [Fact]
     public void WordSenseBuilder_Tiers_Quota_FollowsTheTagCount()
     {
-        Assert.Equal(("C", 20, 5), Tiers.Quota(5, false));
-        Assert.Equal(("C", 20, 5), Tiers.Quota(400, false));
-        Assert.Equal(("U", 10, 3), Tiers.Quota(4, false));
-        Assert.Equal(("U", 10, 3), Tiers.Quota(1, false));
-        Assert.Equal(("R", 5, 2), Tiers.Quota(0, false));
-        Assert.Equal(("U", 10, 3), Tiers.Quota(0, true));
+        Assert.Equal(("C", 20, 5), Tiers.Quota(5, false, 3));
+        Assert.Equal(("C", 20, 5), Tiers.Quota(400, false, 70));
+        Assert.Equal(("U", 10, 3), Tiers.Quota(4, false, 70));
+        Assert.Equal(("U", 10, 3), Tiers.Quota(1, false, 3));
+        Assert.Equal(("R", 5, 2), Tiers.Quota(0, false, 3));
+        Assert.Equal(("R", 5, 2), Tiers.Quota(0, false, 14));
+        Assert.Equal(("R", 3, 1), Tiers.Quota(0, false, 15));
+        Assert.Equal(("R", 3, 1), Tiers.Quota(0, false, 70));
+        Assert.Equal(("U", 10, 3), Tiers.Quota(0, true, 3));
+        Assert.Equal(("U", 10, 3), Tiers.Quota(0, true, 70));
+    }
+
+    /// <summary>
+    ///     The quota of a sense without a tag follows the size of its lemma: 3 and 1 for "cut" (70 senses), 5 and 2 for "record"
+    ///     (12 senses).
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Tiers_Build_LargeLemma_AsksFewerSentencesForUntaggedSenses()
+    {
+        // Arrange: one anchor for a sense of each lemma, no tag counts
+        var cut = WordLexicon.SensesOf("cut", PartOfSpeech.Verb);
+        var record = WordLexicon.SensesOf("record", PartOfSpeech.Noun);
+        Assert.True(Enum.GetValues<PartOfSpeech>().Sum(p => WordLexicon.SensesOf("cut", p).Length) >= Tiers.LargeLemmaSenses);
+        Assert.True(Enum.GetValues<PartOfSpeech>().Sum(p => WordLexicon.SensesOf("record", p).Length) < Tiers.LargeLemmaSenses);
+        var anchors = new List<CorpusRow> { SenseFixtures.Row(cut[0], 1), SenseFixtures.Row(record[0], 2) };
+
+        // Act
+        var rows = Tiers.Build(anchors, [], new Dictionary<string, int>());
+
+        // Assert
+        var cutRow = rows.First(r => r.SenseId == cut[0].SenseId);
+        var recordRow = rows.First(r => r.SenseId == record[0].SenseId);
+        Assert.Equal(("R", 3, 1), (cutRow.Tier, cutRow.AnchorQuota, cutRow.HoldoutQuota));
+        Assert.Equal(("R", 5, 2), (recordRow.Tier, recordRow.AnchorQuota, recordRow.HoldoutQuota));
     }
 
     /// <summary>

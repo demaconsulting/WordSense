@@ -12,13 +12,15 @@ namespace WordSense.Builder;
 /// <param name="MinAnswered">Number of answers a threshold must keep before its precision is believed.</param>
 /// <param name="Parallelism">Number of lemmas trained concurrently.</param>
 /// <param name="Solver">The method that fits the classifiers; the kernel form and the primal form find the same optimum.</param>
+/// <param name="ChooserForms">The normalized forms that get a form chooser (see <see cref="WeightsTrainer.ChooserForms"/>), or null for none: the cross-validation leaves out the anchors of a form of several lemmas that has no chooser, because the classifier does not run the encoder for it.</param>
 internal sealed record TrainingOptions(
     double C = 100,
     int Folds = 5,
     double TargetPrecision = 0.95,
     int MinAnswered = 3,
     int Parallelism = 2,
-    FitSolver Solver = FitSolver.Kernel)
+    FitSolver Solver = FitSolver.Kernel,
+    IReadOnlySet<string>? ChooserForms = null)
 {
     /// <summary>
     ///     Gets the number of lemmas the builder trains concurrently: the fit of each lemma is independent and written to
@@ -227,7 +229,23 @@ internal static class WeightsTrainer
         // The usage prior is an offset on the score of each sense; it is folded into the stored bias
         var anchorCounts = Enumerable.Range(0, columns.Count).Select(c => labels.Count(l => l == c)).ToArray();
         var offsets = usage is null ? null : SensePrior.Offsets(columns, anchorCounts, usage);
-        var key = fitCache is null ? null : FitCache.KeyOf(options, lemma, senseIds, groups, labels, x, offsets);
+
+        // The classifier scores an anchor over the candidate columns of the form of its target word (the open-class senses of the
+        // parts of speech that the form has for the lemma), so the thresholds are chosen on those (null when every anchor is
+        // scored over all the columns)
+        var columnOf = senseIds.Select((id, column) => (id, column)).ToDictionary(p => p.id, p => p.column, StringComparer.Ordinal);
+        // An anchor of a form for which the classifier does not run the encoder (a form of several lemmas without a chooser) is not scored
+        // at all, so it has no candidates; so is an anchor whose form has fewer than two (see OnnxClassifier.EncoderRuns)
+        Func<string, bool> formHasChooser = form => options.ChooserForms?.Contains(form) ?? false;
+        var rowCandidates = index.Select(i =>
+        {
+            var word = anchors[i].Words[anchors[i].TargetWordIndex];
+            var columnsOfForm = OnnxClassifier.FormColumns(word, lemma, id => columnOf.GetValueOrDefault(id, -1))?.ToArray() ?? [];
+            return columnsOfForm.Length >= 2 && OnnxClassifier.EncoderRuns(word, lemma, columnsOfForm.Length, formHasChooser) ? columnsOfForm : [];
+        }).ToArray();
+        var candidates = rowCandidates.All(c => c.Length == senseIds.Length) ? null : rowCandidates;
+
+        var key = fitCache is null ? null : FitCache.KeyOf(options, lemma, senseIds, groups, labels, x, offsets, candidates);
         if (key is not null && fitCache!.TryGet(key, out var cached))
         {
             return Entry(lemma, senseIds, cached);
@@ -236,7 +254,7 @@ internal static class WeightsTrainer
         var fitter = new LemmaFitter(x, options.Solver, options.Parallelism);
         var (weights, fitted) = fitter.Fit(Enumerable.Range(0, x.Length).ToArray(), labels, senseIds.Length, options.C);
         var bias = SensePrior.Apply(fitted, offsets);
-        var thresholds = Thresholds.Choose(lemma, x, labels, senseIds.Length, groups, options, fitter, offsets);
+        var thresholds = Thresholds.Choose(lemma, x, labels, senseIds.Length, groups, options, fitter, offsets, candidates);
         var fit = new LemmaFit(weights, bias, thresholds.Fine, thresholds.Group, x[0].Length);
         fitCache?.Add(key!, fit);
         return Entry(lemma, senseIds, fit);
@@ -345,6 +363,36 @@ internal static class WeightsTrainer
     }
 
     /// <summary>
+    ///     Tells why the rows of a form cannot train a chooser, by the two rules that depend on the rows alone.
+    /// </summary>
+    /// <param name="form">The form.</param>
+    /// <param name="labels">The distinct labels of the rows of the form, in ordinal order.</param>
+    /// <returns>The reason, or null when the rows can train a chooser (the third rule, a lemma of the form with weights to store it with, depends on the weights).</returns>
+    private static string? WhyNoChooser(string form, string[] labels)
+    {
+        if (labels.Length < 2)
+        {
+            return $"the rows name {labels.Length} label(s), a chooser needs two";
+        }
+
+        return ChooserCorpus.AnalysesOf(form).FirstOrDefault(a => ChooserCorpus.LabelIndexOf(labels, a) < 0) is { } unlabeled
+            ? $"no row has the label of the analysis {unlabeled.Lemma}/{unlabeled.PartOfSpeech}/{unlabeled.Features}"
+            : null;
+    }
+
+    /// <summary>
+    ///     Lists the forms that get a chooser, before any weights exist: the forms whose rows can train one (see
+    ///     <see cref="AttachChoosers"/>).
+    /// </summary>
+    /// <param name="rows">The chooser rows (anchors), or null for none.</param>
+    /// <returns>The forms. A form of a lemma that is being trained always has a lemma with weights to store its chooser with, so
+    /// the third rule of <see cref="AttachChoosers"/> never removes a form that matters to the cross-validation of that lemma.</returns>
+    public static IReadOnlySet<string> ChooserForms(IReadOnlyList<ChooserRow>? rows) =>
+        (rows ?? []).GroupBy(r => r.Form, StringComparer.Ordinal)
+            .Where(g => WhyNoChooser(g.Key, [.. g.Select(r => r.Label).Distinct(StringComparer.Ordinal).Order(StringComparer.Ordinal)]) is null)
+            .Select(g => g.Key).ToHashSet(StringComparer.Ordinal);
+
+    /// <summary>
     ///     Trains the chooser of one form.
     /// </summary>
     /// <param name="form">The form.</param>
@@ -365,16 +413,12 @@ internal static class WeightsTrainer
         FitCache? fitCache)
     {
         var labels = index.Select(i => rows[i].Label).Distinct(StringComparer.Ordinal).Order(StringComparer.Ordinal).ToArray();
-        if (labels.Length < 2)
+        if (WhyNoChooser(form, labels) is { } reason)
         {
-            return (string.Empty, null, $"the rows name {labels.Length} label(s), a chooser needs two");
+            return (string.Empty, null, reason);
         }
 
         var analyses = ChooserCorpus.AnalysesOf(form);
-        if (analyses.FirstOrDefault(a => ChooserCorpus.LabelIndexOf(labels, a) < 0) is { } unlabeled)
-        {
-            return (string.Empty, null, $"no row has the label of the analysis {unlabeled.Lemma}/{unlabeled.PartOfSpeech}/{unlabeled.Features}");
-        }
 
         var host = analyses.Select(a => a.Lemma).Distinct(StringComparer.Ordinal).Order(StringComparer.Ordinal).FirstOrDefault(trainedLemmas.Contains);
         if (host is null)

@@ -1,0 +1,3 @@
+group_id	lemma	pos	label	origin	kind
+send#group:dispatch	send	v	dispatch	curated	equivalent
+set#group:fixing	set	v	fixing	curated	equivalent

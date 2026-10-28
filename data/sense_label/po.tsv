@@ -1000,10 +1000,10 @@ oewn-possibility__1.09.00..	hypothesis	generated
 oewn-possibility__1.09.01..	opening	generated
 oewn-possibility__1.09.03..	expectation	generated
 oewn-possibility__1.26.00..	possibleness	generated
-oewn-possible__1.09.00..	opening	generated
-oewn-possible__1.18.00..	applicant	generated
-oewn-possible__3.00.00..	adjective	generated
-oewn-possible__3.00.04..	potential	generated
+oewn-possible__1.09.00..	opening	curated
+oewn-possible__1.18.00..	applicant	curated
+oewn-possible__3.00.00..	adjective	curated
+oewn-possible__3.00.04..	potential	curated
 oewn-possibleness__1.26.00..	noun	generated
 oewn-possibly__4.02.00..	maybe	generated
 oewn-possibly__4.02.01..	adverb	generated

@@ -17,7 +17,8 @@ analyses with their probabilities.
 
 Every word is looked up in an embedded dictionary of over 140,000 common words. A word with several analyses is
 decided from its sentence by `Basic`, a small statistical tagger in the core package, or by an ONNX encoder (`MiniLM` or
-`BertBaseCased`) that scores the fine senses of the 856 lemmas it was trained for and leaves every other word to `Basic`.
+`BertBaseCased`) that scores the fine senses of the 1,207 lemmas that have a sense classifier and leaves every other
+word to `Basic`.
 
 ## Features
 
@@ -107,9 +108,9 @@ they are sure enough. The [user guide][link-user-guide] shows their output for t
 <!-- model-table:begin -->
 | Model | Real-text sense (share @ precision) | Running-text part of speech (open corpus test) | UD-EWT test part of speech (convention-mapped) | Independent sense evaluation (SemCor) | STE challenge set (part of speech) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 3.67% @ 80.68% | 94.59% (ambiguous 92.72%) | 92.37% (ambiguous 89.75%) | 2.93% @ 75.59% (top-1 56.53%) | 98.65% (ambiguous 97.83%) | none | 245 KiB | 4 MiB | 0.11 ms | 34 ms + 58 ms | no |
-| MiniLM | 7.93% @ 96.32% | 94.67% (ambiguous 92.86%) | 92.74% (ambiguous 90.31%) | 8.30% @ 89.08% (top-1 58.70%) | 98.65% (ambiguous 97.83%) | 22 MiB | 5,225 KiB | 98 MiB | 1.52 ms | 443 ms + 60 ms | yes |
-| BERT base cased | 27.12% @ 94.46% | 94.70% (ambiguous 92.91%) | 92.69% (ambiguous 90.23%) | 26.84% @ 86.72% (top-1 64.99%) | 98.20% (ambiguous 97.10%) | 104 MiB | 10,203 KiB | 221 MiB | 8.08 ms | 684 ms + 56 ms | yes |
+| Basic | 4.02% @ 67.20% | 94.59% (ambiguous 92.72%) | 92.38% (ambiguous 89.76%) | 6.61% @ 29.92% (top-1 52.71%) | 98.65% (ambiguous 97.83%) | none | 244 KiB | 4 MiB | 0.11 ms | 34 ms + 58 ms | no |
+| MiniLM | 14.42% @ 95.80% | 94.60% (ambiguous 92.75%) | 92.72% (ambiguous 90.29%) | 15.86% @ 81.60% (top-1 53.36%) | 98.65% (ambiguous 97.83%) | 22 MiB | 7,764 KiB | 98 MiB | 1.52 ms | 443 ms + 60 ms | yes |
+| BERT base cased | 36.79% @ 95.24% | 94.62% (ambiguous 92.78%) | 92.59% (ambiguous 90.08%) | 33.93% @ 80.73% (top-1 57.12%) | 98.20% (ambiguous 97.10%) | 104 MiB | 15,163 KiB | 221 MiB | 8.08 ms | 684 ms + 56 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->
@@ -128,7 +129,8 @@ The part of speech is the dependable part of an answer; treat a sense as a candi
 
 - [User guide][link-user-guide]: results, keys, model choice, configuration, limitations and troubleshooting
 - [Accuracy and model choice][link-accuracy]: the measurements behind the table
-- [Senses appendix][link-appendix]: every trained lemma with its senses, groups and OEWN keys, and the heteronyms
+- [Senses appendix][link-appendix]: every lemma with anchor sentences (1,207 of them with a sense classifier), with its
+  senses, groups and OEWN keys, and the heteronyms
 
 ## Credits and Licenses
 

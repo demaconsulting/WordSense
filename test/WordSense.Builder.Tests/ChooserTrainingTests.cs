@@ -152,4 +152,28 @@ public sealed class ChooserTrainingTests
         Assert.Equal(WeightsBlobWriter.Write(first), WeightsBlobWriter.Write(second));
         Assert.Throws<ArgumentException>(() => WeightsTrainer.AttachChoosers(Weights("use"), rows, features[1..], Options));
     }
+
+    /// <summary>
+    ///     The forms that get a chooser are known before any weights exist (the cross-validation of the thresholds needs
+    ///     them), by the two rules of the rows: the forms that train a chooser are in the list, and the forms that are
+    ///     skipped for their rows are not.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_WeightsTrainer_ChooserForms_AreTheFormsWhoseRowsTrainAChooser()
+    {
+        // Arrange: "used" has both labels, "read" lacks the labels of some analyses, "bases" has one label
+        var (usedRows, _) = Rows("used", ("used", B), ("use", A));
+        var (readRows, _) = Rows("read", ("read", A), ("reed", B));
+        var (basesRows, _) = Rows("bases", ("base", A));
+        ChooserRow[] rows = [.. usedRows, .. readRows, .. basesRows];
+
+        // Act
+        var forms = WeightsTrainer.ChooserForms(rows);
+        var none = WeightsTrainer.ChooserForms(null);
+
+        // Assert
+        Assert.Contains("used", forms);
+        Assert.DoesNotContain("bases", forms);
+        Assert.Empty(none);
+    }
 }

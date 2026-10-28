@@ -54,6 +54,15 @@ namespace DemaConsulting.WordSense;
 ///     <see cref="SenseLevel.Group"/> level is never touched by this refinement, and neither is a result of one slot.
 ///     </para>
 ///     <para>
+///     A word whose primary result did not score senses gets the fallback result, with one guard: the Basic model answers
+///     at the <see cref="SenseLevel.Sense"/> level whenever its most probable analysis has exactly one sense, at any
+///     confidence, but the encoder models promise sense answers calibrated to a precision of 0.97. So for a word with more
+///     than one slot (lemma and part of speech) a fallback result at the sense level whose selected analysis lists exactly
+///     one sense is kept only when its confidence is at least 0.97; below it the same analysis is answered at the
+///     <see cref="SenseLevel.PartOfSpeech"/> level with the same confidence and no group or sense. The Basic model alone
+///     is not affected.
+///     </para>
+///     <para>
 ///     A typical composition is an encoder model as the primary model, which scores the fine senses of the lemmas it was
 ///     trained for, and the Basic model as the fallback, which chooses the analysis (part of speech) of every other
 ///     ambiguous word. The packages <c>DemaConsulting.WordSense.MiniLM</c> and <c>DemaConsulting.WordSense.BertBaseCased</c>
@@ -93,6 +102,12 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
     ///     either model counts with), so that the logarithm of the combination is always defined.
     /// </summary>
     private const double SlotFloor = 1e-6;
+
+    /// <summary>
+    ///     The confidence that a sense-level answer of the fallback model needs for a word with several analyses: the
+    ///     precision target (0.97) that the encoder models are calibrated to on real text.
+    /// </summary>
+    private const double SenseTarget = 0.97;
 
     private readonly IWordSenseModel _primary;
     private readonly IWordSenseModel _fallback;
@@ -206,10 +221,168 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
         var results = new ClassifyResult[list.Count];
         for (var i = 0; i < results.Length; i++)
         {
-            results[i] = ScoredSenses(primary[i]) ? Reconcile(Refine(primary[i], fallback[i]), fallback[i], _primaryWeight) : fallback[i];
+            results[i] = ScoredSenses(primary[i]) ? Combine(primary[i], fallback[i], _primaryWeight) : GuardSingleSense(fallback[i]);
         }
 
         return results;
+    }
+
+    /// <summary>
+    ///     Keeps a sense-level answer of the fallback model for a word with several analyses only when its confidence
+    ///     reaches <see cref="SenseTarget"/>; otherwise answers at the part-of-speech level with the same analysis.
+    /// </summary>
+    /// <remarks>
+    ///     The Basic model answers at the sense level whenever its most probable analysis has exactly one sense, at any
+    ///     confidence: that is the right behavior for a model that makes no promise about its sense answers. The encoder
+    ///     models do promise sense answers that are calibrated to the target precision, and a word whose own lemma the
+    ///     encoder did not score (a form of an untrained one-sense lemma, <c>growing</c> as an adjective, <c>more</c> as
+    ///     <c>much</c>) is answered by the fallback result as it is, so that answer would carry no such promise. For a
+    ///     word with more than one analysis, a fallback result at the sense level whose selected analysis lists exactly
+    ///     one sense is therefore kept only when its confidence is at least <see cref="SenseTarget"/>; below it the
+    ///     result is the same analysis, at the part-of-speech level, with the same confidence (the probability of its
+    ///     slot) and no group or sense. A word with a single analysis (the probability of the slot is 1) and every other
+    ///     result are returned as they are.
+    /// </remarks>
+    /// <param name="fallback">The result of the fallback model for a word that the primary model did not score.</param>
+    /// <returns>The result, or <paramref name="fallback"/> itself when nothing applies.</returns>
+    private static ClassifyResult GuardSingleSense(ClassifyResult fallback)
+    {
+        if (fallback.Level != SenseLevel.Sense || fallback.Confidence >= SenseTarget || GroupBySlot(fallback.Analyses).Count < 2)
+        {
+            return fallback;
+        }
+
+        var senseCount = fallback.Analyses.Where(a => a.Details.Equals(fallback.Details)).Select(a => a.Senses.IsDefaultOrEmpty ? 0 : a.Senses.Length).FirstOrDefault();
+        return senseCount == 1
+            ? new ClassifyResult(fallback.Word, fallback.IsKnown, fallback.Analyses, fallback.Details, SenseLevel.PartOfSpeech, fallback.Confidence, null, null)
+            : fallback;
+    }
+
+    /// <summary>
+    ///     Combines a primary result that scored senses with the fallback result of the same word.
+    /// </summary>
+    /// <param name="primary">The result of the primary model.</param>
+    /// <param name="fallback">The result of the fallback model.</param>
+    /// <param name="weight">The primary weight.</param>
+    /// <returns>The result for the word.</returns>
+    private static ClassifyResult Combine(ClassifyResult primary, ClassifyResult fallback, double weight)
+    {
+        var split = SplitClosedClass(primary, fallback, out var applied);
+        return Reconcile(Refine(split, fallback), fallback, weight, applied);
+    }
+
+    /// <summary>
+    ///     Takes the probability of the closed-class slots of a primary result from the fallback result, and lets the
+    ///     primary result decide only inside the open-class part.
+    /// </summary>
+    /// <remarks>
+    ///     <para>
+    ///     A closed-class slot (an auxiliary, determiner, pronoun, preposition, conjunction or interjection of a word: no
+    ///     WordNet senses, see <see cref="SenseFusion.IsClosedClass"/>) is a part of speech that a sense classifier has
+    ///     no evidence for: the mass of its senses says nothing about whether the word is used in that way. So when the
+    ///     primary result lists closed-class slots without probability (the encoder does not score them), the
+    ///     probability of every closed-class slot becomes the probability that the fallback result
+    ///     gives it (normalized over the slots of the primary result), and the open-class slots share the rest, in the
+    ///     proportions of the primary result. The analyses of a closed-class slot are those of the fallback result, with
+    ///     its senses and the ranking kind of its senses. A primary result that gives a closed-class slot a probability
+    ///     has an estimate of its own and is left as it is (the Basic model as the primary model, for example).
+    ///     </para>
+    ///     <para>
+    ///     When an open-class slot is still the most probable one, the primary result keeps its level, group and sense and
+    ///     its confidence is scaled by the new probability of the slot (the confidence is the probability of the slot times
+    ///     the probability of the sense within it). When a closed-class slot is the most probable one the answer is at the
+    ///     part-of-speech level with the slot probabilities worked out here, its first analysis selected and no sense or
+    ///     group: the composite decided a part of speech, not a sense. A primary result without a closed-class slot or
+    ///     without an open-class slot, a fallback result without analyses, or a fallback result that lists none of the
+    ///     slots is returned as it is. A primary result whose open-class slots have no probability at all has no evidence
+    ///     for them either, so every slot takes the probability of the fallback result (the analyses keep their senses and
+    ///     share the probability of their slot equally) and the answer is at the part-of-speech level.
+    ///     </para>
+    /// </remarks>
+    /// <param name="primary">The result of the primary model, which scored senses for the word.</param>
+    /// <param name="fallback">The result of the fallback model for the same word.</param>
+    /// <param name="applied">True when the probabilities were reassigned, false when the primary result is returned as it is.</param>
+    /// <returns>The primary result with the probabilities reassigned, or the primary result itself.</returns>
+    internal static ClassifyResult SplitClosedClass(ClassifyResult primary, ClassifyResult fallback, out bool applied)
+    {
+        applied = false;
+        var slots = GroupBySlot(primary.Analyses);
+        var isClosed = slots.Select(s => SenseFusion.IsClosedClass(s[0].Details.PartOfSpeech)).ToArray();
+        var closedCount = isClosed.Count(c => c);
+        if (fallback.Analyses.IsEmpty || closedCount == 0 || closedCount == slots.Count)
+        {
+            return primary;
+        }
+
+        // The probability of every slot of the primary result in the fallback result, normalized over those slots
+        var fallbackSlots = GroupBySlot(fallback.Analyses);
+        var fallbackOf = slots
+            .Select(s => fallbackSlots.Find(f => SenseFusion.SameSlot(f[0].Details, s[0].Details)))
+            .ToArray();
+        var fallbackTotal = fallbackOf.Sum(f => f is null ? 0.0 : SlotProbability(f));
+        if (fallbackTotal <= 0.0)
+        {
+            return primary;
+        }
+
+        var primaryProbability = slots.Select(SlotProbability).ToArray();
+        if (Enumerable.Range(0, slots.Count).Any(k => isClosed[k] && primaryProbability[k] > 0.0))
+        {
+            // The primary model has an estimate of its own for a closed-class slot (a tagger, or a classifier that scored it)
+            return primary;
+        }
+
+        // A primary result without open-class mass (a label of the chooser that stands for closed-class slots only took all of
+        // it) has no evidence for the open-class slots either, so every slot takes the probability of the fallback result
+        var openMass = Enumerable.Range(0, slots.Count).Where(k => !isClosed[k]).Sum(k => primaryProbability[k]);
+        var noOpenEvidence = openMass <= 0.0;
+        var fallbackProbability = fallbackOf.Select(f => f is null ? 0.0 : SlotProbability(f) / fallbackTotal).ToArray();
+        var closedMass = Enumerable.Range(0, slots.Count).Where(k => isClosed[k]).Sum(k => fallbackProbability[k]);
+        var probability = Enumerable.Range(0, slots.Count)
+            .Select(k => isClosed[k] || noOpenEvidence ? fallbackProbability[k] : (1.0 - closedMass) * primaryProbability[k] / openMass)
+            .ToArray();
+
+        // The most probable slot first (a tie keeps the order of the slots)
+        var order = Enumerable.Range(0, slots.Count).OrderByDescending(k => probability[k]).ThenBy(k => k).ToArray();
+        var best = order[0];
+        var combined = ImmutableArray.CreateBuilder<AnalysisCandidate>(primary.Analyses.Length + fallback.Analyses.Length);
+        foreach (var k in order)
+        {
+            if (isClosed[k])
+            {
+                foreach (var analysis in (fallbackOf[k] ?? slots[k]).OrderByDescending(a => a.Probability))
+                {
+                    combined.Add(analysis.WithProbability(fallbackOf[k] is null ? 0.0 : analysis.Probability / fallbackTotal));
+                }
+            }
+            else if (noOpenEvidence)
+            {
+                // The analyses keep the senses they list and share the probability of their slot equally
+                foreach (var analysis in slots[k])
+                {
+                    combined.Add(analysis.WithProbability(probability[k] / slots[k].Count));
+                }
+            }
+            else
+            {
+                var scale = primaryProbability[k] > 0.0 ? probability[k] / primaryProbability[k] : 0.0;
+                foreach (var analysis in slots[k])
+                {
+                    combined.Add(analysis.WithProbability(analysis.Probability * scale));
+                }
+            }
+        }
+
+        var analyses = combined.ToImmutable();
+        applied = true;
+        var keepsLevel = !isClosed[best]
+            && primary.Details is { } primarySelected
+            && SenseFusion.SameSlot(slots[best][0].Details, primarySelected)
+            && primary.Level is SenseLevel.Sense or SenseLevel.Group
+            && primaryProbability[best] > 0.0;
+        return keepsLevel
+            ? new ClassifyResult(primary.Word, primary.IsKnown, analyses, primary.Details, primary.Level, primary.Confidence * probability[best] / primaryProbability[best], primary.GroupId, primary.SenseId)
+            : new ClassifyResult(primary.Word, primary.IsKnown, analyses, analyses[0].Details, SenseLevel.PartOfSpeech, probability[best], null, null);
     }
 
     /// <summary>
@@ -228,12 +401,21 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
     ///     analysis is the first one, and its confidence is the probability of the selected slot, as for every answer at the
     ///     part-of-speech level. A result at the sense or group level, a weight of 1, a fallback result without analyses
     ///     and a result of a single slot are returned as they are.
+    ///     <para>
+    ///     When the closed-class split has been applied to the primary result (<paramref name="closedFixed"/>), the probability of every closed-class slot of the primary result is
+    ///     the probability of the fallback result by construction (0 when Basic gives the slot none or omits it) and is never weighted again: combining it again with the
+    ///     fallback result would count the fallback twice and move the closed mass. The combination is then made inside the
+    ///     open-class part only: the other slots share the probability that the closed-class slots leave, in the proportions
+    ///     of the combination, so the closed-class slots keep exactly the probability of the fallback and the open-class
+    ///     slots keep the encoder evidence combined with the fallback evidence.
+    ///     </para>
     /// </remarks>
     /// <param name="primary">The result of the primary model, which scored senses for the word.</param>
     /// <param name="fallback">The result of the fallback model for the same word.</param>
     /// <param name="weight">The primary weight, from 0 to 1.</param>
+    /// <param name="closedFixed">Whether the closed-class slots of the primary result carry the probability of the fallback result (the split was applied) and keep it.</param>
     /// <returns>The reconciled result, or <paramref name="primary"/> itself when nothing applies.</returns>
-    private static ClassifyResult Reconcile(ClassifyResult primary, ClassifyResult fallback, double weight)
+    private static ClassifyResult Reconcile(ClassifyResult primary, ClassifyResult fallback, double weight, bool closedFixed)
     {
         if (weight >= 1.0 || primary.Level != SenseLevel.PartOfSpeech || fallback.Analyses.IsEmpty)
         {
@@ -260,19 +442,30 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
             return primary;
         }
 
-        // The combination in the log domain, normalized with the largest score subtracted
+        // The closed-class slots of the primary result that the split reassigned keep their probability, a probability of 0 too (Basic
+        // gave the slot none, or omitted it); the other slots share the rest. A closed-class slot that only the fallback result lists
+        // was not part of the split and is combined like any other
+        var isFixed = slots.Select((s, k) => closedFixed && k < primarySlots.Count && SenseFusion.IsClosedClass(s.Analyses[0].Details.PartOfSpeech)).ToArray();
+        var fixedMass = Enumerable.Range(0, slots.Count).Where(k => isFixed[k]).Sum(k => slots[k].Primary);
+        if (Enumerable.Range(0, slots.Count).All(k => isFixed[k]))
+        {
+            return primary;
+        }
+
+        // The combination in the log domain over the other slots, normalized with the largest score subtracted
         var scores = slots.Select(s => (weight * Math.Log(Math.Max(s.Primary, SlotFloor))) + ((1.0 - weight) * Math.Log(Math.Max(s.Fallback, SlotFloor)))).ToArray();
-        var best = scores.Max();
+        var best = Enumerable.Range(0, slots.Count).Where(k => !isFixed[k]).Max(k => scores[k]);
         var exponents = scores.Select(x => Math.Exp(x - best)).ToArray();
-        var total = exponents.Sum();
+        var total = Enumerable.Range(0, slots.Count).Where(k => !isFixed[k]).Sum(k => exponents[k]);
+        var probability = Enumerable.Range(0, slots.Count).Select(k => isFixed[k] ? slots[k].Primary : (1.0 - fixedMass) * exponents[k] / total).ToArray();
 
         // The most probable slot first (a tie keeps the order of the slots), and in a slot the most probable analysis
         // first (a tie keeps the order of the result): the variants keep their share of their own slot
-        var order = Enumerable.Range(0, slots.Count).OrderByDescending(k => exponents[k]).ThenBy(k => k).ToArray();
+        var order = Enumerable.Range(0, slots.Count).OrderByDescending(k => probability[k]).ThenBy(k => k).ToArray();
         var combined = ImmutableArray.CreateBuilder<AnalysisCandidate>(primary.Analyses.Length);
         foreach (var k in order)
         {
-            var slotProbability = exponents[k] / total;
+            var slotProbability = probability[k];
             var members = slots[k].Analyses;
             var mass = SlotProbability(members);
             foreach (var member in members.OrderByDescending(a => a.Probability))
@@ -283,7 +476,7 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
         }
 
         var analysesOfResult = combined.ToImmutable();
-        return new ClassifyResult(primary.Word, primary.IsKnown, analysesOfResult, analysesOfResult[0].Details, SenseLevel.PartOfSpeech, exponents[order[0]] / total, null, null);
+        return new ClassifyResult(primary.Word, primary.IsKnown, analysesOfResult, analysesOfResult[0].Details, SenseLevel.PartOfSpeech, probability[order[0]], null, null);
     }
 
     /// <summary>

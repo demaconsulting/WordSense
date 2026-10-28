@@ -260,7 +260,7 @@ sections:
           inventory order on ties) by the Basic model.
         tags: [system]
         justification: |
-          About 83 percent of the ambiguous words of running text have a lemma that no encoder was trained for; the
+          About 56 percent of the ambiguous words of running text have a lemma that no encoder was trained for; the
           usage of the senses is the one piece of evidence that exists for every lemma, and the most frequent sense
           is right for about two thirds of the words of the independent gold set, so the ranking gives a consumer
           the likely senses where no model scored them.
@@ -626,7 +626,20 @@ sections:
           - WordSense-WordSenseBuilder-FormChoosers
           - WordSense-WordSenseBuilder-Thresholds
           - WordSense-WordSenseBuilder-RealCalibration
+          - WordSense-WordSenseBuilder-RealCalibration-Provenance
+          - WordSense-WordSenseBuilder-RealCalibration-Thresholds
+          - WordSense-WordSenseBuilder-RealCalibration-NeverStaysNever
+          - WordSense-WordSenseBuilder-RealCalibration-Deterministic
+          - WordSense-WordSenseBuilder-RealCalibration-Group
+          - WordSense-WordSenseBuilder-RealCalibration-Strata
+          - WordSense-WordSenseBuilder-RealCalibration-InferenceMargin
+          - WordSense-WordSenseBuilder-RealCalibration-FormPlan
+          - WordSense-WordSenseBuilder-RealCalibration-Outcome
+          - WordSense-WordSenseBuilder-RealCalibration-ClosedSlotWins
+          - WordSense-WordSenseBuilder-RealCalibration-ClosedSlotLoses
+          - WordSense-WordSenseBuilder-RealCalibration-BasicResults
           - WordSense-WordSenseBuilder-CalibrationShift
+          - WordSense-WordSenseBuilder-PrecisionGate
           - WordSense-WordSenseBuilder-Tiers
           - WordSense-WordSenseBuilder-EmbeddingCache
           - WordSense-WordSenseBuilder-FitCache
@@ -638,6 +651,7 @@ sections:
           - WordSense-WordSenseBuilder-EvaluateTagger
           - WordSense-WordSenseBuilder-Hyperparameters
           - WordSense-WordSenseBuilder-Appendix
+          - WordSense-WordSenseBuilder-Appendix-LemmaCounts
           - WordSense-WordSenseBuilder-Coverage
           - WordSense-WordSenseBuilder-Corpus
           - WordSense-WordSenseBuilder-CorpusLicenses
@@ -697,6 +711,7 @@ sections:
           generating the appendix from the data and the corpus, keep both honest.
         children:
           - WordSense-WordSenseBuilder-Appendix
+          - WordSense-WordSenseBuilder-Appendix-LemmaCounts
         tests:
           - WordSense_Readme_CodeBlocks_MatchCompiledSamples
           - WordSense_Readme_DownloadBlock_MatchesCompiledSample

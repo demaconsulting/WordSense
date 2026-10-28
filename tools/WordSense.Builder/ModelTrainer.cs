@@ -108,7 +108,7 @@ internal static class ModelTrainer
         var caching = new CachingEncoder(encoder.EncodeAsync, cache);
         var data = await TrainDataAsync(
             info.Name, model.ModelId, WordLexicon.Current.InventoryHash.ToArray(), anchors, options, caching, frozenMean, fitCache, output, clock, cancellationToken, holdout, chooserAnchors, chooserHoldout,
-            RealSplit.Classify(corpus, holdout).Calibration, new CalibrationOptions(settings.CalibrationTarget), usage).ConfigureAwait(false);
+            RealSplit.Classify(corpus, holdout).Calibration, new CalibrationOptions(settings.CalibrationTarget, Stratum: Corpus.StagesOf(anchors)), usage).ConfigureAwait(false);
 
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
         File.WriteAllBytes(path, WeightsBlobWriter.Write(data));
@@ -258,16 +258,20 @@ internal static class ModelTrainer
 
         output.WriteLine($"{name}: fitting the classifiers of {pooled.Length} sentences on {options.Parallelism} threads ({clock.Elapsed:hh\\:mm\\:ss}).");
         var fitClock = Stopwatch.StartNew();
-        var trained = WeightsTrainer.TrainDense(modelId, inventoryHash, pooled, anchors, options, frozenMean, fitCache, usage);
+        // The cross-validation scores an anchor only where the classifier runs the encoder, and that depends on the choosers of the forms
+        var trained = WeightsTrainer.TrainDense(modelId, inventoryHash, pooled, anchors, options with { ChooserForms = WeightsTrainer.ChooserForms(chooserAnchors) }, frozenMean, fitCache, usage);
         var data = trained.Data;
-        if (calibration is { Count: > 0 })
-        {
-            data = await CalibrateAsync(name, data, calibration, calibrationOptions ?? new CalibrationOptions(), encoder, output, clock, cancellationToken).ConfigureAwait(false);
-        }
 
+        // The form choosers come first: the calibration scores a row with the plan that the classifier has for its form, and the
+        // chooser of a form decides whether the encoder runs for it (the choosers do not read the thresholds of the lemmas)
         if (chooserAnchors is { Count: > 0 })
         {
             data = await TrainChoosersAsync(name, data, chooserAnchors, chooserHoldout ?? [], options, encoder, fitCache, output, clock, cancellationToken).ConfigureAwait(false);
+        }
+
+        if (calibration is { Count: > 0 })
+        {
+            data = await CalibrateAsync(name, data, calibration, calibrationOptions ?? new CalibrationOptions(), encoder, output, clock, cancellationToken).ConfigureAwait(false);
         }
 
         if (fitCache is not null)
@@ -507,7 +511,16 @@ internal static class ModelTrainer
 
         var pooled = await EncodeAsync(name, "real calibration sentences", rows, encoder, output, clock, cancellationToken).ConfigureAwait(false);
         var features = Features(pooled, data.Mean, rows.Select(r => r.Sentence).ToList());
-        var (calibrated, report) = RealCalibrator.Apply(data, rows, features, calibrationOptions);
+        // The result of Basic for each row decides which rows reach the sense level at run time (the closed-class split)
+        using var basicModel = new BasicWordSenseModel();
+        var basic = new List<ClassifyResult?>(rows.Count);
+        foreach (var row in rows)
+        {
+            var results = await basicModel.ClassifyAsync(row.Words, cancellationToken).ConfigureAwait(false);
+            basic.Add(results[row.TargetWordIndex]);
+        }
+
+        var (calibrated, report) = RealCalibrator.Apply(data, rows, features, calibrationOptions, basic);
         output.WriteLine($"{name}: {report.Describe()}");
         return calibrated;
     }

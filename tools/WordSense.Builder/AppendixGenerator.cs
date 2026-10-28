@@ -106,7 +106,10 @@ internal static class AppendixGenerator
         var listed = senses.Keys.Order(StringComparer.Ordinal)
             .Select(l => (Lemma: l, Senses: senses[l].Select(s => new Listed(s, glosses[s.SenseId])).ToList())).ToList();
         var heteronyms = Heteronyms.Build(data, Path.Join(corpus, "curation", "heteronyms.tsv"), image);
-        return Render(image, listed, missing, heteronyms);
+
+        // The encoder models train a classifier for a lemma only when two or more of its senses have anchors (WeightsTrainer)
+        var classified = Corpus.CountAnchoredSenses(anchorsDirectory).Count(p => senses.ContainsKey(p.Key) && p.Value >= 2);
+        return Render(image, listed, missing, heteronyms, classified);
     }
 
     /// <summary>
@@ -175,7 +178,7 @@ internal static class AppendixGenerator
     /// <summary>
     ///     Renders the document.
     /// </summary>
-    private static string Render(WordImage image, List<(string Lemma, List<Listed> Senses)> lemmas, List<string> missing, IReadOnlyList<Heteronyms.Heteronym> heteronyms)
+    private static string Render(WordImage image, List<(string Lemma, List<Listed> Senses)> lemmas, List<string> missing, IReadOnlyList<Heteronyms.Heteronym> heteronyms, int classified)
     {
         var lines = new List<string>
         {
@@ -186,9 +189,9 @@ internal static class AppendixGenerator
         };
 
         AddExplanation(lines, lemmas);
-        AddDictionary(lines, image, lemmas, missing);
+        AddDictionary(lines, image, lemmas, missing, classified);
         AddKeys(lines, heteronyms);
-        AddLemmas(lines, image, lemmas);
+        AddLemmas(lines, image, lemmas, classified);
 
         return string.Join('\n', lines) + "\n";
     }
@@ -220,7 +223,7 @@ internal static class AppendixGenerator
         var parts = all.Select(s => s.PartOfSpeech).Distinct().Order().ToList();
         AddParagraph(
             lines,
-            "`PartOfSpeech` has ten values. The trained lemmas have senses of " +
+            "`PartOfSpeech` has ten values. The listed lemmas have senses of " +
             $"{parts.Count.ToString(Inv)} of them:");
         lines.Add("| Part of speech | Lemmas | Senses |");
         lines.Add("| -------------- | -----: | -----: |");
@@ -251,7 +254,7 @@ internal static class AppendixGenerator
     /// <summary>
     ///     Adds the summary of the dictionary words: the size of the word table and the share of its senses that are trained.
     /// </summary>
-    private static void AddDictionary(List<string> lines, WordImage image, List<(string Lemma, List<Listed> Senses)> lemmas, List<string> missing)
+    private static void AddDictionary(List<string> lines, WordImage image, List<(string Lemma, List<Listed> Senses)> lemmas, List<string> missing, int classified)
     {
         var trainedSenses = lemmas.Sum(l => l.Senses.Count);
         var trainedGroups = lemmas.SelectMany(l => l.Senses).Select(s => s.Sense.GroupId).Where(g => g is not null).Distinct(StringComparer.Ordinal).Count();
@@ -263,12 +266,14 @@ internal static class AppendixGenerator
             $"The word table knows {image.SpellingCount.ToString("N0", Inv)} spellings (lemmas and inflected forms) of " +
             $"{image.EntryCount.ToString("N0", Inv)} entries, and its sense catalog lists {image.SenseCount.ToString("N0", Inv)} " +
             $"senses in {image.GroupCount.ToString("N0", Inv)} curated groups. Every word of the table that is not " +
-            "listed below has no trained classifier.");
+            "listed below has no anchor sentences and no sense classifier.");
         AddParagraph(
             lines,
-            $"The lemmas listed below are the {lemmas.Count.ToString("N0", Inv)} trained lemmas (the lemmas that have " +
-            $"anchor sentences), with {trainedSenses.ToString("N0", Inv)} senses ({project.ToString("N0", Inv)} of them " +
-            $"project senses) and {trainedGroups.ToString("N0", Inv)} groups.");
+            $"The lemmas listed below are the {lemmas.Count.ToString("N0", Inv)} lemmas that have anchor sentences, with " +
+            $"{trainedSenses.ToString("N0", Inv)} senses ({project.ToString("N0", Inv)} of them project senses) and " +
+            $"{trainedGroups.ToString("N0", Inv)} groups. The encoder models train a sense classifier for {classified.ToString("N0", Inv)} of " +
+            "them, the lemmas with anchor sentences for two or more senses; the other lemmas have one anchored sense and no " +
+            "classifier.");
         if (missing.Count > 0)
         {
             AddParagraph(
@@ -406,14 +411,14 @@ internal static class AppendixGenerator
     /// <summary>
     ///     Adds the alphabetical lemma list.
     /// </summary>
-    private static void AddLemmas(List<string> lines, WordImage image, List<(string Lemma, List<Listed> Senses)> lemmas)
+    private static void AddLemmas(List<string> lines, WordImage image, List<(string Lemma, List<Listed> Senses)> lemmas, int classified)
     {
         lines.Add("## Supported Lemmas");
         lines.Add(string.Empty);
         AddParagraph(
             lines,
-            $"The library supports {lemmas.Count.ToString("N0", Inv)} lemmas with " +
-            $"{lemmas.Sum(l => l.Senses.Count).ToString("N0", Inv)} senses in total, listed alphabetically. Each lemma lists " +
+            $"The list holds the {lemmas.Count.ToString("N0", Inv)} lemmas that have anchor sentences ({classified.ToString("N0", Inv)} of them " +
+            $"with a sense classifier) and their {lemmas.Sum(l => l.Senses.Count).ToString("N0", Inv)} senses in total, listed alphabetically. Each lemma lists " +
             "its parts of speech and forms. Under it, every sense gives its id and part of speech, its group, its Open " +
             "English WordNet sense key (a project sense has none) and its gloss.");
 
