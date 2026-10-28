@@ -1260,6 +1260,54 @@ public class OnnxClassifierTests
         Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
     }
 
+    /// <summary>
+    ///     A chooser label that stands for closed-class slots only gives its probability to no slot, not even when no slot
+    ///     of the label has mass: the probability is dropped and the other labels are renormalized, so the closed-class
+    ///     slot stays at 0 and the composite model can take it from Basic.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxClassifier_ClassifyAsync_ClosedOnlyChooserLabel_GivesItsProbabilityToNoSlot()
+    {
+        // Arrange: "there's" is a form of "there" (an adverb) and of "be" (an auxiliary: a closed-only label); the chooser prefers "be"
+        var table = Fixtures.Table(Fixtures.Lemma("there", fine: 1f, choosers: [Fixtures.Chooser("there's", ["be", "there"], 0.5f)]));
+        var vector = Fixtures.Feature((Fixtures.Label(0), 4));
+
+        // Act
+        var result = await RunAsync(table, vector, "there's");
+
+        // Assert: the auxiliary has no probability, and the adverb takes all of it
+        var auxiliary = Analysis(result, PartOfSpeech.Auxiliary);
+        var adverb = Analysis(result, PartOfSpeech.Adverb);
+        Assert.Equal(0.0, auxiliary.Probability);
+        Assert.Equal(1.0, adverb.Probability, 12);
+        Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 12);
+        Assert.Equal(PartOfSpeech.Adverb, result.Details!.PartOfSpeech);
+    }
+
+    /// <summary>
+    ///     A form whose every label is closed-only has no open-class evidence at all: no probability is divided by zero,
+    ///     the probabilities still sum to one (equally, as there is nothing else to answer), and the chooser does not
+    ///     favor a label by giving it mass.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxClassifier_ClassifyAsync_EveryLabelClosedOnly_SharesEquallyAndIsFinite()
+    {
+        // Arrange: "that's" is a form of "that" (a pronoun) and of "be" (an auxiliary): two closed-only labels
+        var table = Fixtures.Table(Fixtures.Lemma("be", fine: 1f, choosers: [Fixtures.Chooser("that's", ["be", "that"], 0.5f)]));
+        var vector = Fixtures.Feature((Fixtures.Label(0), 4));
+
+        // Act
+        var result = await RunAsync(table, vector, "that's");
+
+        // Assert
+        Assert.All(result.Analyses, a => Assert.True(double.IsFinite(a.Probability)));
+        Assert.All(result.Analyses, a => Assert.Equal(1.0 / result.Analyses.Length, a.Probability, 12));
+        Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 12);
+        Assert.Equal(SenseLevel.PartOfSpeech, result.Level);
+    }
+
     private static float[] Centered(WeightedLemmaTable table, double[] vector) => FeatureExtractor.Center(vector, table.Data.Mean)!;
 
     /// <summary>

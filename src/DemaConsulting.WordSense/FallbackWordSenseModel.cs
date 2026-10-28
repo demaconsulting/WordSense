@@ -294,7 +294,9 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
     ///     part-of-speech level with the slot probabilities worked out here, its first analysis selected and no sense or
     ///     group: the composite decided a part of speech, not a sense. A primary result without a closed-class slot or
     ///     without an open-class slot, a fallback result without analyses, or a fallback result that lists none of the
-    ///     slots is returned as it is.
+    ///     slots is returned as it is. A primary result whose open-class slots have no probability at all has no evidence
+    ///     for them either, so every slot takes the probability of the fallback result (the analyses keep their senses and
+    ///     share the probability of their slot equally) and the answer is at the part-of-speech level.
     ///     </para>
     /// </remarks>
     /// <param name="primary">The result of the primary model, which scored senses for the word.</param>
@@ -330,16 +332,14 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
             return primary;
         }
 
+        // A primary result without open-class mass (a label of the chooser that stands for closed-class slots only took all of
+        // it) has no evidence for the open-class slots either, so every slot takes the probability of the fallback result
         var openMass = Enumerable.Range(0, slots.Count).Where(k => !isClosed[k]).Sum(k => primaryProbability[k]);
-        if (openMass <= 0.0)
-        {
-            return primary;
-        }
-
+        var noOpenEvidence = openMass <= 0.0;
         var fallbackProbability = fallbackOf.Select(f => f is null ? 0.0 : SlotProbability(f) / fallbackTotal).ToArray();
         var closedMass = Enumerable.Range(0, slots.Count).Where(k => isClosed[k]).Sum(k => fallbackProbability[k]);
         var probability = Enumerable.Range(0, slots.Count)
-            .Select(k => isClosed[k] ? fallbackProbability[k] : (1.0 - closedMass) * primaryProbability[k] / openMass)
+            .Select(k => isClosed[k] || noOpenEvidence ? fallbackProbability[k] : (1.0 - closedMass) * primaryProbability[k] / openMass)
             .ToArray();
 
         // The most probable slot first (a tie keeps the order of the slots)
@@ -353,6 +353,14 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
                 foreach (var analysis in (fallbackOf[k] ?? slots[k]).OrderByDescending(a => a.Probability))
                 {
                     combined.Add(analysis.WithProbability(fallbackOf[k] is null ? 0.0 : analysis.Probability / fallbackTotal));
+                }
+            }
+            else if (noOpenEvidence)
+            {
+                // The analyses keep the senses they list and share the probability of their slot equally
+                foreach (var analysis in slots[k])
+                {
+                    combined.Add(analysis.WithProbability(probability[k] / slots[k].Count));
                 }
             }
             else

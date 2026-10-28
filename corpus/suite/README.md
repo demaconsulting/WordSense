@@ -109,8 +109,8 @@ rows below `fine`):
 | Model | Answered | Fine |
 | ----- | -------: | ---: |
 | Basic | 96.43% | 78.85% |
-| MiniLM | 96.43% | 91.76% |
-| BertBaseCased | 98.63% | 95.60% |
+| MiniLM | 96.70% | 92.03% |
+| BertBaseCased | 99.18% | 96.15% |
 
 **Policy.**
 
@@ -137,7 +137,7 @@ rows below `fine`):
 | Row | Model | Grade on the development machine | Grade on CI (Windows x64, macOS arm64) | Recorded |
 | --- | --- | --- | --- | --- |
 | `C-content-6` (`A small raise will not content the angry workers`) | BertBaseCased | fine | miss | miss |
-| `H-defense-1` (`The lawyer prepared a strong defense`) | BertBaseCased | fine | answer (Windows x64) | answer |
+| `H-defense-1` (`The lawyer prepared a strong defense`) | BertBaseCased | fine | answer (Windows x64, Ubuntu x64) | answer |
 
 <!-- markdownlint-enable MD013 -->
 

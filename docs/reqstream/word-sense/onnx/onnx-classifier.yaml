@@ -74,7 +74,9 @@ sections:
                 title: >-
                   OnnxClassifier shall list an analysis of a closed class (auxiliary, determiner, pronoun,
                   preposition, conjunction, interjection) with probability 0 and without senses, and its senses shall
-                  not compete with the senses of the open-class analyses.
+                  not compete with the senses of the open-class analyses; no fallback of the probability (a chooser
+                  label without mass, a word without mass) shall give a closed-class slot any, and a chooser label that
+                  stands for closed-class slots only shall give its probability to no slot.
                 tags: [unit]
                 justification: |
                   A closed class has no WordNet senses and its project senses are few, so the mass of its senses says
@@ -82,6 +84,8 @@ sections:
                   (WordSense-Core-WordSenseContracts-FallbackClosedClass).
                 tests:
                   - OnnxClassifier_ClassifyAsync_ClosedClassUseOfLike_IsNotScored
+                  - OnnxClassifier_ClassifyAsync_ClosedOnlyChooserLabel_GivesItsProbabilityToNoSlot
+                  - OnnxClassifier_ClassifyAsync_EveryLabelClosedOnly_SharesEquallyAndIsFinite
               - id: WordSense-Onnx-OnnxClassifier-SharedCandidates
                 title: >-
                   OnnxClassifier shall provide to the build tool the candidate selection that it uses itself for the

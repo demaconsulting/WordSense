@@ -594,7 +594,7 @@ internal sealed class OnnxClassifier
             WeighBySlots(plan, lemmaScores, weightOf);
         }
 
-        Normalize(weightOf);
+        Normalize(plan, weightOf);
 
         // The probability of every slot, and the order: the most probable slot first (ties keep the lexicon order of the
         // first analysis of the slot), and in a slot the most probable analysis first (ties keep the lexicon order)
@@ -686,17 +686,21 @@ internal sealed class OnnxClassifier
     /// <param name="weightOf">The probability of every analysis; filled in here.</param>
     /// <remarks>
     ///     The label shares its probability among the slots of its analyses by the mass of their senses, and a slot
-    ///     shares it equally among its analyses that the label stands for.
+    ///     shares it equally among its analyses that the label stands for. A closed-class slot has no mass and never
+    ///     receives any, not even when no slot of the label has mass: the label then shares its probability equally among
+    ///     its open-class slots, and a label that stands for closed-class slots only is dropped (its probability goes
+    ///     to no slot, and the other labels are renormalized with the analyses).
     /// </remarks>
     private static void SpreadLabelProbability(Pending plan, List<int> indexes, double labelProbability, Dictionary<string, LemmaScores> lemmaScores, double[] weightOf)
     {
         var slotsOfLabel = indexes.Select(plan.SlotOf).Distinct().ToList();
         var masses = slotsOfLabel.Select(s => SlotMass(lemmaScores, s)).ToArray();
         var total = masses.Sum();
+        var openSlots = slotsOfLabel.Count(s => !SenseFusion.IsClosedClass(s.PartOfSpeech));
         for (var k = 0; k < slotsOfLabel.Count; k++)
         {
             var inSlot = indexes.Where(i => plan.SlotOf(i) == slotsOfLabel[k]).ToList();
-            var share = total > 0 ? masses[k] / total : 1.0 / slotsOfLabel.Count;
+            var share = total > 0 ? masses[k] / total : EqualShare(slotsOfLabel[k], openSlots);
             foreach (var i in inSlot)
             {
                 weightOf[i] = labelProbability * share / inSlot.Count;
@@ -714,14 +718,25 @@ internal sealed class OnnxClassifier
     {
         var masses = plan.Slots.Select(s => SlotMass(lemmaScores, s)).ToArray();
         var total = masses.Sum();
+        var openSlots = plan.Slots.Count(s => !SenseFusion.IsClosedClass(s.PartOfSpeech));
         for (var s = 0; s < plan.Slots.Count; s++)
         {
             foreach (var i in plan.Slots[s].Analyses)
             {
-                weightOf[i] = (total > 0 ? masses[s] / total : 1.0 / plan.Slots.Count) / plan.Slots[s].Analyses.Count;
+                weightOf[i] = (total > 0 ? masses[s] / total : EqualShare(plan.Slots[s], openSlots)) / plan.Slots[s].Analyses.Count;
             }
         }
     }
+
+    /// <summary>
+    ///     Gets the share of a slot when no slot has mass: equal among the open-class slots, none for a closed-class slot
+    ///     (it has no evidence of its own, and the fallback model takes its probability).
+    /// </summary>
+    /// <param name="slot">The slot.</param>
+    /// <param name="openSlots">The number of open-class slots that share the probability.</param>
+    /// <returns>The share.</returns>
+    private static double EqualShare(Slot slot, int openSlots) =>
+        SenseFusion.IsClosedClass(slot.PartOfSpeech) || openSlots == 0 ? 0.0 : 1.0 / openSlots;
 
     /// <summary>
     ///     Decides the level of the answer for the selected analysis, with the thresholds of its lemma.
@@ -794,12 +809,31 @@ internal sealed class OnnxClassifier
         return label >= 0 ? label : throw new InvalidDataException($"The chooser of '{chooser.Form}' has no label for the analysis {analysis.Lemma}/{analysis.Features}.");
     }
 
-    private static void Normalize(double[] values)
+    /// <summary>
+    ///     Scales the probabilities of the analyses to sum to one. When nothing has mass (a label that stands for
+    ///     closed-class slots only took all of it), the open-class analyses share it equally; a form without an open-class
+    ///     analysis shares it equally among all, as there is nothing else to answer.
+    /// </summary>
+    /// <param name="plan">The pending word.</param>
+    /// <param name="values">The probability of every analysis; rewritten here.</param>
+    private static void Normalize(Pending plan, double[] values)
     {
         var sum = values.Sum();
-        for (var i = 0; i < values.Length; i++)
+        if (sum > 0)
         {
-            values[i] = sum > 0 ? values[i] / sum : 1.0 / values.Length;
+            for (var i = 0; i < values.Length; i++)
+            {
+                values[i] /= sum;
+            }
+
+            return;
+        }
+
+        var open = Enumerable.Range(0, values.Length).Where(i => !SenseFusion.IsClosedClass(plan.SlotOf(i).PartOfSpeech)).ToArray();
+        var sharers = open.Length > 0 ? open : Enumerable.Range(0, values.Length).ToArray();
+        foreach (var i in sharers)
+        {
+            values[i] = 1.0 / sharers.Length;
         }
     }
 

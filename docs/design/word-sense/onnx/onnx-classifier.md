@@ -54,7 +54,12 @@ The probabilities are computed per slot, never per variant:
    probability of the chooser's labels that the slot's analyses carry (a label shares its probability among its slots in
    proportion to the mass of their senses). A slot of a closed class has no scored senses and so mass 0, whether or not
    its lemma has weights (the fallback model takes its probability); an open-class slot whose lemma has no weights counts
-   as mass 1 so that it still shares the probability.
+   as mass 1 so that it still shares the probability. No fallback gives a closed-class slot mass either: when no slot of
+   a chooser label has mass, the label shares its probability equally among its open-class slots, and a label that
+   stands for closed-class slots only is dropped (the other labels are renormalized with the analyses); when nothing has
+   mass, the open-class analyses share the probability equally, and a form without an open-class analysis (`that's`)
+   shares it equally among all, as there is nothing else to answer. The fallback model then takes the closed-class
+   slots from Basic (`SplitClosedClass` refuses a slot that the encoder gave a probability).
 3. The variants of a slot split its probability: by the labels of the chooser when it has one per variant (`read` as a
    past and a present tense), otherwise equally, the lexicon order breaking ties. This prior is documented, not
    learned, and it reaches neither the level nor the confidence.

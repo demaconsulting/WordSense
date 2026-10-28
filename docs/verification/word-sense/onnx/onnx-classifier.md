@@ -51,8 +51,11 @@ All scenarios below pass on every platform and target framework of the CI matrix
   several senses and usable weights, only for those words, and never for a text in which no word does.
 - **Senses of every analysis** (`WordWithSeveralAnalyses_RanksTheSensesOfEveryAnalysis`,
   `ClosedClassUseOfLike_IsNotScored`, `ClosedClassSlotOfAnUnscoredLemma_HasNoProbability`,
-  `InflectedForm_RanksTheSensesOfItsLemma`; scoring increment): the determiner of `more` (a lemma without weights) has
-  probability 0 while the open-class slots of untrained lemmas still share the mass; a word with
+  `ClosedOnlyChooserLabel_GivesItsProbabilityToNoSlot`, `EveryLabelClosedOnly_SharesEquallyAndIsFinite`,
+  `InflectedForm_RanksTheSensesOfItsLemma`; scoring increment): a chooser label that stands for the auxiliary `be` only
+  (`there's`) gives its probability to no slot, so the adverb takes all of it and the auxiliary stays at 0; a form whose
+  two labels are both closed-only (`that's`) shares equally and stays finite; the determiner of `more` (a lemma without
+  weights) has probability 0 while the open-class slots of untrained lemmas still share the mass; a word with
   several analyses ranks the fine senses of all its open-class analyses; the preposition use of `like` is listed with
   probability 0 and without senses, even when its sense has the highest score; an inflected form ranks the senses of its
   lemma; no sense of another lemma competes; the probability of a lemma and part of speech is the mass of its senses.
