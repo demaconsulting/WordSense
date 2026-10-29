@@ -76,6 +76,17 @@ sections:
                   - WeightedLemmaTable_Constructor_GroupThresholdWithoutGroupedSenses_Throws
                   - WeightedLemmaTable_LoadEmbedded_WrongModelId_Throws
 
+              - id: WordSense-Onnx-LemmaWeights-Read
+                title: >-
+                  The weighted lemma table shall read an embedded weights resource into an array of exactly the length
+                  of the resource, and report a missing resource as invalid data.
+                tags: [unit]
+                justification: |
+                  A buffer that grows while the resource is copied doubles its capacity and holds up to twice the size
+                  of the weights, memory the process keeps after the load.
+                tests:
+                  - WeightedLemmaTable_ReadResource_ReturnsExactlyTheBytesOfTheResource
+
               - id: WordSense-Onnx-LemmaWeights-Scoring
                 title: >-
                   Lemma weights shall score each fine sense of a lemma for a feature vector, normalize the scores to

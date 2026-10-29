@@ -53,8 +53,6 @@ conflict	conflict#military-battle	Noun	The tank {conflict} near the village ende
 conflict	conflict#military-battle	Noun	The {conflict} site has been preserved as a park, where two armies met in 1862.
 conflict	conflict#military-battle	Noun	The museum's {conflict} map shows where each army stood during the day-long battle.
 conflict	conflict#military-battle	Noun	The {conflict} area near the river is still mined after the clash of the two armies.
-conscript	conscript#drafted-soldier	Noun	The {conscript} soldiers had two weeks of training before they were sent to the front.
-conscript	conscript#drafted-soldier	Noun	The {conscript} recruits marched into the barracks carrying only a small bag each.
 contact	contact#interaction	Noun	Frequent patient {contact} helps nurses notice small problems early.
 contact	contact#interaction	Noun	Daily {contact} time with the grandchildren kept him cheerful through the winter.
 contact	contact#interaction	Noun	The study counted {contact} hours between nurses and patients on each ward.
@@ -87,9 +85,6 @@ damage	damage#harm	Noun	The termites did some hidden {damage} to the floor beams
 delay	delay#detain	Verb	{Delay} the train at the station until the inspector arrives.
 delay	delay#detain	Verb	{Delay} the guests at the door while I finish setting the table.
 delay	delay#detain	Verb	{Delay} the convoy with a roadblock so the others can catch up.
-discard	discard#card-discard	Noun	Her {discard} choice in the card game revealed that she lacked spades.
-discard	discard#card-discard	Noun	The {discard} rule in gin rummy limits which card you may throw out.
-discard	discard#discarded-object	Noun	A {discard} heap of tires behind the factory had been growing for years.
 discharge	discharge#release-of-energy	Noun	The static {discharge} from the carpet shocked my fingers.
 discharge	discharge#release-of-energy	Noun	The capacitor {discharge} released all its stored energy in a millisecond.
 discharge	discharge#release-of-energy	Noun	The capacitor's {discharge} measured 450 joules in under three milliseconds.
@@ -183,14 +178,6 @@ place	place#lay	Verb	We will {place} the vase on the windowsill.
 place	place#lay	Verb	Workers must {place} each brick carefully.
 place	place#lay	Verb	You should {place} the cups upside down on the rack.
 place	place#situate	Verb	We can {place} you in a hotel near the airport.
-plague	plague#calamity	Noun	The frog {plague} in the Exodus story fills the palace with croaking.
-plague	plague#calamity	Noun	Pharaoh dreaded each new {plague} judgment that the prophet promised.
-plague	plague#calamity	Noun	The painter covered the chapel wall with {plague} scenes from the Book of Exodus.
-plague	plague#calamity	Noun	The preacher's {plague} sermon warned that the whole nation would pay for its sins.
-plague	plague#calamity	Noun	{Plagues} of locusts, hail, and darkness fell on the land, the priest read aloud.
-plague	plague#calamity	Noun	{Plagues} sent from heaven struck the kingdom one after another, the old monks wrote.
-plague	plague#epidemic	Noun	The Athens {plague} of 430 BC killed a quarter of the city's population.
-plague	plague#epidemic	Noun	The typhus {plague} that hit the prison camp left hundreds dead within a month.
 play	play#compete	Verb	{Play} some cards with your cousins while I make dinner.
 play	play#compete	Verb	{Play} hockey with us on Saturday if the pond is frozen.
 point	point#charge	Verb	You must never {point} a gun at anyone you do not intend to shoot.
@@ -306,8 +293,4 @@ track	track#running	Noun	{Track} takes up most of my spring weekends, but I love
 train	train#prepare	Verb	{Train} as a nurse at the county hospital if you want steady work.
 travel	travel#go	Verb	Light can {travel} through a vacuum at nearly 300,000 kilometers per second.
 travel	travel#go	Verb	Sound waves will {travel} faster through water than through air.
-upgrade	upgrade#computer-software	Noun	The operating system {upgrade} installed overnight and fixed the login bug.
-upgrade	upgrade#computer-software	Noun	The payroll software {upgrade} corrected the tax tables for the new year.
-upgrade	upgrade#slope	Noun	The truck slowed to 20 miles per hour on the 8 percent {upgrade} near the pass.
-upgrade	upgrade#slope	Noun	A steady 4-degree {upgrade} ran for 300 yards, and the cyclists dropped to a crawl.
 value	value#appreciate	Verb	I will {value} these old photographs of my grandmother for the rest of my life.

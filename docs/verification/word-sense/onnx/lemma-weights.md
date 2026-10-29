@@ -82,6 +82,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Embedded weights are checked on load** (`WeightedLemmaTable_LoadEmbedded_WrongModelId_Throws`): weights trained for
   another model id, another dimension or another inventory are refused with `InvalidDataException`, and a missing
   resource is reported.
+- **Embedded weights are read at their exact size** (`WeightedLemmaTable_ReadResource_ReturnsExactlyTheBytesOfTheResource`):
+  a resource whose size is just above a power of two is returned as an array of exactly its length with the same
+  bytes, and a missing resource is reported as invalid data.
 - **Shipped weights resolve completely** (`EmbeddedWeights_MiniLM_MatchesWordImage`,
   `EmbeddedWeights_BertBaseCased_MatchesWordImage`): the embedded weights of MiniLM and of BertBaseCased carry the
   inventory hash of the shipped image and every sense of every lemma resolves.

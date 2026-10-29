@@ -149,15 +149,6 @@ affect	affect#alter	Verb	Strong acids will {affect} the surface of the steel, le
 affect	affect#alter	Verb	This drug could {affect} your heart rate within minutes.
 affect	affect#bear-on	Verb	The new tax rules will {affect} small businesses most.
 affect	affect#bear-on	Verb	A late frost can {affect} how many peaches the orchard produces.
-affect	affect#feeling	Noun	Researchers scored each student's trait {affect} using a short questionnaire.
-affect	affect#feeling	Noun	The study tracked daily mood {affect} in teenagers for a month.
-affect	affect#feeling	Noun	The team's group {affect} improved after the retreat.
-affect	affect#feeling	Noun	The {affect} scores of both groups rose after the therapy sessions.
-affect	affect#feeling	Noun	The {affect} ratings were collected from patients each morning.
-affect	affect#feeling	Noun	The {affect} display of the patient looked flat during the interview.
-affect	affect#feeling	Noun	{Affect} shapes how people remember the events of a day.
-affect	affect#feeling	Noun	{Affect} in patients with depression is often flat during interviews.
-affect	affect#feeling	Noun	{Affect} differs from mood in that it changes within minutes.
 affiliate	affiliate#associate	Noun	Dr. Chen is a research {affiliate} at the institute.
 affiliate	affiliate#associate	Noun	The university named him a faculty {affiliate} in the history department.
 affiliate	affiliate#associate	Noun	The {affiliate} members of the institute meet each fall.
@@ -176,21 +167,8 @@ affix	affix#add-on	Verb	{Affix} your signature block at the end of every message
 affix	affix#stick-on	Verb	You must {affix} the label to the box before it ships.
 affix	affix#stick-on	Verb	Workers will {affix} a seal to each crate.
 affix	affix#stick-on	Verb	{Affix} a label to each jar before storing it in the cellar.
-affix	affix#word-element	Noun	The past tense {affix} -ed is added to regular English verbs.
-affix	affix#word-element	Noun	The Turkish noun {affix} for possession comes at the end of the word.
-affix	affix#word-element	Noun	In Latin, the case {affix} shows a noun's role in the sentence.
-affix	affix#word-element	Noun	The {affix} list in the grammar book included -ness and -ly.
-affix	affix#word-element	Noun	An {affix} chart helped the students learn the parts of long words.
-affix	affix#word-element	Noun	The {affix} dictionary lists prefixes such as un- and re-.
 agglomerate	agglomerate#cluster	Verb	The powder will {agglomerate} if it gets damp.
 agglomerate	agglomerate#cluster	Verb	Small crystals can {agglomerate} into a single lump.
-agglomerate	agglomerate#pile	Noun	The junk {agglomerate} behind the barn included old tires and fence posts.
-agglomerate	agglomerate#pile	Noun	The brick {agglomerate} left by the demolition crew filled the lot.
-agglomerate	agglomerate#volcanic-rock	Noun	The crater wall is a basalt {agglomerate} formed by ancient eruptions.
-agglomerate	agglomerate#volcanic-rock	Noun	The geologist hammered a sample of tuff {agglomerate} from the crater rim.
-agglomerate	agglomerate#volcanic-rock	Noun	{Agglomerate} covers the slopes near the old crater.
-agglomerate	agglomerate#volcanic-rock	Noun	{Agglomerate} lines the crater wall and breaks into jagged blocks.
-agglomerate	agglomerate#volcanic-rock	Noun	{Agglomerates} are common around vents where ash and blocks settled together.
 aggregate	aggregate#add-up	Verb	These small donations will {aggregate} to more than fifty thousand dollars by June.
 aggregate	aggregate#add-up	Verb	The daily delays could {aggregate} to a full week of lost production.
 aggregate	aggregate#combine	Verb	Tiny particles in the solution will {aggregate} into larger clumps over time.
@@ -234,13 +212,6 @@ aim	aim#direction	Noun	The archer took a long {aim} at the distant target.
 aim	aim#direction	Noun	He took a quick {aim} at the can and threw the stone.
 aim	aim#propose	Verb	I will {aim} to finish the report by noon.
 aim	aim#propose	Verb	Our team must {aim} to deliver the update by Friday.
-alert	alert#alarm	Noun	The smoke {alert} woke the whole family at three in the morning.
-alert	alert#alarm	Noun	The car's low battery {alert} beeped twice as we left the garage.
-alert	alert#alarm	Noun	The sensor will give a loud {alert} if the door opens at night.
-alert	alert#alarm	Noun	The detector made a shrill {alert} as soon as smoke reached it.
-alert	alert#alerting	Noun	A travel {alert} told Americans to avoid the region this month.
-alert	alert#alerting	Noun	The ministry will give a public {alert} before the storm hits the coast.
-alert	alert#alerting	Noun	The school gave parents an early {alert} about the outbreak.
 alert	alert#warn	Verb	The system will {alert} residents when the river rises.
 alert	alert#warn	Verb	Sirens could {alert} people in time to reach the shelter.
 alert	alert#warn	Verb	She picked up the phone to {alert} the coast guard.
@@ -280,9 +251,6 @@ alternate	alternate#jump	Verb	The patient's mood can {alternate} between joy and
 alternate	alternate#jump	Verb	The light will {alternate} between red and green every ten seconds.
 alternate	alternate#jump	Verb	{Alternate} between hot and cold water for the last minute of your shower.
 alternate	alternate#jump	Verb	{Alternate} between jogging and walking for twenty minutes.
-alternate	alternate#substitute	Noun	The jury {alternate} took Ms. Lee's seat when she fell ill.
-alternate	alternate#substitute	Noun	Our union {alternate} attended the meeting for the absent delegate.
-alternate	alternate#substitute	Noun	The delegate {alternate} cast the vote on behalf of the district.
 alternate	alternate#take-turns	Verb	{Alternate} with your partner on the night shift so each of you gets some sleep.
 alternate	alternate#take-turns	Verb	{Alternate} with your brother when you wash the dishes.
 amount	amount#amount-of-money	Noun	The final tax {amount} was lower than we expected.
@@ -435,9 +403,6 @@ attribute	attribute#dimension	Noun	The {attribute} values in the census file inc
 attribute	attribute#dimension	Noun	Each {attribute} column in the spreadsheet splits people into separate groups.
 attribute	attribute#dimension	Noun	{Attributes} such as age, income and region define each customer segment.
 attribute	attribute#dimension	Noun	{Attributes} like height and weight help sort the participants into groups.
-augment	augment#addition	Noun	The Greek verb {augment} turns the present stem into a past form.
-augment	augment#addition	Noun	The Homeric Greek verb {augment} is often missing in epic poetry.
-augment	augment#addition	Noun	Students of Sanskrit learn that the root {augment} sits before the stem.
 augment	augment#grow	Verb	The pressure in the tank will {augment} as the temperature climbs.
 augment	augment#grow	Verb	The tension in the room could {augment} if nobody speaks up.
 augment	augment#increase	Verb	Farmers may {augment} their income by selling honey at local markets.
@@ -527,21 +492,10 @@ beam	beam#radio-beam	Noun	The {beam} signal strength dropped as the plane banked
 beam	beam#radio-beam	Noun	The {beam} frequency was set to 109.9 megahertz for the approach.
 beam	beam#smile	Verb	The children will {beam} proudly when they see their medals.
 beam	beam#smile	Verb	You should {beam} at the audience as you walk on stage.
-bear	bear#carnivore	Noun	The cave {bear} went extinct about 24,000 years ago.
-bear	bear#carnivore	Noun	The panda {bear} spends most of its day chewing bamboo.
-bear	bear#carnivore	Noun	The {bear} cub tumbled down the snowy slope after its mother.
-bear	bear#carnivore	Noun	The {bear} population in the park has doubled since 1990.
-bear	bear#carnivore	Noun	The {bear} spray sold at the camp store is strong enough to stop a charge.
-bear	bear#carnivore	Noun	{Bears} wake from hibernation when the spring thaw begins.
-bear	bear#carnivore	Noun	{Bears} raid campsites in search of food each summer.
 bear	bear#give-birth	Verb	The mare will {bear} her foal in early spring.
 bear	bear#give-birth	Verb	She may {bear} twins, the doctor warned.
 bear	bear#have	Verb	The new building will {bear} his name.
 bear	bear#have	Verb	The document must {bear} the signature of both parties.
-bear	bear#investor	Noun	The Wall Street {bear} predicted a ten percent drop by spring.
-bear	bear#investor	Noun	A veteran stock {bear} shorted the retailer's shares last month.
-bear	bear#investor	Noun	{Bears} dumped the stock as fears of a recession grew.
-bear	bear#investor	Noun	{Bears} on Wall Street expect prices to slide further this autumn.
 beat	beat#beat-out	Verb	{Beat} the competition with faster service and lower prices.
 beat	beat#beat-up	Verb	The thugs said they would {beat} him up if he told anyone.
 beat	beat#beatnik	Noun	{Beats} like Kerouac and Ginsberg read poems in smoky San Francisco cafes.
@@ -851,22 +805,9 @@ buffet	buffet#meal	Noun	The hotel does a Sunday {buffet} with live jazz music.
 buffet	buffet#strike-forcefully	Verb	The champion tried to {buffet} his rival with a single crushing blow.
 buffet	buffet#strike-repeatedly	Verb	Cold gusts would {buffet} the fishermen all night long.
 buffet	buffet#strike-repeatedly	Verb	Waves continued to {buffet} the hull for hours during the storm.
-bump	bump#bruise-lump	Noun	The boy's head {bump} turned purple by the next morning.
-bump	bump#bruise-lump	Noun	The kid had a nasty forehead {bump} after he fell off the swing.
-bump	bump#bruise-lump	Noun	{Bumps} on the head usually fade within a few days.
 bump	bump#collide	Verb	You might {bump} the shelf if you swing the ladder around too fast.
 bump	bump#collide	Verb	Try not to {bump} into anyone while you carry the tray.
 bump	bump#dance	Verb	At the party we saw the teens start to {bump} to the disco beat.
-bump	bump#impact	Noun	Passengers felt a slight landing {bump} as the plane touched down.
-bump	bump#impact	Noun	The collision {bump} was barely noticeable inside the heavy truck.
-bump	bump#impact	Noun	The little boat took a heavy {bump} against the dock in the wind.
-bump	bump#impact	Noun	The shuttle gave the dock a gentle {bump} as it arrived.
-bump	bump#impact	Noun	I took a nasty {bump} from a stranger's elbow in the crowd.
-bump	bump#protrusion	Noun	The speed {bump} is four inches high and twelve feet wide.
-bump	bump#protrusion	Noun	A 3-centimeter {bump} on the metal sheet caused the paint to crack.
-bump	bump#protrusion	Noun	The old road has a {bump} about six inches tall near mile marker 40.
-bump	bump#protrusion	Noun	{Bumps} in the pavement can trip pedestrians in the dark.
-bump	bump#protrusion	Noun	{Bumps} on the wall showed where the plaster had swelled with damp.
 button	button#button-up	Verb	It is cold, so you should {button} your jacket before you go out.
 button	button#button-up	Verb	Please remember to {button} the baby's sweater all the way up.
 button	button#button-up	Verb	Kids can learn to {button} their own shirts by about age five.
@@ -1190,9 +1131,6 @@ collect	collect#collect-payment	Verb	The agency will {collect} the unpaid fines 
 collect	collect#collect-payment	Verb	Landlords must {collect} rent on the first of the month under this lease.
 collect	collect#collect-payment	Verb	{Collect} the overdue balance from each tenant before the end of the month.
 collect	collect#collect-payment	Verb	{Collect} the entrance fee at the door and give each guest a ticket.
-collect	collect#collect-prayer	Noun	The Sunday {collect} was read by the vicar just before the lesson.
-collect	collect#collect-prayer	Noun	The Advent {collect} asks God for grace to cast away the works of darkness.
-collect	collect#collect-prayer	Noun	The Prayer Book {collect} for Easter morning is short and easy to memorize.
 collocate	collocate#co-occur	Verb	Words like "strong" and "tea" tend to {collocate} in everyday English.
 collocate	collocate#co-occur	Verb	In this corpus, "heavy" and "rain" will {collocate} far more often than chance predicts.
 collocate	collocate#collocate-noun	Noun	The top corpus {collocate} of "strong" is "tea," according to the search tool.
@@ -1402,15 +1340,6 @@ conjugate	conjugate#inflect	Verb	{Conjugate} these French verbs and then use eac
 conscript	conscript#draft	Verb	The government may {conscript} young men if the war drags on.
 conscript	conscript#draft	Verb	Officials threatened to {conscript} every able-bodied man in the village.
 conscript	conscript#draft	Verb	The junta will {conscript} students as soon as they graduate.
-conscript	conscript#drafted-soldier	Noun	The army {conscript} wrote his mother every week from the training camp.
-conscript	conscript#drafted-soldier	Noun	Each infantry {conscript} was issued a rifle and two uniforms.
-conscript	conscript#drafted-soldier	Noun	The village {conscript} was sent to the front after two weeks of drills.
-conscript	conscript#drafted-soldier	Noun	Each {conscript} serves 18 months before returning to civilian life.
-conscript	conscript#drafted-soldier	Noun	The army took in 40,000 {conscripts} last year, each paid 200 dollars a month.
-conscript	conscript#drafted-soldier	Noun	A {conscript} earns about 90 dollars a month and serves for 24 months.
-conscript	conscript#drafted-soldier	Noun	{Conscripts} receive eight weeks of basic training before deployment.
-conscript	conscript#drafted-soldier	Noun	{Conscripts} were marched to the station at dawn.
-conscript	conscript#drafted-soldier	Noun	{Conscripts} from the northern provinces filled the new battalions.
 conserve	conserve#fruit-preserve	Noun	She spread plum {conserve} on warm scones.
 conserve	conserve#fruit-preserve	Noun	The apricot {conserve} won a prize at the county fair.
 conserve	conserve#fruit-preserve	Noun	A jar of rhubarb {conserve} sat on the pantry shelf.
@@ -1432,37 +1361,14 @@ consist	consist#be-composed	Verb	A good salad should {consist} of at least three
 consist	consist#be-composed	Verb	The committee will {consist} of five members and a chair.
 consist	consist#be-consistent	Verb	Your actions should {consist} with the values you claim to hold.
 consist	consist#be-consistent	Verb	A good theory must {consist} with the data from earlier experiments.
-consist	consist#composition	Noun	The train {consist} listed two locomotives and 14 cars.
-consist	consist#composition	Noun	Rail crews checked the freight {consist} before departure.
-consist	consist#composition	Noun	The dispatcher updated the passenger {consist} after one car was cut out.
-consist	consist#composition	Noun	The {consist} was 2 locomotives and 90 cars, about 6,000 feet long.
-consist	consist#composition	Noun	Today's {consist} includes 3 engines and 12 tank cars.
-consist	consist#composition	Noun	The train's {consist} weighed 9,500 tons with 110 cars.
-console	console#bracket	Noun	A carved balcony {console} was damaged in the storm.
-console	console#bracket	Noun	An ornamental wall {console} supported the heavy gilded clock.
-console	console#cabinet	Noun	The old radio {console} sat in the living room beside the sofa.
-console	console#cabinet	Noun	The big television {console} took up half the wall.
 console	console#comfort	Verb	Nothing I said could {console} her after the loss.
 console	console#comfort	Verb	He tried to {console} the crying child with a story.
 console	console#comfort	Verb	Friends came to {console} the widow after the funeral.
 console	console#comfort	Verb	{Console} your friend with a kind word when she loses her job.
 console	console#comfort	Verb	{Console} the grieving family, but let them speak first.
 console	console#comfort	Verb	{Console} the child gently and stay with him until he stops crying.
-console	console#scientific-instrument	Noun	The {console} operator watched the dials on the control panel.
-console	console#scientific-instrument	Noun	The {console} screen flickered during the reactor test.
-console	console#scientific-instrument	Noun	A {console} display showed the system temperature in real time.
 consort	consort#go-together	Verb	The two styles will {consort} nicely in one room.
 consort	consort#go-together	Verb	Pale blue and soft gray should {consort} well on the walls.
-consort	consort#instrument-group	Noun	The viol {consort} played Tudor dances in the great hall.
-consort	consort#instrument-group	Noun	A recorder {consort} opened the concert with a medieval tune.
-consort	consort#royal-spouse	Noun	The queen {consort} walked a few steps behind the king.
-consort	consort#royal-spouse	Noun	The prince {consort} opened a new hospital wing on Tuesday.
-construct	construct#abstract-concept	Noun	Psychologists defined the personality {construct} as a stable pattern inferred from behavior.
-construct	construct#abstract-concept	Noun	The research team tested the anxiety {construct} against survey data.
-construct	construct#abstract-concept	Noun	A single self-esteem {construct} guided the whole study.
-construct	construct#abstract-concept	Noun	The {construct} validity of the test was questioned by reviewers.
-construct	construct#abstract-concept	Noun	A {construct} definition appears in the first chapter of the manual.
-construct	construct#abstract-concept	Noun	The {construct} model explains how people infer traits from behavior.
 construct	construct#build	Verb	We will {construct} a shed from scrap lumber behind the barn.
 construct	construct#build	Verb	Volunteers plan to {construct} a footbridge over the creek this summer.
 construct	construct#build	Verb	{Construct} a simple raft from logs and rope before the tide comes in.
@@ -1549,9 +1455,6 @@ contrast	contrast#direct-contrast	Noun	{Contrast} between rich and poor shapes t
 contrast	contrast#direct-contrast	Noun	{Contrast} between the sunny days and cold nights surprised the hikers.
 contrast	contrast#image-contrast	Noun	Set the screen {contrast} to 80 percent for the photo editor.
 contrast	contrast#image-contrast	Noun	This display has a native {contrast} of 1,000 to 1.
-converse	converse#converted-proposition	Noun	The formal {converse} of the theorem has a simple counterexample.
-converse	converse#converted-proposition	Noun	A conditional's logical {converse} swaps its hypothesis and its conclusion.
-converse	converse#converted-proposition	Noun	The geometry {converse} of the Pythagorean theorem is also true.
 converse	converse#talk	Verb	The guests will {converse} quietly over dinner.
 converse	converse#talk	Verb	Diplomats must {converse} in a neutral language during the talks.
 converse	converse#talk	Verb	We could {converse} in French during the long walk home.
@@ -1599,12 +1502,6 @@ correlate	correlate#relate	Verb	We can {correlate} the survey answers with the s
 correlate	correlate#relate	Verb	{Correlate} the rainfall data with the crop yields for each county.
 correlate	correlate#relate	Verb	{Correlate} each symptom with the patient's recent diet.
 correlate	correlate#relate	Verb	{Correlate} the two data sets before you plot them.
-correlate	correlate#related-variable	Noun	The strongest pain {correlate} in the study was a lack of sleep.
-correlate	correlate#related-variable	Noun	A common stress {correlate} is high blood pressure.
-correlate	correlate#related-variable	Noun	The neural {correlate} of memory has been mapped in the lab.
-correlate	correlate#related-variable	Noun	{Correlates} of success include family support and early schooling.
-correlate	correlate#related-variable	Noun	{Correlates} of poverty often show up in the school attendance data.
-correlate	correlate#related-variable	Noun	{Correlates} of heart disease include smoking and inactivity.
 costume	costume#dress-up	Verb	The children will {costume} themselves as animals for the parade.
 costume	costume#dress-up	Verb	Guests are asked to {costume} for the masquerade on Saturday night.
 costume	costume#dress-up	Verb	{Costume} yourself as a ghost and join the parade.
@@ -2122,9 +2019,6 @@ detail	detail#part	Noun	The tailor did each small {detail} of the embroidery by 
 detail	detail#part	Noun	Give every decorative {detail} on the cake a gold finish.
 detail	detail#task-crew	Noun	The foreman picked a {detail} of eight laborers to unload the trucks.
 detail	detail#task-crew	Noun	A {detail} of ten inmates mowed the lawn behind the prison.
-deviate	deviate#deviant-person	Noun	The old psychiatry manual labeled the man a sex {deviate} without any evidence.
-deviate	deviate#deviant-person	Noun	Neighbors whispered that the quiet teacher was some kind of social {deviate}.
-deviate	deviate#deviant-person	Noun	The tabloid branded the senator a moral {deviate} after the party.
 deviate	deviate#differ	Verb	The results should not {deviate} much from the forecast.
 deviate	deviate#differ	Verb	Practices can {deviate} from official policy in small branch offices.
 deviate	deviate#turn-aside	Verb	The pilot must not {deviate} from the planned flight path.
@@ -2147,27 +2041,10 @@ dictate	dictate#record-aloud	Verb	{Dictate} your notes into the recorder before 
 digest	digest#assimilate	Verb	It took her days to {digest} the dense philosophy chapter.
 digest	digest#assimilate	Verb	Students must {digest} a lot of new vocabulary before the exam.
 digest	digest#assimilate	Verb	{Digest} the full report before the meeting and write down your questions.
-digest	digest#compilation	Noun	The firm's tax {digest} collects every ruling from the last decade in one volume.
-digest	digest#compilation	Noun	The state statute {digest} was bound and shelved in the law library.
-digest	digest#compilation	Noun	The clerk made a complete {digest} of the court's rulings.
-digest	digest#compilation	Noun	She will make a handy {digest} of the committee minutes for new members.
-digest	digest#compilation	Noun	The society will do a bound {digest} of the old journals this winter.
 digest	digest#condense	Verb	{Digest} the 300-page report into a one-page summary for the board.
 digest	digest#condense	Verb	{Digest} the long email into three short bullet points for the CEO.
 digest	digest#digest-food	Verb	Cats can {digest} meat easily but struggle with large amounts of grain.
 digest	digest#digest-food	Verb	Bacteria in the gut help the body to {digest} fiber.
-digest	digest#periodical	Noun	A weekly sports {digest} keeps fans up to date on every league.
-digest	digest#periodical	Noun	The morning news {digest} lands in my inbox at six.
-discard	discard#card-discard	Noun	His poker {discard} cost him the hand on the final round.
-discard	discard#card-discard	Noun	The bridge {discard} signaled that she held no hearts.
-discard	discard#card-discard	Noun	She made a risky {discard} on the third turn.
-discard	discard#card-discard	Noun	Each player must make a {discard} at the end of the turn.
-discard	discard#card-discard	Noun	Make a careful {discard} early, because you cannot take the card back.
-discard	discard#discarded-object	Noun	The recycling center sorts every factory {discard} by material.
-discard	discard#discarded-object	Noun	She built a lamp from scrap metal and other workshop {discards}.
-discard	discard#discarded-object	Noun	{Discards} from the factory pile up behind the loading dock.
-discard	discard#discarded-object	Noun	{Discards} of the fashion industry end up in landfills across Ghana.
-discard	discard#discarded-object	Noun	{Discards} sorted by volunteers become toys at the school fair.
 discard	discard#throw-away	Verb	You should {discard} any food that smells spoiled.
 discard	discard#throw-away	Verb	Workers must {discard} their gloves after each patient.
 discard	discard#throw-away	Verb	Residents are asked to {discard} old paint cans at the collection site.
@@ -2404,25 +2281,6 @@ drill	drill#bore	Verb	You will need to {drill} a pilot hole before you drive the
 drill	drill#bore	Verb	Always check for wires before you try to {drill} into the wall.
 drill	drill#bore	Verb	{Drill} a small pilot hole in the stud before you insert the screw.
 drill	drill#bore	Verb	{Drill} through the tile slowly with a masonry bit to avoid cracking it.
-drill	drill#drill-monkey	Noun	{Drills} live in the rainforests of Cameroon and Nigeria and eat fruit.
-drill	drill#drill-monkey	Noun	{Drills} are endangered primates of West Africa, hunted for bushmeat.
-drill	drill#drill-tool	Noun	The contractor rented a hammer {drill} to bore through the concrete slab.
-drill	drill#drill-tool	Noun	He bought a cordless power {drill} for the shelf project.
-drill	drill#drill-tool	Noun	The {drill} bit snapped off inside the oak beam.
-drill	drill#drill-tool	Noun	A spare {drill} battery fits both of my power tools.
-drill	drill#drill-tool	Noun	{Drills} with carbide tips can cut through concrete and steel.
-drill	drill#drill-tool	Noun	{Drills} bite into hardwood best at a slow speed with steady pressure.
-drill	drill#military-drill	Noun	The cadets practiced rifle {drill} on the parade ground until dark.
-drill	drill#military-drill	Noun	Parade-ground {drill} left the new recruits sore and sunburned.
-drill	drill#military-drill	Noun	The {drill} sergeant shouted at the new recruits at dawn.
-drill	drill#military-drill	Noun	A {drill} instructor taught the cadets to march in step.
-drill	drill#military-drill	Noun	The color guard performed a flawless {drill} before the reviewing stand.
-drill	drill#military-drill	Noun	The recruits did a full-dress {drill} on the parade ground at dawn.
-drill	drill#practice-drill	Noun	Each {drill} lasts 10 minutes and repeats 5 times.
-drill	drill#practice-drill	Noun	Fifty minutes of {drill} each week raised test scores by 8 percent.
-drill	drill#practice-drill	Noun	Daily {drill} of 30 minutes improved her times tables within a month.
-drill	drill#practice-drill	Noun	The coach had the team do a tough {drill} on defensive footwork.
-drill	drill#practice-drill	Noun	The teacher gave a daily {drill} in multiplication facts to the class.
 drill	drill#train-soldiers	Verb	The sergeant would {drill} the recruits on the parade ground until they marched in step.
 drill	drill#train-soldiers	Verb	Officers were ordered to {drill} the new conscripts daily in the use of rifles.
 drill	drill#train-soldiers	Verb	{Drill} the new recruits on marching and rifle handling until they move as one.
@@ -2508,43 +2366,10 @@ dump	dump#abandon	Verb	He plans to {dump} his girlfriend by text message before 
 dump	dump#abandon	Verb	She threatened to {dump} him if he forgot her birthday again.
 dump	dump#abandon	Verb	{Dump} him before he breaks your heart again, and don't look back.
 dump	dump#abandon	Verb	{Dump} your lazy business partner before he sinks the whole company.
-dump	dump#defecation	Noun	He had to take a {dump} before the long meeting started.
-dump	dump#defecation	Noun	I need to take a quick {dump} before we get back on the highway.
-dump	dump#dumpsite	Noun	The town {dump} closes at five on Sundays, so haul your trash early.
-dump	dump#dumpsite	Noun	Residents complained about the smell from the old garbage {dump} near the creek.
-dump	dump#dumpsite	Noun	The {dump} fire burned for three days and sent smoke across the valley.
-dump	dump#dumpsite	Noun	The {dump} road is closed after dark because of the broken gate.
-dump	dump#dumpsite	Noun	{Dumps} like the one outside town leak chemicals into the groundwater.
-dump	dump#dumpsite	Noun	{Dumps} near the river were closed after the county tested the water.
-dump	dump#memory-dump	Noun	The kernel crash {dump} showed a null pointer in the display driver.
-dump	dump#memory-dump	Noun	The engineer analyzed the heap {dump} to find the memory leak in the service.
-dump	dump#memory-dump	Noun	The 2-gigabyte {dump} took ten minutes to write to the disk.
-dump	dump#memory-dump	Noun	The server produced a 500-megabyte {dump} before it restarted itself.
-dump	dump#memory-dump	Noun	Total {dump} size was 16 gigabytes before compression and 3 gigabytes after.
-dump	dump#memory-dump	Noun	The {dump} file was 3 gigabytes, so we compressed it before sending it.
-dump	dump#memory-dump	Noun	The {dump} analysis revealed a buffer overflow in the image parser.
-dump	dump#memory-dump	Noun	Run a full {dump} of the process before restarting it.
-dump	dump#memory-dump	Noun	Do a quick {dump} of the registers to see what the program was doing.
-dump	dump#memory-dump	Noun	{Dumps} from crashed servers are stored for thirty days before deletion.
-dump	dump#memory-dump	Noun	{Dumps} of process memory help engineers find the cause of a crash.
 dump	dump#throw-away	Verb	You should not {dump} paint thinner down the storm drain.
 dump	dump#throw-away	Verb	Companies may not {dump} waste into the river without a permit.
 dump	dump#throw-away	Verb	{Dump} the old paint cans at the hazardous waste center, not in the trash.
 dump	dump#throw-away	Verb	{Dump} the rotten vegetables in the compost bin behind the shed.
-duplicate	duplicate#duplicate-copy	Noun	The key {duplicate} cost three dollars at the hardware store.
-duplicate	duplicate#duplicate-copy	Noun	Keep the receipt {duplicate} in the folder with your warranty papers.
-duplicate	duplicate#duplicate-copy	Noun	Please file the contract {duplicate} with the county clerk by Friday.
-duplicate	duplicate#duplicate-copy	Noun	The clerk issued 3 {duplicates} of the birth certificate for a 15-dollar fee.
-duplicate	duplicate#duplicate-copy	Noun	The office made 12 {duplicates} of the form for the new hires.
-duplicate	duplicate#duplicate-copy	Noun	The scanner flagged 14 {duplicates} among the 300 files in the archive.
-duplicate	duplicate#duplicate-copy	Noun	The clerk made a {duplicate} of the deed for the county archive.
-duplicate	duplicate#duplicate-copy	Noun	Please make a spare {duplicate} of your passport before the trip.
-duplicate	duplicate#duplicate-copy	Noun	{Duplicates} of the lease must be signed by both tenants.
-duplicate	duplicate#duplicate-copy	Noun	{Duplicates} of the receipt are available at the front desk on request.
-duplicate	duplicate#extra	Noun	He gave me a {duplicate} from his stamp collection so I could trade it.
-duplicate	duplicate#extra	Noun	Collectors often have a {duplicate} to swap at the card show on Sunday.
-duplicate	duplicate#extra	Noun	{Duplicates} in my baseball card collection go into a shoebox for trading.
-duplicate	duplicate#extra	Noun	{Duplicates} from the sticker album are swapped at recess every Friday.
 duplicate	duplicate#match	Verb	No rival firm can {duplicate} our quality at this price.
 duplicate	duplicate#match	Verb	Few players can {duplicate} his speed on the court.
 duplicate	duplicate#repeat	Verb	The lab will {duplicate} the experiment to confirm the surprising result.
@@ -2606,12 +2431,6 @@ ejaculate	ejaculate#ejaculate-semen	Verb	Some men cannot {ejaculate} because of 
 ejaculate	ejaculate#ejaculate-semen	Verb	The stallion will {ejaculate} into a collection sleeve during semen collection.
 ejaculate	ejaculate#exclaim	Verb	She might {ejaculate} a short cry of surprise when the lights come on.
 ejaculate	ejaculate#exclaim	Verb	The old general would {ejaculate} a curse whenever a junior officer challenged him.
-ejaculate	ejaculate#semen	Noun	The average {ejaculate} volume is between 2 and 5 milliliters.
-ejaculate	ejaculate#semen	Noun	A single {ejaculate} can hold 200 million sperm or more.
-ejaculate	ejaculate#semen	Noun	The lab measured 3 milliliters of {ejaculate} in the sample.
-ejaculate	ejaculate#semen	Noun	{Ejaculate} contains sperm and fluids from several glands.
-ejaculate	ejaculate#semen	Noun	{Ejaculate} was collected in a sterile cup for the fertility test.
-ejaculate	ejaculate#semen	Noun	{Ejaculate} from the stallion is diluted before freezing for breeding.
 embrace	embrace#adopt	Verb	{Embrace} the new software and stop clinging to the old spreadsheets.
 embrace	embrace#adopt	Verb	{Embrace} a minimalist lifestyle if you want a calmer, simpler home.
 embrace	embrace#encompass	Verb	The new policy should {embrace} every employee, including part-time and seasonal staff.
@@ -2661,9 +2480,6 @@ end	end#halt	Verb	The council voted to {end} the program after a decade of compl
 end	end#halt	Verb	The city will {end} its contract with the waste hauler in June.
 end	end#halt	Verb	{End} the call now if the caller refuses to identify himself.
 end	end#halt	Verb	{End} the meeting at five o'clock, no matter what is left on the agenda.
-entail	entail#fee-tail-creation	Noun	{Entail} created a fee tail from a simple holding and bound the estate to the direct line.
-entail	entail#fee-tail-creation	Noun	{Entails} of land by deed were once common among English gentry families.
-entail	entail#fee-tail-creation	Noun	{Entail} of the manor limited the heir's right to sell any of the property.
 entail	entail#implicate	Verb	A pay raise would {entail} a higher budget for the whole department.
 entail	entail#implicate	Verb	This change may {entail} several months of retraining for the staff.
 entail	entail#limit-inheritance	Verb	The old lord wanted to {entail} the estate so that only male heirs could inherit it.
@@ -2802,18 +2618,6 @@ excise	excise#delete	Verb	You can {excise} the offending line from the report wi
 excise	excise#delete	Verb	The editor decided to {excise} the whole paragraph from the draft.
 excise	excise#delete	Verb	{Excise} the last two sentences from the paragraph; they repeat the point.
 excise	excise#delete	Verb	{Excise} every mention of the old address from the contract.
-excise	excise#tax	Noun	The cigarette {excise} rose again this year.
-excise	excise#tax	Noun	The state liquor {excise} funds a rehabilitation program.
-excise	excise#tax	Noun	The federal gasoline {excise} is collected at the terminal.
-excise	excise#tax	Noun	The federal {excise} on a pack of cigarettes is 1.01 dollars.
-excise	excise#tax	Noun	A 10 percent {excise} was added to the price of each bottle.
-excise	excise#tax	Noun	The {excise} of 18.4 cents per gallon is built into pump prices.
-excise	excise#tax	Noun	The {excise} duty on spirits rose in the spring budget.
-excise	excise#tax	Noun	The {excise} office collects revenue from breweries across the county.
-excise	excise#tax	Noun	The {excise} rate on tobacco is reviewed every January.
-excise	excise#tax	Noun	{Excise} on alcohol raises billions for the state each year.
-excise	excise#tax	Noun	{Excises} on fuel and tobacco are collected from the producer, not the shopper.
-excise	excise#tax	Noun	{Excise} is charged when the goods leave the distillery, not when they are sold.
 excommunicate	excommunicate#church-exclusion	Verb	The bishop threatened to {excommunicate} anyone who publicly defied the teaching of the church.
 excommunicate	excommunicate#church-exclusion	Verb	Only a pope can {excommunicate} a Catholic from the church, the old priest explained.
 excommunicate	excommunicate#expel	Verb	The party leadership voted to {excommunicate} members who criticized the chairman in public.
@@ -3056,10 +2860,6 @@ feed	feed#livestock-feed	Noun	{Feed} for the horses is delivered every Tuesday b
 feed	feed#livestock-feed	Noun	{Feed} costs rose sharply across the dairy industry last year.
 feed	feed#livestock-feed	Noun	{Feed} spilled across the barn floor when the sack split open.
 feed	feed#supply	Verb	Small streams will {feed} the lake all through the spring.
-feel	feel#atmosphere	Noun	The renovated lobby has a cozy, retro {feel} that guests love.
-feel	feel#atmosphere	Noun	We wanted to give the tavern a rustic {feel} with old beams.
-feel	feel#awareness	Noun	He has a real {feel} for the rhythm of a joke.
-feel	feel#awareness	Noun	After a few lessons I had a natural {feel} for the horse.
 feel	feel#experience	Verb	I would {feel} terrible if she missed the party because of me.
 feel	feel#experience	Verb	You might {feel} nervous before the first interview, and that is normal.
 feel	feel#experience	Verb	{Feel} proud of what you accomplished today, and rest well tonight.
@@ -3342,15 +3142,11 @@ forearm	forearm#lower-arm	Noun	{Forearms} tire quickly when you grip a heavy rop
 foretoken	foretoken#foreshadow	Verb	Dark clouds may {foretoken} a storm before the fleet reaches harbor.
 foretoken	foretoken#foreshadow	Verb	Such omens could {foretoken} the fall of the old king, said the chronicle.
 foretoken	foretoken#foreshadow	Verb	A comet was said to {foretoken} the death of a ruler.
-forward	forward#player	Noun	The team signed a veteran hockey {forward} for two seasons.
-forward	forward#player	Noun	The soccer {forward} scored twice in the first half.
 forward	forward#send-on	Verb	The post office will {forward} your mail to the new house for a year.
 forward	forward#send-on	Verb	We can {forward} the parcel to the next depot by Friday.
 forward	forward#send-on	Verb	{Forward} all my letters to the cabin address until October.
 forward	forward#send-on	Verb	{Forward} the crates to the warehouse in Reno once they clear customs.
 forward	forward#send-on	Verb	{Forward} this invoice to the accounting office before the end of the day.
-forward	forward#team-position	Noun	She switched from guard to power {forward} halfway through the season.
-forward	forward#team-position	Noun	The coach wants him at center {forward} for Saturday's match.
 fragment	fragment#break-apart	Verb	The old glacier will {fragment} into smaller icebergs by summer.
 fragment	fragment#break-apart	Verb	The asteroid might {fragment} as it passes close to the planet.
 fragment	fragment#break-apart	Verb	The alliance could {fragment} into feuding factions after the vote.
@@ -3532,15 +3328,6 @@ glance	glance#quick-look	Noun	I had a quick {glance} at the headlines over break
 glance	glance#quick-look	Noun	{Glances} flew across the room when the boss mentioned layoffs.
 glance	glance#quick-look	Noun	{Glances} were exchanged between the twins throughout the lecture.
 glance	glance#quick-look	Noun	{Glances} at the clock grew more frequent as the meeting dragged on.
-go	go#attempt	Noun	Give it a {go} before you decide the puzzle is too hard.
-go	go#attempt	Noun	Let me have a {go} on the controls while you rest.
-go	go#attempt	Noun	He took a {go} at the high jump but knocked the bar off.
-go	go#board-game	Noun	Internet {go} grew quickly once servers began hosting live games between strangers.
-go	go#board-game	Noun	In tournament {go}, each player has a fixed time limit for the whole game.
-go	go#board-game	Noun	Computer {go} was long considered harder than computer chess because of the huge number of stone placements.
-go	go#board-game	Noun	{Go} is played with black and white stones on a nineteen-line grid.
-go	go#board-game	Noun	{Go} rewards patience and careful surrounding of territory more than raw aggression.
-go	go#board-game	Noun	{Go} originated in China more than two thousand years ago.
 go	go#follow-procedure	Verb	We should {go} through the checklist step by step before the launch.
 go	go#follow-procedure	Verb	{Go} through the safety checklist before every flight.
 go	go#follow-procedure	Verb	{Go} by the manual when you assemble the engine, and don't skip any steps.
@@ -3896,17 +3683,10 @@ house	house#legislature	Noun	{Houses} of the national legislature vote separatel
 hunt	hunt#chase	Verb	The detectives will {hunt} the escaped prisoner until he is back behind bars.
 hunt	hunt#chase	Verb	Creditors can {hunt} a debtor across three states if the debt is large enough.
 hunt	hunt#chase	Verb	{Hunt} that bug relentlessly through the code until it has nowhere to hide.
-hunt	hunt#game-hunting	Noun	The annual deer {hunt} puts venison on the table of nearly every family here.
-hunt	hunt#game-hunting	Noun	The village still depends on the winter seal {hunt} for meat and clothing.
-hunt	hunt#hunt-club	Noun	The local fox {hunt} rides out each Saturday morning with its pack of hounds.
-hunt	hunt#hunt-club	Noun	The Tuesday-night drag {hunt} elected a new master of hounds at its dinner.
 hunt	hunt#pursue-game	Verb	You must {hunt} only in the daylight hours with a valid license.
 hunt	hunt#pursue-game	Verb	Wolves will {hunt} elk in packs when the winter snow gets deep.
 hunt	hunt#pursue-game	Verb	{Hunt} upwind of the herd so the deer cannot catch your scent.
 hunt	hunt#pursue-game	Verb	{Hunt} only what your family can eat and leave the young animals alone.
-hunt	hunt#search	Noun	I will have a quick {hunt} through the attic for those old photographs.
-hunt	hunt#search	Noun	Take a good {hunt} around the garage before you buy another ladder.
-hunt	hunt#sport-hunt	Noun	The {hunt} saboteurs blocked the lane so the riders could not follow the hounds.
 impact	impact#affect	Verb	Rising interest rates will {impact} the housing market well into next year.
 impact	impact#affect	Verb	The new regulations could {impact} thousands of small businesses in the state.
 impact	impact#contact	Noun	Engineers measured the crash {impact} using sensors strapped to the test dummy.
@@ -3933,17 +3713,6 @@ implant	implant#embed	Verb	{Implant} the anchor bolts in fresh concrete before i
 implant	implant#embed	Verb	{Implant} the tiny tracking chip between the shoulder blades of the sea turtle.
 implant	implant#implant-mentally	Verb	Advertisers try to {implant} a craving in your mind before you ever reach the store.
 implant	implant#implant-mentally	Verb	A good teacher can {implant} a love of reading in even the most restless child.
-implant	implant#prosthesis	Noun	The surgeon placed a titanium dental {implant} in the patient's lower jaw.
-implant	implant#prosthesis	Noun	After the operation she received a new cochlear {implant} and heard birdsong again.
-implant	implant#prosthesis	Noun	Doctors recalled a faulty breast {implant} after reports of complications.
-implant	implant#prosthesis	Noun	The {implant} surgery took three hours and the patient went home the next day.
-implant	implant#prosthesis	Noun	Her {implant} site was sore for a week but healed without any infection.
-implant	implant#prosthesis	Noun	The {implant} manufacturer issued a safety notice to every hospital in the country.
-implant	implant#prosthesis	Noun	He had a titanium {implant} fitted in his knee after the skiing accident.
-implant	implant#prosthesis	Noun	The clinic gave the patient a new {implant} to replace the missing tooth.
-implant	implant#prosthesis	Noun	{Implants} made of titanium bond with the jawbone over several months.
-implant	implant#prosthesis	Noun	{Implants} in the inner ear let deaf children hear speech for the first time.
-implant	implant#prosthesis	Noun	{Implants} fail rarely, but a loose one needs to be replaced as soon as possible.
 implement	implement#apply	Verb	The district will {implement} the new reading program in every elementary school this fall.
 implement	implement#apply	Verb	{Implement} the new filing system in every office starting next Monday.
 implement	implement#carry-out	Verb	The board promised to {implement} the plan fully before the end of the fiscal year.
@@ -4094,43 +3863,20 @@ influence	influence#power	Noun	The old senator still has an enormous {influence}
 influence	influence#power	Noun	Her father had a quiet {influence} among the town's bankers.
 influence	influence#power	Noun	{Influence} in the capital is traded over long dinners, not in public hearings.
 influence	influence#power	Noun	{Influence} like his takes decades to build and one scandal to lose.
-initiate	initiate#beginner	Noun	The software {initiate} spent a week learning the basic commands.
-initiate	initiate#beginner	Noun	The coding bootcamp {initiate} struggled with the first assignment.
 initiate	initiate#broach	Verb	{Initiate} the topic of salary only after they make you an offer.
 initiate	initiate#induct	Verb	The tribe will {initiate} the boys in a ceremony at the river.
 initiate	initiate#induct	Verb	The lodge is ready to {initiate} the new members at midnight with the old rites.
-initiate	initiate#mystery-initiate	Noun	The mystery cult {initiate} learned secrets hidden from the common villagers.
-initiate	initiate#mystery-initiate	Noun	Only a lodge {initiate} could read the symbols carved above the temple door.
 initiate	initiate#originate	Verb	{Initiate} a new project folder and name it after the client.
-inlay	inlay#decoration	Noun	The cabinet's brass {inlay} was cut by hand and glued into shallow grooves.
-inlay	inlay#decoration	Noun	The mother-of-pearl {inlay} on the piano lid caught the lamp light.
-inlay	inlay#decoration	Noun	The {inlay} pattern on the walnut box was cut from pale maple veneer.
-inlay	inlay#decoration	Noun	A craftsman cut the {inlay} pieces with a very fine saw.
-inlay	inlay#dental-filling	Noun	The gold {inlay} replaced a failed filling in her back molar.
-inlay	inlay#dental-filling	Noun	The dentist cemented the porcelain {inlay} into the cavity after taking a mold.
-inlay	inlay#dental-filling	Noun	The dentist cemented the {inlay} restoration into the cracked molar this morning.
-inlay	inlay#dental-filling	Noun	Her {inlay} fitting took two visits and a plaster mold.
 inlay	inlay#inlay-surface	Verb	Artisans will {inlay} the box lid with thin strips of ivory and ebony.
 inlay	inlay#inlay-surface	Verb	She plans to {inlay} the guitar neck with mother-of-pearl dots.
 inlay	inlay#inlay-surface	Verb	You can {inlay} a tabletop with brass wire if you carve shallow grooves first.
 inlay	inlay#inlay-surface	Verb	{Inlay} the lid with thin strips of maple, then sand it flush.
 inlay	inlay#inlay-surface	Verb	{Inlay} the handle with small pieces of turquoise before applying the finish.
 inlay	inlay#inlay-surface	Verb	{Inlay} the border of the table with contrasting walnut and let the glue set.
-insert	insert#broadcast-insert	Noun	The local news {insert} ran during the network's evening broadcast.
-insert	insert#broadcast-insert	Noun	A sponsor {insert} aired in the middle of the national morning show.
-insert	insert#broadcast-insert	Noun	The producer made a short {insert} for the regional evening newscast.
-insert	insert#broadcast-insert	Noun	Local stations can run a 30-second {insert} during the network's morning show.
-insert	insert#broadcast-insert	Noun	The affiliate gave viewers a local {insert} on the storm during the national broadcast.
 insert	insert#enclose	Verb	You must {insert} the key fully into the lock before turning it.
 insert	insert#enclose	Verb	The nurse will {insert} the thin needle into the vein slowly.
 insert	insert#enclose	Verb	{Insert} your card into the slot and wait for the green light.
 insert	insert#enclose	Verb	{Insert} the plug firmly into the wall socket before you switch it on.
-insert	insert#film-insert	Noun	The newspaper clipping {insert} breaks the action just before the chase begins.
-insert	insert#film-insert	Noun	The director cut in a close-up photo {insert} to show the letter on screen.
-insert	insert#inserted-section	Noun	The {insert} section stuffed in the Sunday paper had coupons for groceries.
-insert	insert#inserted-section	Noun	Remove the {insert} pages from the center of the magazine before you bind it.
-insert	insert#inset	Noun	The {insert} tray fits inside the toolbox and holds the small screws.
-insert	insert#inset	Noun	Slide the {insert} panel into the door frame until it clicks.
 insert	insert#put-in	Verb	You can {insert} a photo into the middle of the document.
 insert	insert#put-in	Verb	She wants to {insert} a new paragraph into the report before the deadline.
 insert	insert#put-in	Verb	{Insert} a table into the document after the second paragraph.
@@ -4234,16 +3980,6 @@ interlay	interlay#layer-between	Verb	{Interlay} the two fabrics with a layer of 
 interlay	interlay#layer-between	Verb	{Interlay} each sheet of glass with soft tissue before packing the crate.
 interlock	interlock#hold-interlocked	Verb	The wrestler tried to {interlock} his hands around his opponent's waist.
 interlock	interlock#hold-interlocked	Verb	The latches will {interlock} the door panel firmly in place.
-interlock	interlock#ignition-interlock	Noun	The judge ordered an ignition {interlock} installed in his truck.
-interlock	interlock#ignition-interlock	Noun	The mechanic wired the ignition {interlock} to a breathalyzer under the dash.
-interlock	interlock#ignition-interlock	Noun	The {interlock} device clicks whenever the driver blows into it.
-interlock	interlock#ignition-interlock	Noun	A faulty {interlock} sensor kept the truck from starting this morning.
-interlock	interlock#ignition-interlock	Noun	She paid the {interlock} installation fee at the county office.
-interlock	interlock#interlocking	Noun	Arm {interlock} among the protesters held the police line back.
-interlock	interlock#interlocking	Noun	The tooth {interlock} in the new zipper design keeps it from splitting.
-interlock	interlock#interlocking	Noun	{Interlock} of the two gears transfers power to the wheels.
-interlock	interlock#interlocking	Noun	{Interlock} between the puzzle pieces holds the picture together.
-interlock	interlock#interlocking	Noun	{Interlocks} between the bricks give the wall its strength.
 interlock	interlock#mesh	Verb	The two teams must {interlock} their schedules to finish the project on time.
 interlock	interlock#mesh	Verb	These parts of the program should {interlock} so that no step is missed.
 intermediate	intermediate#chemical-intermediate	Noun	The reaction yields a drug {intermediate} that is purified later.
@@ -4310,15 +4046,6 @@ invalid	invalid#permanently-disable	Verb	The explosion could {invalid} the soldi
 invalid	invalid#permanently-disable	Verb	Another such accident would {invalid} the worker permanently.
 invalid	invalid#retire-from-duty	Verb	The board will {invalid} any firefighter who cannot pass the medical exam.
 invalid	invalid#retire-from-duty	Verb	The army may {invalid} the wounded officer out of service by spring.
-invert	invert#inversion	Noun	The pipe {invert} sits two feet below the manhole cover.
-invert	invert#inversion	Noun	The culvert {invert} must slope toward the river.
-invert	invert#inversion	Noun	Engineers checked the sewer {invert} before pouring the concrete.
-invert	invert#inversion	Noun	The {invert} slopes 1 percent over the 40 meter culvert.
-invert	invert#inversion	Noun	The {invert} elevation is 112.4 feet at the upstream manhole.
-invert	invert#inversion	Noun	The {invert} lies 2.5 meters below the road surface.
-invert	invert#inversion	Noun	The {invert} level was checked against the survey benchmark.
-invert	invert#inversion	Noun	A concrete {invert} slab covers the bottom of the tunnel.
-invert	invert#inversion	Noun	Record the {invert} elevation at every manhole on the plan.
 invert	invert#musical-inversion	Verb	Bach would often {invert} the theme in the second section.
 invert	invert#musical-inversion	Verb	The composer might {invert} the melody so it descends instead of rising.
 invert	invert#musical-inversion	Verb	{Invert} the theme in the fugue so the notes descend.
@@ -4335,12 +4062,6 @@ invite	invite#bid	Verb	{Invite} her to sit down and tell her story.
 invite	invite#bid	Verb	{Invite} the guests to sit down and help themselves to the food.
 invite	invite#increase-likelihood	Verb	Leaving the door unlocked would {invite} burglars.
 invite	invite#increase-likelihood	Verb	Careless posts online could {invite} criticism from customers.
-invite	invite#invitation	Noun	She sent a wedding {invite} to every cousin on her list.
-invite	invite#invitation	Noun	Check your email for the dinner {invite} from Dana.
-invite	invite#invitation	Noun	The group chat got a birthday {invite} from his boss.
-invite	invite#invitation	Noun	Dana gave us a last-minute {invite} to the show.
-invite	invite#invitation	Noun	Jo made an online {invite} for her housewarming party.
-invite	invite#invitation	Noun	We had an {invite} to the gala but skipped it.
 iron	iron#club	Noun	Mark replaced his old golf {iron} with a lighter model from the pro shop.
 iron	iron#club	Noun	He chipped onto the green with his old sand {iron}.
 iron	iron#club	Noun	{Irons} are easier to control than woods for most beginners.
@@ -4359,12 +4080,6 @@ iron	iron#press-cloth	Verb	{Iron} the collar first, then the sleeves, and hang t
 iron	iron#press-cloth	Verb	{Iron} the linen napkins on low heat to avoid scorching.
 iron	iron#press-cloth	Verb	{Iron} your pants before the interview tomorrow morning.
 isolate	isolate#insulate	Verb	{Isolate} the generator in its own shed so its vibration cannot reach the lab.
-isolate	isolate#isolated-person	Noun	The lab sequenced a patient {isolate} from the outbreak.
-isolate	isolate#isolated-person	Noun	Researchers tested each soil {isolate} against the antibiotic.
-isolate	isolate#isolated-person	Noun	A single virus {isolate} was shipped to the reference lab.
-isolate	isolate#isolated-person	Noun	{Isolates} from the hospital outbreak were sequenced last week.
-isolate	isolate#isolated-person	Noun	{Isolates} collected from river water showed resistance to the drug.
-isolate	isolate#isolated-person	Noun	{Isolates} of the virus differ by only a few mutations.
 isolate	isolate#purify	Verb	Researchers hope to {isolate} the active ingredient from the dried leaves.
 isolate	isolate#purify	Verb	The lab will {isolate} pure caffeine from the tea extract using a solvent.
 isolate	isolate#purify	Verb	{Isolate} the DNA from the blood sample using the spin column in the kit.
@@ -4537,18 +4252,6 @@ laminate	laminate#cover	Verb	I want to {laminate} my library card so it lasts lo
 laminate	laminate#cover	Verb	The teacher will {laminate} the posters so students can't tear them.
 laminate	laminate#cover	Verb	{Laminate} the menu cards at the copy shop so spills wipe right off.
 laminate	laminate#cover	Verb	{Laminate} your ID badge before you wear it on the factory floor.
-laminate	laminate#layered-sheet	Noun	The vinyl {laminate} on the cabinet doors peeled at the edges.
-laminate	laminate#layered-sheet	Noun	The carbon fiber {laminate} was cured in an oven for four hours.
-laminate	laminate#layered-sheet	Noun	The kitchen has a countertop {laminate} in speckled gray.
-laminate	laminate#layered-sheet	Noun	We ordered 40 square feet of oak {laminate} for the hallway.
-laminate	laminate#layered-sheet	Noun	The 12-millimeter {laminate} costs about 3 dollars per square foot.
-laminate	laminate#layered-sheet	Noun	Each sheet of {laminate} is 4 feet wide and 8 feet long.
-laminate	laminate#layered-sheet	Noun	The {laminate} flooring clicks together without any glue.
-laminate	laminate#layered-sheet	Noun	A {laminate} countertop resists stains and costs less than stone.
-laminate	laminate#layered-sheet	Noun	The {laminate} layer on the circuit board had started to peel.
-laminate	laminate#layered-sheet	Noun	{Laminate} is cheaper than solid hardwood and easier to install.
-laminate	laminate#layered-sheet	Noun	{Laminates} made of glass and plastic resist shattering in car windshields.
-laminate	laminate#layered-sheet	Noun	{Laminates} used in aircraft wings combine thin sheets of carbon fiber and resin.
 laminate	laminate#make-laminate	Verb	The shop will {laminate} three layers of birch plywood into one curved panel.
 laminate	laminate#make-laminate	Verb	Workers must {laminate} the thin carbon fiber sheets with epoxy and cure them.
 laminate	laminate#make-laminate	Verb	{Laminate} the veneer sheets with glue, then clamp them overnight in the mold.
@@ -4576,31 +4279,10 @@ land	land#real-estate-land	Noun	{Land} near the new highway interchange has doub
 land	land#real-estate-land	Noun	{Lands} along the river were sold off in small lots by the heirs.
 launch	launch#found	Verb	She said she would {launch} her own bakery after she finished culinary school.
 launch	launch#found	Verb	{Launch} your online store before the holiday shopping rush begins.
-launch	launch#motorboat	Noun	The harbor patrol {launch} sped across the bay toward the stranded sailboat.
-launch	launch#motorboat	Noun	A tourist {launch} carried twelve passengers out to the island each morning.
-launch	launch#motorboat	Noun	The 40-foot {launch} carries up to 30 passengers at a speed of 12 knots.
-launch	launch#motorboat	Noun	A 35-foot {launch} burns about 6 gallons of diesel per hour at cruising speed.
-launch	launch#motorboat	Noun	Each {launch} seats 12 passengers and a crew of 2 on the harbor run.
-launch	launch#motorboat	Noun	The {launch} captain steered toward the pier before sunrise.
-launch	launch#motorboat	Noun	Spray soaked the {launch} deck as the boat crossed the channel.
 launch	launch#propel	Verb	The submarine can {launch} a missile while it is still submerged.
 launch	launch#propel	Verb	Kids could {launch} water rockets across the field with just a bike pump.
 launch	launch#propel	Verb	{Launch} the model rocket from the flat part of the field.
 launch	launch#propel	Verb	{Launch} the missile only after the range officer gives the order.
-launch	launch#propulsion	Noun	The rocket {launch} was delayed twice by high winds over the coast.
-launch	launch#propulsion	Noun	Tuesday's satellite {launch} went off without a single technical hitch.
-launch	launch#propulsion	Noun	The {launch} window opens at 4:15 a.m. on Thursday and lasts an hour.
-launch	launch#propulsion	Noun	The {launch} pad was cleared of all personnel an hour before ignition.
-launch	launch#propulsion	Noun	The team did a flawless {launch} of the weather satellite on Monday.
-launch	launch#propulsion	Noun	The agency made a second {launch} on Friday after fixing the fuel valve.
-launch	launch#propulsion	Noun	The crew had a perfect {launch} despite the clouds over the pad.
-launch	launch#propulsion	Noun	{Launches} from the Florida coast draw big crowds every few months.
-launch	launch#propulsion	Noun	{Launch} of the new probe was scrubbed twice by storms near the pad.
-launch	launch#propulsion	Noun	{Launches} of small satellites have tripled in the last decade.
-lay	lay#narrative-poem	Noun	Chaucer borrowed the plot from a medieval romance {lay} about a faithful knight.
-lay	lay#narrative-poem	Noun	The minstrel recited a hero {lay} from memory at the king's feast.
-lay	lay#narrative-song	Noun	The tavern {lay} had a chorus that everyone in the room knew by heart.
-lay	lay#narrative-song	Noun	A sailor {lay} with a repeated refrain closed the folk concert.
 lay	lay#place	Verb	The coach will {lay} great emphasis on defense this season.
 lay	lay#place	Verb	Voters should not {lay} all the blame on one mayor.
 lay	lay#place	Verb	{Lay} the blame where it belongs, on the owners who ignored the warnings.
@@ -4674,23 +4356,7 @@ leak	leak#report-anonymously	Verb	{Leak} the story to a reporter you trust, not 
 leak	leak#report-anonymously	Verb	{Leak} the memo to the newspaper through a friend, and do not sign it.
 leak	leak#report-anonymously	Verb	{Leak} the budget numbers to the press before the council votes on them.
 leave	leave#abandon	Verb	{Leave} your phone behind when you walk into the exam hall.
-leave	leave#leave-of-absence	Noun	She applied for maternity {leave} as soon as her due date was set.
-leave	leave#leave-of-absence	Noun	He took unpaid medical {leave} to recover from knee surgery.
-leave	leave#leave-of-absence	Noun	Professors are entitled to paid sabbatical {leave} every seven years.
-leave	leave#leave-of-absence	Noun	She has 14 days of {leave} left to use before the end of the year.
-leave	leave#leave-of-absence	Noun	Employees earn 2 days of {leave} for every month they work.
-leave	leave#leave-of-absence	Noun	The union won 12 weeks of paid {leave} for new parents.
-leave	leave#leave-of-absence	Noun	The {leave} policy was revised after workers complained about delays.
-leave	leave#leave-of-absence	Noun	The {leave} request is waiting for approval from three managers.
-leave	leave#leave-of-absence	Noun	The {leave} balance on your pay stub shows how many days remain.
-leave	leave#leave-of-absence	Noun	He took a long {leave} to care for his father after the stroke.
-leave	leave#leave-of-absence	Noun	She took a two-month {leave} to finish writing her book.
-leave	leave#leave-of-absence	Noun	{Leave} is granted only after a manager signs the form.
-leave	leave#leave-of-absence	Noun	{Leave} for new fathers was extended to twelve weeks this year.
-leave	leave#leave-of-absence	Noun	{Leave} without pay is available after the first year of service.
 leave	leave#leave-place	Verb	{Leave} before the storm hits the coast and the roads close.
-leave	leave#permission	Noun	The king gave the envoy his {leave} to depart at first light.
-leave	leave#permission	Noun	May I have your {leave} to use the library after closing time?
 lecture	lecture#deliver-lecture	Verb	The professor will {lecture} on volcanoes tomorrow evening in the main hall.
 lecture	lecture#deliver-lecture	Verb	She was invited to {lecture} at three universities this spring.
 lecture	lecture#deliver-lecture	Verb	{Lecture} on the causes of the war for the first half of the hour.
@@ -4730,23 +4396,6 @@ lie	lie#prevarication	Noun	{Lies} told to protect a friend can still end up hurt
 lie	lie#prevarication	Noun	{Lies} about the product's safety cost the company millions in settlements.
 lie	lie#rest	Verb	The patient must {lie} still during the scan.
 lie	lie#rest	Verb	Children can {lie} on the grass and watch the clouds drift by.
-lift	lift#aerodynamic-lift	Noun	The wing {lift} dropped sharply as the plane approached a stall.
-lift	lift#aerodynamic-lift	Noun	Helicopter blade {lift} depends on the pitch of each rotor.
-lift	lift#aerodynamic-lift	Noun	Each wing produces 2,500 pounds of {lift} at takeoff speed.
-lift	lift#aerodynamic-lift	Noun	The wing generated 4,000 newtons of {lift} at 60 knots in the wind tunnel.
-lift	lift#aerodynamic-lift	Noun	The {lift} coefficient of the wing rose with the angle of attack.
-lift	lift#aerodynamic-lift	Noun	The {lift} force on the wing equals the plane's weight in level flight.
-lift	lift#aerodynamic-lift	Noun	{Lift} increases with wing area and airspeed.
-lift	lift#aerodynamic-lift	Noun	{Lift} on a flat plate grows with the angle of attack until the stall.
-lift	lift#aerodynamic-lift	Noun	{Lift} depends on air density, so planes need longer runways in hot weather.
-lift	lift#airlift	Noun	The refugee {lift} from Kabul ran day and night for two weeks.
-lift	lift#airlift	Noun	The Berlin {lift} fed two million people for nearly a year.
-lift	lift#airlift	Noun	The {lift} operation delivered 300 tons of food to the besieged town.
-lift	lift#airlift	Noun	The {lift} crews flew round the clock to bring in medical supplies.
-lift	lift#cosmetic-surgery	Noun	At sixty she had a {lift} to smooth her cheeks and jawline.
-lift	lift#cosmetic-surgery	Noun	The actor had a quick {lift} and returned to the set looking fresher.
-lift	lift#elevator	Noun	The {lift} holds 12 people or 1,000 pounds and serves all 20 floors.
-lift	lift#elevator	Noun	The {lift} climbs to the 40th floor in 20 seconds.
 lift	lift#raise-up	Verb	The incoming tide will {lift} the boat off the sandbar by midnight.
 lift	lift#raise-up	Verb	{Lift} your arms slowly above your head and hold them there.
 lift	lift#raise-up	Verb	{Lift} the lid and check the water level in the pot.
@@ -4844,18 +4493,12 @@ lock	lock#secure	Verb	Please remember to {lock} the back door before you leave f
 lock	lock#secure	Verb	You should {lock} your bicycle to the rack with a heavy chain.
 lock	lock#secure	Verb	{Lock} the car doors and take the keys with you when you go inside.
 lock	lock#secure	Verb	{Lock} the windows before you go to bed, since the neighborhood has had break-ins.
-lounge	lounge#couch	Noun	A tweed {lounge} with room for three sat under the window of the den.
 lounge	lounge#loiter	Verb	Teenagers might {lounge} around the mall entrance with nothing in particular to do.
 lounge	lounge#recline	Verb	You can {lounge} by the pool all afternoon with a book and a cold drink.
 lounge	lounge#recline	Verb	We will {lounge} in the porch hammocks until dinner is ready.
 lounge	lounge#recline	Verb	{Lounge} on the beach chair and let the afternoon drift by.
 lounge	lounge#recline	Verb	{Lounge} by the fire with a blanket and a good novel.
 lounge	lounge#recline	Verb	{Lounge} in the hammock while the kids play in the surf.
-lounge	lounge#waiting-room	Noun	We waited in the airport {lounge} until our flight began boarding.
-lounge	lounge#waiting-room	Noun	Passengers napped in the terminal {lounge} while the storm delayed every flight.
-lounge	lounge#waiting-room	Noun	The {lounge} attendant checked boarding passes at the door of the airport.
-lounge	lounge#waiting-room	Noun	Travelers praised the {lounge} staff at the terminal for finding them a quiet seat.
-lounge	lounge#waiting-room	Noun	The {lounge} seating at gate 14 was full, so most passengers stood.
 lunge	lunge#lurch	Noun	The leash {lunge} of the big dog nearly pulled her off her feet.
 lunge	lunge#lurch	Noun	A sudden bus {lunge} threw the standing passengers into one another.
 lunge	lunge#lurch	Noun	The dog made a sudden {lunge} for the squirrel and nearly pulled me over.
@@ -5052,14 +4695,6 @@ miscount	miscount#counting-error	Noun	The crew made a clumsy {miscount} of the p
 misfire	misfire#fail-to-fire	Verb	The cartridge may {misfire} if the powder gets damp.
 misfire	misfire#fail-to-fire	Verb	Damp fireworks can {misfire} and fail to ignite at all.
 misfire	misfire#fail-to-fire	Verb	I hope the old rifle won't {misfire} on the cold morning of the hunt.
-misfire	misfire#failed-explosion	Noun	The cannon {misfire} left the gunners staring at the smoking barrel.
-misfire	misfire#failed-explosion	Noun	The firework {misfire} left the crowd waiting in silence.
-misfire	misfire#failed-explosion	Noun	The pistol had a dangerous {misfire} during the range test.
-misfire	misfire#failed-explosion	Noun	The demolition crew had a {misfire} in one of the charges.
-misfire	misfire#failure-to-hit	Noun	The goalkeeper's penalty {misfire} sailed over the crossbar.
-misfire	misfire#failure-to-hit	Noun	The airstrike {misfire} hit an empty field far from the target.
-misfire	misfire#failure-to-hit	Noun	The team had an embarrassing {misfire} when its first shot missed the goal.
-misfire	misfire#failure-to-hit	Noun	The campaign made a costly {misfire} by missing its target audience.
 mishit	mishit#bad-hit	Noun	The second-serve {mishit} sailed into the stands.
 mishit	mishit#bad-hit	Noun	A driver {mishit} sent the ball into the woods.
 mishit	mishit#bad-hit	Noun	The nine-iron {mishit} left him short of the green.
@@ -5121,15 +4756,6 @@ moderate	moderate#slow	Verb	You should {moderate} your speed when the road turns
 moderate	moderate#slow	Verb	Drivers must {moderate} their speed near the school zone.
 moderate	moderate#slow	Verb	{Moderate} your pace on the hill or you will tire out early.
 moderate	moderate#slow	Verb	{Moderate} your speed as you approach the sharp curve ahead.
-monitor	monitor#monitor-display	Noun	The office computer {monitor} flickered twice and then went dark.
-monitor	monitor#monitor-display	Noun	My laptop {monitor} cracked when the bag slid off the back seat.
-monitor	monitor#monitor-display	Noun	The 27-inch {monitor} costs 340 dollars at the electronics store.
-monitor	monitor#monitor-display	Noun	Total {monitor} weight is 6.2 kilograms with the stand included.
-monitor	monitor#monitor-display	Noun	Each {monitor} supports a resolution of 3840 by 2160 pixels.
-monitor	monitor#monitor-display	Noun	The {monitor} stand wobbles whenever I type too fast.
-monitor	monitor#monitor-display	Noun	The {monitor} cable came loose, so the screen went black in the middle of the movie.
-monitor	monitor#monitor-lizard	Noun	The Nile {monitor} basked on a flat rock beside the muddy river.
-monitor	monitor#monitor-lizard	Noun	A Komodo {monitor} can swallow prey far larger than its own head.
 monitor	monitor#observe	Verb	Engineers can {monitor} the satellite signal from the ground station.
 monitor	monitor#observe	Verb	Technicians will {monitor} radio traffic on that frequency during the storm.
 monitor	monitor#observe	Verb	{Monitor} the incoming signal and report any drop in strength.
@@ -5206,9 +4832,6 @@ mow	mow#cut-grass	Verb	You should {mow} the back yard before the grass gets too 
 mow	mow#cut-grass	Verb	{Mow} the lawn before the neighbors complain.
 mow	mow#cut-grass	Verb	{Mow} the grass in straight rows, overlapping each pass slightly.
 mow	mow#cut-grass	Verb	{Mow} the front yard first, then trim the edges with the string trimmer.
-mow	mow#hayloft	Noun	The barn {mow} smelled of dry clover and dust.
-mow	mow#hayloft	Noun	Farmers pitched the last load of hay into the barn {mow} before the storm hit.
-mow	mow#hayloft	Noun	Kittens were born in the hay {mow} above the cow stalls.
 mow	mow#pout	Verb	The girl would {mow} at him, pushing out her lower lip in a sulk.
 mow	mow#pout	Verb	The spoiled child began to {mow}, thrusting out her lip, when the toy was taken away.
 nail	nail#ace	Verb	{Nail} the interview by researching the company the night before.
@@ -5334,21 +4957,6 @@ offer	offer#proposal	Noun	He made a lowball {offer} for the used truck, and the 
 offer	offer#proposal	Noun	{Offers} from three universities arrived by the first week of April.
 offer	offer#proposal	Noun	{Offers} above the asking price are common in this tight housing market.
 offer	offer#proposal	Noun	{Offers} were withdrawn one by one after the merger talks collapsed.
-offset	offset#counterbalance	Noun	The carbon {offset} bought by the airline pays for tree planting in Kenya.
-offset	offset#counterbalance	Noun	The tax {offset} reduced what we owed at the end of the year.
-offset	offset#counterbalance	Noun	The {offset} payment from the insurer covered most of the repair costs.
-offset	offset#counterbalance	Noun	The {offset} amount shown on the invoice lowered the total by 150 dollars.
-offset	offset#counterbalance	Noun	{Offsets} purchased from forestry projects now cover half of our company flights.
-offset	offset#counterbalance	Noun	{Offsets} in the tax code softened the blow of the higher rate.
-offset	offset#offset-printing	Noun	The {offset} press at the plant runs around the clock, turning out catalogs.
-offset	offset#offset-printing	Noun	The {offset} plates are made from thin aluminum sheets and etched with a laser.
-offset	offset#offset-printing	Noun	{Offset} transfers the inked image from the plate to a blanket and then to paper.
-offset	offset#offset-printing	Noun	{Offset} remains cheaper than digital printing for runs above two thousand copies.
-offset	offset#recessed-structure	Noun	The brick wall {offset} near the roofline gives the facade a stepped profile.
-offset	offset#recessed-structure	Noun	The tower's upper wall {offset} narrows the building above the fifth floor.
-offset	offset#recessed-structure	Noun	The wall {offset} at the third floor is 18 inches deep.
-offset	offset#recessed-structure	Noun	The building's {offset} at the setback measures 2.5 meters on the north side.
-offset	offset#recessed-structure	Noun	Each {offset} narrows the tower by 3 feet at floors 10, 20 and 30.
 opiate	opiate#opium-drug	Noun	The {opiate} crisis has overwhelmed small-town clinics across the region.
 opiate	opiate#opium-drug	Noun	The {opiate} painkillers were locked in a cabinet on the surgical ward.
 opiate	opiate#opium-drug	Noun	Many families have lost someone to {opiate} addiction in the last decade.
@@ -5448,20 +5056,6 @@ overburden	overburden#burden	Verb	Too many committees will {overburden} the smal
 overburden	overburden#burden	Verb	{Overburden} a new hire and watch morale drop within a month.
 overburden	overburden#burden	Verb	{Overburden} your students with homework, and they will stop learning anything.
 overburden	overburden#burden	Verb	{Overburden} the committee with reports, and nothing will ever get decided.
-overburden	overburden#mining-overburden	Noun	The coal mine {overburden} was stacked in huge piles beside the pit.
-overburden	overburden#mining-overburden	Noun	Quarry {overburden} is often reused to restore the land after the stone is gone.
-overburden	overburden#mining-overburden	Noun	The {overburden} above the coal seam is 45 meters thick.
-overburden	overburden#mining-overburden	Noun	The {overburden} stripped last year weighed 800,000 tons.
-overburden	overburden#mining-overburden	Noun	Crews must remove 2 million cubic meters of {overburden} each year to reach the ore.
-overburden	overburden#mining-overburden	Noun	The {overburden} dump covers thirty acres of former forest near the mine.
-overburden	overburden#mining-overburden	Noun	The {overburden} removal began before dawn with a fleet of huge trucks.
-overburden	overburden#mining-overburden	Noun	The {overburden} stripping at the open pit cost the mine four million dollars.
-overburden	overburden#mining-overburden	Noun	{Overburden} covers the seam to a depth of thirty meters and must be cleared first.
-overburden	overburden#mining-overburden	Noun	{Overburden} must be stripped away before the shovels can reach the coal.
-overburden	overburden#overload	Noun	Chronic staff {overburden} drove several nurses out of the hospital last year.
-overburden	overburden#overload	Noun	Student {overburden} from endless homework left many teenagers sleepless and anxious.
-overburden	overburden#overload	Noun	{Overburden} among emergency-room doctors leads to burnout and costly mistakes.
-overburden	overburden#overload	Noun	{Overburden} at work erodes family life and leaves parents too tired to cook.
 overburden	overburden#weight-load	Verb	You will {overburden} the little donkey if you pile on more sacks of grain.
 overburden	overburden#weight-load	Verb	Heavy snow can {overburden} the roof of an old barn and collapse it.
 overcall	overcall#bid-over	Verb	With a strong suit you can {overcall} the opening bid of one club.
@@ -5518,16 +5112,6 @@ overdub	overdub#dubbed-recording	Noun	She made a clean {overdub} on the chorus i
 overdub	overdub#dubbed-recording	Noun	We ran a second {overdub} to thicken the guitar sound on the final chorus.
 overdub	overdub#dubbed-recording	Noun	{Overdubs} were added in a Nashville studio after the live tracking was finished.
 overdub	overdub#dubbed-recording	Noun	{Overdubs} of strings and horns filled out the sparse arrangement of the single.
-overestimate	overestimate#overappraisal	Noun	The house {overestimate} embarrassed the realtor when the bank's own appraisal came in lower.
-overestimate	overestimate#overappraisal	Noun	His property {overestimate} scared off two serious buyers last spring.
-overestimate	overestimate#overappraisal	Noun	The seller made a wildly generous {overestimate} of what the old farmhouse was worth.
-overestimate	overestimate#overappraisal	Noun	The auction house gave a flattering {overestimate} of the painting before the sale.
-overestimate	overestimate#overestimation	Noun	The cost {overestimate} left the project with a large unspent surplus.
-overestimate	overestimate#overestimation	Noun	A rainfall {overestimate} led the town to buy far more pumps than it needed.
-overestimate	overestimate#overestimation	Noun	The model produced a 15 percent {overestimate} of next quarter's demand.
-overestimate	overestimate#overestimation	Noun	Our forecast was a 3,000-unit {overestimate} compared with the actual sales.
-overestimate	overestimate#overestimation	Noun	The engineers found a 12 percent {overestimate} in the first load calculation.
-overestimate	overestimate#overestimation	Noun	The new analyst made a costly {overestimate} when she projected the harvest.
 overestimate	overestimate#overrate	Verb	Critics tend to {overestimate} the film's influence on later directors.
 overestimate	overestimate#overvalue	Verb	It would be easy to {overestimate} the value of these old coins.
 overflow	overflow#brim-over	Verb	The river will {overflow} its banks if the rain continues through tonight.
@@ -5559,18 +5143,6 @@ overhang	overhang#projection	Noun	Allow 18 inches of {overhang} on each side of 
 overhang	overhang#projection	Noun	The balcony {overhang} measures 3 feet beyond the wall.
 overhang	overhang#projection	Noun	The {overhang} edge of the counter caught his hip as he passed.
 overhang	overhang#projection	Noun	The {overhang} length of the eaves is two feet on every side.
-overhaul	overhaul#inspection-and-repair	Noun	The engine {overhaul} took the mechanics three full days.
-overhaul	overhaul#inspection-and-repair	Noun	The tractor {overhaul} cost more than the farmer had saved.
-overhaul	overhaul#inspection-and-repair	Noun	A full engine {overhaul} costs 2,400 dollars at our local garage.
-overhaul	overhaul#inspection-and-repair	Noun	The turbine needs an {overhaul} every 5,000 operating hours.
-overhaul	overhaul#inspection-and-repair	Noun	The 500-hour {overhaul} of the pump required 12 new seals.
-overhaul	overhaul#inspection-and-repair	Noun	The {overhaul} schedule for the fleet is posted in the hangar.
-overhaul	overhaul#inspection-and-repair	Noun	The {overhaul} manual lists every bolt that must be replaced.
-overhaul	overhaul#inspection-and-repair	Noun	The {overhaul} bay was filled with disassembled motors.
-overhaul	overhaul#inspection-and-repair	Noun	The mechanic did a full {overhaul} on the old tractor last winter.
-overhaul	overhaul#inspection-and-repair	Noun	We performed a major {overhaul} on the turbine during the shutdown.
-overhaul	overhaul#inspection-and-repair	Noun	{Overhauls} on small aircraft engines are required every 2,000 hours of flight.
-overhaul	overhaul#inspection-and-repair	Noun	{Overhaul} of the old irrigation pump is due again in June.
 overhaul	overhaul#modernize	Verb	You should {overhaul} the car engine before the long summer trip.
 overhaul	overhaul#modernize	Verb	The company plans to {overhaul} its outdated payroll system next year.
 overhaul	overhaul#modernize	Verb	{Overhaul} the carburetor before you put the old motorcycle back on the road.
@@ -5578,47 +5150,15 @@ overhaul	overhaul#modernize	Verb	{Overhaul} the filing system so the staff can f
 overhaul	overhaul#modernize	Verb	{Overhaul} the whole website if you want customers to stay longer.
 overhaul	overhaul#overtake	Verb	The sports car will {overhaul} the slower trucks on the long hill.
 overhaul	overhaul#overtake	Verb	The faster yacht should {overhaul} the leader before the final buoy.
-overhaul	overhaul#redevelopment	Noun	The tax {overhaul} passed the Senate after months of debate.
-overhaul	overhaul#redevelopment	Noun	The city zoning {overhaul} changed how developers file their plans.
-overhaul	overhaul#redevelopment	Noun	The new director ran a thorough {overhaul} of the hiring process.
-overhaul	overhaul#redevelopment	Noun	The council will make a sweeping {overhaul} of the downtown zoning code.
-overhaul	overhaul#redevelopment	Noun	{Overhauls} of the tax code rarely satisfy everyone in the legislature.
-overhaul	overhaul#redevelopment	Noun	{Overhaul} of the school lunch program began after the parents complained.
 overlap	overlap#co-occur	Verb	Our vacations will {overlap} for a few days in August.
 overlap	overlap#co-occur	Verb	The two meetings might {overlap} if the first one runs late.
-overlap	overlap#co-occurrence	Noun	The shift {overlap} gives the nurses time to hand off their patients.
-overlap	overlap#co-occurrence	Noun	The schedule {overlap} meant both meetings were running at the same hour.
-overlap	overlap#co-occurrence	Noun	A 15-minute {overlap} between the two classes caused a problem for transfers.
-overlap	overlap#co-occurrence	Noun	The two broadcasts had an {overlap} of 40 seconds at the break.
-overlap	overlap#co-occurrence	Noun	{Overlap} between the day and night shifts lasts about 30 minutes.
-overlap	overlap#co-occurrence	Noun	{Overlaps} in the conference schedule forced her to skip one talk.
 overlap	overlap#continue	Verb	The shingles should {overlap} by two inches to keep out the rain.
 overlap	overlap#continue	Verb	The edges of the tiles must {overlap} slightly to seal the floor.
-overlap	overlap#convergence	Noun	The policy {overlap} between the two parties made a deal easier.
-overlap	overlap#convergence	Noun	A topic {overlap} in the two papers surprised the reviewers.
-overlap	overlap#convergence	Noun	The two surveys show a 40 percent {overlap} in the questions they ask.
-overlap	overlap#convergence	Noun	We counted an {overlap} of 120 words between the two vocabularies.
-overlap	overlap#convergence	Noun	{Overlap} between the two theories is small but important.
-overlap	overlap#convergence	Noun	{Overlaps} among their research interests made the collaboration easy.
 overlay	overlay#cover	Verb	You can {overlay} the base map with a clear sheet showing the roads.
 overlay	overlay#cover	Verb	She likes to {overlay} the cake with a thin layer of chocolate.
 overlay	overlay#cover	Verb	{Overlay} the base map with a transparent grid before you mark the routes.
 overlay	overlay#cover	Verb	{Overlay} the plaster with a coat of paint after it dries.
 overlay	overlay#cover	Verb	{Overlay} the photograph with a sheet of tracing paper to see the outline.
-overlay	overlay#decoration	Noun	The gold leaf {overlay} on the picture frame glittered in the lamplight.
-overlay	overlay#decoration	Noun	The walnut {overlay} on the cabinet doors had begun to peel.
-overlay	overlay#decoration	Noun	The gold leaf {overlay} is only 2 microns thick.
-overlay	overlay#decoration	Noun	Apply a 0.5-millimeter {overlay} of veneer across the tabletop.
-overlay	overlay#decoration	Noun	The silver {overlay} weighs about 30 grams on the whole vase.
-overlay	overlay#decoration	Noun	The {overlay} pattern on the chest was carved by hand.
-overlay	overlay#decoration	Noun	The {overlay} veneer on the old desk had begun to lift at the edges.
-overlay	overlay#decoration	Noun	{Overlays} of gold leaf cover the dome of the cathedral.
-overlay	overlay#decoration	Noun	{Overlay} of walnut veneer hides the plain pine frame.
-overlay	overlay#decoration	Noun	{Overlays} of silver gave the ancient shield its dazzling look.
-overlay	overlay#overlayer	Noun	The plywood {overlay} strengthens the roof and gives the shingles a base.
-overlay	overlay#overlayer	Noun	The subfloor {overlay} was nailed across the joists before the tiling started.
-overlay	overlay#overlayer	Noun	The {overlay} boards were nailed over the joists before the walls went up.
-overlay	overlay#overlayer	Noun	The {overlay} layer under the siding keeps the frame dry.
 overlay	overlay#overlie	Verb	A careless sow could {overlay} a piglet in the straw.
 overlay	overlay#overlie	Verb	The mother pig may {overlay} one of her young while she sleeps.
 overload	overload#become-overloaded	Verb	The circuit will {overload} if you plug in too many heaters.
@@ -5645,12 +5185,6 @@ overlook	overlook#face-toward	Verb	The hotel room will {overlook} the harbor and
 overlook	overlook#face-toward	Verb	We hope the new apartment can {overlook} the park.
 overlook	overlook#lose	Verb	I would never {overlook} a detail like that in a contract.
 overlook	overlook#lose	Verb	It is easy to {overlook} a small error when you are tired.
-overlook	overlook#viewpoint	Noun	The canyon {overlook} has a small parking lot and a gift shop.
-overlook	overlook#viewpoint	Noun	The harbor {overlook} offers a clear view of the ships at dawn.
-overlook	overlook#viewpoint	Noun	We ate lunch at the valley {overlook} before the drive home.
-overlook	overlook#viewpoint	Noun	The {overlook} trail climbs gently through the pines.
-overlook	overlook#viewpoint	Noun	The {overlook} parking area fills up quickly on summer weekends.
-overlook	overlook#viewpoint	Noun	The {overlook} platform was rebuilt after the winter storms.
 overpass	overpass#highway-overpass	Noun	The highway {overpass} collapsed during the earthquake.
 overpass	overpass#highway-overpass	Noun	The railroad {overpass} was closed for repairs through the winter.
 overpass	overpass#highway-overpass	Noun	Traffic backed up beneath the freeway {overpass} for two miles.
@@ -5672,37 +5206,12 @@ overprint	overprint#print-over	Verb	{Overprint} the form with the company name o
 override	override#counteract	Verb	Use the switch to {override} the automatic gearbox on steep hills.
 override	override#counteract	Verb	{Override} the automatic gearbox with the paddle shifters on the wheel.
 override	override#counteract	Verb	{Override} the automatic shifting when you tow a trailer downhill.
-override	override#device	Noun	The throttle {override} lets the pilot take back control of the engines.
-override	override#device	Noun	The manual {override} on the gate opened it during the power cut.
-override	override#device	Noun	The {override} switch is behind the panel on the left.
-override	override#device	Noun	Pull the {override} lever if the automatic door jams.
-override	override#device	Noun	The {override} button on the elevator is for firefighters only.
-override	override#nullification	Noun	The council veto {override} passed by a single vote.
-override	override#nullification	Noun	The Senate vote {override} ended the long dispute over the bill.
-override	override#nullification	Noun	{Overrides} of vetoes are rare in the state legislature.
-override	override#nullification	Noun	{Overrides} of court rulings by Congress have caused fierce debate.
-override	override#nullification	Noun	{Override} of the veto requires two thirds of the members.
 override	override#overrule	Verb	The Senate can {override} the governor's veto with a two-thirds vote.
 override	override#overrule	Verb	The higher court may {override} the decision of the local judge.
 overrun	overrun#conquer	Verb	The army could {overrun} the fort before the reinforcements arrived.
 overrun	overrun#conquer	Verb	The rebels might {overrun} the capital by the end of the week.
-overrun	overrun#excess	Noun	The cost {overrun} on the bridge reached 40 million dollars.
-overrun	overrun#excess	Noun	The budget {overrun} forced the school board to cut two programs.
-overrun	overrun#excess	Noun	The print {overrun} left the publisher with thousands of unsold books.
-overrun	overrun#excess	Noun	The project ended with a 2 million dollar cost {overrun}.
-overrun	overrun#excess	Noun	We had an {overrun} of 500 copies after the second print run.
-overrun	overrun#excess	Noun	The 12 percent {overrun} wiped out the profit on the contract.
-overrun	overrun#excess	Noun	The {overrun} stock was sold at half price in the spring.
-overrun	overrun#excess	Noun	The {overrun} copies went to the library for free.
-overrun	overrun#excess	Noun	The {overrun} inventory filled two rooms of the warehouse.
-overrun	overrun#excess	Noun	{Overruns} on construction jobs often reach 20 percent of the budget.
-overrun	overrun#excess	Noun	{Overrun} at the factory left the warehouse full of unwanted shirts.
-overrun	overrun#excess	Noun	{Overruns} in the printing order cost the publisher thousands of dollars.
 overshoot	overshoot#aim-too-high	Verb	New archers tend to {overshoot} at first and aim well above the mark.
 overshoot	overshoot#aim-too-high	Verb	{Overshoot} the estimate when you aim for a sales figure that seems too high.
-overshoot	overshoot#failed-approach	Noun	The landing {overshoot} forced the pilot to circle for a second pass.
-overshoot	overshoot#failed-approach	Noun	The first approach {overshoot} was caused by a sudden gust of wind.
-overshoot	overshoot#failed-approach	Noun	A night landing {overshoot} sent the crew back up to try again.
 overshoot	overshoot#shoot-past	Verb	The arrow may {overshoot} the target if the wind picks up.
 overshoot	overshoot#shoot-past	Verb	{Overshoot} the target and the arrow lands harmlessly in the field.
 overshoot	overshoot#shoot-past	Verb	{Overshoot} the bunker with the first shell, then correct the aim.
@@ -5777,13 +5286,6 @@ overturn	overturn#turn-upside-down	Verb	Be careful, the loaded cart could {overt
 overturn	overturn#turn-upside-down	Verb	A narrow canoe will {overturn} if you stand up in it.
 overturn	overturn#turn-upside-down	Verb	{Overturn} at the shallow end of the pool, then practice the roll, the instructor told the kayaker.
 overturn	overturn#turn-upside-down	Verb	{Overturn} when I give the signal, and the whole raft will flip into the water.
-overturn	overturn#upending	Noun	A sudden sled {overturn} left the boy with bruised ribs and a sprained wrist.
-overturn	overturn#upending	Noun	The speedboat {overturn} sent all four passengers into the cold lake.
-overturn	overturn#upending	Noun	The {overturn} risk on that narrow trail is high when the sled is overloaded.
-overturn	overturn#upending	Noun	An {overturn} accident on the icy bridge blocked traffic for an hour.
-overturn	overturn#upending	Noun	The {overturn} sensor flashed a warning as the crane began to tilt.
-overturn	overturn#upset-victory	Noun	The semifinal {overturn} sent the favorite home and stunned the crowd.
-overturn	overturn#upset-victory	Noun	The cup {overturn} of the defending champions was the biggest shock of the season.
 overuse	overuse#excessive-use	Noun	Antibiotic {overuse} breeds drug-resistant bacteria in hospitals.
 overuse	overuse#excessive-use	Noun	Pesticide {overuse} has damaged the soil on many small farms.
 overuse	overuse#excessive-use	Noun	Chronic painkiller {overuse} can cause headaches that never seem to stop.
@@ -5808,15 +5310,6 @@ overweight	overweight#excess-weight	Noun	{Overweight} often goes unnoticed until
 overweight	overweight#weigh-too-much	Verb	Investors should not {overweight} a single stock in a retirement portfolio.
 overweight	overweight#weigh-too-much	Verb	A careless packer will {overweight} the left side of the trailer and make it sway.
 overweight	overweight#weigh-too-much	Verb	Analysts may {overweight} recent earnings and ignore the company's longer track record.
-overwork	overwork#excessive-work	Noun	Nurse {overwork} is a leading cause of burnout on busy hospital wards.
-overwork	overwork#excessive-work	Noun	Staff {overwork} during the merger pushed three engineers to resign.
-overwork	overwork#excessive-work	Noun	Chronic office {overwork} left her exhausted every night.
-overwork	overwork#excessive-work	Noun	The {overwork} complaints from the night shift reached the union last week.
-overwork	overwork#excessive-work	Noun	An {overwork} death at the factory sparked new labor rules.
-overwork	overwork#excessive-work	Noun	The {overwork} problem at the startup was obvious from the tired engineers at 11 p.m.
-overwork	overwork#excessive-work	Noun	{Overwork} was blamed for the surgeon's mistake during the long night shift.
-overwork	overwork#excessive-work	Noun	{Overwork} can ruin a marriage faster than most people expect.
-overwork	overwork#excessive-work	Noun	{Overwork} killed more workers in the old mills than any single accident did.
 overwork	overwork#use-too-much	Verb	Writers should not {overwork} a metaphor until it loses all meaning.
 overwork	overwork#use-too-much	Verb	Try not to {overwork} the old washing machine by running it all day.
 overwork	overwork#use-too-much	Verb	{Overwork} your hand-me-down printer, and you will be replacing it by spring.
@@ -6013,12 +5506,6 @@ perfect	perfect#complete	Verb	The chef spent years trying to {perfect} his recip
 perfect	perfect#complete	Verb	{Perfect} your serve with an hour of practice every day.
 perfect	perfect#complete	Verb	{Perfect} the recipe in small batches before you scale it up.
 perfect	perfect#complete	Verb	{Perfect} your French in Paris this summer, the ad urged.
-perfect	perfect#perfect-tense	Noun	The future {perfect} tells us what will have happened by a given time.
-perfect	perfect#perfect-tense	Noun	Spanish teachers drill the present {perfect} early in the first year.
-perfect	perfect#perfect-tense	Noun	In English, the past {perfect} describes an event completed before another one.
-perfect	perfect#perfect-tense	Noun	{Perfect} in English is formed with have and a past participle.
-perfect	perfect#perfect-tense	Noun	{Perfect} expresses a completed action that still matters in the present.
-perfect	perfect#perfect-tense	Noun	{Perfects} are rare in this dialect, and speakers use the simple past instead.
 perfume	perfume#apply-perfume	Verb	She likes to {perfume} herself lightly before dinner.
 perfume	perfume#apply-perfume	Verb	He would never {perfume} himself heavily for the office.
 perfume	perfume#apply-perfume	Verb	{Perfume} your wrists lightly before heading out to dinner.
@@ -6136,18 +5623,12 @@ pin	pin#jewelry	Noun	She wore a gold lapel {pin} shaped like a tiny sunflower to
 pin	pin#jewelry	Noun	He bought a silver tie {pin} at the antique shop on Elm Street.
 pin	pin#jewelry	Noun	{Pins} shaped like little flags covered the sleeve of his denim jacket.
 pin	pin#jewelry	Noun	{Pins} from every national park she had visited lined the strap of her bag.
-pinch	pinch#arrest	Noun	The narcotics squad made a big {pinch} at the docks on Tuesday night.
-pinch	pinch#arrest	Noun	Two detectives made the {pinch} just after midnight, and the suspect came along quietly.
 pinch	pinch#crimp	Verb	Use a fork to {pinch} the edges of the pie crust into a ridge.
 pinch	pinch#crimp	Verb	You should {pinch} the dumpling dough along the top to form small pleats.
-pinch	pinch#small-amount	Noun	Add a {pinch} of salt, about 0.3 grams, to the dough.
-pinch	pinch#small-amount	Noun	A {pinch} of saffron, roughly ten threads, colors the whole pot of rice.
-pinch	pinch#small-amount	Noun	Stir in one {pinch} of cayenne, no more than 1 gram, for some heat.
 pinch	pinch#squeeze	Verb	You can {pinch} the clay between your thumb and finger to shape the rim.
 pinch	pinch#squeeze	Verb	Nurses will {pinch} the skin lightly to test whether the patient is dehydrated.
 pinch	pinch#squeeze	Verb	{Pinch} the bridge of your nose and breathe out slowly.
 pinch	pinch#squeeze	Verb	{Pinch} the leaf between your fingers to release the scent of the mint.
-pinch	pinch#tweak	Noun	She gave his arm a playful {pinch} and he yelped.
 place	place#job	Noun	She has a good {place} at the law firm, with a steady salary and a pension.
 place	place#lay	Verb	You should {place} the tiles flat on the damp cement and press them down.
 place	place#lay	Verb	{Place} the cups upside down on the rack to dry overnight.
@@ -6165,9 +5646,6 @@ place	place#stead	Noun	He took his father's {place} on the board after the funer
 place	place#stead	Noun	She will take my {place} at the conference because I have the flu.
 plague	plague#blight	Verb	Drought could {plague} the wheat fields again if the rains fail this summer.
 plague	plague#blight	Verb	Fungal disease may {plague} the orchard for years once it takes hold in the soil.
-plague	plague#calamity	Noun	Priests called the flood a divine {plague} sent to punish the proud city.
-plague	plague#calamity	Noun	The {plague} stories in the old scripture describe frogs, darkness and swarms of flies.
-plague	plague#calamity	Noun	{Plagues} of locusts and hail ruined the crops, according to the ancient chronicle.
 plague	plague#harass	Verb	Doubts will {plague} him long after the trial has ended.
 plague	plague#harass	Verb	Constant noise from the highway might {plague} the residents for the rest of the decade.
 plant	plant#embed	Verb	Workers will {plant} steel anchors deep in the bedrock to secure the bridge.
@@ -6591,18 +6069,6 @@ print	print#publish-in-print	Verb	The editor will {print} the full interview in 
 print	print#publish-in-print	Verb	The magazine might {print} her story if the lawyers approve it.
 print	print#publish-in-print	Verb	{Print} the correction on page one tomorrow morning.
 print	print#publish-in-print	Verb	{Print} the full text of the speech in the weekend edition.
-produce	produce#fresh-produce	Noun	Roadside stands sell farm {produce} at half the supermarket price.
-produce	produce#fresh-produce	Noun	The cafe buys its summer orchard {produce} from two families nearby.
-produce	produce#fresh-produce	Noun	Our school cafeteria serves garden {produce} grown by the students.
-produce	produce#fresh-produce	Noun	Shoppers bought 40 pounds of {produce} at the market this morning.
-produce	produce#fresh-produce	Noun	The truck delivered 3 tons of {produce} to the warehouse before dawn.
-produce	produce#fresh-produce	Noun	A family of four eats about 12 pounds of {produce} a week.
-produce	produce#fresh-produce	Noun	The {produce} aisle was crowded with shoppers squeezing peaches and melons.
-produce	produce#fresh-produce	Noun	A {produce} manager checks every crate for bruised fruit.
-produce	produce#fresh-produce	Noun	The {produce} stand opens at eight and sells out of corn by noon.
-produce	produce#fresh-produce	Noun	{Produce} spoils quickly when it is stored next to ripening bananas.
-produce	produce#fresh-produce	Noun	{Produce} from the valley reaches city markets by dawn.
-produce	produce#fresh-produce	Noun	{Produce} sold at roadside stalls tends to be fresher than supermarket stock.
 produce	produce#manufacture	Verb	The factory will {produce} ten thousand bicycles a month starting in March.
 produce	produce#manufacture	Verb	The plant can {produce} electric motors for several car makers at once.
 produce	produce#manufacture	Verb	{Produce} two hundred units a day on the new assembly line.
@@ -6758,17 +6224,6 @@ quote	quote#add-quotation-marks	Verb	You should {quote} every string value in th
 quote	quote#add-quotation-marks	Verb	Remember to {quote} the file path if it contains spaces.
 quote	quote#add-quotation-marks	Verb	{Quote} the file name in the command because it contains spaces.
 quote	quote#add-quotation-marks	Verb	{Quote} each field in the spreadsheet before you export it to text.
-quote	quote#quotation	Noun	The famous movie {quote} was printed on every T-shirt at the fair.
-quote	quote#quotation	Noun	A short poem {quote} opened the senator's speech.
-quote	quote#quotation	Noun	{Quotes} from the old speeches filled the first page of the report.
-quote	quote#quotation	Noun	{Quotes} in news stories must be checked with the source.
-quote	quote#quotation-mark	Noun	The editor adds matching string {quotes} automatically as you type.
-quote	quote#quotation-mark	Noun	Copy the CSV field {quotes} too, or the import will break.
-quote	quote#quotation-mark	Noun	The {quote} character sits on the same key as the apostrophe.
-quote	quote#quotation-mark	Noun	Add a closing {quote} mark after the last word.
-quote	quote#quotation-mark	Noun	Her keyboard's {quote} key is stuck again.
-quote	quote#quotation-mark	Noun	{Quotes} around a phrase tell the reader the words belong to someone else.
-quote	quote#quotation-mark	Noun	{Quotes} inside the string must be escaped with a backslash.
 quote	quote#quote-passage	Verb	The author likes to {quote} Shakespeare in every chapter.
 quote	quote#quote-passage	Verb	Students may {quote} the poem in their essays if they cite it.
 quote	quote#quote-passage	Verb	{Quote} the senator directly, then explain what she meant.
@@ -6776,18 +6231,8 @@ quote	quote#quote-passage	Verb	{Quote} the second paragraph of the contract in y
 rack	rack#place-on-rack	Verb	{Rack} the balls in a tight triangle before the break.
 rack	rack#place-on-rack	Verb	{Rack} the clean glasses upside down in the dishwasher.
 rack	rack#place-on-rack	Verb	{Rack} the barbells after your last set.
-rack	rack#rib-section	Noun	The lamb {rack} roasted with herbs in forty minutes.
-rack	rack#rib-section	Noun	Order the pork {rack} from the butcher for Sunday dinner.
-rack	rack#rib-section	Noun	Each lamb {rack} weighs about 1.5 pounds and serves 3 people.
-rack	rack#rib-section	Noun	Roast the {rack} at 400 degrees for 25 minutes.
 rack	rack#ride-rack-gait	Verb	The gaited horse can {rack} for miles without tiring its rider.
 rack	rack#ride-rack-gait	Verb	Trainers want the young stallion to {rack} smoothly at show speed.
-rack	rack#storage-rack	Noun	The wine {rack} in the cellar holds 200 bottles.
-rack	rack#storage-rack	Noun	The shoe {rack} by the door overflowed with muddy boots.
-rack	rack#storage-rack	Noun	This steel {rack} holds up to 300 pounds on each of its 5 shelves.
-rack	rack#storage-rack	Noun	The {rack} space in the shop is completely full.
-rack	rack#storage-rack	Noun	A {rack} system with adjustable shelves fits the garage nicely.
-rack	rack#storage-rack	Noun	The {rack} shelf bent under the weight of the paint cans.
 rack	rack#strain-to-limit	Verb	You will {rack} your brain trying to recall her name.
 rack	rack#strain-to-limit	Verb	He had to {rack} his brains to remember the password.
 rag	rag#annoy	Verb	The buzzing fluorescent light will {rag} everyone in the room by noon.
@@ -6862,12 +6307,6 @@ read	read#construe	Verb	{Read} the contract carefully before you sign anything.
 read	read#construe	Verb	{Read} the instructions twice and check the diagram.
 read	read#read-aloud	Verb	{Read} the first paragraph out loud so the whole class can hear.
 read	read#read-aloud	Verb	{Read} the bedtime story to your little brother in a soft voice.
-read	read#reading-material	Noun	Her latest airport {read} was a spy novel with a clever twist.
-read	read#reading-material	Noun	It's a quick weekend {read}, but the ending stays with you.
-read	read#reading-material	Noun	The perfect beach {read} is a light thriller you can finish in a day.
-read	read#reading-material	Noun	The memoir makes a surprisingly fun {read} on a long flight.
-read	read#reading-material	Noun	Her latest thriller would make a gripping {read} for the holidays.
-read	read#reading-material	Noun	I think this old science fiction paperback will make a fine {read} for you.
 read	read#wording	Verb	The final sentence must {read} exactly as it appears in the statute.
 read	read#wording	Verb	The new warning label will {read} "Keep out of reach of children."
 rear	rear#far-side	Noun	The hall {rear} was packed with people who could not find seats.
@@ -6963,26 +6402,8 @@ rebore	rebore#rebore-operation	Noun	Mike did a careful {rebore} on the vintage T
 rebore	rebore#rebore-operation	Noun	{Rebores} are usually done in oversize steps of half a millimeter.
 rebore	rebore#rebore-operation	Noun	{Rebore} of the worn cylinders restored compression to the old engine.
 rebore	rebore#rebore-operation	Noun	{Rebores} on vintage motorcycle engines call for a very steady hand.
-recall	recall#bugle-return	Noun	The bugler sounded the cavalry {recall}, and the riders turned back.
-recall	recall#bugle-return	Noun	At dusk the trumpet {recall} echoed across the fort and the troops returned.
 recall	recall#evoke-memory	Verb	The smell of pine will {recall} childhood Christmases for her.
 recall	recall#evoke-memory	Verb	That melody may {recall} an old song from the fifties.
-recall	recall#official-removal	Noun	The campaign to force a governor {recall} collected thousands of signatures.
-recall	recall#official-removal	Noun	Voters in the district will face a mayor {recall} in the fall.
-recall	recall#official-removal	Noun	The {recall} election will be held in September.
-recall	recall#official-removal	Noun	Organizers need 50,000 signatures to start the {recall} petition.
-recall	recall#official-removal	Noun	{Recall} of the mayor will go on the ballot in November.
-recall	recall#official-removal	Noun	{Recalls} of elected officials need a petition signed by thousands of voters.
-recall	recall#product-recall	Noun	The car maker issued a {recall} covering 400,000 vehicles.
-recall	recall#product-recall	Noun	The {recall} affects 12,000 units sold since January.
-recall	recall#product-recall	Noun	A {recall} of 2.3 million strollers was announced Thursday.
-recall	recall#product-recall	Noun	The {recall} notice said the airbags could fail.
-recall	recall#product-recall	Noun	Owners received a {recall} letter in the mail about the brake lines.
-recall	recall#product-recall	Noun	The company made a voluntary {recall} of its baby formula.
-recall	recall#product-recall	Noun	The toy firm had to run a costly {recall} of its stuffed animals.
-recall	recall#product-recall	Noun	The carmaker will do a massive {recall} to fix the faulty airbags.
-recall	recall#product-recall	Noun	{Recalls} of contaminated food are posted on the agency's website.
-recall	recall#product-recall	Noun	{Recall} of the defective brakes cost the manufacturer millions.
 recall	recall#remember	Verb	I can't {recall} the last time we met.
 recall	recall#remember	Verb	{Recall} the last time you felt truly happy, and describe it.
 recall	recall#summon-back	Verb	{Recall} the ambassador at once and send a replacement.
@@ -7009,21 +6430,6 @@ recap	recap#summarize	Verb	{Recap} the chapter in two sentences before you move 
 recap	recap#summarize	Verb	{Recap} the main arguments at the end of your presentation.
 recess	recess#adjourn	Verb	The chairman said the committee would {recess} until nine tomorrow morning.
 recess	recess#adjourn	Verb	The court may {recess} for lunch if the witness needs more time.
-recess	recess#break	Noun	The lunch {recess} lasted forty minutes, and the delegates wandered outside.
-recess	recess#break	Noun	Children poured onto the playground when the afternoon {recess} began.
-recess	recess#break	Noun	The court granted a 15-minute {recess} after the second witness finished.
-recess	recess#break	Noun	Each school day includes two 20-minute {recesses} for students in grades one through five.
-recess	recess#break	Noun	The {recess} bell rang at 10:15, and the hallways emptied.
-recess	recess#break	Noun	The {recess} schedule was changed after parents complained about the late start.
-recess	recess#break	Noun	Let's take a short {recess} and come back at two o'clock.
-recess	recess#break	Noun	The teacher gave the class a long {recess} after the exam.
-recess	recess#break	Noun	We had a quick {recess} between sessions and grabbed some coffee.
-recess	recess#break	Noun	{Recess} ends at noon, so line up quietly at the door.
-recess	recess#break	Noun	{Recesses} at the elementary school are held on the field when it is dry.
-recess	recess#break	Noun	{Recess} was cut short because of the thunderstorm rolling in.
-recess	recess#corner	Noun	The sinus {recesses} drain slowly when you have a bad cold.
-recess	recess#niche	Noun	The {recess} shelves built into the wall held rows of old paperbacks.
-recess	recess#niche	Noun	The {recess} walls of the chapel were lined with tiles around each statue.
 recess	recess#set-in-recess	Verb	The carpenter will {recess} the hinges so the door closes flush.
 recess	recess#set-in-recess	Verb	You should {recess} the screw heads below the surface before filling the holes.
 recess	recess#set-in-recess	Verb	{Recess} the light fixtures into the ceiling so they sit flush.
@@ -7054,22 +6460,8 @@ recharge	recharge#reload	Verb	{Recharge} the extinguisher with new powder after 
 recharge	recharge#reload	Verb	{Recharge} the empty cartridge with ink from the bottle on the shelf.
 recoil	recoil#backfire	Verb	The plan could {recoil} on its author if the lie is exposed.
 recoil	recoil#backfire	Verb	Harsh punishments may {recoil} on the officials who ordered them.
-recoil	recoil#backlash	Noun	The spring {recoil} pushed the lid back open after the hammer blow.
-recoil	recoil#backlash	Noun	The membrane {recoil} after impact was recorded by a high-speed camera.
-recoil	recoil#backlash	Noun	{Recoil} from the collision pushed both carts apart on the air track.
-recoil	recoil#backlash	Noun	{Recoils} of colliding billiard balls can be calculated from their masses and speeds.
 recoil	recoil#draw-back	Verb	He seemed to {recoil} when the nurse touched his bruised arm.
 recoil	recoil#draw-back	Verb	Most people would {recoil} at the sight of a snake on the porch.
-recoil	recoil#gun-kick	Noun	The shotgun {recoil} bruised her shoulder during the first round of practice.
-recoil	recoil#gun-kick	Noun	Rifle {recoils} vary with the weight of the bullet and the powder charge.
-recoil	recoil#gun-kick	Noun	The rifle's {recoil} is rated at 18 foot-pounds of energy.
-recoil	recoil#gun-kick	Noun	The pistol generates 6 foot-pounds of {recoil} with standard 9 mm loads.
-recoil	recoil#gun-kick	Noun	Testers measured the {recoil} at 25 foot-pounds with the heavy 300-grain load.
-recoil	recoil#gun-kick	Noun	The {recoil} pad on the stock cushions the blow against your shoulder.
-recoil	recoil#gun-kick	Noun	A {recoil} spring inside the slide returns the barrel to its forward position.
-recoil	recoil#gun-kick	Noun	The {recoil} energy of the shotgun was too much for the young shooter.
-recoil	recoil#gun-kick	Noun	{Recoil} from the .44 magnum made her wrists ache after fifty shots.
-recoil	recoil#gun-kick	Noun	{Recoils} in lightweight shotguns are harsh unless a pad is fitted.
 record	record#disc	Noun	My grandfather's jazz {record} has a scratch right across the second track.
 record	record#disc	Noun	Her father's vinyl {records} filled two shelves in the den.
 record	record#disc	Noun	The shop sells used 33-rpm {records} for 5 dollars each.
@@ -7109,18 +6501,6 @@ redial	redial#redial-action	Noun	I made a hurried {redial} from the car as the c
 redial	redial#redial-action	Noun	{Redial} on this phone works by pressing the star key twice.
 redial	redial#redial-action	Noun	{Redial} failed three times because the line stayed busy.
 redial	redial#redial-action	Noun	{Redials} are limited to ten attempts on this fax machine.
-redirect	redirect#redirection	Noun	The site's HTTP {redirect} sent visitors from the old domain to the new one.
-redirect	redirect#redirection	Noun	A permanent URL {redirect} preserves search ranking after a page moves.
-redirect	redirect#redirection	Noun	The server {redirect} loops endlessly because two rules point at each other.
-redirect	redirect#redirection	Noun	The {redirect} rule in the configuration file forwards every request to the secure site.
-redirect	redirect#redirection	Noun	The {redirect} loop crashed the browser tab right after login.
-redirect	redirect#redirection	Noun	Check the {redirect} status code in the response headers.
-redirect	redirect#redirection	Noun	Make a permanent {redirect} from the old page to the new address.
-redirect	redirect#redirection	Noun	The admin will make a temporary {redirect} to the maintenance page tonight.
-redirect	redirect#redirection	Noun	We have a broken {redirect} on the checkout page that sends customers nowhere.
-redirect	redirect#redirection	Noun	{Redirect} from the old domain stopped working after the migration.
-redirect	redirect#redirection	Noun	{Redirects} from old URLs should return a 301 status so search engines update.
-redirect	redirect#redirection	Noun	{Redirects} are cached by browsers, so testing changes can be confusing.
 redirect	redirect#reroute	Verb	The router will {redirect} all traffic through the backup link.
 redirect	redirect#reroute	Verb	Airlines may {redirect} flights around the storm.
 redirect	redirect#reroute	Verb	We had to {redirect} the shipment to a different warehouse.
@@ -7158,24 +6538,6 @@ refill	refill#fill-again	Verb	I forgot to {refill} the tank before we left town.
 refill	refill#fill-again	Verb	{Refill} the coffee pot before the next meeting starts.
 refill	refill#fill-again	Verb	{Refill} the printer tray with paper, then press start.
 refill	refill#fill-again	Verb	{Refill} the humidifier with distilled water each morning.
-refill	refill#prescription-refill	Noun	The pharmacy {refill} for my blood pressure pills was ready by noon.
-refill	refill#prescription-refill	Noun	Her asthma {refills} are covered by the insurance plan every month.
-refill	refill#prescription-refill	Noun	The label says 2 {refills} remain on this prescription of 30 tablets.
-refill	refill#prescription-refill	Noun	Her prescription allows 5 {refills}, each a 90-day supply of the pills.
-refill	refill#prescription-refill	Noun	The {refill} request form is on the pharmacy's website.
-refill	refill#prescription-refill	Noun	My {refill} reminder text arrives three days before the pills run out.
-refill	refill#prescription-refill	Noun	The pharmacist will give me a 30-day {refill} of my allergy pills this afternoon.
-refill	refill#prescription-refill	Noun	Ask your doctor to give you a {refill} before the trip.
-refill	refill#prescription-refill	Noun	{Refills} of my thyroid medicine are free with the insurance plan.
-refill	refill#prescription-refill	Noun	{Refill} of controlled drugs requires a new signed order each time.
-refill	refill#refill-product	Noun	The pen {refill} snaps into the barrel in a few seconds.
-refill	refill#refill-product	Noun	The soap {refill} comes in a pouch that uses less plastic.
-refill	refill#refill-product	Noun	A 500-milliliter {refill} costs 4 dollars, compared with 9 for a new bottle of soap.
-refill	refill#refill-product	Noun	Order a 3-pack of {refills} for 12 dollars to fill the dispenser at the sink.
-refill	refill#refill-product	Noun	The {refill} pouch is cheaper than buying another pump bottle.
-refill	refill#refill-product	Noun	Each {refill} cartridge slides into the pen and clicks into place.
-refill	refill#refill-product	Noun	{Refills} for the hand soap dispensers are stocked in the supply closet.
-refill	refill#refill-product	Noun	{Refills} for the printer cost half the price of new cartridges at that store.
 refit	refit#outfit-again	Verb	The yard will {refit} the destroyer with modern sonar.
 refit	refit#outfit-again	Verb	They plan to {refit} the old trawler as a research vessel.
 refit	refit#outfit-again	Verb	The crew must {refit} the yacht's rigging before the race.
@@ -7262,18 +6624,6 @@ refuse	refuse#deny-as-true	Verb	Skeptics will {refuse} the claim that the climat
 refuse	refuse#deny-as-true	Verb	The committee could {refuse} his account of the accident as a fabrication.
 refuse	refuse#deny-as-true	Verb	{Refuse} the claim as false until the lab publishes its raw data.
 refuse	refuse#deny-as-true	Verb	{Refuse} their version of events as untrue and ask to see the original records.
-refuse	refuse#discarded-food	Noun	The kitchen {refuse} was collected every morning by a man with a cart.
-refuse	refuse#discarded-food	Noun	Market {refuse} such as rotten fruit attracted rats and flies along the canal.
-refuse	refuse#discarded-food	Noun	Table {refuse} from the banquet was scraped into barrels behind the hall.
-refuse	refuse#discarded-food	Noun	Each household produces about 40 pounds of {refuse} per week, mostly food scraps.
-refuse	refuse#discarded-food	Noun	Collectors hauled 12 tons of {refuse} from the produce market every day.
-refuse	refuse#discarded-food	Noun	The camp generated 300 kilograms of {refuse} daily, mostly leftovers from the mess hall.
-refuse	refuse#discarded-food	Noun	The {refuse} heap behind the inn smelled of spoiled meat and cabbage.
-refuse	refuse#discarded-food	Noun	A {refuse} bin stood outside the cafeteria, full of leftover scraps.
-refuse	refuse#discarded-food	Noun	The {refuse} pit near the kitchen was lined with rotten vegetable peels.
-refuse	refuse#discarded-food	Noun	{Refuse} from the cafeteria, mostly moldy bread and fruit peels, went to the pigs.
-refuse	refuse#discarded-food	Noun	{Refuse} rotted in the bins behind the restaurant all through the heat wave.
-refuse	refuse#discarded-food	Noun	{Refuse} such as eggshells and coffee grounds belongs in the compost pile.
 regift	regift#give-again	Verb	I might {regift} the scented candles to my neighbor at the party.
 regift	regift#give-again	Verb	You should never {regift} something to the very person who gave it to you.
 regift	regift#give-again	Verb	She plans to {regift} the unopened fruitcake to a coworker next week.
@@ -7345,9 +6695,6 @@ rehang	rehang#rehanging	Noun	A {rehang} plan for the portraits was approved by t
 rehang	rehang#rehanging	Noun	The {rehang} work on the Dutch paintings starts Monday morning.
 rehang	rehang#rehanging	Noun	The curator did a complete {rehang} of the portrait gallery over the weekend.
 rehang	rehang#rehanging	Noun	The museum made a bold {rehang} of its modern paintings, putting the landscapes beside the portraits.
-rehash	rehash#rehashed-material	Noun	The writers did a lazy {rehash} of their earlier season and called it new.
-rehash	rehash#rehashed-material	Noun	Critics said the studio made a cheap {rehash} of the 1990 original.
-rehash	rehash#rehashed-material	Noun	He gave us another boring {rehash} of last year's budget speech.
 rehash	rehash#reuse-unchanged	Verb	The studio will {rehash} the same plot for the third sequel.
 rehash	rehash#reuse-unchanged	Verb	Lazy columnists may {rehash} old press releases and call it news.
 rehash	rehash#reuse-unchanged	Verb	{Rehash} the old script with a few new jokes and ship it by Friday.
@@ -7381,18 +6728,6 @@ reject	reject#reject-offer	Verb	She will {reject} the offer unless the salary im
 reject	reject#reject-offer	Verb	The board might {reject} the takeover bid as too low.
 reject	reject#reject-offer	Verb	{Reject} the offer if the contract does not include health insurance.
 reject	reject#reject-offer	Verb	{Reject} the bid from the first buyer and wait for a better price.
-reject	reject#rejected-item	Noun	Every export {reject} was sold at half price in the outlet store.
-reject	reject#rejected-item	Noun	The team's draft {reject} turned into an all-star three years later.
-reject	reject#rejected-item	Noun	The factory dumped each quality-control {reject} into a bin by the door.
-reject	reject#rejected-item	Noun	The line produced 3 {rejects} out of every 1,000 bottles.
-reject	reject#rejected-item	Noun	Total {reject} count for the shift was 42 units.
-reject	reject#rejected-item	Noun	The inspector found 17 {rejects} in a batch of 500 shirts.
-reject	reject#rejected-item	Noun	The {reject} bin by the loading dock was full of cracked tiles.
-reject	reject#rejected-item	Noun	A {reject} shop sells flawed pottery at deep discounts.
-reject	reject#rejected-item	Noun	The {reject} pile held every shirt with a crooked seam.
-reject	reject#rejected-item	Noun	{Rejects} from the assembly line were sold cheaply at the factory outlet.
-reject	reject#rejected-item	Noun	{Rejects} are stamped with a red mark and sent to the scrap bin.
-reject	reject#rejected-item	Noun	{Rejects} from the casting call filled the hallway, grumbling about the judges.
 relapse	relapse#deteriorate-health	Verb	Patients with this illness may {relapse} within a few weeks of leaving the hospital.
 relapse	relapse#deteriorate-health	Verb	If she stops her medication, her symptoms could {relapse} and put her back in bed.
 relapse	relapse#relapse-failure	Noun	The addiction {relapse} happened within a month of leaving rehab.
@@ -7468,18 +6803,6 @@ remake	remake#make-again	Verb	The baker had to {remake} the whole batch after th
 remake	remake#make-again	Verb	{Remake} the bed with clean sheets before the guests arrive.
 remake	remake#make-again	Verb	{Remake} your resume so it fits on a single page.
 remake	remake#make-again	Verb	{Remake} the sauce with fresh tomatoes if the first one tastes burnt.
-remake	remake#new-version	Noun	The Hollywood {remake} of the Japanese horror film opened on Friday.
-remake	remake#new-version	Noun	The video game {remake} keeps the original story but updates the graphics.
-remake	remake#new-version	Noun	The Korean drama {remake} premiered last night to modest ratings.
-remake	remake#new-version	Noun	The {remake} version of the classic comedy flopped at the box office.
-remake	remake#new-version	Noun	The {remake} rights were sold to a streaming company last year.
-remake	remake#new-version	Noun	The {remake} script changes the ending of the original novel entirely.
-remake	remake#new-version	Noun	The studio is making a shiny {remake} of the 1982 cult film.
-remake	remake#new-version	Noun	The company will do a faithful {remake} of the classic arcade game.
-remake	remake#new-version	Noun	The BBC made a lavish {remake} of the old detective series.
-remake	remake#new-version	Noun	{Remakes} of foreign films often lose much of their subtlety.
-remake	remake#new-version	Noun	{Remakes} rarely match the original, but studios keep funding them anyway.
-remake	remake#new-version	Noun	{Remakes} of old sitcoms are filling this season's schedule.
 remit	remit#forgive	Verb	God will {remit} the sins of all who truly repent.
 remit	remit#forgive	Verb	In the old faith, only a bishop could {remit} such a grave sin.
 remit	remit#forgive	Verb	{Remit} our sins, O Lord, and hear the prayer of your people.
@@ -7488,13 +6811,6 @@ remit	remit#pay	Verb	You must {remit} payment within thirty days of the invoice 
 remit	remit#pay	Verb	Customers can {remit} the balance by check or bank transfer.
 remit	remit#pay	Verb	{Remit} the full balance to the address printed on the invoice.
 remit	remit#pay	Verb	{Remit} payment by check within thirty days to avoid a late fee.
-remit	remit#remission	Noun	The case {remit} to a lower court delayed the final verdict by months.
-remit	remit#remission	Noun	The appeal {remit} sent the dispute back to the county court for a new hearing.
-remit	remit#scope-of-authority	Noun	The committee's policy {remit} covers housing, transport and public parks.
-remit	remit#scope-of-authority	Noun	The inquiry's research {remit} was widened to include the local schools.
-remit	remit#scope-of-authority	Noun	The board has a narrow {remit} on pricing decisions.
-remit	remit#scope-of-authority	Noun	The minister gave the inquiry a clear {remit} to examine hospital funding.
-remit	remit#scope-of-authority	Noun	The new panel has a broad {remit} to review how the council spends its money.
 remold	remold#cast-again	Verb	The foundry will {remold} the cracked bell from the same bronze.
 remold	remold#cast-again	Verb	We must {remold} the broken statue in bronze before the unveiling.
 remold	remold#cast-again	Verb	{Remold} the cracked bell in fresh bronze and polish it well.
@@ -7535,12 +6851,6 @@ remould	remould#retread-tire	Verb	The workshop can {remould} your worn tires for
 remould	remould#retread-tire	Verb	We plan to {remould} the bald truck tires with a new layer of tread.
 remould	remould#retread-tire	Verb	{Remould} the worn tires with deep new tread before winter comes.
 remould	remould#retread-tire	Verb	{Remould} those bald truck tires instead of buying new ones.
-remount	remount#fresh-horse	Noun	The cavalry {remount} was led up as the captain's horse lay dying.
-remount	remount#fresh-horse	Noun	The army {remount} was a gray gelding trained to pull the guns.
-remount	remount#fresh-horse	Noun	The colonel's spare {remount} stood saddled behind the lines during the battle.
-remount	remount#fresh-horse	Noun	The {remount} depot supplied fresh horses to every cavalry unit in the district.
-remount	remount#fresh-horse	Noun	The {remount} officer inspected the herd at dawn and chose forty strong animals.
-remount	remount#fresh-horse	Noun	The {remount} service bought horses from farms across the county for the army.
 remount	remount#mount-again	Verb	The rider fell, but she will {remount} and finish the course.
 remount	remount#mount-again	Verb	After the spill he tried to {remount} his horse and ride on.
 remount	remount#mount-again	Verb	{Remount} your horse and ride on to the next fence.
@@ -7644,15 +6954,6 @@ reprimand	reprimand#formal-rebuke	Verb	The board may {reprimand} the director fo
 reprimand	reprimand#formal-rebuke	Verb	The commission could {reprimand} the judge in a formal written order.
 reprimand	reprimand#harsh-rebuke	Verb	Her father would {reprimand} her angrily whenever she came home after midnight.
 reprimand	reprimand#harsh-rebuke	Verb	The coach might {reprimand} the players harshly if they quit again.
-reprimand	reprimand#rebuke	Noun	The written {reprimand} stayed in his personnel file for two years.
-reprimand	reprimand#rebuke	Noun	A public {reprimand} from the coach embarrassed the young captain.
-reprimand	reprimand#rebuke	Noun	The official {reprimand} cited repeated lateness and ignored safety rules.
-reprimand	reprimand#rebuke	Noun	The {reprimand} letter arrived on Monday with the manager's signature.
-reprimand	reprimand#rebuke	Noun	A {reprimand} notice was pinned to the officer's record.
-reprimand	reprimand#rebuke	Noun	The union questioned the {reprimand} process used by the school board.
-reprimand	reprimand#rebuke	Noun	The principal gave a sharp {reprimand} to the students who skipped class.
-reprimand	reprimand#rebuke	Noun	She took a stern {reprimand} from her boss without arguing.
-reprimand	reprimand#rebuke	Noun	The judge gave a mild {reprimand} to the lawyer for interrupting.
 reprint	reprint#offprint	Noun	The author mailed a journal {reprint} of her study to every colleague.
 reprint	reprint#offprint	Noun	Ask the publisher for author {reprints} of your article before the issue closes.
 reprint	reprint#offprint	Noun	The authors received 25 {reprints} of their paper from the journal.
@@ -7724,21 +7025,6 @@ rerun	rerun#rebroadcast	Verb	Public radio may {rerun} the interview next weekend
 rerun	rerun#rebroadcast	Verb	The network will {rerun} the season finale on Sunday night.
 rerun	rerun#rebroadcast	Verb	{Rerun} the pilot episode tonight at eight on the cable channel.
 rerun	rerun#rebroadcast	Verb	{Rerun} the documentary on Friday for viewers who missed the first broadcast.
-rerun	rerun#repeat-broadcast	Noun	The Saturday night {rerun} of the sitcom still draws a big audience.
-rerun	rerun#repeat-broadcast	Noun	I watched the holiday {rerun} of the cooking show twice.
-rerun	rerun#repeat-broadcast	Noun	Local station {reruns} of the quiz show fill the afternoon.
-rerun	rerun#repeat-broadcast	Noun	The network aired 24 {reruns} of the sitcom during the writers' strike.
-rerun	rerun#repeat-broadcast	Noun	Only 2.1 million viewers tuned in for the {rerun} on Tuesday.
-rerun	rerun#repeat-broadcast	Noun	That 30-minute {rerun} aired at 3 a.m. and only 40,000 people watched.
-rerun	rerun#repeat-broadcast	Noun	A {rerun} marathon of the old detective series starts at noon.
-rerun	rerun#repeat-broadcast	Noun	The {rerun} ratings for the drama were better than expected.
-rerun	rerun#repeat-broadcast	Noun	The {rerun} schedule on the network leaves little room for new shows.
-rerun	rerun#repeat-broadcast	Noun	The network ran a weekend {rerun} of the season finale.
-rerun	rerun#repeat-broadcast	Noun	My dad had a favorite {rerun} of the cop show taped years ago.
-rerun	rerun#repeat-broadcast	Noun	The cable channel ran a surprise {rerun} of the series pilot.
-rerun	rerun#repeat-broadcast	Noun	{Reruns} of the old sitcom air every weeknight at six.
-rerun	rerun#repeat-broadcast	Noun	{Reruns} fill most of the summer television schedule.
-rerun	rerun#repeat-broadcast	Noun	{Reruns} from the 1980s are cheap for networks to buy.
 rerun	rerun#repeat-performance	Verb	{Rerun} the stage play for another week since every seat sold out.
 rerun	rerun#repeat-performance	Verb	{Rerun} the musical at the theater this summer; audiences keep asking for it.
 reserve	reserve#allocate	Verb	The council will {reserve} ten percent of the funds for the youth program.
@@ -7773,12 +7059,6 @@ reset	reset#redefine	Verb	You can {reset} the clock to the new time zone before 
 reset	reset#redefine	Verb	The teacher will {reset} the timer to ten minutes for the next round.
 reset	reset#redefine	Verb	{Reset} the date on the wall calendar to match today's.
 reset	reset#redefine	Verb	{Reset} the meeting time to four o'clock and tell everyone.
-reset	reset#reset-device	Noun	The alarm {reset} on the wall panel stopped the loud buzzing.
-reset	reset#reset-device	Noun	A timer {reset} wired beside the oven restores the clock after outages.
-reset	reset#reset-device	Noun	The thermostat {reset} in the basement is a small red switch.
-reset	reset#reset-device	Noun	The {reset} switch on the back of the router is recessed.
-reset	reset#reset-device	Noun	The {reset} lever on the pressure gauge was stuck in place.
-reset	reset#reset-device	Noun	The {reset} knob beside the dial returns the needle to zero.
 reshuffle	reshuffle#mix-again	Verb	You should {reshuffle} the deck if anyone saw the bottom card.
 reshuffle	reshuffle#mix-again	Verb	The dealer will {reshuffle} the cards after every round.
 reshuffle	reshuffle#mix-again	Verb	{Reshuffle} the cards thoroughly before dealing the next hand.
@@ -7989,12 +7269,6 @@ rethink	rethink#reconsider	Verb	The city could {rethink} its parking rules after
 rethink	rethink#reconsider	Verb	{Rethink} the budget before you ask for more money.
 rethink	rethink#reconsider	Verb	{Rethink} your route, because the bridge is closed.
 rethink	rethink#reconsider	Verb	{Rethink} that offer; it is worse than it looks.
-rethink	rethink#reconsideration	Noun	The policy {rethink} began after the audit.
-rethink	rethink#reconsideration	Noun	A strategy {rethink} saved the company from bankruptcy.
-rethink	rethink#reconsideration	Noun	Her career {rethink} came at the age of forty.
-rethink	rethink#reconsideration	Noun	The board needs to do a serious {rethink} of its pricing.
-rethink	rethink#reconsideration	Noun	Take a fresh {rethink} before you sign anything.
-rethink	rethink#reconsideration	Noun	We should have a complete {rethink} about the route.
 retread	retread#retread-tire	Noun	The truck {retread} wore out after only half the expected miles.
 retread	retread#retread-tire	Noun	These bus {retreads} cost half as much as new tires.
 retread	retread#retread-tire	Noun	That winter {retread} on the rear axle is badly worn.
@@ -8057,29 +7331,12 @@ return	return#yield	Noun	The fund posted an annual {return} of 7.5 percent last 
 return	return#yield	Noun	A 12 percent {return} on the 50,000 dollar investment surprised the investors.
 return	return#yield	Noun	The {return} rate on these municipal bonds is only 3 percent.
 return	return#yield	Noun	Investors compared the {return} figures of three index funds before choosing one.
-reuse	reuse#reuse-act	Noun	Glass bottle {reuse} cuts waste and saves energy at the brewery.
-reuse	reuse#reuse-act	Noun	The city promotes packaging {reuse} through a deposit program for jars.
-reuse	reuse#reuse-act	Noun	Water {reuse} in dry regions turns treated sewage into irrigation supply.
-reuse	reuse#reuse-act	Noun	The {reuse} program lets shoppers bring back their jars for a refund.
-reuse	reuse#reuse-act	Noun	A new {reuse} policy at the school collects used notebooks each June.
-reuse	reuse#reuse-act	Noun	Their {reuse} rate for shipping boxes climbed above 80 percent last year.
-reuse	reuse#reuse-act	Noun	{Reuse} of old bricks keeps demolition waste out of landfills.
-reuse	reuse#reuse-act	Noun	{Reuse} saves more energy than recycling in most cases, researchers say.
-reuse	reuse#reuse-act	Noun	{Reuse} of shipping pallets has cut the warehouse's lumber bill by half.
 reuse	reuse#use-again	Verb	You can {reuse} the cooking oil once after straining it.
 reuse	reuse#use-again	Verb	We should {reuse} the packing boxes for the move next month.
 reuse	reuse#use-again	Verb	The plant will {reuse} treated water to cool its turbines.
 reuse	reuse#use-again	Verb	{Reuse} the plastic jars to store screws and nails.
 reuse	reuse#use-again	Verb	{Reuse} your tea bags once before you throw them out.
 reuse	reuse#use-again	Verb	{Reuse} old envelopes for notes and shopping lists.
-revamp	revamp#overhaul	Noun	The website {revamp} launches next week with a new checkout page.
-revamp	revamp#overhaul	Noun	The store's kitchen {revamp} ran three weeks over schedule.
-revamp	revamp#overhaul	Noun	After the logo {revamp}, sales of the cereal rose slightly.
-revamp	revamp#overhaul	Noun	The {revamp} plan includes new lighting and a larger lobby.
-revamp	revamp#overhaul	Noun	A {revamp} budget of two million dollars was approved by the board.
-revamp	revamp#overhaul	Noun	The {revamp} team tested the new app with real users last week.
-revamp	revamp#overhaul	Noun	The magazine did a full {revamp} of its layout this spring.
-revamp	revamp#overhaul	Noun	The company will make a bold {revamp} of its loyalty program.
 revamp	revamp#renovate	Verb	They hope to {revamp} the old theater before the festival.
 revamp	revamp#renovate	Verb	We could {revamp} the kitchen with new cabinets and tile.
 revamp	revamp#renovate	Verb	The owners will {revamp} the hotel lobby next spring.
@@ -8089,15 +7346,6 @@ revert	revert#mutation-reversion	Verb	Some mutant strains can {revert} to the wi
 revert	revert#mutation-reversion	Verb	The altered gene may {revert} to its original sequence in a few cells.
 revert	revert#regress	Verb	Patients may {revert} to old habits when the stress returns.
 revert	revert#regress	Verb	Without regular practice, the child's speech might {revert} to baby talk.
-revert	revert#reversion	Noun	The commit {revert} fixed the build failure on the main branch.
-revert	revert#reversion	Noun	A one-click version {revert} restored the earlier settings.
-revert	revert#reversion	Noun	The release team triggered a database {revert} after the failed migration.
-revert	revert#reversion	Noun	The {revert} commit restored the earlier version of the config file.
-revert	revert#reversion	Noun	A {revert} button appears next to each saved edit.
-revert	revert#reversion	Noun	Run the {revert} script if the update causes errors.
-revert	revert#reversion	Noun	I did a quick {revert} on the last change and the tests passed.
-revert	revert#reversion	Noun	She made a clean {revert} of the faulty patch before lunch.
-revert	revert#reversion	Noun	Developers had to do a full {revert} after the release broke logins.
 review	review#accounting-review	Noun	{Reviews} provide less assurance than audits but cost far less for small firms.
 review	review#accounting-review	Noun	{Review} of the financial statements by an outside accountant gives lenders limited assurance.
 review	review#appraise-critically	Verb	She was hired to {review} films for the local newspaper.
@@ -8166,13 +7414,6 @@ rewrite	rewrite#alter-writing	Verb	The editor may {rewrite} the headline to make
 rewrite	rewrite#alter-writing	Verb	I need to {rewrite} this paragraph because the wording is clumsy.
 rewrite	rewrite#alter-writing	Verb	{Rewrite} the first sentence so the main point comes first.
 rewrite	rewrite#alter-writing	Verb	{Rewrite} this email in a politer tone before you send it.
-rewrite	rewrite#rewritten-work	Noun	The script {rewrite} added a new ending and cut the subplot.
-rewrite	rewrite#rewritten-work	Noun	The speech {rewrite} reached the senator an hour before the broadcast.
-rewrite	rewrite#rewritten-work	Noun	The {rewrite} draft was sent to the director on Friday.
-rewrite	rewrite#rewritten-work	Noun	The {rewrite} pages were color-coded so the actors could find the changes.
-rewrite	rewrite#rewritten-work	Noun	The studio asked her to do a quick {rewrite} of the pilot episode.
-rewrite	rewrite#rewritten-work	Noun	She did a major {rewrite} of the opening chapter.
-rewrite	rewrite#rewritten-work	Noun	The author will do a complete {rewrite} of the manuscript this winter.
 ride	ride#amusement-ride	Noun	The kids queued an hour for the famous carnival {ride} with the giant loop.
 ride	ride#amusement-ride	Noun	The park added a new water {ride} with a thirty-foot drop.
 ride	ride#amusement-ride	Noun	The new {ride} reaches 70 miles per hour and drops 150 feet.
@@ -8431,9 +7672,6 @@ saturate	saturate#chemically-saturate	Verb	{Saturate} the solution with carbon d
 saturate	saturate#impregnate	Verb	Pour enough syrup over the cake to {saturate} the sponge completely.
 saturate	saturate#impregnate	Verb	{Saturate} the cloth with vinegar before you wipe the stain.
 saturate	saturate#impregnate	Verb	{Saturate} the rag in turpentine and wrap it around the brush.
-saturate	saturate#saturation	Noun	{Saturates} such as butter and lard raise blood cholesterol levels.
-saturate	saturate#saturation	Noun	{Saturates} are listed separately from total fat on the nutrition label.
-saturate	saturate#saturation	Noun	{Saturates} stay solid at room temperature, unlike most vegetable oils.
 schedule	schedule#agenda	Noun	The senator's daily {schedule} was packed with meetings and speeches.
 schedule	schedule#agenda	Noun	Her crowded campaign {schedule} left almost no time for sleep.
 schedule	schedule#agenda	Noun	The {schedule} conflict forced her to skip the board meeting.
@@ -8710,25 +7948,6 @@ shake	shake#agitate	Verb	You must {shake} the spray can well before you paint.
 shake	shake#agitate	Verb	Remember to {shake} the dressing so the oil mixes in.
 shake	shake#agitate	Verb	{Shake} the cocktail with ice for ten seconds, then strain it into a glass.
 shake	shake#agitate	Verb	{Shake} the bottle vigorously before you open it.
-shake	shake#handclasp	Noun	The mayor gave a firm {shake} to each of the veterans lined up.
-shake	shake#handclasp	Noun	The two rivals had a brief {shake} for the cameras before the debate.
-shake	shake#milkshake	Noun	The diner's famous banana {shake} comes with a cherry on top.
-shake	shake#milkshake	Noun	A large {shake} at the drive-in costs 6 dollars and has 700 calories.
-shake	shake#milkshake	Noun	Each 16-ounce {shake} contains about 60 grams of sugar.
-shake	shake#milkshake	Noun	The {shake} machine at the diner broke down during the Saturday rush.
-shake	shake#milkshake	Noun	Pour the {shake} mix into the tall chilled glass.
-shake	shake#milkshake	Noun	She made a chocolate {shake} for her little brother after school.
-shake	shake#milkshake	Noun	Dad made a thick {shake} from ice cream and malt powder.
-shake	shake#milkshake	Noun	{Shakes} at the old drive-in come in tall metal cups with a straw.
-shake	shake#milkshake	Noun	{Shakes} made with real ice cream cost more than the fountain sodas.
-shake	shake#shingle	Noun	The hail split a cedar {shake} on the north slope of the roof.
-shake	shake#shingle	Noun	Roofers nailed each cedar {shake} over the tar paper.
-shake	shake#shingle	Noun	Roofers laid 500 {shakes} on the 12-by-20-foot cabin roof.
-shake	shake#shingle	Noun	The cabin needed 800 cedar {shakes}, each 24 inches long.
-shake	shake#shingle	Noun	The {shake} roof on the lodge lasts thirty years in this dry climate.
-shake	shake#shingle	Noun	The {shake} siding on the cottage has weathered to a silvery gray.
-shake	shake#shingle	Noun	{Shakes} split from cedar logs shed rain for decades on mountain cabins.
-shake	shake#shingle	Noun	{Shakes} on the north slope of the roof had rotted away.
 shake	shake#tremble	Verb	His hands could {shake} so badly that he spilled the tea.
 shake	shake#tremble	Verb	Her voice may {shake} when she gets nervous on stage.
 shield	shield#buckler	Noun	The museum displays a dented battle {shield} from the twelfth century.
@@ -9166,18 +8385,6 @@ sound	sound#sound-quality	Noun	The old tube amp {sound} is what made the band fa
 sound	sound#sound-quality	Noun	The studio's speaker {sound} was too thin for such a large room.
 sound	sound#sound-quality	Noun	The band has a warm, rich {sound} that fans recognize in seconds.
 sound	sound#sound-quality	Noun	{Sound} from the new speakers is warm and rich, with deep bass.
-sow	sow#female-pig	Noun	The Yorkshire {sow} gave birth to eleven piglets overnight.
-sow	sow#female-pig	Noun	A Duroc {sow} can weigh over four hundred pounds when fully grown.
-sow	sow#female-pig	Noun	The barn {sow} guarded her piglets fiercely from the farm dog.
-sow	sow#female-pig	Noun	The {sow} weighed 450 pounds at the county fair last August.
-sow	sow#female-pig	Noun	Each {sow} on the farm produced 12 piglets in her first litter.
-sow	sow#female-pig	Noun	The farm keeps 40 {sows} on 15 acres of pasture.
-sow	sow#female-pig	Noun	The {sow} pen was cleaned every morning before sunrise.
-sow	sow#female-pig	Noun	A {sow} crate keeps the mother from crushing her newborn piglets.
-sow	sow#female-pig	Noun	The {sow} barn smelled of straw and warm milk.
-sow	sow#female-pig	Noun	{Sows} nurse their piglets for about six weeks.
-sow	sow#female-pig	Noun	{Sows} are kept in separate pens until they farrow.
-sow	sow#female-pig	Noun	{Sows} can produce two litters each year on a well-run farm.
 sow	sow#introduce	Verb	Rumors like these can {sow} doubt among the voters.
 sow	sow#introduce	Verb	The leaked memo might {sow} confusion across the whole department.
 sow	sow#plant-seeds	Verb	{Sow} the bare patch with grass seed before the autumn rains arrive.
@@ -10256,37 +9463,16 @@ transform	transform#mathematical-transform	Verb	We should {transform} the signal
 transform	transform#mathematical-transform	Verb	Analysts may {transform} the skewed data with a logarithm to make it more symmetric.
 transform	transform#mathematical-transform	Verb	{Transform} the function with a Fourier integral and plot the resulting spectrum.
 transform	transform#mathematical-transform	Verb	{Transform} each variable by its logarithm before you fit the regression line.
-transform	transform#noun-form	Noun	The Fourier {transform} of the signal shows a sharp peak at 60 hertz.
-transform	transform#noun-form	Noun	Engineers computed the discrete cosine {transform} for every image block in the frame.
-transform	transform#noun-form	Noun	The Laplace {transforms} in this table cover most textbook problems.
-transform	transform#noun-form	Noun	The {transform} coefficients are stored as 16-bit integers in the output file.
-transform	transform#noun-form	Noun	A {transform} domain filter removes the noise from the recording cleanly.
-transform	transform#noun-form	Noun	Each {transform} pair in the chapter is proved directly from the definition.
-transform	transform#noun-form	Noun	Do a quick {transform} of the sample before you plot the result.
-transform	transform#noun-form	Noun	Students must perform the inverse {transform} to recover the original function.
-transform	transform#noun-form	Noun	She ran a fast {transform} on the audio data and checked the spectrum.
 transform	transform#transmute	Verb	A good coach can {transform} a shy rookie into a confident team leader.
 transform	transform#transmute	Verb	The renovation will {transform} the old warehouse into a bright family home.
-transplant	transplant#graft	Noun	Surgeons attached the donor skin {transplant} to the wound with fine stitches.
-transplant	transplant#graft	Noun	A bone {transplant} taken from the hip filled the gap in his jaw.
-transplant	transplant#graft	Noun	The {transplant} tissue was taken from the patient's own thigh.
 transplant	transplant#implant-organ	Verb	Surgeons plan to {transplant} a healthy liver into the child next week.
 transplant	transplant#implant-organ	Verb	Doctors may {transplant} a kidney from his sister into the patient.
 transplant	transplant#implant-organ	Verb	{Transplant} the donor kidney into the recipient's lower abdomen, then connect the vessels.
 transplant	transplant#implant-organ	Verb	{Transplant} the harvested heart into the patient within four hours, before the tissue is damaged.
-transplant	transplant#organ-transplant	Noun	The kidney {transplant} lasted six hours and went smoothly.
-transplant	transplant#organ-transplant	Noun	Her heart {transplant} was scheduled as soon as a donor was found.
-transplant	transplant#organ-transplant	Noun	The {transplant} surgeon met the family before the operation began.
-transplant	transplant#organ-transplant	Noun	Hospital staff keep a {transplant} waiting list updated every single day.
-transplant	transplant#organ-transplant	Noun	She had a successful kidney {transplant} two years ago and now runs marathons.
-transplant	transplant#organ-transplant	Noun	Surgeons performed the first liver {transplant} at the hospital in 1988.
-transplant	transplant#organ-transplant	Noun	{Transplants} save thousands of lives every year, but donors remain scarce.
-transplant	transplant#organ-transplant	Noun	{Transplants} of the lung are still rare in small regional hospitals.
 transplant	transplant#reset-elsewhere	Verb	You should {transplant} the seedlings once they have four true leaves.
 transplant	transplant#reset-elsewhere	Verb	We will {transplant} the lilac to the sunny corner of the yard this fall.
 transplant	transplant#reset-elsewhere	Verb	{Transplant} the seedlings into larger pots after the last frost has passed.
 transplant	transplant#reset-elsewhere	Verb	{Transplant} the shrub to a shadier bed and water it well.
-transplant	transplant#transplantation	Noun	Most roses can take a late {transplant} if you water them well afterward.
 transport	transport#carry	Verb	Soldiers had to {transport} the wounded on their backs up the steep hill.
 transport	transport#carry	Verb	Porters will {transport} the tent poles in their arms to the second camp.
 transport	transport#carry	Verb	{Transport} the injured climber on your back down to the base camp.
@@ -10330,31 +9516,6 @@ traverse	traverse#cross	Verb	A new rail line will {traverse} the entire plain fr
 traverse	traverse#cross	Verb	The tunnels must {traverse} the whole mountain, spanning nine miles of solid rock.
 traverse	traverse#cross	Verb	{Traverse} the whole valley floor with the new pipeline and connect every farm.
 traverse	traverse#cross	Verb	{Traverse} the full width of the wall with a steel cable.
-traverse	traverse#crossbeam	Noun	The steel {traverse} supports the crane rail across the full width of the hall.
-traverse	traverse#crossbeam	Noun	A wooden roof {traverse} sagged under the weight of the snow.
-traverse	traverse#crossbeam	Noun	The 6-meter {traverse} carries a load of 4 tons without bending.
-traverse	traverse#crossbeam	Noun	Each {traverse} in the frame is 2 inches thick and 40 inches long.
-traverse	traverse#crossing	Noun	The glacier {traverse} took the team eleven days.
-traverse	traverse#crossing	Noun	Their Greenland ice cap {traverse} began in early May.
-traverse	traverse#crossing	Noun	Their desert {traverse} covered 240 miles in nine days.
-traverse	traverse#crossing	Noun	The 3-day {traverse} gained 4,000 feet of elevation across two passes.
-traverse	traverse#crossing	Noun	The {traverse} route crosses three ridges and one frozen lake.
-traverse	traverse#crossing	Noun	Our {traverse} party camped below the summit ridge for two nights.
-traverse	traverse#crossing	Noun	The team made a slow {traverse} of the ice field in early spring.
-traverse	traverse#ski-traversal	Noun	She made a cautious {traverse} on her skis to reach the powder bowl.
-treat	treat#dainty	Noun	The dog loves every liver {treat} the trainer hands out.
-treat	treat#dainty	Noun	A frozen yogurt {treat} cooled us down after the game.
-treat	treat#dainty	Noun	The {treat} jar on the counter is always full of cookies.
-treat	treat#dainty	Noun	A {treat} bag came with each pet adoption at the shelter.
-treat	treat#dainty	Noun	The {treat} table at the bake sale held cupcakes, fudge and cider.
-treat	treat#dainty	Noun	Give the puppy a small {treat} when he sits on command.
-treat	treat#dainty	Noun	Have a sweet {treat} with your coffee at the bakery downtown.
-treat	treat#dainty	Noun	{Treats} for the dog are kept in a tin by the back door.
-treat	treat#dainty	Noun	{Treats} like fudge and caramel apples sold out by noon.
-treat	treat#dainty	Noun	{Treats} made with honey disappeared from the plate within minutes.
-treat	treat#delight	Noun	The birthday {treat} was a surprise trip to the lake.
-treat	treat#delight	Noun	The family {treat} this weekend is a boat ride on the bay.
-treat	treat#delight	Noun	Give the kids a real {treat} this weekend with a trip to the zoo.
 treat	treat#handle	Verb	You should {treat} your elderly neighbors with respect and patience.
 treat	treat#handle	Verb	Teachers must {treat} every student fairly, whatever their background.
 treat	treat#handle	Verb	{Treat} the new employees with courtesy, even when the office is busy.
@@ -10483,12 +9644,6 @@ undercut	undercut#undercut-relief	Verb	{Undercut} the mold wall slightly to crea
 undercut	undercut#underside-cut	Noun	The carpenter made a shallow {undercut} beneath the shelf edge to hide the glue line.
 undercut	undercut#underside-cut	Noun	Make a clean {undercut} along the base of the stone before you set it in mortar.
 undercut	undercut#underside-cut	Noun	Our machinist did an {undercut} on the shaft so the retaining ring would seat properly.
-underestimate	underestimate#low-estimate	Noun	An {underestimate} of 20 percent in the budget left the project short by 50,000 dollars.
-underestimate	underestimate#low-estimate	Noun	The {underestimate} of the flood crest was nearly 2 feet and caught many homes off guard.
-underestimate	underestimate#low-estimate	Noun	Analysts blamed a 10 percent {underestimate} of fuel use for the airline's missed forecast.
-underestimate	underestimate#low-estimate	Noun	The planner made a serious {underestimate} of the time needed to repaint the bridge.
-underestimate	underestimate#low-estimate	Noun	Don't make an {underestimate} of the crowd size again, or we will run out of chairs.
-underestimate	underestimate#low-estimate	Noun	Our team gave a rough {underestimate} of the repair bill, and the real cost shocked us.
 underestimate	underestimate#lowball	Verb	Some sellers will {underestimate} the repair cost deliberately so the buyer agrees to the price.
 underestimate	underestimate#lowball	Verb	A dishonest agent might {underestimate} the commission on purpose to land the deal.
 underestimate	underestimate#underrate	Verb	You should not {underestimate} how much this young team has improved.
@@ -10523,9 +9678,6 @@ underscore	underscore#underline	Verb	Students should {underscore} each key term 
 underscore	underscore#underline	Verb	You can {underscore} the important phrases with a ruler to make them stand out on the page.
 underscore	underscore#underline	Verb	{Underscore} the misspelled words in the draft so the author can fix them.
 underscore	underscore#underline	Verb	{Underscore} each date on the schedule with a ruler and a blue pen.
-underscore	underscore#underline-mark	Noun	The pen {underscore} beneath the date showed that it was the deadline.
-underscore	underscore#underline-mark	Noun	A single ink {underscore} marked the key phrase in the old manuscript.
-underscore	underscore#underline-mark	Noun	The pencil {underscore} beneath the clause showed where the editor wanted a change.
 underset	underset#set-below	Verb	The mason will {underset} the beam with a stone pad to carry the roof's weight.
 underset	underset#set-below	Verb	Workers must {underset} each post with a concrete block to keep it out of the mud.
 underset	underset#set-below	Verb	The engineer may {underset} the shelf with iron brackets for extra strength.
@@ -10558,15 +9710,6 @@ unpeople	unpeople#depopulate	Verb	A tyrant may {unpeople} a rebellious province 
 unpeople	unpeople#depopulation	Noun	{Unpeople} in the regime's propaganda were erased from textbooks and photographs.
 unpeople	unpeople#depopulation	Noun	{Unpeople} are the ones whom the state refuses to count, protect or even name.
 unpeople	unpeople#depopulation	Noun	{Unpeoples} such as the stateless have no voice in the courts that rule their lives.
-update	update#info-update	Noun	Everyone read the weekly news {update} before the staff meeting started.
-update	update#info-update	Noun	The morning traffic {update} warned of delays on the bridge.
-update	update#info-update	Noun	The 5-minute {update} at the start of the call covered sales and shipping.
-update	update#info-update	Noun	We get 3 weather {updates} a day from the forecasting service.
-update	update#info-update	Noun	A 2-page {update} on the project reached my inbox at 8 a.m.
-update	update#info-update	Noun	The {update} email said the flight would leave 40 minutes late.
-update	update#info-update	Noun	The {update} message from the school listed the new bus routes.
-update	update#info-update	Noun	Give us a quick {update} on the storm when you hear anything.
-update	update#info-update	Noun	The mayor made a brief {update} on the flood cleanup late Friday.
 update	update#inform	Verb	I will {update} the team on the budget as soon as I hear from finance.
 update	update#inform	Verb	She must {update} her parents about the move before Friday.
 update	update#inform	Verb	{Update} the client on the delay before she hears it from someone else.
@@ -10575,18 +9718,6 @@ update	update#modernize	Verb	The city plans to {update} its old bus fleet with e
 update	update#modernize	Verb	We should {update} the kitchen with new cabinets and brighter lighting.
 update	update#modernize	Verb	{Update} the old wallpaper and fixtures to give the bathroom a fresher look.
 update	update#modernize	Verb	{Update} your wardrobe with a few modern pieces before the interview season.
-update	update#updating	Noun	The nightly database {update} took twenty minutes and restarted the server.
-update	update#updating	Noun	The yearly address {update} of the mailing list takes our clerk a full day.
-update	update#updating	Noun	The {update} process wipes the old files and installs the new ones.
-update	update#updating	Noun	The {update} schedule for the payroll system changes every quarter.
-update	update#updating	Noun	We did a full {update} of the contact list last week.
-update	update#updating	Noun	Run an {update} on the old laptops before they go back to the staff.
-update	update#updating	Noun	{Updates} of the old pumps began in March and ran through the summer.
-update	update#updating	Noun	{Update} of the voter rolls happens every two years after each election.
-update	update#updating	Noun	{Updates} to the lobby's flooring finished in time for the grand opening.
-upgrade	upgrade#computer-hardware	Noun	The {upgrade} card slides into an empty slot on the motherboard.
-upgrade	upgrade#computer-software	Noun	The payroll program {upgrade} arrived as a free download this morning.
-upgrade	upgrade#computer-software	Noun	The {upgrade} file is 400 megabytes, so start the download before lunch.
 upgrade	upgrade#elevate-rating	Verb	The agency may {upgrade} the bond's rating if the city balances its budget.
 upgrade	upgrade#elevate-rating	Verb	Analysts could {upgrade} the stock to a buy after the strong earnings report.
 upgrade	upgrade#elevate-rating	Verb	{Upgrade} the stock to a strong buy once the earnings report comes out.
@@ -10595,10 +9726,6 @@ upgrade	upgrade#improve	Verb	We need to {upgrade} the office computers before th
 upgrade	upgrade#improve	Verb	The school will {upgrade} its science labs with the grant money.
 upgrade	upgrade#improve	Verb	{Upgrade} the old router now, or the video calls will keep freezing.
 upgrade	upgrade#improve	Verb	{Upgrade} the creaky wiring in the barn before you install any new lights.
-upgrade	upgrade#improvement	Noun	{Upgrade} of the plant's machinery was finished ahead of schedule.
-upgrade	upgrade#improvement	Noun	{Upgrades} to the old rail line cut the trip by twenty minutes.
-upgrade	upgrade#improvement	Noun	{Upgrades} of the aging water mains will begin next spring and run for years.
-upgrade	upgrade#slope	Noun	Loaded trucks slowed on a 4-degree {upgrade} that ran for two miles.
 uplift	uplift#elate	Verb	Good music can {uplift} a tired crowd and turn the mood around.
 uplift	uplift#elate	Verb	The choir's songs will {uplift} everyone who comes to the hospital ward.
 uplift	uplift#elevate	Verb	The hydraulic jack will {uplift} the car's rear end so we can change the tire.
@@ -10606,18 +9733,6 @@ uplift	uplift#elevate	Verb	Cranes can {uplift} the heavy statue onto its stone b
 uplift	uplift#elevate	Verb	{Uplift} the sagging roof beam with a jack while the mason slides in a post.
 uplift	uplift#elevate	Verb	{Uplift} the front wheels slightly and hold the car steady.
 uplift	uplift#elevate	Verb	{Uplift} the heavy lid with both hands and set it on the table.
-uplift	uplift#land-rise	Noun	Geologists traced the mountain {uplift} to a collision between two plates.
-uplift	uplift#land-rise	Noun	The plateau {uplift} exposed ancient rock layers along the canyon walls.
-uplift	uplift#land-rise	Noun	Slow rock {uplift} over millions of years shaped the whole range.
-uplift	uplift#land-rise	Noun	The {uplift} of this coast has been about 2 millimeters per year for ages.
-uplift	uplift#land-rise	Noun	Measurements show a total {uplift} of 1,500 meters since the ice age.
-uplift	uplift#land-rise	Noun	The range gained 800 meters of {uplift} in just five million years.
-uplift	uplift#land-rise	Noun	{Uplift} of the coastline has lifted old harbors high above the waves.
-uplift	uplift#land-rise	Noun	{Uplifts} of this kind build mountain ranges over millions of years.
-uplift	uplift#land-rise	Noun	{Uplift} along the fault raised the valley floor several feet during the quake.
-uplift	uplift#lift-bra	Noun	The {uplift} bra I ordered online came in the wrong size.
-uplift	uplift#lift-bra	Noun	She tried on an {uplift} bra before the wedding fitting.
-uplift	uplift#lift-bra	Noun	The {uplift} bra section is on the second floor of the store.
 upset	upset#disorder	Noun	A mild stomach {upset} kept him home from work yesterday.
 upset	upset#disorder	Noun	Spicy food gave the child a bad tummy {upset} that lasted a night.
 upset	upset#disturb	Verb	A single rumor could {upset} the balance of the whole market.

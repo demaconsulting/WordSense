@@ -43,6 +43,7 @@ MAX_PER_SENSE_SHAPE = 3
 BATCH_SENTENCES = 220
 FIT_BATCH_LEMMAS = 24
 MIN_SENSE_ANCHORS = 3  # a shape row goes only to a sense that has anchors already (no new senses)
+NOUN_SHARE_MIN = 0.02  # a rare noun use written in a shape (give: "Give in the rope") teaches that the shape is a noun
 FIT_FILE = os.path.join(qf.CORPUS, "curation", "shape-fit.tsv")
 COVERAGE_FILE = os.path.join(qf.CORPUS, "coverage", "shape-coverage.tsv")
 
@@ -196,16 +197,31 @@ def adjective_lemmas(world):
     return {s["lemma"] for s in world["senses"].values() if s["pos_name"] == "Adjective"}
 
 
+def noun_share(world, lemma):
+    """The share of the WordNet 3.0 tag counts of the Noun senses of a lemma in the tag counts of its Noun and Verb senses
+    (0.5 when none of them has a tag: no usage evidence either way)."""
+    tags = collections.Counter()
+    for sid in world["by_lemma"].get(lemma, []):
+        sense = world["senses"][sid]
+        if sense["pos_name"] in ("Noun", "Verb"):
+            tags[sense["pos_name"]] += sense["tag_count"]
+    total = tags["Noun"] + tags["Verb"]
+    return 0.5 if total == 0 else tags["Noun"] / total
+
+
 def units(world, fit, lemmas, anchors=None, written=None):
     """The (lemma, part of speech, shape) units of the lemmas that have a fitting sense: dicts with `lemma`, `pos`, `shape`,
     `senses` (the most frequent fitting senses with at least MIN_SENSE_ANCHORS anchors, as ids) and `have` (kept written
-    rows, 0 without `written`)."""
+    rows, 0 without `written`). A lemma whose noun share is below NOUN_SHARE_MIN has no noun units."""
     anchors = anchors if anchors is not None else anchor_counts()
     adjective = adjective_lemmas(world)
     result = []
     for lemma in lemmas:
         ids = world["by_lemma"].get(lemma, [])
+        rare_noun = noun_share(world, lemma) < NOUN_SHARE_MIN
         for pos, shapes in SHAPES_OF_POS.items():
+            if pos == "Noun" and rare_noun:
+                continue
             for shape in shapes:
                 if shape == "n-modifier" and lemma in adjective:
                     continue

@@ -54,8 +54,6 @@ c985cbb66b2a	anchors	llm-corpus	quota-w48-shape:n-modifier
 23052322012d	anchors	llm-corpus	quota-w48-shape:n-modifier
 f47218e05299	anchors	llm-corpus	quota-w48-shape:n-modifier
 5821e7587e02	anchors	llm-corpus	quota-w48-shape:n-modifier
-b595941a4ecc	anchors	llm-corpus	quota-w48-shape:n-modifier
-7fcf5869ccb4	anchors	llm-corpus	quota-w48-shape:n-modifier
 87c031420145	anchors	llm-corpus	quota-w48-shape:n-compound-head
 3305236c2e4d	anchors	llm-corpus	quota-w48-shape:n-modifier
 2bf0048cb845	anchors	llm-corpus	quota-w48-shape:n-modifier
@@ -88,9 +86,6 @@ e3dd9a5a74bd	anchors	llm-corpus	quota-w48-shape:n-obj-light
 71f53a11f767	anchors	llm-corpus	quota-w48-shape:v-imperative-initial
 447cc6dd15e7	anchors	llm-corpus	quota-w48-shape:v-imperative-initial
 9280d7b65319	anchors	llm-corpus	quota-w48-shape:v-imperative-initial
-6b30b9d34447	anchors	llm-corpus	quota-w48-shape:n-modifier
-000e2dc10270	anchors	llm-corpus	quota-w48-shape:n-modifier
-f508c1dfeda4	anchors	llm-corpus	quota-w48-shape:n-modifier
 3372960a72ce	anchors	llm-corpus	quota-w48-shape:n-compound-head
 6a46a8ca780f	anchors	llm-corpus	quota-w48-shape:n-compound-head
 10ab7d76ecae	anchors	llm-corpus	quota-w48-shape:n-measure
@@ -184,14 +179,6 @@ e09e51f30881	anchors	llm-corpus	quota-w48-shape:n-obj-light
 546bc1654fb2	anchors	llm-corpus	quota-w48-shape:v-after-modal
 338bab6f3132	anchors	llm-corpus	quota-w48-shape:v-after-modal
 38f8884f2afc	anchors	llm-corpus	quota-w48-shape:v-after-modal
-387c22090694	anchors	llm-corpus	quota-w48-shape:n-compound-head
-03fe68d044f7	anchors	llm-corpus	quota-w48-shape:n-modifier
-039fbf0cb80f	anchors	llm-corpus	quota-w48-shape:n-modifier
-f05d1f6b6426	anchors	llm-corpus	quota-w48-shape:n-modifier
-37cd42a39b19	anchors	llm-corpus	quota-w48-shape:n-subject-initial
-4d63a91f1cf3	anchors	llm-corpus	quota-w48-shape:n-subject-initial
-b2d17c60e473	anchors	llm-corpus	quota-w48-shape:n-compound-head
-d2b4b8657b59	anchors	llm-corpus	quota-w48-shape:n-compound-head
 e19d36c59527	anchors	llm-corpus	quota-w48-shape:v-imperative-initial
 83bba2d08a31	anchors	llm-corpus	quota-w48-shape:v-imperative-initial
 9d0084250ae6	anchors	llm-corpus	quota-w48-shape:v-after-modal
@@ -307,8 +294,4 @@ a3bad14d75a9	anchors	llm-corpus	quota-w48-shape:n-subject-initial
 6a5484c03086	anchors	llm-corpus	quota-w48-shape:v-imperative-initial
 8a0a29f9b4ef	anchors	llm-corpus	quota-w48-shape:v-after-modal
 a6a0d9723924	anchors	llm-corpus	quota-w48-shape:v-after-modal
-5cebad59eb89	anchors	llm-corpus	quota-w48-shape:n-compound-head
-56dccdcfc892	anchors	llm-corpus	quota-w48-shape:n-compound-head
-81509f103022	anchors	llm-corpus	quota-w48-shape:n-measure
-241fee1c617a	anchors	llm-corpus	quota-w48-shape:n-measure
 31771d08a574	anchors	llm-corpus	quota-w48-shape:v-after-modal

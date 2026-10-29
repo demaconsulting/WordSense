@@ -104,6 +104,12 @@ shape of the other part of speech or an unknown shape is dropped).
 in the table and at least 3 anchors). Every unit needs at least 2 kept written rows (`MIN_ROWS`). The most frequent two
 fitting senses share the rows of a unit; a sense gets at most 3 rows of a shape.
 
+**Noun share.** A lemma has noun units only when the noun senses hold at least `NOUN_SHARE_MIN` = 0.02 of the
+WordNet 3.0 tag counts of its noun and verb senses (`shapes.noun_share`; a lemma without tags counts as 0.5). A rare noun
+use written in a shape teaches the classifier that the shape is a noun: three sentence-initial rows of the noun `give`
+(`Give in the old floorboards ...`) made a model read the verb `Give` at the start of an instruction as a noun. The verb
+units have no such restriction.
+
 **Provenance.** A shape row is an ordinary written anchor. Its provenance `source_key` carries the shape,
 `quota-w<wave>-shape:<shape>`, and the rows are in `quota-w<wave>-shape.tsv` of `anchors`, `provenance` and
 `choosers/anchors`. The status counts the rows of a unit from these keys. The wave decides the stage of the lemmas

@@ -358,6 +358,27 @@ public class WeightedLemmaTableTests
     }
 
     /// <summary>
+    ///     An embedded resource is read into an array of exactly its length, whether the resource stream can seek or not,
+    ///     so that loading the weights does not hold a buffer that is up to twice as large.
+    /// </summary>
+    [Fact]
+    public void WeightedLemmaTable_ReadResource_ReturnsExactlyTheBytesOfTheResource()
+    {
+        // Arrange: a blob whose size is just above a power of two, where a doubling buffer would be twice as large
+        var blob = new byte[(1 << 16) + 5];
+        new Random(7).NextBytes(blob);
+        var assembly = new FixtureAssembly(Resource, blob);
+
+        // Act
+        var bytes = WeightedLemmaTable.ReadResource(assembly, Resource);
+
+        // Assert
+        Assert.Equal(blob.Length, bytes.Length);
+        Assert.Equal(blob, bytes);
+        Assert.Throws<InvalidDataException>(() => WeightedLemmaTable.ReadResource(assembly, "no.such.resource"));
+    }
+
+    /// <summary>
     ///     A resource that is not a weights blob is rejected.
     /// </summary>
     [Fact]

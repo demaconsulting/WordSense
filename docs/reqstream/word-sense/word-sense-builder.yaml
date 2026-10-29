@@ -2260,6 +2260,19 @@ sections:
             tests:
               - WordSenseBuilder_Corpus_Disjointness_CoversSuiteEvaluationAndOewnExamples
 
+          - id: WordSense-WordSenseBuilder-ShapeRows
+            title: >-
+              The committed shape rows and the shape coverage report shall hold no noun shape row and no noun shape
+              unit for a lemma whose noun senses hold less than 2 percent of the WordNet tag counts of its noun and
+              verb senses.
+            tags: [unit]
+            justification: |
+              A rare noun use written in a sentence shape teaches the classifier that the shape is a noun: the rows of
+              the noun give in sentence-initial position made a model read the verb Give at the start of an
+              instruction as a noun.
+            tests:
+              - WordSenseBuilder_ShapeRows_NounShapeOfRareNounLemma_IsAbsent
+
           - id: WordSense-WordSenseBuilder-Usage
             title: >-
               The builder shall provide the commands compile-image, import-moby, weights, evaluate, evaluate-senses,

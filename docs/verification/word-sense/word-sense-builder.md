@@ -22,8 +22,8 @@ the stored biases, the thresholds and the fit-cache key, and the options); `Real
 document and the real-text calibration of the thresholds on one-dimensional synthetic lemmas; `ChooserCorpusTests.cs`
 and `ChooserTrainingTests.cs` cover the chooser rows and the training of the form choosers; `TiersTests.cs`,
 `SenseEvaluatorTests.cs`, `RunningTextEvaluatorTests.cs`, `TenseEvaluatorTests.cs`, `ChallengeSetFloorTests.cs`, `SuiteFileTests.cs`,
-`ShapeProbeTests.cs`, `LeakageCheckTests.cs` and `ModelTableTests.cs` cover the quota report, the two independent
-evaluations, the suite reader and its grading, the shape probe reader and report, the leakage check and the model table
+`ShapeProbeTests.cs`, `ShapeRowsTests.cs`, `LeakageCheckTests.cs` and `ModelTableTests.cs` cover the quota report, the two independent
+evaluations, the suite reader and its grading, the shape probe reader and report, the shape rows of the corpus, the leakage check and the model table
 file with small synthetic corpora, a stub model and
 cached-file fixtures; `EvaluatorTests.cs` covers the per-level evaluation with a stub model. Commands that need a real
 encoder (`weights`, `evaluate`, `evaluate-senses`, `evaluate-running`, `evaluate-suite` and `evaluate-shapes` for the
@@ -619,6 +619,13 @@ and, for the measurement, a stub model.
   `WordSenseBuilder_Program_EvaluateShapes_WithoutProbeFile_Fails`): on the committed corpus the Basic model is measured,
   every shape and `all noun shapes` are reported and the outcomes file is written; a corpus without the probe set exits
   with code 1 and a message that names the file.
+
+#### shape rows
+
+- **Rare noun lemmas** (`WordSenseBuilder_ShapeRows_NounShapeOfRareNounLemma_IsAbsent`): on the committed corpus, more
+  than 10,000 shape rows are found by their provenance tag, and none of the noun shape rows, and none of the noun units
+  of `corpus/coverage/shape-coverage.tsv`, is of a lemma whose noun senses hold less than 2 percent of the noun and verb
+  tag counts of `corpus/curation/senses.tsv`.
 
 #### open-counts
 

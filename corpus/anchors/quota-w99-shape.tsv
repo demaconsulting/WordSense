@@ -194,12 +194,6 @@ body	body#social-group	Noun	The industry {body} issued new safety rules on Tuesd
 body	body#verb	Verb	A little cornstarch will {body} the thin sauce.
 body	body#verb	Verb	Good editing can {body} a weak draft with concrete detail.
 body	body#verb	Verb	The cellar master hopes to {body} the wine with longer aging.
-build	build#body-build	Noun	The athlete's body {build} suited him perfectly for rowing.
-build	build#body-build	Noun	Her slim runner {build} made her easy to spot in the crowd.
-build	build#body-build	Noun	The witness noted the man's wrestler {build} and shaved head.
-build	build#body-build	Noun	She has a slender {build} and moves like a dancer.
-build	build#body-build	Noun	He has an enormous, muscular {build} for a man his age.
-build	build#body-build	Noun	The coach says you need to have a sturdy {build} to play linebacker.
 build	build#build-up	Verb	Pressure could {build} inside the tank if the valve stays shut.
 build	build#build-up	Verb	Clouds may {build} over the mountains by late afternoon.
 build	build#build-up	Verb	{Build} the pressure gradually until the gauge reads fifty.
@@ -209,23 +203,11 @@ build	build#construct	Verb	{Build} the frame first, then attach the wooden panel
 build	build#construct	Verb	{Build} a small shelter from branches before it gets dark.
 buy	buy#bribe	Verb	The mayor tried to {buy} the inspector's silence with an envelope of cash.
 buy	buy#bribe	Verb	Investigators say the company would {buy} votes from local officials with secret payments.
-buy	buy#noun	Noun	That garage sale {buy} turned out to be a genuine antique.
-buy	buy#noun	Noun	The Black Friday {buy} saved us about two hundred dollars.
-buy	buy#noun	Noun	Her thrift store {buy} was a vintage leather jacket in perfect shape.
-buy	buy#noun	Noun	I made a great {buy} at the estate sale last weekend.
-buy	buy#noun	Noun	He made a surprising {buy} on that old camera at the flea market.
-buy	buy#noun	Noun	Last week we had a terrific {buy} on lumber for the new deck.
 buy	buy#purchase	Verb	We should {buy} groceries before the storm arrives.
 buy	buy#purchase	Verb	You can {buy} tickets at the door or online.
 buy	buy#purchase	Verb	{Buy} two loaves of bread and a quart of milk on your way home.
 buy	buy#purchase	Verb	{Buy} your plane tickets early to get the lowest fares.
 buy	buy#purchase	Verb	{Buy} the larger size if you plan to wash it often.
-carry	carry#noun	Noun	The farmer {carry} is a simple exercise that builds grip strength.
-carry	carry#noun	Noun	The sandbag {carry} left everyone's shoulders sore after the workout.
-carry	carry#noun	Noun	The long suitcase {carry} up four flights of stairs left us exhausted.
-carry	carry#noun	Noun	The sandbag {carry} covered 40 meters in under thirty seconds.
-carry	carry#noun	Noun	Each heavy {carry} lasted 60 seconds, with 3 minutes of rest between rounds.
-carry	carry#noun	Noun	The longest {carry} in the contest was 150 feet with a 200-pound stone.
 carry	carry#pack	Verb	Drivers must {carry} their license whenever they get behind the wheel.
 carry	carry#pack	Verb	{Carry} your passport on you at all times while you travel abroad.
 carry	carry#pack	Verb	{Carry} a spare key in your wallet in case you get locked out.
@@ -254,29 +236,10 @@ case	case#inspect	Verb	The thieves will {case} the jewelry store before they str
 case	case#inspect	Verb	He wanted to {case} the bank for a week before the robbery.
 case	case#inspect	Verb	{Case} the joint tonight, and report back on the guards' schedule.
 case	case#inspect	Verb	{Case} the warehouse for a few days and note when the guards change shifts.
-catch	catch#apprehension	Noun	Police made a big {catch} when they cornered the ringleader of the burglary gang.
-catch	catch#apprehension	Noun	The task force made a notable {catch} last night, arresting the wanted fugitive.
 catch	catch#capture	Verb	{Catch} that thief before he reaches the subway!
 catch	catch#capture	Verb	{Catch} the horse before it jumps the fence.
-catch	catch#fastener	Noun	The cabinet door {catch} was broken, so it kept swinging open.
-catch	catch#fastener	Noun	The gate {catch} rusted shut after one wet winter.
-catch	catch#fastener	Noun	The {catch} mechanism on the cabinet needs a drop of oil.
-catch	catch#fastener	Noun	The {catch} plate screws into the doorframe.
-catch	catch#game	Noun	{Catch} turned into a daily ritual for father and son after dinner.
-catch	catch#game	Noun	{Catch} requires only a ball and two willing players.
-catch	catch#grab	Noun	The shortstop made a spectacular {catch} diving into the stands.
-catch	catch#grab	Noun	The outfielder made an easy {catch} to end the inning.
 catch	catch#grab-2	Verb	{Catch} the rope when I toss it down to you.
 catch	catch#grab-2	Verb	{Catch} the ball with both hands and keep your eyes on it.
-catch	catch#haul	Noun	The cod {catch} was down by a third this season.
-catch	catch#haul	Noun	The boat's salmon {catch} filled forty crates by noon.
-catch	catch#haul	Noun	The boat's total {catch} was 3,500 pounds of cod.
-catch	catch#haul	Noun	Each angler's {catch} is limited to 6 trout per day.
-catch	catch#haul	Noun	The morning {catch} weighed 800 kilograms and sold for 2,000 euros.
-catch	catch#haul	Noun	The {catch} limit on striped bass was lowered to one fish.
-catch	catch#haul	Noun	The {catch} report for the Gulf fleet will be posted Friday.
-catch	catch#haul	Noun	{Catches} were poor all summer along the northern coast.
-catch	catch#haul	Noun	{Catches} improved once the water warmed in June.
 catch	catch#surprise	Verb	If you steal again, they will {catch} you in the act.
 center	center#center-field	Noun	{Center} was wide open, and the ball dropped in for a double.
 center	center#center-field	Noun	{Center} is the hardest spot to cover in a park with a deep fence.
@@ -551,10 +514,6 @@ distance	distance#spacing	Noun	The {distance} gauge on the saw sets the gap betw
 distance	distance#spacing	Noun	The {distance} setting of the printer controls the gap between lines.
 distance	distance#spacing	Noun	{Distance} between the plants affects how well each one grows.
 distance	distance#spacing	Noun	{Distance} between the pillars lets light fall evenly across the floor.
-do	do#bash	Noun	The staff Christmas {do} lasted until midnight.
-do	do#bash	Noun	The office {do} was held at a bowling alley.
-do	do#doh	Noun	The tonic {do} anchors the major scale in solfege.
-do	do#doh	Noun	Students sang the solfege {do} before climbing to the next note.
 do	do#execute	Verb	{Do} exactly what the instructions say, step by step.
 do	do#make	Verb	We will {do} business with anyone who deals honestly.
 do	do#make	Verb	I would love to {do} lunch with you next week.
@@ -660,17 +619,10 @@ experiment	experiment#try-out	Verb	{Experiment} with fresh herbs in your cooking
 express	express#evince	Verb	He tried not to {express} any disappointment in front of the guests.
 express	express#evince	Verb	{Express} your joy with a big smile when the guests arrive.
 express	express#evince	Verb	{Express} some warmth in your face as you greet each customer.
-express	express#express-mail	Noun	{Express} costs three times as much as ordinary mail but arrives overnight.
-express	express#express-mail	Noun	{Express} gets sorted ahead of the regular letters at the post office.
-express	express#expressage	Noun	{Express} is the cheapest way to move the crates across the border by Friday.
-express	express#expressage	Noun	{Express} of perishable freight keeps the warehouse busy before the holidays.
 express	express#give-tongue-to	Verb	Citizens must be free to {express} their opinions openly in public.
 express	express#give-tongue-to	Verb	Children need to {express} what they feel out loud rather than bottle it up.
 express	express#give-tongue-to	Verb	{Express} your concerns to the committee in plain words at the meeting.
 express	express#give-tongue-to	Verb	{Express} yourself clearly in the interview and avoid vague answers.
-express	express#limited	Noun	The airport {express} leaves every ten minutes from the main station.
-express	express#limited	Noun	We caught the downtown {express} just before the doors closed.
-express	express#limited	Noun	A new commuter {express} will cut the ride to 35 minutes.
 fall	fall#autumn	Noun	The {fall} semester begins the last week of August at most campuses.
 fall	fall#autumn	Noun	Her {fall} schedule is packed with concerts in six different cities.
 fall	fall#autumn	Noun	{Fall} brings cooler nights and red leaves to the valley.
@@ -757,19 +709,12 @@ fill	fill#filling	Noun	The {fill} layer under the slab was eight inches deep.
 fill	fill#filling	Noun	{Fill} from the excavation was used to raise the low corner of the lot.
 fill	fill#filling	Noun	{Fill} must be compacted in thin layers before any slab is poured.
 fill	fill#filling	Noun	{Fills} of crushed stone and sand lined the embankment along the highway.
-find	find#breakthrough	Noun	Reading the old notebook helped him make a key {find} about how the cell divides.
-find	find#breakthrough	Noun	I think we've made a real {find} with this approach; everything finally fits.
 find	find#bump	Verb	You may {find} this idea in Plato's early dialogues.
 find	find#bump	Verb	Tourists might {find} a quiet little bakery on the side street.
 find	find#bump	Verb	{Find} something wonderful by chance on your next wander through the old market.
 find	find#bump	Verb	{Find} a hidden courtyard by accident while you stroll the back streets of the town.
 find	find#detect	Verb	Sensors in the lab should {find} traces of lead in the drinking water.
 find	find#detect	Verb	{Find} the tiny crack in the glass by holding it up to the window.
-find	find#discovery	Noun	The archaeological {find} drew crowds to the village museum.
-find	find#discovery	Noun	The Roman coin {find} was reported to the local museum last week.
-find	find#discovery	Noun	The shipwreck {find} rewrote the history of the whole coast.
-find	find#discovery	Noun	The divers made an amazing {find} in the wreck: a chest of gold coins.
-find	find#discovery	Noun	The amateur hunter made a rare {find} in a plowed field last week.
 fire	fire#discharge	Verb	You should never {fire} a rifle without checking what is behind the target.
 fire	fire#discharge	Verb	The cadets learned to {fire} the cannon safely during their second week of training.
 fire	fire#discharge	Verb	{Fire} the starting pistol as soon as the runners are set.
@@ -876,9 +821,6 @@ get	get#become	Verb	{Get} ready for school; the bus arrives in ten minutes.
 get	get#become	Verb	{Get} well soon, and rest as much as you can.
 give	give#afford	Verb	The new survey should {give} us a lot of useful information.
 give	give#afford	Verb	These old wires could {give} the electrician a lot of trouble.
-give	give#noun	Noun	{Give} in a new pair of leather boots comes only after weeks of wear.
-give	give#noun	Noun	{Give} in a tennis racquet's strings affects how the ball rebounds.
-give	give#noun	Noun	{Give} in the old floorboards made each step on the stage feel springy.
 ground	ground#anchor	Verb	We need to {ground} the fence posts firmly in concrete before the wind rises.
 ground	ground#anchor	Verb	Carpenters will {ground} the beam firmly in solid stone.
 ground	ground#anchor	Verb	{Ground} the pole in a block of concrete so it stays upright.
@@ -1017,22 +959,16 @@ job	job#chore	Noun	The {job} estimate for the new roof came to 4,800 dollars wit
 job	job#chore	Noun	The {job} order came in on Monday morning for a new cedar fence.
 job	job#do-work	Verb	He would {job} for local farmers during harvest season to earn a little extra.
 job	job#do-work	Verb	She had to {job} around town for neighbors after the mill closed its doors.
-join	join#articulation	Noun	The carpenter checked the corner {join} for gaps before applying the glue.
-join	join#articulation	Noun	A weak weld {join} can fail under load, so inspectors test each one.
 join	join#connect	Verb	Use clamps to {join} the two boards firmly before the glue sets.
 join	join#connect	Verb	The new bridge will {join} the island to the mainland by next summer.
 join	join#connect	Verb	{Join} the two pipes with a threaded coupling and tighten it by hand.
 join	join#connect	Verb	{Join} points A and B with a straight line, then measure its length.
 join	join#fall-in	Verb	You can {join} the club by filling out a short form at the front desk.
 join	join#fall-in	Verb	{Join} the neighborhood watch and help keep your street safe at night.
-join	join#sum	Noun	The set {join} of A and B contains every member of either set.
 keep	keep#continue	Verb	If you want to win, you must {keep} trying even when it gets hard.
 keep	keep#continue	Verb	We will {keep} working on the engine until the job is done.
 keep	keep#continue	Verb	{Keep} walking until you reach the traffic light, then turn left.
 keep	keep#continue	Verb	{Keep} reading even if the first chapter feels slow and confusing.
-keep	keep#donjon	Noun	The castle {keep} held the garrison for three months during the siege.
-keep	keep#donjon	Noun	Archers on the stone {keep} watched the road from the village below.
-keep	keep#donjon	Noun	The Norman {keep} still towers over the village after nine hundred years.
 keep	keep#hold-2	Verb	You must {keep} the soup warm until the guests arrive at seven.
 keep	keep#hold-2	Verb	Try to {keep} the kids quiet during the show so everyone can hear.
 keep	keep#hold-2	Verb	{Keep} the oven door closed while the bread bakes, or it will not rise.
@@ -1102,9 +1038,6 @@ let	let#allow	Verb	{Let} the engine warm up for a minute before you drive off in
 let	let#allow-2	Verb	The school will {let} students use their phones at lunch starting in the fall.
 let	let#allow-2	Verb	The landlord might {let} us keep a cat if we pay a deposit.
 let	let#leave	Verb	{Let} the default settings alone; changing them can break the whole app.
-let	let#noun	Noun	The server hit a net {let} on match point and had to serve again.
-let	let#noun	Noun	The umpire called a service {let} after the ball clipped the tape.
-let	let#noun	Noun	The crowd groaned at a tennis {let} that wasted the player's best serve.
 level	level#aim	Verb	Critics may {level} charges of fraud at the company after the audit.
 level	level#aim	Verb	{Level} your criticism at the policy, not at the person who wrote it.
 level	level#altitude	Noun	The sensor hangs at a {level} of 2 meters above the warehouse floor.
@@ -1207,12 +1140,6 @@ major	major#commissioned-military-officer	Noun	A Marine {major} signed the trans
 major	major#verb	Verb	She plans to {major} in chemistry at State.
 major	major#verb	Verb	You can {major} in two subjects at most universities.
 major	major#verb	Verb	He decided to {major} in music after one semester of engineering.
-make	make#brand	Noun	The registration lists the car {make} and the year of manufacture.
-make	make#brand	Noun	A tractor {make} is stamped on the engine plate.
-make	make#brand	Noun	Every laptop {make} on the list has a two-year warranty.
-make	make#brand	Noun	The {make} logo is on the grille.
-make	make#brand	Noun	Each {make} badge on the lot was polished before the sale.
-make	make#brand	Noun	A {make} code is printed on the registration form.
 make	make#do	Verb	You should {make} an effort to call your parents more often.
 make	make#do	Verb	{Make} an effort to arrive on time tomorrow.
 make	make#get	Verb	{Make} the sauce spicier by adding two more peppers.
@@ -1266,12 +1193,6 @@ meet	meet#get-together	Verb	The committee will {meet} every Tuesday to plan the 
 meet	meet#get-together	Verb	Book club members like to {meet} at a cafe for lively debate.
 meet	meet#get-together	Verb	{Meet} with your advisor before the semester ends to plan courses.
 meet	meet#get-together	Verb	{Meet} as a team every morning to review the day's goals.
-meet	meet#noun	Noun	The high school track {meet} starts at nine.
-meet	meet#noun	Noun	Our swim {meet} drew teams from six states.
-meet	meet#noun	Noun	The county gymnastics {meet} runs all weekend.
-meet	meet#noun	Noun	Our club runs a big {meet} every June in Eugene.
-meet	meet#noun	Noun	The county will have a two-day {meet} for local schools.
-meet	meet#noun	Noun	They ran a charity {meet} for the youth athletes.
 mother	mother#barm	Noun	{Mother} of vinegar is a slimy film that forms on wine left open.
 mother	mother#barm	Noun	{Mother} formed on the cider and slowly turned it into vinegar.
 mother	mother#beget	Verb	The breeder hopes the mare will {mother} a champion colt.
@@ -1362,9 +1283,6 @@ open	open#open-up-2	Verb	The bakery will {open} a second location downtown next 
 open	open#open-up-2	Verb	The museum should {open} to visitors by early spring if the repairs finish on time.
 open	open#open-up-2	Verb	{Open} the store at nine and switch on the lights and the registers.
 open	open#open-up-2	Verb	{Open} the club at six and unlock the side gate for the band.
-open	open#tournament	Noun	She qualified for the club tennis {open} last spring and reached the quarterfinals.
-open	open#tournament	Noun	The county chess {open} drew grandmasters and weekend players for a prize fund of 2,000 dollars.
-open	open#tournament	Noun	The regional golf {open} lets professionals and amateurs play the same course.
 order	order#ask-for	Verb	I will {order} the pasta and a small salad.
 order	order#ask-for	Verb	You should {order} the spare parts before the supply runs out.
 order	order#ask-for	Verb	{Order} a pizza while I set the table.
@@ -1481,9 +1399,6 @@ put	put#lay	Verb	You can {put} the box on the top shelf of the closet.
 put	put#lay	Verb	We will {put} the books in the cabinet by the window.
 put	put#lay	Verb	{Put} the keys on the table by the door when you come in.
 put	put#lay	Verb	{Put} the milk back in the fridge when you finish your cereal.
-put	put#noun	Noun	The {put} option gives the holder the right to sell shares at a fixed price.
-put	put#noun	Noun	The {put} buyer pays a premium up front for protection against a falling market.
-put	put#noun	Noun	The {put} seller must buy the shares if the stock drops below the strike price.
 question	question#call-into-question	Verb	These findings could {question} the accuracy of the old data.
 question	question#call-into-question	Verb	Critics will {question} the mayor's decision to close the library.
 question	question#call-into-question	Verb	{Question} every claim in the report before you accept it.
@@ -1611,9 +1526,6 @@ save	save#preserve	Verb	{Save} some pie for your brother before it all disappear
 save	save#relieve	Verb	Nothing can {save} the old theater from demolition now.
 save	save#relieve	Verb	{Save} the whales from extinction by donating to the fund today.
 say	say#allege	Verb	Sources could {say} the minister knew about the leak for weeks.
-say	say#noun	Noun	Every employee should have a {say} in how the budget is spent.
-say	say#noun	Noun	Give the neighbors a real {say} before the council votes on the road.
-say	say#noun	Noun	Shareholders now have a bigger {say} in executive pay.
 say	say#state	Verb	I will {say} exactly what I told the officer yesterday.
 say	say#suppose	Verb	{Say} the train is an hour late; can we still make the show?
 say	say#suppose	Verb	{Say} you win the lottery tomorrow; what would you buy first?
@@ -1656,9 +1568,6 @@ see	see#comprehend	Verb	Visitors will {see} the whole valley from the top of the
 see	see#comprehend	Verb	You can {see} the mountains from our back porch on a clear day.
 see	see#comprehend	Verb	{See} that bird in the top branches? It is a hawk.
 see	see#comprehend	Verb	{See} the whole city from the observation deck at night.
-see	see#noun	Noun	The Canterbury {see} dates back to the year 597.
-see	see#noun	Noun	The Winchester {see} was one of the richest in medieval England.
-see	see#noun	Noun	The Rochester {see} is among the oldest in the country.
 see	see#realise	Verb	Once you do the math, you will {see} the problem.
 see	see#realise	Verb	I can {see} why you are upset about the delay.
 see	see#realise	Verb	{See} how the whole argument falls apart if the first claim is false.
@@ -1669,15 +1578,6 @@ seek	seek#look-for	Verb	Divers will {seek} the wreck in the bay at low tide.
 seek	seek#look-for	Verb	Rescuers will {seek} the missing hikers all night.
 seek	seek#look-for	Verb	{Seek} the hidden clues in the old library before dark.
 seek	seek#look-for	Verb	{Seek} the lost keys under the sofa cushions and in the car.
-seek	seek#noun	Noun	The disk {seek} is the slowest step in every read.
-seek	seek#noun	Noun	A head {seek} moves the arm across the platter.
-seek	seek#noun	Noun	Every track {seek} costs the drive several milliseconds.
-seek	seek#noun	Noun	The {seek} time of this drive is eight milliseconds.
-seek	seek#noun	Noun	The {seek} latency rose after the disk began to fail.
-seek	seek#noun	Noun	The {seek} operation moved the head to track 400.
-seek	seek#noun	Noun	Each read means the drive must make a {seek} to the right track.
-seek	seek#noun	Noun	The drive performed a quick {seek} to the outer track.
-seek	seek#noun	Noun	The firmware will run a {seek} on startup to calibrate the head.
 sell	sell#be	Verb	That painting could {sell} for a million dollars at auction.
 sell	sell#be	Verb	The new toys will {sell} like hot cakes before the holidays.
 sell	sell#change	Verb	We will {sell} the house in the spring.
@@ -1693,18 +1593,6 @@ serve	serve#function	Verb	The shed will {serve} as a studio for the whole summer
 serve	serve#function	Verb	This old crate can {serve} as a coffee table in the den.
 serve	serve#help	Verb	{Serve} yourself some soup before the line gets too long.
 serve	serve#help	Verb	{Serve} my father first, and then help yourself to the rice.
-serve	serve#noun	Noun	A good tennis {serve} starts with a steady toss.
-serve	serve#noun	Noun	The volleyball {serve} floated just over the net.
-serve	serve#noun	Noun	Her jump {serve} caught the defenders off guard.
-serve	serve#noun	Noun	His fastest {serve} was clocked at 135 miles per hour.
-serve	serve#noun	Noun	She landed 9 of 10 first {serves} in the second set.
-serve	serve#noun	Noun	The {serve} landed 2 inches inside the line on match point.
-serve	serve#noun	Noun	The {serve} speed on the stadium board read 128 mph.
-serve	serve#noun	Noun	The {serve} return was low, hard and perfectly placed.
-serve	serve#noun	Noun	The {serve} motion starts with a smooth toss above the head.
-serve	serve#noun	Noun	He made a strong {serve} to start the rally.
-serve	serve#noun	Noun	She has a wicked {serve} that few opponents can return.
-serve	serve#noun	Noun	She performed a perfect {serve} on the final point of the match.
 set	set#abstract-entity	Noun	The solution {set} of the equation has exactly two elements.
 set	set#abstract-entity	Noun	Every point {set} in this proof is closed and bounded.
 set	set#abstract-entity	Noun	This {set} contains exactly 7 elements, so it has 128 subsets.
@@ -1756,21 +1644,6 @@ shoot	shoot#pip	Verb	The farmer had to {shoot} the fox that was killing his chic
 shoot	shoot#pip	Verb	Rangers will {shoot} the wounded animal to end its suffering.
 shoot	shoot#pip	Verb	{Shoot} the rabid dog before it reaches the children.
 shoot	shoot#pip	Verb	{Shoot} the wounded deer quickly so it does not suffer.
-shoot	shoot#shooting	Noun	The weekend clay {shoot} drew about forty competitors.
-shoot	shoot#shooting	Noun	The charity skeet {shoot} raised money for the hospital.
-shoot	shoot#shooting	Noun	We had a long {shoot} at the clay range last Sunday.
-shoot	shoot#shooting	Noun	The county will have a trap {shoot} on Saturday morning with prizes.
-shoot	shoot#sprout	Noun	A bamboo {shoot} pushed through the soil near the fence.
-shoot	shoot#sprout	Noun	Fresh willow {shoots} appeared along the creek bank in April.
-shoot	shoot#sprout	Noun	The tomato plant sent out a {shoot} 12 inches long in a week.
-shoot	shoot#sprout	Noun	Each {shoot} grew about 3 centimeters per day in the warm greenhouse.
-shoot	shoot#sprout	Noun	Every new {shoot} was 15 centimeters tall after two weeks.
-shoot	shoot#sprout	Noun	The {shoot} tip is the softest part of the vine and wilts first.
-shoot	shoot#sprout	Noun	The {shoot} growth on the apple tree was strong this spring.
-shoot	shoot#sprout	Noun	The {shoot} length of each seedling was recorded daily.
-shoot	shoot#sprout	Noun	{Shoots} from the old stump appeared after the spring rains.
-shoot	shoot#sprout	Noun	{Shoots} emerging from the potato eyes should be trimmed to a few.
-shoot	shoot#sprout	Noun	{Shoots} on the rose bush need support before the heavy blooms arrive.
 short	short#short-change	Verb	A dishonest cashier may {short} customers when the shop is busy.
 short	short#short-change	Verb	Some vendors will {short} tourists who do not count their change.
 short	short#short-change	Verb	{Short} the customer on change again and you are fired.
@@ -1904,21 +1777,6 @@ start	start#head-start	Noun	He had a 10-minute {start} on the other runners.
 start	start#head-start	Noun	She gave her little brother a 20-meter {start} in the race.
 start	start#starting	Noun	The rookie pitcher made his first {start} on Tuesday night.
 start	start#starting	Noun	The backup quarterback had a surprise {start} when the regular was injured.
-stay	stay#act	Noun	The hospital {stay} lasted three days after the surgery.
-stay	stay#act	Noun	Our hotel {stay} in Lisbon was cheap and comfortable.
-stay	stay#act	Noun	A five-night {stay} at the resort costs 900 dollars.
-stay	stay#act	Noun	The average hospital {stay} was 4.2 days last year.
-stay	stay#act	Noun	The visa permits a {stay} of up to 90 days.
-stay	stay#act	Noun	The {stay} length for most patients is under a week.
-stay	stay#act	Noun	Please confirm your {stay} dates when you call the front desk.
-stay	stay#act	Noun	We had a pleasant {stay} at the lakeside inn last summer.
-stay	stay#act	Noun	Plan to make a short {stay} in Kyoto before flying on to Seoul.
-stay	stay#brace	Noun	The rigger replaced the forward mast {stay} before the race.
-stay	stay#brace	Noun	A loose steel {stay} rattled against the mainmast all night.
-stay	stay#brace	Noun	The {stay} cable on the sloop had frayed near the masthead.
-stay	stay#brace	Noun	A new {stay} wire was spliced to the bowsprit before departure.
-stay	stay#decree	Noun	The appeals court may give a temporary {stay} of the eviction order.
-stay	stay#decree	Noun	Counsel hopes the judge will give a {stay} of the deportation order.
 stay	stay#persist	Verb	{Stay} in the cabin while the storm passes over the valley.
 stay	stay#remain	Verb	Prices should {stay} low through the end of the year.
 stay	stay#remain	Verb	The soup must {stay} warm until the guests arrive.
@@ -2038,23 +1896,8 @@ table	table#tabularise	Verb	{Table} the measurements in three columns, one for e
 table	table#tabularise	Verb	{Table} the quarterly figures so each region has its own row.
 take	take#act	Verb	The company will {take} action against the polluters.
 take	take#act	Verb	The board must {take} a vote before noon.
-take	take#cinematography	Noun	The opening crane {take} lasted six minutes without a single cut.
-take	take#cinematography	Noun	Only the third stunt {take} caught the explosion on film.
-take	take#cinematography	Noun	The {take} log shows 14 attempts at the opening scene.
-take	take#cinematography	Noun	Mark each {take} number on the slate before the director calls action.
-take	take#cinematography	Noun	The script supervisor wrote every {take} note in the continuity binder.
-take	take#cinematography	Noun	They had to do a third {take} after the plane flew overhead.
-take	take#cinematography	Noun	Let's do one more {take} before the light changes.
-take	take#cinematography	Noun	The actors did another {take} of the kitchen scene.
-take	take#cinematography	Noun	{Takes} of the chase scene were ruined by passing clouds.
-take	take#cinematography	Noun	{Takes} shot at dawn have a soft, golden look on screen.
 take	take#conduct	Verb	{Take} the children to school before nine.
 take	take#conduct	Verb	{Take} your grandmother to the airport, please.
-take	take#issue	Noun	The theater's weekend gate {take} topped two million dollars.
-take	take#issue	Noun	Rising property values boosted the city's tax {take} last year.
-take	take#issue	Noun	The night's {take} was 4,200 dollars after expenses.
-take	take#issue	Noun	The band's {take} from the 800 tickets sold came to 12,000 dollars.
-take	take#issue	Noun	The charity's {take} reached 50,000 dollars by Sunday.
 take	take#occupy	Verb	The repair should {take} about two hours.
 take	take#occupy	Verb	The new sofa will {take} most of the floor space in that room.
 think	think#believe	Verb	You might {think} him rude, but he is just shy.
@@ -2064,9 +1907,6 @@ think	think#call-back	Verb	{Think} back to your first day at school and describe
 think	think#cerebrate	Verb	{Think} carefully before you answer the second question.
 think	think#guess	Verb	I should {think} the train arrives around six.
 think	think#guess	Verb	I would {think} there are about fifty people in the room.
-think	think#noun	Noun	Let me have a quiet {think} about the offer.
-think	think#noun	Noun	She took a long {think} before answering the question.
-think	think#noun	Noun	Go and have a good {think} and call me tomorrow.
 throw	throw#actuation	Noun	The javelin {throw} of 84 meters won her the gold medal.
 throw	throw#actuation	Noun	His long relay {throw} beat the runner by a step.
 throw	throw#actuation	Noun	Her best {throw} of the day went 62.4 meters.
@@ -2151,15 +1991,6 @@ try	try#assay	Verb	{Try} harder next time and do not give up so easily.
 try	try#essay	Verb	We will {try} the new software on a small group first.
 try	try#essay	Verb	Visitors can {try} the espresso machine for free at the store.
 try	try#essay	Verb	{Try} this keyboard for a week and see if your wrists feel better.
-try	try#noun	Noun	The team needed four {tries} to land the rocket.
-try	try#noun	Noun	After 12 {tries} the software finally compiled without errors.
-try	try#noun	Noun	Each player gets 3 {tries} at the ring toss.
-try	try#noun	Noun	The {try} limit on the login page is three attempts.
-try	try#noun	Noun	The script keeps a {try} counter and stops after ten failures.
-try	try#noun	Noun	The {try} history in the log shows every failed attempt.
-try	try#noun	Noun	Give it a good {try} before you ask for help.
-try	try#noun	Noun	Let's have another {try} at fixing the pump.
-try	try#noun	Noun	She made a brave {try} at the high jump record.
 turn	turn#bend	Noun	The hairpin {turn} on the mountain road scared the new driver.
 turn	turn#bend	Noun	The horseshoe {turn} above the canyon offers a spectacular view.
 turn	turn#bend	Noun	The road makes a 90 degree {turn} at the stone bridge.
@@ -2225,7 +2056,6 @@ wall	wall#object	Noun	{Walls} of water crashed over the village after the dam br
 wall	wall#verb	Verb	Settlers had to {wall} the village to survive the raids.
 wall	wall#verb	Verb	The king ordered workers to {wall} the city before the enemy arrived.
 wall	wall#verb	Verb	Villagers will {wall} the stronghold with thick stone before winter.
-want	want#deprivation	Noun	{Want} drove many families out of the dust bowl states.
 want	want#desire	Verb	Children will {want} every toy they see in the store.
 want	want#desire	Verb	I would never {want} to live anywhere but the coast.
 want	want#need-2	Verb	The soup could {want} a little more salt.
@@ -2264,21 +2094,8 @@ water	water#irrigate	Verb	Engineers plan to {water} the desert plain with long c
 water	water#irrigate	Verb	{Water} the garden beds slowly so the soil can soak it up.
 water	water#irrigate	Verb	{Water} the fields early in the morning through the channels.
 water	water#irrigate	Verb	{Water} the orchard rows through the ditches each evening.
-wear	wear#article-of-clothing	Noun	The ski {wear} sold out before November.
-wear	wear#article-of-clothing	Noun	The evening {wear} at the shop ranged from simple dresses to ball gowns.
 wear	wear#bear	Verb	Knights would {wear} a sword at their side even in the castle.
 wear	wear#bear	Verb	Officers may {wear} a sidearm while on duty.
-wear	wear#deterioration	Noun	Tire {wear} was visible after only a year of driving.
-wear	wear#deterioration	Noun	The engine {wear} showed on the cylinder walls.
-wear	wear#deterioration	Noun	The brake pads show 3 millimeters of {wear} after 20,000 miles.
-wear	wear#deterioration	Noun	Tread {wear} averages 0.5 millimeters per 10,000 miles.
-wear	wear#deterioration	Noun	The rating covers 50,000 miles of normal {wear}.
-wear	wear#deterioration	Noun	The {wear} pattern on the tires showed misaligned wheels.
-wear	wear#deterioration	Noun	A {wear} indicator on the tread tells you when to replace the tire.
-wear	wear#deterioration	Noun	The {wear} marks along the stairs show decades of foot traffic.
-wear	wear#deterioration	Noun	{Wear} on the stair edges showed decades of foot traffic.
-wear	wear#deterioration	Noun	{Wear} accumulates quickly on gears that run without oil.
-wear	wear#deterioration	Noun	{Wear} from sand and wind had smoothed the statue's face.
 wear	wear#have-on	Verb	You should {wear} a helmet when you ride.
 wear	wear#have-on	Verb	Guests must {wear} formal dress to the gala.
 white	white#albumen	Noun	Whisk the egg {white} until it forms stiff peaks.
@@ -2300,16 +2117,6 @@ win	win#act	Verb	She trained for years to {win} the marathon at the national cha
 win	win#act	Verb	{Win} the first set and the rest of the match will feel much easier.
 win	win#act	Verb	{Win} this last game for your teammates, and then we can all go home.
 win	win#act	Verb	{Win} the toss if you can, because the wind favors the team that kicks first.
-win	win#profits	Noun	The casino {win} for the quarter rose sharply after the new tables opened.
-win	win#profits	Noun	Tax officials say every lottery {win} above a set amount must be reported.
-win	win#triumph	Noun	The team's playoff {win} sent the whole town into the streets.
-win	win#triumph	Noun	After three losses, the road {win} finally gave the coach some breathing room.
-win	win#triumph	Noun	The Tigers ended the season with 12 {wins} and only 4 losses.
-win	win#triumph	Noun	She needs just 3 more {wins} to break the national record.
-win	win#triumph	Noun	A 2 to 1 {win} over their rivals on Saturday put them in first place.
-win	win#triumph	Noun	The {win} streak ended at nine games when the starting pitcher got hurt.
-win	win#triumph	Noun	Fans gathered for the {win} celebration outside the stadium until after midnight.
-win	win#triumph	Noun	The coach has a strong {win} record against teams from the western division.
 wonder	wonder#admiration	Noun	{Wonder} washed over the crowd as the northern lights rippled across the sky.
 wonder	wonder#admiration	Noun	{Wonder} is what most visitors feel when they first enter the great cathedral.
 wonder	wonder#curiosity	Noun	Her lifelong {wonder} about how clocks work led her to become an engineer.

@@ -431,15 +431,6 @@ guess	guess#hazard	Verb	{Guess} a number, even if you risk being wrong, and we'l
 guess	guess#imagine	Verb	I would {guess} that the train is late again.
 hang	hang#be	Verb	The picture should {hang} above the fireplace, not near the door.
 hang	hang#be	Verb	Wet laundry will {hang} on the line all afternoon in this breeze.
-hang	hang#gymnastic-exercise	Noun	The bar {hang} held for ten seconds earned him a point from the judges.
-hang	hang#gymnastic-exercise	Noun	Her arm {hang} on the high bar is almost perfectly motionless.
-hang	hang#gymnastic-exercise	Noun	The ring {hang} was held steady for the full count by the junior champion.
-hang	hang#gymnastic-exercise	Noun	Each gymnast held a 20-second {hang} on the rings, then rested for a minute.
-hang	hang#gymnastic-exercise	Noun	The coach asked for three {hangs} of 15 seconds each on the high bar.
-hang	hang#gymnastic-exercise	Noun	Her best {hang} on the parallel bars lasted 40 seconds.
-hang	hang#gymnastic-exercise	Noun	Do a {hang} on the rings before attempting the swing.
-hang	hang#gymnastic-exercise	Noun	The gymnast performed a perfect {hang} on the parallel bars before the dismount.
-hang	hang#gymnastic-exercise	Noun	Her coach had her do a {hang} from the rings at every warm-up.
 hang	hang#hang-up	Verb	We can {hang} the lights across the porch tomorrow.
 hang	hang#hang-up	Verb	I will {hang} your coat in the hall closet.
 hang	hang#hang-up	Verb	{Hang} your coat on the hook by the door.
@@ -820,12 +811,6 @@ sample	sample#verb	Verb	Inspectors must {sample} each shipment of grain for mold
 sample	sample#verb	Verb	{Sample} the soup before you add any more salt.
 sample	sample#verb	Verb	{Sample} ten random records from the database and check them by hand.
 sample	sample#verb	Verb	{Sample} the air near the factory at noon and again at midnight.
-settle	settle#noun	Noun	The tavern {settle} was wide enough for three men to sit side by side.
-settle	settle#noun	Noun	She bought a church {settle} at the estate auction.
-settle	settle#noun	Noun	An antique pine {settle} stood beside the kitchen fire.
-settle	settle#noun	Noun	{Settles} like these were common in farmhouse kitchens two hundred years ago.
-settle	settle#noun	Noun	{Settles} with high backs kept drafts off the diners' necks.
-settle	settle#noun	Noun	{Settles} with storage chests under the seat are popular in old pubs.
 settle	settle#settle-down	Verb	The bird will {settle} on the branch and begin to sing.
 settle	settle#settle-down	Verb	{Settle} into the armchair and let the cat find its place.
 settle	settle#settle-down	Verb	{Settle} gently on the seat and keep the baby's head supported.
