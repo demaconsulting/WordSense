@@ -815,7 +815,7 @@ that fall short, most frequent first.
    the
    cue scores of the table by it. A table that predicts its held-out sentences at or below chance is therefore as good as
    none, one at 0.8 on two analyses is fully reliable, and the choice needs no hand list of tables. In the shipped table
-   111 of the 916 tables are damped (those with a held-out accuracy below 0.6); `learning`, whose held-out accuracy of
+   92 of the 918 tables are damped (those with a held-out accuracy below 0.6); `learning`, whose held-out accuracy of
    0.298 is below chance, gets 0. On the development sets any target from 0.5 to 1.0 gives the same figures (the cue
    changes the answer on about 5 percent of the tokens it covers), and the reviewed suite loses rows from a target of
    0.7 on, so the target is 0.6.
@@ -835,7 +835,7 @@ that fall short, most frequent first.
    A table that covers no token keeps its anchor reliability. On the development sets the pseudo count and the
    combination make no difference (the cue changes few answers). The reviewed suite is the guard for the pseudo count:
    20 or less turns the row `M-feel-2` of Basic into a miss (the table of `feel` has 0 tokens helped and 2 hurt), and 50
-   does not. In the shipped table 163 of the 916 tables are damped (111 by the anchors and 62 by the running text,
+   does not. In the shipped table 143 of the 918 tables are damped (92 by the anchors and 60 by the running text,
    where more tokens are hurt than helped).
 3. `BasicTablesWriter.Write` serializes the table, `BasicTables.Load` checks that it reads back, and the file is
    written with its size and SHA-256 reported. The table carries the inventory hash of the word image that it was

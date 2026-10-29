@@ -31,7 +31,7 @@ public sealed class ShapeRowsTests
         {
             var cells = line.Split('\t');
             var lemma = cells[0].Split('#')[0];
-            var count = long.Parse(cells[tagColumn], CultureInfo.InvariantCulture);
+            var count = cells[tagColumn].Length == 0 ? 0 : long.Parse(cells[tagColumn], CultureInfo.InvariantCulture);
             var (noun, verb) = tags.GetValueOrDefault(lemma);
             tags[lemma] = cells[posColumn] switch
             {

@@ -265,7 +265,7 @@ the challenge set overlap nothing.
   third judge who saw both answers. The third judge settled 15 of them and 64 stayed undecided; the undecided rows are
   never used as evidence. A blind re-judging of every 20th accepted row (790 rows) found no disagreement. Rows added
   later are checked by the blind labeler of the quota filling (see the method above).
-- **Quota status.** `coverage/quota-coverage.tsv` has the quota status of every sense. 11,030 of the 12,373 senses of the
+- **Quota status.** `coverage/quota-coverage.tsv` has the quota status of every sense. 11,027 of the 12,373 senses of the
   lemmas with anchors meet their quota (`WordSense.Builder tiers`).
 - **Tier waves `4u` and `4r`.** They fill the short senses of the uncommon and the rare tier (harvested with `--tier U`
   and `--tier R`, and `--faa-tech-only`):

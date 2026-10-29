@@ -108,9 +108,9 @@ they are sure enough. The [user guide][link-user-guide] shows their output for t
 <!-- model-table:begin -->
 | Model | Real-text sense (share @ precision) | Running-text part of speech (open corpus test) | UD-EWT test part of speech (convention-mapped) | Independent sense evaluation (SemCor) | STE challenge set (part of speech) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 4.37% @ 70.61% | 94.61% (ambiguous 92.76%) | 92.41% (ambiguous 89.80%) | 6.59% @ 33.37% (top-1 53.95%) | 98.65% (ambiguous 97.83%) | none | 274 KiB | 12 MiB | 0.17 ms | 54 ms + 85 ms | no |
-| MiniLM | 15.74% @ 95.81% | 94.61% (ambiguous 92.77%) | 92.84% (ambiguous 90.47%) | 16.03% @ 82.94% (top-1 54.70%) | 98.65% (ambiguous 97.83%) | 22 MiB | 8,784 KiB | 175 MiB | 6.56 ms | 598 ms + 62 ms | yes |
-| BERT base cased | 42.68% @ 95.78% | 94.66% (ambiguous 92.84%) | 92.61% (ambiguous 90.12%) | 36.92% @ 81.18% (top-1 58.50%) | 98.20% (ambiguous 97.10%) | 104 MiB | 17,148 KiB | 335 MiB | 20.69 ms | 939 ms + 71 ms | yes |
+| Basic | 4.33% @ 71.19% | 94.62% (ambiguous 92.78%) | 92.42% (ambiguous 89.82%) | 6.59% @ 33.37% (top-1 53.95%) | 98.65% (ambiguous 97.83%) | none | 272 KiB | 12 MiB | 0.11 ms | 43 ms + 62 ms | no |
+| MiniLM | 15.70% @ 95.80% | 94.61% (ambiguous 92.77%) | 92.84% (ambiguous 90.47%) | 16.03% @ 82.89% (top-1 54.71%) | 98.65% (ambiguous 97.83%) | 22 MiB | 8,785 KiB | 154 MiB | 1.73 ms | 568 ms + 82 ms | yes |
+| BERT base cased | 42.42% @ 95.84% | 94.67% (ambiguous 92.86%) | 92.63% (ambiguous 90.15%) | 36.76% @ 81.28% (top-1 58.50%) | 98.20% (ambiguous 97.10%) | 104 MiB | 17,144 KiB | 307 MiB | 10.64 ms | 864 ms + 60 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->

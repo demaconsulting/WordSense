@@ -43,8 +43,8 @@ has seen the answers (see "Caveats"). The levels of the encoder answers on the r
 
 | Model | Sense (share, precision) | Group (share, precision) | Part of speech (share, precision) | Fine top-1 |
 | --- | ---: | ---: | ---: | ---: |
-| MiniLM | 15.7%, 95.8% | 0.5%, 93.3% | 83.7%, 95.6% | 65.5% |
-| BERT base cased | 42.7%, 95.8% | 0.6%, 96.9% | 56.8%, 95.6% | 74.8% |
+| MiniLM | 15.7%, 95.8% | 0.6%, 93.8% | 83.7%, 95.6% | 65.4% |
+| BERT base cased | 42.4%, 95.8% | 0.6%, 94.1% | 57.0%, 95.6% | 74.8% |
 
 ## Part of Speech
 
@@ -57,9 +57,9 @@ noun-verb tokens):
 
 | Set | Basic |
 | --- | ---: |
-| Open corpus test | 94.61% (92.76%; 95.41%) |
-| Treebank test (convention-mapped) | 92.41% (89.80%; 92.88%) |
-| Treebank test, MiniLM and BertBaseCased | 92.61 to 92.84% |
+| Open corpus test | 94.62% (92.78%; 95.41%) |
+| Treebank test (convention-mapped) | 92.42% (89.82%; 92.88%) |
+| Treebank test, MiniLM and BertBaseCased | 92.63 to 92.84% |
 | Independent benchmark, all-token part of speech, pooled | 91.3% |
 | Targeted challenge set | 98.65% |
 
@@ -76,7 +76,7 @@ is the cross-domain one. Three features of the tagger matter:
   development data only.
 - **Cue reliability.** Each of the 918 cue tables has a reliability that scales its weight. It comes from
   cross-validation on the table's own anchors and from the net help of its cues on the training split of the open corpus.
-  142 of the 918 tables are damped. The tables learn from the sense anchors of the base stage and all the form-chooser rows.
+  143 of the 918 tables are damped. The tables learn from the sense anchors of the base stage and all the form-chooser rows.
 - **Noun/verb context.** A model shared by all words that have a noun and a verb reading corrects the split between the
   two from the word and the grammatical class of the two tokens on each side. It is fitted on held-out predictions of the
   rest of the model, so it adds only what the tagger and the cue tables miss.
@@ -124,8 +124,8 @@ Basic called 2.
 For that case `FallbackWordSenseModel` combines the slot probabilities of the encoder and of Basic as
 `p_encoder^w × p_basic^(1−w)`. The primary weight `w` is 0.6 for MiniLM and 1 (no combination) for BertBaseCased,
 chosen on development data only. On the part-of-speech heteronyms of the independent benchmark (the treebank, SemCor
-and a read set; not part of the repository) BertBaseCased is right for 98.9% of the words, MiniLM for 97.8% and Basic for
-95.3%.
+and a read set; not part of the repository) BertBaseCased is right for 98.7% of the words, MiniLM for 97.8% and Basic for
+95.1%.
 
 Two more rules apply to the combination:
 
@@ -187,12 +187,12 @@ an untrained lemma with fewer than two senses, which every model answers at the 
 
 | Model | Words | Sense answered | Sense precision | Fine top-1 |
 | --- | --- | ---: | ---: | ---: |
-| Basic | untrained (58,444) | 9.25% | 68.34% | 70.17% |
-| Basic | all (184,323) | 7.43% | 47.17% | 59.09% |
-| MiniLM | untrained | 4.13% | 85.86% | 69.93% |
-| MiniLM | all | 12.26% | 83.25% | 59.53% |
-| BertBaseCased | untrained | 4.16% | 85.16% | 69.98% |
-| BertBaseCased | all | 26.53% | 81.37% | 62.14% |
+| Basic | untrained (58,444) | 9.25% | 68.38% | 70.17% |
+| Basic | all (184,323) | 7.43% | 47.18% | 59.09% |
+| MiniLM | untrained | 4.12% | 85.88% | 69.93% |
+| MiniLM | all | 12.25% | 83.21% | 59.53% |
+| BertBaseCased | untrained | 4.16% | 85.14% | 69.98% |
+| BertBaseCased | all | 26.42% | 81.47% | 62.14% |
 | First sense with the highest WordNet 3.0 tag count | trained | | | 66.14% |
 | First sense with the highest WordNet 3.0 tag count | untrained | | | 77.32% |
 | First sense with the highest WordNet 3.0 tag count | all | | | 69.68% |
@@ -223,9 +223,9 @@ Basic chose is right too.
   time: it leaves out the rows of a word form that the classifier does not score (the lexicon answers), of a form
   chooser that is not confident, of a selected analysis of another lemma, of a best sense of another part of speech
   than the selected analysis, and of a word whose closed-class slot wins in Basic (the answer is at the part-of-speech
-  level). That leaves 5,143 rows for MiniLM and 5,221 for BertBaseCased, and the target is reached for BertBaseCased
-  (shifts 2.75, 1.79 and 1.41: 2,553 of 3,680 sense answers kept, at a precision of 97.1%) and for the stage 1 and
-  stage 2 lemmas of MiniLM (shifts 1.97 and 2.70), but not for its base lemmas (shift 3.11; 884 of 2,010 answers kept
+  level). That leaves 5,144 rows for MiniLM and 5,221 for BertBaseCased, and the target is reached for BertBaseCased
+  (shifts 2.75, 1.78 and 1.52: 2,530 of 3,672 sense answers kept, at a precision of 97.2%) and for the stage 1 and
+  stage 2 lemmas of MiniLM (shifts 1.98 and 2.70), but not for its base lemmas (shift 3.06; 884 of 2,010 answers kept
   over all stages, at 96.8%). The fine top-1 does not depend on the target.
 - **CPU variation.** The int8 arithmetic of the encoder models differs slightly between CPUs and operating systems. The
   confidences move a little (the tests compare them within 0.10 for the encoder models and within 0.01 for Basic, which

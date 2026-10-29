@@ -21,10 +21,10 @@ the stored biases, the thresholds and the fit-cache key, and the options); `Real
 `RealCalibratorTests.cs` cover the split of the real held-out sentences by
 document and the real-text calibration of the thresholds on one-dimensional synthetic lemmas; `ChooserCorpusTests.cs`
 and `ChooserTrainingTests.cs` cover the chooser rows and the training of the form choosers; `TiersTests.cs`,
-`SenseEvaluatorTests.cs`, `RunningTextEvaluatorTests.cs`, `TenseEvaluatorTests.cs`, `ChallengeSetFloorTests.cs`, `SuiteFileTests.cs`,
-`ShapeProbeTests.cs`, `ShapeRowsTests.cs`, `LeakageCheckTests.cs` and `ModelTableTests.cs` cover the quota report, the two independent
-evaluations, the suite reader and its grading, the shape probe reader and report, the shape rows of the corpus, the leakage check and the model table
-file with small synthetic corpora, a stub model and
+`SenseEvaluatorTests.cs`, `RunningTextEvaluatorTests.cs`, `TenseEvaluatorTests.cs`, `ChallengeSetFloorTests.cs`,
+`SuiteFileTests.cs`, `ShapeProbeTests.cs`, `ShapeRowsTests.cs`, `LeakageCheckTests.cs` and `ModelTableTests.cs` cover the
+quota report, the two independent evaluations, the suite reader and its grading, the shape probe reader and report, the
+shape rows of the corpus, the leakage check and the model table file with small synthetic corpora, a stub model and
 cached-file fixtures; `EvaluatorTests.cs` covers the per-level evaluation with a stub model. Commands that need a real
 encoder (`weights`, `evaluate`, `evaluate-senses`, `evaluate-running`, `evaluate-suite` and `evaluate-shapes` for the
 encoder models) are

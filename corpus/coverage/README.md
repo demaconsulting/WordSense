@@ -44,9 +44,12 @@ for the lemmas of a wave when it is filled; the rows of the earlier waves were *
 rows were removed, because the senses that fell short only for lack of the removed rows are not unfillable. The method is
 in the "Method of the quota filling" section of `../README.md`.
 
-Current state of `quota-coverage.tsv`: 11,030 of 13,748 senses meet their quota (1,145 short, 1,573 empty). The 12,373
-senses of the 1,443 lemmas with anchors are 11,030 met, 1,145 short and 198 empty; 6,305 anchors and 1,374 held-out
-sentences are missing for them. The other 1,375 senses are of 198 lemmas that have no anchor yet (197 of them lemmas of
-the stage 2 list that no wave has filled, `../curation/README.md`); 15,069 anchors and 4,285 held-out sentences are
-missing for them. The scope includes the 176 senses of the 12 technical lemmas and the 6 project senses
-(`../curation/README.md`). All quota-filled sentences are targeted (see "Quota-Filled Rows (targeted)" in `../README.md`).
+Current state of `quota-coverage.tsv`: 11,027 of 12,376 senses meet their quota (1,148 short, 201 empty). The 12,373
+senses of the 1,443 lemmas with anchors are 11,027 met, 1,148 short and 198 empty; 6,310 anchors and 1,374 held-out
+sentences are missing for them. The other 3 senses are of 2 lemmas that have no anchor yet (`somewhat` and `traveling`);
+45 anchors and 12 held-out sentences are missing for them. The scope includes the 176 senses of the 12 technical lemmas
+and the 6 project senses (`../curation/README.md`). All quota-filled sentences are targeted (see "Quota-Filled Rows
+(targeted)" in `../README.md`).
+
+Current state of `shape-coverage.tsv`: 4,182 of 4,251 units meet their quota and 69 are short. A lemma whose noun
+senses hold less than 0.02 of the noun and verb tag counts has no noun unit.

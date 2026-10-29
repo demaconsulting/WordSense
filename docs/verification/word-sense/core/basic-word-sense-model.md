@@ -39,7 +39,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   answered as one token with its own noun analysis.
 - **A noun after a modifier noun in a clause that has a verb**
   (`BasicWordSenseModel_ClassifyAsync_NounAfterNounInClauseWithVerb_IsNoun`): with the embedded table, the word after a
-  determiner and a noun in a clause that already has a verb (`Please open the door handle`) is a noun.
+  determiner and a noun in a clause that already has a verb (`Please open the door handle`) is a noun, answered with a
+  confidence above 0.75.
 - **A verb after a clause break** (`BasicWordSenseModel_ClassifyAsync_VerbAfterClauseBreak_IsVerb`): with the embedded
   table, the word after a determiner and a noun is a verb after a comma or a conjunction that starts a new clause
   (`He nodded , the pump runs`, `He nodded and the pump runs`).
