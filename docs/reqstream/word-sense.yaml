@@ -707,7 +707,7 @@ sections:
           and checked by the pack step), and the credits, notices and license expressions in the package satisfy the
           licenses of the embedded data (Open English WordNet and its Princeton WordNet notice in the core package;
           the Moby list is public domain; the forms authored by the project and the tables of the built-in model come
-          from our own CC0 work) and models.
+          from our own CC0 annotations and rows over public-domain and CC0 source text) and models.
         children:
           - WordSense-Core-Packaging
           - WordSense-Onnx-Packaging
