@@ -69,19 +69,22 @@ internal static class TaggerEvaluator
     /// <param name="model">The model.</param>
     /// <param name="sentences">The gold sentences.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
+    /// <param name="outcomes">Receives the outcome of every scored token, or null.</param>
+    /// <param name="documents">The document of every sentence (parallel to <paramref name="sentences"/>), or null when the set has none.</param>
     /// <returns>The score.</returns>
-    public static Task<TaggerScore> EvaluateAsync(string name, IWordSenseModel model, IReadOnlyList<TaggedSentence> sentences, CancellationToken cancellationToken)
+    public static Task<TaggerScore> EvaluateAsync(string name, IWordSenseModel model, IReadOnlyList<TaggedSentence> sentences, CancellationToken cancellationToken, ICollection<TokenOutcome>? outcomes = null, IReadOnlyList<string>? documents = null)
     {
         ArgumentNullException.ThrowIfNull(model);
         ArgumentNullException.ThrowIfNull(sentences);
-        return ScoreAsync(name, sentences, model.ClassifyAsync, cancellationToken);
+        return ScoreAsync(name, sentences, model.ClassifyAsync, cancellationToken, outcomes, documents);
     }
 
-    private static async Task<TaggerScore> ScoreAsync(string name, IReadOnlyList<TaggedSentence> sentences, Func<IEnumerable<string>, CancellationToken, Task<ClassifyResult[]>> classify, CancellationToken cancellationToken)
+    private static async Task<TaggerScore> ScoreAsync(string name, IReadOnlyList<TaggedSentence> sentences, Func<IEnumerable<string>, CancellationToken, Task<ClassifyResult[]>> classify, CancellationToken cancellationToken, ICollection<TokenOutcome>? outcomes = null, IReadOnlyList<string>? documents = null)
     {
         int scored = 0, correct = 0, ambiguous = 0, ambiguousCorrect = 0, unanswered = 0, excluded = 0, nounVerb = 0, nounVerbCorrect = 0, mixed = 0, mixedCorrect = 0, imperative = 0, imperativeCorrect = 0;
-        foreach (var sentence in sentences)
+        for (var s = 0; s < sentences.Count; s++)
         {
+            var sentence = sentences[s];
             var results = await classify(sentence.Words, cancellationToken).ConfigureAwait(false);
             var first = Array.FindIndex(sentence.Words, w => w.Any(char.IsLetter));
             for (var i = 0; i < results.Length; i++)
@@ -104,6 +107,7 @@ internal static class TaggerEvaluator
                 scored++;
                 correct += right ? 1 : 0;
                 var parts = WordLexicon.Lookup(BasicClassifier.Normalize(sentence.Words[i])).Select(a => a.PartOfSpeech).Distinct().ToList();
+                outcomes?.Add(new TokenOutcome(name, s, documents is null ? "s" + s.ToString(CultureInfo.InvariantCulture) : documents[s], i, sentence.Words[i], OutcomeFile.NameOf(gold), details.PartOfSpeech.ToString(), right, parts.Count >= 2));
                 if (i == first && gold == PosTag.Verb && i + 1 < sentence.Tags.Length && sentence.Tags[i + 1] == PosTag.Determiner)
                 {
                     imperative++;

@@ -43,6 +43,8 @@ internal static class RunningTextEvaluator
     /// <summary>The name of the challenge set.</summary>
     public const string ChallengeSetName = "STE challenge set (targeted test)";
 
+    private const int WarmUpSentences = 20;
+
     /// <summary>
     ///     Gets the default place of the gold file of the treebank test file, written by <c>prepare_tagger_eval.py</c>.
     /// </summary>
@@ -93,18 +95,105 @@ internal static class RunningTextEvaluator
     /// <param name="model">The model.</param>
     /// <param name="sets">The sets.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
+    /// <param name="outcomes">Receives the outcome of every scored token, or null.</param>
+    /// <param name="documents">The document of every sentence of a set, by the name of the set (see <see cref="Documents"/>), or null.</param>
     /// <returns>The score of every set, in order.</returns>
-    public static async Task<List<TaggerScore>> RunAsync(IWordSenseModel model, IReadOnlyList<(string Name, IReadOnlyList<TaggedSentence> Sentences)> sets, CancellationToken cancellationToken)
+    public static async Task<List<TaggerScore>> RunAsync(IWordSenseModel model, IReadOnlyList<(string Name, IReadOnlyList<TaggedSentence> Sentences)> sets, CancellationToken cancellationToken, ICollection<TokenOutcome>? outcomes = null, IReadOnlyDictionary<string, IReadOnlyList<string>>? documents = null)
     {
         ArgumentNullException.ThrowIfNull(model);
         ArgumentNullException.ThrowIfNull(sets);
         var scores = new List<TaggerScore>();
         foreach (var (name, sentences) in sets)
         {
-            scores.Add(await TaggerEvaluator.EvaluateAsync(name, model, sentences, cancellationToken).ConfigureAwait(false));
+            scores.Add(await TaggerEvaluator.EvaluateAsync(name, model, sentences, cancellationToken, outcomes, documents?.GetValueOrDefault(name)).ConfigureAwait(false));
         }
 
         return scores;
+    }
+
+    /// <summary>
+    ///     Reads the document (source id) of every sentence of the sets that come from the open corpus; the treebank has none.
+    /// </summary>
+    /// <param name="corpus">The corpus directory.</param>
+    /// <param name="split">The split of the representative part (<c>test</c> for the headline).</param>
+    /// <returns>The documents by the name of the set, parallel to the sentences of <see cref="Load"/>.</returns>
+    public static Dictionary<string, IReadOnlyList<string>> Documents(string corpus, string split)
+    {
+        var documents = new Dictionary<string, IReadOnlyList<string>>(StringComparer.Ordinal)
+        {
+            [OpenSetName] = [.. OpenCorpus.ReadSplit(corpus, OpenCorpus.Representative, split).Select(s => s.SourceId)],
+        };
+        var challenge = OpenCorpus.DataFile(corpus, OpenCorpus.Targeted, "test");
+        if (File.Exists(challenge))
+        {
+            documents[ChallengeSetName] = [.. OpenCorpus.ReadFile(challenge).Select(s => s.SourceId)];
+        }
+
+        return documents;
+    }
+
+    /// <summary>
+    ///     Measures the time a model needs to classify one sentence of running text, one sentence at a time.
+    /// </summary>
+    /// <remarks>
+    ///     The sample is the first <paramref name="count"/> sentences of a seeded shuffle of the sentences, so it is the
+    ///     same for every model and run; some sentences are classified first and not timed, so that the first use of the
+    ///     model (the session, the lexicon) is not part of the figure.
+    /// </remarks>
+    /// <param name="model">The model.</param>
+    /// <param name="sentences">The sentences to sample from.</param>
+    /// <param name="count">The number of sentences to time.</param>
+    /// <param name="seed">The seed of the shuffle.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The median, the mean and the 95th percentile of the time per sentence in milliseconds, and the number of sentences timed.</returns>
+    public static async Task<(double Median, double Mean, double P95, int Sentences)> MeasureLatencyAsync(IWordSenseModel model, IReadOnlyList<TaggedSentence> sentences, int count, int seed, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(model);
+        ArgumentNullException.ThrowIfNull(sentences);
+        // A fixed shuffle: order by a mix of the seed and the index, so the sample is the same on every platform
+        var order = Enumerable.Range(0, sentences.Count).OrderBy(i => Mix(seed, i)).Take(count).ToList();
+        foreach (var i in order.Take(WarmUpSentences))
+        {
+            await model.ClassifyAsync(sentences[i].Words, cancellationToken).ConfigureAwait(false);
+        }
+
+        var times = new List<double>(order.Count);
+        foreach (var i in order)
+        {
+            var start = System.Diagnostics.Stopwatch.GetTimestamp();
+            await model.ClassifyAsync(sentences[i].Words, cancellationToken).ConfigureAwait(false);
+            times.Add(System.Diagnostics.Stopwatch.GetElapsedTime(start).TotalMilliseconds);
+        }
+
+        if (times.Count == 0)
+        {
+            return (0, 0, 0, 0);
+        }
+
+        times.Sort();
+        var median = times.Count % 2 == 1 ? times[times.Count / 2] : (times[(times.Count / 2) - 1] + times[times.Count / 2]) / 2;
+        return (median, times.Average(), times[Math.Min(times.Count - 1, (int)Math.Ceiling(0.95 * times.Count) - 1)], times.Count);
+    }
+
+    /// <summary>
+    ///     Renders the latency of the models as Markdown.
+    /// </summary>
+    /// <param name="latencies">The latency of each model.</param>
+    /// <returns>The text with line feeds.</returns>
+    public static string RenderLatency(IReadOnlyList<(string Model, double Median, double Mean, double P95, int Sentences)> latencies)
+    {
+        ArgumentNullException.ThrowIfNull(latencies);
+        var inv = CultureInfo.InvariantCulture;
+        var text = new StringBuilder("### Latency on running text\n\n");
+        text.Append("One sentence at a time, a seeded sample of the open corpus test split, after a warm-up.\n\n");
+        text.Append("| Model | Sentences | Median | Mean | 95th percentile |\n| --- | ---: | ---: | ---: | ---: |\n");
+        foreach (var (model, median, mean, p95, sentences) in latencies)
+        {
+            text.Append("| ").Append(model).Append(" | ").Append(sentences.ToString("N0", inv)).Append(" | ")
+                .Append(median.ToString("N2", inv)).Append(" ms | ").Append(mean.ToString("N2", inv)).Append(" ms | ").Append(p95.ToString("N2", inv)).Append(" ms |\n");
+        }
+
+        return text.ToString();
     }
 
     /// <summary>
@@ -168,6 +257,15 @@ internal static class RunningTextEvaluator
         text.Append("small and chosen for its hard cases, so it is never merged into a headline figure. Excluded tokens are punctuation and\n");
         text.Append("the classes the lexicon has no part of speech for (numbers, symbols, foreign words, particles other than to).\n");
         return text.ToString();
+    }
+
+    private static ulong Mix(int seed, int index)
+    {
+        var z = ((ulong)(uint)seed << 32) ^ (ulong)(uint)index;
+        z += 0x9E3779B97F4A7C15UL;
+        z = (z ^ (z >> 30)) * 0xBF58476D1CE4E5B9UL;
+        z = (z ^ (z >> 27)) * 0x94D049BB133111EBUL;
+        return z ^ (z >> 31);
     }
 
     private static string Cell(TaggerScore score) =>

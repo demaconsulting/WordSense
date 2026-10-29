@@ -74,6 +74,10 @@ internal static partial class Program
             : ([], []);
         var scoresByModel = new List<(string Model, List<TaggerScore> Scores)>();
         var tenseByModel = new List<(string Model, List<TenseScore> Scores)>();
+        var outcomes = new List<(string Model, TokenOutcome Outcome)>();
+        var latencies = new List<(string Model, double Median, double Mean, double P95, int Sentences)>();
+        var wantOutcomes = options.ContainsKey("outcomes") && report is "all" or "running";
+        var documents = wantOutcomes ? RunningTextEvaluator.Documents(corpus, options.GetValueOrDefault("split", "test")) : null;
         foreach (var info in ModelCatalog.Select(options.GetValueOrDefault("model")))
         {
             using var model = ModelCatalog.Open(info, repository);
@@ -81,12 +85,22 @@ internal static partial class Program
             var display = ModelTable.DisplayName(info.Name);
             if (report is "all" or "running")
             {
-                var scores = await RunningTextEvaluator.RunAsync(model, sets, cancellationToken).ConfigureAwait(false);
+                var modelOutcomes = new List<TokenOutcome>();
+                var scores = await RunningTextEvaluator.RunAsync(model, sets, cancellationToken, wantOutcomes ? modelOutcomes : null, documents).ConfigureAwait(false);
+                outcomes.AddRange(modelOutcomes.Select(o => (info.Name, o)));
                 scoresByModel.Add((display, scores));
                 output.WriteLine($"{info.Name}: running text done.");
                 if (options.TryGetValue("table", out var table))
                 {
                     ModelTable.Update(table, info.Name, RunningTextEvaluator.TableCells(scores));
+                }
+
+                if (IsOn(options, "latency"))
+                {
+                    var open = sets.First(s => s.Name == RunningTextEvaluator.OpenSetName).Sentences;
+                    var (median, mean, p95, timed) = await RunningTextEvaluator.MeasureLatencyAsync(model, open, IntOption(options, "latency-sentences", 1000, 1), IntOption(options, "seed", OutcomeComparer.DefaultSeed), cancellationToken).ConfigureAwait(false);
+                    latencies.Add((display, median, mean, p95, timed));
+                    output.WriteLine($"{info.Name}: latency done.");
                 }
             }
 
@@ -103,9 +117,48 @@ internal static partial class Program
             text += (text.Length == 0 ? string.Empty : "\n") + TenseEvaluator.Render(tenseByModel, tenseNotes);
         }
 
+        if (latencies.Count > 0)
+        {
+            text += "\n" + RunningTextEvaluator.RenderLatency(latencies);
+        }
+
+        output.Write(text);
+        WriteReport(options, text);
+        if (wantOutcomes)
+        {
+            File.WriteAllText(options["outcomes"], OutcomeFile.Render(outcomes), new System.Text.UTF8Encoding(false));
+            output.WriteLine($"Wrote {outcomes.Count.ToString("N0", CultureInfo.InvariantCulture)} token outcomes to {options["outcomes"]}.");
+        }
+
+        return 0;
+    }
+
+    private static int RunCompareOutcomes(Dictionary<string, string> options, TextWriter output)
+    {
+        var baseFile = Path.GetFullPath(Require(options, "base"));
+        var newFile = Path.GetFullPath(Require(options, "new"));
+        var cluster = options.GetValueOrDefault("cluster", "sentence");
+        var replicates = IntOption(options, "reps", OutcomeComparer.DefaultReplicates, 1);
+        var seed = IntOption(options, "seed", OutcomeComparer.DefaultSeed);
+        var baseOutcomes = SelectModel(OutcomeFile.Read(baseFile), options.GetValueOrDefault("base-model"), baseFile);
+        var newOutcomes = SelectModel(OutcomeFile.Read(newFile), options.GetValueOrDefault("new-model"), newFile);
+        var compared = OutcomeComparer.Compare(baseOutcomes, newOutcomes, cluster, replicates, seed);
+        var text = OutcomeComparer.Render(compared, Path.GetFileName(baseFile) + SelectedName(options, "base-model"), Path.GetFileName(newFile) + SelectedName(options, "new-model"));
         output.Write(text);
         WriteReport(options, text);
         return 0;
+    }
+
+    private static string SelectedName(Dictionary<string, string> options, string name) => options.TryGetValue(name, out var model) ? " (" + model + ")" : string.Empty;
+
+    /// <summary>
+    ///     Picks the outcomes of one model from a file: the named model, or the only one the file has.
+    /// </summary>
+    private static List<TokenOutcome> SelectModel(List<(string Model, TokenOutcome Outcome)> outcomes, string? model, string file)
+    {
+        var models = outcomes.Select(o => o.Model).Distinct(StringComparer.Ordinal).ToList();
+        var name = model ?? (models.Count == 1 ? models[0] : throw new ArgumentException($"The file '{Path.GetFileName(file)}' has the models {string.Join(", ", models)}; name one with --base-model or --new-model."));
+        return models.Contains(name) ? [.. outcomes.Where(o => o.Model == name).Select(o => o.Outcome)] : throw new ArgumentException($"The file '{Path.GetFileName(file)}' has no outcomes of the model '{name}'.");
     }
 
     private static async Task<int> RunEvaluateSuiteAsync(Dictionary<string, string> options, string repository, string corpus, TextWriter output, CancellationToken cancellationToken)
@@ -114,10 +167,24 @@ internal static partial class Program
         var rows = SuiteFile.ReadRows(Path.Join(directory, SuiteFile.SuiteName));
         var expectationsFile = Path.Join(directory, SuiteFile.ExpectationsName);
         var expectations = File.Exists(expectationsFile) ? SuiteFile.ReadExpectations(expectationsFile, rows) : null;
-        var grades = await SuiteEvaluator.RunAsync(repository, rows, output, cancellationToken).ConfigureAwait(false);
+        var answers = await SuiteEvaluator.RunDetailedAsync(repository, rows, output, cancellationToken).ConfigureAwait(false);
+        var grades = (IReadOnlyDictionary<string, IReadOnlyList<SuiteGrade>>)answers.ToDictionary(p => p.Key, p => (IReadOnlyList<SuiteGrade>)[.. p.Value.Select(a => a.Grade)], StringComparer.Ordinal);
         var text = SuiteEvaluator.Render(rows, grades, expectations);
+        if (options.TryGetValue("diff", out var baselineFile))
+        {
+            // Every change against the baseline, in either direction, row by row
+            var baseline = SuiteDiff.ReadOutcomes(Path.GetFullPath(baselineFile));
+            var changes = SuiteDiff.Diff(rows, expectations ?? throw new InvalidDataException($"The expectation file '{expectationsFile}' is needed for --diff."), baseline, answers);
+            text += "\n" + SuiteDiff.RenderDiff(changes, rows.Count);
+        }
+
         output.Write(text);
         WriteReport(options, text);
+        if (options.TryGetValue("outcomes", out var suiteOutcomes))
+        {
+            File.WriteAllText(suiteOutcomes, SuiteDiff.RenderOutcomes(rows, answers), new System.Text.UTF8Encoding(false));
+            output.WriteLine($"Wrote the answers of the suite to {suiteOutcomes}.");
+        }
         if (options.TryGetValue("write-expectations", out var target))
         {
             if (File.Exists(target) && !IsOn(options, "overwrite"))
@@ -168,6 +235,17 @@ internal static partial class Program
         if (File.Exists(gold))
         {
             sets.Add(LeakageCheck.FromGold("UD-EWT test", gold));
+        }
+
+        if (options.TryGetValue("gold-dir", out var goldDirectory))
+        {
+            // The three treebank files; the test file given by --gold keeps its place
+            sets.AddRange(LeakageCheck.FromGoldDirectory(Path.GetFullPath(goldDirectory)).Where(s => sets.All(x => x.Name != s.Name)).ToList());
+        }
+
+        if (options.TryGetValue("read-set", out var readSet))
+        {
+            sets.Add(LeakageCheck.FromReadSet(Path.GetFullPath(readSet)));
         }
 
         var cache = options.TryGetValue("cache", out var c) ? Path.GetFullPath(c) : SemCor.CacheDirectory(repository);
