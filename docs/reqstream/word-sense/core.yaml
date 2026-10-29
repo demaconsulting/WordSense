@@ -810,14 +810,15 @@ sections:
               NuGet metadata with the license expression MIT AND CC-BY-4.0, and a README and a packed NOTICE file that
               carry the credits and licenses of the third-party word data it embeds (Open English WordNet 2025 under
               CC BY 4.0 with the Princeton WordNet notice that it requires) and of the statistics of its built-in
-              model (derived from the CC0 open part-of-speech corpus and the CC0 sentence corpus of this project, with
-              no share-alike or other attribution-bound text) and of the CC0 forms authored by the project.
+              model (derived from the CC0 annotations of the open part-of-speech corpus and the CC0 rows of the sentence
+              corpus of this project; its real sentences are public domain in the United States or CC0, and it holds no
+              share-alike or other attribution-bound text) and of the CC0 forms authored by the project.
             tags: [subsystem]
             justification: |
               The embedded lexicon and sense inventory derive from Open English WordNet and, through its sense
               frequencies, from Princeton WordNet 3.0, whose licenses require attribution, and consumers learn the API
               from the documentation that ships with the package. The embedded statistics are trained on our own CC0
-              corpora, so they add no license obligation; the notice records where they come from and that no
-              treebank was used.
+              annotations and rows over public-domain and CC0 source text, so they add no license obligation; the
+              notice records where they come from and that no treebank was used.
             tests:
               - WordSense_XmlDocExamples_Compile

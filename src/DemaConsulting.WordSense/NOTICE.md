@@ -10,15 +10,21 @@ project with language models) are dedicated to the public domain under CC0 1.0.
 ## The statistical table of the built-in model
 
 The package embeds the table `basic.bin` for `BasicWordSenseModel`. It is a derived statistical table: tag n-gram
-counts, word-tag counts and context cue statistics. It is computed from two project-authored sources, both released under
-CC0 1.0 (public domain dedication, <https://creativecommons.org/publicdomain/zero/1.0/>), so the table itself is CC0 1.0:
+counts, word-tag counts and context cue statistics. It is computed from two project sources. The counts and statistics
+that it holds are dedicated to the public domain under CC0 1.0 (<https://creativecommons.org/publicdomain/zero/1.0/>), so
+the table itself is CC0 1.0:
 
 - the tag counts of the training split of the representative part of the open English part-of-speech corpus of this
-  repository (`corpus/open`): the annotations are ours, and the underlying sentences are public domain in the United
-  States (Project Gutenberg books published 1930 or earlier, and works of US federal agencies) or come from the CC0 export
-  of Tatoeba;
+  repository (`corpus/open`): the annotations and the selection are ours (CC0 1.0), and the underlying sentences are not
+  CC0 as a whole: they are public domain in the United States (Project Gutenberg books published 1930 or earlier, and
+  works of US federal agencies) or come from the CC0 export of Tatoeba;
 - the context cue statistics of the sentence corpus of this repository (`corpus/anchors` and `corpus/choosers`),
   whose sentences are project-authored (CC0 1.0), public domain in the United States, or Tatoeba sentences under CC0 1.0.
+
+Language models wrote or labeled the annotations of the open corpus and the sentences and labels of `corpus/anchors` and
+`corpus/choosers`, and no human has reviewed the labels.
+The owner's position on the rights in model outputs is in the repository README, section "Credits and Licenses"
+(<https://github.com/demaconsulting/WordSense#credits-and-licenses>).
 
 The table holds four numbers of the word prior of the tagger. The prior itself is computed at run time from the WordNet
 3.0 tag counts of the word image, below. No treebank is used for it.
@@ -34,7 +40,8 @@ it is shared under the licenses below. It is compiled from four sources: the Ope
 which carries the Princeton WordNet notice below), the sense frequency counts of WordNet 3.0 (the Princeton WordNet 3.0
 license below), the Moby Part-of-Speech List (public domain) and the project-authored
 data (the inflected forms authored by the project, CC0 1.0, and the other project data, MIT). The tagged tokens of the
-open part-of-speech corpus of the project (CC0 1.0, see above) are used at build time only, as a second source that
+open part-of-speech corpus of the project (annotations CC0 1.0, see above) are used at build time only, as a second
+source that
 corroborates a generated inflected form; none of its text is embedded. The image holds the lemmas,
 the written forms with their analyses, the sense ids, sense keys, labels and groups, the order of the senses of each
 lemma, which is the order of Open English WordNet, and the WordNet 3.0 tag count of each sense (a number for each sense,

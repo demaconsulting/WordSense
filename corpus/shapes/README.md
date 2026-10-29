@@ -12,7 +12,9 @@ a sentence of it or a near copy.
 ## Provenance and license
 
 The sentences are project-authored content dedicated to the public domain under CC0 1.0 by the project owner, like every
-project-written row of the corpus. A language model (`gpt-5.6-luna`), a different model from the one that wrote the shape
+project-written row of the corpus. The labels are not human-reviewed; the owner's position on the rights in model
+outputs is in the [README](../../README.md#credits-and-licenses). A language model (`gpt-5.6-luna`), a different model
+from the one that wrote the shape
 anchors (`claude-sonnet-5.5`), wrote one sentence for a requested lemma, part of speech and shape, without seeing any anchor
 or consumer sentence. Two independent labelers (`gpt-6.1-sol` and `claude-sonnet-5.5`) then labeled the part of speech
 of the

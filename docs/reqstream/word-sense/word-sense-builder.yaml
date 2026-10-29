@@ -1587,8 +1587,9 @@ sections:
             tags: [unit]
             justification: |
               Leaked or malformed sentences invalidate the accuracy measurement, and a row whose part of speech
-              disagrees with its sense is a labeling error that would train a wrong answer. A sentence of the CC0 corpus
-              that is a CC BY dictionary example would break the license of the corpus.
+              disagrees with its sense is a labeling error that would train a wrong answer. A sentence of the corpus
+              (CC0 rows, and real text that is public domain in the United States or CC0) that is a CC BY dictionary
+              example would break the license of the corpus.
             tests:
               - WordSenseBuilder_Corpus_ReadSentences_ParsesRow
               - WordSenseBuilder_Corpus_ReadSentences_RejectsMalformedRow

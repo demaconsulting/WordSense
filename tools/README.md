@@ -93,7 +93,8 @@ file.
 ## open-corpus
 
 **What.** The Python scripts (`tools/open-corpus/scripts`) that build the open English part-of-speech corpus
-`corpus/open` (CC0 annotations over public-domain text): harvest and extraction of the documents, sentence selection
+`corpus/open` (CC0 annotations and selection over public-domain and CC0 sentences): harvest and extraction of the
+documents, sentence selection
 with recorded seeds, annotation batches and their ingestion, consensus, validation, statistics, and the evaluation
 against the convention-mapped treebank. The raw annotator outputs are not kept in the repository.
 
@@ -101,7 +102,8 @@ against the convention-mapped treebank. The raw annotator outputs are not kept i
 convention-mapped treebank files that `evaluate-running` and `evaluate-tagger` read, and `convention_map.py` is its
 mapping.
 
-**Why.** The Basic tagger is trained from our own CC0 corpus, not from a treebank. The treebank is used only to
+**Why.** The Basic tagger is trained from our own corpus (CC0 annotations), not from a treebank. The treebank is used
+only to
 evaluate.
 
 **Prerequisites.** Python 3.13 with `pip install -r tools/open-corpus/requirements.txt` (`lxml`, `pypdf`). The harvest

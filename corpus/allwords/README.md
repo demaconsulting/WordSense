@@ -112,8 +112,11 @@ with their classifier and every other token with the same prior.
 ## Provenance and license
 
 The sentences come from `corpus/open/representative` (development and test splits) and are public domain in the United
-States or CC0 (see `corpus/open/sources.tsv`). The selection, the labels and the agreement are project-authored and are
-dedicated to the public domain under **CC0 1.0** by the project owner, like the annotations of the open corpus. The
+States or CC0 (see `corpus/open/sources.tsv`); the public-domain status holds in the United States only. The selection,
+the labels and the agreement are project-authored and are dedicated to the public domain under **CC0 1.0** by the
+project owner, like the annotations of the open corpus. That dedication covers the labels, not the sentences. The labels
+are written by language models and are not human-reviewed; the owner's position on the rights in model outputs is in the
+[README](../../README.md#credits-and-licenses). The
 glosses that the labelers read are Open English WordNet data (CC BY 4.0) and are not part of this folder.
 
 ## Use

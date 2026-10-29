@@ -1,6 +1,6 @@
 # The reviewed suite
 
-A hand-reviewed set of 364 sentences about common ambiguous words and verbs whose past and non-past share a spelling.
+A set of 364 sentences about common ambiguous words and verbs whose past and non-past share a spelling.
 It is a regression test of the three models and a readable record of what each model gets wrong. It is **not** a measure
 of accuracy on running text: the sentences were chosen to be hard for the words they test. The headline figures are the
 real-text sense evaluation, SemCor and the running-text part-of-speech evaluation of the root `README.md`.
@@ -13,9 +13,11 @@ word exactly the expected reading). The 16 rows of the list `T` (the tense rows)
 who added the tense model.
 
 All sentences are project-authored content dedicated to the public domain under CC0 1.0 by the project owner, like every
-project-written row of the corpus. No sentence is taken from a third-party text.
+project-written row of the corpus. No sentence is taken from a third-party text. The language-model rows and their labels
+were checked by a reviewer agent, not by a human; the owner's position on the rights in model outputs is in the
+[README](../../README.md#credits-and-licenses).
 
-The expected labels were written and reviewed before any model was run on the suite. The expectation file is a
+The expected labels were written and checked before any model was run on the suite. The expectation file is a
 measurement of the models.
 
 The suite is evaluation data: no training step reads it. The leakage check (`WordSense.Builder check-leakage`) verifies

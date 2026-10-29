@@ -23,8 +23,8 @@ the model answers an ambiguous word at the part of speech level and names a sens
 exactly one sense (its lemma and part of speech have exactly one sense). Every analysis of a known word is listed with
 its probability. It is small and fast and less accurate than the encoder models; its measured accuracy is reported in
 the repository's user guide (`docs/user_guide/accuracy.md` and the model comparison table
-`docs/user_guide/model-table.md`). The tables are trained by the builder from the CC0 open part-of-speech corpus and the
-CC0 sentence corpus of this repository.
+`docs/user_guide/model-table.md`). The tables are trained by the builder from the open part-of-speech corpus (CC0
+annotations) and the sentence corpus (CC0 rows, public-domain and CC0 real sentences) of this repository.
 
 The subsystem contains eight units:
 
