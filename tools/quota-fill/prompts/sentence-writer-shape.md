@@ -25,31 +25,31 @@ A JSON file `{"batch": ..., "senses": [...]}`. Each entry has:
 - `n-compound-head`: a noun that is the **head of a noun compound**, a noun that modifies it stands directly before it:
   `The traffic {survey} took a week.`
 - `n-modifier`: a noun that **modifies the noun that follows it**: `The {survey} results were posted online.`
-- `n-subject-initial`: a noun with no article that is the **first word of the sentence** and its subject, followed by its
-  verb: `{Surveys} are mailed every spring.`
+- `n-subject-initial`: a noun with no article that is the **first word of the sentence** and its subject, followed by
+  its verb: `{Surveys} are mailed every spring.`
 - `n-measure`: a noun in a **measurement or quantity frame**, the sentence has a number (and a unit where it fits):
   `Total {survey} cost is 1,200 dollars.`
-- `v-imperative-initial`: a verb in the base form that is the **first word of an instruction**: `Survey the field before you
-  plant.`
-- `v-after-modal`: a verb in the base form that follows a **modal** (can, could, may, might, must, shall, should, will, would)
-  or the infinitive marker **to**: `We will {survey} the land next week.`
+- `v-imperative-initial`: a verb in the base form that is the **first word of an instruction**: `Survey the field
+  before you plant.`
+- `v-after-modal`: a verb in the base form that follows a **modal** (can, could, may, might, must, shall, should, will,
+  would) or the infinitive marker **to**: `We will {survey} the land next week.`
 
 ## What to write
 
-For each entry write exactly `count` sentences in which the word is used **in the intended sense, the intended part of speech
-and the named shape**.
+For each entry write exactly `count` sentences in which the word is used **in the intended sense, the intended part of
+speech and the named shape**.
 
-- Wrap the target word in one pair of braces, exactly once per sentence; only the target is braced. The target must be one of
-  `forms`.
-- The shape must be unmistakable: follow the rule of the shape literally. A sentence that does not have the shape is thrown
-  away by a check.
-- The context must make the intended sense clear to a reader who does not see the gloss, and must not fit another sense in
-  `others`. Do not quote or paraphrase the gloss.
-- Natural, complete sentences of 6 to 20 words, US English, ordinary punctuation, one sentence per line. The first word of a
-  sentence is capitalized, so a braced first word is written `{Check}`.
-- Be varied: different topics (everyday talk, news, science, business, home, technical text), different words around the
-  target, different sentence lengths. Do not repeat a frame with only a few words changed. When two entries ask for the same
-  shape of the same word, make their sentences different in topic as well.
+- Wrap the target word in one pair of braces, exactly once per sentence; only the target is braced. The target must be
+  one of `forms`.
+- The shape must be unmistakable: follow the rule of the shape literally. A sentence that does not have the shape is
+  thrown away by a check.
+- The context must make the intended sense clear to a reader who does not see the gloss, and must not fit another sense
+  in `others`. Do not quote or paraphrase the gloss.
+- Natural, complete sentences of 6 to 20 words, US English, ordinary punctuation, one sentence per line. The first word
+  of a sentence is capitalized, so a braced first word is written `{Check}`.
+- Be varied: different topics (everyday talk, news, science, business, home, technical text), different words around
+  the target, different sentence lengths. Do not repeat a frame with only a few words changed. When two entries ask for
+  the same shape of the same word, make their sentences different in topic as well.
 - Real-world style, not textbook style. No lists, definitions, headings or quotations of the shape rule.
 
 ## Output

@@ -162,6 +162,8 @@ sentence written for a sentence shape, see "Shape coverage" in `tools/quota-fill
 
 **Files.** `quota-w3-*` fills the lemmas of ranks 121-200 and the technical lemmas. `quota-w50-*` is the pilot of the
 stage 1 lemmas (23 lemmas; real rows labeled by two blind labelers that agree, checked blind, then written rows).
+`quota-w100-*`, `quota-w101-*` and `quota-w104-*` hold the 200 stage 2 lemmas (see `curation/README.md`),
+`quota-w109-forms*` their chooser rows and `quota-w110-shape.tsv` their shape rows.
 `quota-w32-written.tsv` is the second
 round for senses that stayed short (written with another prompt). `quota-w33-real.tsv` and `quota-w33-written.tsv` are
 the technical senses of `curation/tech-senses.tsv`. `quota-w<N>-forms*.tsv` follow the document roles like the
@@ -263,8 +265,8 @@ the challenge set overlap nothing.
   third judge who saw both answers. The third judge settled 15 of them and 64 stayed undecided; the undecided rows are
   never used as evidence. A blind re-judging of every 20th accepted row (790 rows) found no disagreement. Rows added
   later are checked by the blind labeler of the quota filling (see the method above).
-- **Quota status.** `coverage/quota-coverage.tsv` has the quota status of every sense. 9,598 of the 10,871 senses of the
-  trained lemmas meet their quota (`WordSense.Builder tiers`).
+- **Quota status.** `coverage/quota-coverage.tsv` has the quota status of every sense. 11,030 of the 12,373 senses of the
+  lemmas with anchors meet their quota (`WordSense.Builder tiers`).
 - **Tier waves `4u` and `4r`.** They fill the short senses of the uncommon and the rare tier (harvested with `--tier U`
   and `--tier R`, and `--faa-tech-only`):
 
@@ -287,7 +289,7 @@ the challenge set overlap nothing.
 
   Real held-out text is nearly exhausted: the evaluation documents (one in four, chosen by hash) of the sentence pool
   supply held-out rows only, and one that already supplies anchors supplies none. The held-out sentences of these two
-  waves are therefore mostly written and blind-labeled, and the real test split has 4,626 sentences.
+  waves are therefore mostly written and blind-labeled, and the real test split has 5,611 sentences.
 - **Open corpus annotation.** The figures are in `open/quality.md`.
 - **Leakage.** `check-leakage` finds no evaluation sentence in a training part of the committed corpus (the overlap that
   remains is listed in "Disjointness of the Parts").

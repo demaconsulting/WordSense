@@ -39,12 +39,14 @@ has a fitting sense (`../curation/shape-fit.tsv`), the fitting senses, the numbe
 and `quota-unfilled.tsv` lists the senses of the lemmas of the finished waves that the harvest and the writing could not
 bring to their quota, with the number of sentences written for them and how many of those the blind labeler placed in the
 intended sense. Such senses cannot be filled credibly by this method (a near-duplicate of a sibling sense, or a gloss too
-thin to write to) and are candidates for the review of the senses and groups. `quota-unfilled.tsv` (232 senses) was **not**
-recomputed after the Tatoeba CC BY rows were removed, because the senses that fell short only for lack of the removed rows
-are not unfillable. The method is in the "Method of the quota filling" section of `../README.md`.
+thin to write to) and are candidates for the review of the senses and groups. `quota-unfilled.tsv` (937 senses) is rewritten
+for the lemmas of a wave when it is filled; the rows of the earlier waves were **not** recomputed after the Tatoeba CC BY
+rows were removed, because the senses that fell short only for lack of the removed rows are not unfillable. The method is
+in the "Method of the quota filling" section of `../README.md`.
 
-Current state of `quota-coverage.tsv`: 6,227 of 10,872 senses meet their quota (719 short, 3,926 empty); 3,044 anchors
-and 751 held-out sentences are missing for the senses of the lemmas of the earlier waves, and the 3,836 senses of the
-stage 1 lemmas (`../curation/README.md`) have no rows yet (44,293 anchors and 12,241 held-out sentences are missing). The
-scope includes the 176 senses of the 12 technical lemmas and the 6 project senses (`../curation/README.md`). All
-quota-filled sentences are targeted (see "Quota-Filled Rows (targeted)" in `../README.md`).
+Current state of `quota-coverage.tsv`: 11,030 of 13,748 senses meet their quota (1,145 short, 1,573 empty). The 12,373
+senses of the 1,443 lemmas with anchors are 11,030 met, 1,145 short and 198 empty; 6,305 anchors and 1,374 held-out
+sentences are missing for them. The other 1,375 senses are of 198 lemmas that have no anchor yet (197 of them lemmas of
+the stage 2 list that no wave has filled, `../curation/README.md`); 15,069 anchors and 4,285 held-out sentences are
+missing for them. The scope includes the 176 senses of the 12 technical lemmas and the 6 project senses
+(`../curation/README.md`). All quota-filled sentences are targeted (see "Quota-Filled Rows (targeted)" in `../README.md`).

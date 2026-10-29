@@ -109,8 +109,8 @@ rows below `fine`):
 | Model | Answered | Fine |
 | ----- | -------: | ---: |
 | Basic | 96.43% | 78.85% |
-| MiniLM | 96.70% | 92.03% |
-| BertBaseCased | 99.18% | 96.15% |
+| MiniLM | 96.70% | 92.86% |
+| BertBaseCased | 99.45% | 96.70% |
 
 **Policy.**
 

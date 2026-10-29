@@ -31,7 +31,7 @@ CC0 export `tools/quota-fill/cache/cc0.tar.bz2` and the FAA PDFs (`tools/quota-f
 | `shapes.py fit-export\|fit-apply\|export\|select\|status` | Shape coverage of the noun/verb lemmas (see "Shape coverage" below) |
 | `chooser_harvest.py candidates\|select WAVE [--only-lemmas FILE]` | Harvest of chooser rows for the forms that lack a lemma (`--only-lemmas`: the forms that lack one of these lemmas; run it after the fine-sense rows of the wave are selected, because the rows of shared forms become chooser rows) |
 | `choosers.py status` | The forms whose chooser rows lack a lemma |
-| `coverage.py [WAVE]`, `coverage.py --only-lemmas FILE` | Writes `corpus/coverage/quota-coverage.tsv` and prints the counts. `WAVE` (a rank wave) and `--only-lemmas` (a file of lemmas, for the stage 1 waves) also rewrite the rows of `quota-unfilled.tsv` for those lemmas; the rows of other lemmas stay. When `corpus/curation/shape-fit.tsv` exists it also writes the shape report `corpus/coverage/shape-coverage.tsv` and prints the shape units met and short |
+| `coverage.py [WAVE]`, `coverage.py --only-lemmas FILE` | Writes `corpus/coverage/quota-coverage.tsv` and prints the counts. `WAVE` (a rank wave) and `--only-lemmas` (a file of lemmas, for the waves of stage 1 and later) also rewrite the rows of `quota-unfilled.tsv` for those lemmas; the rows of other lemmas stay. When `corpus/curation/shape-fit.tsv` exists it also writes the shape report `corpus/coverage/shape-coverage.tsv` and prints the shape units met and short |
 | `shortfix.py check\|export\|merge WAVE STAGE` | Short answers of the labeling agents: lists the batches whose answer file lacks items, writes `<in>-fix` batches with only the missing items, and merges their answers (`STAGE`: `real-sol`, `real-sonnet`, `chk`, `chk2`, `wchk`, `wchk2`, `wr-label`). `fill.py agree`, `blindcheck.py judge` and `apply` and `written.py labeled` refuse to run while an answer is short |
 | `usage_weighted.py LABEL=OUTCOMES.tsv ...` | Diagnostic: re-weights the real test rows of `evaluate --outcomes` files by the harvest share of each sense (an independent usage prior) and prints the weighted fine top-1 and sense-level figures (see the user guide chapter "Accuracy and Model Choice") |
 | `prompts/` | The instructions given to the labeler, the writers (`sentence-writer.md`, and `sentence-writer-shape.md` for the shape rows), the lemma chooser, the label reviewer, the shape-fit judge (`shape-fit.md`) and the group proposer and reviewer (`group-proposer.md` proposes the near-duplicate groups of a lemma and part of speech from the full glosses; `group-reviewer.md` judges them blind, from the glosses only) |
@@ -41,7 +41,10 @@ CC0 export `tools/quota-fill/cache/cc0.tar.bz2` and the FAA PDFs (`tools/quota-f
 ## Quotas and document roles
 
 **Stages.** The waves are numbered in blocks of 50 per stage: waves 1 to 49 are the base stage, waves 50 to 99 stage 1
-(`quota-w50-*` to `quota-w55-*`), and so on. The stage of a lemma is the stage of the highest `quota-w<wave>` file that
+(`quota-w50-*` to `quota-w55-*`) and waves 100 to 149 stage 2. The stage 2 waves are 100 and 101 (the lemmas of ranks 503
+to 756), 104 (`focus` and `setting`), 109 (chooser rows) and 110 (shape rows); waves 102 and 103 (ranks 757 to 1,000)
+are not run. Waves 48, 49, 98 and 99 hold the shape rows of the earlier stages. The stage of a lemma is the stage of the
+highest `quota-w<wave>` file that
 holds one of its anchors (the wave counts as its leading digits, so `quota-w4c-*` is wave 4; other files such as
 `batch-1.tsv` do not count). The builder uses the stage in two places (`Corpus.StagesOf`, see the builder design): the
 real-text calibration of the thresholds is fitted and applied per stage, so a stage never moves the thresholds of an
@@ -104,7 +107,7 @@ fitting senses share the rows of a unit; a sense gets at most 3 rows of a shape.
 **Provenance.** A shape row is an ordinary written anchor. Its provenance `source_key` carries the shape,
 `quota-w<wave>-shape:<shape>`, and the rows are in `quota-w<wave>-shape.tsv` of `anchors`, `provenance` and
 `choosers/anchors`. The status counts the rows of a unit from these keys. The wave decides the stage of the lemmas
-(`Corpus.StagesOf`): 49 for the base stage, 99 for stage 1, 110 for stage 2.
+(`Corpus.StagesOf`): 49 (48 for a second round) for the base stage, 99 (98) for stage 1, 110 for stage 2.
 
 **Pipeline.**
 

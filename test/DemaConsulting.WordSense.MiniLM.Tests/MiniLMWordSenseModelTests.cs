@@ -6,7 +6,7 @@ namespace DemaConsulting.WordSense.MiniLM.Tests;
 /// </summary>
 public class MiniLMWordSenseModelTests
 {
-    private static readonly string[] Sentence = ["They", "will", "shelter", "the", "shelter", "."];
+    private static readonly string[] Sentence = ["They", "will", "release", "the", "release", "."];
 
     private static MiniLMWordSenseModel Open(string? directory = null)
     {

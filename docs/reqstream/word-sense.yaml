@@ -568,6 +568,10 @@ sections:
           - WordSense-WordSenseBuilder-RunningText
           - WordSense-WordSenseBuilder-TenseEvaluation
           - WordSense-WordSenseBuilder-Suite
+          - WordSense-WordSenseBuilder-ShapeProbe
+          - WordSense-WordSenseBuilder-ShapeProbe-Evaluation
+          - WordSense-WordSenseBuilder-ShapeProbe-Command
+          - WordSense-WordSenseBuilder-ShapeProbe-Leakage
         tests:
           - ModelTable_Readme_MatchesGeneratedFile
           - ModelTable_GeneratedFile_HasRowForEachModel

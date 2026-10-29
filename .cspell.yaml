@@ -16,6 +16,7 @@ language: en,en-GB
 words:
   - blindcheck
   - shortfix
+  - shapefit
   - wchk
   - lxml
   - nonfinite
