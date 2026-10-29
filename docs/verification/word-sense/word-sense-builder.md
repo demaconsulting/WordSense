@@ -22,9 +22,11 @@ the stored biases, the thresholds and the fit-cache key, and the options); `Real
 document and the real-text calibration of the thresholds on one-dimensional synthetic lemmas; `ChooserCorpusTests.cs`
 and `ChooserTrainingTests.cs` cover the chooser rows and the training of the form choosers; `TiersTests.cs`,
 `SenseEvaluatorTests.cs`, `RunningTextEvaluatorTests.cs`, `TenseEvaluatorTests.cs`, `ChallengeSetFloorTests.cs`,
-`SuiteFileTests.cs`, `ShapeProbeTests.cs`, `ShapeRowsTests.cs`, `LeakageCheckTests.cs` and `ModelTableTests.cs` cover the
+`SuiteFileTests.cs`, `ShapeProbeTests.cs`, `ShapeRowsTests.cs`, `LeakageCheckTests.cs`, `Gold2Tests.cs` and
+`ModelTableTests.cs` cover the
 quota report, the two independent evaluations, the suite reader and its grading, the shape probe reader and report, the
-shape rows of the corpus, the leakage check and the model table file with small synthetic corpora, a stub model and
+shape rows of the corpus, the leakage check, the second all-words gold set (power, draw, labeling, measurement and
+paired comparison) and the model table file with small synthetic corpora, a stub model and
 cached-file fixtures; `EvaluatorTests.cs` covers the per-level evaluation with a stub model. Commands that need a real
 encoder (`weights`, `evaluate`, `evaluate-senses`, `evaluate-running`, `evaluate-suite` and `evaluate-shapes` for the
 encoder models) are
@@ -514,6 +516,85 @@ and, for the measurement, a stub model.
   each split) and `allwords-merge` writes the gold files and reports an agreement of 100% when both labelers choose the
   same senses (the last test has no requirement).
 
+#### gold2-power, gold2-sample, gold2-batches, gold2-merge, evaluate-gold2 and compare-gold2
+
+The tests are in `test/WordSense.Builder.Tests/Gold2Tests.cs`. They use the committed catalog, temporary directories,
+a small synthetic pool and a stub model; two tests read the committed set `corpus/allwords/v2`.
+
+- **Power plan** (`Gold2Power_PairedSampleSize_PlannedMeasures_MatchesThePlan`,
+  `Gold2Power_MinimumDetectable_IsTheInverseOfTheSampleSize`, `Program_Gold2Power_PrintsThePlan`): the sample size of
+  each planned measure follows the formula of the design (2,745, 1,175, 626, 438 and 375 tokens for the five measures)
+  and the planned test tokens are at least 80% of it; the minimum detectable improvement of 1,175 tokens at a
+  discordance of 24% is 4.0 points; the normal quantiles are right to five decimals and an improvement that the
+  discordance cannot hold, or a probability of 1, is an argument error; `gold2-power` exits with 0 and prints the
+  table.
+- **Exact McNemar** (`Gold2Power_ExactMcNemar_KnownSplits_GivesTheExactProbability`): the p value is 1 for no discordant
+  token and for an even split, `2 / 1024` for 10 against 0, and symmetric in the two counts.
+- **Strata** (`Gold2Strata_Of_Forms_FlagsFollowTheLexiconAndTheTrainedLemmas`): `put` bears the same-spelling verb
+  flag, `bank` the noun-and-verb flag and the trained or untrained flag by its lemma, a heteronym spelling the
+  heteronym flag, `saw` the lemma-ambiguous flag, and a form that the lexicon does not know none (null); the families
+  of the sources are grouped into technical, news and literary text.
+- **Candidates** (`Gold2Sampler_IsCandidateWord_NamesAcronymsAndSymbols_AreLeftOut`): lower-case words, a capitalized
+  word at the start of a sentence, `I` and `a` can be drawn; a capitalized word inside a sentence, an acronym, a word
+  with an apostrophe, a numeral and a symbol cannot.
+- **Draw** (`Gold2Sampler_Draw_SmallPool_RespectsSplitsCapsAndQuotas`): on a pool of 30 documents the same seed gives
+  the same tokens and another seed other ones; no document has tokens in both splits; no document exceeds its cap; no
+  sentence has more than the planned tokens and no two are adjacent; every token is the word at its index; the ids
+  are unique and start with `d-` and `t-`; the quotas of the same-spelling verb and untrained strata are filled.
+- **Split** (`Gold2Sampler_AssignSplits_ByFamily_GivesTheDevelopmentShareOfTheSentences`): of the 10 documents of each
+  family, 4 go to the development split and 6 to the test split, and each document goes to one split.
+- **Files** (`Gold2_Files_RoundTrip`, `Gold2_ReadManifest_WrongWordAtTheIndex_Throws`): a manifest, a documents file
+  and a rows file are written and read back the same (the sentence words included), the leakage parts of the set are
+  read (one part for the split that has tokens), and a manifest line whose word is not at its index is an
+  `InvalidDataException`.
+- **Document check** (`Gold2_ValidateDocuments_UsedMissingAndSharedDocuments_AreProblems`): a document whose id is in
+  the open corpus sources, a document whose address is there, a manifest token whose document is not listed and a
+  document with tokens in both splits are each a problem that names the document.
+- **Committed set** (`Gold2_CommittedSet_DocumentsAreDisjointFromTheRepository`,
+  `Gold2_CommittedRows_AreConsistentWithTheLexiconAndTheManifest`): the document check of the committed set finds no
+  problem; the committed rows are one for each token of the manifest with its strata, a part of speech of the lexicon
+  or `Other`, a lemma, a status of agreed or adjudicated, a tense for a verb only and a sense of the lemma and part of
+  speech when one is given.
+- **Answers** (`Gold2Labeling_Resolve_Answers_ResolveToTheAnalysisAndItsSense`): the analyses of `read` come in the
+  order of lemma, part of speech and features; an answer resolves to its analysis and a sense of it; an unsure answer
+  of the adjudicator and a `none` of the adjudicator resolve to `none`, and a `none` of a labeler is a problem;
+  `other:Noun:reading` resolves to a noun without a sense; an analysis that does not exist, a sense that the lemma
+  does not have and a part of speech that does not exist are problems that name the answer.
+- **Merge** (`Gold2Labeling_Merge_AgreementAndAdjudication_NothingIsDropped`): of four tokens, the one both labelers
+  answered the same is settled (agreed, whatever the confidence of one of them) and the three others (another
+  analysis, an unsure answer, another sense) go to the adjudicator; a token without an adjudicator answer is the
+  problem `t-4: the adjudicator gave no answer.`; with all answers no token is dropped, the status and the agreement
+  (`pos`, `analysis`) of each token are right, a `none` is kept, the rows carry the tense class (`past`, `nonpast`) of
+  a verb, and the agreement counts, the table and the labels file are rendered.
+- **Missing and invalid answers** (`Gold2Labeling_Compare_MissingAndInvalidAnswers_AreReportedOrAdjudicated`): a token
+  that the second labeler did not answer is reported as missing and a token whose answer of the first labeler is
+  invalid goes to the adjudicator; nothing is settled.
+- **Batches** (`Gold2Labeling_WriteBatchesAndReadAnswers_RoundTrip`): a batch of the form `read` has two items with the
+  token in braces and the analyses with their senses and glosses; the answer table is read back (`a1` with `unsure`
+  and a high confidence, `a2` with a low one) and a line that is no answer is reported; the adjudication batch shows
+  the first labeler's answer, and its table is written.
+- **Measurement** (`Gold2Evaluator_MeasureAsync_PosLemmaTenseAndSense_AreScoredPerToken`): a stub model gives, for five
+  tokens: a right part of speech, lemma and sense; a right analysis with the wrong sense; a right lemma and part of
+  speech with the wrong tense and no scored sense; a token whose gold sense is `none`, which is not scored on the sense;
+  and a token that the model does not answer whose gold class is `Other`, which is not scored on the part of speech and
+  is wrong on the lemma. The sense on the right analysis
+  is scored apart; the tallies of all tokens, of the tense stratum and of the untrained stratum are right; and the
+  report has a row of the trained lemmas.
+- **Baselines** (`Gold2Evaluator_Baseline_FirstAndMostFrequentSense_AreScoredOnTheSenseOnly`): the first-sense baseline
+  is right on a token whose gold sense is the top sense of `bank`, neither baseline is scored on the part of speech,
+  and a token without a gold sense is not scored.
+- **Paired comparison** (`Gold2Evaluator_Compare_TwoModels_CountsDiscordantTokensAndGivesAnInterval`): of 60 tokens
+  that one model gets 40 right and the other 50, the comparison counts 10 tokens that only the second gets right and
+  none for the first, gives the exact p value of that split, an interval that contains the difference of 16.67 points,
+  one row for each stratum of at least 20 tokens, no row for the sense (no token applies), and the same result again.
+- **Outcomes** (`Gold2Evaluator_Outcomes_RoundTrip`): the outcomes of two tokens are written and read back the same, and
+  a file with a value that is not a flag is an `InvalidDataException`.
+
+The commands that need the committed labeled set or a real model (`gold2-sample` on a real pool, `gold2-batches`,
+`gold2-merge`, `evaluate-gold2` and `compare-gold2`) are verified through their units above and through the committed
+files; the figures that they print are not asserted by a test. The leakage parts and the document check of the set are
+verified in the section _corpus_ below.
+
 #### evaluate-running (tense)
 
 - **Gold class** (`WordSenseBuilder_TenseEvaluator_IsGoldPast_UsesTheTreebankTagThenTheFeatures`, theory): `VBD` and
@@ -948,19 +1029,29 @@ it leaves.
   all-words gold set and the split of the open corpus it is drawn from share their sentences and that is no leak; a gold
   sentence that a training part has too is a leak, and so is a gold sentence of the development half that the test split
   of the open corpus has.
+- **Second all-words gold set** (`Gold2_Files_RoundTrip`, `WordSenseBuilder_Corpus_Leakage_OnlyRealLeaksFail`,
+  `Gold2_ValidateDocuments_UsedMissingAndSharedDocuments_AreProblems`,
+  `Gold2_CommittedSet_DocumentsAreDisjointFromTheRepository`): the sentences of the development and the test split of
+  the second set are two parts of the check; they are views of no other part, so a sentence that either shares with
+  any other evaluation part is a leak by the rule that two evaluation parts do not share a sentence; the document
+  check reports a document that another part uses or has rejected (by id and by address), a token whose document is
+  not listed and a document in both splits, and finds nothing in the committed set.
 - **Committed corpus** (`WordSenseBuilder_Corpus_Disjointness_CoversSuiteEvaluationAndOewnExamples`): the anchors,
   chooser, held-out and real-text sentences, the suite, the shape probe set, the open corpus development and test
   splits, the two halves of
-  the all-words gold set, the challenge set
+  the all-words gold set, the two splits of the second all-words gold set, the challenge set
   and the Open English WordNet examples of the repository share no sentence in a way that leaks.
 - **Command** (`WordSenseBuilder_Program_CheckLeakage_ExitsWithOneOnALeak`): `check-leakage` prints the report and
-  exits with code 1 when a part shares a sentence with an evaluation part, and 0 otherwise.
+  exits with code 1 when a part shares a sentence with an evaluation part, and 0 otherwise; it also exits with code 1
+  and prints each document problem of the second set under its own heading (by inspection of the command; the
+  document check itself is tested above).
 
 #### Command line
 
 - **No arguments or unknown command**: exit code 1 and the usage text listing `compile-image`, `import-moby`,
   `weights <modelId>`, `evaluate <modelId>`, `evaluate-senses`, `evaluate-allwords`, `allwords-sample`,
-  `allwords-merge`, `evaluate-running`, `evaluate-suite`, `evaluate-shapes`, `check-leakage`,
+  `allwords-merge`, `gold2-power`, `gold2-sample`, `gold2-batches`, `gold2-merge`, `evaluate-gold2`, `compare-gold2`,
+  `evaluate-running`, `evaluate-suite`, `evaluate-shapes`, `check-leakage`,
   `tiers`, `open-counts`, `evaluate-tagger`, `coverage`, `train-basic`, `tune-basic`, `label-senses`,
   `import-wn30-counts`, `appendix`, `keys` and `heteronyms`
   (`Program_NoArguments_PrintsUsage`, `Program_UnknownCommand_ReportsCommandAndUsage`,

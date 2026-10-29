@@ -180,9 +180,17 @@ internal static partial class Program
 
         var report = LeakageCheck.Check(sets);
         var text = report.Render();
+
+        // The second all-words gold set must also share no document with the rest of the repository
+        var documentProblems = Gold2.ValidateDocuments(corpus);
+        if (documentProblems.Count > 0)
+        {
+            text += "\n### Document check of the second all-words gold set\n\n" + string.Concat(documentProblems.Select(p => "- LEAK: " + p + "\n"));
+        }
+
         output.Write(text);
         WriteReport(options, text);
-        return report.Leaks.Any() ? 1 : 0;
+        return report.Leaks.Any() || documentProblems.Count > 0 ? 1 : 0;
     }
 
     private static int RunTiers(Dictionary<string, string> options, string repository, string corpus, TextWriter output)

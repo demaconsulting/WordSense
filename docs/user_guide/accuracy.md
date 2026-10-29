@@ -25,6 +25,11 @@ apply: the usage prior's tag counts include SemCor, and the all-words developmen
 - **All-words gold set.** 397 test tokens (and 407 development tokens) of untrained polysemous lemmas from the open
   corpus, labeled blind by two language models that saw every sense with its gloss and never a frequency. A token is kept
   when both agree (91.7% agreement). It measures the usage prior, which SemCor cannot. See `corpus/allwords/README.md`.
+- **Second all-words gold set.** A larger set of new, document-disjoint public-domain text with part of speech, lemma,
+  tense and sense for every token, drawn by strata before any model saw it and labeled by two language models with a
+  third adjudicating every disagreement. No token is dropped, and there is no human review. It reports every measure
+  for trained and untrained lemmas, heteronyms, noun/verb words and same-spelling verbs. The sizes, the power
+  calculation, the agreement and the baseline of the three models are in `corpus/allwords/v2/README.md`.
 - **Reviewed suite.** 364 sentences guard each model against regressions. Language models wrote and labeled nearly all
   of them and a reviewer agent checked them; no human reviewed the labels. They are not an accuracy measure;
   see `corpus/suite/README.md`.

@@ -134,6 +134,18 @@ implementation of the feature computation.
   development and test splits of the representative open corpus, the labeling batches and the merge of two blind labelers,
   and the measurement of each model (fine top-1 of the selected analysis, share and precision at the sense level, the
   first-sense, tag-count and random baselines, and the smoothing sweep on the development half).
+- `Gold2Strata`, `Gold2Token`, `Gold2Document`, `Gold2Row`, `Gold2`: the second all-words gold set
+  (`corpus/allwords/v2`): the strata of a form, the records of the frozen manifest, the documents and the labeled rows,
+  their readers and writers, the sentences of the set as parts of the leakage check and the document check
+  (`Gold2.ValidateDocuments`).
+- `Gold2Plan`, `Gold2Sentence`, `Gold2Sampler`: the plan of the quotas and caps and the draw of the tokens from a pool
+  of sentences of new documents, with the document-disjoint split.
+- `Gold2Labeling`, `Gold2Answer`, `Gold2Label`, `Gold2Outcome`, `Gold2Agreement`: the labeling batches, the answers of
+  the labelers and the adjudicator, their comparison and merge, and the agreement table.
+- `Gold2Evaluator`, `Gold2Scored`, `Gold2Comparison`: the per-token measurement of a model, the sense baselines, the
+  paired comparison of two models and the outcomes files.
+- `Gold2Power`, `Gold2Measure`: the power calculation (normal quantile, paired sample size, minimum detectable
+  improvement) and the exact McNemar test.
 - `OpenCorpus`, `OpenSentence`, `OpenToken`: read the open English part-of-speech corpus (`corpus/open`: header
   comments, the sentence comment lines and one seven-column token line per token, with the lemma and the features of
   each token) and turn a sentence into the tokens
@@ -220,6 +232,25 @@ instead of `--model`.
   the tokens of the gold set and writes the labeling batches and `sample.tsv` to `DIR`.
 - `allwords-merge --batches DIR --first SUFFIX --second SUFFIX [--target DIR] [--output FILE]`: merges the answers of two
   labelers into `dev.tsv` and `test.tsv` and prints the agreement.
+- `gold2-power`: prints the power plan of the second all-words gold set: for each measure the minimum detectable
+  improvement, the discordance of two models, the number of test tokens that a paired comparison needs (two-sided
+  significance level 0.05, power 80%) and the improvement that the planned tokens detect.
+- `gold2-sample --pool FILE --docs FILE [--seed 1] [--target DIR] [--data DIR]`: draws the tokens of the second gold set
+  from a pool of sentences of new documents and writes the frozen `manifest.tsv` and `sources.tsv` to
+  `corpus/allwords/v2` before any labeling.
+- `gold2-batches --dir DIR [--stage label|adjudicate] [--splits dev,test] [--batch-size 100] [--tag TAG]
+  [--missing SUFFIX] [--first SUFFIX --second SUFFIX]`: writes the labeling batches of the manifest or, for
+  `--stage adjudicate`, the batches
+  of the tokens on which the two labelers do not agree, with both answers shown; `--missing` writes only the tokens that
+  the answers of a labeler lack.
+- `gold2-merge --dir DIR --first SUFFIX --second SUFFIX --adjudicator SUFFIX [--target DIR] [--output FILE]`: merges the
+  answers of the two labelers and the adjudicator into `dev.tsv`, `test.tsv` and `labels.tsv` and prints the agreement;
+  it writes nothing and exits with 1 when an answer is missing or invalid.
+- `evaluate-gold2 [--model all|NAME] [--splits dev,test] [--output FILE] [--outcomes DIR]`: measures the models on the
+  second gold set (part of speech, lemma, tense and sense per stratum, the sense baselines and the paired comparison of
+  every pair of models); `--outcomes` writes the per-token outcomes of each model.
+- `compare-gold2 --first FILE --second FILE [--split test] [--name-first A] [--name-second B] [--output FILE]`: compares
+  two outcome files of `evaluate-gold2`, for example from two builds, on the same tokens.
 - `evaluate-running [--model all|NAME] [--split test] [--gold FILE] [--report all|running|tense] [--output FILE]
   [--table FILE]`: measures the
   part-of-speech accuracy of the models on the representative test split of the open corpus, the convention-mapped
@@ -231,7 +262,8 @@ instead of `--model`.
   answer of every model for every row. It fails when `corpus/shapes/probe.tsv` does not exist.
 - `check-leakage [--data DIR] [--gold FILE] [--cache DIR] [--output FILE]`: checks that no sentence is shared by a
   training part and an evaluation part, by two evaluation parts, or by the corpus and an example of Open English
-  WordNet; it exits with 1 when one is.
+  WordNet, and that the second all-words gold set shares no document with the rest of the repository; it exits with 1
+  when one is.
 - `open-counts [--corpus DIR] [--output DIR]`: counts the tag statistics of the training split of the representative
   open corpus (every token, whatever its consensus status) and writes the count files of `corpus/open/counts`
   (`word-tags.tsv`, `tag-ngrams.tsv` and the clause counts `tag-clause-ngrams.tsv`).
@@ -299,14 +331,21 @@ command) compares the normalized sentences (`Corpus.Normalize`: case, spacing an
 new) of every part of the corpus: the anchors, the chooser anchors and the training split of the open corpus
 (training); the holdout, chooser holdout and real-text sentences, the reviewed suite, the shape probe set (words
 joined by single spaces, braces removed), the development and test splits
-and the challenge set of the open corpus, and the two halves of the all-words gold set (evaluation); and the example
+and the challenge set of the open corpus, and the two halves of the all-words gold set and the development and test
+splits
+of the second all-words gold set (evaluation); and the example
 sentences of Open English WordNet (reference
 text of another license). The SemCor sentences and the treebank test file (external evaluation sets, read from their
 caches when present) are compared too, and the sense evaluation leaves out every SemCor sentence that is in the corpus
 or is an example. A sentence shared by a training part and an evaluation part, by two evaluation parts (except a
 chooser part and the sense part it is a view of, and a half of the all-words gold set and the split of the open
 corpus it is drawn from), or by the corpus and an example sentence of five words or more fails
-the check; two training parts may share a sentence (a duplicate, nothing is evaluated on it). The sentences that share
+the check; the splits of the second all-words gold set are views of no other part, so any sentence they share with
+another part fails it. The command also runs the document check of the second set (`Gold2.ValidateDocuments`): a
+document of the set that another part of the repository uses or has rejected (the open corpus documents of every
+list, by id and by address, and the source keys of the provenance files), a manifest token whose document `sources.tsv`
+does not list, a duplicate id and a document in both splits fail the check as well.
+Two training parts may share a sentence (a duplicate, nothing is evaluated on it). The sentences that share
 a run of eight words are counted and reported but do not fail the check, because a stock phrase can be shared by
 chance. A sentence that the writers saw as a gloss example therefore cannot train a classifier. A lemma needs anchors
 for at least two of its senses to get weights; a lemma with fewer is not an error and is listed by the tiers report.
@@ -662,6 +701,76 @@ the independent measurement.
    the development half only; the constant of the prior is chosen there, and the test half is only reported.
 5. The gold files are validated when they are read (a sense of the lemma and part of speech, the word at its index) and
    by the leakage check, which treats each file as a view of the split of the open corpus it is drawn from.
+
+#### Second all-words gold evaluation (`Gold2`, `Gold2Sampler`, `Gold2Labeling`, `Gold2Evaluator`, `Gold2Power`)
+
+The second gold set (`corpus/allwords/v2`) is an independent, adequately powered test of part of speech, tense, lemma
+and sense. It is document-disjoint from every other part of the repository (`corpus/open`, the anchors, the holdout, the
+real text, the suite, the shapes and the first gold set) and made of United States public-domain or CC0 text only. The
+labels and the selection are CC0 1.0 by the project owner. Language models produce the labels, with a language-model
+adjudication and no human review; the README of the set says so.
+
+1. `gold2-power` (`Gold2Power.Render`) fixes the size before the draw. For a paired comparison of two models that
+   differ on a share `d` of the tokens, the number of tokens that detects an improvement `delta` at a two-sided
+   significance level `alpha` of 0.05 and a power of 80% is
+   `n = (z(1 - alpha/2) * sqrt(d) + z(power) * sqrt(d - delta^2))^2 / delta^2` (`Gold2Power.PairedSampleSize`, with
+   the normal quantile of `Gold2Power.Quantile`); `Gold2Power.MinimumDetectable` inverts it. `Gold2Power.Measures` lists
+   the five measures with their minimum detectable improvement and discordance: part of speech on all tokens, sense on
+   untrained and on trained polysemous lemmas, tense, and lemma on lemma-ambiguous forms. The exact two-sided McNemar
+   test (`Gold2Power.ExactMcNemar`) gives the p value of a comparison from the two counts of tokens on which only one
+   model is right.
+2. `gold2-sample` (`Gold2Sampler.Draw`) draws from a pool of sentences of new documents. Before it, the sentences that
+   any other part of the repository holds (normalized text, as in the leakage check) and the documents that any other
+   part uses or has rejected (by id and by address, `Gold2.UsedDocuments`) are left out. `Gold2Sampler.AssignSplits`
+   divides the documents of each source family between the development split (about 40% of the pooled sentences of the
+   family) and the test split by a hash of the seed and the document id, so no document is in both.
+   `Gold2Strata.Of` flags each candidate from the lexicon and the anchors alone: `U` (a polysemous analysis, no
+   trained lemma), `TR` (a polysemous analysis of a trained lemma), `T` (a same-spelling past and non-past verb,
+   `TenseEvaluator.GroupsOf`), `NV` (a noun and a verb analysis), `H` (a heteronym spelling, `Heteronyms.Build`),
+   `L` (an inflected form of two or more open-class lemmas) and `C` (none of these). `Gold2Sampler.IsCandidateWord`
+   leaves out a capitalized word inside a sentence, an acronym and a word that is not made of letters. The quotas of the
+   plan (`Gold2Plan.Default`) count the tokens that bear a flag in the test split, and the development split gets two
+   thirds of them. The strata are filled rarest first (`T`, `L`, `H`, `NV`, `U`, `TR`, `C`), each in the weights of the
+   source groups (technical 0.4, news 0.3, literary 0.3; `Gold2Strata.GroupOf`), in a pseudo-random order of a hash of
+   the seed, the sentence and the position, with at most two non-adjacent tokens of a sentence, a cap on a document
+   (a higher one for Gutenberg) and a cap on a written form for each stratum. The draw is frozen in `manifest.tsv` (and
+   the documents in `sources.tsv`) before any model or labeler sees a token.
+3. `gold2-batches` (`Gold2Labeling.WriteBatches`) writes the labeling batches. A group is a written form; it gives the
+   analyses of the form in a fixed order (lemma, part of speech, features; `Gold2Labeling.AnalysesOf`), each as `a1`,
+   `a2`, ... and, for each analysis with two or more senses, the senses with their glosses in the order of the ids and
+   no frequency (an analysis that shares lemma and part of speech with an earlier one refers to it), and the
+   sentences with the token in braces. A labeler answers an analysis or `other:Pos:lemma`, a sense or `unsure`, and a
+   confidence. The first labeler is `gpt-6.1-sol` and the second `claude-sonnet-5.5`.
+4. `Gold2Labeling.Compare` settles a token by the labelers only when both chose the same analysis and the same sense
+   (`Gold2Labeling.Resolve` turns an answer into a label and names an analysis, a sense or a part of speech that does
+   not exist; an invalid answer of a labeler is a disagreement). Every other token, a disagreement or an unsure answer,
+   goes to the adjudicator (`gold2-batches --stage adjudicate`, `gpt-5.6-luna`), who sees both answers and may answer
+   `none` (no defensible single sense). That answer is kept as a category and left out of the sense accuracy.
+   Nothing is dropped. A token that a labeler has not answered is reported first (`gold2-batches --missing` writes
+   those tokens again).
+5. `gold2-merge` (`Gold2Labeling.Merge`) writes `dev.tsv` and `test.tsv` (the gold part of speech, lemma, features,
+   tense class, sense, status `agreed` or `adjudicated` and the agreement of the labelers: `full`, `analysis`, `pos` or
+   `none`) and `labels.tsv` (the answers of all three), and prints the agreement table. It writes nothing and exits
+   with 1 when an answer is missing or invalid.
+6. `evaluate-gold2` (`Gold2Evaluator.MeasureAsync`) classifies every token inside its sentence and scores it: the part
+   of speech of the selected analysis (a token that is not answered is wrong), the lemma, the tense (only for a gold
+   verb whose spelling is a same-spelling verb; past is a past tense or a participle, the rule of the tense evaluation)
+   and the sense (the first sense listed by the selected analysis, `AllWordsEvaluator.TopSense`, scored when the gold
+   sense is a sense id; also scored on the tokens whose analysis is right). `Gold2Evaluator.Render` reports the counts
+   and the accuracy for all tokens and for each stratum: trained and untrained lemma (read from the current anchors, by
+   the gold lemma), heteronym, noun and verb, tense, lemma-ambiguous, and the source groups. `Gold2Evaluator.Baseline`
+   gives the sense baselines, told the gold lemma and part of speech: the first sense in inventory order and the most
+   frequent sense by the WordNet 3.0 tag counts.
+7. `Gold2Evaluator.Compare` compares every pair of models for each stratum and measure on the tokens that the measure
+   applies to (a stratum of at least 20 tokens): the counts of tokens that only one model gets right, the exact
+   two-sided McNemar p value and a 95% interval of the difference by a bootstrap that resamples documents (1,000
+   resamples, a fixed seed). `--outcomes` writes the per-token outcomes of each model (`Gold2Evaluator.RenderOutcomes`);
+   `compare-gold2` reads two such files (`Gold2Evaluator.ReadOutcomes`) and compares them on the same tokens, for two
+   builds of a model.
+8. The files are validated when they are read: a manifest line has its word at its index, and a row has a part of speech
+   of the lexicon or `Other`, a sense of its lemma and part of speech when one is given, a status and a tense only for a
+   verb. The leakage check reads the sentences of each split as an evaluation part of its own and runs the document
+   check (`Gold2.ValidateDocuments`).
 
 #### Running-text evaluation (`RunningTextEvaluator`)
 

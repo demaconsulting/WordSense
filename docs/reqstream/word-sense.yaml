@@ -565,6 +565,27 @@ sections:
           - WordSense-WordSenseBuilder-AllWordsLeakage-View
           - WordSense-WordSenseBuilder-AllWordsLeakage-Training
           - WordSense-WordSenseBuilder-AllWordsLeakage-OtherSplit
+          - WordSense-WordSenseBuilder-Gold2Power
+          - WordSense-WordSenseBuilder-Gold2Power-McNemar
+          - WordSense-WordSenseBuilder-Gold2Strata
+          - WordSense-WordSenseBuilder-Gold2Draw
+          - WordSense-WordSenseBuilder-Gold2Draw-Splits
+          - WordSense-WordSenseBuilder-Gold2Draw-Candidates
+          - WordSense-WordSenseBuilder-Gold2Files
+          - WordSense-WordSenseBuilder-Gold2Files-Index
+          - WordSense-WordSenseBuilder-Gold2Documents
+          - WordSense-WordSenseBuilder-Gold2Documents-Committed
+          - WordSense-WordSenseBuilder-Gold2Rows
+          - WordSense-WordSenseBuilder-Gold2Labeling-Answers
+          - WordSense-WordSenseBuilder-Gold2Labeling-Batches
+          - WordSense-WordSenseBuilder-Gold2Labeling-Merge
+          - WordSense-WordSenseBuilder-Gold2Labeling-Missing
+          - WordSense-WordSenseBuilder-Gold2Evaluation
+          - WordSense-WordSenseBuilder-Gold2Baselines
+          - WordSense-WordSenseBuilder-Gold2Comparison
+          - WordSense-WordSenseBuilder-Gold2Comparison-Outcomes
+          - WordSense-WordSenseBuilder-Gold2Leakage
+          - WordSense-WordSenseBuilder-Gold2Leakage-Documents
           - WordSense-WordSenseBuilder-RunningText
           - WordSense-WordSenseBuilder-TenseEvaluation
           - WordSense-WordSenseBuilder-Suite

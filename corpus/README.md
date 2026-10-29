@@ -39,6 +39,7 @@ evaluate**, from a git-ignored download, and is never committed or shipped.
 | `open/` | see `open/README.md` | The open English part-of-speech corpus (CC0 annotations and selection over public-domain and CC0 sentences): `representative/` (random; the only input of usage statistics and the headline real-text evaluation) and `targeted/` (a challenge set) |
 | `suite/` | `*.tsv`, `README.md` | The reviewed suite of 364 sentences about common ambiguous words and same-spelling verbs: a regression test with the expectation of each model and the floors of the challenge set. CC0 1.0, evaluation only |
 | `allwords/` | `dev.tsv`, `test.tsv`, `README.md` | The all-words gold set: 804 tokens of untrained polysemous lemmas from the development and test splits of `open/representative`, labeled blind by two independent labelers (the independent measurement of the usage prior, which SemCor cannot make). Selection and labels CC0 1.0, sentences public domain in the United States or CC0, evaluation only |
+| `allwords/v2/` | `manifest.tsv`, `sources.tsv`, `dev.tsv`, `test.tsv`, `labels.tsv`, `README.md` | The second all-words gold set: 5,072 tokens from 1,442 new public-domain documents, sampled by strata before any labeling and labeled (part of speech, lemma, tense, sense) by language models, with no human review. Document-disjoint from everything else. Selection and labels CC0 1.0, sentences public domain in the United States, evaluation only |
 | `shapes/` | `probe.tsv`, `README.md` | The shape probe set: held-out noun and verb sentences in seven common sentence shapes, one gold part of speech each (`WordSense.Builder evaluate-shapes`). Never trained on. CC0 1.0, evaluation only |
 
 Every file is UTF-8 without a byte-order mark, with LF line endings.
@@ -248,6 +249,8 @@ sentence new) of the anchors, the chooser anchors and the training split of the 
 - the development and test splits and the challenge set of the open corpus;
 - the two halves of the all-words gold set (`allwords/`, views of the development and test splits of the open corpus:
   the same sentences by design);
+- the two splits of the second all-words gold set (`allwords/v2/`): new documents, so a sentence that any other part
+  holds is a leak, and the check also fails on a document that another part of the repository uses or has rejected;
 - the example sentences of Open English WordNet (CC BY 4.0, so none may be in this CC0 corpus);
 - SemCor and the treebank test file, when present in their git-ignored caches.
 

@@ -2038,6 +2038,281 @@ sections:
             tests:
               - WordSenseBuilder_Corpus_Leakage_AllWordsGoldSentenceOfTheOtherSplit_IsALeak
 
+          - id: WordSense-WordSenseBuilder-Gold2Power
+            title: >-
+              The builder shall print the power plan of the second all-words gold set: for each measure (part of speech,
+              sense on untrained and on trained polysemous lemmas, tense, lemma on lemma-ambiguous forms) the minimum
+              detectable improvement, the discordance of two models, the number of test tokens that a paired comparison
+              needs at a two-sided significance level of 0.05 and a power of 80%, and the improvement that the planned
+              tokens detect, and the number of tokens shall follow from the minimum detectable improvement and the
+              discordance, and the other way round.
+            tags: [unit]
+            justification: |
+              A test set is evidence only when it is large enough to tell the improvement that matters from chance; the
+              plan states the size before the set is drawn, so a reviewer can check that the measures are adequately
+              powered.
+            tests:
+              - Gold2Power_PairedSampleSize_PlannedMeasures_MatchesThePlan
+              - Gold2Power_MinimumDetectable_IsTheInverseOfTheSampleSize
+              - Program_Gold2Power_PrintsThePlan
+
+          - id: WordSense-WordSenseBuilder-Gold2Power-McNemar
+            title: >-
+              The builder shall give the exact two-sided p value of a paired comparison of two models from the numbers
+              of tokens that only one of them gets right: 1 without such tokens and for an even split, and the binomial
+              tail otherwise.
+            tags: [unit]
+            justification: |
+              The two models are scored on the same tokens, so the comparison must use the tokens on which they differ;
+              an exact test needs no approximation, however few those tokens are.
+            tests:
+              - Gold2Power_ExactMcNemar_KnownSplits_GivesTheExactProbability
+
+          - id: WordSense-WordSenseBuilder-Gold2Strata
+            title: >-
+              The builder shall assign each candidate token of the second all-words gold set the strata that the lexicon
+              and the anchors alone decide: a polysemous analysis of a lemma that is untrained or trained, a
+              same-spelling
+              past and non-past verb, a form with a noun and a verb analysis, a heteronym spelling, an inflected form of
+              two or more open-class lemmas, or none of these (a control token), report a form that the lexicon does not
+              know as no candidate, and group the source families into technical, news and literary text.
+            tags: [unit]
+            justification: |
+              The strata decide what the set can measure; deciding them from the lexicon and the anchors alone, and not
+              from any model, keeps the selection from favoring the answers of a model.
+            tests:
+              - Gold2Strata_Of_Forms_FlagsFollowTheLexiconAndTheTrainedLemmas
+
+          - id: WordSense-WordSenseBuilder-Gold2Draw
+            title: >-
+              The builder shall draw the tokens of the second all-words gold set from a pool of sentences of new
+              documents reproducibly from a seed (the same seed shall give the same tokens, another seed other tokens)
+              with every document in one split only, at most the planned number of tokens for a sentence (never two
+              adjacent tokens), for a document and for a form, the quota of each stratum filled as far as the pool
+              allows, a token that is the written form at its index, unique token ids and a prefix of the id that names
+              the split.
+            tags: [unit]
+            justification: |
+              A reproducible draw lets a reviewer repeat the sampling; the caps keep a few documents, sentences or words
+              from deciding the figures; and a document in both splits would let one split flatter the other.
+            tests:
+              - Gold2Sampler_Draw_SmallPool_RespectsSplitsCapsAndQuotas
+
+          - id: WordSense-WordSenseBuilder-Gold2Draw-Splits
+            title: >-
+              The builder shall divide the documents of each source family between the development split and the test
+              split by a hash, so that the development split gets about its planned share of the sentences of the family
+              and no document is in both.
+            tags: [unit]
+            justification: |
+              Sentences of one document are alike; a split by document, and not by sentence, keeps the splits
+              independent, and the share by family keeps each genre in both.
+            tests:
+              - Gold2Sampler_AssignSplits_ByFamily_GivesTheDevelopmentShareOfTheSentences
+
+          - id: WordSense-WordSenseBuilder-Gold2Draw-Candidates
+            title: >-
+              The builder shall not draw a capitalized word inside a sentence, an acronym, a word with an apostrophe, a
+              numeral or a symbol, but a lower-case word, a word at the start of a sentence and the pronoun I.
+            tags: [unit]
+            justification: |
+              A name or an acronym has no sense in the lexicon, and a word that is not a word of the lexicon cannot be
+              labeled; the sentence start and the pronoun are capitalized by rule, not by name.
+            tests:
+              - Gold2Sampler_IsCandidateWord_NamesAcronymsAndSymbols_AreLeftOut
+
+          - id: WordSense-WordSenseBuilder-Gold2Files
+            title: >-
+              The builder shall write the frozen manifest of the sampled tokens, the documents with their source, terms
+              and checksums and the labeled rows of a split in the committed formats, read them back the same, and
+              read the sentences of the set as parts of the leakage check.
+            tags: [unit]
+            justification: |
+              The manifest is frozen before any labeling and the rows are the evidence of the measurement; both must
+              survive a write and a read unchanged, and the sentences must be checkable against the rest of the
+              repository.
+            tests:
+              - Gold2_Files_RoundTrip
+
+          - id: WordSense-WordSenseBuilder-Gold2Files-Index
+            title: >-
+              The reader of the manifest shall reject a line whose word is not at its index with an
+              InvalidDataException.
+            tags: [unit]
+            justification: |
+              The index names the token that the gold label belongs to; a wrong index must be a data error and never a
+              label of another word.
+            tests:
+              - Gold2_ReadManifest_WrongWordAtTheIndex_Throws
+
+          - id: WordSense-WordSenseBuilder-Gold2Documents
+            title: >-
+              The builder shall check the documents of the second all-words gold set and report as a problem a document
+              that another part of the repository uses or has rejected (by id and by address), a token whose document is
+              not listed, and a document that is in both splits.
+            tags: [unit]
+            justification: |
+              The set is an independent test only when its documents are new; the check turns a shared document into a
+              failure before any model is measured on it.
+            tests:
+              - Gold2_ValidateDocuments_UsedMissingAndSharedDocuments_AreProblems
+
+          - id: WordSense-WordSenseBuilder-Gold2Documents-Committed
+            title: >-
+              The committed second all-words gold set shall share no document with the rest of the repository and none
+              between its splits.
+            tags: [unit]
+            justification: |
+              The independence of the set is a property of the committed data, not only of the tool that checks it.
+            tests:
+              - Gold2_CommittedSet_DocumentsAreDisjointFromTheRepository
+
+          - id: WordSense-WordSenseBuilder-Gold2Rows
+            title: >-
+              The committed labeled rows of the second all-words gold set shall be one for each token of the manifest,
+              with the strata of the manifest, a part of speech of the lexicon or Other, a lemma, a sense of that lemma
+              and part of speech when a sense is given (a dash when the analysis has fewer than two senses, none when no
+              single sense is defensible), a status of agreed or adjudicated, and a tense for a verb only.
+            tags: [unit]
+            justification: |
+              A row that the lexicon cannot have would count every model wrong for the wrong reason, and a token without
+              a row would leave a hole in the set.
+            tests:
+              - Gold2_CommittedRows_AreConsistentWithTheLexiconAndTheManifest
+
+          - id: WordSense-WordSenseBuilder-Gold2Labeling-Answers
+            title: >-
+              The builder shall resolve the answer of a labeler (an analysis of the form, or another part of speech and
+              lemma, with a sense or unsure and a confidence) to the analysis and the sense it names, list the analyses
+              of a form in a fixed order without any frequency, accept none (no defensible sense) from the adjudicator
+              only and read its unsure as none, and name an analysis, a sense or a part of speech that does not exist.
+            tags: [unit]
+            justification: |
+              The labelers must choose among the analyses that the lexicon has and see no frequency, and a mistaken
+              answer must be named and never read as another one.
+            tests:
+              - Gold2Labeling_Resolve_Answers_ResolveToTheAnalysisAndItsSense
+
+          - id: WordSense-WordSenseBuilder-Gold2Labeling-Batches
+            title: >-
+              The builder shall write the labeling batches with the token in braces in its sentence, the analyses of the
+              form and, for each analysis with two or more senses, its senses with their glosses in id order, write for
+              the adjudicator the batches that show the answers of both labelers, and read the answer tables of the
+              batches back, reporting a line that is no answer.
+            tags: [unit]
+            justification: |
+              The labelers must all see the same information and no sense frequency, and the adjudicator must see what
+              the two labelers answered.
+            tests:
+              - Gold2Labeling_WriteBatchesAndReadAnswers_RoundTrip
+
+          - id: WordSense-WordSenseBuilder-Gold2Labeling-Merge
+            title: >-
+              The builder shall settle a token by the labelers only when both chose the same analysis and the same
+              sense, send every other token to the adjudicator, keep the answer of the adjudicator even when it is none,
+              drop no token, and report a token that the adjudicator has not answered as a problem; it shall give the
+              agreement of the labelers (full, analysis, part of speech or none) for each token and the counts of the
+              agreement table.
+            tags: [unit]
+            justification: |
+              Dropping the tokens on which the labelers disagree would leave the easy tokens only and flatter every
+              model; keeping them with an adjudicated label, and stating the agreement, keeps the set honest.
+            tests:
+              - Gold2Labeling_Merge_AgreementAndAdjudication_NothingIsDropped
+
+          - id: WordSense-WordSenseBuilder-Gold2Labeling-Missing
+            title: >-
+              The builder shall report a token that a labeler has not answered before the merge, and send a token whose
+              answer of a labeler is invalid to the adjudicator.
+            tags: [unit]
+            justification: |
+              A missing answer is an incomplete job and must be seen before it is read as agreement; an invalid answer
+              is a disagreement that the adjudicator can settle.
+            tests:
+              - Gold2Labeling_Compare_MissingAndInvalidAnswers_AreReportedOrAdjudicated
+
+          - id: WordSense-WordSenseBuilder-Gold2Evaluation
+            title: >-
+              The builder shall score a model on each token of the second all-words gold set for its part of speech, its
+              lemma, its tense (the gold verbs whose spelling is a same-spelling verb only) and its sense (the first
+              sense of the selected analysis, scored when the gold sense is a sense id, and again when its analysis is
+              right), count a token that the model does not answer as wrong, leave a token with no defensible sense out
+              of the sense accuracy, and report the counts and the accuracy for all tokens and for each stratum (trained
+              and untrained lemmas, heteronym, noun and verb, tense, lemma-ambiguous, technical, news and literary
+              text).
+            tags: [unit]
+            justification: |
+              Part of speech, tense, lemma and sense are the levels at which a caller uses the answer; each is measured
+              per token on independent text, with the strata that show where a model is strong or weak.
+            tests:
+              - Gold2Evaluator_MeasureAsync_PosLemmaTenseAndSense_AreScoredPerToken
+
+          - id: WordSense-WordSenseBuilder-Gold2Baselines
+            title: >-
+              The builder shall report as baselines for the sense the first sense in inventory order and the most
+              frequent sense by the WordNet 3.0 tag counts, each told the gold lemma and part of speech and scored on
+              the sense only.
+            tags: [unit]
+            justification: |
+              A model's sense accuracy means something only against what a reader of the lexicon would get without
+              reading the sentence.
+            tests:
+              - Gold2Evaluator_Baseline_FirstAndMostFrequentSense_AreScoredOnTheSenseOnly
+
+          - id: WordSense-WordSenseBuilder-Gold2Comparison
+            title: >-
+              The builder shall compare every pair of models on the second all-words gold set by the number of tokens
+              that only one of them gets right, the exact two-sided p value of those numbers and a 95% interval of the
+              difference that resamples documents with a fixed seed, for each stratum of at least 20 tokens and each
+              measure, leaving out the tokens that a measure does not apply to.
+            tags: [unit]
+            justification: |
+              A difference between two models is evidence only when it is larger than the chance of the sample; the
+              tokens of a document are alike, so the interval resamples documents, and a fixed seed makes it
+              reproducible.
+            tests:
+              - Gold2Evaluator_Compare_TwoModels_CountsDiscordantTokensAndGivesAnInterval
+
+          - id: WordSense-WordSenseBuilder-Gold2Comparison-Outcomes
+            title: >-
+              The builder shall write the per-token outcomes of a model and read them back the same, and reject a
+              malformed outcomes file with an InvalidDataException, so that two builds can be compared later on the same
+              tokens.
+            tags: [unit]
+            justification: |
+              A later build is compared with an earlier one on the same tokens without running the earlier build
+              again.
+            tests:
+              - Gold2Evaluator_Outcomes_RoundTrip
+
+          - id: WordSense-WordSenseBuilder-Gold2Leakage
+            title: >-
+              The leakage check shall include the sentences of the development and the test split of the second
+              all-words gold set as two evaluation parts, and shall report a sentence that either has and any other part
+              also has as a leak.
+            tags: [unit]
+            justification: |
+              Unlike the first all-words gold set, the second is not drawn from another part; a sentence it shares with
+              any part would not be independent evidence.
+            tests:
+              - Gold2_Files_RoundTrip
+              - Gold2_Leakage_SharedSentenceAndSharedDocument_AreLeaks
+              - WordSenseBuilder_Corpus_Leakage_OnlyRealLeaksFail
+              - WordSenseBuilder_Corpus_Disjointness_CoversSuiteEvaluationAndOewnExamples
+
+          - id: WordSense-WordSenseBuilder-Gold2Leakage-Documents
+            title: >-
+              The leakage check shall also run the document check of the second all-words gold set and fail when it
+              finds a problem.
+            tags: [unit]
+            justification: |
+              A shared document leaks without sharing a sentence; the document check is part of the same gate that stops
+              a leak.
+            tests:
+              - Gold2_ValidateDocuments_UsedMissingAndSharedDocuments_AreProblems
+              - Gold2_Leakage_SharedSentenceAndSharedDocument_AreLeaks
+              - Gold2_CommittedSet_DocumentsAreDisjointFromTheRepository
+
           - id: WordSense-WordSenseBuilder-RunningText
             title: >-
               The builder shall measure the part-of-speech accuracy of every model through its public interface on the
@@ -2446,7 +2721,8 @@ sections:
           - id: WordSense-WordSenseBuilder-Usage
             title: >-
               The builder shall provide the commands compile-image, import-moby, weights, evaluate, evaluate-senses,
-              evaluate-allwords, allwords-sample, allwords-merge,
+              evaluate-allwords, allwords-sample, allwords-merge, gold2-power, gold2-sample, gold2-batches,
+              gold2-merge, evaluate-gold2, compare-gold2,
               evaluate-running, evaluate-suite, evaluate-shapes, check-leakage, tiers, open-counts, evaluate-tagger,
               coverage, train-basic, tune-basic, label-senses, import-wn30-counts, appendix, keys and heteronyms, print
               usage when given no

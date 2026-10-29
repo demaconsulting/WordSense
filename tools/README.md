@@ -27,8 +27,8 @@ user guide and the model comparison table. It also validates the data and the co
 
 - regenerate the word data: `rebuild-forms`, `label-senses`, `compile-image`;
 - retrain: `train-basic`, `weights`;
-- re-measure: `evaluate`, `evaluate-senses`, `evaluate-allwords`, `evaluate-running`, `evaluate-suite`,
-  `evaluate-shapes`;
+- re-measure: `evaluate`, `evaluate-senses`, `evaluate-allwords`, `evaluate-gold2`, `evaluate-running`,
+  `evaluate-suite`, `evaluate-shapes`;
 - check the inputs: `validate-data`, `check-leakage`, `tiers`.
 
 **Why.** The shipped artifacts must be reproducible from committed inputs. The same inputs give identical bytes, and
@@ -40,7 +40,8 @@ and `pip install lemminflect`. The evaluations on SemCor and the treebank need t
 
 **Commands.** `dotnet run --project tools/WordSense.Builder -c Release -- <command> [--name value ...]`. The commands
 are `compile-image`, `rebuild-forms`, `audit-forms`, `generate-facts`, `import-moby`, `weights <modelId>`,
-`evaluate <modelId>`, `evaluate-senses`, `evaluate-allwords`, `allwords-sample`, `allwords-merge`, `evaluate-running`,
+`evaluate <modelId>`, `evaluate-senses`, `evaluate-allwords`, `allwords-sample`, `allwords-merge`, `gold2-power`,
+`gold2-sample`, `gold2-batches`, `gold2-merge`, `evaluate-gold2`, `compare-gold2`, `evaluate-running`,
 `evaluate-suite`, `evaluate-shapes`, `check-leakage`, `tiers`, `open-counts`, `evaluate-tagger`, `coverage`,
 `train-basic`, `tune-basic`,
 `appendix`, `import-oewn`, `import-wn30-counts`, `label-senses`, `seed-inventory` and `validate-data`. Examples:

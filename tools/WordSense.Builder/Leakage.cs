@@ -191,6 +191,7 @@ internal static class LeakageCheck
             ReadOpen(corpus, OpenCorpus.Targeted, "train", "STE challenge train", LeakageRole.Training),
             ReadOpen(corpus, OpenCorpus.Targeted, "test", "STE challenge set", LeakageRole.Evaluation),
             .. AllWordsGold.LeakageSets(corpus),
+            .. Gold2.LeakageSets(corpus),
             ReadExamples(Path.Join(data, "example")),
         ];
         return [.. sets.Where(s => s.Sentences.Count > 0)];
