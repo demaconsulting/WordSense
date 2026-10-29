@@ -67,6 +67,17 @@ All scenarios below pass on every platform and target framework of the CI matrix
   retried with valid settings.
 - **Model directory ignores the options** (`OnnxWordSenseModel_EnsureModelAsync_ModelDirectory_IgnoresInvalidOptions`):
   with a model directory the download options are not read, so invalid options throw nothing.
+- **Embedded head is loaded and checked without model files**
+  (`OnnxWordSenseModel_ClassifyAsync_EmbeddedHead_LoadsWithoutModelFiles`,
+  `OnnxWordSenseModel_GetHead_NoHeadResource_ReturnsNull`): `ClassifyAsync(["the"])` on a model whose directory does not
+  exist loads the embedded head with the weights; `GetHead()` returns it, with the hidden size of the model, and the
+  same object on a second call. A model description without a head resource has no head: `GetHead()` returns null and
+  `ClassifyAsync` works.
+- **Damaged or mismatched head is an integrity failure**
+  (`OnnxWordSenseModel_ClassifyAsync_DamagedOrMismatchedHead_ThrowsModelIntegrity`): a head resource that does not exist,
+  and a head whose encoder digest differs from the pinned digest of the model, throw `ModelIntegrityException` from
+  `ClassifyAsync` with an `InvalidDataException` as inner exception; the message of the first names the head and the
+  inner message of the second names the other encoder file.
 - **Damaged model is an integrity failure**
   (`OnnxWordSenseModel_ClassifyAsync_WeightsOfAnotherImage_ThrowsModelIntegrity`,
   `OnnxWordSenseModel_ClassifyAsync_UnreadableOnnxFile_ThrowsModelIntegrity`,

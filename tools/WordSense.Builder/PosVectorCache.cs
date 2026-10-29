@@ -17,7 +17,7 @@ namespace WordSense.Builder;
 ///     is the precision the head reads them in.
 ///     </para>
 ///     <para>
-///     Format (little-endian): the magic <c>WSPV</c>, the digest (32 bytes), the word hash (32 bytes, the SHA-256 of the
+///     Format (little-endian): the four magic bytes (ASCII W, S, P, V), the digest (32 bytes), the word hash (32 bytes, the SHA-256 of the
 ///     words of all sentences with separators), the hidden size and the token count as 32-bit integers, the vectors
 ///     (<c>count × size</c> floats), one byte per token that says whether it has a vector, and the SHA-256 of everything
 ///     before it. The file is written beside the target and renamed, so a failed save never damages an older file.
@@ -32,7 +32,7 @@ internal static class PosVectorCache
     public const int FeatureVersion = 1;
 
     private const int HashSize = 32;
-    private static readonly byte[] Magic = "WSPV"u8.ToArray();
+    private static readonly byte[] Magic = [(byte)'W', (byte)'S', (byte)'P', (byte)'V'];
 
     /// <summary>
     ///     Computes the digest that identifies the encoder files and the runtime of the vectors.

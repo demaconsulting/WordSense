@@ -40,6 +40,51 @@ sections:
                 tests:
                   - OnnxEncoder_EncodeAsync_TextLongerThanWindow_ReturnsVectorsForTargets
 
+              - id: WordSense-Onnx-OnnxEncoder-AllWords
+                title: >-
+                  OnnxEncoder shall encode every word of a text in one call and, for a text that fits one input window,
+                  return for every word exactly the vector that it returns when that word is requested alone, from one
+                  encoder pass, and no vector for a word that has no word pieces.
+                tags: [unit]
+                justification: |
+                  Training and running a classifier over whole sentences needs the vector of every word; one pass for
+                  a short text keeps it fast, and equal vectors keep the two ways of asking consistent.
+                tests:
+                  - OnnxEncoder_EncodeAllAsync_ShortText_EqualsSinglePassVectors
+                  - OnnxEncoder_EncodeAllAsync_EmptyOrNoTokens_ReturnsEmptyOrNull
+
+              - id: WordSense-Onnx-OnnxEncoder-AllWordsWindows
+                title: >-
+                  OnnxEncoder shall encode a text longer than its input window in overlapping windows, with one
+                  encoder pass per window and not one per word, and shall pool each word from the window that gives it
+                  the most context on its closer side, a text edge counting as unlimited context.
+                tags: [unit]
+                justification: |
+                  Real documents are longer than the model input limit; windows that overlap keep the context of every
+                  word, and one pass per window keeps the cost proportional to the length of the text.
+                tests:
+                  - OnnxEncoder_EncodeAllAsync_LongText_UsesOnePassPerWindow
+                  - OnnxEncoder_EncodeAllAsync_LongText_StaysCloseToSinglePassAtWindowBorders
+                  - OnnxEncoder_EncodeAllAsync_LongText_PoolsEachWordFromItsMostCentralWindow
+
+              - id: WordSense-Onnx-OnnxEncoder-PossessiveView
+                title: >-
+                  OnnxEncoder shall, on request, split a possessive that is written as one token into its stem and its
+                  marker before pooling, so that each has a vector of its own, and the possessive test shall accept a
+                  word that is in the lexicon with a stem and a possessive marker (straight or typographic apostrophe)
+                  and every analysis of which is a possessive, and no contraction, ordinary word, bare marker or
+                  unknown stem.
+                tags: [unit]
+                justification: |
+                  The open corpus on which the part-of-speech head is trained separates the possessive marker; the
+                  head must see the text in the same form.
+                tests:
+                  - OnnxEncoder_EncodeAllAsync_PossessiveView_PoolsStemAndMarkerApart
+                  - PossessiveView_Expand_Possessives_SplitsStemAndMarker
+                  - PossessiveView_Expand_NoPossessives_IsIdentity
+                  - PossessiveView_IsLexiconPossessive_DecidesByLexicon
+                  - PossessiveView_NullArguments_Throw
+
               - id: WordSense-Onnx-OnnxEncoder-Threads
                 title: >-
                   OnnxEncoder shall let the number of threads used within one inference be configured.
@@ -59,5 +104,6 @@ sections:
                   Misuse must fail fast with a documented exception.
                 tests:
                   - OnnxEncoder_EncodeAsync_InvalidUse_Throws
+                  - OnnxEncoder_EncodeAllAsync_InvalidUse_Throws
                   - OnnxEncoder_Constructor_InvalidArguments_Throws
                   - OnnxEncoder_Constructor_InvalidModelFile_Throws

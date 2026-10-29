@@ -13,6 +13,9 @@ The builder creates the data that the shipped packages embed and measures the sh
   (the words, their analyses and the sense catalog);
 - the weights blob `weights.bin` embedded in each encoder package (MiniLM, BertBaseCased): the per-lemma fine-sense
   classifiers with their thresholds;
+- the part-of-speech head `head.bin` embedded in each encoder package: a linear classifier of the part of speech of a
+  word over the pooled encoder vectors of the word and of its two neighbors, trained on the training split of the open
+  corpus;
 - the statistics table `basic.bin` embedded in the core package (for `BasicWordSenseModel`), and the tag count files of
   `corpus/open/counts` it is
   trained from;
@@ -41,7 +44,8 @@ implementation of the feature computation.
 
 - `Program`: command-line entry point; parses `--name value` options and dispatches the commands.
 - `ModelCatalog`: the models the builder knows (`minilm`, `bert-base-cased`, `basic`) with their package and model
-  folder; sets the ONNX intra-op threads to 2. `EnsureAsync(model, cancellationToken)` awaits
+  folder (and the paths of `weights.bin` and `head.bin` in the package); sets the ONNX intra-op threads to 2.
+  `EnsureAsync(model, cancellationToken)` awaits
   `EnsureModelAsync(null, cancellationToken)` only when the model is an `IDownloadableWordSenseModel` (the Basic model
   is skipped, because it needs no files).
 - `Corpus`, `CorpusRow`: read and validate the sentence and form files. A sentence row is `lemma`, `sense_id`,
@@ -87,6 +91,28 @@ implementation of the feature computation.
 - `WeightsTrainer`, `LogisticTrainer`, `ModelTrainer` and `WeightsBlobWriter`: train the per-lemma classifiers and the
   form choosers from pooled encoder vectors and serialize the weights blob (`WSX3`: float16 weights, the sense ids of
   each lemma, the thresholds, and the form choosers).
+- `Lbfgs`, `MultinomialLogisticTrainer`, `PosTokenTable`, `PosFitOptions`, `PosFit`: the fit of the part-of-speech head.
+  `Lbfgs` is a limited-memory BFGS minimizer in double precision with a strong-Wolfe line search, without a random
+  choice. `PosTokenTable` holds the pooled vectors of the tokens of a set of sentences (one row per token, with the
+  sentence of each token, its gold class from 0 to 9 or -1 for a token that is not a word class, and whether it has a
+  vector); the neighbors of a token are the adjacent tokens of its sentence. `MultinomialLogisticTrainer.Fit` fits an
+  L2-regularized multinomial logistic regression on the vectors of the previous word, the word and the next word
+  (zeros beyond the sentence edge), standardized per feature over the training tokens. The objective is the mean
+  negative log-likelihood plus `‖W‖² / (2 C n)` with an unpenalized intercept, so that a given `C` means what it means in
+  the usual implementations. The standardization is folded into the returned weights and biases, so the head works on
+  raw pooled vectors. `PosFitOptions` carries `C`, the gradient tolerance (1e-4), the iteration cap (300) and the number
+  of threads (0 uses every core); `PosFit` carries the weights, biases, iterations, evaluations, whether it converged and
+  the objective.
+- `PosHeadTrainer`, `PosSentence`, `PosEncoderInfo`, `PosHeadRequest`, `PosHeadOutcome`, `PosDevScore`: the command
+  `train-pos-head` (see "Part-of-speech head training" below).
+- `PosHeadBlobWriter`: serializes a head into the `WSH1` blob that `PosHeadBlob` of the Onnx package reads: the weights
+  as half-precision numbers, one required section, and the trailing SHA-256; the same head always gives the same bytes.
+  `Round` gives the weights as the reader will see them.
+- `PosVectorCache`: the persistent cache of the pooled vectors of every token of one set of sentences. A file is valid for
+  one digest (the SHA-256 of the ONNX file and of the vocabulary, the casing, the version of ONNX Runtime and a feature
+  version) and for one exact word sequence (a SHA-256 of the words of all sentences with separators); a file that does not
+  match, is damaged or is truncated is not used and the set is encoded again. The vectors are stored as 32-bit floats,
+  the precision the head reads. The file is written beside its target and renamed.
 - `ChooserCorpus`: reads and validates the chooser rows (`corpus/choosers/anchors` and `holdout`): rows of the form,
   the label (the lemma of the analyses it stands for, or `lemma/features` for one analysis of a lemma whose analyses of
   the form differ in tense) and the sentence with the form in braces. A label must stand for an analysis of the form
@@ -119,7 +145,14 @@ implementation of the feature computation.
   first-sense baseline in Open English WordNet order, which the report calls partly circular, and the all-words
   measurement with a tag-count most-frequent-sense baseline, which the report calls optimistic).
 - `RunningTextEvaluator`: the part-of-speech evaluation of every model on the test split of the open corpus, the
-  convention-mapped treebank test file and the challenge set.
+  convention-mapped treebank test file and the challenge set; it can record the outcome of every scored token (with the
+  document of its sentence, `Documents`) and measure the latency of a model (`MeasureLatencyAsync`, `RenderLatency`).
+- `TokenOutcome`, `OutcomeFile`: the outcome of one scored token (set, sentence, document, token, word, gold, answer,
+  correct, ambiguous) and the tab-separated file of the outcomes of the models.
+- `OutcomeComparer`, `OutcomeComparison`, `ConfusionChange`, `OutcomeReport`: the paired comparison of two outcome files
+  (see "Outcome comparison" below).
+- `SuiteDiff`, `SuiteAnswer`, `SuiteChange`: the answers of the models on the suite, the file that records them and the
+  row-by-row diff against such a file.
 - `TenseEvaluator`, `TenseScore`: the tense evaluation of every model on the verbs whose past and non-past share a
   spelling (the groups, the gold class, the confusion, the majority baseline and the pooled treebank files).
 - `SuiteFile`, `SuiteRow`, `SuiteData`, `SuiteGrade`, `SuiteEvaluator`: read the reviewed suite rows and the expectation
@@ -128,7 +161,9 @@ implementation of the feature computation.
 - `ShapeProbeFile`, `ShapeProbeRow`, `ShapeAnswer`, `ShapeProbeEvaluator`: read the held-out shape probe set
   (`corpus/shapes/probe.tsv`), classify its sentences with a model, judge an answer, and report the noun/verb accuracy
   per shape and model and the harmful rate.
-- `LeakageCheck`, `LeakageSet`, `LeakageReport`: the check that the parts of the corpus share no sentence.
+- `LeakageCheck`, `LeakageSet`, `LeakageReport`: the check that the parts of the corpus share no sentence, and the
+  check that no training sentence of a head overlaps a held-out part (`FromGoldDirectory`, `FromReadSet`, `HeldOutSets`
+  and `FindTrainingOverlaps`; see "Part-of-speech head training" below).
 - `AllWordsGold`, `AllWordsItem`, `AllWordsSample`, `AllWordsEvaluator`: the all-words gold set of untrained polysemous
   lemmas (`corpus/allwords`) and its evaluation: the reader and writer of the gold files, the draw of the tokens from the
   development and test splits of the representative open corpus, the labeling batches and the merge of two blind labelers,
@@ -195,7 +230,7 @@ implementation of the feature computation.
 Invariants: the order of the senses of a lemma is the inventory order (part of speech, Open English WordNet position,
 homograph number, project senses last, sense id
 bytes) and the weight rows of every model follow it; equal input always gives equal output bytes (keys and lemmas are
-written in ordinal order and the trainer is deterministic).
+written in ordinal order, and the trainers, the head fit and the bootstrap are deterministic).
 
 ### Key Methods
 
@@ -219,6 +254,16 @@ instead of `--model`.
   `--prior-alpha` (default 0.5, not negative) and `--prior-smoothing` (default 0.5, positive) set its exponent and its
   add-k constant (see Usage prior below). `--no-cache`, `--recompute-mean` and `--no-prior` are
   switches: they take no value (an explicit `true` or `false` is accepted).
+- `train-pos-head <modelId> [--corpus DIR] [--repository DIR] [--cache DIR] [--no-cache] [--c-grid LIST] [--train FILE]
+  [--gold-dir DIR] [--read-set FILE] [--report-fusion] [--output FILE]`: trains the part-of-speech head of an encoder
+  model (`minilm`, `bert-base-cased`; a model without an encoder is refused) and writes its `head.bin` (default
+  `Resources/head.bin` of the package), then prints the report. `--cache DIR` places the vector cache (default
+  `<repository>/.cache/pos-vectors`; the cache of a model is the subfolder named by its name); `--no-cache` bypasses it.
+  `--c-grid` is a comma-separated list of positive numbers (default `0.001,0.003,0.01,0.03,0.1,0.3`). `--train`, when
+  given, must be the representative training split. `--gold-dir` names the directory of the treebank gold files
+  (`ud_train.tsv`, `ud_dev.tsv`, `ud_test.tsv`) and `--read-set` the `read` set file, which join the held-out parts that
+  the leakage assertion checks. `--report-fusion` adds the development accuracy and log loss of the head fused with the
+  Basic model at each weight.
 - `evaluate <modelId> [--corpus DIR] [--repository DIR] [--output FILE] [--table FILE] [--outcomes FILE]`: measures a
   model (`minilm`, `bert-base-cased`, `basic`) on the holdout sentences and prints a Markdown table; `--table` writes
   the real-text sense cell and the cost cells of the model into the model comparison table file.
@@ -258,17 +303,28 @@ instead of `--model`.
 - `compare-gold2 --first FILE --second FILE [--split test] [--name-first A] [--name-second B] [--output FILE]`: compares
   two outcome files of `evaluate-gold2`, for example from two builds, on the same tokens.
 - `evaluate-running [--model all|NAME] [--split test] [--gold FILE] [--report all|running|tense] [--output FILE]
-  [--table FILE]`: measures the
+  [--table FILE] [--outcomes FILE] [--latency] [--latency-sentences N] [--seed N]`: measures the
   part-of-speech accuracy of the models on the representative test split of the open corpus, the convention-mapped
   treebank test file and the challenge set, and the tense of the same-spelling verbs (`--report` restricts the output).
-- `evaluate-suite [--output FILE] [--write-expectations FILE] [--overwrite true]`: runs the reviewed suite against the
-  three models and reports the pass rates and the regressions against the expectation file.
+  `--outcomes` writes the outcome of every scored token of the part-of-speech sets (see "Outcome comparison" below).
+  `--latency` times one sentence at a time on a seeded sample of the open test split (`--latency-sentences`, default
+  1,000; `--seed`, default 20261029) and reports the median, the mean and the 95th percentile in milliseconds.
+- `compare-outcomes --base FILE --new FILE [--base-model NAME] [--new-model NAME] [--cluster sentence|document]
+  [--reps N] [--seed N] [--output FILE]`: compares two outcome files of `evaluate-running --outcomes` (see "Outcome
+  comparison" below). The defaults are the cluster `sentence`, 10,000 replicates and the seed 20261029. A file that has
+  several models needs the model to be named.
+- `evaluate-suite [--output FILE] [--write-expectations FILE] [--overwrite true] [--outcomes FILE] [--diff FILE]`: runs
+  the reviewed suite against the three models and reports the pass rates and the regressions against the expectation
+  file. `--outcomes` writes the answer of every model on every row; `--diff` lists every row whose answer or grade
+  differs from such a file of an earlier run (see "Suite" below).
 - `evaluate-shapes [--model all|NAME] [--output FILE] [--outcomes FILE]`: measures the noun/verb decision of the models
   on the shape probe set and reports the accuracy per shape and model and the harmful rate; `--outcomes` writes the
   answer of every model for every row. It fails when `corpus/shapes/probe.tsv` does not exist.
-- `check-leakage [--data DIR] [--gold FILE] [--cache DIR] [--output FILE]`: checks that no sentence is shared by a
+- `check-leakage [--data DIR] [--gold FILE] [--gold-dir DIR] [--read-set FILE] [--cache DIR] [--output FILE]`: checks
+  that no sentence is shared by a
   training part and an evaluation part, by two evaluation parts, or by the corpus and an example of Open English
-  WordNet, and that the second all-words gold set shares no document with the rest of the repository; it exits with 1
+  WordNet, and that the second all-words gold set shares no document with the rest of the repository; `--gold-dir` adds
+  the three treebank files of a directory and `--read-set` the `read` set as external evaluation parts; it exits with 1
   when one is.
 - `open-counts [--corpus DIR] [--output DIR]`: counts the tag statistics of the training split of the representative
   open corpus (every token, whatever its consensus status) and writes the count files of `corpus/open/counts`
@@ -595,6 +651,76 @@ The `evaluate` command does not use the cache: it classifies through the public 
 which owns its encoder, and that guarantees that the score comes from the shipped scoring code path; caching it would
 require a second scoring path.
 
+#### Part-of-speech head training (`PosHeadTrainer.TrainAsync`)
+
+The head is a multinomial logistic regression on the raw pooled vectors of a word and of its previous and next word. It
+is trained and selected on the representative part of the open corpus alone, read through `OpenCorpus.ReadSplit`: the
+`train` split fits the head and the `dev` split selects `C`. Nothing else is read for fitting or selection. The steps:
+
+1. **Inputs.** `--train`, when given, must be the file of the representative training split, else the run stops. The
+   sentences of both splits are read with `OpenCorpus.ToTagged` (the tokens that the library gives the encoder: a
+   contraction that the corpus splits is joined again, the possessive marker stays a token of its own). The gold class
+   of a token is its part of speech, with the infinitive marker as a preposition; a punctuation or other token has no
+   class and is neither trained nor scored.
+2. **Leakage assertion.** Before anything is encoded, `LeakageCheck.HeldOutSets` lists the held-out parts: every
+   evaluation part of the corpus (the holdout and chooser holdout sentences, the real text, the suite, the shape probe,
+   the development and test splits of the representative part, the challenge set and the two all-words gold halves),
+   the three treebank files of `--gold-dir` and the `read` set of
+   `--read-set` when they are given. `LeakageCheck.FindTrainingOverlaps` compares the training sentences with them: a
+   training sentence that equals a sentence of any part after normalization (case, spacing and punctuation) is an
+   overlap, and, for an external part (the treebank files and the read set), so is a run of 8 words in common. The run
+   prints the number of overlaps and stops with an `InvalidDataException` that names up to five of them when there is
+   one.
+3. **Vectors.** Each sentence is encoded with `OnnxEncoder.EncodeAllAsync`, the pooling of the library, and the vector
+   of every token is stored as a 32-bit float in a `PosTokenTable`. With a cache directory the vectors of a set come
+   from `PosVectorCache` when its digest and its word hash match, and are written to it after encoding.
+4. **Fit and selection.** For each `C` of the grid, in increasing order, `MultinomialLogisticTrainer.Fit` fits the head
+   on the tokens that have a vector and a class, and the head is scored on the development tokens whose word is in the
+   lexicon and that have a class, with the restriction to the parts of speech that the lexicon lists for the word
+   (`LexiconMask`, `PosHead.Restrict`; the ambiguous tokens are those whose word has at least two). The `C` with the
+   highest restricted accuracy over all scored tokens (rounded to six decimals) is kept; on a tie the smaller `C`, which
+   comes first, stays. The report has one row per `C`: iterations, whether the fit converged, the restricted accuracy on
+   all and on the ambiguous tokens, the unrestricted accuracy and the log loss.
+5. **Half-precision gate.** The weights of the selected head are rounded to half precision (`PosHeadBlobWriter.Round`),
+   and the rounded head is scored again. The run stops when the accuracy differs by more than 0.02 points from that of
+   the 32-bit head; the report states the figures and the number of predictions that differ.
+6. **File and read-back.** The head is written with `PosHeadBlobWriter`, read back with `PosHeadBlob.Read` and scored a
+   third time; its predictions must equal those of the rounded head. The head records the SHA-256 of the training file.
+7. **Fusion report.** With `--report-fusion` the report adds the development accuracy and log loss of the head fused
+   with the Basic model (the head's probabilities to the power `w` times the Basic probabilities to the power `1 - w`,
+   restricted) for `w` from 0 to 1 in steps of 0.1. It writes nothing else and changes no answer.
+
+Determinism: the result is a function of the corpus, the encoder files, the runtime and the settings only. `Lbfgs` has
+no random choice and runs plain sequential arithmetic; the objective of the fit cuts the tokens into fixed chunks of
+1,024, sums every chunk in a fixed order and adds the chunk sums in chunk order, so the number of threads does not
+change a bit of the result; the writer has no time stamp and no path. A second run, with or without the cache, writes
+the same bytes.
+
+#### Outcome comparison (`OutcomeFile`, `OutcomeComparer`)
+
+`evaluate-running --outcomes FILE` records every scored token of the part-of-speech sets, whatever the model: a
+tab-separated file with the header `model`, `set`, `sentence`, `document`, `token`, `word`, `gold`, `answer`, `correct`
+and `ambiguous`. The document of a sentence of the open corpus is its source id; a set without documents (the treebank)
+uses the sentence. `OutcomeFile.Read` refuses another header and a line with another number of columns, a number that is
+not a number, or a flag that is not 0 or 1.
+
+`compare-outcomes` pairs the tokens of two files on the set, the sentence and the token; a token that only one file has
+is left out and counted per set. For each set it reports two subsets, all tokens and the ambiguous tokens:
+
+- the number of paired tokens and of clusters (the sentences or the documents they fall in), the accuracy of each
+  version, the repairs (wrong in the base, right in the new) and the regressions (the other way round);
+- the gain, the accuracy of the new version minus that of the base, in percentage points, with a 95% interval: the
+  percentile interval (2.5th to 97.5th) of a paired cluster bootstrap. Each replicate draws as many clusters as there
+  are, with replacement, and recomputes the gain; the random numbers come from a SplitMix64 generator seeded with the
+  seed, so the same files and seed give the same interval on every platform;
+- the exact two-sided McNemar p-value of the repairs against the regressions (twice the binomial tail of the smaller
+  count at one half), which ignores the clustering and is reported next to the interval;
+- the confusion: the number of tokens of every wrong cell (gold, answer) in each version, the eight cells that changed
+  most with their change in points of the tokens of the set, and the cells that grow by more than 0.3 points.
+
+An unknown cluster unit, fewer than one replicate and two files without a common token are errors. `--base-model` and
+`--new-model` pick one model out of a file that has several.
+
 #### Evaluation (`Evaluator.RunAsync`)
 
 Creates the model on the verified files, classifies the sentences of `corpus/holdout` (the held-out sentences of the
@@ -815,7 +941,14 @@ select settings and is never the default here. A missing gold file is reported a
 `TaggerEvaluator` (the part of speech of the selected analysis against the gold tag; tokens that the corpus or the
 convention tags as punctuation or other are excluded and counted; a token the model does not answer is counted), and
 reports the accuracy on all scored tokens and on the ambiguous tokens, whose word has at least two parts of speech in
-the lexicon.
+the lexicon. With an outcome list it also records every scored token (`TokenOutcome`). The documents of the open sets
+(`RunningTextEvaluator.Documents`) are the source ids of their sentences.
+
+`RunningTextEvaluator.MeasureLatencyAsync` times one call of `ClassifyAsync` per sentence, one sentence at a time, on the
+first `--latency-sentences` sentences of a seeded shuffle of the open corpus test split (the order is by a SplitMix64
+mix of the seed and the index, so the sample is the same for every model, run and platform). It classifies the first 20
+sentences of the sample without timing them, so that the first use of the model does not count. It reports the median,
+the mean and the 95th percentile of the time per sentence in milliseconds, and `RenderLatency` renders them as a table.
 
 #### Tense evaluation (`TenseEvaluator`)
 
@@ -857,6 +990,18 @@ expectation; the encoder tests skip when the model files are not present (Git LF
 reviewed commit and never lowered to hide a regression. `evaluate-suite` reports the pass rates and writes the
 expectations of a new suite or model. The challenge set has a floor test of the same kind
 (`ChallengeSetFloorTests`, `corpus/suite/ste-floors.tsv`).
+
+`SuiteDiff` records and compares the answers of the models. For every model and row it records the grade, the level
+(`Sense`, `Group`, `PartOfSpeech` or `None`), the selected analysis as `lemma/Part[/Features]`, the sense or group id of
+the answer and the confidence (`SuiteDiff.AnswerOf`). `evaluate-suite --outcomes FILE` writes them as a tab-separated
+file with the header `model`, `id`, `grade`, `level`, `analysis`, `target` and `confidence`; `SuiteDiff.ReadOutcomes`
+refuses another header and a malformed line. `evaluate-suite --diff FILE` reads such a file as the baseline and lists
+every row of every model whose grade or answer text differs, in either direction, in the order of the rows: the
+sentence with the target in braces, the old and the new answer with their grade and confidence, the gold of the row
+(analysis and acceptable senses), the expectation of the model and a verdict. The verdict is `better` when the new grade
+is higher, `WORSE` when it is lower and `same grade, other answer` otherwise; a new grade below the expectation is
+marked. The report starts with the counts of the three verdicts. A baseline that has no answer for a row of a model is
+an error, and so is a `--diff` without the expectation file. Grading is the unchanged rule of `SuiteFile.Grade`.
 
 #### Shape probe (`ShapeProbeFile`, `ShapeProbeEvaluator`)
 
@@ -1161,7 +1306,12 @@ disagrees with the sense and a sentence that is not disjoint from the sets it mu
 compilation fails on a sense without a label, a sense in two groups, a group of fewer than two senses or of all the
 senses of its lemma and part of speech, a group that mixes lemmas or
 parts of speech, and a group id without the group marker or equal to a sense id. Nothing is written when validation
-fails before the output step.
+fails before the output step. `train-pos-head` stops before it encodes anything when a training sentence overlaps a
+held-out part, when the training file is not the representative training split and when the grid of `C` is not a list
+of positive numbers, and stops before it writes the file when the half-precision head moves the development accuracy by
+more than 0.02 points or does not read back to the head that was trained. `compare-outcomes` rejects an unknown cluster
+unit, fewer than one replicate, files without a common token and a file with several models when none is named;
+`evaluate-suite --diff` rejects a baseline that lacks a row.
 
 ### Dependencies
 
@@ -1169,7 +1319,9 @@ fails before the output step.
   `IDownloadableWordSenseModel` and `WordSenseException`.
 - Basic: `BasicTables`, `BasicClassifier`, `CueModel` and `PosTag` (the format, the tag set, the feature extraction and
   hash, and the segmentation shared with training).
-- Onnx: `OnnxWordSenseModel`, `OnnxEncoder`, the weights data types (read for the frozen mean) and `FeatureExtractor`.
+- Onnx: `OnnxWordSenseModel`, `OnnxEncoder` (including `EncodeAllAsync`), the weights data types (read for the frozen
+  mean), `FeatureExtractor`, and `PosHead`, `PosHeadData` and `PosHeadBlob` (the head that is trained, scored and read
+  back).
 - MiniLM and BertBaseCased: the two model classes.
 - The WordData subsystem (`DataSchema`, `DataLayout`, `DataTables` and the validated tables of `data/`).
 - The corpus files and the model files under `model/`; SemCor 3.0 and the English EWT treebank files in their caches

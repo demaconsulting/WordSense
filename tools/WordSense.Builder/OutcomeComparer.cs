@@ -318,7 +318,7 @@ internal static class OutcomeComparer
             _state += 0x9E3779B97F4A7C15UL;
             var z = _state;
             z = (z ^ (z >> 30)) * 0xBF58476D1CE4E5B9UL;
-            z = (z ^ (z >> 27)) * 0x94D049BB133111EBUL;
+            z = (z ^ (z >> 27)) * 0x94D049BB133111EB;
             z ^= z >> 31;
             return z % bound;
         }

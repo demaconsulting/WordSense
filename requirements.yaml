@@ -35,6 +35,7 @@ includes:
   - docs/reqstream/word-sense/onnx/model-downloader.yaml
   - docs/reqstream/word-sense/onnx/download-mirror.yaml
   - docs/reqstream/word-sense/onnx/lemma-weights.yaml
+  - docs/reqstream/word-sense/onnx/pos-head.yaml
   - docs/reqstream/word-sense/mini-lm.yaml
   - docs/reqstream/word-sense/mini-lm/mini-lm-word-sense-model.yaml
   - docs/reqstream/word-sense/bert-base-cased.yaml

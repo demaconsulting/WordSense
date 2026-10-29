@@ -477,6 +477,7 @@ sections:
           - WordSense-Onnx-Levels
           - WordSense-Onnx-Untrained
           - WordSense-Onnx-Weights
+          - WordSense-Onnx-Head
           - WordSense-Onnx-Encoder
           - WordSense-MiniLM-Model
           - WordSense-BertBaseCased-Model
@@ -594,8 +595,12 @@ sections:
           - WordSense-WordSenseBuilder-Gold2Leakage
           - WordSense-WordSenseBuilder-Gold2Leakage-Documents
           - WordSense-WordSenseBuilder-RunningText
+          - WordSense-WordSenseBuilder-OutcomeFile
+          - WordSense-WordSenseBuilder-OutcomeComparison
+          - WordSense-WordSenseBuilder-RunningLatency
           - WordSense-WordSenseBuilder-TenseEvaluation
           - WordSense-WordSenseBuilder-Suite
+          - WordSense-WordSenseBuilder-SuiteDiff
           - WordSense-WordSenseBuilder-ShapeProbe
           - WordSense-WordSenseBuilder-ShapeProbe-MissingFile
           - WordSense-WordSenseBuilder-ShapeProbe-Header
@@ -675,6 +680,10 @@ sections:
           - WordSense-WordSenseBuilder-ImageFormat
           - WordSense-WordSenseBuilder-ImportDictionary
           - WordSense-WordSenseBuilder-Weights
+          - WordSense-WordSenseBuilder-TrainPosHead
+          - WordSense-WordSenseBuilder-TrainPosHeadLeakage
+          - WordSense-WordSenseBuilder-TrainPosHeadDeterminism
+          - WordSense-WordSenseBuilder-HeadProvenance
           - WordSense-WordSenseBuilder-FormChoosers
           - WordSense-WordSenseBuilder-Thresholds
           - WordSense-WordSenseBuilder-RealCalibration

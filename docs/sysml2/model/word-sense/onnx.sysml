@@ -1,8 +1,8 @@
 package WordSense {
     part def OnnxSubsystem {
-        doc /* The Onnx package DemaConsulting.WordSense.Onnx (depends only on core): the machinery shared by the encoder models, that is the abstract model (usable on its own) with its download and verification of model files, the ONNX encoder and tokenizer, the per-lemma weights and thresholds, and the classifier that scores fine senses and chooses the answer level. Words whose senses it does not score are answered from the lexicon alone, leaving the choice between their analyses to the fallback model of a composition. The only package with a runtime dependency (ONNX Runtime). */
+        doc /* The Onnx package DemaConsulting.WordSense.Onnx (depends only on core): the machinery shared by the encoder models, that is the abstract model (usable on its own) with its download and verification of model files, the ONNX encoder and tokenizer, the per-lemma weights and thresholds, the part-of-speech head (embedded, bound to its encoder and checked at load, not used for any answer), and the classifier that scores fine senses and chooses the answer level. Words whose senses it does not score are answered from the lexicon alone, leaving the choice between their analyses to the fallback model of a composition. The only package with a runtime dependency (ONNX Runtime). */
 
-        comment testRef /* Test: test/DemaConsulting.WordSense.Onnx.Tests/OnnxWordSenseModelTests.cs, test/DemaConsulting.WordSense.Onnx.Tests/OnnxClassifierTests.cs, test/DemaConsulting.WordSense.Onnx.Tests/OnnxEncoderTests.cs, test/DemaConsulting.WordSense.Onnx.Tests/WordPieceTokenizerTests.cs, test/DemaConsulting.WordSense.Onnx.Tests/ModelDownloaderTests.cs, test/DemaConsulting.WordSense.Onnx.Tests/DownloadMirrorTests.cs, test/DemaConsulting.WordSense.Onnx.Tests/LemmaWeightsTests.cs, test/DemaConsulting.WordSense.Onnx.Tests/InFlightTrackerTests.cs, test/DemaConsulting.WordSense.Onnx.Tests/XmlDocExampleTests.cs */
+        comment testRef /* Test: test/DemaConsulting.WordSense.Onnx.Tests/OnnxWordSenseModelTests.cs, test/DemaConsulting.WordSense.Onnx.Tests/OnnxClassifierTests.cs, test/DemaConsulting.WordSense.Onnx.Tests/OnnxEncoderTests.cs, test/DemaConsulting.WordSense.Onnx.Tests/WordPieceTokenizerTests.cs, test/DemaConsulting.WordSense.Onnx.Tests/ModelDownloaderTests.cs, test/DemaConsulting.WordSense.Onnx.Tests/DownloadMirrorTests.cs, test/DemaConsulting.WordSense.Onnx.Tests/LemmaWeightsTests.cs, test/DemaConsulting.WordSense.Onnx.Tests/PosHeadBlobTests.cs, test/DemaConsulting.WordSense.Onnx.Tests/PosHeadTests.cs, test/DemaConsulting.WordSense.Onnx.Tests/EmbeddedHeadTests.cs, test/DemaConsulting.WordSense.Onnx.Tests/PossessiveViewTests.cs, test/DemaConsulting.WordSense.Onnx.Tests/InFlightTrackerTests.cs, test/DemaConsulting.WordSense.Onnx.Tests/XmlDocExampleTests.cs */
         comment designRef /* Design: docs/design/word-sense/onnx.md */
         comment verificationRef /* Verification: docs/verification/word-sense/onnx.md */
         comment reqRef /* Requirements: docs/reqstream/word-sense/onnx.yaml */
@@ -14,5 +14,6 @@ package WordSense {
         part modelDownloader : ModelDownloader;
         part downloadMirror : DownloadMirror;
         part lemmaWeights : LemmaWeights;
+        part posHead : PosHead;
     }
 }

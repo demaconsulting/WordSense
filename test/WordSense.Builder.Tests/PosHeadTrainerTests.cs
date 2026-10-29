@@ -12,6 +12,7 @@ public sealed class PosHeadTrainerTests : IDisposable
 {
     private const int Dimension = 8;
     private const string Header = "# corpus = test\n# license = test\n# columns = id form lemma upos collapsed feats consensus\n\n";
+    private const string ReadSetHeader = "id\tsplit\tlabel\ttokens\t" + "idx" + "\tfamily\tsentence\n";
 
     private static readonly (string Form, string Upos)[] Determiners = [("the", "DET"), ("a", "DET")];
     private static readonly (string Form, string Upos)[] Adjectives = [("old", "ADJ"), ("big", "ADJ"), ("small", "ADJ")];
@@ -113,14 +114,14 @@ public sealed class PosHeadTrainerTests : IDisposable
         Assert.Equal(Enum.GetNames<PartOfSpeech>(), head.Data.ClassNames);
         Assert.Equal("word+-1", head.Data.Variant);
         Assert.Equal(System.Security.Cryptography.SHA256.HashData(await File.ReadAllBytesAsync(Path.Join(corpus, "open", "representative", "data", "train.tsv"), TestContext.Current.CancellationToken)), head.Data.TrainSha256);
-        Assert.Equal(PartOfSpeech.Noun, Argmax(head.Posterior(VectorOf("old"), VectorOf("dog"), VectorOf("runs"))));
-        Assert.Equal(PartOfSpeech.Verb, Argmax(head.Posterior(VectorOf("dog"), VectorOf("runs"), VectorOf("quickly"))));
-        Assert.Equal(PartOfSpeech.Adjective, Argmax(head.Posterior(VectorOf("a"), VectorOf("small"), VectorOf("tree"))));
+        Assert.Equal(PartOfSpeech.Noun, BestClass(head.Posterior(VectorOf("old"), VectorOf("dog"), VectorOf("runs"))));
+        Assert.Equal(PartOfSpeech.Verb, BestClass(head.Posterior(VectorOf("dog"), VectorOf("runs"), VectorOf("quickly"))));
+        Assert.Equal(PartOfSpeech.Adjective, BestClass(head.Posterior(VectorOf("a"), VectorOf("small"), VectorOf("tree"))));
         Assert.Contains("Selected C", first.Report, StringComparison.Ordinal);
         Assert.Contains("Half precision", first.Report, StringComparison.Ordinal);
     }
 
-    private static PartOfSpeech Argmax(double[] posterior) => (PartOfSpeech)Array.IndexOf(posterior, posterior.Max());
+    private static PartOfSpeech BestClass(double[] posterior) => (PartOfSpeech)Array.IndexOf(posterior, posterior.Max());
 
     /// <summary>
     ///     The vector cache is used on a second run, which then writes the same bytes without encoding anything.
@@ -169,7 +170,7 @@ public sealed class PosHeadTrainerTests : IDisposable
         var corpus = WriteCorpus();
         var sentence = OpenCorpus.ReadSplit(corpus, OpenCorpus.Representative, "train")[0];
         var gold = _dir.Write("gold/ud_dev.tsv", string.Concat(sentence.Tokens.Select(t => "1\t" + t.Form + "\tN\n")));
-        var readSet = _dir.Write("read-set.tsv", "id\tsplit\tlabel\ttokens\tidx\tfamily\tsentence\nr1\tdev\tPAST\tx\t0\tf\t" + sentence.Text + "\n");
+        var readSet = _dir.Write("read-set.tsv", ReadSetHeader + "r1\tdev\tPAST\tx\t0\tf\t" + sentence.Text + "\n");
 
         // Act
         var viaGold = await Assert.ThrowsAsync<InvalidDataException>(() => PosHeadTrainer.TrainAsync(Request(corpus, gold: Path.GetDirectoryName(gold)), Encoder(), Encode, TextWriter.Null, TestContext.Current.CancellationToken));

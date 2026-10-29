@@ -338,6 +338,13 @@ words:
   - Rada
   - Mihalcea
   - Xenova
+  - BFGS
+  - Lbfgs
+  - logit
+  - logits
+  - Nemar
+  - Rosenbrock
+  - unpenalized
 
 # Exclude common build artifacts, dependencies, and vendored third-party code
 ignorePaths:

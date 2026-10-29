@@ -1,0 +1,125 @@
+---
+# PosHead unit requirements (the part-of-speech head blob, its binding to the encoder and its arithmetic)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: Onnx Requirements
+        sections:
+          - title: PosHead Requirements
+            requirements:
+              - id: WordSense-Onnx-PosHead-Format
+                title: >-
+                  The part-of-speech head reader shall read the binary head of an encoder model: its model identifier,
+                  the hidden size, the SHA-256 of the pinned ONNX file of the encoder, the feature layout, the names of
+                  the classes in output order, the SHA-256 of the training file, the regularization strength, the name
+                  of the feature variant, and the weights and biases of the part-of-speech section, and the classes
+                  that a head must carry shall be the parts of speech of the library in declaration order.
+                tags: [unit]
+                justification: |
+                  The trained head ships as one compact blob per encoder model; the reader must reproduce what the
+                  build tool wrote, together with the provenance that binds the head to its encoder and to the
+                  classes it predicts.
+                tests:
+                  - PosHeadBlob_Read_RoundTrip_ReturnsEveryField
+                  - PosHeadBlob_ExpectedClassNames_AreThePartsOfSpeechInOrder
+                  - WordSenseBuilder_PosHeadBlobWriter_Write_RoundTripsThroughTheReader
+
+              - id: WordSense-Onnx-PosHead-Integrity
+                title: >-
+                  The part-of-speech head reader shall reject a blob with another magic, a truncated blob, a blob
+                  whose trailing SHA-256 does not match its content, a section of the wrong length, a duplicate
+                  section, a blob without the part-of-speech section, a weight or bias that is not finite and
+                  trailing data.
+                tags: [unit]
+                justification: |
+                  A damaged head must fail loudly at load instead of producing silently wrong probabilities.
+                tests:
+                  - PosHeadBlob_Read_FlippedByte_ThrowsChecksum
+                  - PosHeadBlob_Read_BadMagicOrTruncated_Throws
+                  - PosHeadBlob_Read_TruncatedBodyWithValidHash_Throws
+                  - PosHeadBlob_Read_InvalidSections_Throws
+                  - PosHeadBlob_Read_NoHeadSection_Throws
+
+              - id: WordSense-Onnx-PosHead-Sections
+                title: >-
+                  The part-of-speech head reader shall skip a section that it does not know when the section is marked
+                  optional and shall reject the blob when such a section is marked required.
+                tags: [unit]
+                justification: |
+                  Later heads (for example a tense head) can be added to the same file without breaking readers that
+                  do not need them, while a section that a reader must understand is never ignored.
+                tests:
+                  - PosHeadBlob_Read_UnknownSection_SkippedWhenOptionalRejectedWhenRequired
+
+              - id: WordSense-Onnx-PosHead-Binding
+                title: >-
+                  The part-of-speech head shall load from an embedded resource only when it was trained for the
+                  requested model identifier and hidden size, on the pinned ONNX file of the encoder, with the known
+                  feature layout and with the parts of speech of the library as its classes in their order, and shall
+                  report a missing resource, a head for another encoder, size, layout or class order as invalid data.
+                tags: [unit]
+                justification: |
+                  A head fitted on the vectors of one exact encoder file is meaningless for any other file, and a
+                  changed class order would mislabel every answer; every mismatch must fail loudly at load.
+                tests:
+                  - PosHead_LoadEmbedded_MatchingBinding_Loads
+                  - PosHead_LoadEmbedded_WrongEncoderDigest_Throws
+                  - PosHead_LoadEmbedded_WrongClassOrder_Throws
+                  - PosHead_LoadEmbedded_WrongModelSizeOrLayout_Throws
+                  - PosHead_LoadEmbedded_MissingResource_Throws
+
+              - id: WordSense-Onnx-PosHead-Posterior
+                title: >-
+                  The part-of-speech head shall compute from the pooled vectors of a word and of its previous and next
+                  word a probability for every part of speech, summing to one, shall treat a missing vector as zeros,
+                  and shall reject a vector that does not have the hidden size.
+                tags: [unit]
+                justification: |
+                  The head predicts the part of speech of a word from its context; a word at the edge of a sentence
+                  or without word pieces has no vector, which is how the head was trained.
+                tests:
+                  - PosHead_Posterior_TinyHead_MatchesIndependentComputation
+                  - PosHead_Posterior_MissingVectors_AreZeros
+                  - PosHead_Posterior_WrongLength_Throws
+                  - PosHead_NullArguments_Throw
+
+              - id: WordSense-Onnx-PosHead-Deterministic
+                title: >-
+                  The part-of-speech head shall give bit-identical probabilities for identical input vectors on every
+                  call.
+                tags: [unit]
+                justification: |
+                  Answers that depend on the hardware or on the number of threads cannot be reproduced or compared;
+                  the head uses fixed-order scalar arithmetic so that its result is a function of its input only.
+                tests:
+                  - PosHead_Posterior_RepeatedCalls_AreIdentical
+
+              - id: WordSense-Onnx-PosHead-Restrict
+                title: >-
+                  The part-of-speech head shall restrict a probability vector to an allowed set of parts of speech by
+                  keeping the allowed ones, renormalizing them to sum to one and giving the others zero, and shall
+                  return the unchanged probabilities when the set allows nothing or the allowed parts of speech have
+                  zero probability.
+                tags: [unit]
+                justification: |
+                  A spelling can only have the parts of speech that the lexicon lists for it; restricting the head to
+                  them removes impossible answers, and a spelling without a usable set must still get an answer.
+                tests:
+                  - PosHead_Restrict_AllowedMask_RenormalizesAllowed
+                  - PosHead_Restrict_NothingAllowed_FallsBackToPosterior
+                  - PosHead_NullArguments_Throw
+
+              - id: WordSense-Onnx-PosHead-Embedded
+                title: >-
+                  The part-of-speech head embedded in each encoder package shall load and shall be bound to the pinned
+                  ONNX file, the hidden size and the model identifier of that package, and a head of one package shall
+                  be rejected against the other package's encoder.
+                tags: [unit]
+                justification: |
+                  A head trained for another encoder file would predict from vectors it does not know; the shipped
+                  head and the shipped encoder pin must always have been produced together.
+                tests:
+                  - EmbeddedHead_MiniLM_MatchesEncoderAndClasses
+                  - EmbeddedHead_BertBaseCased_MatchesEncoderAndClasses
+                  - EmbeddedHead_AgainstTheOtherEncoder_IsRejected

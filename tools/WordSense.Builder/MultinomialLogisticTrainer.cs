@@ -365,17 +365,17 @@ internal static class MultinomialLogisticTrainer
                     // The token is the word of its own row, the previous word of the next row and the next word of the previous row
                     if (_label[t] >= 0)
                     {
-                        Axpy(sum, d, 1, t, t);
+                        AddScaled(sum, d, 1, t, t);
                     }
 
                     if (t + 1 < n && _tokens.HasPrevious(t + 1) && _label[t + 1] >= 0)
                     {
-                        Axpy(sum, d, 0, t, t + 1);
+                        AddScaled(sum, d, 0, t, t + 1);
                     }
 
                     if (t > 0 && _tokens.HasNext(t - 1) && _label[t - 1] >= 0)
                     {
-                        Axpy(sum, d, 2, t, t - 1);
+                        AddScaled(sum, d, 2, t, t - 1);
                     }
                 }
             });
@@ -410,7 +410,7 @@ internal static class MultinomialLogisticTrainer
             return (loss / rowCount) + (0.5 * scale * penalty);
         }
 
-        private void Axpy(double[] sum, int d, int block, int token, int row)
+        private void AddScaled(double[] sum, int d, int block, int token, int row)
         {
             var vectors = _tokens.Vectors;
             for (var c = 0; c < Classes; c++)

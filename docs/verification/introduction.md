@@ -26,7 +26,8 @@ This document covers the verification design for the WordSense system and its
 constituent software items, specifically:
 
 - **WordSense (System)** — The four layered packages of WordSense, which the units and subsystems below make up
-- **WordSenseBuilder** (non-shipped tool Unit) of the system, which generates the embedded lexicon, weights and appendix
+- **WordSenseBuilder** (non-shipped tool Unit) of the system, which generates the embedded lexicon, weights, part-of-speech
+  heads and appendix
 - **Core**, **Onnx**, **MiniLM** and **BertBaseCased** (Subsystems) — the packages `DemaConsulting.WordSense`,
   `DemaConsulting.WordSense.Onnx`, `DemaConsulting.WordSense.MiniLM` and
   `DemaConsulting.WordSense.BertBaseCased`
@@ -34,7 +35,7 @@ constituent software items, specifically:
   **PosTagger**, **CueModel** and **SenseFusion** (Units) of the Core subsystem (the last six are the statistical
   model that was the separate Basic package before version 1.0)
 - **OnnxWordSenseModel**, **OnnxClassifier**, **OnnxEncoder**, **WordPieceTokenizer**, **ModelDownloader**,
-  **DownloadMirror** and **LemmaWeights** (Units) of the Onnx subsystem
+  **DownloadMirror**, **LemmaWeights** and **PosHead** (Units) of the Onnx subsystem
 - **MiniLMWordSenseModel** (Unit) of the MiniLM subsystem
 - **BertBaseCasedWordSenseModel** (Unit) of the BertBaseCased subsystem
 - **WordData** (Subsystem) and its units **DataSchema**, **DataLayout**, **OewnImporter**, **FormGenerator**,

@@ -7,6 +7,8 @@ public sealed class TrainingOverlapTests : IDisposable
 {
     private readonly TestDirectory _dir = new();
 
+    private const string ReadSetHeader = "id\tsplit\tlabel\ttokens\t" + "idx" + "\tfamily\tsentence\n";
+
     /// <inheritdoc />
     public void Dispose()
     {
@@ -57,7 +59,7 @@ public sealed class TrainingOverlapTests : IDisposable
     {
         _dir.Write("gold/ud_train.tsv", "1\tHello\tN\n1\tthere\tB\n2\tBye\tI\n");
         _dir.Write("gold/ud_test.tsv", "1\tGo\tV\n");
-        var readSet = _dir.Write("read.tsv", "id\tsplit\tlabel\ttokens\tidx\tfamily\tsentence\nr1\tdev\tPAST\ta b\t0\tf\tI read it.\n\nr2\ttest\tPRESENT\tc\t1\tf\tWe read.\n");
+        var readSet = _dir.Write("read.tsv", ReadSetHeader + "r1\tdev\tPAST\ta b\t0\tf\tI read it.\n\nr2\ttest\tPRESENT\tc\t1\tf\tWe read.\n");
 
         var sets = LeakageCheck.FromGoldDirectory(Path.Join(_dir.Root, "gold"));
         var read = LeakageCheck.FromReadSet(readSet);
@@ -75,7 +77,7 @@ public sealed class TrainingOverlapTests : IDisposable
     [Fact]
     public void WordSenseBuilder_LeakageCheck_FromReadSet_ShortLine_Throws()
     {
-        var path = _dir.Write("bad.tsv", "id\tsplit\tlabel\ttokens\tidx\tfamily\tsentence\nr1\tdev\tPAST\n");
+        var path = _dir.Write("bad.tsv", ReadSetHeader + "r1\tdev\tPAST\n");
 
         Assert.Throws<InvalidDataException>(() => LeakageCheck.FromReadSet(path));
     }
@@ -91,7 +93,7 @@ public sealed class TrainingOverlapTests : IDisposable
         _dir.Write("corpus/open/representative/data/train.tsv", Header + Sentence);
         _dir.Write("corpus/open/representative/data/dev.tsv", Header + Sentence.Replace("Go now", "Stop now", StringComparison.Ordinal));
         _dir.Write("gold/ud_dev.tsv", "1\tGo\tV\n");
-        var readSet = _dir.Write("read.tsv", "id\tsplit\tlabel\ttokens\tidx\tfamily\tsentence\nr1\tdev\tPAST\ta\t0\tf\tI read it.\n");
+        var readSet = _dir.Write("read.tsv", ReadSetHeader + "r1\tdev\tPAST\ta\t0\tf\tI read it.\n");
 
         var sets = LeakageCheck.HeldOutSets(Path.Join(_dir.Root, "corpus"), Path.Join(_dir.Root, "data"), Path.Join(_dir.Root, "gold"), readSet);
 

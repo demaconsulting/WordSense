@@ -9,7 +9,9 @@ SHA-256 digests, from a configured mirror or from the GitHub LFS copy of the rep
 
 #### Data Model
 
-- `ModelSpec` and `ModelFile(Name, Sha256)` describe a model and the digest of each of its files.
+- `ModelSpec` and `ModelFile(Name, Sha256)` describe a model and the digest of each of its files. `ModelSpec` also
+  carries the resource name of the embedded part-of-speech head (`HeadResourceName`, null for a model without a head);
+  the downloader does not read it.
 - Store layout: `<store>/<model-id>/<file>`; the store defaults to the per-user `DemaConsulting/WordSense/models`
   folder or `DownloadOptions.StoreRoot`.
 - Mirror layout: `<mirror>/<model-id>/<file>` with the segments escaped.

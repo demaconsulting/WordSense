@@ -17,7 +17,9 @@ for the tests. The encoder model's description: model id
 `all-MiniLM-L6-v2-int8`; files `model_int8.onnx` (about 21.9 MiB; 22 MiB with `vocab.txt`) and `vocab.txt`, each with a
 pinned SHA-256;
 lower-casing (uncased) tokenizer; hidden size 384; embedded weights `weights.bin` (fine-sense classifiers, form
-choosers and per-lemma fine and group thresholds calibrated for this encoder) trained at sequence length 128.
+choosers and per-lemma fine and group thresholds calibrated for this encoder) trained at sequence length 128; embedded
+part-of-speech head `head.bin` (the format `WSH1`, bound to the pinned ONNX file; loaded and checked with the weights
+and not used for answers).
 
 #### Key Methods
 
