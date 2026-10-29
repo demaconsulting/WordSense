@@ -207,6 +207,131 @@ internal static class LeakageCheck
         new(name, LeakageRole.External, [.. TaggerEvaluator.ReadGold(goldFile).Select((s, i) => ("sentence " + (i + 1).ToString(CultureInfo.InvariantCulture), string.Join(' ', s.Words)))]);
 
     /// <summary>
+    ///     Reads the gold files of the treebank (train, development and test) that exist in a directory, as evaluation
+    ///     sets that no training sentence may overlap.
+    /// </summary>
+    /// <param name="goldDirectory">The directory with <c>ud_train.tsv</c>, <c>ud_dev.tsv</c> and <c>ud_test.tsv</c>; a file that does not exist is left out.</param>
+    /// <returns>The parts.</returns>
+    public static List<LeakageSet> FromGoldDirectory(string goldDirectory)
+    {
+        ArgumentNullException.ThrowIfNull(goldDirectory);
+        var sets = new List<LeakageSet>();
+        foreach (var split in new[] { "train", "dev", "test" })
+        {
+            var file = Path.Join(goldDirectory, "ud_" + split + ".tsv");
+            if (File.Exists(file))
+            {
+                sets.Add(FromGold("UD-EWT " + split, file));
+            }
+        }
+
+        return sets;
+    }
+
+    /// <summary>
+    ///     Reads the <c>read</c> set (the tense probe sentences of the heteronym work) as an external evaluation set.
+    /// </summary>
+    /// <param name="path">The TSV file: a header line, then <c>id</c>, <c>split</c>, <c>label</c>, <c>tokens</c>, <c>idx</c>, <c>family</c> and <c>sentence</c>.</param>
+    /// <returns>The part.</returns>
+    /// <exception cref="InvalidDataException">Thrown when a line is malformed.</exception>
+    public static LeakageSet FromReadSet(string path)
+    {
+        ArgumentNullException.ThrowIfNull(path);
+        var sentences = new List<(string, string)>();
+        foreach (var line in File.ReadLines(path, new UTF8Encoding(false)).Skip(1))
+        {
+            if (line.Length == 0)
+            {
+                continue;
+            }
+
+            var columns = line.TrimEnd('\r').Split('\t');
+            sentences.Add(columns.Length >= 7
+                ? (columns[0], columns[^1])
+                : throw new InvalidDataException($"The read set '{Path.GetFileName(path)}' has a line with fewer than seven columns."));
+        }
+
+        return new LeakageSet("read set", LeakageRole.External, sentences);
+    }
+
+    /// <summary>
+    ///     Lists the sets that no training sentence of a part-of-speech head may overlap: every evaluation part of the
+    ///     repository and every external evaluation set that is given.
+    /// </summary>
+    /// <param name="corpus">The corpus directory.</param>
+    /// <param name="data">The data directory.</param>
+    /// <param name="goldDirectory">The directory of the treebank gold files, or null.</param>
+    /// <param name="readSet">The <c>read</c> set file, or null.</param>
+    /// <returns>The held-out parts.</returns>
+    public static List<LeakageSet> HeldOutSets(string corpus, string data, string? goldDirectory, string? readSet)
+    {
+        var sets = Load(corpus, data).Where(s => s.Role == LeakageRole.Evaluation).ToList();
+        if (goldDirectory is not null)
+        {
+            sets.AddRange(FromGoldDirectory(goldDirectory));
+        }
+
+        if (readSet is not null && File.Exists(readSet))
+        {
+            sets.Add(FromReadSet(readSet));
+        }
+
+        return sets;
+    }
+
+    /// <summary>
+    ///     Finds the training sentences that overlap a held-out part: the same sentence after normalization in any part,
+    ///     or, for an external part (the treebank, the read set), a run of <see cref="GramLength"/> words in common.
+    /// </summary>
+    /// <param name="train">The training sentences with the place of each.</param>
+    /// <param name="heldOut">The held-out parts.</param>
+    /// <returns>One entry per overlap: the part, the place in the training file, the place in the part and the kind (<c>sentence</c> or <c>run of 8 words</c>).</returns>
+    /// <exception cref="ArgumentNullException">Thrown when an argument is null.</exception>
+    public static List<(string Part, string TrainSource, string HeldOutSource, string Kind)> FindTrainingOverlaps(IReadOnlyList<(string Source, string Sentence)> train, IReadOnlyList<LeakageSet> heldOut)
+    {
+        ArgumentNullException.ThrowIfNull(train);
+        ArgumentNullException.ThrowIfNull(heldOut);
+        var found = new List<(string, string, string, string)>();
+        var normalizedTrain = train.Select(t => (t.Source, Text: Corpus.Normalize(t.Sentence))).Where(t => t.Text.Length > 0).ToList();
+        foreach (var part in heldOut)
+        {
+            var sentences = new Dictionary<string, string>(StringComparer.Ordinal);
+            var grams = new Dictionary<ulong, string>();
+            foreach (var (source, sentence) in part.Sentences)
+            {
+                var text = Corpus.Normalize(sentence);
+                if (text.Length == 0)
+                {
+                    continue;
+                }
+
+                sentences.TryAdd(text, source);
+                if (part.Role == LeakageRole.External)
+                {
+                    foreach (var gram in GramsOf(text))
+                    {
+                        grams.TryAdd(gram, source);
+                    }
+                }
+            }
+
+            foreach (var (source, text) in normalizedTrain)
+            {
+                if (sentences.TryGetValue(text, out var same))
+                {
+                    found.Add((part.Name, source, same, "sentence"));
+                }
+                else if (part.Role == LeakageRole.External && GramsOf(text).Select(g => grams.GetValueOrDefault(g)).FirstOrDefault(s => s is not null) is { } shared)
+                {
+                    found.Add((part.Name, source, shared, "run of " + GramLength.ToString(CultureInfo.InvariantCulture) + " words"));
+                }
+            }
+        }
+
+        return found;
+    }
+
+    /// <summary>
     ///     Checks the parts against each other.
     /// </summary>
     /// <param name="sets">The parts, in check order.</param>

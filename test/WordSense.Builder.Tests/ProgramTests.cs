@@ -62,6 +62,64 @@ public sealed class ProgramTests : IDisposable
     }
 
     /// <summary>
+    ///     The usage lists the commands of the part-of-speech head and the comparison of outcomes.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseBuilder_Program_Usage_ListsThePosHeadCommands()
+    {
+        var (code, _, error) = await RunAsync();
+
+        Assert.Equal(1, code);
+        foreach (var command in new[] { "train-pos-head <modelId>", "compare-outcomes" })
+        {
+            Assert.Contains(command, error, StringComparison.Ordinal);
+        }
+    }
+
+    /// <summary>
+    ///     The head command needs a model, rejects an unknown one and a model without an encoder, and rejects a grid of C that is not a list of positive numbers.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_Program_TrainPosHead_RejectsBadModelsAndGrids()
+    {
+        var (missingCode, _, missing) = await RunAsync("train-pos-head", "--repository", _dir.Root);
+        var (unknownCode, _, unknown) = await RunAsync("train-pos-head", "nosuchmodel", "--repository", _dir.Root);
+        var (basicCode, _, basic) = await RunAsync("train-pos-head", "basic", "--repository", _dir.Root);
+        var (gridCode, _, grid) = await RunAsync("train-pos-head", "minilm", "--repository", _dir.Root, "--c-grid", "0.1,abc");
+
+        Assert.Equal(1, missingCode);
+        Assert.Contains("--model is required", missing, StringComparison.Ordinal);
+        Assert.Equal(1, unknownCode);
+        Assert.Contains("Unknown model 'nosuchmodel'", unknown, StringComparison.Ordinal);
+        Assert.Equal(1, basicCode);
+        Assert.Contains("has no encoder", basic, StringComparison.Ordinal);
+        Assert.Equal(1, gridCode);
+        Assert.Contains("--c-grid", grid, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The comparison needs both files and rejects an unknown cluster unit.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_Program_CompareOutcomes_RejectsBadInput()
+    {
+        var file = _dir.Write("o.tsv", OutcomeFile.Render([("basic", new TokenOutcome("set", 0, "d", 0, "w", "Noun", "Noun", true, false))]));
+
+        var (missingCode, _, missing) = await RunAsync("compare-outcomes", "--base", file);
+        var (clusterCode, _, cluster) = await RunAsync("compare-outcomes", "--base", file, "--new", file, "--cluster", "page");
+        var (repsCode, _, reps) = await RunAsync("compare-outcomes", "--base", file, "--new", file, "--reps", "0");
+
+        Assert.Equal(1, missingCode);
+        Assert.Contains("--new is required", missing, StringComparison.Ordinal);
+        Assert.Equal(1, clusterCode);
+        Assert.Contains("'sentence' or 'document'", cluster, StringComparison.Ordinal);
+        Assert.Equal(1, repsCode);
+        Assert.Contains("--reps", reps, StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     An unknown command is named in the error together with the usage.
     /// </summary>
     [Fact]
