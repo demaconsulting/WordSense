@@ -77,7 +77,8 @@ package is
 licensed `MIT AND CC-BY-4.0` and ships a `NOTICE.md` that enumerates what it embeds: Open English WordNet 2025
 (CC BY 4.0) with the Princeton WordNet notice that it requires, the Moby Part-of-Speech List (public domain), the
 inflected forms authored by the project (CC0 1.0), the statistics of the built-in model (CC0 1.0, from our own corpora
-and from no treebank) and the project data (MIT); it also names the tagged tokens of the open corpus (CC0 1.0) that
+and from no treebank) and the project data (MIT); it also names the tagged tokens of the open corpus (CC0 1.0
+annotations) that
 corroborate generated forms at build time. No CC BY-SA material is shipped anywhere. The WordNet 3.0 counts feed the
 usage prior: the core image carries them, and the Basic model uses them to rank the senses of every polysemous lemma and
 part of speech that no model scores (so the MiniLM and BertBaseCased composites rank their untrained lemmas through the

@@ -696,7 +696,8 @@ sections:
           data (the core, MiniLM and BertBaseCased packages MIT AND CC-BY-4.0). The core package embeds Open English
           WordNet 2025 (CC BY 4.0, with the Princeton WordNet notice that it requires), the Moby Part-of-Speech List
           (public domain), the forms authored by the project (CC0 1.0), the statistics of its built-in model (CC0 1.0)
-          and the other project data (MIT), and its notice names the tagged tokens of the open corpus (CC0 1.0) as a
+          and the other project data (MIT), and its notice names the tagged tokens of the open corpus (CC0 1.0
+          annotations) as a
           corroborating source of the generated forms at build time. The core package embeds the WordNet 3.0 counts for
           the usage ranking of the built-in model and the word prior of its tagger, and the MiniLM and BertBaseCased
           packages derive the usage prior of their weights from them; all three packages carry the WordNet 3.0 notice.

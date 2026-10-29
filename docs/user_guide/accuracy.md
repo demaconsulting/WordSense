@@ -25,8 +25,8 @@ apply: the usage prior's tag counts include SemCor, and the all-words developmen
 - **All-words gold set.** 397 test tokens (and 407 development tokens) of untrained polysemous lemmas from the open
   corpus, labeled blind by two language models that saw every sense with its gloss and never a frequency. A token is kept
   when both agree (91.7% agreement). It measures the usage prior, which SemCor cannot. See `corpus/allwords/README.md`.
-- **Reviewed suite.** 364 sentences guard each model against regressions. Language models wrote and labeled 348 of
-  them and a reviewer agent checked them; no human reviewed the labels. They are not an accuracy measure;
+- **Reviewed suite.** 364 sentences guard each model against regressions. Language models wrote and labeled nearly all
+  of them and a reviewer agent checked them; no human reviewed the labels. They are not an accuracy measure;
   see `corpus/suite/README.md`.
 
 ## Reading the Model Table

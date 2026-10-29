@@ -503,7 +503,7 @@ it that do not contain its sentences. This is the project's reading and not lega
   section "Credits and Licenses" gives the owner's position on the content that language models wrote or labeled.
 - **Real sentences**: Tatoeba sentences of the official CC0 export, Project Gutenberg books published 1930 or earlier,
   and works of US federal agencies (VOA Learning English, USGS, NPS, NOAA National Weather Service and FAA; public domain
-  under 17 U.S.C. §105). The open corpus uses no FAA text; its sentences are these public-domain and CC0 sources plus 32
+  under 17 U.S.C. §105). The open corpus uses no FAA text; its sentences are these public-domain and CC0 sources plus
   project-written CC0 sentences, so only its annotations and selection are CC0 as such. The public-domain status holds in
   the United States only. Every sentence has a row in `corpus/provenance/` that names its source. The evidence is in
   `corpus/README.md` ("Sources"). No CC BY, CC BY-SA, Wikipedia or Wiktionary text is used.

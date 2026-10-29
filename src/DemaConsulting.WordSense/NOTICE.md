@@ -21,7 +21,8 @@ the table itself is CC0 1.0:
 - the context cue statistics of the sentence corpus of this repository (`corpus/anchors` and `corpus/choosers`),
   whose sentences are project-authored (CC0 1.0), public domain in the United States, or Tatoeba sentences under CC0 1.0.
 
-Language models wrote or labeled the annotations and sentences of these sources, and no human has reviewed the labels.
+Language models wrote or labeled the annotations of the open corpus and the sentences and labels of `corpus/anchors` and
+`corpus/choosers`, and no human has reviewed the labels.
 The owner's position on the rights in model outputs is in the repository README, section "Credits and Licenses"
 (<https://github.com/demaconsulting/WordSense#credits-and-licenses>).
 

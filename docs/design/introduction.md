@@ -247,7 +247,7 @@ corpus/shapes/                                     — the shape probe set (CC0 
 corpus/open/                                       — the open English part-of-speech corpus (CC0 1.0 annotations):
                                                       the representative part, the targeted part and the tag counts
                                                       (corpus/open/counts) that train the Basic tagger
-corpus/allwords/                                   — the all-words gold set (CC0 1.0): tokens of untrained polysemous
+corpus/allwords/                                   — the all-words gold set (CC0 1.0 labels): tokens of untrained polysemous
                                                       lemmas of the open corpus, labeled blind by two labelers
 ```
 
