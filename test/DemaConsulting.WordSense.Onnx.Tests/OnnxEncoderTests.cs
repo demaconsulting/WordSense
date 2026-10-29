@@ -113,6 +113,188 @@ public class OnnxEncoderTests
     }
 
     /// <summary>
+    ///     For a text that fits one window every word gets exactly the vector that <see cref="OnnxEncoder.EncodeAsync"/>
+    ///     gives it, in one pass.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxEncoder_EncodeAllAsync_ShortText_EqualsSinglePassVectors()
+    {
+        using var encoder = Open();
+        var all = Enumerable.Range(0, Sentence.Length).ToArray();
+        var expected = await encoder.EncodeAsync(Sentence, all, TestContext.Current.CancellationToken);
+        var before = encoder.PassCount;
+
+        var vectors = await encoder.EncodeAllAsync(Sentence, TestContext.Current.CancellationToken);
+
+        Assert.Equal(1, encoder.PassCount - before);
+        Assert.Equal(expected.Length, vectors.Length);
+        for (var i = 0; i < expected.Length; i++)
+        {
+            Assert.Equal(expected[i], vectors[i]);
+        }
+    }
+
+    /// <summary>
+    ///     An empty text gives no vectors and a word without word pieces gives null.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxEncoder_EncodeAllAsync_EmptyOrNoTokens_ReturnsEmptyOrNull()
+    {
+        using var encoder = Open();
+
+        var none = await encoder.EncodeAllAsync([], TestContext.Current.CancellationToken);
+        var noTokens = await encoder.EncodeAllAsync(["record", "\u0001", "the"], TestContext.Current.CancellationToken);
+
+        Assert.Empty(none);
+        Assert.NotNull(noTokens[0]);
+        Assert.Null(noTokens[1]);
+        Assert.NotNull(noTokens[2]);
+    }
+
+    /// <summary>
+    ///     A text longer than the window is encoded in overlapping windows, one pass per window and not one per word.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxEncoder_EncodeAllAsync_LongText_UsesOnePassPerWindow()
+    {
+        // Arrange: 60 one-piece words, a window of 14 word pieces that advances by 7
+        using var encoder = Open(maxSequenceLength: 16);
+        var words = Enumerable.Range(0, 60).Select(i => i % 2 == 0 ? "record" : "the").ToArray();
+        var before = encoder.PassCount;
+
+        // Act
+        var vectors = await encoder.EncodeAllAsync(words, TestContext.Current.CancellationToken);
+
+        // Assert: windows start at 0, 7, ..., 42 and at the last possible start 46
+        Assert.Equal(8, encoder.PassCount - before);
+        Assert.Equal(60, vectors.Length);
+        Assert.All(vectors, v => Assert.Equal(384, v!.Length));
+    }
+
+    /// <summary>
+    ///     The vectors of a long text stay close to those of a single pass over the whole text, also for the words
+    ///     next to the borders of the windows, and the first and last word keep the text edge as context.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxEncoder_EncodeAllAsync_LongText_StaysCloseToSinglePassAtWindowBorders()
+    {
+        // Arrange: about 50 words, so a window of 20 word pieces (stride 9) needs several windows
+        string[] words =
+        [
+            "The", "engineer", "opened", "the", "old", "service", "manual", "and", "read", "the", "chapter", "on", "brake", "repairs", ".",
+            "Then", "she", "wrote", "down", "the", "steps", "for", "the", "technician", "who", "would", "replace", "the", "worn", "pads", ".",
+            "After", "the", "test", "drive", "they", "recorded", "the", "results", "in", "a", "report", "and", "sent", "it", "to", "the", "customer", "today", ".",
+        ];
+        using var windowed = Open(maxSequenceLength: 20);
+        var all = Enumerable.Range(0, words.Length).ToArray();
+        var centered = await windowed.EncodeAsync(words, all, TestContext.Current.CancellationToken);
+
+        // Act
+        var parts = await windowed.EncodeAllAsync(words, TestContext.Current.CancellationToken);
+
+        // Assert: the windowed vectors are in the neighborhood of the vectors that a window centered on the word gives
+        // (the shift of a word inside its window is at most a quarter of the window). MiniLM vectors of punctuation and
+        // of the first word of a clause move a lot with a few tokens of context, so the bound is on the mean and a floor
+        Assert.True(windowed.PassCount > words.Length);
+        var similarities = centered.Zip(parts, (a, b) => Cosine(a!, b!)).ToArray();
+        Assert.True(similarities.Average() > 0.85, $"The mean cosine is {similarities.Average():0.000}.");
+        Assert.All(similarities, s => Assert.True(s > 0.5, $"A windowed vector is not close to its centered vector (cosine {s:0.000})."));
+
+        // The first and the last word are pooled from windows that include the text edge, so they are as close as the others
+        Assert.True(similarities[0] > 0.9);
+        Assert.True(similarities[^1] > 0.9);
+    }
+
+    /// <summary>
+    ///     Every word of a long text is pooled from the window that gives it the most context on its closer side: its
+    ///     vector equals, bit for bit, the vector of that window encoded on its own.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxEncoder_EncodeAllAsync_LongText_PoolsEachWordFromItsMostCentralWindow()
+    {
+        // Arrange: 60 one-piece words, windows of 14 pieces starting at 0, 7, ..., 42 and 46
+        using var encoder = Open(maxSequenceLength: 16);
+        var words = Enumerable.Range(0, 60).Select(i => (i * 7 % 5) switch { 0 => "record", 1 => "the", 2 => "of", 3 => "and", _ => "in" }).ToArray();
+        int[] starts = [0, 7, 14, 21, 28, 35, 42, 46];
+
+        // Act
+        var vectors = await encoder.EncodeAllAsync(words, TestContext.Current.CancellationToken);
+
+        // Assert: independent expectation of the window of every word, then the vector of that window alone
+        for (var w = 0; w < words.Length; w++)
+        {
+            var start = starts
+                .Select((s, i) => (Start: s, Index: i, Margin: Math.Min(s == 0 ? int.MaxValue : w - s, s + 14 >= 60 ? int.MaxValue : s + 14 - (w + 1))))
+                .OrderByDescending(c => c.Margin)
+                .ThenBy(c => c.Index)
+                .First().Start;
+            var window = words[start..(start + 14)];
+            var alone = await encoder.EncodeAsync(window, [w - start], TestContext.Current.CancellationToken);
+            Assert.Equal(alone[0], vectors[w]);
+        }
+    }
+
+    /// <summary>
+    ///     The possessive view splits a possessive into a stem and a marker, each with a vector of its own, and the
+    ///     vector of the stem differs from the vector of the joined token.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxEncoder_EncodeAllAsync_PossessiveView_PoolsStemAndMarkerApart()
+    {
+        // Arrange
+        using var encoder = Open();
+        string[] words = ["The", "technician's", "tool", "broke", "."];
+
+        // Act
+        var view = await encoder.EncodeAllAsync(words, PossessiveView.IsLexiconPossessive, TestContext.Current.CancellationToken);
+        var split = await encoder.EncodeAllAsync(["The", "technician", "'s", "tool", "broke", "."], TestContext.Current.CancellationToken);
+        var joined = await encoder.EncodeAllAsync(words, TestContext.Current.CancellationToken);
+
+        // Assert: the view is the split text, the stem is a word of its own, and joining changes the pooled vector
+        Assert.Equal(["The", "technician", "'s", "tool", "broke", "."], view.Tokens);
+        Assert.Equal([0, 1, 3, 4, 5], view.Start);
+        Assert.Equal(split.Length, view.Vectors.Length);
+        for (var i = 0; i < split.Length; i++)
+        {
+            Assert.Equal(split[i], view.Vectors[i]);
+        }
+
+        Assert.True(Distance(view.Vectors[view.Start[1]]!, joined[1]!) > 1e-3);
+    }
+
+    /// <summary>
+    ///     Bad arguments, a cancelled call and use after disposal are rejected by the windowed encode.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxEncoder_EncodeAllAsync_InvalidUse_Throws()
+    {
+        using var encoder = Open();
+        using var cancelled = new CancellationTokenSource();
+        await cancelled.CancelAsync();
+
+        await Assert.ThrowsAsync<ArgumentNullException>(async () => await encoder.EncodeAllAsync(null!, TestContext.Current.CancellationToken));
+        await Assert.ThrowsAsync<ArgumentNullException>(async () => await encoder.EncodeAllAsync([null!], TestContext.Current.CancellationToken));
+        await Assert.ThrowsAsync<ArgumentNullException>(async () => await encoder.EncodeAllAsync(Sentence, null!, TestContext.Current.CancellationToken));
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(async () => await encoder.EncodeAllAsync(Sentence, cancelled.Token));
+
+        encoder.Dispose();
+        await Assert.ThrowsAsync<ObjectDisposedException>(async () => await encoder.EncodeAllAsync(Sentence, TestContext.Current.CancellationToken));
+    }
+
+    private static double Cosine(double[] a, double[] b)
+    {
+        var dot = a.Zip(b, (x, y) => x * y).Sum();
+        return dot / (Math.Sqrt(a.Sum(x => x * x)) * Math.Sqrt(b.Sum(y => y * y)));
+    }
+
+    /// <summary>
     ///     Bad arguments, a cancelled call and use after disposal are rejected.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>

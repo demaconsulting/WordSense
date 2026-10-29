@@ -10,7 +10,8 @@ namespace DemaConsulting.WordSense.Onnx;
 /// <remarks>
 ///     The instance owns one inference session, which ONNX Runtime documents as safe for concurrent <c>Run</c> calls, so
 ///     <see cref="EncodeAsync"/> may be called from many threads at once. A text longer than the maximum sequence length
-///     is encoded per target from a window centered on the target. Dispose the encoder once, after every call has
+///     is encoded per target from a window centered on the target by <see cref="EncodeAsync"/>, and in sliding windows,
+///     one pass per window, by <see cref="EncodeAllAsync(IReadOnlyList{string}, CancellationToken)"/>. Dispose the encoder once, after every call has
 ///     finished; calls made after disposal throw <see cref="ObjectDisposedException"/>.
 /// </remarks>
 internal sealed class OnnxEncoder : IDisposable
@@ -20,6 +21,7 @@ internal sealed class OnnxEncoder : IDisposable
     private readonly string _outputName;
     private readonly int _maxLength;
     private int _disposed;
+    private long _passes;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="OnnxEncoder"/> class.
@@ -129,6 +131,153 @@ internal sealed class OnnxEncoder : IDisposable
     }
 
     /// <summary>
+    ///     Encodes every word of a text, in sliding windows when the text does not fit one window, and pools each word
+    ///     from the window in which it is most central.
+    /// </summary>
+    /// <remarks>
+    ///     A text that fits one window is encoded once and the result equals <see cref="EncodeAsync"/> for every word. A
+    ///     longer text is cut into windows of the maximum length that start half a window apart (so about
+    ///     <c>n / (window / 2)</c> passes for <c>n</c> word pieces, not one pass per word). A word is pooled from the
+    ///     window that gives it the most context on its closer side; at the start and the end of the text the text edge
+    ///     counts as unlimited context, like the sentence edge of a single window. A word that is longer than a window is
+    ///     pooled from the part of it that the window keeps.
+    /// </remarks>
+    /// <param name="words">The words of the text.</param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <returns>One mean-pooled vector per word, or null for a word without tokens.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when the list or a word is null.</exception>
+    /// <exception cref="ObjectDisposedException">Thrown when the encoder has been disposed.</exception>
+    public ValueTask<double[]?[]> EncodeAllAsync(IReadOnlyList<string> words, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(words);
+        ObjectDisposedException.ThrowIf(Volatile.Read(ref _disposed) != 0, this);
+        cancellationToken.ThrowIfCancellationRequested();
+        var result = new double[]?[words.Count];
+        if (words.Count == 0)
+        {
+            return ValueTask.FromResult(result);
+        }
+
+        var tokens = _tokenizer.TokenizeWords(words);
+        var capacity = _maxLength - 2;
+        if (tokens.Count <= capacity)
+        {
+            // One window: the same pass and the same pooling as EncodeAsync
+            var whole = Run(tokens.BuildWindow(_tokenizer.ClsId, _tokenizer.SepId, _maxLength, 0, 0).InputIds);
+            for (var w = 0; w < words.Count; w++)
+            {
+                result[w] = tokens.WordEnd[w] > tokens.WordFirst[w] ? Pool(whole, tokens.WordFirst[w] + 1, tokens.WordEnd[w] + 1) : null;
+            }
+
+            return ValueTask.FromResult(result);
+        }
+
+        // Several windows: assign every word to its best window, then encode each window once and pool its words
+        var starts = WindowStarts(tokens.Count, capacity);
+        var assigned = new List<int>[starts.Length];
+        for (var w = 0; w < words.Count; w++)
+        {
+            if (tokens.WordEnd[w] > tokens.WordFirst[w])
+            {
+                (assigned[BestWindow(starts, capacity, tokens.Count, tokens.WordFirst[w], tokens.WordEnd[w])] ??= []).Add(w);
+            }
+        }
+
+        for (var i = 0; i < starts.Length; i++)
+        {
+            if (assigned[i] is not { } members)
+            {
+                continue;
+            }
+
+            cancellationToken.ThrowIfCancellationRequested();
+            var ids = new int[capacity + 2];
+            ids[0] = _tokenizer.ClsId;
+            Array.Copy(tokens.Ids, starts[i], ids, 1, capacity);
+            ids[capacity + 1] = _tokenizer.SepId;
+            var hidden = Run(ids);
+            foreach (var w in members)
+            {
+                var first = Math.Max(tokens.WordFirst[w] - starts[i], 0) + 1;
+                var end = Math.Min(tokens.WordEnd[w] - starts[i], capacity) + 1;
+                result[w] = Pool(hidden, first, end);
+            }
+        }
+
+        return ValueTask.FromResult(result);
+    }
+
+    /// <summary>
+    ///     Encodes every word of a text in its possessive view (see <see cref="PossessiveView"/>).
+    /// </summary>
+    /// <param name="words">The words of the text.</param>
+    /// <param name="isPossessive">Tells whether a word is a possessive written as one token; it is split into its stem and its marker.</param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <returns>The tokens of the view, the first token of every word and the pooled vector of every token.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when an argument or a word is null.</exception>
+    /// <exception cref="ObjectDisposedException">Thrown when the encoder has been disposed.</exception>
+    public async ValueTask<WordVectors> EncodeAllAsync(IReadOnlyList<string> words, Func<string, bool> isPossessive, CancellationToken cancellationToken)
+    {
+        var (tokens, start) = PossessiveView.Expand(words, isPossessive);
+        var vectors = await EncodeAllAsync(tokens, cancellationToken).ConfigureAwait(false);
+        return new WordVectors(tokens, start, vectors);
+    }
+
+    /// <summary>
+    ///     Gets the number of encoder passes made so far.
+    /// </summary>
+    internal long PassCount => Interlocked.Read(ref _passes);
+
+    /// <summary>
+    ///     Lists the start tokens of the windows that cover a text longer than one window: windows start half a window
+    ///     apart, and the last one ends at the end of the text.
+    /// </summary>
+    /// <param name="count">The number of tokens of the text; more than <paramref name="capacity"/>.</param>
+    /// <param name="capacity">The number of text tokens in a window.</param>
+    /// <returns>The start tokens in increasing order.</returns>
+    private static int[] WindowStarts(int count, int capacity)
+    {
+        var stride = Math.Max(1, capacity / 2);
+        var starts = new List<int>();
+        for (var s = 0; s + capacity < count; s += stride)
+        {
+            starts.Add(s);
+        }
+
+        starts.Add(count - capacity);
+        return [.. starts];
+    }
+
+    /// <summary>
+    ///     Chooses the window that gives a word the most context on its closer side.
+    /// </summary>
+    /// <param name="starts">The start tokens of the windows.</param>
+    /// <param name="capacity">The number of text tokens in a window.</param>
+    /// <param name="count">The number of tokens of the text.</param>
+    /// <param name="first">The first token of the word.</param>
+    /// <param name="end">The exclusive end token of the word.</param>
+    /// <returns>The index of the window; the earliest one on a tie.</returns>
+    private static int BestWindow(int[] starts, int capacity, int count, int first, int end)
+    {
+        var best = 0;
+        var bestMargin = int.MinValue;
+        for (var i = 0; i < starts.Length; i++)
+        {
+            // Tokens of context before and after the word inside the window; a text edge is unlimited context
+            var before = starts[i] == 0 ? int.MaxValue : first - starts[i];
+            var after = starts[i] + capacity >= count ? int.MaxValue : starts[i] + capacity - end;
+            var margin = Math.Min(before, after);
+            if (margin > bestMargin)
+            {
+                best = i;
+                bestMargin = margin;
+            }
+        }
+
+        return best;
+    }
+
+    /// <summary>
     ///     Releases the ONNX inference session. Calling it more than once is harmless.
     /// </summary>
     public void Dispose()
@@ -182,6 +331,7 @@ internal sealed class OnnxEncoder : IDisposable
     private float[] Run(int[] inputIds)
     {
         // Build the three int64 inputs of a BERT-style model for a single unpadded sequence
+        Interlocked.Increment(ref _passes);
         var length = inputIds.Length;
         var ids = new DenseTensor<long>([1, length]);
         var mask = new DenseTensor<long>([1, length]);
