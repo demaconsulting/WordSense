@@ -29,6 +29,24 @@ are computed from two project-authored sources, one WordNet 3.0 source and the s
   they are a work that incorporates Open English WordNet identifiers and are shared under CC BY 4.0 together with the
   MIT license of the code, see the section below.
 
+## The embedded part-of-speech head
+
+The package also embeds `head.bin`, a linear classifier for the part of speech that reads the vectors of the encoder
+below for a word and its previous and next word. The file holds numeric weights and biases, the identity of the encoder
+file it was trained on, the order of the part-of-speech classes and the digest of its training file. It holds no text.
+
+- It is trained only on the training split of the open part-of-speech corpus of this repository
+  (`corpus/open/representative`), and its settings were chosen on the development split of that corpus. The annotations
+  and the selection of the corpus are released under CC0 1.0 (`corpus/open/LICENSE`), and its sentences are public
+  domain in the United States or CC0 (`corpus/open/sources.tsv`). The English EWT treebank (CC BY-SA 4.0) and every
+  other evaluation set are never used to train it or to choose its settings.
+- The tags of the corpus were produced by language models (gpt-6.1-sol for every token, and gemma4:26b as a second
+  annotator for part of the corpus; no tag was edited by hand), see `corpus/open/README.md`. The license position that
+  covers them is stated in the section Credits and Licenses of the
+  [README](https://github.com/demaconsulting/WordSense#credits-and-licenses).
+- The head is computed from the outputs of the encoder below and is not an Apache-licensed file. The Apache License 2.0
+  attribution of the encoder files below is unchanged.
+
 ## The encoder model files are not in this package
 
 The package does not contain the encoder model. The files `model_int8.onnx` and `vocab.txt` are downloaded at first use

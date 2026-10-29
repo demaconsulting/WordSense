@@ -267,6 +267,21 @@ public sealed class PosHeadTrainerTests : IDisposable
     }
 
     /// <summary>
+    ///     The half-precision gate accepts a change of the dev accuracy up to 0.02 points and stops the run beyond it.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_PosHeadTrainer_CheckHalfPrecision_StopsBeyondTheGate()
+    {
+        PosHeadTrainer.CheckHalfPrecision(96.99, 96.99);
+        PosHeadTrainer.CheckHalfPrecision(96.99, 96.97);
+        PosHeadTrainer.CheckHalfPrecision(96.97, 96.99);
+
+        var error = Assert.Throws<InvalidDataException>(() => PosHeadTrainer.CheckHalfPrecision(96.99, 96.90));
+        Assert.Throws<InvalidDataException>(() => PosHeadTrainer.CheckHalfPrecision(96.0, 96.5));
+        Assert.Contains("0.090 points", error.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     The lexicon mask of a word lists its parts of speech, and is zero for an unknown word and for punctuation.
     /// </summary>
     [Fact]

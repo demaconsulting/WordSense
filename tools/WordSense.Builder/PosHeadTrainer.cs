@@ -199,12 +199,8 @@ internal static class PosHeadTrainer
         var rounded = MakeHead(encoder, onnx, trainSha, bestC, PosHeadBlobWriter.Round(selected.Weights), selected.Biases);
         var roundedScore = Score(rounded, devVectors, devTable, masks);
         var changed = roundedScore.Predicted.Where((p, i) => p != bestScore.Predicted[i]).Count();
-        var difference = Math.Abs(roundedScore.Accuracy - bestScore.Accuracy);
         report.Append(CultureInfo.InvariantCulture, $"Half precision: dev accuracy {roundedScore.Accuracy:0.00}% against {bestScore.Accuracy:0.00}% with 32-bit weights ({changed} predictions differ); the gate is {HalfPrecisionTolerance:0.00} points.\n");
-        if (difference > HalfPrecisionTolerance)
-        {
-            throw new InvalidDataException($"The half-precision head changes the dev accuracy by {difference:0.000} points, more than {HalfPrecisionTolerance:0.00}.");
-        }
+        CheckHalfPrecision(bestScore.Accuracy, roundedScore.Accuracy);
 
         // The file must read back as the rounded head and predict the same
         var blob = PosHeadBlobWriter.Write(rounded.Data);
@@ -222,6 +218,21 @@ internal static class PosHeadTrainer
         }
 
         return new PosHeadOutcome(blob, new PosHead(PosHeadBlob.Read(blob)), bestC, report.ToString());
+    }
+
+    /// <summary>
+    ///     Checks that rounding the weights to half precision leaves the restricted dev accuracy within the gate.
+    /// </summary>
+    /// <param name="fullAccuracy">The restricted dev accuracy with 32-bit weights, in percent.</param>
+    /// <param name="halfAccuracy">The restricted dev accuracy with half-precision weights, in percent.</param>
+    /// <exception cref="InvalidDataException">Thrown when the accuracies differ by more than <see cref="HalfPrecisionTolerance"/> points.</exception>
+    public static void CheckHalfPrecision(double fullAccuracy, double halfAccuracy)
+    {
+        var difference = Math.Abs(halfAccuracy - fullAccuracy);
+        if (difference > HalfPrecisionTolerance)
+        {
+            throw new InvalidDataException(string.Create(CultureInfo.InvariantCulture, $"The half-precision head changes the dev accuracy by {difference:0.000} points, more than {HalfPrecisionTolerance:0.00}."));
+        }
     }
 
     /// <summary>
