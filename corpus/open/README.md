@@ -9,7 +9,8 @@ The numbers in this README describe the representative part unless stated otherw
 
 **Current state.** The primary annotation (gpt-6.1-sol) is complete for every token. The independent second-annotator cross-check (gemma4:26b) covers 10,449 of the 14,980 sentences; the tokens of the other 4,531 sentences have consensus status **`unchecked`** (36.25% of tokens), the tokens of the checked sentences `unanimous` or `disputed`. The accuracy figures of `quality.md` for gpt-6.1-sol alone on the UD-EWT dev sample apply to every token regardless of status. The raw outputs of the annotators are not kept in the repository (section 7).
 
-**License (final, owner decision of 2026-10-20): our annotations and our selection are released under CC0 1.0** (`LICENSE` is the CC0 1.0 legal code). The underlying sentences are public domain in the United States or CC0 per source (section 3); we make no claim on them.
+**License (final, owner decision of 2026-10-20): our annotations and our selection are released under CC0 1.0** (`LICENSE` is the CC0 1.0 legal code). The underlying sentences are public domain in the United States or CC0 per source (section 3); we make no claim on them, and the corpus as a whole is not CC0.
+The annotations are written by language models and are not human-reviewed (section 12); the owner's position on the rights in model outputs is in the [README](../../README.md#credits-and-licenses).
 Nothing here is legal advice.
 
 ## 1a. The two parts and their rules
@@ -177,7 +178,7 @@ Tokens: train 209,224, dev 26,232, test 26,185 (80.0% / 9.9% / 10.0% of sentence
 Consensus status (tokens): unanimous 157,579 (60.23%), disputed 9,223 (3.53%), **unchecked 94,839 (36.25%)**. Unchecked tokens by family: Gutenberg 76,299 (all), USGS 18,527, VOA 13. Disputed share of the *checked* tokens: 5.53% (conversational 4.83%, news 5.36%, NWS 5.41%, NPS 6.19%, USGS 6.79%).
 By split: train unanimous 127,202 / disputed 7,449 / unchecked 74,573; dev 14,887 / 867 / 10,478; test 15,490 / 907 / 9,788. **All literary text is unchecked**, so literary and USGS tokens have no cross-check.
 
-**Accuracy** (measured on 300 sentences of UD-EWT dev, evaluation only; details in `quality.md`): gpt-6.1-sol alone scores **95.05% UPOS and 96.02% collapsed tag** after mapping the reference to the WordSense lexicon conventions (90.63% and 91.60% raw); lemma accuracy 98.36%. On the 10,449 cross-checked sentences the two annotators agree on 94.47% of the UPOS tags (kappa 0.938).
+**Accuracy** (measured on 300 sentences of UD-EWT dev, evaluation only; details in `quality.md`): gpt-6.1-sol alone scores **95.05% UPOS and 96.02% collapsed tag** after mapping the reference to the WordSense lexicon conventions (the raw figures against unmapped UD are in `quality.md`); lemma accuracy 98.36%. On the 10,449 cross-checked sentences the two annotators agree on 94.47% of the UPOS tags (kappa 0.938).
 
 ## 9. File format
 
@@ -273,7 +274,7 @@ Re-running harvest later may fetch changed pages; compare the hashes in `sources
 - **Cross-check partial**: 36.25% of tokens (all literary text and 800 USGS sentences) are `unchecked`; the `disputed` flag is the only quality signal we have and it is missing there. Treat the corpus as single-annotator for those tokens.
 - **Genre gaps**: no social media, forums, e-mail, reviews, transcribed speech or code-switching; Tatoeba stands in for conversation and is written, often translated, and fairly formal. Literary text is English of 1774 to 1930, with archaic forms. Technical text is limited to weather, water science and park-service prose.
   VOA text is simplified learner English.
-- **LLM annotation error rate**: against the UD-EWT dev sample (another genre mix, other conventions) gpt-6.1-sol scores 90.63% UPOS raw and 95.05% after the convention map; the mapped figure is the better estimate of the error rate against our own conventions (about 5% of UPOS tags, `quality.md`). No human has reviewed the corpus. Lemmas and features have no second opinion.
+- **LLM annotation error rate**: against the UD-EWT dev sample (another genre mix, other conventions) gpt-6.1-sol scores 95.05% UPOS after the convention map (the raw figure against unmapped UD is in `quality.md`); the mapped figure is the better estimate of the error rate against our own conventions (about 5% of UPOS tags). No human has reviewed the corpus. Lemmas and features have no second opinion.
 - **Possible pretraining exposure** of the LLMs to UD and other treebanks cannot be excluded or measured. Check the conventions in `GUIDELINE.md` before mixing this corpus with UD-trained data.
 - **Source artifacts**: Gutenberg text keeps archaic spelling and a few OCR-like splits; some sentences from web pages carry navigation-like phrasing. Gutenberg year entries from Open Library can be approximate (section 3). No manual cleaning was done.
 - **Uneven split shares**: document-level hashing gives uneven shares per family and per status in dev and test.

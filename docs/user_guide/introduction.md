@@ -498,12 +498,15 @@ it that do not contain its sentences. This is the project's reading and not lega
   notice is in `data/PROVENANCE.md` and in the `NOTICE.md` of the three data packages.
 - **Moby Part-of-Speech II** (Grady Ward, <https://www.gutenberg.org/ebooks/3203>): public domain. See
   `corpus/lexicon/PROVENANCE.md`.
-- **Project-authored data**: the inflected forms, written sentences, annotations and the open part-of-speech corpus
-  `corpus/open` are CC0 1.0. The sense labels, groups and project senses are MIT.
-- **Real sentences**: only Tatoeba sentences of the official CC0 export, Project Gutenberg books published 1930 or
-  earlier, and works of US federal agencies (VOA Learning English, USGS, NPS, NOAA National Weather Service and FAA;
-  public domain under 17 U.S.C. §105). Every sentence has a row in `corpus/provenance/` that names its source. The
-  evidence is in `corpus/README.md` ("Sources"). No CC BY, CC BY-SA, Wikipedia or Wiktionary text is used.
+- **Project-authored data**: the inflected forms, written sentences and the annotations and selection of the open
+  part-of-speech corpus `corpus/open` are CC0 1.0. The sense labels, groups and project senses are MIT. The README
+  section "Credits and Licenses" gives the owner's position on the content that language models wrote or labeled.
+- **Real sentences**: Tatoeba sentences of the official CC0 export, Project Gutenberg books published 1930 or earlier,
+  and works of US federal agencies (VOA Learning English, USGS, NPS, NOAA National Weather Service and FAA; public domain
+  under 17 U.S.C. §105). The open corpus uses no FAA text; its sentences are these public-domain and CC0 sources plus 32
+  project-written CC0 sentences, so only its annotations and selection are CC0 as such. The public-domain status holds in
+  the United States only. Every sentence has a row in `corpus/provenance/` that names its source. The evidence is in
+  `corpus/README.md` ("Sources"). No CC BY, CC BY-SA, Wikipedia or Wiktionary text is used.
 - **Evaluation only**: SemCor 3.0 (the WordNet license applies) and the Universal Dependencies English-EWT treebank (CC
   BY-SA 4.0) are downloaded to a cache to measure the models, and never committed, redistributed or trained on.
 - **Models**: `all-MiniLM-L6-v2` and `bert-base-cased` are under the Apache License 2.0, and the int8 ONNX exports are

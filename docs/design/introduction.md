@@ -130,9 +130,10 @@ form layers:
   embedded in it and records where each source comes from: Open English WordNet 2025 under CC BY 4.0 with the
   Princeton WordNet notice that it requires, the WordNet 3.0 sense frequency counts under the WordNet license, the Moby
   Part-of-Speech List (public domain), the inflected forms authored
-  by the project (CC0 1.0) and the project data (MIT), and the tagged tokens of the open part-of-speech corpus (CC0 1.0),
-  which corroborate generated forms at build time and are not embedded. The statistics of the built-in model come from
-  our own CC0 corpora (the open part-of-speech corpus and the sentence corpus) and from no treebank. The WordNet 3.0 counts
+  by the project (CC0 1.0) and the project data (MIT), and the tagged tokens of the open part-of-speech corpus (CC0 1.0
+  annotations), which corroborate generated forms at build time and are not embedded. The statistics of the built-in
+  model come from our own corpora (the CC0 annotations of the open part-of-speech corpus and the sentence corpus) and
+  from no treebank. The WordNet 3.0 counts
   are used for the usage prior of the encoder models' training, for the usage ranking of the Basic model and, summed over
   the lemmas of a spelling, for the word prior of its part-of-speech tagger.
 - The **Onnx** package implements the contracts for any BERT-style encoder: model file management, encoder,

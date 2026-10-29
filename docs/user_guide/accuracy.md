@@ -14,7 +14,8 @@ apply: the usage prior's tag counts include SemCor, and the all-words developmen
   not the share of each sense in running text. The table gives the share answered at the sense level and the precision
   of those answers. The *fine top-1* is the share of sentences whose most probable sense is right.
 - **Running-text part of speech.** The test split of the representative open corpus (1,501 sentences, 21,482 scored
-  tokens of random CC0 text), the English EWT treebank test file mapped to the conventions of the dictionary (19,468
+  tokens of random public-domain and CC0 text), the English EWT treebank test file mapped to the conventions of the
+  dictionary (19,468
   scored tokens; downloaded for evaluation only) and the 32-sentence simplified-technical-English (STE) challenge set,
   which is small and chosen for hard cases, so read it as a regression check. "Ambiguous" counts the tokens whose word
   has two or more parts of speech in the dictionary (12,808 of the open corpus tokens).
@@ -49,7 +50,8 @@ has seen the answers (see "Caveats"). The levels of the encoder answers on the r
 ## Part of Speech
 
 Basic is a second-order hidden Markov model over thirteen tags, fused with naive Bayes context cues for lemmas with at
-least two senses. Its statistics come from the open part-of-speech corpus of this project (CC0), not from a treebank. The
+least two senses. Its statistics come from the open part-of-speech corpus of this project (CC0 annotations), not from a
+treebank. The
 encoder models use its part of speech for the words they do not decide. Test figures as all tokens (ambiguous tokens;
 noun-verb tokens):
 

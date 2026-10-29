@@ -47,7 +47,7 @@ The package ships a `NOTICE.md` (packed by the project file, as the core package
 sense usage prior derived from the WordNet 3.0 sense counts (the builder adds it to the stored biases), so the notice
 reproduces the Princeton WordNet 3.0 license, gives the Open English WordNet 2025 (CC BY 4.0) attribution for the sense
 ids that the weights hold (the package license expression is `MIT AND CC-BY-4.0`), states that the weights are
-statistical summaries of the CC0 corpora of
+statistical summaries of the project corpora (CC0 rows and annotations over public-domain and CC0 sentences) of
 this project, and records that the encoder model files are not in the package: they are downloaded from this repository
 (`model/bert-base-cased-int8/`, Apache License 2.0, with the license text in that folder) and are the int8 ONNX export
 of `bert-base-cased` cut at the last encoder layer.

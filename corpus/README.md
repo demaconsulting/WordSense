@@ -12,8 +12,12 @@ English WordNet (OEWN) sense with a readable id such as `back#spine`.
 written by the project (including the ones written by language models for the project) are dedicated to the public
 domain under CC0 1.0 by the project owner. The real sentences come only from text that is public domain in the United
 States (Project Gutenberg books published 1930 or earlier; works of US federal employees under 17 U.S.C. §105) or
-released under CC0 1.0 (the Tatoeba CC0 export). Our annotations and selection are CC0 1.0 too. No Wikipedia, Wiktionary
+released under CC0 1.0 (the Tatoeba CC0 export). Our annotations and selection are CC0 1.0 too; that does not make the
+public-domain sentences CC0, and their status holds in the United States only. No Wikipedia, Wiktionary
 or Universal Dependencies (UD) text, and no CC BY or CC BY-SA text, is a training input.
+
+The labels written or checked by language models are not human-reviewed. The owner's position on the rights in model
+outputs is in the [README](../README.md#credits-and-licenses) ("Credits and Licenses").
 
 The gate is the **source** of each sentence. Every provenance row names its source, the allowed sources are listed in one
 place (`tools/WordSense.Builder/ProvenanceSources.cs`) and documented with their evidence in "Sources" below, and the
@@ -32,9 +36,9 @@ evaluate**, from a git-ignored download, and is never committed or shipped.
 | `coverage/` | `*.tsv`, `README.md` | The quota report of every sense (anchors and held-out sentences against the tiers) and the shape coverage of the noun/verb lemmas (`shape-coverage.tsv`) |
 | `curation/` | `*.tsv`, `README.md` | The reviewed senses and groups (the input of `seed-inventory`) and the shape-fit table `shape-fit.tsv` (the sentence shapes in which a noun or verb sense is used naturally) |
 | `lexicon/` | `*.tsv` | The dictionary word list, the auxiliaries and the form rules (inputs of `compile-image`) |
-| `open/` | see `open/README.md` | The open English part-of-speech corpus (CC0 annotations over public-domain text): `representative/` (random; the only input of usage statistics and the headline real-text evaluation) and `targeted/` (a challenge set) |
+| `open/` | see `open/README.md` | The open English part-of-speech corpus (CC0 annotations and selection over public-domain and CC0 sentences): `representative/` (random; the only input of usage statistics and the headline real-text evaluation) and `targeted/` (a challenge set) |
 | `suite/` | `*.tsv`, `README.md` | The reviewed suite of 364 sentences about common ambiguous words and same-spelling verbs: a regression test with the expectation of each model and the floors of the challenge set. CC0 1.0, evaluation only |
-| `allwords/` | `dev.tsv`, `test.tsv`, `README.md` | The all-words gold set: 804 tokens of untrained polysemous lemmas from the development and test splits of `open/representative`, labeled blind by two independent labelers (the independent measurement of the usage prior, which SemCor cannot make). CC0 1.0, evaluation only |
+| `allwords/` | `dev.tsv`, `test.tsv`, `README.md` | The all-words gold set: 804 tokens of untrained polysemous lemmas from the development and test splits of `open/representative`, labeled blind by two independent labelers (the independent measurement of the usage prior, which SemCor cannot make). Selection and labels CC0 1.0, sentences public domain in the United States or CC0, evaluation only |
 | `shapes/` | `probe.tsv`, `README.md` | The shape probe set: held-out noun and verb sentences in seven common sentence shapes, one gold part of speech each (`WordSense.Builder evaluate-shapes`). Never trained on. CC0 1.0, evaluation only |
 
 Every file is UTF-8 without a byte-order mark, with LF line endings.

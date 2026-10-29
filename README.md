@@ -140,10 +140,17 @@ contains CC BY-SA material, and the corpus is not shipped.
 
 The word data derives from **Open English WordNet 2025** (CC BY 4.0), which carries the Princeton WordNet notice. The
 sense frequency counts come from **WordNet 3.0** (Princeton University) under the WordNet license. The dictionary derives
-from the public-domain **Moby Part-of-Speech List**. The inflected forms, annotations and open corpus are CC0 1.0, and
-the real sentences are CC0 or public domain. **SemCor 3.0** and the UD English-EWT treebank (CC BY-SA 4.0) are
+from the public-domain **Moby Part-of-Speech List**. The inflected forms and the annotations and selection of the open
+corpus are CC0 1.0. The open corpus sentences are not: they are public domain in the United States (Project Gutenberg
+books published 1930 or earlier; VOA, NOAA/NWS, USGS and NPS text, third-party material excluded), come from the Tatoeba
+CC0 export, or are 32 project-written CC0 sentences. **SemCor 3.0** and the UD English-EWT treebank (CC BY-SA 4.0) are
 evaluation sources only: never committed, redistributed or trained on. The encoder models are Apache License 2.0. The
 [user guide][link-user-guide] has the full list with notices.
+
+Language models wrote or labeled the corpus anchors, the open-corpus tags, the all-words gold, the suite labels and the
+shape rows, and no human has reviewed the labels. GitHub claims no ownership of model outputs. The repository owner, who
+prompted their creation, holds the rights in them and dedicates them to the public domain under CC0 1.0. That is the
+owner's position, not legal advice or a warranty.
 
 ## Contributing
 

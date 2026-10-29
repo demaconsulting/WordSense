@@ -13,11 +13,13 @@ ids of its senses (`lemma#label`, the readable labels are project-authored) and 
 are computed from two project-authored sources, one WordNet 3.0 source and the sense ids of Open English WordNet:
 
 - the sentence corpus of this repository (`corpus/anchors`, `corpus/choosers` and the real-text sentences of
-  `corpus/realtext` used to calibrate the thresholds), released under CC0 1.0 (public domain dedication,
-  <https://creativecommons.org/publicdomain/zero/1.0/>): the sentences are project-authored (CC0 1.0), public domain in
-  the United States (Project Gutenberg books published 1930 or earlier, and works of US federal agencies) or Tatoeba
-  sentences of the CC0 export. The sentences themselves are not part of the package; the weights are statistical
-  summaries of them.
+  `corpus/realtext` used to calibrate the thresholds). The rows and labels that the project wrote are released under CC0
+  1.0 (public domain dedication, <https://creativecommons.org/publicdomain/zero/1.0/>); the corpus as a whole is not
+  CC0, because its real sentences are public domain in the United States (Project Gutenberg books published 1930 or
+  earlier, and works of US federal agencies) or Tatoeba sentences of the CC0 export. The sentences themselves are not
+  part of the package; the weights are statistical summaries of them. Language models wrote or labeled the project rows,
+  and no human has reviewed the labels. The owner's position on the rights in model outputs is in the repository README,
+  section "Credits and Licenses" (<https://github.com/demaconsulting/WordSense#credits-and-licenses>).
 - the sense frequency counts of WordNet 3.0 (the sense index file `index.sense`, <https://wordnet.princeton.edu>), which
   the training uses as a sense usage prior: the tempered logarithm of the usage share of each sense (its tag count) is
   added to the stored bias of the sense. The weights are therefore a modification of data derived from WordNet 3.0, and
