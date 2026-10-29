@@ -125,6 +125,9 @@ implementation of the feature computation.
 - `SuiteFile`, `SuiteRow`, `SuiteData`, `SuiteGrade`, `SuiteEvaluator`: read the reviewed suite rows and the expectation
   of each model for each row, grade an answer, and report the pass rates (the first four are compiled into the test
   projects of the models).
+- `ShapeProbeFile`, `ShapeProbeRow`, `ShapeAnswer`, `ShapeProbeEvaluator`: read the held-out shape probe set
+  (`corpus/shapes/probe.tsv`), classify its sentences with a model, judge an answer, and report the noun/verb accuracy
+  per shape and model and the harmful rate.
 - `LeakageCheck`, `LeakageSet`, `LeakageReport`: the check that the parts of the corpus share no sentence.
 - `AllWordsGold`, `AllWordsItem`, `AllWordsSample`, `AllWordsEvaluator`: the all-words gold set of untrained polysemous
   lemmas (`corpus/allwords`) and its evaluation: the reader and writer of the gold files, the draw of the tokens from the
@@ -223,6 +226,9 @@ instead of `--model`.
   treebank test file and the challenge set, and the tense of the same-spelling verbs (`--report` restricts the output).
 - `evaluate-suite [--output FILE] [--write-expectations FILE] [--overwrite true]`: runs the reviewed suite against the
   three models and reports the pass rates and the regressions against the expectation file.
+- `evaluate-shapes [--model all|NAME] [--output FILE] [--outcomes FILE]`: measures the noun/verb decision of the models
+  on the shape probe set and reports the accuracy per shape and model and the harmful rate; `--outcomes` writes the
+  answer of every model for every row. It fails when `corpus/shapes/probe.tsv` does not exist.
 - `check-leakage [--data DIR] [--gold FILE] [--cache DIR] [--output FILE]`: checks that no sentence is shared by a
   training part and an evaluation part, by two evaluation parts, or by the corpus and an example of Open English
   WordNet; it exits with 1 when one is.
@@ -291,7 +297,8 @@ Every row of the anchors and the holdout sentences must have four fields, a sens
 lemma of that sense, and the part of speech of that sense. The leakage check (`LeakageCheck`, the `check-leakage`
 command) compares the normalized sentences (`Corpus.Normalize`: case, spacing and punctuation do not make a sentence
 new) of every part of the corpus: the anchors, the chooser anchors and the training split of the open corpus
-(training); the holdout, chooser holdout and real-text sentences, the reviewed suite, the development and test splits
+(training); the holdout, chooser holdout and real-text sentences, the reviewed suite, the shape probe set (words
+joined by single spaces, braces removed), the development and test splits
 and the challenge set of the open corpus, and the two halves of the all-words gold set (evaluation); and the example
 sentences of Open English WordNet (reference
 text of another license). The SemCor sentences and the treebank test file (external evaluation sets, read from their
@@ -712,6 +719,47 @@ reviewed commit and never lowered to hide a regression. `evaluate-suite` reports
 expectations of a new suite or model. The challenge set has a floor test of the same kind
 (`ChallengeSetFloorTests`, `corpus/suite/ste-floors.tsv`).
 
+#### Shape probe (`ShapeProbeFile`, `ShapeProbeEvaluator`)
+
+`corpus/shapes/probe.tsv` is a held-out evaluation set: sentences in which a word that is both a noun and a verb has one
+of seven common shapes (see `corpus/shapes/README.md`). The five noun shapes are `n-obj-light`, `n-compound-head`,
+`n-modifier`, `n-subject-initial` and `n-measure`; the two verb shapes are `v-imperative-initial` and `v-after-modal`.
+No training step reads the set and no setting is chosen on it; the leakage check treats it as an evaluation part.
+
+`ShapeProbeFile.ReadRows` reads the file strictly. The header is `id, shape, lemma, gold, target_index, sentence`. A row
+is rejected, with the file and the line, when it does not have six columns, has an empty id or lemma, repeats an id,
+names a shape that is not one of the seven, has a gold that is not that of its shape (`Noun` for a noun shape, `Verb` for
+a verb shape), has no braced target word or more than one, has empty words (a sentence is the words separated by single
+spaces, punctuation as words) or has a `target_index` that is not the zero-based index of the braced word.
+`ShapeProbeFile.Read` returns no rows when the file does not exist.
+
+`evaluate-shapes` classifies the sentence of every row on its own (`ShapeProbeEvaluator.AnswerAsync`) and takes the part
+of speech and the confidence of the selected analysis of the target word. An answer is right when that part of speech is
+the gold (`IsCorrect`); a word that is not answered is wrong. An answer is harmful (`IsHarmful`) when a gold noun is
+answered as a verb with a confidence of at least 0.45 (`ShapeProbeFile.HarmfulConfidence`). `Render` writes two tables:
+the accuracy per shape (the gold, the number of rows and, per model, the share of right answers, with the rows "all noun
+shapes", "all verb shapes" and "all"), and per model the number and the share of harmful answers per noun shape and for
+all noun shapes. A shape without rows shows `n/a`. `RenderOutcomes` writes one line for every model and row (the id, the
+shape, the lemma, the gold, the model, the answered part of speech, the confidence and the flags `correct` and
+`harmful`), to compare two runs row by row.
+
+#### Shape rows (corpus property)
+
+A word that is both a noun and a verb has written anchors in the seven shapes of the probe set wherever its senses allow
+them (`corpus/curation/shape-fit.tsv` lists the shapes of each sense), at least two kept rows for each lemma, part of
+speech and shape; `corpus/coverage/shape-coverage.tsv` lists these units and whether they are met. The rows are ordinary
+written anchors: the same blind label and blind check as any written row, one `quota-w<wave>-shape.tsv` file in
+`anchors`, `provenance` and `choosers/anchors`, and a provenance `source_key` of `quota-w<wave>-shape:<shape>` that names
+the shape. The wave decides the stage of the lemma (`Corpus.StagesOf`): 48 and 49 hold the rows of base-stage lemmas, 98
+and 99 those of stage 1, and 110 those of stage 2. The builder reads the files like any other anchors; the chooser rows
+of every stage enter the cue tables of the basic model.
+
+Noun shapes are written only for a lemma whose noun senses hold at least 2 percent of the WordNet 3.0 tag counts of its
+noun and verb senses: a rare noun use written in a shape teaches the classifier that the shape is a noun. This is a
+property of the committed corpus, not of the builder: the rows are written by the quota tool of `tools/quota-fill`, which
+is outside the reviewed units, and `ShapeRowsTests` checks the rows and the coverage report that it leaves. The probe set
+never overlaps the rows (the leakage check and the quota tool's duplicate check both cover it).
+
 #### Quota report (`Tiers`)
 
 Reads the tag counts of the senses from the `sense_frequency` table of `data/`, the anchors and the held-out
@@ -784,7 +832,7 @@ that fall short, most frequent first.
    the
    cue scores of the table by it. A table that predicts its held-out sentences at or below chance is therefore as good as
    none, one at 0.8 on two analyses is fully reliable, and the choice needs no hand list of tables. In the shipped table
-   111 of the 916 tables are damped (those with a held-out accuracy below 0.6); `learning`, whose held-out accuracy of
+   92 of the 918 tables are damped (those with a held-out accuracy below 0.6); `learning`, whose held-out accuracy of
    0.298 is below chance, gets 0. On the development sets any target from 0.5 to 1.0 gives the same figures (the cue
    changes the answer on about 5 percent of the tokens it covers), and the reviewed suite loses rows from a target of
    0.7 on, so the target is 0.6.
@@ -804,7 +852,7 @@ that fall short, most frequent first.
    A table that covers no token keeps its anchor reliability. On the development sets the pseudo count and the
    combination make no difference (the cue changes few answers). The reviewed suite is the guard for the pseudo count:
    20 or less turns the row `M-feel-2` of Basic into a miss (the table of `feel` has 0 tokens helped and 2 hurt), and 50
-   does not. In the shipped table 163 of the 916 tables are damped (111 by the anchors and 62 by the running text,
+   does not. In the shipped table 143 of the 918 tables are damped (92 by the anchors and 60 by the running text,
    where more tokens are hurt than helped).
 3. `BasicTablesWriter.Write` serializes the table, `BasicTables.Load` checks that it reads back, and the file is
    written with its size and SHA-256 reported. The table carries the inventory hash of the word image that it was

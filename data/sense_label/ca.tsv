@@ -1177,11 +1177,11 @@ oewn-caput__1.25.00..	bulge	generated
 oewn-capybara__1.05.00..	noun	generated
 oewn-car--ferry__1.06.00..	noun	generated
 oewn-car--mechanic__1.18.00..	noun	generated
-oewn-car__1.06.00..	auto	generated
-oewn-car__1.06.01..	railcar	generated
-oewn-car__1.06.02..	elevator-car	generated
-oewn-car__1.06.03..	gondola	generated
-oewn-car__1.06.04..	cable-car	generated
+oewn-car__1.06.00..	auto	curated
+oewn-car__1.06.01..	railcar	curated
+oewn-car__1.06.02..	elevator-car	curated
+oewn-car__1.06.03..	gondola	curated
+oewn-car__1.06.04..	cable-car	curated
 oewn-carabao__1.05.00..	noun	generated
 oewn-carabineer__1.18.00..	noun	generated
 oewn-carabiner__1.06.00..	noun	generated
@@ -2150,8 +2150,8 @@ oewn-cathexis__1.16.00..	noun	generated
 oewn-cathode__1.06.00..	electrode	generated
 oewn-cathode__1.06.01..	depot	generated
 oewn-cathodic__3.01.00..	adjective	generated
-oewn-catholic__1.18.00..	noun	generated
-oewn-catholic__3.01.00..	adjective	generated
+oewn-catholic__1.18.00..	noun	curated
+oewn-catholic__3.01.00..	adjective	curated
 oewn-catholic__5.00.00.broad-minded.00	adjective	generated
 oewn-catholicise__2.30.00..	verb	generated
 oewn-catholicism__1.09.00..	noun	generated

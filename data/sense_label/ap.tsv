@@ -233,8 +233,8 @@ oewn-appareled__5.00.00.clothed.00	adjective	generated
 oewn-apparency__1.07.00..	noun	generated
 oewn-apparent__5.00.00.obvious.00	evident	generated
 oewn-apparent__5.00.00.superficial.00	ostensible	generated
-oewn-apparently__4.02.00..	on-the-face-of-it	generated
-oewn-apparently__4.02.01..	evidently	generated
+oewn-apparently__4.02.00..	on-the-face-of-it	curated
+oewn-apparently__4.02.01..	evidently	curated
 oewn-apparentness__1.07.01..	noun	generated
 oewn-apparition__1.04.00..	appearance	generated
 oewn-apparition__1.09.00..	fantasm-2	generated

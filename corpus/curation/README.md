@@ -1,6 +1,6 @@
 # Curated sense inventory (input of `seed-inventory`)
 
-`senses.tsv` and `groups.tsv` are the reviewed curation of 1,157 lemmas (307 curated groups). The import into `data/` keeps
+`senses.tsv` and `groups.tsv` are the reviewed curation of 1,358 lemmas (307 curated groups). The import into `data/` keeps
 184 groups (see "Groups").
 
 - the first set, 20 lemmas (297 senses, 179 curated groups, 56 of them kept by the import): `back`, `even`, `first`,
@@ -9,7 +9,9 @@
 - the second set, 738 lemmas (6,283 senses), the lemmas of the legacy corpus: 6,580 senses in all;
 - the 12 technical lemmas (176 senses and 6 project senses), see "Technical lemmas";
 - the stage 1 set, 387 lemmas (3,836 senses, 58 of them project senses): the 371 most used polysemous lemmas that no
-  anchor trains, and the 16 heteronym lemmas of sense level that are not among them (see "Stage 1 lemmas").
+  anchor trains, and the 16 heteronym lemmas of sense level that are not among them (see "Stage 1 lemmas");
+- the stage 2 set, 201 lemmas (1,504 senses, 10 of them project senses): the most used polysemous lemmas of ranks 503 to
+  756 that no anchor trains, and `focus` and `setting` (see "Stage 1 lemmas").
 
 The ids of senses are public ids (`lemma#label`). The columns `tier`, `tag_count` and the others of `senses.tsv` are the
 per-sense data of the curation (the tier sizes the training data of the sense). `group_id` and `group_reason` record the
@@ -45,7 +47,7 @@ glosses of the 937 project senses that the seeder created are one-line definitio
 lemma, the part of speech, the role of the sense (for example a closed class), the other senses of the lemma and one or
 two example sentences. `project-glosses.tsv` records `sense_id`, part of speech, old gloss and new gloss. The glosses
 are stored in the committed table `data/gloss` (the rows of the `dema-syn-*` synsets only; the glosses of Open English
-WordNet synsets stay verbatim) and, for the 135 project senses that this curation lists, in the `gloss` column of
+WordNet synsets stay verbatim) and, for the 213 project senses that this curation lists, in the `gloss` column of
 `senses.tsv`, which `seed-inventory` writes into `data/`. No placeholder gloss remains.
 
 ## Technical lemmas
@@ -81,7 +83,8 @@ and `clean` as aerodynamically clean.
 
 ## Stage 1 lemmas
 
-The stage 1 set is the encoder expansion of the most used polysemous lemmas. A polysemous lemma is a lemma with two or
+The stage 1 set is the encoder expansion of the most used polysemous lemmas; the stage 2 set continues it down the same
+ranking. A polysemous lemma is a lemma with two or
 more labeled senses; the usage of a lemma is the sum of the WordNet 3.0 tag counts of its senses. The set is the 500 most
 used polysemous lemmas that have only letters and are lower case (a numeral, and a capitalized lemma such as
 `American`, which a lower-case harvest never finds, are replaced by the next lemmas in the ranking), minus the lemmas that
@@ -89,7 +92,15 @@ an anchor trains already, plus the 16 sense-level heteronym lemmas (`heteronyms.
 added with `tools/quota-fill/curate_new.py apply --lemmas FILE`: the Open English WordNet sense, its gloss and its tag
 count (the tier follows the tag count), the label that the data holds (a generated label, kept as it is), and the project
 senses of the data (a sense without a sense key, tier U). After `seed-inventory` these labels are curated and never
-change.
+change. The stage 2 set takes the lemmas of ranks 503 to 756 of the same ranking in the same way, plus `focus` and
+`setting`, which are wanted whatever their rank.
+
+## Shape fit (`shape-fit.tsv`)
+
+`shape-fit.tsv` (`sense_id`, `shapes`) lists, for each noun and verb sense of the lemmas in scope, the sentence shapes of
+its own part of speech in which the sense is used naturally (comma-separated; empty when none). A judge model fills it
+from the glosses (`tools/quota-fill/shapes.py fit-export` and `fit-apply`). It decides where the writers add anchors
+(`tools/quota-fill/README.md`, "Shape coverage"); the builder does not read it.
 
 ## Part of speech of a curated sense
 

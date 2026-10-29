@@ -109,8 +109,8 @@ rows below `fine`):
 | Model | Answered | Fine |
 | ----- | -------: | ---: |
 | Basic | 96.43% | 78.85% |
-| MiniLM | 96.70% | 92.03% |
-| BertBaseCased | 99.18% | 96.15% |
+| MiniLM | 96.70% | 92.86% |
+| BertBaseCased | 99.45% | 96.70% |
 
 **Policy.**
 
@@ -139,6 +139,7 @@ rows below `fine`):
 | `C-content-6` (`A small raise will not content the angry workers`) | BertBaseCased | fine | miss | miss |
 | `H-defense-1` (`The lawyer prepared a strong defense`) | BertBaseCased | fine | answer (Windows x64, Ubuntu x64) | answer |
 | `M-love-1` (`Her love for music began as a child`) | BertBaseCased | fine | miss (Windows x64, Ubuntu x64) | miss |
+| `C-buffet-1` (`Dinner at the lodge is a long buffet with soups and salads`) | BertBaseCased | fine | answer (Windows x64) | answer |
 
 <!-- markdownlint-enable MD013 -->
 

@@ -194,10 +194,10 @@ oewn-build__2.41.00..	manage	curated
 oewn-builder__1.18.00..	constructor	generated
 oewn-builder__1.18.01..	creator	generated
 oewn-builder__1.27.00..	detergent-builder	generated
-oewn-building__1.04.00..	construction	generated
-oewn-building__1.04.01..	construction-2	generated
-oewn-building__1.06.00..	edifice	generated
-oewn-building__1.14.00..	people	generated
+oewn-building__1.04.00..	construction	curated
+oewn-building__1.04.01..	construction-2	curated
+oewn-building__1.06.00..	edifice	curated
+oewn-building__1.14.00..	people	curated
 oewn-buildup__1.04.00..	accrual	generated
 oewn-buildup__1.10.00..	packaging	generated
 oewn-buildup__1.22.00..	accretion	generated

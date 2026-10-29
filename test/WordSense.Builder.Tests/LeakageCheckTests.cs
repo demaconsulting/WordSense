@@ -103,7 +103,7 @@ public sealed class LeakageCheckTests
 
     /// <summary>
     ///     The committed corpus is disjoint: the anchors, held-out, chooser and real-text sentences, the suite, the
-    ///     development and test splits of the open corpus, the challenge set and the example sentences of Open English WordNet
+    ///     development and test splits of the open corpus, the challenge set, the shape probe set and the example sentences of Open English WordNet
     ///     share no sentence (a training part and an evaluation part, two evaluation parts, or the corpus and the dictionary).
     /// </summary>
     [Fact]
@@ -118,7 +118,7 @@ public sealed class LeakageCheckTests
 
         // Assert: every kind of part is checked, and none leaks
         var names = sets.Select(s => s.Name).ToList();
-        foreach (var expected in new[] { "anchors", "chooser anchors", "holdout", "chooser holdout", "real text", "suite", "open corpus dev", "open corpus test", "all-words gold dev", "all-words gold test", "STE challenge set", "OEWN examples" })
+        foreach (var expected in new[] { "anchors", "chooser anchors", "holdout", "chooser holdout", "real text", "suite", "open corpus dev", "open corpus test", "all-words gold dev", "all-words gold test", "STE challenge set", "shape probe", "OEWN examples" })
         {
             Assert.Contains(expected, names);
         }

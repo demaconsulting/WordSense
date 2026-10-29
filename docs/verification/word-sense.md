@@ -136,10 +136,10 @@ development and test halves of the open corpus, labeled blind by two independent
 WordNet 3.0 counts include and which is therefore circular for it. `evaluate-allwords` reports for each model and each
 half the share answered at each level, the precision of the sense answers, the fine top-1 of the selected analysis and the
 baselines (first sense, most frequent sense, random). The figures are in the accuracy guide
-(`docs/user_guide/accuracy.md`): the fine top-1 of the three models is 62.41% on the development half (407 tokens) and
-65.49% on the test half (397 tokens), against 66.58% and 68.51% for the tag-count baseline that is told the gold lemma and
-part of speech, the sense-answered share is 1.97% and 1.51% with a precision of 0%, and the log loss of the smoothing
-constant is lowest at 1 on the development half. The commands and their units are verified in the builder test project
+(`docs/user_guide/accuracy.md`, "The Usage Prior"): on both halves the fine top-1 of MiniLM and BertBaseCased is above the
+tag-count baseline that is told the gold lemma and part of speech, and that of Basic is below it, and the log loss of the
+smoothing constant is lowest at 1 on the development half. The commands and their units are verified in the builder test
+project
 (`WordSenseBuilder_Program_EvaluateAllWords_ReportsTheModelOnEachHalf`,
 `WordSenseBuilder_AllWords_Measure_FineTop1CountsTheFirstRankedSenseOfTheSelectedAnalysis`,
 `WordSenseBuilder_AllWords_Baselines_TagCountIsTheHighestCountWithInventoryOrderOnATie`; system requirement

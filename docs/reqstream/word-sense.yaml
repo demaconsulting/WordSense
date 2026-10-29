@@ -568,6 +568,30 @@ sections:
           - WordSense-WordSenseBuilder-RunningText
           - WordSense-WordSenseBuilder-TenseEvaluation
           - WordSense-WordSenseBuilder-Suite
+          - WordSense-WordSenseBuilder-ShapeProbe
+          - WordSense-WordSenseBuilder-ShapeProbe-MissingFile
+          - WordSense-WordSenseBuilder-ShapeProbe-Header
+          - WordSense-WordSenseBuilder-ShapeProbe-Columns
+          - WordSense-WordSenseBuilder-ShapeProbe-Shape
+          - WordSense-WordSenseBuilder-ShapeProbe-Gold
+          - WordSense-WordSenseBuilder-ShapeProbe-Target
+          - WordSense-WordSenseBuilder-ShapeProbe-EmptyId
+          - WordSense-WordSenseBuilder-ShapeProbe-EmptyLemma
+          - WordSense-WordSenseBuilder-ShapeProbe-RepeatedId
+          - WordSense-WordSenseBuilder-ShapeProbe-Size
+          - WordSense-WordSenseBuilder-ShapeProbe-Lexicon
+          - WordSense-WordSenseBuilder-ShapeProbe-Classification
+          - WordSense-WordSenseBuilder-ShapeProbe-Correct
+          - WordSense-WordSenseBuilder-ShapeProbe-Harmful
+          - WordSense-WordSenseBuilder-ShapeProbe-Accuracy
+          - WordSense-WordSenseBuilder-ShapeProbe-HarmfulRate
+          - WordSense-WordSenseBuilder-ShapeProbe-Outcomes
+          - WordSense-WordSenseBuilder-ShapeProbe-Command
+          - WordSense-WordSenseBuilder-ShapeProbe-CommandOutcomes
+          - WordSense-WordSenseBuilder-ShapeProbe-CommandWithoutFile
+          - WordSense-WordSenseBuilder-ShapeProbe-Leakage
+          - WordSense-WordSenseBuilder-ShapeRows
+          - WordSense-WordSenseBuilder-ShapeRows-Coverage
         tests:
           - ModelTable_Readme_MatchesGeneratedFile
           - ModelTable_GeneratedFile_HasRowForEachModel

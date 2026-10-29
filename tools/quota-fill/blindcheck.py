@@ -200,7 +200,7 @@ def cmd_apply(args):
         if b == sense:
             decision[key] = ("keep", sense)
             c["confirmed second"] += 1
-        elif b and a == b and b in world["by_lemma"].get(lemma, []) and senses[b]["lemma"] == lemma:
+        elif b and a == b and b in world["by_lemma"].get(lemma, []) and senses[b]["lemma"] == lemma and kind != "shape":
             decision[key] = ("relabel", b)
             c["relabeled"] += 1
         else:
@@ -257,7 +257,7 @@ if __name__ == "__main__":
     for name in ("export", "judge", "apply"):
         p = sub.add_parser(name)
         p.add_argument("wave", type=qf.wave_id)
-        p.add_argument("--kind", choices=("real", "written"), default="real")
+        p.add_argument("--kind", choices=("real", "written", "shape"), default="real")
         if name == "export":
             p.add_argument("--every", type=int, default=1, help="check every Nth row (a sample)")
     a = ap.parse_args()

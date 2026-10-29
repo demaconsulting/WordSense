@@ -50,7 +50,10 @@ and decides the level of an answer from the lemma's own thresholds.
 - `WeightedLemmaTable.LoadEmbedded(assembly, resource, modelId, hiddenSize)`: reads the blob and resolves every sense
   id against the word image; a different inventory hash, an unknown or duplicate sense or lemma, a sense count that
   differs from the weights, or a group threshold for a lemma none of whose senses is in a group is a load failure
-  (`InvalidDataException`). Nothing is dropped.
+  (`InvalidDataException`). Nothing is dropped. `ReadResource` reads a resource stream that can seek, which is what the
+  runtime returns for an embedded resource, directly into an array of exactly its length (a growing buffer would hold
+  up to twice the size of the weights until the collector frees it); a stream that cannot seek is copied through a
+  temporary buffer and returned as an exactly sized copy.
 - `FeatureExtractor.Center(vector, mean)`: the feature of a pooled vector: the vector minus the mean (nothing when the
   mean is empty), scaled to unit length; null when the centered vector has no magnitude (zero, or a non-finite value,
   so a NaN feature never reaches the scoring). A non-empty mean of another dimension throws `ArgumentException`, a null

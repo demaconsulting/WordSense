@@ -132,6 +132,34 @@ internal static partial class Program
         return 0;
     }
 
+    private static async Task<int> RunEvaluateShapesAsync(Dictionary<string, string> options, string repository, string corpus, TextWriter output, CancellationToken cancellationToken)
+    {
+        var rows = ShapeProbeFile.Read(corpus);
+        if (rows.Count == 0)
+        {
+            throw new InvalidDataException($"The shape probe set is not in '{ShapeProbeFile.PathOf(corpus)}'.");
+        }
+
+        var models = new List<(string Model, IReadOnlyList<ShapeAnswer> Answers)>();
+        foreach (var info in ModelCatalog.Select(options.GetValueOrDefault("model")))
+        {
+            using var model = ModelCatalog.Open(info, repository);
+            await ModelCatalog.EnsureAsync(model, cancellationToken).ConfigureAwait(false);
+            models.Add((ModelTable.DisplayName(info.Name), await ShapeProbeEvaluator.AnswerAsync(model, rows, cancellationToken).ConfigureAwait(false)));
+            output.WriteLine($"{info.Name}: shape probe done.");
+        }
+
+        var text = ShapeProbeEvaluator.Render(rows, models);
+        output.Write(text);
+        WriteReport(options, text);
+        if (options.TryGetValue("outcomes", out var outcomes))
+        {
+            File.WriteAllText(outcomes, ShapeProbeEvaluator.RenderOutcomes(rows, models), new System.Text.UTF8Encoding(false));
+        }
+
+        return 0;
+    }
+
     private static int RunCheckLeakage(Dictionary<string, string> options, string repository, string corpus, TextWriter output)
     {
         var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Join(repository, "data");

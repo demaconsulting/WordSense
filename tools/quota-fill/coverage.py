@@ -5,6 +5,8 @@
                                (a rank wave; it also writes quota-unfilled.tsv for them)
   python coverage.py --only-lemmas FILE   the same for a file of lemmas (the stage 1 waves): quota-unfilled.tsv gets the open
                                senses of these lemmas and keeps the rows of every other lemma
+Both forms also write corpus/coverage/shape-coverage.tsv (the shape units, see shapes.py) and print the units met and short,
+once corpus/curation/shape-fit.tsv exists.
 """
 import argparse
 import collections
@@ -14,6 +16,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import lexindex
 import qf
+import shapes
 
 
 def counts(rows):
@@ -101,6 +104,10 @@ def main():
         c, ma, mh = counts(sub)
         print(f"waves 1-{wave}:", len(in_wave), "lemmas,", dict(c), "missing anchors", ma, "missing holdout", mh)
         print("unfilled senses listed:", write_unfilled(world, rows, wave))
+    if os.path.exists(shapes.FIT_FILE):
+        unit_rows = shapes.status(world)
+        shapes.write_coverage(unit_rows)
+        print(shapes.summary(unit_rows))
 
 
 if __name__ == "__main__":

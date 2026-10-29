@@ -29,12 +29,13 @@ evaluate**, from a git-ignored download, and is never committed or shipped.
 | `choosers/anchors/`, `choosers/holdout/` | `*.tsv` | Training and evaluation rows of the form choosers (the lemma or tense of a shared form) |
 | `realtext/` | `*.tsv` | Real-text sentences for evaluation only (never trained on) |
 | `provenance/` | `*.tsv` | Source of every sentence: `id`, `split`, `source`, `source_key` (see "Real Sentences and Provenance") |
-| `coverage/` | `*.tsv`, `README.md` | The quota report of every sense (anchors and held-out sentences against the tiers) |
-| `curation/` | `*.tsv`, `README.md` | The reviewed senses and groups (the input of `seed-inventory`) |
+| `coverage/` | `*.tsv`, `README.md` | The quota report of every sense (anchors and held-out sentences against the tiers) and the shape coverage of the noun/verb lemmas (`shape-coverage.tsv`) |
+| `curation/` | `*.tsv`, `README.md` | The reviewed senses and groups (the input of `seed-inventory`) and the shape-fit table `shape-fit.tsv` (the sentence shapes in which a noun or verb sense is used naturally) |
 | `lexicon/` | `*.tsv` | The dictionary word list, the auxiliaries and the form rules (inputs of `compile-image`) |
 | `open/` | see `open/README.md` | The open English part-of-speech corpus (CC0 annotations over public-domain text): `representative/` (random; the only input of usage statistics and the headline real-text evaluation) and `targeted/` (a challenge set) |
 | `suite/` | `*.tsv`, `README.md` | The reviewed suite of 364 sentences about common ambiguous words and same-spelling verbs: a regression test with the expectation of each model and the floors of the challenge set. CC0 1.0, evaluation only |
 | `allwords/` | `dev.tsv`, `test.tsv`, `README.md` | The all-words gold set: 804 tokens of untrained polysemous lemmas from the development and test splits of `open/representative`, labeled blind by two independent labelers (the independent measurement of the usage prior, which SemCor cannot make). CC0 1.0, evaluation only |
+| `shapes/` | `probe.tsv`, `README.md` | The shape probe set: held-out noun and verb sentences in seven common sentence shapes, one gold part of speech each (`WordSense.Builder evaluate-shapes`). Never trained on. CC0 1.0, evaluation only |
 
 Every file is UTF-8 without a byte-order mark, with LF line endings.
 
@@ -100,7 +101,7 @@ anchor rows of the choosers (a form whose label names one analysis).
 ## Quota-Filled Rows (targeted)
 
 `anchors/`, `holdout/`, `choosers/` and `provenance/` also hold the files `quota-w<N>-real.tsv`,
-`quota-w<N>-written.tsv` and `quota-w<N>-forms.tsv` (chooser rows of a form). The quota filling
+`quota-w<N>-written.tsv`, `quota-w<N>-shape.tsv` (written rows for a sentence shape) and `quota-w<N>-forms.tsv` (chooser rows of a form). The quota filling
 (`tools/quota-fill`, see its README) makes them and brings every sense to the quota of its tier (see
 `coverage/README.md`).
 
@@ -155,11 +156,14 @@ anchor rows of the choosers (a form whose label names one analysis).
 **Every quota-filled row is targeted.** It was found or written for one specific sense (or, for the chooser files, one
 specific form), never drawn at random from a text. Its provenance row has the source of the sentence and the key of its
 document (`source_key`: `pg<ebook>#<ordinal>` for a Gutenberg book, `<document id>#<ordinal>` for an article or a page,
-the Tatoeba sentence id, or `quota-w<N>-written` for a sentence written by a model). The license follows from the source
+the Tatoeba sentence id, or `quota-w<N>-written` for a sentence written by a model; `quota-w<N>-shape:<shape>` for a
+sentence written for a sentence shape, see "Shape coverage" in `tools/quota-fill/README.md`). The license follows from the source
 (see "Sources").
 
 **Files.** `quota-w3-*` fills the lemmas of ranks 121-200 and the technical lemmas. `quota-w50-*` is the pilot of the
 stage 1 lemmas (23 lemmas; real rows labeled by two blind labelers that agree, checked blind, then written rows).
+`quota-w100-*`, `quota-w101-*` and `quota-w104-*` hold the 200 stage 2 lemmas (see `curation/README.md`),
+`quota-w109-forms*` their chooser rows and `quota-w110-shape.tsv` their shape rows.
 `quota-w32-written.tsv` is the second
 round for senses that stayed short (written with another prompt). `quota-w33-real.tsv` and `quota-w33-written.tsv` are
 the technical senses of `curation/tech-senses.tsv`. `quota-w<N>-forms*.tsv` follow the document roles like the
@@ -236,6 +240,7 @@ sentence new) of the anchors, the chooser anchors and the training split of the 
 
 - the held-out, chooser held-out and real-text sentences;
 - the reviewed suite (`suite/`);
+- the shape probe set (`shapes/`);
 - the development and test splits and the challenge set of the open corpus;
 - the two halves of the all-words gold set (`allwords/`, views of the development and test splits of the open corpus:
   the same sentences by design);
@@ -260,8 +265,8 @@ the challenge set overlap nothing.
   third judge who saw both answers. The third judge settled 15 of them and 64 stayed undecided; the undecided rows are
   never used as evidence. A blind re-judging of every 20th accepted row (790 rows) found no disagreement. Rows added
   later are checked by the blind labeler of the quota filling (see the method above).
-- **Quota status.** `coverage/quota-coverage.tsv` has the quota status of every sense. 9,598 of the 10,871 senses of the
-  trained lemmas meet their quota (`WordSense.Builder tiers`).
+- **Quota status.** `coverage/quota-coverage.tsv` has the quota status of every sense. 11,027 of the 12,373 senses of the
+  lemmas with anchors meet their quota (`WordSense.Builder tiers`).
 - **Tier waves `4u` and `4r`.** They fill the short senses of the uncommon and the rare tier (harvested with `--tier U`
   and `--tier R`, and `--faa-tech-only`):
 
@@ -284,7 +289,7 @@ the challenge set overlap nothing.
 
   Real held-out text is nearly exhausted: the evaluation documents (one in four, chosen by hash) of the sentence pool
   supply held-out rows only, and one that already supplies anchors supplies none. The held-out sentences of these two
-  waves are therefore mostly written and blind-labeled, and the real test split has 4,626 sentences.
+  waves are therefore mostly written and blind-labeled, and the real test split has 5,611 sentences.
 - **Open corpus annotation.** The figures are in `open/quality.md`.
 - **Leakage.** `check-leakage` finds no evaluation sentence in a training part of the committed corpus (the overlap that
   remains is listed in "Disjointness of the Parts").

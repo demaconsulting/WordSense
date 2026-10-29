@@ -1577,8 +1577,9 @@ sections:
               The builder shall validate the corpus format (a lemma, a sense id, a part of speech and a sentence for
               every row), the agreement of the part of speech of a row with its sense, and, by normalized sentence, the
               disjointness of the training sentences (the anchors, the chooser anchors and the training split of the
-              open corpus) from the held-out, chooser held-out, real-text and suite sentences, the development and test
-              splits and the challenge set of the open corpus, the independent evaluation sentences and the example
+              open corpus) from the held-out, chooser held-out, real-text, suite and shape probe sentences, the
+              development and test splits and the challenge set of the open corpus, the independent evaluation sentences
+              and the example
               sentences of Open English WordNet, and of those evaluation sentences from each other; it shall report the
               sentences that two parts share and a run of eight words that they share, and fail when a sentence is
               shared by a training part and an evaluation part, by two evaluation parts, or by the corpus and a
@@ -2201,12 +2202,252 @@ sections:
               - MiniLMSuite_ExpectedPasses_StillPass
               - BertBaseCasedSuite_ExpectedPasses_StillPass
 
+          - id: WordSense-WordSenseBuilder-ShapeProbe
+            title: >-
+              The builder shall read the rows of the shape probe set, each with its shape, lemma, gold part of speech,
+              the words of its sentence without braces and the index of the braced target word.
+            tags: [unit]
+            justification: |
+              The probe set is evaluation data with one noun or verb answer per row.
+            tests:
+              - WordSenseBuilder_ShapeProbe_ReadRows_ParsesRows
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-MissingFile
+            title: >-
+              The builder shall treat a corpus without the shape probe file as having no rows.
+            tags: [unit]
+            justification: |
+              A corpus that has no probe set is valid; only the evaluation command needs the file.
+            tests:
+              - WordSenseBuilder_ShapeProbe_Read_MissingFile_IsEmpty
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-Header
+            title: >-
+              The builder shall reject a shape probe file whose header is not the expected one.
+            tags: [unit]
+            justification: |
+              Another header means another column order, and every row would be read against the wrong columns.
+            tests:
+              - WordSenseBuilder_ShapeProbe_ReadRows_WrongHeader_IsRejected
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-Columns
+            title: >-
+              The builder shall reject a shape probe row that does not have six columns.
+            tags: [unit]
+            justification: |
+              A row with missing or extra columns would score a model against the wrong gold.
+            tests:
+              - WordSenseBuilder_ShapeProbe_ReadRows_WrongColumnCount_IsRejected
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-Shape
+            title: >-
+              The builder shall reject a shape probe row whose shape is not one of the seven shapes.
+            tags: [unit]
+            justification: |
+              The results are reported per shape; a row of an unknown shape would belong to no report line.
+            tests:
+              - WordSenseBuilder_ShapeProbe_ReadRows_UnknownShape_IsRejected
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-Gold
+            title: >-
+              The builder shall reject a shape probe row whose gold part of speech is not that of its shape (Noun for a
+              noun shape, Verb for a verb shape).
+            tags: [unit]
+            justification: |
+              The gold of a row follows from its shape; a different gold is a labeling error.
+            tests:
+              - WordSenseBuilder_ShapeProbe_ReadRows_GoldNotOfTheShape_IsRejected
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-Target
+            title: >-
+              The builder shall reject a shape probe row whose sentence does not have exactly one braced target word at
+              the given target index, with its words separated by single spaces.
+            tags: [unit]
+            justification: |
+              The model is scored on the target word; a missing, doubled or misplaced target scores another word.
+            tests:
+              - WordSenseBuilder_ShapeProbe_ReadRows_TargetMissingDoubledOrMisplaced_IsRejected
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-EmptyId
+            title: >-
+              The builder shall reject a shape probe row with an empty id.
+            tags: [unit]
+            justification: |
+              The id names the row in the outcomes and the reviews.
+            tests:
+              - WordSenseBuilder_ShapeProbe_ReadRows_EmptyId_IsRejected
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-EmptyLemma
+            title: >-
+              The builder shall reject a shape probe row with an empty lemma.
+            tags: [unit]
+            justification: |
+              The lemma ties the target word to its analysis in the lexicon check.
+            tests:
+              - WordSenseBuilder_ShapeProbe_ReadRows_EmptyLemma_IsRejected
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-RepeatedId
+            title: >-
+              The builder shall reject a shape probe row whose id occurs twice.
+            tags: [unit]
+            justification: |
+              A repeated id would merge two rows in the outcomes.
+            tests:
+              - WordSenseBuilder_ShapeProbe_ReadRows_RepeatedId_IsRejected
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-Size
+            title: >-
+              The committed shape probe set shall hold 400 to 600 rows, at least 60 for each shape, and at least 300
+              lemmas.
+            tags: [unit]
+            justification: |
+              Each shape needs enough rows for its accuracy to mean something, and many lemmas keep one word from
+              deciding a shape.
+            tests:
+              - WordSenseBuilder_ShapeProbe_CommittedFile_HasEnoughRowsInEveryShape
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-Lexicon
+            title: >-
+              In the committed shape probe set the target word of every row shall be a form of its lemma with the gold
+              part of speech in the lexicon.
+            tags: [unit]
+            justification: |
+              A target that the lexicon cannot analyze as the gold would be unanswerable.
+            tests:
+              - WordSenseBuilder_ShapeProbe_CommittedFile_TargetsAreFormsOfTheirLemma
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-Classification
+            title: >-
+              The builder shall classify the sentence of every probe row with a model and take the part of speech and
+              the confidence of the selected analysis of the target word as the answer.
+            tags: [unit]
+            justification: |
+              The probe measures the decision for one word in its sentence.
+            tests:
+              - WordSenseBuilder_ShapeProbe_AnswerAsync_ReadsTheTargetWord
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-Correct
+            title: >-
+              The builder shall count a probe answer as right when its part of speech is the gold, and a word that is
+              not answered as wrong.
+            tags: [unit]
+            justification: |
+              The accuracy of a shape is the share of right answers; an unanswered word is no answer.
+            tests:
+              - WordSenseBuilder_ShapeProbe_Answer_IsCorrect
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-Harmful
+            title: >-
+              The builder shall count a probe answer as harmful when a gold noun is answered as a verb with a confidence
+              of at least 0.45.
+            tags: [unit]
+            justification: |
+              A consumer that trusts a verb answer for a noun acts on it, so a confident noun-to-verb answer is counted
+              apart from the other errors.
+            tests:
+              - WordSenseBuilder_ShapeProbe_Answer_IsHarmful
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-Accuracy
+            title: >-
+              The builder shall report the share of right probe answers per shape, per gold and overall for each model,
+              and n/a for a shape without rows.
+            tags: [unit]
+            justification: |
+              The accuracy per shape shows which sentence shapes a model reads wrongly.
+            tests:
+              - WordSenseBuilder_ShapeProbe_Render_ReportsAccuracyPerShape
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-HarmfulRate
+            title: >-
+              The builder shall report for each model the number and the share of harmful answers among the rows of each
+              noun shape.
+            tags: [unit]
+            justification: |
+              The harmful rate is the gate that an improvement of the accuracy must not raise.
+            tests:
+              - WordSenseBuilder_ShapeProbe_Render_ReportsTheHarmfulRatePerNounShape
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-Outcomes
+            title: >-
+              The builder shall write one outcome line for every model and probe row, with the answer, the confidence
+              and the flags right and harmful, and none for a word that is not answered.
+            tags: [unit]
+            justification: |
+              Two runs are compared row by row.
+            tests:
+              - WordSenseBuilder_ShapeProbe_RenderOutcomes_WritesOneLinePerModelAndRow
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-Command
+            title: >-
+              The builder shall provide the command evaluate-shapes that reports the shape probe results of the selected
+              models.
+            tags: [unit]
+            justification: |
+              The probe set is the held-out gate of the shape coverage.
+            tests:
+              - WordSenseBuilder_Program_EvaluateShapes_ReportsEveryShapeForTheModel
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-CommandOutcomes
+            title: >-
+              The command evaluate-shapes shall write the outcomes of the models to the file named by its outcomes
+              option.
+            tags: [unit]
+            justification: |
+              The outcomes are the input of the comparison between two versions.
+            tests:
+              - WordSenseBuilder_Program_EvaluateShapes_WritesTheOutcomesFile
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-CommandWithoutFile
+            title: >-
+              The command evaluate-shapes shall fail with a message that names the file when the shape probe set is not
+              in the corpus directory.
+            tags: [unit]
+            justification: |
+              An evaluation of an absent probe set would report nothing and look like success.
+            tests:
+              - WordSenseBuilder_Program_EvaluateShapes_WithoutProbeFile_Fails
+
+          - id: WordSense-WordSenseBuilder-ShapeProbe-Leakage
+            title: >-
+              The leakage check shall include the shape probe set as an evaluation part, so that a probe sentence that a
+              training part or another evaluation part also has is a leak.
+            tags: [unit]
+            justification: |
+              The probe set is held out; a model that trained on a probe sentence would be measured on its training
+              data.
+            tests:
+              - WordSenseBuilder_Corpus_Disjointness_CoversSuiteEvaluationAndOewnExamples
+
+          - id: WordSense-WordSenseBuilder-ShapeRows
+            title: >-
+              The committed shape rows shall hold no noun shape row of a lemma whose noun senses hold less than 2
+              percent of the WordNet tag counts of its noun and verb senses.
+            tags: [unit]
+            justification: |
+              A rare noun use written in a sentence shape teaches the classifier that the shape is a noun: the rows of
+              the noun give in sentence-initial position made a model read the verb Give at the start of an
+              instruction as a noun. The rows are written by a quota tool outside the reviewed units; the requirement
+              is verified on the corpus it leaves.
+            tests:
+              - WordSenseBuilder_ShapeRows_NounRowOfRareNounLemma_IsAbsent
+
+          - id: WordSense-WordSenseBuilder-ShapeRows-Coverage
+            title: >-
+              The committed shape coverage report shall hold no noun shape unit of a lemma whose noun senses hold less
+              than 2 percent of the WordNet tag counts of its noun and verb senses.
+            tags: [unit]
+            justification: |
+              The report lists the units that the shape rows are written for; a unit of a rare noun use would ask for
+              the rows that the rule above excludes.
+            tests:
+              - WordSenseBuilder_ShapeRows_NounUnitOfRareNounLemma_IsAbsent
+
           - id: WordSense-WordSenseBuilder-Usage
             title: >-
               The builder shall provide the commands compile-image, import-moby, weights, evaluate, evaluate-senses,
               evaluate-allwords, allwords-sample, allwords-merge,
-              evaluate-running, evaluate-suite, check-leakage, tiers, open-counts, evaluate-tagger, coverage,
-              train-basic, tune-basic, label-senses, import-wn30-counts, appendix, keys and heteronyms, print
+              evaluate-running, evaluate-suite, evaluate-shapes, check-leakage, tiers, open-counts, evaluate-tagger,
+              coverage, train-basic, tune-basic, label-senses, import-wn30-counts, appendix, keys and heteronyms, print
               usage when given no
               arguments, and shall report an unknown or removed command (the treebank commands ud-counts and
               ud-irregular included), a malformed option, an option value that is not a valid number or is out of range

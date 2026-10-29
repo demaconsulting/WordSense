@@ -2,9 +2,9 @@
 
 An independent evaluation set for the **usage prior** of the senses of the lemmas that no model scores: 804 tokens of
 untrained polysemous lemmas (569 lemmas) from running text. Two independent labelers chose the sense of each token
-without seeing the frequency of the senses. The lemmas had no anchor when the set was drawn; the stage 1 waves
-(`corpus/anchors/quota-w5*`) have given anchors to some of them since, and no sentence of the set is in any training
-file.
+without seeing the frequency of the senses. The lemmas had no anchor when the set was drawn; the later stages (the waves
+50 to 59, 98, 99 and 100 to 149 of `corpus/anchors`) have given anchors to some of them since, and no sentence of the set
+is in any training file.
 
 It is evaluation data only: no training step reads it. The leakage check (`WordSense.Builder check-leakage`) treats each
 file as a view of the split of the open corpus it is drawn from.
@@ -106,8 +106,8 @@ Service texts and Tatoeba sentences. 655 of the 804 tokens (81.5%) carry the agr
 ## Current results
 
 Measured by `evaluate-allwords`. The figures are in the chapter "Accuracy and Model Choice" of the user guide, in "The
-Usage Prior". The three models give the same figures, because they answer an untrained lemma with the same Basic
-result.
+Usage Prior". Basic answers every token with the prior; MiniLM and BertBaseCased answer the tokens of a trained lemma
+with their classifier and every other token with the same prior.
 
 ## Provenance and license
 

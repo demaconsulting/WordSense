@@ -559,10 +559,10 @@ oewn-samoyedic--speaking__5.00.00.communicative.00	adjective	generated
 oewn-samoyedic__1.10.00..	noun	generated
 oewn-sampan__1.06.00..	noun	generated
 oewn-samphire__1.20.00..	noun	generated
-oewn-sample__1.09.00..	example	generated
-oewn-sample__1.09.01..	sample-distribution	generated
-oewn-sample__1.17.00..	natural-object	generated
-oewn-sample__2.34.00..	verb	generated
+oewn-sample__1.09.00..	example	curated
+oewn-sample__1.09.01..	sample-distribution	curated
+oewn-sample__1.17.00..	natural-object	curated
+oewn-sample__2.34.00..	verb	curated
 oewn-sampler__1.06.00..	embroidery	generated
 oewn-sampler__1.06.01..	sampling-station	generated
 oewn-sampler__1.14.00..	assortment	generated

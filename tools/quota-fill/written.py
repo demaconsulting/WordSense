@@ -18,6 +18,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import harvest
 import lexindex
 import qf
+import shapes
 import shortfix
 import textutil
 
@@ -134,7 +135,8 @@ def cmd_ingest(args):
         if not os.path.exists(out_path):
             reasons["batch without output"] += 1
             continue
-        forms_of = {e["sense"]: set(allowed_forms(world, e["lemma"], senses[e["sense"]]["pos"]))
+        forms_of = {(e["sense"], e.get("shape", "")): (set(allowed_forms(world, e["lemma"], senses[e["sense"]]["pos"]))
+                                                       if not e.get("shape", "").startswith("v-") else {e["lemma"].lower()})
                     for e in spec["senses"]}
         with open(out_path, encoding="utf-8") as handle:
             for line in handle:
@@ -142,14 +144,26 @@ def cmd_ingest(args):
                 if not line.strip():
                     continue
                 parts = line.split("\t")
-                if len(parts) != 2 or parts[0] not in forms_of:
+                # a shape entry answers `sense<TAB>shape<TAB>sentence`, every other entry `sense<TAB>sentence`
+                if len(parts) == 3:
+                    sense, shape, sentence = parts[0], parts[1].strip(), parts[2].strip()
+                elif len(parts) == 2:
+                    sense, shape, sentence = parts[0], "", parts[1].strip()
+                else:
                     reasons["bad line"] += 1
                     continue
-                sense, sentence = parts[0], parts[1].strip()
-                res = check_sentence(sentence, forms_of[sense])
-                if res not in forms_of[sense]:
+                if (sense, shape) not in forms_of:
+                    reasons["bad line"] += 1
+                    continue
+                res = check_sentence(sentence, forms_of[(sense, shape)])
+                if res not in forms_of[(sense, shape)]:
                     reasons[res] += 1
                     continue
+                if shape:
+                    why = shapes.check_shape(shape, sentence, senses[sense]["lemma"])
+                    if why:
+                        reasons["shape: " + why] += 1
+                        continue
                 key = textutil.key_of(sentence)
                 if key in blocked or key in seen_keys:
                     reasons["duplicate"] += 1
@@ -161,14 +175,14 @@ def cmd_ingest(args):
                     continue
                 seen_keys.add(key)
                 sets_by_lemma[lemma].append(toks)
-                items.append((sense, res, sentence))
+                items.append((sense, res, sentence, shape))
                 reasons["kept"] += 1
     print(dict(reasons))
     # blind-label batches: the group of an item is the sense list of its form (the intended sense is not shown)
     groups = collections.defaultdict(list)
-    for sense, form, sentence in items:
+    for sense, form, sentence, shape in items:
         key = harvest.group_key(world, form)
-        groups[key].append((sense, form, sentence))
+        groups[key].append((sense, form, sentence, shape))
     batches, cur, cur_items, cur_senses = [], [], 0, 0
     for key in sorted(groups):
         sense_ids = harvest.senses_of_pairs(world, key)
@@ -193,11 +207,13 @@ def cmd_ingest(args):
         groups_json, meta, n = [], {}, 0
         for gi, (key, sense_ids, part) in enumerate(batch, 1):
             its = []
-            for sense, form, sentence in part:
+            for sense, form, sentence, shape in part:
                 n += 1
                 its.append({"n": n, "sentence": sentence})
                 meta[str(n)] = {"sid": f"written:{sense}:{n}", "form": form, "doc": "written", "family": "written",
                                 "sentence": sentence, "lemma": senses[sense]["lemma"], "group": gi, "intended": sense}
+                if shape:
+                    meta[str(n)]["shape"] = shape
             groups_json.append({"senses": [qf.sense_line(world, x) for x in sense_ids], "items": its})
         qf.write_json(os.path.join(wdir, "wr-label", bid + ".json"), {"batch": bid, "groups": groups_json})
         qf.write_json(os.path.join(wdir, "wr-label", bid + ".meta.json"),
@@ -244,7 +260,7 @@ def cmd_labeled(args):
                 if sense == item["intended"] and conf == "high":
                     stats["same high"] += 1
                 rows.append((item["sid"], item["form"], item["intended"], sense, conf, "written", "written",
-                             item["sentence"]))
+                             item["sentence"]) + ((item["shape"],) if item.get("shape") else ()))
         stats["missing"] += len(meta["items"]) - len(seen)
     with open(os.path.join(wdir, "wr-labeled.tsv"), "w", encoding="utf-8", newline="\n") as handle:
         for r in rows:

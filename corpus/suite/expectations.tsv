@@ -53,7 +53,7 @@ H-lead-3	answer	fine	fine
 H-lead-4	answer	fine	fine
 H-lead-5	fine	fine	fine
 H-lead-6	answer	answer	answer
-H-contract-1	fine	answer	fine
+H-contract-1	fine	fine	fine
 H-contract-2	fine	fine	fine
 H-contract-3	answer	fine	fine
 H-contract-4	answer	fine	fine
@@ -93,7 +93,7 @@ H-associate-1	fine	fine	fine
 H-associate-2	fine	fine	fine
 H-associate-3	fine	fine	fine
 H-associate-4	fine	fine	fine
-H-detail-1	fine	answer	fine
+H-detail-1	fine	fine	fine
 H-detail-2	fine	fine	fine
 H-detail-3	fine	fine	fine
 H-detail-4	fine	fine	fine
@@ -171,7 +171,7 @@ M-help-3	fine	fine	fine
 M-help-4	fine	fine	fine
 M-state-1	fine	fine	fine
 M-state-2	fine	fine	fine
-M-state-3	fine	miss	fine
+M-state-3	fine	fine	fine
 M-state-4	fine	fine	fine
 M-first-1	fine	fine	fine
 M-first-2	fine	fine	fine
@@ -180,7 +180,7 @@ M-first-4	fine	fine	fine
 M-change-1	fine	fine	fine
 M-change-2	fine	fine	fine
 M-change-3	fine	fine	fine
-M-change-4	miss	fine	fine
+M-change-4	miss	miss	fine
 M-right-1	fine	fine	fine
 M-right-2	fine	fine	fine
 M-right-3	fine	fine	fine
@@ -232,7 +232,7 @@ M-home-2	fine	fine	fine
 M-home-3	fine	fine	fine
 M-home-4	fine	fine	fine
 M-show-1	fine	fine	fine
-M-show-2	miss	miss	miss
+M-show-2	miss	miss	fine
 M-show-3	fine	fine	fine
 M-show-4	fine	fine	fine
 M-report-1	fine	fine	fine
@@ -260,7 +260,7 @@ C-content-2	answer	fine	fine
 C-content-3	miss	fine	fine
 C-content-4	fine	fine	fine
 C-content-5	fine	fine	fine
-C-content-6	answer	fine	fine
+C-content-6	answer	answer	fine
 C-produce-1	fine	fine	fine
 C-produce-2	fine	fine	fine
 C-produce-3	fine	fine	fine
@@ -320,12 +320,12 @@ C-entrance-4	fine	miss	fine
 C-sow-1	fine	fine	fine
 C-sow-2	fine	fine	fine
 C-sow-3	answer	answer	answer
-C-sow-4	fine	answer	fine
+C-sow-4	fine	fine	fine
 C-bass-1	answer	answer	fine
 C-bass-2	answer	fine	fine
 C-bass-3	fine	fine	fine
 C-bass-4	answer	answer	fine
-C-buffet-1	answer	answer	answer
+C-buffet-1	answer	fine	answer
 C-buffet-2	answer	fine	fine
 C-buffet-3	fine	fine	fine
 C-buffet-4	fine	fine	fine

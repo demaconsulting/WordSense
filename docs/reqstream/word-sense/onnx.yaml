@@ -144,6 +144,7 @@ sections:
               - WordSense-Onnx-LemmaWeights-Format
               - WordSense-Onnx-LemmaWeights-Integrity
               - WordSense-Onnx-LemmaWeights-Match
+              - WordSense-Onnx-LemmaWeights-Read
               - WordSense-Onnx-LemmaWeights-Scoring
               - WordSense-Onnx-LemmaWeights-Thresholds
               - WordSense-Onnx-LemmaWeights-Embedded

@@ -504,8 +504,8 @@ oewn-animadversion__1.10.00..	noun	generated
 oewn-animadvert__2.32.00..	opine	generated
 oewn-animadvert__2.32.01..	censure	generated
 oewn-animal--worship__1.04.00..	noun	generated
-oewn-animal__1.03.00..	noun	generated
-oewn-animal__5.00.00.physical.00	adjective	generated
+oewn-animal__1.03.00..	noun	curated
+oewn-animal__5.00.00.physical.00	adjective	curated
 oewn-animalcule__1.05.00..	noun	generated
 oewn-animalculum__1.05.00..	noun	generated
 oewn-animalisation__1.04.00..	noun	generated
@@ -685,8 +685,8 @@ oewn-annwfn__1.09.00..	noun	generated
 oewn-annwn__1.09.00..	noun	generated
 oewn-anoa__1.05.00..	noun	generated
 oewn-anodal__3.01.00..	adjective	generated
-oewn-anode__1.06.00..	electrode	generated
-oewn-anode__1.06.01..	pole	generated
+oewn-anode__1.06.00..	electrode	curated
+oewn-anode__1.06.01..	pole	curated
 oewn-anodic__3.01.00..	adjective	generated
 oewn-anodise__2.30.00..	verb	generated
 oewn-anodize__2.30.00..	verb	generated

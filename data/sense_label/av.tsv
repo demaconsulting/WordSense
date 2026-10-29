@@ -100,11 +100,11 @@ oewn-avocado__5.00.00.chromatic.00	adjective	generated
 oewn-avocation__1.04.00..	noun	generated
 oewn-avocational__3.01.00..	adjective	generated
 oewn-avocet__1.05.00..	noun	generated
-oewn-avoid__2.32.00..	disdain	generated
-oewn-avoid__2.34.00..	keep-off	generated
-oewn-avoid__2.41.00..	annul	generated
-oewn-avoid__2.41.01..	avert	generated
-oewn-avoid__2.41.03..	forbear	generated
+oewn-avoid__2.32.00..	disdain	curated
+oewn-avoid__2.34.00..	keep-off	curated
+oewn-avoid__2.41.00..	annul	curated
+oewn-avoid__2.41.01..	avert	curated
+oewn-avoid__2.41.03..	forbear	curated
 oewn-avoidable__3.00.00..	adjective	generated
 oewn-avoidance__1.04.00..	noun	generated
 oewn-avoirdupois__1.07.00..	blubber	generated

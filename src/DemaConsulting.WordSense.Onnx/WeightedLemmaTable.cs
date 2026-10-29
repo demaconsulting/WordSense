@@ -250,11 +250,7 @@ internal sealed class WeightedLemmaTable
     public static WeightedLemmaTable LoadEmbedded(Assembly assembly, string resourceName, string modelId, int hiddenSize)
     {
         ArgumentNullException.ThrowIfNull(assembly);
-        using var stream = assembly.GetManifestResourceStream(resourceName)
-            ?? throw new InvalidDataException($"The embedded weights '{resourceName}' are missing from the assembly.");
-        using var buffer = new MemoryStream();
-        stream.CopyTo(buffer);
-        var data = WeightsBlob.Read(buffer.GetBuffer().AsSpan(0, (int)buffer.Length));
+        var data = WeightsBlob.Read(ReadResource(assembly, resourceName));
         if (data.ModelId != modelId)
         {
             throw new InvalidDataException($"The embedded weights were trained for '{data.ModelId}', not '{modelId}'.");
@@ -263,6 +259,33 @@ internal sealed class WeightedLemmaTable
         return data.Dimension == hiddenSize
             ? new WeightedLemmaTable(data)
             : throw new InvalidDataException($"The embedded weights have dimension {data.Dimension}, not {hiddenSize}.");
+    }
+
+    /// <summary>
+    ///     Reads an embedded resource into an array of exactly its length. A stream that can seek, which is what the
+    ///     runtime returns for an embedded resource, is read directly into that array. A buffer that grows while the
+    ///     resource is copied (a <see cref="MemoryStream"/> doubles its capacity) would hold up to twice the size of the
+    ///     weights until the collector frees it, and the process keeps that memory. A stream that cannot seek is copied
+    ///     through such a temporary buffer, and an exactly sized copy is returned.
+    /// </summary>
+    /// <param name="assembly">The assembly that embeds the resource.</param>
+    /// <param name="resourceName">The manifest resource name.</param>
+    /// <returns>The bytes of the resource.</returns>
+    /// <exception cref="InvalidDataException">Thrown when the resource is missing.</exception>
+    internal static byte[] ReadResource(Assembly assembly, string resourceName)
+    {
+        using var stream = assembly.GetManifestResourceStream(resourceName)
+            ?? throw new InvalidDataException($"The embedded weights '{resourceName}' are missing from the assembly.");
+        if (stream.CanSeek)
+        {
+            var bytes = new byte[checked((int)stream.Length)];
+            stream.ReadExactly(bytes);
+            return bytes;
+        }
+
+        using var buffer = new MemoryStream();
+        stream.CopyTo(buffer);
+        return buffer.ToArray();
     }
 
     /// <summary>

@@ -26,7 +26,8 @@
 ```text
 ├── corpus/                     (training anchors, holdout sentences, form maps; corpus/open is the open
 │                                part-of-speech corpus and the tag counts of the Basic tagger; corpus/suite is the
-│                                reviewed suite with the expectation of each model; corpus/allwords is the independent
+│                                reviewed suite with the expectation of each model; corpus/shapes is the held-out shape
+│                                probe set; corpus/allwords is the independent
 │                                all-words gold set of the usage prior)
 ├── data/                       (word data TSV tables from Open English WordNet, schema.yaml)
 ├── model/                      (one folder per model: model/<model-id>/ with ONNX encoder, vocabulary, tokenizer,
@@ -34,7 +35,7 @@
 ├── tools/
 │   ├── WordSense.Builder/      (non-shipped builder: compile-image, weights, evaluate, evaluate-senses, evaluate-allwords,
 │   │                            allwords-sample, allwords-merge,
-│   │                            evaluate-running, evaluate-suite, check-leakage, tiers, open-counts, train-basic,
+│   │                            evaluate-running, evaluate-suite, evaluate-shapes, check-leakage, tiers, open-counts, train-basic,
 │   │                            tune-basic, evaluate-tagger, appendix)
 │   ├── open-corpus/            (Python scripts that built the open part-of-speech corpus corpus/open)
 │   ├── quota-fill/             (Python scripts that fill the per-sense quotas of the corpus, and the usage-weighted

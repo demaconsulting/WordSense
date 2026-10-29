@@ -27,7 +27,8 @@ user guide and the model comparison table. It also validates the data and the co
 
 - regenerate the word data: `rebuild-forms`, `label-senses`, `compile-image`;
 - retrain: `train-basic`, `weights`;
-- re-measure: `evaluate`, `evaluate-senses`, `evaluate-allwords`, `evaluate-running`, `evaluate-suite`;
+- re-measure: `evaluate`, `evaluate-senses`, `evaluate-allwords`, `evaluate-running`, `evaluate-suite`,
+  `evaluate-shapes`;
 - check the inputs: `validate-data`, `check-leakage`, `tiers`.
 
 **Why.** The shipped artifacts must be reproducible from committed inputs. The same inputs give identical bytes, and
@@ -40,7 +41,8 @@ and `pip install lemminflect`. The evaluations on SemCor and the treebank need t
 **Commands.** `dotnet run --project tools/WordSense.Builder -c Release -- <command> [--name value ...]`. The commands
 are `compile-image`, `rebuild-forms`, `audit-forms`, `generate-facts`, `import-moby`, `weights <modelId>`,
 `evaluate <modelId>`, `evaluate-senses`, `evaluate-allwords`, `allwords-sample`, `allwords-merge`, `evaluate-running`,
-`evaluate-suite`, `check-leakage`, `tiers`, `open-counts`, `evaluate-tagger`, `coverage`, `train-basic`, `tune-basic`,
+`evaluate-suite`, `evaluate-shapes`, `check-leakage`, `tiers`, `open-counts`, `evaluate-tagger`, `coverage`,
+`train-basic`, `tune-basic`,
 `appendix`, `import-oewn`, `import-wn30-counts`, `label-senses`, `seed-inventory` and `validate-data`. Examples:
 
 ```text
@@ -113,7 +115,8 @@ scratch to `tools/open-corpus/work/` (both git-ignored). The builder command `op
 
 **What.** Python scripts (standard library only; `pypdf` for `faa.py`) that fill the per-sense quotas of the encoder
 corpus with real and with written sentences: the pool of public-domain text, the harvest of candidate sentences, the
-batches for the labeler and writer models and their ingestion, selection, coverage reports, the addition of lemmas to
+batches for the labeler and writer models and their ingestion, selection, coverage reports (the sense quotas and the
+sentence-shape coverage, `shapes.py`), the addition of lemmas to
 the curation and a diagnostic that re-weights the real test rows by an independent usage prior (`usage_weighted.py`).
 
 **When.** To extend the training corpus, for example with further lemmas, and to regenerate `corpus/coverage`.

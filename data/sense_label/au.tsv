@@ -28,10 +28,10 @@ oewn-audible__1.04.00..	noun	generated
 oewn-audible__3.00.00..	adjective	generated
 oewn-audibleness__1.07.00..	noun	generated
 oewn-audibly__4.02.00..	adverb	generated
-oewn-audience__1.10.00..	consultation	generated
-oewn-audience__1.14.00..	assemblage	generated
-oewn-audience__1.14.01..	hoi-polloi	generated
-oewn-audience__1.26.00..	hearing	generated
+oewn-audience__1.10.00..	consultation	curated
+oewn-audience__1.14.00..	assemblage	curated
+oewn-audience__1.14.01..	hoi-polloi	curated
+oewn-audience__1.26.00..	hearing	curated
 oewn-audile__1.18.00..	noun	generated
 oewn-audile__3.01.00..	adjective	generated
 oewn-audio__1.06.00..	component	generated
