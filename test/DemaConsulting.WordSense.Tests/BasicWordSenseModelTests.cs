@@ -194,7 +194,7 @@ public class BasicWordSenseModelTests
 
         // Assert: the word after the determiner and the noun is a noun, with a confident answer
         Assert.Equal(PartOfSpeech.Noun, results[index].Details?.PartOfSpeech);
-        Assert.True(results[index].Confidence > 0.75);
+        Assert.True(results[index].Confidence > 0.8);
     }
 
     /// <summary>
