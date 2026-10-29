@@ -39,33 +39,88 @@ public sealed class ShapeProbeTests : IDisposable
         Assert.Equal((PartOfSpeech.Verb, 0), (rows[1].Gold, rows[1].TargetIndex));
     }
 
+    private void Reject(string row, string expected)
+    {
+        var path = _dir.Write("probe.tsv", Header + row + "\n");
+        var message = Assert.Throws<InvalidDataException>(() => ShapeProbeFile.ReadRows(path)).Message;
+        Assert.Contains(expected, message, StringComparison.Ordinal);
+    }
+
     /// <summary>
-    ///     A malformed row (columns, a shape that is not known, a gold that does not follow from the shape, a target that is
-    ///     missing, doubled or not at its index) and a repeated id are rejected.
+    ///     A row without six columns is rejected.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_ShapeProbe_ReadRows_MalformedRow_IsRejected()
+    public void WordSenseBuilder_ShapeProbe_ReadRows_WrongColumnCount_IsRejected()
     {
-        var cases = new (string Row, string Expected)[]
-        {
-            ("a\tn-obj-light\tcheck\tNoun\t3", "expected 6"),
-            ("a\tn-unknown\tcheck\tNoun\t3\tDo a quick {check} .", "shape"),
-            ("a\tn-obj-light\tcheck\tVerb\t3\tDo a quick {check} .", "gold"),
-            ("a\tv-after-modal\tcheck\tNoun\t3\tDo a quick {check} .", "gold"),
-            ("a\tn-obj-light\tcheck\tNoun\t2\tDo a quick {check} .", "target_index"),
-            ("a\tn-obj-light\tcheck\tNoun\t3\tDo a quick check .", "braced target"),
-            ("a\tn-obj-light\tcheck\tNoun\t3\tDo a {quick} {check} .", "braced target"),
-            ("a\tn-obj-light\tcheck\tNoun\t3\tDo  a quick {check} .", "braced target"),
-            ("\tn-obj-light\tcheck\tNoun\t3\tDo a quick {check} .", "must not be empty"),
-        };
-        foreach (var (row, expected) in cases)
-        {
-            var path = _dir.Write("probe.tsv", Header + row + "\n");
-            Assert.Contains(expected, Assert.Throws<InvalidDataException>(() => ShapeProbeFile.ReadRows(path)).Message, StringComparison.Ordinal);
-        }
+        Reject("a\tn-obj-light\tcheck\tNoun\t3", "expected 6");
+    }
 
+    /// <summary>
+    ///     A row with a shape that is not one of the seven is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_ShapeProbe_ReadRows_UnknownShape_IsRejected()
+    {
+        Reject("a\tn-unknown\tcheck\tNoun\t3\tDo a quick {check} .", "shape");
+    }
+
+    /// <summary>
+    ///     A row whose gold part of speech is not that of its shape (Noun for a noun shape, Verb for a verb shape) is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_ShapeProbe_ReadRows_GoldNotOfTheShape_IsRejected()
+    {
+        Reject("a\tn-obj-light\tcheck\tVerb\t3\tDo a quick {check} .", "gold");
+        Reject("a\tv-after-modal\tcheck\tNoun\t3\tDo a quick {check} .", "gold");
+    }
+
+    /// <summary>
+    ///     A row without exactly one braced target word, or whose target index is not the index of that word, is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_ShapeProbe_ReadRows_TargetMissingDoubledOrMisplaced_IsRejected()
+    {
+        Reject("a\tn-obj-light\tcheck\tNoun\t2\tDo a quick {check} .", "target_index");
+        Reject("a\tn-obj-light\tcheck\tNoun\t3\tDo a quick check .", "braced target");
+        Reject("a\tn-obj-light\tcheck\tNoun\t3\tDo a {quick} {check} .", "braced target");
+        Reject("a\tn-obj-light\tcheck\tNoun\t3\tDo  a quick {check} .", "braced target");
+    }
+
+    /// <summary>
+    ///     A row with an empty id is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_ShapeProbe_ReadRows_EmptyId_IsRejected()
+    {
+        Reject("\tn-obj-light\tcheck\tNoun\t3\tDo a quick {check} .", "must not be empty");
+    }
+
+    /// <summary>
+    ///     A row with an empty lemma is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_ShapeProbe_ReadRows_EmptyLemma_IsRejected()
+    {
+        Reject("a\tn-obj-light\t\tNoun\t3\tDo a quick {check} .", "must not be empty");
+    }
+
+    /// <summary>
+    ///     A repeated id is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_ShapeProbe_ReadRows_RepeatedId_IsRejected()
+    {
         var good = "a\tn-obj-light\tcheck\tNoun\t3\tDo a quick {check} .\n";
         Assert.Contains("occurs twice", Assert.Throws<InvalidDataException>(() => ShapeProbeFile.ReadRows(_dir.Write("probe.tsv", Header + good + good))).Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A file with another header is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_ShapeProbe_ReadRows_WrongHeader_IsRejected()
+    {
+        var good = "a\tn-obj-light\tcheck\tNoun\t3\tDo a quick {check} .\n";
         Assert.Contains("header", Assert.Throws<InvalidDataException>(() => ShapeProbeFile.ReadRows(_dir.Write("probe.tsv", "id\tshape\n" + good))).Message, StringComparison.Ordinal);
     }
 
@@ -81,31 +136,43 @@ public sealed class ShapeProbeTests : IDisposable
     }
 
     /// <summary>
-    ///     An answer is right when its part of speech is the gold; it is harmful only for a gold noun answered as a verb with
-    ///     a confidence of at least 0.45.
+    ///     An answer is right when its part of speech is the gold; a word that is not answered is wrong.
     /// </summary>
     [Theory]
-    [InlineData(PartOfSpeech.Noun, PartOfSpeech.Noun, 0.9, true, false)]
-    [InlineData(PartOfSpeech.Noun, PartOfSpeech.Verb, 0.45, false, true)]
-    [InlineData(PartOfSpeech.Noun, PartOfSpeech.Verb, 0.44, false, false)]
-    [InlineData(PartOfSpeech.Verb, PartOfSpeech.Noun, 0.9, false, false)]
-    [InlineData(PartOfSpeech.Verb, PartOfSpeech.Verb, 0.9, true, false)]
-    public void WordSenseBuilder_ShapeProbe_Answer_IsCorrectAndHarmful(PartOfSpeech gold, PartOfSpeech answered, double confidence, bool correct, bool harmful)
+    [InlineData(PartOfSpeech.Noun, PartOfSpeech.Noun, true)]
+    [InlineData(PartOfSpeech.Noun, PartOfSpeech.Verb, false)]
+    [InlineData(PartOfSpeech.Verb, PartOfSpeech.Noun, false)]
+    [InlineData(PartOfSpeech.Verb, PartOfSpeech.Verb, true)]
+    public void WordSenseBuilder_ShapeProbe_Answer_IsCorrect(PartOfSpeech gold, PartOfSpeech answered, bool correct)
     {
         var row = Row("a", gold == PartOfSpeech.Noun ? "n-obj-light" : "v-after-modal", gold);
-        var answer = new ShapeAnswer(answered, confidence);
 
-        Assert.Equal(correct, ShapeProbeEvaluator.IsCorrect(row, answer));
-        Assert.Equal(harmful, ShapeProbeEvaluator.IsHarmful(row, answer));
+        Assert.Equal(correct, ShapeProbeEvaluator.IsCorrect(row, new ShapeAnswer(answered, 0.9)));
         Assert.False(ShapeProbeEvaluator.IsCorrect(row, new ShapeAnswer(null, 0)));
     }
 
     /// <summary>
-    ///     The committed probe file is valid: between 400 and 600 rows, every shape well represented, many lemmas, and the
-    ///     target of every row is a form of its lemma with the gold part of speech in the lexicon.
+    ///     An answer is harmful only for a gold noun answered as a verb with a confidence of at least 0.45.
+    /// </summary>
+    [Theory]
+    [InlineData(PartOfSpeech.Noun, PartOfSpeech.Noun, 0.9, false)]
+    [InlineData(PartOfSpeech.Noun, PartOfSpeech.Verb, 0.45, true)]
+    [InlineData(PartOfSpeech.Noun, PartOfSpeech.Verb, 0.44, false)]
+    [InlineData(PartOfSpeech.Verb, PartOfSpeech.Noun, 0.9, false)]
+    [InlineData(PartOfSpeech.Verb, PartOfSpeech.Verb, 0.9, false)]
+    public void WordSenseBuilder_ShapeProbe_Answer_IsHarmful(PartOfSpeech gold, PartOfSpeech answered, double confidence, bool harmful)
+    {
+        var row = Row("a", gold == PartOfSpeech.Noun ? "n-obj-light" : "v-after-modal", gold);
+
+        Assert.Equal(harmful, ShapeProbeEvaluator.IsHarmful(row, new ShapeAnswer(answered, confidence)));
+    }
+
+    /// <summary>
+    ///     The committed probe file reads and has between 400 and 600 rows, at least 60 for each shape and at least 300
+    ///     lemmas.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_ShapeProbe_CommittedFile_IsValid()
+    public void WordSenseBuilder_ShapeProbe_CommittedFile_HasEnoughRowsInEveryShape()
     {
         // Act
         var rows = ShapeProbeFile.Read(Path.Join(DataFixture.RepositoryRoot(), "corpus"));
@@ -118,6 +185,20 @@ public sealed class ShapeProbeTests : IDisposable
         }
 
         Assert.True(rows.Select(r => r.Lemma).Distinct(StringComparer.Ordinal).Count() >= 300);
+    }
+
+    /// <summary>
+    ///     In the committed probe file the target of every row is a form of its lemma with the gold part of speech in the
+    ///     lexicon.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_ShapeProbe_CommittedFile_TargetsAreFormsOfTheirLemma()
+    {
+        // Act
+        var rows = ShapeProbeFile.Read(Path.Join(DataFixture.RepositoryRoot(), "corpus"));
+
+        // Assert
+        Assert.NotEmpty(rows);
         foreach (var row in rows)
         {
             var key = BasicClassifier.Normalize(row.Words[row.TargetIndex]);
@@ -136,10 +217,9 @@ public sealed class ShapeProbeTests : IDisposable
         using var output = new StringWriter();
         using var error = new StringWriter();
         var report = Path.Join(_dir.Root, "report.md");
-        var outcomes = Path.Join(_dir.Root, "outcomes.tsv");
 
         // Act
-        var code = await Program.RunAsync(["evaluate-shapes", "--model", "basic", "--repository", DataFixture.RepositoryRoot(), "--output", report, "--outcomes", outcomes], output, error, TestContext.Current.CancellationToken);
+        var code = await Program.RunAsync(["evaluate-shapes", "--model", "basic", "--repository", DataFixture.RepositoryRoot(), "--output", report], output, error, TestContext.Current.CancellationToken);
 
         // Assert
         Assert.Equal(0, code);
@@ -151,6 +231,25 @@ public sealed class ShapeProbeTests : IDisposable
         }
 
         Assert.Contains("| all noun shapes |", text, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The command writes the outcomes of every model and row when asked.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_Program_EvaluateShapes_WritesTheOutcomesFile()
+    {
+        // Arrange
+        using var output = new StringWriter();
+        using var error = new StringWriter();
+        var outcomes = Path.Join(_dir.Root, "outcomes.tsv");
+
+        // Act
+        var code = await Program.RunAsync(["evaluate-shapes", "--model", "basic", "--repository", DataFixture.RepositoryRoot(), "--outcomes", outcomes], output, error, TestContext.Current.CancellationToken);
+
+        // Assert
+        Assert.Equal(0, code);
         Assert.StartsWith("id\tshape\tlemma", await File.ReadAllTextAsync(outcomes, TestContext.Current.CancellationToken), StringComparison.Ordinal);
     }
 
@@ -200,12 +299,42 @@ public sealed class ShapeProbeTests : IDisposable
     }
 
     /// <summary>
-    ///     The report counts the right answers per shape and per model, and the harmful answers among the noun rows.
+    ///     The report counts the right answers per shape and per model; a shape without rows shows n/a.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_ShapeProbe_Render_ReportsAccuracyAndHarmfulRate()
+    public void WordSenseBuilder_ShapeProbe_Render_ReportsAccuracyPerShape()
     {
         // Arrange
+        var (rows, good, weak) = RenderFixture();
+
+        // Act
+        var text = ShapeProbeEvaluator.Render(rows, [("Good", good), ("Weak", weak)]);
+
+        // Assert
+        Assert.Contains("| n-obj-light | Noun | 2 | 100.00% | 50.00% |", text, StringComparison.Ordinal);
+        Assert.Contains("| v-after-modal | Verb | 2 | 100.00% | 50.00% |", text, StringComparison.Ordinal);
+        Assert.Contains("| all | " + " | 4 | 100.00% | 50.00% |", text, StringComparison.Ordinal);
+        Assert.Contains("| n-modifier | Noun | 0 | n/a | n/a |", text, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The report counts the harmful answers per model among the noun rows of each noun shape.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_ShapeProbe_Render_ReportsTheHarmfulRatePerNounShape()
+    {
+        // Arrange
+        var (rows, good, weak) = RenderFixture();
+
+        // Act
+        var text = ShapeProbeEvaluator.Render(rows, [("Good", good), ("Weak", weak)]);
+
+        // Assert
+        Assert.Contains("| n-obj-light | 2 | 0 (0.00%) | 1 (50.00%) |", text, StringComparison.Ordinal);
+    }
+
+    private static (ShapeProbeRow[] Rows, ShapeAnswer[] Good, ShapeAnswer[] Weak) RenderFixture()
+    {
         var rows = new[]
         {
             Row("a", "n-obj-light", PartOfSpeech.Noun),
@@ -215,16 +344,7 @@ public sealed class ShapeProbeTests : IDisposable
         };
         var good = new[] { new ShapeAnswer(PartOfSpeech.Noun, 0.9), new ShapeAnswer(PartOfSpeech.Noun, 0.8), new ShapeAnswer(PartOfSpeech.Verb, 0.9), new ShapeAnswer(PartOfSpeech.Verb, 0.7) };
         var weak = new[] { new ShapeAnswer(PartOfSpeech.Verb, 0.6), new ShapeAnswer(PartOfSpeech.Noun, 0.8), new ShapeAnswer(PartOfSpeech.Noun, 0.9), new ShapeAnswer(PartOfSpeech.Verb, 0.7) };
-
-        // Act
-        var text = ShapeProbeEvaluator.Render(rows, [("Good", good), ("Weak", weak)]);
-
-        // Assert
-        Assert.Contains("| n-obj-light | Noun | 2 | 100.00% | 50.00% |", text, StringComparison.Ordinal);
-        Assert.Contains("| v-after-modal | Verb | 2 | 100.00% | 50.00% |", text, StringComparison.Ordinal);
-        Assert.Contains("| all | " + " | 4 | 100.00% | 50.00% |", text, StringComparison.Ordinal);
-        Assert.Contains("| n-obj-light | 2 | 0 (0.00%) | 1 (50.00%) |", text, StringComparison.Ordinal);
-        Assert.Contains("| n-modifier | Noun | 0 | n/a | n/a |", text, StringComparison.Ordinal);
+        return (rows, good, weak);
     }
 
     /// <summary>

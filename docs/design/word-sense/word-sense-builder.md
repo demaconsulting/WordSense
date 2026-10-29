@@ -743,6 +743,23 @@ all noun shapes. A shape without rows shows `n/a`. `RenderOutcomes` writes one l
 shape, the lemma, the gold, the model, the answered part of speech, the confidence and the flags `correct` and
 `harmful`), to compare two runs row by row.
 
+#### Shape rows (corpus property)
+
+A word that is both a noun and a verb has written anchors in the seven shapes of the probe set wherever its senses allow
+them (`corpus/curation/shape-fit.tsv` lists the shapes of each sense), at least two kept rows for each lemma, part of
+speech and shape; `corpus/coverage/shape-coverage.tsv` lists these units and whether they are met. The rows are ordinary
+written anchors: the same blind label and blind check as any written row, one `quota-w<wave>-shape.tsv` file in
+`anchors`, `provenance` and `choosers/anchors`, and a provenance `source_key` of `quota-w<wave>-shape:<shape>` that names
+the shape. The wave decides the stage of the lemma (`Corpus.StagesOf`): 48 and 49 hold the rows of base-stage lemmas, 98
+and 99 those of stage 1, and 110 those of stage 2. The builder reads the files like any other anchors; the chooser rows
+of every stage enter the cue tables of the basic model.
+
+Noun shapes are written only for a lemma whose noun senses hold at least 2 percent of the WordNet 3.0 tag counts of its
+noun and verb senses: a rare noun use written in a shape teaches the classifier that the shape is a noun. This is a
+property of the committed corpus, not of the builder: the rows are written by the quota tool of `tools/quota-fill`, which
+is outside the reviewed units, and `ShapeRowsTests` checks the rows and the coverage report that it leaves. The probe set
+never overlaps the rows (the leakage check and the quota tool's duplicate check both cover it).
+
 #### Quota report (`Tiers`)
 
 Reads the tag counts of the senses from the `sense_frequency` table of `data/`, the anchors and the held-out
