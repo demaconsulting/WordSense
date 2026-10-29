@@ -358,8 +358,8 @@ public class WeightedLemmaTableTests
     }
 
     /// <summary>
-    ///     An embedded resource is read into an array of exactly its length, whether the resource stream can seek or not,
-    ///     so that loading the weights does not hold a buffer that is up to twice as large.
+    ///     An embedded resource, whose stream can seek, is read into an array of exactly its length, so that loading
+    ///     the weights does not hold a buffer that is up to twice as large.
     /// </summary>
     [Fact]
     public void WeightedLemmaTable_ReadResource_ReturnsExactlyTheBytesOfTheResource()

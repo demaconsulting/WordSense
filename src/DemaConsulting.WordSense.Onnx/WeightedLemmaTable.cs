@@ -262,9 +262,11 @@ internal sealed class WeightedLemmaTable
     }
 
     /// <summary>
-    ///     Reads an embedded resource into an array of exactly its length. A buffer that grows while the resource is
-    ///     copied (a <see cref="MemoryStream"/> doubles its capacity) would hold up to twice the size of the weights
-    ///     until the collector frees it, and the process keeps that memory.
+    ///     Reads an embedded resource into an array of exactly its length. A stream that can seek, which is what the
+    ///     runtime returns for an embedded resource, is read directly into that array. A buffer that grows while the
+    ///     resource is copied (a <see cref="MemoryStream"/> doubles its capacity) would hold up to twice the size of the
+    ///     weights until the collector frees it, and the process keeps that memory. A stream that cannot seek is copied
+    ///     through such a temporary buffer, and an exactly sized copy is returned.
     /// </summary>
     /// <param name="assembly">The assembly that embeds the resource.</param>
     /// <param name="resourceName">The manifest resource name.</param>
