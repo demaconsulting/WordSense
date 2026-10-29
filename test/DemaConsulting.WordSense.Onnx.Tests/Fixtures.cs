@@ -220,15 +220,24 @@ internal sealed class FakeEncoder(Func<string, double[]?> vectorOf)
 }
 
 /// <summary>
-///     An assembly that serves one embedded resource from memory, standing in for the assembly of a model package.
+///     An assembly that serves embedded resources from memory, standing in for the assembly of a model package.
 /// </summary>
-/// <param name="resourceName">The manifest resource name.</param>
-/// <param name="data">The bytes of the resource.</param>
-internal sealed class FixtureAssembly(string resourceName, byte[] data) : Assembly
+/// <param name="resources">The bytes of each resource by its manifest resource name.</param>
+internal sealed class FixtureAssembly(IReadOnlyDictionary<string, byte[]> resources) : Assembly
 {
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="FixtureAssembly"/> class that serves one resource.
+    /// </summary>
+    /// <param name="resourceName">The manifest resource name.</param>
+    /// <param name="data">The bytes of the resource.</param>
+    public FixtureAssembly(string resourceName, byte[] data)
+        : this(new Dictionary<string, byte[]> { [resourceName] = data })
+    {
+    }
+
     /// <inheritdoc />
     public override Stream? GetManifestResourceStream(string name) =>
-        string.Equals(name, resourceName, StringComparison.Ordinal) ? new MemoryStream(data) : null;
+        resources.TryGetValue(name, out var data) ? new MemoryStream(data) : null;
 }
 
 /// <summary>
@@ -241,6 +250,11 @@ internal sealed class FixtureEncoderModel : OnnxWordSenseModel
     ///     The manifest resource name of the fixture weights.
     /// </summary>
     public const string ResourceName = "fixture.weights.bin";
+
+    /// <summary>
+    ///     The manifest resource name of the fixture part-of-speech head.
+    /// </summary>
+    public const string HeadResourceName = "fixture.head.bin";
 
     /// <summary>
     ///     The hidden size of the MiniLM encoder.
@@ -274,6 +288,11 @@ internal sealed class FixtureEncoderModel : OnnxWordSenseModel
     {
         using var minilm = new MiniLMEncoderModel(null, 128);
         var data = new WeightsData(minilm.Spec.ModelId, Fixtures.InventoryHash(), minilm.HiddenSize, new float[minilm.HiddenSize], lemmas);
-        return minilm.Spec with { WeightsAssembly = new FixtureAssembly(ResourceName, BlobWriter.Write(data)), WeightsResourceName = ResourceName };
+
+        // A head bound to the real MiniLM encoder file, so that the model loads and checks it like an embedded one
+        var onnx = minilm.Spec.Files.First(f => f.Name == minilm.Spec.OnnxFileName);
+        var head = HeadSpec.Create(minilm.HiddenSize) with { ModelId = minilm.Spec.ModelId, EncoderSha256 = Convert.FromHexString(onnx.Sha256) };
+        var resources = new Dictionary<string, byte[]> { [ResourceName] = BlobWriter.Write(data), [HeadResourceName] = HeadBlobWriter.Write(head) };
+        return minilm.Spec with { WeightsAssembly = new FixtureAssembly(resources), WeightsResourceName = ResourceName, HeadResourceName = HeadResourceName };
     }
 }

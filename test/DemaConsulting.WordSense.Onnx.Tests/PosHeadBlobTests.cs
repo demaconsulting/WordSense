@@ -1,0 +1,234 @@
+using System.Security.Cryptography;
+
+namespace DemaConsulting.WordSense.Onnx.Tests;
+
+/// <summary>
+///     Tests for <see cref="PosHeadBlob"/> and the binding checks of <see cref="PosHead.LoadEmbedded"/>.
+/// </summary>
+public class PosHeadBlobTests
+{
+    private const string Resource = "head.bin";
+    private static readonly string EncoderHex = Convert.ToHexString(HeadSpec.Create().EncoderSha256).ToLowerInvariant();
+
+    private static PosHead Load(byte[] blob, string modelId = "m", int hiddenSize = 4, string? encoder = null) =>
+        PosHead.LoadEmbedded(new FixtureAssembly(Resource, blob), Resource, modelId, hiddenSize, encoder ?? EncoderHex);
+
+    /// <summary>
+    ///     A head written with the test writer reads back with every field, and the weights are the half-precision values.
+    /// </summary>
+    [Fact]
+    public void PosHeadBlob_Read_RoundTrip_ReturnsEveryField()
+    {
+        // Arrange
+        var spec = HeadSpec.Create();
+
+        // Act
+        var data = PosHeadBlob.Read(HeadBlobWriter.Write(spec));
+
+        // Assert: the weights are multiples of 0.25 and survive half precision exactly
+        Assert.Equal("m", data.ModelId);
+        Assert.Equal(4, data.HiddenSize);
+        Assert.Equal(spec.EncoderSha256, data.EncoderSha256);
+        Assert.Equal(PosHeadBlob.WordAndNeighbors, data.FeatureLayout);
+        Assert.Equal(Enum.GetNames<PartOfSpeech>(), data.ClassNames);
+        Assert.Equal(new byte[PosHeadBlob.HashSize], data.TrainSha256);
+        Assert.Equal(0.01f, data.C);
+        Assert.Equal("word+-1", data.Variant);
+        Assert.Equal(spec.Weights, data.Weights);
+        Assert.Equal(spec.Biases, data.Biases);
+    }
+
+    /// <summary>
+    ///     A head bound to its encoder, hidden size, model and classes loads.
+    /// </summary>
+    [Fact]
+    public void PosHead_LoadEmbedded_MatchingBinding_Loads()
+    {
+        var head = Load(HeadBlobWriter.Write(HeadSpec.Create()));
+
+        Assert.Equal(4, head.HiddenSize);
+        Assert.Equal(Enum.GetValues<PartOfSpeech>().Length, head.ClassCount);
+    }
+
+    /// <summary>
+    ///     A head trained on another encoder file than the pinned one is rejected.
+    /// </summary>
+    [Fact]
+    public void PosHead_LoadEmbedded_WrongEncoderDigest_Throws()
+    {
+        var blob = HeadBlobWriter.Write(HeadSpec.Create());
+        var other = Convert.ToHexString(SHA256.HashData([1, 2, 3])).ToLowerInvariant();
+
+        var ex = Assert.Throws<InvalidDataException>(() => Load(blob, encoder: other));
+
+        Assert.Contains("another encoder file", ex.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A head whose classes or class order differ from the parts of speech of the library is rejected.
+    /// </summary>
+    [Fact]
+    public void PosHead_LoadEmbedded_WrongClassOrder_Throws()
+    {
+        // Arrange: Noun and Verb swapped, and a renamed class
+        var swapped = Enum.GetNames<PartOfSpeech>();
+        (swapped[0], swapped[2]) = (swapped[2], swapped[0]);
+        var renamed = Enum.GetNames<PartOfSpeech>();
+        renamed[9] = "Modal";
+
+        // Act / Assert
+        Assert.Throws<InvalidDataException>(() => Load(HeadBlobWriter.Write(HeadSpec.Create() with { ClassNames = swapped })));
+        Assert.Throws<InvalidDataException>(() => Load(HeadBlobWriter.Write(HeadSpec.Create() with { ClassNames = renamed })));
+    }
+
+    /// <summary>
+    ///     A head for another model, hidden size or feature layout is rejected.
+    /// </summary>
+    [Fact]
+    public void PosHead_LoadEmbedded_WrongModelSizeOrLayout_Throws()
+    {
+        var blob = HeadBlobWriter.Write(HeadSpec.Create());
+
+        Assert.Throws<InvalidDataException>(() => Load(blob, modelId: "other"));
+        Assert.Throws<InvalidDataException>(() => Load(blob, hiddenSize: 5));
+        Assert.Throws<InvalidDataException>(() => Load(HeadBlobWriter.Write(HeadSpec.Create() with { FeatureLayout = 2 })));
+    }
+
+    /// <summary>
+    ///     A missing resource is reported as invalid data.
+    /// </summary>
+    [Fact]
+    public void PosHead_LoadEmbedded_MissingResource_Throws()
+    {
+        Assert.Throws<InvalidDataException>(() => PosHead.LoadEmbedded(new FixtureAssembly("other", []), Resource, "m", 4, EncoderHex));
+    }
+
+    /// <summary>
+    ///     A flipped byte anywhere in the blob fails the trailing hash.
+    /// </summary>
+    [Fact]
+    public void PosHeadBlob_Read_FlippedByte_ThrowsChecksum()
+    {
+        var blob = HeadBlobWriter.Write(HeadSpec.Create());
+
+        foreach (var index in new[] { 4, 10, blob.Length / 2, blob.Length - PosHeadBlob.HashSize - 1, blob.Length - 1 })
+        {
+            var damaged = (byte[])blob.Clone();
+            damaged[index] ^= 0x40;
+            var ex = Assert.Throws<InvalidDataException>(() => PosHeadBlob.Read(damaged));
+            Assert.Contains("checksum", ex.Message, StringComparison.Ordinal);
+        }
+    }
+
+    /// <summary>
+    ///     A blob with the wrong magic, a truncated blob and an empty blob are rejected.
+    /// </summary>
+    [Fact]
+    public void PosHeadBlob_Read_BadMagicOrTruncated_Throws()
+    {
+        var blob = HeadBlobWriter.Write(HeadSpec.Create());
+        var badMagic = (byte[])blob.Clone();
+        badMagic[3] = (byte)'2';
+
+        Assert.Throws<InvalidDataException>(() => PosHeadBlob.Read(badMagic));
+        Assert.Throws<InvalidDataException>(() => PosHeadBlob.Read([]));
+        foreach (var length in new[] { 1, 4, 20, blob.Length / 2, blob.Length - 1 })
+        {
+            Assert.Throws<InvalidDataException>(() => PosHeadBlob.Read(blob.AsSpan(0, length)));
+        }
+    }
+
+    /// <summary>
+    ///     A body that is well formed up to a point and then truncated, with a valid hash, is rejected by the structure checks.
+    /// </summary>
+    [Fact]
+    public void PosHeadBlob_Read_TruncatedBodyWithValidHash_Throws()
+    {
+        var body = HeadBlobWriter.WriteBody(HeadSpec.Create());
+        foreach (var length in new[] { 5, 12, 60, body.Length / 2, body.Length - 1 })
+        {
+            var cut = body[..length];
+            byte[] blob = [.. cut, .. SHA256.HashData(cut)];
+            Assert.Throws<InvalidDataException>(() => PosHeadBlob.Read(blob));
+        }
+
+        // Trailing bytes after the last section are rejected too
+        byte[] padded = [.. body, 0];
+        Assert.Throws<InvalidDataException>(() => PosHeadBlob.Read([.. padded, .. SHA256.HashData(padded)]));
+    }
+
+    /// <summary>
+    ///     A section of the wrong length, a duplicate section, a missing head section and non-finite values are rejected.
+    /// </summary>
+    [Fact]
+    public void PosHeadBlob_Read_InvalidSections_Throws()
+    {
+        var spec = HeadSpec.Create();
+
+        // Wrong weight count: one weight too few
+        Assert.Throws<InvalidDataException>(() => PosHeadBlob.Read(HeadBlobWriter.Write(spec with { Weights = spec.Weights[1..] })));
+
+        // A second section with the id of the head
+        Assert.Throws<InvalidDataException>(() => PosHeadBlob.Read(HeadBlobWriter.Write(spec with { Sections = [(PosHeadBlob.PosSection, true, [])] })));
+
+        // A non-finite bias and a non-finite weight
+        Assert.Throws<InvalidDataException>(() => PosHeadBlob.Read(HeadBlobWriter.Write(spec with { Biases = [.. spec.Biases.Select((b, i) => i == 3 ? float.NaN : b)] })));
+        Assert.Throws<InvalidDataException>(() => PosHeadBlob.Read(HeadBlobWriter.Write(spec with { Weights = [.. spec.Weights.Select((w, i) => i == 5 ? float.PositiveInfinity : w)] })));
+    }
+
+    /// <summary>
+    ///     A section that the reader does not know is skipped when it is optional and rejected when it is required.
+    /// </summary>
+    [Fact]
+    public void PosHeadBlob_Read_UnknownSection_SkippedWhenOptionalRejectedWhenRequired()
+    {
+        var spec = HeadSpec.Create();
+        byte[] payload = [1, 2, 3, 4, 5];
+
+        var optional = PosHeadBlob.Read(HeadBlobWriter.Write(spec with { Sections = [(2, false, payload)] }));
+        var required = Assert.Throws<InvalidDataException>(() => PosHeadBlob.Read(HeadBlobWriter.Write(spec with { Sections = [(2, true, payload)] })));
+
+        Assert.Equal(spec.Weights, optional.Weights);
+        Assert.Contains("required section 2", required.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A blob without a part-of-speech section is rejected.
+    /// </summary>
+    [Fact]
+    public void PosHeadBlob_Read_NoHeadSection_Throws()
+    {
+        // Build a blob whose section list is empty by cutting the part-of-speech section: write the body of a valid
+        // head, then rewrite its section count to zero and drop the section bytes
+        var body = HeadBlobWriter.WriteBody(HeadSpec.Create());
+        var prefix = SectionStart(body);
+        byte[] empty = [.. body[..prefix], 0];
+
+        Assert.Throws<InvalidDataException>(() => PosHeadBlob.Read([.. empty, .. SHA256.HashData(empty)]));
+    }
+
+    /// <summary>
+    ///     The expected class names are the names of the parts of speech in order.
+    /// </summary>
+    [Fact]
+    public void PosHeadBlob_ExpectedClassNames_AreThePartsOfSpeechInOrder()
+    {
+        Assert.Equal(
+            ["Noun", "Pronoun", "Verb", "Adjective", "Adverb", "Preposition", "Conjunction", "Interjection", "Determiner", "Auxiliary"],
+            PosHeadBlob.ExpectedClassNames());
+    }
+
+    private static int SectionStart(byte[] body)
+    {
+        // magic, "m" (length 1 + 1 byte), hidden size (1), digest (32), layout (1), class count (1) and names, train hash (32), C (4), variant (1 + 7)
+        var p = 4 + 2 + 1 + PosHeadBlob.HashSize + 1 + 1;
+        foreach (var name in Enum.GetNames<PartOfSpeech>())
+        {
+            p += 1 + name.Length;
+        }
+
+        p += PosHeadBlob.HashSize + sizeof(float) + 1 + "word+-1".Length;
+        Assert.Equal(1, body[p]);
+        return p;
+    }
+}
