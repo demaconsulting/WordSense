@@ -53,6 +53,9 @@ A sense needs rows by its tier, from the WordNet 3.0 tag count (`lexindex.QUOTA`
 5 held-out rows, **U** (1 to 4 tags, and every project sense) 10 and 3, **R** (no tag) 5 and 2. An R sense of a lemma
 with 15 or more senses needs 3 and 1 (`lexindex.quota_of`).
 
+**Size budget.** A wave is sized against the weights budget of 25 MB for `BertBaseCased` and 15 MB for `MiniLM` (decimal
+bytes of the `weights.bin` files). Each anchored sense adds about 1.4 KB to the BERT weights and 0.7 KB to the MiniLM
+weights, so train once with the planned lemmas and read the two sizes before adding more.
 The role of a real document is per lemma (`qf.doc_role`). One document in four is an evaluation document (chosen by a
 hash of the document, `qf.is_eval_document`): it supplies held-out rows only, whatever other lemmas it supplies anchors
 for, and every other document supplies anchors only. Within one lemma a document never supplies both: an evaluation

@@ -186,9 +186,9 @@ oewn-authentication__1.04.00..	certification	generated
 oewn-authentication__1.10.00..	assay-mark	generated
 oewn-authenticator__1.18.00..	noun	generated
 oewn-authenticity__1.07.00..	noun	generated
-oewn-author__1.18.00..	writer	curated
-oewn-author__1.18.01..	generator	curated
-oewn-author__2.36.00..	verb	curated
+oewn-author__1.18.00..	writer	generated
+oewn-author__1.18.01..	generator	generated
+oewn-author__2.36.00..	verb	generated
 oewn-authoress__1.18.00..	noun	generated
 oewn-authorial__3.01.00..	adjective	generated
 oewn-authorisation__1.04.00..	authorization	generated

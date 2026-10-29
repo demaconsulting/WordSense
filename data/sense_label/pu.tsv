@@ -407,11 +407,11 @@ oewn-purblind__5.00.00.blind.00	dim-sighted	generated
 oewn-purblind__5.00.00.undiscerning.00	obtuse	generated
 oewn-purchasable__5.00.00.available.00	for-sale	generated
 oewn-purchasable__5.00.00.corrupt.00	bribable	generated
-oewn-purchase__1.04.00..	acquisition	curated
-oewn-purchase__1.19.00..	leverage	curated
-oewn-purchase__1.19.01..	influence	curated
-oewn-purchase__1.21.00..	acquisition-2	curated
-oewn-purchase__2.40.00..	verb	curated
+oewn-purchase__1.04.00..	acquisition	generated
+oewn-purchase__1.19.00..	leverage	generated
+oewn-purchase__1.19.01..	influence	generated
+oewn-purchase__1.21.00..	acquisition-2	generated
+oewn-purchase__2.40.00..	verb	generated
 oewn-purchaser__1.18.00..	noun	generated
 oewn-purchasing__1.04.00..	noun	generated
 oewn-purdah__1.06.00..	screen	generated

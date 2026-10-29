@@ -750,7 +750,7 @@ oewn-anosmatic__3.01.00..	adjective	generated
 oewn-anosmia__1.26.00..	noun	generated
 oewn-anosmic__3.01.00..	anosmatic	generated
 oewn-anosmic__5.00.00.impaired.00	adjective	generated
-oewn-another__5.00.00.other.00	adjective	curated
+oewn-another__5.00.00.other.00	adjective	generated
 oewn-anova__1.09.00..	noun	generated
 oewn-anovulant__1.06.00..	noun	generated
 oewn-anovulation__1.22.00..	noun	generated
@@ -1199,8 +1199,8 @@ oewn-anxious__5.00.00.troubled.00	nervous	generated
 oewn-anxiously__4.02.00..	adverb	generated
 oewn-anxiousness__1.12.00..	disquiet	generated
 oewn-anxiousness__1.26.00..	anxiety	generated
-oewn-any__4.02.00..	adverb	curated
-oewn-any__5.00.00.some.00	adjective	curated
+oewn-any__4.02.00..	adverb	generated
+oewn-any__5.00.00.some.00	adjective	generated
 oewn-anyhow__4.02.00..	anyway	generated
 oewn-anyhow__4.02.01..	anyway-2	generated
 oewn-anymore__4.02.01..	adverb	generated

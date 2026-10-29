@@ -82,8 +82,8 @@ oewn-skiffle__1.10.00..	noun	generated
 oewn-skiing__1.04.00..	noun	generated
 oewn-skilful__5.00.00.skilled.00	adjective	generated
 oewn-skilfully__4.02.00..	adverb	generated
-oewn-skill__1.09.00..	science	curated
-oewn-skill__1.09.01..	accomplishment	curated
+oewn-skill__1.09.00..	science	generated
+oewn-skill__1.09.01..	accomplishment	generated
 oewn-skilled__3.00.00..	adjective	generated
 oewn-skillessness__1.07.01..	noun	generated
 oewn-skillet__1.06.00..	noun	generated
@@ -237,8 +237,8 @@ oewn-sky--blue__5.00.00.chromatic.00	adjective	generated
 oewn-sky--high__4.02.00..	adverb	generated
 oewn-sky--high__4.02.01..	enthusiastically	generated
 oewn-sky--high__4.02.02..	adverb-2	generated
-oewn-sky__1.17.00..	noun	curated
-oewn-sky__2.35.00..	verb	curated
+oewn-sky__1.17.00..	noun	generated
+oewn-sky__2.35.00..	verb	generated
 oewn-skybox__1.06.00..	noun	generated
 oewn-skycap__1.18.00..	noun	generated
 oewn-skydive__2.38.00..	verb	generated
