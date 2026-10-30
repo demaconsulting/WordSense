@@ -15,6 +15,18 @@ public sealed class TrainingOverlapTests : IDisposable
         _dir.Dispose();
     }
 
+    private static string FindRepositoryRoot()
+    {
+        var root = new DirectoryInfo(AppContext.BaseDirectory);
+        while (root is not null && !File.Exists(Path.Join(root.FullName, "WordSense.slnx")))
+        {
+            root = root.Parent;
+        }
+
+        Assert.NotNull(root);
+        return root.FullName;
+    }
+
     private static LeakageSet Set(string name, LeakageRole role, params string[] sentences) =>
         new(name, role, [.. sentences.Select((s, i) => (name + i, s))]);
 
@@ -112,5 +124,57 @@ public sealed class TrainingOverlapTests : IDisposable
 
         // Assert: the dev part, the treebank dev and the read set are listed, never the train part
         Assert.Equal(["open corpus dev", "UD-EWT dev", "read set"], sets.Select(s => s.Name));
+    }
+
+    /// <summary>
+    ///     Without a gold directory and a read set the held-out parts are those of the repository only; a path that is
+    ///     given and does not exist, or a gold directory without a gold file, stops the run instead of being skipped.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_LeakageCheck_HeldOutSets_ExplicitPathThatDoesNotExist_Throws()
+    {
+        // Arrange: a corpus with a dev part, an empty gold directory, and paths that do not exist
+        const string Sentence = "# corpus = t\n\n# sent_id = a\n# source_id = d\n# text = Go now.\n1\tGo\tgo\tVERB\tV\t_\tunanimous\n\n";
+        _dir.Write("corpus/open/representative/data/dev.tsv", Sentence);
+        Directory.CreateDirectory(Path.Join(_dir.Root, "empty-gold"));
+        var corpus = Path.Join(_dir.Root, "corpus");
+        var data = Path.Join(_dir.Root, "data");
+
+        // Act: list the sets with no option, as the default behavior
+        var none = LeakageCheck.HeldOutSets(corpus, data, null, null);
+
+        // Assert: the default keeps the parts of the repository only, and each given path that cannot be used is an error naming it
+        Assert.Equal(["open corpus dev"], none.Select(s => s.Name));
+        var missingDirectory = Assert.Throws<DirectoryNotFoundException>(() => LeakageCheck.HeldOutSets(corpus, data, Path.Join(_dir.Root, "absent"), null));
+        Assert.Contains("--gold-dir", missingDirectory.Message, StringComparison.Ordinal);
+        var emptyDirectory = Assert.Throws<InvalidDataException>(() => LeakageCheck.HeldOutSets(corpus, data, Path.Join(_dir.Root, "empty-gold"), null));
+        Assert.Contains("--gold-dir", emptyDirectory.Message, StringComparison.Ordinal);
+        var missingReadSet = Assert.Throws<FileNotFoundException>(() => LeakageCheck.HeldOutSets(corpus, data, null, Path.Join(_dir.Root, "absent.tsv")));
+        Assert.Contains("--read-set", missingReadSet.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The check-leakage command stops with exit code 1 and a message that names the option when a given gold
+    ///     directory or read set does not exist, instead of checking fewer parts.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_Program_CheckLeakage_ExplicitPathThatDoesNotExist_Fails()
+    {
+        // Arrange: the repository, and a gold directory and a read set that do not exist
+        var root = FindRepositoryRoot();
+        using var output = new StringWriter();
+        using var error = new StringWriter();
+
+        // Act: run the command with each option
+        var gold = await Program.RunAsync(["check-leakage", "--repository", root, "--gold-dir", Path.Join(_dir.Root, "absent")], output, error, TestContext.Current.CancellationToken);
+        var goldMessage = error.ToString();
+        var read = await Program.RunAsync(["check-leakage", "--repository", root, "--read-set", Path.Join(_dir.Root, "absent.tsv")], output, error, TestContext.Current.CancellationToken);
+
+        // Assert: both fail with a message that names the option
+        Assert.Equal(1, gold);
+        Assert.Equal(1, read);
+        Assert.Contains("--gold-dir", goldMessage, StringComparison.Ordinal);
+        Assert.Contains("--read-set", error.ToString(), StringComparison.Ordinal);
     }
 }

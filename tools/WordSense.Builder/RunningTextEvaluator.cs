@@ -179,13 +179,15 @@ internal static class RunningTextEvaluator
     ///     Renders the latency of the models as Markdown.
     /// </summary>
     /// <param name="latencies">The latency of each model.</param>
+    /// <param name="split">The split of the open corpus that the sample was drawn from (<c>test</c>, <c>dev</c>).</param>
     /// <returns>The text with line feeds.</returns>
-    public static string RenderLatency(IReadOnlyList<(string Model, double Median, double Mean, double P95, int Sentences)> latencies)
+    public static string RenderLatency(IReadOnlyList<(string Model, double Median, double Mean, double P95, int Sentences)> latencies, string split = "test")
     {
         ArgumentNullException.ThrowIfNull(latencies);
+        ArgumentException.ThrowIfNullOrWhiteSpace(split);
         var inv = CultureInfo.InvariantCulture;
         var text = new StringBuilder("### Latency on running text\n\n");
-        text.Append("One sentence at a time, a seeded sample of the open corpus test split, after a warm-up.\n\n");
+        text.Append("One sentence at a time, a seeded sample of the open corpus ").Append(split).Append(" split, after a warm-up.\n\n");
         text.Append("| Model | Sentences | Median | Mean | 95th percentile |\n| --- | ---: | ---: | ---: | ---: |\n");
         foreach (var (model, median, mean, p95, sentences) in latencies)
         {

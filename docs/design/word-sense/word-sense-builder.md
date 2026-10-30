@@ -262,8 +262,10 @@ instead of `--model`.
   `--c-grid` is a comma-separated list of positive numbers (default `0.001,0.003,0.01,0.03,0.1,0.3`). `--train`, when
   given, must be the representative training split. `--gold-dir` names the directory of the treebank gold files
   (`ud_train.tsv`, `ud_dev.tsv`, `ud_test.tsv`) and `--read-set` the `read` set file, which join the held-out parts that
-  the leakage assertion checks. `--report-fusion` adds the development accuracy and log loss of the head fused with the
-  Basic model at each weight.
+  the leakage assertion checks. A given path must exist: a missing directory, a directory with none of the three gold
+  files and a missing file stop the run with an error that names the option. Without the options the head is checked
+  against the parts of the repository only. `--report-fusion` adds the development accuracy and log loss of the head
+  fused with the Basic model at each weight.
 - `evaluate <modelId> [--corpus DIR] [--repository DIR] [--output FILE] [--table FILE] [--outcomes FILE]`: measures a
   model (`minilm`, `bert-base-cased`, `basic`) on the holdout sentences and prints a Markdown table; `--table` writes
   the real-text sense cell and the cost cells of the model into the model comparison table file.
@@ -308,7 +310,8 @@ instead of `--model`.
   treebank test file and the challenge set, and the tense of the same-spelling verbs (`--report` restricts the output).
   `--outcomes` writes the outcome of every scored token of the part-of-speech sets (see "Outcome comparison" below); it
   applies to `--report all` and `--report running`, and a report without the option never looks for it.
-  `--latency` times one sentence at a time on a seeded sample of the open test split (`--latency-sentences`, default
+  `--latency` times one sentence at a time on a seeded sample of the open corpus split that `--split` reads (default
+  `test`; the table names it) (`--latency-sentences`, default
   1,000; `--seed`, default 20261029) and reports the median, the mean and the 95th percentile in milliseconds.
 - `compare-outcomes --base FILE --new FILE [--base-model NAME] [--new-model NAME] [--cluster sentence|document]
   [--reps N] [--seed N] [--output FILE]`: compares two outcome files of `evaluate-running --outcomes` (see "Outcome
@@ -325,8 +328,10 @@ instead of `--model`.
   that no sentence is shared by a
   training part and an evaluation part, by two evaluation parts, or by the corpus and an example of Open English
   WordNet, and that the second all-words gold set shares no document with the rest of the repository; `--gold-dir` adds
-  the three treebank files of a directory and `--read-set` the `read` set as external evaluation parts; it exits with 1
-  when one is.
+  the three treebank files of a directory and `--read-set` the `read` set as external evaluation parts; a given `--gold`,
+  `--gold-dir` or `--read-set` that does not exist (or a directory without a gold file) is an error, and without the
+  options the default treebank test file is used when it exists and the other parts are left out; it exits with 1 when
+  a sentence is shared.
 - `open-counts [--corpus DIR] [--output DIR]`: counts the tag statistics of the training split of the representative
   open corpus (every token, whatever its consensus status) and writes the count files of `corpus/open/counts`
   (`word-tags.tsv`, `tag-ngrams.tsv` and the clause counts `tag-clause-ngrams.tsv`).
@@ -666,8 +671,9 @@ is trained and selected on the representative part of the open corpus alone, rea
 2. **Leakage assertion.** Before anything is encoded, `LeakageCheck.HeldOutSets` lists the held-out parts: every
    evaluation part of the corpus (the holdout and chooser holdout sentences, the real text, the suite, the shape probe,
    the development and test splits of the representative part, the challenge set and the two all-words gold halves),
-   the three treebank files of `--gold-dir` and the `read` set of
-   `--read-set` when they are given. `LeakageCheck.FindTrainingOverlaps` compares the training sentences with them: a
+   the three treebank files of `--gold-dir` and the `read` set of `--read-set` when they are given; a given path that does
+   not exist is an error (`LeakageCheck.FromExplicitGoldDirectory`, `FromExplicitReadSet`), and without the options only
+   the parts of the repository count. `LeakageCheck.FindTrainingOverlaps` compares the training sentences with them: a
    training sentence that equals a sentence of any part after normalization (case, spacing and punctuation) is an
    overlap, and, for an external part (the treebank files and the read set), so is a run of 8 words in common. The run
    prints the number of overlaps and stops with an `InvalidDataException` that names up to five of them when there is
@@ -946,10 +952,11 @@ the lexicon. With an outcome list it also records every scored token (`TokenOutc
 (`RunningTextEvaluator.Documents`) are the source ids of their sentences.
 
 `RunningTextEvaluator.MeasureLatencyAsync` times one call of `ClassifyAsync` per sentence, one sentence at a time, on the
-first `--latency-sentences` sentences of a seeded shuffle of the open corpus test split (the order is by a SplitMix64
+first `--latency-sentences` sentences of a seeded shuffle of the open corpus split that was read (the order is by a SplitMix64
 mix of the seed and the index, so the sample is the same for every model, run and platform). It classifies the first 20
 sentences of the sample without timing them, so that the first use of the model does not count. It reports the median,
-the mean and the 95th percentile of the time per sentence in milliseconds, and `RenderLatency` renders them as a table.
+the mean and the 95th percentile of the time per sentence in milliseconds, and `RenderLatency` renders them as a table
+that names the split.
 
 #### Tense evaluation (`TenseEvaluator`)
 

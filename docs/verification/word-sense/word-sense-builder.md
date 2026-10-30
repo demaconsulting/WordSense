@@ -796,6 +796,11 @@ The trainer is tested with a synthetic corpus whose sentences are the combinatio
   eight words that a training sentence shares with a treebank sentence also stops the run.
 - **Other training file** (`WordSenseBuilder_PosHeadTrainer_TrainAsync_OtherTrainingFile_Refused`): a `--train` file that
   is not the representative training split is refused.
+- **Explicit paths** (`WordSenseBuilder_LeakageCheck_HeldOutSets_ExplicitPathThatDoesNotExist_Throws`,
+  `WordSenseBuilder_Program_CheckLeakage_ExplicitPathThatDoesNotExist_Fails`): without `--gold-dir` and `--read-set` the
+  held-out parts are those of the repository; a `--gold-dir` that does not exist throws `DirectoryNotFoundException`, one
+  without a gold file throws `InvalidDataException`, a `--read-set` that does not exist throws `FileNotFoundException`
+  (each message names the option), and `check-leakage` exits with 1 and the same message.
 - **Overlap rule** (`WordSenseBuilder_LeakageCheck_FindTrainingOverlaps_FindsTheSameSentence`,
   `WordSenseBuilder_LeakageCheck_FindTrainingOverlaps_RunOfWordsCountsForExternalPartsOnly`): a training sentence that a
   held-out part has too, after normalization, is an overlap and others are not; a run of eight words in common counts for
@@ -837,6 +842,8 @@ The trainer is tested with a synthetic corpus whose sentences are the combinatio
   listed, a cell that grows by more than 0.3 points is named, and the report states the interval method.
 - **Latency sample** (`WordSenseBuilder_RunningText_MeasureLatency_UsesASeededSample`): the sample is the same for a seed
   and differs for another one, it is bounded by the number of sentences, and an empty sample gives zeros.
+- **Latency label** (`WordSenseBuilder_RunningText_RenderLatency_NamesTheSplitThatWasRead`): the table names the split
+  that was read, `dev` for `--split dev` and `test` by default.
 - **Commands** (`WordSenseBuilder_Program_EvaluateRunningAndCompareOutcomes_Basic_WriteAndCompare`,
   `WordSenseBuilder_Program_CompareOutcomes_RejectsBadInput`): `evaluate-running` for Basic writes the outcomes and the
   latency; the comparison of a file with itself shows no gain and a degenerate interval; a file with two models needs the

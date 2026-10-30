@@ -119,7 +119,7 @@ internal static partial class Program
 
         if (latencies.Count > 0)
         {
-            text += "\n" + RunningTextEvaluator.RenderLatency(latencies);
+            text += "\n" + RunningTextEvaluator.RenderLatency(latencies, options.GetValueOrDefault("split", "test"));
         }
 
         output.Write(text);
@@ -240,12 +240,12 @@ internal static partial class Program
         if (options.TryGetValue("gold-dir", out var goldDirectory))
         {
             // The three treebank files; the test file given by --gold keeps its place
-            sets.AddRange(LeakageCheck.FromGoldDirectory(Path.GetFullPath(goldDirectory)).Where(s => sets.All(x => x.Name != s.Name)).ToList());
+            sets.AddRange(LeakageCheck.FromExplicitGoldDirectory(Path.GetFullPath(goldDirectory)).Where(s => sets.All(x => x.Name != s.Name)).ToList());
         }
 
         if (options.TryGetValue("read-set", out var readSet))
         {
-            sets.Add(LeakageCheck.FromReadSet(Path.GetFullPath(readSet)));
+            sets.Add(LeakageCheck.FromExplicitReadSet(Path.GetFullPath(readSet)));
         }
 
         var cache = options.TryGetValue("cache", out var c) ? Path.GetFullPath(c) : SemCor.CacheDirectory(repository);

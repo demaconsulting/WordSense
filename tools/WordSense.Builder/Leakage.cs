@@ -255,25 +255,73 @@ internal static class LeakageCheck
     }
 
     /// <summary>
+    ///     Reads the treebank gold files of a directory that the caller named explicitly.
+    /// </summary>
+    /// <remarks>
+    ///     An explicit path that cannot be used stops the run, because a check that quietly skips a part would pass on
+    ///     fewer parts than the caller asked for. A single file of the three that is absent is still left out (see
+    ///     <see cref="FromGoldDirectory"/>), as the treebank may be given in part.
+    /// </remarks>
+    /// <param name="goldDirectory">The directory named by <c>--gold-dir</c>.</param>
+    /// <returns>The parts; at least one.</returns>
+    /// <exception cref="DirectoryNotFoundException">Thrown when the directory does not exist.</exception>
+    /// <exception cref="InvalidDataException">Thrown when the directory has none of the three gold files.</exception>
+    public static List<LeakageSet> FromExplicitGoldDirectory(string goldDirectory)
+    {
+        ArgumentNullException.ThrowIfNull(goldDirectory);
+        if (!Directory.Exists(goldDirectory))
+        {
+            throw new DirectoryNotFoundException($"The gold directory '{goldDirectory}' given by --gold-dir does not exist.");
+        }
+
+        var sets = FromGoldDirectory(goldDirectory);
+        return sets.Count > 0
+            ? sets
+            : throw new InvalidDataException($"The gold directory '{goldDirectory}' given by --gold-dir has none of ud_train.tsv, ud_dev.tsv and ud_test.tsv.");
+    }
+
+    /// <summary>
+    ///     Reads the <c>read</c> set file that the caller named explicitly.
+    /// </summary>
+    /// <param name="path">The file named by <c>--read-set</c>.</param>
+    /// <returns>The part.</returns>
+    /// <exception cref="FileNotFoundException">Thrown when the file does not exist.</exception>
+    /// <exception cref="InvalidDataException">Thrown when a line is malformed.</exception>
+    public static LeakageSet FromExplicitReadSet(string path)
+    {
+        ArgumentNullException.ThrowIfNull(path);
+        return File.Exists(path)
+            ? FromReadSet(path)
+            : throw new FileNotFoundException($"The read set '{path}' given by --read-set does not exist.", path);
+    }
+
+    /// <summary>
     ///     Lists the sets that no training sentence of a part-of-speech head may overlap: every evaluation part of the
     ///     repository and every external evaluation set that is given.
     /// </summary>
+    /// <remarks>
+    ///     Without <paramref name="goldDirectory"/> and <paramref name="readSet"/> the head is checked against the parts
+    ///     of the repository only. A path that is given must exist.
+    /// </remarks>
     /// <param name="corpus">The corpus directory.</param>
     /// <param name="data">The data directory.</param>
     /// <param name="goldDirectory">The directory of the treebank gold files, or null.</param>
     /// <param name="readSet">The <c>read</c> set file, or null.</param>
     /// <returns>The held-out parts.</returns>
+    /// <exception cref="DirectoryNotFoundException">Thrown when a given gold directory does not exist.</exception>
+    /// <exception cref="FileNotFoundException">Thrown when a given read set does not exist.</exception>
+    /// <exception cref="InvalidDataException">Thrown when a given gold directory has no gold file or the read set is malformed.</exception>
     public static List<LeakageSet> HeldOutSets(string corpus, string data, string? goldDirectory, string? readSet)
     {
         var sets = Load(corpus, data).Where(s => s.Role == LeakageRole.Evaluation).ToList();
         if (goldDirectory is not null)
         {
-            sets.AddRange(FromGoldDirectory(goldDirectory));
+            sets.AddRange(FromExplicitGoldDirectory(goldDirectory));
         }
 
-        if (readSet is not null && File.Exists(readSet))
+        if (readSet is not null)
         {
-            sets.Add(FromReadSet(readSet));
+            sets.Add(FromExplicitReadSet(readSet));
         }
 
         return sets;

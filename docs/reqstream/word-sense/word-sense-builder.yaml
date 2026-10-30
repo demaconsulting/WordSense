@@ -2925,6 +2925,19 @@ sections:
               - WordSenseBuilder_LeakageCheck_FromReadSet_ShortLine_Throws
               - WordSenseBuilder_LeakageCheck_HeldOutSets_ListsEvaluationAndExternalPartsOnly
 
+          - id: WordSense-WordSenseBuilder-TrainPosHeadExplicitPaths
+            title: >-
+              The builder shall stop with an error that names the option when a gold directory or a read set that the
+              caller gave for the leakage check of a part-of-speech head, or for check-leakage, does not exist or the
+              gold directory has none of the gold files, and shall check against the parts of the repository only when
+              the options are not given.
+            tags: [unit]
+            justification: |
+              A check that quietly skips a part the caller asked for would pass on fewer parts than the caller believes.
+            tests:
+              - WordSenseBuilder_LeakageCheck_HeldOutSets_ExplicitPathThatDoesNotExist_Throws
+              - WordSenseBuilder_Program_CheckLeakage_ExplicitPathThatDoesNotExist_Fails
+
           - id: WordSense-WordSenseBuilder-TrainPosHeadTrainingFile
             title: >-
               The builder shall refuse to train a part-of-speech head on a training file other than the
@@ -3032,15 +3045,17 @@ sections:
 
           - id: WordSense-WordSenseBuilder-RunningLatency
             title: >-
-              The builder shall, on request, measure the time a model needs for one sentence of the open corpus test
-              split, one sentence at a time, on a seeded sample that is the same for every model and run and after a
-              warm-up, and report the median, the mean and the 95th percentile in milliseconds.
+              The builder shall, on request, measure the time a model needs for one sentence of the open corpus split
+              that the run reads (test by default), one sentence at a time, on a seeded sample that is the same for
+              every model and run and after a warm-up, report the median, the mean and the 95th percentile in
+              milliseconds, and name that split in the table.
             tags: [unit]
             justification: |
               The cost of an answer is part of the comparison of models; a fixed sample makes the figure comparable
-              between models and runs.
+              between models and runs, and the label must name the sample that was timed.
             tests:
               - WordSenseBuilder_RunningText_MeasureLatency_UsesASeededSample
+              - WordSenseBuilder_RunningText_RenderLatency_NamesTheSplitThatWasRead
               - WordSenseBuilder_Program_EvaluateRunningAndCompareOutcomes_Basic_WriteAndCompare
 
           - id: WordSense-WordSenseBuilder-Usage

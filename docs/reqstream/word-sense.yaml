@@ -729,6 +729,7 @@ sections:
           - WordSense-WordSenseBuilder-TrainPosHeadFile
           - WordSense-WordSenseBuilder-TrainPosHeadInvalidInput
           - WordSense-WordSenseBuilder-TrainPosHeadLeakage
+          - WordSense-WordSenseBuilder-TrainPosHeadExplicitPaths
           - WordSense-WordSenseBuilder-TrainPosHeadTrainingFile
           - WordSense-WordSenseBuilder-TrainPosHeadDeterminism
           - WordSense-WordSenseBuilder-TrainPosHeadCache

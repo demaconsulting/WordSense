@@ -123,6 +123,42 @@ public sealed class RunningTextOutcomesTests : IDisposable
     }
 
     /// <summary>
+    ///     The latency table names the split of the open corpus that the sample was drawn from, in the renderer and in the
+    ///     command with <c>--split dev</c> and with the default.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_RunningText_RenderLatency_NamesTheSplitThatWasRead()
+    {
+        // Arrange: one latency row, the repository and the arguments of the command for a split
+        (string, double, double, double, int)[] rows = [("Fake", 1.0, 1.0, 1.0, 5)];
+        var root = FindRepositoryRoot();
+        var gold = Path.Join(_dir.Root, "absent.tsv");
+        using var devOutput = new StringWriter();
+        using var defaultOutput = new StringWriter();
+        using var error = new StringWriter();
+
+        // Act: render for dev and for the default, and run the command with --split dev and without --split
+        var dev = RunningTextEvaluator.RenderLatency(rows, "dev");
+        var byDefault = RunningTextEvaluator.RenderLatency(rows);
+        var devRun = await Program.RunAsync(["evaluate-running", "--model", "basic", "--repository", root, "--gold", gold, "--report", "running", "--split", "dev", "--latency", "--latency-sentences", "10"], devOutput, error, TestContext.Current.CancellationToken);
+        var defaultRun = await Program.RunAsync(["evaluate-running", "--model", "basic", "--repository", root, "--gold", gold, "--report", "running", "--latency", "--latency-sentences", "10"], defaultOutput, error, TestContext.Current.CancellationToken);
+
+        // Assert: the latency label names the split, never the test split for a dev run (the report above it has its own text)
+        var devLatency = devOutput.ToString()[devOutput.ToString().IndexOf("### Latency", StringComparison.Ordinal)..];
+        var defaultLatency = defaultOutput.ToString()[defaultOutput.ToString().IndexOf("### Latency", StringComparison.Ordinal)..];
+        Assert.Contains("open corpus dev split", dev, StringComparison.Ordinal);
+        Assert.DoesNotContain("test split", dev, StringComparison.Ordinal);
+        Assert.Contains("open corpus test split", byDefault, StringComparison.Ordinal);
+        Assert.Equal(0, devRun);
+        Assert.Equal(0, defaultRun);
+        Assert.Equal(string.Empty, error.ToString());
+        Assert.Contains("open corpus dev split", devLatency, StringComparison.Ordinal);
+        Assert.DoesNotContain("test split", devLatency, StringComparison.Ordinal);
+        Assert.Contains("open corpus test split", defaultLatency, StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     The command writes the outcomes and the latency, and the comparison of a file with itself shows no gain and a
     ///     degenerate interval; a file with two models needs the model to be named.
     /// </summary>
