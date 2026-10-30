@@ -15,7 +15,8 @@ namespace WordSense.Builder;
 /// <param name="Text">The sentence text of the corpus.</param>
 /// <param name="Words">The tokens in the view the library gives the encoder (see <see cref="OpenCorpus.ToTagged"/>).</param>
 /// <param name="Gold">The gold class of each token (0 to 9, the parts of speech; the infinitive marker is a preposition), or -1 for punctuation and other tokens.</param>
-internal sealed record PosSentence(string Id, string Text, string[] Words, int[] Gold);
+/// <param name="Tense">The gold tense of each token that the tense head is trained on or scored with (a gold verb whose form has a past and a non-past verb analysis in the lexicon): 1 for past, 0 for non-past, -1 for every other token; null when the sentence carries no tense labels.</param>
+internal sealed record PosSentence(string Id, string Text, string[] Words, int[] Gold, int[]? Tense = null);
 
 /// <summary>
 ///     What identifies an encoder to the head trainer.
@@ -131,8 +132,29 @@ internal static class PosHeadTrainer
         [.. OpenCorpus.ReadSplit(corpus, OpenCorpus.Representative, split).Select(s =>
         {
             var tagged = OpenCorpus.ToTagged(s);
-            return new PosSentence(s.SentenceId, s.Text, tagged.Words, [.. tagged.Tags.Select(GoldClass)]);
+            return new PosSentence(s.SentenceId, s.Text, tagged.Words, [.. tagged.Tags.Select(GoldClass)], TenseLabels(tagged));
         })];
+
+    /// <summary>
+    ///     Gets the gold tense of the tokens of a sentence that the tense head is trained on and scored with.
+    /// </summary>
+    /// <param name="sentence">The sentence with its gold.</param>
+    /// <returns>For each token 1 (past), 0 (non-past) or -1: a token is labeled when its tag is a verb and its form has a past and a non-past verb analysis in the lexicon (<see cref="TenseEvaluator.GroupsOf"/>).</returns>
+    public static int[] TenseLabels(TaggedSentence sentence)
+    {
+        ArgumentNullException.ThrowIfNull(sentence);
+        var labels = new int[sentence.Words.Length];
+        for (var i = 0; i < labels.Length; i++)
+        {
+            labels[i] = -1;
+            if (sentence.Gold is { } gold && sentence.Tags[i] == PosTag.Verb && TenseEvaluator.GroupsOf(sentence.Words[i]).Count > 0)
+            {
+                labels[i] = TenseEvaluator.IsGoldPast(gold[i]) ? 1 : 0;
+            }
+        }
+
+        return labels;
+    }
 
     /// <summary>
     ///     Trains the head.
@@ -377,7 +399,7 @@ internal static class PosHeadTrainer
     /// <summary>
     ///     Aborts when a training sentence overlaps a held-out part.
     /// </summary>
-    private static void AssertNoOverlap(PosHeadRequest request, List<PosSentence> train, TextWriter progress)
+    internal static void AssertNoOverlap(PosHeadRequest request, List<PosSentence> train, TextWriter progress)
     {
         var heldOut = LeakageCheck.HeldOutSets(request.Corpus, request.Data, request.GoldDirectory, request.ReadSet);
         var overlaps = LeakageCheck.FindTrainingOverlaps([.. train.Select(s => (s.Id, s.Text))], heldOut);
@@ -392,7 +414,7 @@ internal static class PosHeadTrainer
     /// <summary>
     ///     Gets the vectors of a set, from the cache when it matches, else by encoding.
     /// </summary>
-    private static async Task<PosTokenTable> TokensAsync(string name, List<PosSentence> sentences, PosEncoderInfo encoder, Func<IReadOnlyList<string>, CancellationToken, ValueTask<double[]?[]>> encode, string? cacheDirectory, byte[] digest, TextWriter progress, CancellationToken cancellationToken)
+    internal static async Task<PosTokenTable> TokensAsync(string name, List<PosSentence> sentences, PosEncoderInfo encoder, Func<IReadOnlyList<string>, CancellationToken, ValueTask<double[]?[]>> encode, string? cacheDirectory, byte[] digest, TextWriter progress, CancellationToken cancellationToken)
     {
         var count = sentences.Sum(s => s.Words.Length);
         var d = encoder.HiddenSize;

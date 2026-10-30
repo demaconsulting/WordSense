@@ -41,12 +41,18 @@ internal sealed class PosHead
         // A 32-bit weight widens to 64 bits without loss, so the products are the same as from the 32-bit weights
         _weights = Array.ConvertAll(data.Weights, w => (double)w);
         _biases = data.Biases;
+        Tense = data.Tense is { } tense ? new TenseHead(tense, data.HiddenSize) : null;
     }
 
     /// <summary>
     ///     Gets the head as it was read.
     /// </summary>
     public PosHeadData Data { get; }
+
+    /// <summary>
+    ///     Gets the tense head of the file, or null when it has none.
+    /// </summary>
+    public TenseHead? Tense { get; }
 
     /// <summary>
     ///     Gets the hidden size of the encoder the head reads.

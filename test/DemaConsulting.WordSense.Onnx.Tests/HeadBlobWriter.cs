@@ -120,6 +120,34 @@ internal static class HeadBlobWriter
         return stream.ToArray();
     }
 
+    /// <summary>
+    ///     Serializes the payload of a tense section.
+    /// </summary>
+    /// <param name="layout">The feature layout.</param>
+    /// <param name="c">The regularization strength.</param>
+    /// <param name="weights">The weights, written as half-precision numbers after their count.</param>
+    /// <param name="bias">The bias.</param>
+    /// <returns>The payload.</returns>
+    public static byte[] TensePayload(int layout, float c, float[] weights, float bias)
+    {
+        using var stream = new MemoryStream();
+        WriteVarint(stream, layout);
+        var four = new byte[4];
+        BinaryPrimitives.WriteSingleLittleEndian(four, c);
+        stream.Write(four);
+        WriteVarint(stream, weights.Length);
+        var two = new byte[2];
+        foreach (var w in weights)
+        {
+            BinaryPrimitives.WriteHalfLittleEndian(two, (Half)w);
+            stream.Write(two);
+        }
+
+        BinaryPrimitives.WriteSingleLittleEndian(four, bias);
+        stream.Write(four);
+        return stream.ToArray();
+    }
+
     private static void WriteVarint(Stream stream, int value)
     {
         var v = (uint)value;

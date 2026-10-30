@@ -111,4 +111,51 @@ public sealed class PosHeadBlobWriterTests
         Assert.Equal(1.0, posterior.Sum(), 10);
         Assert.Equal(10, posterior.Length);
     }
+
+    /// <summary>
+    ///     A tense section of either layout is written, read back with half-precision weights, and leaves the part-of-speech
+    ///     section as it is; a head without one has no tense section and one that does not fit its layout is refused.
+    /// </summary>
+    [Theory]
+    [InlineData(PosHeadBlob.TenseWord, 1)]
+    [InlineData(PosHeadBlob.TenseWordAndNeighbors, 3)]
+    public void WordSenseBuilder_PosHeadBlobWriter_Write_TenseSection_RoundTripsThroughTheReader(int layout, int vectors)
+    {
+        // Arrange
+        var weights = Enumerable.Range(0, vectors * Hidden).Select(i => (i - 5) * 0.173f).ToArray();
+        var tense = new TenseHeadData(layout, 0.03f, weights, -0.375f);
+        var plain = Head();
+
+        // Act
+        var read = PosHeadBlob.Read(PosHeadBlobWriter.Write(plain with { Tense = tense }));
+
+        // Assert
+        Assert.NotNull(read.Tense);
+        Assert.Equal(layout, read.Tense.Layout);
+        Assert.Equal(0.03f, read.Tense.C);
+        Assert.Equal(PosHeadBlobWriter.Round(weights), read.Tense.Weights);
+        Assert.Equal(-0.375f, read.Tense.Bias);
+        Assert.Equal(PosHeadBlobWriter.Round(plain.Weights), read.Weights);
+        Assert.Equal(plain.Biases, read.Biases);
+        Assert.Null(PosHeadBlob.Read(PosHeadBlobWriter.Write(plain)).Tense);
+        Assert.Equal(PosHeadBlobWriter.Write(plain with { Tense = tense }), PosHeadBlobWriter.Write(plain with { Tense = tense }));
+    }
+
+    /// <summary>
+    ///     A tense head with an unknown layout, the wrong number of weights, an invalid C or a non-finite bias is refused.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_PosHeadBlobWriter_Write_InvalidTenseHead_Throws()
+    {
+        // Arrange
+        var head = Head();
+        var weights = new float[Hidden];
+
+        // Act / Assert
+        Assert.Throws<ArgumentException>(() => PosHeadBlobWriter.Write(head with { Tense = new TenseHeadData(9, 0.03f, weights, 0f) }));
+        Assert.Throws<ArgumentException>(() => PosHeadBlobWriter.Write(head with { Tense = new TenseHeadData(PosHeadBlob.TenseWord, 0.03f, weights[1..], 0f) }));
+        Assert.Throws<ArgumentException>(() => PosHeadBlobWriter.Write(head with { Tense = new TenseHeadData(PosHeadBlob.TenseWordAndNeighbors, 0.03f, weights, 0f) }));
+        Assert.Throws<ArgumentException>(() => PosHeadBlobWriter.Write(head with { Tense = new TenseHeadData(PosHeadBlob.TenseWord, 0f, weights, 0f) }));
+        Assert.Throws<ArgumentException>(() => PosHeadBlobWriter.Write(head with { Tense = new TenseHeadData(PosHeadBlob.TenseWord, 0.03f, weights, float.NaN) }));
+    }
 }

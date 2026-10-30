@@ -18,6 +18,7 @@ namespace DemaConsulting.WordSense.Onnx;
 /// <param name="Variant">The name of the feature variant that was fitted (<c>word+-1</c>).</param>
 /// <param name="Weights">The weights widened to 32-bit floats: one row per class, <c>3 × HiddenSize</c> values per row, in the order previous word, word, next word.</param>
 /// <param name="Biases">One bias per class.</param>
+/// <param name="Tense">The tense head, or null when the file has none.</param>
 internal sealed record PosHeadData(
     string ModelId,
     int HiddenSize,
@@ -28,7 +29,18 @@ internal sealed record PosHeadData(
     float C,
     string Variant,
     float[] Weights,
-    float[] Biases);
+    float[] Biases,
+    TenseHeadData? Tense = null);
+
+/// <summary>
+///     The trained tense head of one encoder model: a binary logistic classifier that tells whether a verb whose past and
+///     non-past share a spelling is past (a past tense or a participle) from the pooled vectors of the word.
+/// </summary>
+/// <param name="Layout">The feature layout: <see cref="PosHeadBlob.TenseWord"/> (the vector of the word) or <see cref="PosHeadBlob.TenseWordAndNeighbors"/> (previous word, word, next word).</param>
+/// <param name="C">The inverse regularization strength that was selected on the development split.</param>
+/// <param name="Weights">The weights widened to 32-bit floats: <c>HiddenSize</c> values for <see cref="PosHeadBlob.TenseWord"/>, <c>3 × HiddenSize</c> values, in the order previous word, word, next word, for <see cref="PosHeadBlob.TenseWordAndNeighbors"/>.</param>
+/// <param name="Bias">The bias.</param>
+internal sealed record TenseHeadData(int Layout, float C, float[] Weights, float Bias);
 
 /// <summary>
 ///     Reads the binary part-of-speech head of an encoder model (<c>WSH1</c>). The writer lives in the repository's
@@ -48,9 +60,12 @@ internal sealed record PosHeadData(
 ///     <para>
 ///     Section 1 is the part-of-speech head and is required: <c>k × 3 × HiddenSize</c> half-precision weights
 ///     (row-major, one row per class) followed by <c>k</c> float biases, where <c>k</c> is the class count. Section 2 is
-///     reserved for a tense head. The reader checks the structure and the trailing hash only;
-///     <see cref="PosHead.LoadEmbedded"/> binds the head to its encoder and to the classes of the library. Varints are
-///     7-bit little-endian groups; strings are a varint byte length followed by UTF-8 bytes.
+///     the tense head and is optional: the tense layout as a varint (1 = the vector of the word, 2 = previous word,
+///     word and next word), the regularization strength as a float, the weight count as a varint (the layout's number of
+///     vectors times the hidden size), the weights as half-precision numbers and the bias as a float. The reader checks
+///     the structure and the trailing hash only; <see cref="PosHead.LoadEmbedded"/> binds the head to its encoder and to
+///     the classes of the library. Varints are 7-bit little-endian groups; strings are a varint byte length followed by
+///     UTF-8 bytes.
 ///     </para>
 /// </remarks>
 internal static class PosHeadBlob
@@ -64,6 +79,21 @@ internal static class PosHeadBlob
     ///     The id of the section that holds the part-of-speech head.
     /// </summary>
     public const int PosSection = 1;
+
+    /// <summary>
+    ///     The id of the section that holds the tense head.
+    /// </summary>
+    public const int TenseSection = 2;
+
+    /// <summary>
+    ///     The tense feature layout of the vector of the word.
+    /// </summary>
+    public const int TenseWord = 1;
+
+    /// <summary>
+    ///     The tense feature layout of the vectors of the previous word, the word and the next word.
+    /// </summary>
+    public const int TenseWordAndNeighbors = 2;
 
     /// <summary>
     ///     The size of a SHA-256 hash.
@@ -134,27 +164,28 @@ internal static class PosHeadBlob
         }
 
         // The hidden size and the class count are bounded, so the products below cannot overflow
-        var (weights, biases) = ReadSections(body, ref p, classes.Count, 3 * hiddenSize);
+        var (weights, biases, tense) = ReadSections(body, ref p, classes.Count, hiddenSize);
         return p == body.Length
-            ? new PosHeadData(modelId, hiddenSize, encoder, layout, classes, train, c, variant, weights, biases)
+            ? new PosHeadData(modelId, hiddenSize, encoder, layout, classes, train, c, variant, weights, biases, tense)
             : throw new InvalidDataException("The part-of-speech head has trailing data.");
     }
 
     /// <summary>
-    ///     Reads the sections and returns the weights and biases of the part-of-speech section.
+    ///     Reads the sections and returns the weights and biases of the part-of-speech section and the tense head, if any.
     /// </summary>
     /// <param name="span">The data without the trailing hash.</param>
     /// <param name="p">The read position, advanced past the sections.</param>
     /// <param name="classCount">The number of classes.</param>
-    /// <param name="features">The number of features.</param>
-    /// <returns>The weights and the biases.</returns>
+    /// <param name="hiddenSize">The hidden size.</param>
+    /// <returns>The weights and the biases, and the tense head or null.</returns>
     /// <exception cref="InvalidDataException">Thrown when a section is malformed, duplicated or required and unknown, or the part-of-speech section is missing.</exception>
-    private static (float[] Weights, float[] Biases) ReadSections(ReadOnlySpan<byte> span, ref int p, int classCount, int features)
+    private static (float[] Weights, float[] Biases, TenseHeadData? Tense) ReadSections(ReadOnlySpan<byte> span, ref int p, int classCount, int hiddenSize)
     {
         var count = ReadVarint(span, ref p);
         var seen = new HashSet<int>();
         float[]? weights = null;
         float[]? biases = null;
+        TenseHeadData? tense = null;
         for (var i = 0; i < count; i++)
         {
             var id = ReadVarint(span, ref p);
@@ -170,7 +201,11 @@ internal static class PosHeadBlob
             p += length;
             if (id == PosSection)
             {
-                (weights, biases) = ReadPosSection(payload, classCount, features);
+                (weights, biases) = ReadPosSection(payload, classCount, 3 * hiddenSize);
+            }
+            else if (id == TenseSection)
+            {
+                tense = ReadTenseSection(payload, hiddenSize);
             }
             else if (required == 1)
             {
@@ -179,8 +214,46 @@ internal static class PosHeadBlob
         }
 
         return weights is not null && biases is not null
-            ? (weights, biases)
+            ? (weights, biases, tense)
             : throw new InvalidDataException("The part-of-speech head has no part-of-speech section.");
+    }
+
+    /// <summary>
+    ///     Reads the payload of the tense section.
+    /// </summary>
+    /// <param name="payload">The payload.</param>
+    /// <param name="hiddenSize">The hidden size.</param>
+    /// <returns>The tense head with the weights widened to floats.</returns>
+    /// <exception cref="InvalidDataException">Thrown when the layout is unknown, the weight count does not fit the layout, the regularization strength is invalid or the payload has another length than its contents.</exception>
+    private static TenseHeadData ReadTenseSection(ReadOnlySpan<byte> payload, int hiddenSize)
+    {
+        var p = 0;
+        var layout = ReadVarint(payload, ref p);
+        var vectors = layout switch
+        {
+            TenseWord => 1,
+            TenseWordAndNeighbors => 3,
+            _ => throw new InvalidDataException($"The tense section has the unknown feature layout {layout}."),
+        };
+
+        var c = ReadFloats(payload, ref p, 1)[0];
+        if (!float.IsFinite(c) || c <= 0)
+        {
+            throw new InvalidDataException("The tense section has an invalid regularization strength.");
+        }
+
+        // The hidden size is bounded, so the product cannot overflow
+        var count = ReadVarint(payload, ref p);
+        if (count != vectors * hiddenSize)
+        {
+            throw new InvalidDataException("The tense section has a weight count that does not fit its layout.");
+        }
+
+        var weights = ReadHalves(payload, ref p, count);
+        var bias = ReadFloats(payload, ref p, 1)[0];
+        return p == payload.Length
+            ? new TenseHeadData(layout, c, weights, bias)
+            : throw new InvalidDataException("The tense section has the wrong length.");
     }
 
     /// <summary>
