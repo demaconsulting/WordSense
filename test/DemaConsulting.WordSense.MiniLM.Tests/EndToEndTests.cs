@@ -65,7 +65,7 @@ public class EndToEndTests
 
     /// <summary>
     ///     The tense of <c>read</c> and <c>put</c> follows the context: the encoder cannot tell the variants of the slot
-    ///     apart, so the Basic model splits them, and the slot keeps the probability the encoder gave it.
+    ///     apart, so the Basic model splits them.
     /// </summary>
     /// <param name="sentence">The sentence, words separated by spaces.</param>
     /// <param name="index">The index of the verb.</param>
@@ -96,17 +96,22 @@ public class EndToEndTests
         Assert.Equal(result.Details, result.Analyses[0].Details);
         Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
 
-        // Assert: when the encoder named a sense or a group for the verb, the slot of the verb, the level, the confidence and the
-        // ids are those of the encoder (only the split inside the slot moved); when it scored senses but committed to neither
-        // (the part-of-speech level), the slot probabilities are combined with those of Basic, so the answer stays at that level
-        // with the probability of the selected slot as the confidence and the senses of the encoder; otherwise the answer is the
-        // complete result of Basic
-        // (production eligibility: the selected analysis lists scored senses, or the level is Group or Sense)
+        // Assert: when the encoder named a sense or a group for the verb and the verb slot stays the most probable one, the level and
+        // the ids are those of the encoder and the probability of the sense inside the slot is unchanged; when it scored senses but
+        // committed to neither (the part-of-speech level), the answer stays at that level with the probability of the selected slot
+        // as the confidence and the senses of the encoder; otherwise the variants of the verb slot have the proportions of Basic
         var scored = encoded.Level is SenseLevel.Group or SenseLevel.Sense || encoded.Analyses.Any(a => a.Details.Equals(encoded.Details) && !a.Senses.IsEmpty);
         if (encoded.Level is SenseLevel.Group or SenseLevel.Sense)
         {
-            Assert.Equal((encoded.Level, encoded.Confidence, encoded.GroupId, encoded.SenseId), (result.Level, result.Confidence, result.GroupId, result.SenseId));
-            Assert.Equal(SlotMass(encoded), SlotMass(result), 9);
+            if (result.Level == encoded.Level)
+            {
+                Assert.Equal((encoded.GroupId, encoded.SenseId), (result.GroupId, result.SenseId));
+                Assert.Equal(encoded.Confidence / SlotMass(encoded), result.Confidence / SlotMass(result), 9);
+            }
+            else
+            {
+                Assert.Equal((SenseLevel.PartOfSpeech, null, null), (result.Level, result.GroupId, result.SenseId));
+            }
         }
         else if (scored)
         {
@@ -118,8 +123,13 @@ public class EndToEndTests
         {
             using var basic = new BasicWordSenseModel();
             var expected = (await basic.ClassifyAsync(words, TestContext.Current.CancellationToken))[index];
-            Assert.Equal((expected.Level, expected.Confidence, expected.Details), (result.Level, result.Confidence, result.Details));
-            Assert.Equal(expected.Analyses.Select(a => (a.Details, a.Probability)), result.Analyses.Select(a => (a.Details, a.Probability)));
+            var slot = result.Analyses.Where(a => a.Details.PartOfSpeech == details.PartOfSpeech && a.Details.Lemma == details.Lemma).ToArray();
+            var basicSlot = expected.Analyses.Where(a => a.Details.PartOfSpeech == details.PartOfSpeech && a.Details.Lemma == details.Lemma).ToArray();
+            Assert.Equal(basicSlot.Select(a => a.Details), slot.Select(a => a.Details));
+            for (var i = 0; i < slot.Length; i++)
+            {
+                Assert.Equal(basicSlot[i].Probability / basicSlot.Sum(b => b.Probability), slot[i].Probability / slot.Sum(b => b.Probability), 9);
+            }
         }
     }
 

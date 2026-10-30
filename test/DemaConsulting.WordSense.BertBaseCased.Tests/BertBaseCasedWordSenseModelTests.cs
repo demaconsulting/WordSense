@@ -1,8 +1,9 @@
 namespace DemaConsulting.WordSense.BertBaseCased.Tests;
 
 /// <summary>
-///     Tests for <see cref="BertBaseCasedWordSenseModel"/>. Most need no model files and no network access; the four
-///     that use the real model files are skipped when the Git LFS files are absent.
+///     Tests for <see cref="BertBaseCasedWordSenseModel"/>. Most need no model files and no network access; those that
+///     classify a word of several parts of speech use the real model files and are skipped when the Git LFS files are
+///     absent.
 /// </summary>
 public class BertBaseCasedWordSenseModelTests
 {
@@ -55,13 +56,13 @@ public class BertBaseCasedWordSenseModelTests
     }
 
     /// <summary>
-    ///     The model keeps the encoder's slot probabilities for a word that the encoder answers at the part-of-speech
-    ///     level: its slots, selected analysis, level and confidence are the encoder's, so the Basic tagger never
-    ///     replaces its part of speech.
+    ///     The model reweighs the part-of-speech probabilities of the encoder's head against those of the Basic model for a
+    ///     word of several parts of speech: the slot probabilities are proportional to the product of the powers of the
+    ///     two, with the weight of the model.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task BertBaseCasedWordSenseModel_PartOfSpeechAnswer_KeepsTheEncoderSlotProbabilities()
+    public async Task BertBaseCasedWordSenseModel_PartOfSpeechAnswer_ReweighsTheHeadAgainstBasic()
     {
         // Arrange
         string[] words = ["Do", "not", "use", "these", "guys", "."];
@@ -70,14 +71,19 @@ public class BertBaseCasedWordSenseModelTests
 
         // Act
         var encoded = (await model.Encoder.ClassifyAsync(words, TestContext.Current.CancellationToken))[2];
+        var basic = (await model.Fallback.ClassifyAsync(words, TestContext.Current.CancellationToken))[2];
         var actual = (await model.ClassifyAsync(words, TestContext.Current.CancellationToken))[2];
 
         // Assert
+        var parts = encoded.Analyses.Select(a => a.Details.PartOfSpeech).Distinct().ToArray();
+        var weight = BertBaseCasedWordSenseModel.PartOfSpeechHeadWeight;
+        var scores = parts.Select(p => Math.Pow(Math.Max(Slot(encoded, p), 1e-6), weight) * Math.Pow(Math.Max(Slot(basic, p), 1e-6), 1 - weight)).ToArray();
         Assert.Equal(PartOfSpeech.Verb, actual.Details?.PartOfSpeech);
-        Assert.Equal(encoded.Details?.PartOfSpeech, actual.Details?.PartOfSpeech);
-        Assert.Equal(encoded.Level, actual.Level);
-        Assert.Equal(encoded.Confidence, actual.Confidence, 9);
-        Assert.All(encoded.Analyses, a => Assert.Equal(Slot(encoded, a.Details.PartOfSpeech), Slot(actual, a.Details.PartOfSpeech), 9));
+        Assert.Equal(1.0, actual.Analyses.Sum(a => a.Probability), 9);
+        for (var k = 0; k < parts.Length; k++)
+        {
+            Assert.Equal(scores[k] / scores.Sum(), Slot(actual, parts[k]), 9);
+        }
     }
 
     /// <summary>
@@ -144,8 +150,8 @@ public class BertBaseCasedWordSenseModelTests
     [Fact]
     public async Task BertBaseCasedWordSenseModel_Classify_UntrainedPolysemousWord_ListsSensesRankedByUsagePrior()
     {
-        // Arrange: no model files are needed, the real Basic model is the fallback
-        using var model = new BertBaseCasedWordSenseModel();
+        // Arrange: the encoder decides the part of speech, the real Basic model is the fallback for the senses
+        using var model = Open(ModelFolder.Require());
 
         // Act
         var result = (await model.ClassifyAsync(Sentence, TestContext.Current.CancellationToken))[4];
@@ -166,7 +172,7 @@ public class BertBaseCasedWordSenseModelTests
     public async Task BertBaseCasedWordSenseModel_Classify_UntrainedPolysemousWord_AnswersPartOfSpeechLevelWithoutSenseOrGroup()
     {
         // Arrange
-        using var model = new BertBaseCasedWordSenseModel();
+        using var model = Open(ModelFolder.Require());
 
         // Act
         var result = (await model.ClassifyAsync(Sentence, TestContext.Current.CancellationToken))[4];
@@ -186,7 +192,7 @@ public class BertBaseCasedWordSenseModelTests
     public async Task BertBaseCasedWordSenseModel_Classify_UntrainedPolysemousWord_KeyCarriesTheLabelOfTheTopRankedSense()
     {
         // Arrange
-        using var model = new BertBaseCasedWordSenseModel();
+        using var model = Open(ModelFolder.Require());
 
         // Act
         var result = (await model.ClassifyAsync(Sentence, TestContext.Current.CancellationToken))[4];
@@ -209,20 +215,21 @@ public class BertBaseCasedWordSenseModelTests
     }
 
     /// <summary>
-    ///     An ambiguous word that the encoder does not score is answered by the Basic fallback from the context, at the
-    ///     part of speech level: a verb after "will", a noun after "the", the analyses summing to 1 and no scored sense.
+    ///     An ambiguous word that the encoder does not score is answered at the part of speech level with the head of the
+    ///     encoder and the Basic fallback combined: a verb after "will", a noun after "the", the analyses summing to 1 and
+    ///     no scored sense (the senses are ranked by usage).
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback()
+    public async Task BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersAtThePartOfSpeechLevel()
     {
-        // Arrange: no model files are needed, the real Basic model is the fallback
-        using var model = new BertBaseCasedWordSenseModel();
+        // Arrange: the encoder decides the part of speech, the real Basic model is the fallback
+        using var model = Open(ModelFolder.Require());
 
         // Act
         var results = await model.ClassifyAsync(Sentence, TestContext.Current.CancellationToken);
 
-        // Assert: the context decides the analysis, as the Basic model does
+        // Assert: the context decides the analysis
         Assert.Equal(PartOfSpeech.Verb, results[2].Details?.PartOfSpeech);
         Assert.Equal(PartOfSpeech.Noun, results[4].Details?.PartOfSpeech);
         foreach (var index in new[] { 2, 4 })
@@ -235,12 +242,6 @@ public class BertBaseCasedWordSenseModelTests
             Assert.True(result.Analyses[0].Senses.Length >= 2, "The selected analysis lists its senses ranked by usage.");
             Assert.Equal(result.Details, result.Analyses[0].Details);
         }
-
-        // The answer is the one of the Basic model, not the uniform answer of the encoder model
-        using var basic = new BasicWordSenseModel();
-        var expected = await basic.ClassifyAsync(Sentence, TestContext.Current.CancellationToken);
-        Assert.Equal(expected[2], results[2]);
-        Assert.Equal(expected[4], results[4]);
     }
 
     /// <summary>
