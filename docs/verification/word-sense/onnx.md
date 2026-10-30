@@ -64,6 +64,18 @@ does not
 with its vector pooled over all its pieces
 (`OnnxClassifier_ClassifyAsync_PendingPossessive_UsesTheJoinedVector`).
 
+#### The Tense Head Gives the Probability of Past and Leaves the Results Alone
+
+For a model that uses its tense head, a known word that is a same-spelling verb (a past and a non-past verb analysis)
+gets the probability that it is past from the tense head, read from the vectors of the word and its neighbors in the
+same view, and every other word gets none; the results themselves are those of a classifier without the tense head
+(`OnnxClassifier_ClassifyWithTenseAsync_SameSpellingVerb_GivesTheProbabilityOfPast`,
+`OnnxClassifier_ClassifyWithTenseAsync_WithoutTenseHead_GivesNoProbabilityAndTheSameResults`,
+`OnnxClassifier_ClassifyWithTenseAsync_WordWithoutVector_HasNoProbability`). Such a verb needs the encoder only for a
+model that judges tense (`OnnxClassifier_NeedsEncoder_SameSpellingVerb_NeedsTheEncoderOnlyWithTense`), and a request to
+judge tense over a head without a tense head is refused (`OnnxClassifier_Constructor_TenseWithoutTenseHead_Throws`). The
+tense section of the head blob and the arithmetic of the head are verified in the `PosHead` unit document.
+
 #### Words Are Answered at the Level the Lemma's Thresholds Allow
 
 A trained word is answered at the sense level when its fine margin reaches the lemma's fine threshold

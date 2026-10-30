@@ -238,3 +238,46 @@ sections:
                   A spelling without a usable set must still get an answer.
                 tests:
                   - PosHead_Restrict_NothingAllowed_FallsBackToPosterior
+
+              - id: WordSense-Onnx-PosHead-TenseSection
+                title: >-
+                  The part-of-speech head reader shall read from the optional tense section of a blob the feature
+                  layout (the word, or the previous word, the word and the next word), the regularization strength, the
+                  weights and the bias, and shall report a blob without the section as having no tense head.
+                tags: [unit]
+                justification: |
+                  The tense head ships in the same file as the part-of-speech head; the reader must reproduce what the
+                  build tool wrote, and a file without it must still load.
+                tests:
+                  - PosHeadBlob_Read_TenseSection_ReturnsTheTenseHead
+                  - WordSenseBuilder_PosHeadBlobWriter_Write_TenseSection_RoundTripsThroughTheReader
+
+              - id: WordSense-Onnx-PosHead-TenseStructure
+                title: >-
+                  The part-of-speech head reader shall reject a tense section with an unknown feature layout, a
+                  regularization strength that is not a finite positive number, a weight or bias that is not finite, a
+                  weight count that does not fit the
+                  layout and the hidden size, or a payload of another length than its contents, as invalid data.
+                tags: [unit]
+                justification: |
+                  A blob that passes its checksum can still have been written by a faulty tool; a tense head of the
+                  wrong size must not reach the arithmetic.
+                tests:
+                  - PosHeadBlob_Read_InvalidTenseSection_Throws
+                  - WordSenseBuilder_PosHeadBlobWriter_Write_InvalidTenseHead_Throws
+
+              - id: WordSense-Onnx-PosHead-TensePastProbability
+                title: >-
+                  The tense head shall compute from the pooled vectors of a verb (and, for the neighbor layout, of its
+                  previous and next word) the probability that the verb is past as the logistic function of the bias
+                  plus the weighted sum of the vector values, treat a missing vector as zeros, give 0 or 1 without an
+                  error for an extreme score, and reject a vector that does not have the hidden size.
+                tags: [unit]
+                justification: |
+                  The head predicts the tense of a same-spelling verb from its context, and the arithmetic is the fixed
+                  order scalar arithmetic of the part-of-speech head, so that its result is a function of its input
+                  only.
+                tests:
+                  - TenseHead_PastProbability_WordLayout_IsTheLogisticOfTheDotProduct
+                  - TenseHead_PastProbability_NeighborLayout_ReadsPreviousWordAndNext
+                  - TenseHead_PastProbability_ExtremeScoresAndBadVectors_AreHandled

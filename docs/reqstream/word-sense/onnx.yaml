@@ -60,11 +60,26 @@ sections:
               - WordSense-Onnx-OnnxClassifier-PartOfSpeechContext
               - WordSense-Onnx-OnnxClassifier-PartOfSpeechVector
 
+          - id: WordSense-Onnx-Tense
+            title: >-
+              The Onnx subsystem shall, for a model that uses its tense head, give every known word that is a
+              same-spelling verb (a verb with a past and a non-past analysis) and has a usable vector the probability
+              that it is past, read from the whole sentence, beside the results of the classification and without
+              changing them, and no probability for any other word.
+            tags: [subsystem]
+            justification: |
+              The tense of read, put and found is decided by the sentence, which the lexicon cannot see; the composite
+              model combines the probability with the tense split of the Basic model.
+            children:
+              - WordSense-Onnx-OnnxClassifier-Tense
+              - WordSense-Onnx-OnnxClassifier-TenseEncoder
+
           - id: WordSense-Onnx-LazyEncoding
             title: >-
               The Onnx subsystem shall require the encoder, and so the model files, only for a text that has a word
               with scored senses or, for a model that uses its part-of-speech head, a known word of two or more distinct
-              parts of speech, shall ensure the files lazily on the first such text, shall not touch a model file for
+              parts of speech or, for a model that uses its tense head, a same-spelling verb, shall ensure the files
+              lazily on the first such text, shall not touch a model file for
               any other text, and shall load and check an embedded head whenever its model description names one,
               whether or not the model uses it.
             tags: [subsystem]
@@ -73,6 +88,7 @@ sections:
               embedded, so deciding the need touches no file.
             children:
               - WordSense-Onnx-OnnxClassifier-Encode
+              - WordSense-Onnx-OnnxClassifier-TenseEncoder
               - WordSense-Onnx-OnnxWordSenseModel-Classify
               - WordSense-Onnx-OnnxWordSenseModel-HeadInUse
             tests:
@@ -263,6 +279,20 @@ sections:
             children:
               - WordSense-Onnx-PosHead-Restrict
               - WordSense-Onnx-PosHead-RestrictFallback
+
+          - id: WordSense-Onnx-Head-Tense
+            title: >-
+              The Onnx subsystem shall read the optional tense head of a head blob (a binary logistic classifier
+              over the pooled vectors of a verb), reject a malformed tense section as invalid data, and compute from
+              the vectors the probability that a verb is past, deterministically.
+            tags: [subsystem]
+            justification: |
+              The tense head ships in the same file as the part-of-speech head, and a result that does not depend on
+              the hardware can be reproduced and compared.
+            children:
+              - WordSense-Onnx-PosHead-TenseSection
+              - WordSense-Onnx-PosHead-TenseStructure
+              - WordSense-Onnx-PosHead-TensePastProbability
 
           - id: WordSense-Onnx-Head-Load
             title: >-

@@ -406,3 +406,31 @@ sections:
                   - OnnxClassifier_ClassifyAsync_NullElement_Throws
                   - OnnxClassifier_ClassifyAsync_Cancelled_Throws
                   - OnnxClassifier_Constructor_HeadWithoutEncoders_Throws
+
+              - id: WordSense-Onnx-OnnxClassifier-Tense
+                title: >-
+                  OnnxClassifier with a tense head shall give, with ClassifyWithTenseAsync and for every word that is a
+                  same-spelling verb (a verb with a past and a non-past analysis) and has a usable vector, the
+                  probability that the word is past from the tense head, parallel to the results, and no probability
+                  for any other word, for a word without a usable vector and for a classifier without a tense head.
+                  The results shall not depend on the tense head.
+                tags: [unit]
+                justification: |
+                  The tense of read, put and found cannot be decided by the lexicon; the encoder reads it from the
+                  sentence, and the composite model combines it with the tense split of Basic.
+                tests:
+                  - OnnxClassifier_ClassifyWithTenseAsync_SameSpellingVerb_GivesTheProbabilityOfPast
+                  - OnnxClassifier_ClassifyWithTenseAsync_WithoutTenseHead_GivesNoProbabilityAndTheSameResults
+                  - OnnxClassifier_ClassifyWithTenseAsync_WordWithoutVector_HasNoProbability
+
+              - id: WordSense-Onnx-OnnxClassifier-TenseEncoder
+                title: >-
+                  OnnxClassifier shall need the encoder for a same-spelling verb only when it judges tense, and shall
+                  reject a request to judge tense when the head has no tense head.
+                tags: [unit]
+                justification: |
+                  A text without such words must still be answered without model files, and a head without the tense
+                  section must fail loudly instead of giving no tense.
+                tests:
+                  - OnnxClassifier_NeedsEncoder_SameSpellingVerb_NeedsTheEncoderOnlyWithTense
+                  - OnnxClassifier_Constructor_TenseWithoutTenseHead_Throws

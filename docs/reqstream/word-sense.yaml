@@ -516,8 +516,8 @@ sections:
           the Basic model (weight 0.8), leaving the sense and the group of an answer to the sense weights (an answer
           whose best sense lies in a part of speech that the composition does not rank first being given at the part
           of speech level), and shall require the encoder, and so the model files, only for a text that has such a
-          word or a word with scored senses; the MiniLM model carries a head that it does not use and keeps its
-          behavior.
+          word, a same-spelling verb or a word with scored senses; the MiniLM model carries a head that it does not use
+          and keeps its behavior.
         tags: [system]
         justification: |
           The part of speech of a word is decided by its sentence; the head reads it from the encoder and the Basic
@@ -533,6 +533,28 @@ sections:
           - BertBaseCasedWordSenseModel_PartOfSpeechAnswer_ReweighsTheHeadAgainstBasic
           - BertBaseCasedWordSenseModel_ClassifyAsync_LexiconOnly_NeedsNoEnsure
           - WordSenseContracts_FallbackWordSenseModel_EvidenceScoredPrimary_TopSlotChanges_StepsDownToThePartOfSpeech
+
+      - id: WordSense-Lib-Tense
+        title: >-
+          The system shall let an encoder model that uses its tense head (the BertBaseCased model) decide the tense of
+          every verb whose past and non-past share a spelling (read, put, found) from the sentence, with the
+          probability of past of the head combined with the past share of the Basic model (weight 0.9), leaving the
+          probability of the verb as a whole, its senses and the other parts of speech of the word unchanged, and
+          shall require the encoder, and so the model files, for a text that has such a verb; the MiniLM model keeps
+          the tense of the Basic model.
+        tags: [system]
+        justification: |
+          The tense of a verb whose past and non-past share a spelling is decided by its sentence, which the lexicon
+          and the context-free statistics of the Basic model see only in part; the head reads it from the encoder and
+          the Basic model corrects it where the head has little evidence.
+        children:
+          - WordSense-Onnx-Tense
+          - WordSense-Onnx-Head-Tense
+          - WordSense-Core-Fallback
+          - WordSense-BertBaseCased-Tense
+        tests:
+          - BertBaseCased_Classifier_EndToEnd_SameSpellingVerb_TenseFollowsTheContext
+          - FallbackWordSenseModel_TenseEvidence_SetsThePastShareFromTheHead
 
       - id: WordSense-Lib-PosHeadPosterior
         title: >-
@@ -762,6 +784,11 @@ sections:
           - WordSense-WordSenseBuilder-TrainPosHeadTrainingFile
           - WordSense-WordSenseBuilder-TrainPosHeadDeterminism
           - WordSense-WordSenseBuilder-TrainPosHeadCache
+          - WordSense-WordSenseBuilder-TrainTenseHead
+          - WordSense-WordSenseBuilder-TrainTenseHeadSelection
+          - WordSense-WordSenseBuilder-TrainTenseHeadInvalidInput
+          - WordSense-WordSenseBuilder-TrainTenseHeadLeakage
+          - WordSense-WordSenseBuilder-TrainTenseHeadFile
           - WordSense-WordSenseBuilder-HeadProvenance
           - WordSense-WordSenseBuilder-FormChoosers
           - WordSense-WordSenseBuilder-Thresholds

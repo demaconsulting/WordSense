@@ -19,7 +19,8 @@ for the tests. The encoder model's description: model id
 with a pinned SHA-256; case-preserving tokenizer; hidden size 768; embedded weights `weights.bin` (fine-sense
 classifiers, form choosers and per-lemma fine and group thresholds calibrated for this encoder) trained at sequence
 length 128; embedded part-of-speech head `head.bin` (the format `WSH1`, bound to the pinned ONNX file; loaded and
-checked with the weights, and used: the description declares the head in use). The encoder model loads the head
+checked with the weights, and used: the description declares the head in use) with the tense head (section 2: the
+neighbor layout, which the description declares in use, so the head file must have it). The encoder model loads the head
 through `OnnxWordSenseModel` and
 `PosHead` (see their unit documents): it must belong to the pinned ONNX file, the hidden size 768, the model id and the
 parts of speech of the library, and a head read against another encoder file or model id is rejected as invalid data.
@@ -30,11 +31,13 @@ The `model_int8.onnx` file is the derived encoder export, not the upstream maske
 The constructor `(string? modelDirectory = null, int maxSequenceLength = 128)` creates the encoder model with the
 description (the base class validates the sequence length, 8 to 512) and the Basic model, and wraps both. `ModelId` and
 `HiddenSize` come from the encoder model. An internal constructor `(string? modelDirectory, int maxSequenceLength, double
-primaryWeight)` does the same with an explicit primary weight (the public constructor passes `PartOfSpeechHeadWeight`,
-which is 0.8; the tests pin other values). `EnsureModelAsync(DownloadOptions? options = null, CancellationToken)`,
+primaryWeight, double tenseWeight)` does the same with an explicit primary weight and tense weight (the public constructor
+passes `PartOfSpeechHeadWeight`, which is 0.8, and `TenseHeadWeight`, which is 0.9; the tests pin other values).
+`EnsureModelAsync(DownloadOptions? options = null, CancellationToken)`,
 `ClassifyAsync` and `Dispose` delegate to the composite:
-ensuring is optional (`ClassifyAsync` ensures lazily, on the first text that has a word of several parts of speech or a
-word with scored senses; a text of words that need neither never touches a model file) and verifies or downloads the
+ensuring is optional (`ClassifyAsync` ensures lazily, on the first text that has a word of several parts of speech, a
+same-spelling verb or a word with scored senses; a text of words that need none of these never touches a model file)
+and verifies or downloads the
 encoder files (the Basic model needs none and is skipped by the composite), classification answers each word with the
 result of
 the encoder model when it scored senses and otherwise with the complete result of the Basic model, and disposal
@@ -53,7 +56,15 @@ speech, closed classes included) against those of the Basic model, as the geomet
 (`BertBaseCasedWordSenseModel.PartOfSpeechHeadWeight`, chosen on the development splits of the open corpus and never on
 a test split; 1 takes the head alone, 0 the Basic model alone). The sense, the group and the ranked senses are those of
 the encoder; an answer keeps its level when its slot stays the most probable one and otherwise steps down to the part of
-speech, as the `FallbackWordSenseModel` unit document states. The tense of a verb stays the one of the Basic model. The
+speech, as the `FallbackWordSenseModel` unit document states. The encoder model also declares its tense head in use, so
+it provides tense evidence: for every same-spelling verb (a verb whose past and non-past analyses share a spelling:
+`read`, `put`, `found`) the composite sets the share of the past analyses to the weighted sum of the log odds of the
+probability of past of the tense head and the past share of the Basic model, with the head's weight 0.9
+(`BertBaseCasedWordSenseModel.TenseHeadWeight`, chosen on the development split of the open corpus and never on a test
+split; 1 takes the head alone, 0 the Basic model alone). The tense head is a logistic regression on the vectors of the
+word and of its two neighbors, trained on the representative training split of the open corpus; the probability of the
+verb as a whole, its senses and the analyses of other parts of speech are not changed by it. A same-spelling verb the
+head cannot judge keeps the tense of the Basic model. The
 confidence and the slot probabilities of an ambiguous word are those of this reweighing. A caller that
 holds a `BertBaseCasedWordSenseModel` calls `await model.EnsureModelAsync();`
 directly; a caller that holds only an `IWordSenseModel` tests for `IDownloadableWordSenseModel` first.

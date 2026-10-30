@@ -105,9 +105,13 @@ implementation of the feature computation.
   the objective.
 - `PosHeadTrainer`, `PosSentence`, `PosEncoderInfo`, `PosHeadRequest`, `PosHeadOutcome`, `PosDevScore`: the command
   `train-pos-head` (see "Part-of-speech head training" below).
+- `TenseHeadTrainer`, `TenseRows`, `TenseFit`, `TenseDevScore`, `TenseHeadRequest`, `TenseHeadOutcome`: the command
+  `train-tense-head` (see "Tense head training" below).
 - `PosHeadBlobWriter`: serializes a head into the `WSH1` blob that `PosHeadBlob` of the Onnx package reads: the weights
-  as half-precision numbers, one required section, and the trailing SHA-256; the same head always gives the same bytes.
-  `Round` gives the weights as the reader will see them.
+  as half-precision numbers, one required section (the part-of-speech head), an optional second section (the tense head)
+  and the trailing SHA-256; the same head always gives the same bytes. `Round` gives the weights as the reader will see
+  them. A tense head that does not fit its layout and the hidden size, or has a `C` that is not positive or a value that
+  is not finite, is refused.
 - `PosVectorCache`: the persistent cache of the pooled vectors of every token of one set of sentences. A file is valid for
   one digest (the SHA-256 of the ONNX file and of the vocabulary, the casing, the version of ONNX Runtime and a feature
   version) and for one exact word sequence (a SHA-256 of the words of all sentences with separators); a file that does not
@@ -266,6 +270,13 @@ instead of `--model`.
   files and a missing file stop the run with an error that names the option. Without the options the head is checked
   against the parts of the repository only. `--report-fusion` adds the development accuracy and log loss of the head
   fused with the Basic model at each weight.
+- `train-tense-head <modelId> [--corpus DIR] [--repository DIR] [--cache DIR] [--no-cache] [--c-grid LIST] [--gold-dir DIR]
+  [--read-set FILE] [--report-fusion] [--output FILE]`: adds the tense head to the head file of an encoder model (the
+  options are those of `train-pos-head`; the default grid is `0.0001,0.0003,0.001,0.003,0.01,0.03,0.1,0.3`) and writes
+  the file (default `Resources/head.bin` of the package; the part-of-speech section is kept byte for byte), then prints
+  the report. The existing head file must belong to the encoder and have been trained on the representative training
+  split. `--report-fusion` adds the development accuracy and log loss of the head combined with the Basic model at
+  each weight.
 - `evaluate <modelId> [--corpus DIR] [--repository DIR] [--output FILE] [--table FILE] [--outcomes FILE]`: measures a
   model (`minilm`, `bert-base-cased`, `basic`) on the holdout sentences and prints a Markdown table; `--table` writes
   the real-text sense cell and the cost cells of the model into the model comparison table file.
@@ -702,6 +713,39 @@ no random choice and runs plain sequential arithmetic; the objective of the fit 
 1,024, sums every chunk in a fixed order and adds the chunk sums in chunk order, so the number of threads does not
 change a bit of the result; the writer has no time stamp and no path. A second run, with or without the cache, writes
 the same bytes.
+
+#### Tense head training (`TenseHeadTrainer.TrainAsync`)
+
+The tense head is a binary logistic regression (past against non-past) on the raw pooled vector of a same-spelling verb,
+a token that is a gold verb and whose lowercase form has a past and a non-past verb analysis in the lexicon
+(`TenseFusion.IsSameSpellingVerb`: `read`, `put`, `found`). Its inputs are those of the part-of-speech head: the
+representative training split fits it and the development split selects, through `OpenCorpus.ReadSplit`, and nothing
+else is read. The class of a row is the gold tense of the token (past tense and participle against infinitive, present
+and imperative, as `BasicClassifier.IsPast` defines them). The steps:
+
+1. **Existing head.** The head file must belong to the encoder (model id, hidden size and the SHA-256 of the ONNX file)
+   and carry the SHA-256 of the representative training file, else the run stops. Its part-of-speech section is kept.
+2. **Leakage assertion and vectors.** As steps 2 and 3 of the part-of-speech head: the overlap check against every
+   held-out part (with `--gold-dir` and `--read-set` when given) runs before anything is encoded, and the vectors of both
+   splits come from the same cache. A corpus with no tense row on the training or the development split stops the run.
+3. **Fit and selection.** For each layout (the vector of the word; the vectors of the previous word, the word and
+   the next word, zeros beyond the edge) and each `C` of the grid, in increasing order, `Lbfgs` fits the head on the
+   standardized features (tolerance 1e-5, at most 500 iterations; the objective and the scaling of `C` are those of
+   `MultinomialLogisticTrainer`, the standardization is folded into the weights) and the head is scored on the
+   development rows. The pair with the smallest mean log loss (rounded to nine decimals) is kept, and on a tie the
+   simpler layout and the smaller `C`, which come first. The report has one row per pair: iterations, whether the fit
+   converged, the development accuracy and the log loss.
+4. **Half-precision gate.** As step 5 of the part-of-speech head, on the development accuracy.
+5. **File and read-back.** The head is written with `PosHeadBlobWriter` into the existing head with its tense section
+   replaced, read back with `PosHeadBlob.Read` and scored again; its probabilities must equal those of the rounded head.
+6. **Fusion report.** With `--report-fusion` the report adds the development accuracy and log loss of the head combined
+   with the past share of the Basic model (`TenseFusion.Fuse`, the odds of the head to the power `w` times those of the
+   share to the power `1 - w`) for `w` from 0 to 1 in steps of 0.1. It writes nothing else.
+
+The selection rests on a small development set, so the report states its size, the majority class and the selected
+setting; the choice of the weight of the combination (`BertBaseCasedWordSenseModel.TenseHeadWeight`) is made from this
+report and from nothing else. The result is a function of the corpus, the encoder files, the runtime and the settings
+only (no random choice; plain sequential arithmetic; the same bytes on every run).
 
 #### Outcome comparison (`OutcomeFile`, `OutcomeComparer`)
 
@@ -1317,7 +1361,9 @@ parts of speech, and a group id without the group marker or equal to a sense id.
 fails before the output step. `train-pos-head` stops before it encodes anything when a training sentence overlaps a
 held-out part, when the training file is not the representative training split and when the grid of `C` is not a list
 of positive numbers, and stops before it writes the file when the half-precision head moves the development accuracy by
-more than 0.02 points or does not read back to the head that was trained. `compare-outcomes` rejects an unknown cluster
+more than 0.02 points or does not read back to the head that was trained. `train-tense-head` stops in the same cases, and
+also when the existing head file does not belong to the encoder or was not trained on the representative training split
+and when the training or the development split has no tense row. `compare-outcomes` rejects an unknown cluster
 unit, fewer than one replicate, files without a common token and a file with several models when none is named;
 `evaluate-suite --diff` rejects a baseline that lacks a row.
 

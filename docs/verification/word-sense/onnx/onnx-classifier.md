@@ -11,7 +11,8 @@ are chosen so that a specific level is reached. The part-of-speech evidence scen
 `OnnxClassifierPosTests.cs`: they build the classifier over a hand-made head, whose weights make the vector of a word
 point to a designed part of speech, and a fake view encoder that splits the possessives like the real one, returns
 designed vectors and records what it was asked, so the expected probabilities follow from the arithmetic of the head
-(`PosHead.Restrict`) and of the shares. Real-model behavior is verified in the MiniLM and BertBaseCased
+(`PosHead.Restrict`) and of the shares. The tense evidence scenarios are in `OnnxClassifierTenseTests.cs` and use a
+hand-made tense head in the same way. Real-model behavior is verified in the MiniLM and BertBaseCased
 subsystem documents.
 
 #### Test Environment
@@ -165,6 +166,17 @@ All scenarios below pass on every platform and target framework of the CI matrix
   answer exists.
 - **Words are returned as written**: the result array is parallel to the input, holds each word as given, and is
   case-insensitive in lookup (including the curly apostrophe).
+- **Tense evidence** (`OnnxClassifier_ClassifyWithTenseAsync_SameSpellingVerb_GivesTheProbabilityOfPast`,
+  `OnnxClassifier_ClassifyWithTenseAsync_WithoutTenseHead_GivesNoProbabilityAndTheSameResults`,
+  `OnnxClassifier_ClassifyWithTenseAsync_WordWithoutVector_HasNoProbability`,
+  `OnnxClassifier_Constructor_TenseWithoutTenseHead_Throws`,
+  `OnnxClassifier_NeedsEncoder_SameSpellingVerb_NeedsTheEncoderOnlyWithTense`, in `OnnxClassifierTenseTests.cs`): over a
+  hand-made tense head and a fake view encoder, `become` gets the logistic function of the designed component as its
+  probability of past and the other word of the text gets none, with one view encoder call; a classifier without a tense
+  head gives no probability, makes no encoder call for such a text and returns results equal to those with the tense
+  head; a word without a usable vector (no vector, or one of another size) gets none; a classifier asked to judge
+  tense over a head without a tense head throws `ArgumentException`; `NeedsEncoder` is false for `become` without the
+  tense head, true with it, and false for a classifier without a head, whatever the tense flag.
 - **Empty list and argument validation** (`EmptyList_ReturnsEmpty`, `NullWords_Throws`, `NullElement_Throws`,
   `Cancelled_Throws`): an empty list gives an empty array; a null word list and a null word throw
   `ArgumentException` or `ArgumentNullException`; a cancelled token throws `OperationCanceledException`.

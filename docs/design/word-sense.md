@@ -109,8 +109,9 @@ the curated table `corpus/curation/heteronyms.tsv`. An unknown word has no key.
   of that level and the group and sense ids). The words are one running text with punctuation as
   its own elements. An encoder model ensures its
   files lazily (default and environment download settings) when some word needs the encoder: a word with scored senses
-  or, for a model that uses its part-of-speech head (BertBaseCased), a known word of two or more parts of speech; a text
-  of words that need neither never touches a model file.
+  or, for a model that uses its part-of-speech head (BertBaseCased), a known word of two or more parts of speech, or,
+  for a model that uses its tense head (BertBaseCased), a same-spelling verb; a text
+  of words that need none of these never touches a model file.
 - `FallbackWordSenseModel` (in/out): a model that composes two `IWordSenseModel` instances (primary and fallback) and
   implements `IDownloadableWordSenseModel` itself: its ensure forwards to the members that have the capability.
 - Typed exceptions (out): `ModelUnavailableException` (the model files are missing or cannot be downloaded),
@@ -269,8 +270,14 @@ analyses at the part of speech level, and the Basic model of a composition choos
    and the confidence is the fused probability of the slot times the probability of the sense (or group) within it;
    when another slot becomes the most probable one, the answer steps down to the `PartOfSpeech` level on the best
    analysis of that slot with its probability as the confidence. A fallback base result at the sense level for a word of
-   several slots is kept only at a confidence of 0.97 or more, otherwise it is answered at the `PartOfSpeech` level. The
-   tense of a verb stays the one of Basic. A word of one part of speech keeps the primary result when it scored
+   several slots is kept only at a confidence of 0.97 or more, otherwise it is answered at the `PartOfSpeech` level.
+   A primary model that also provides tense evidence (`ProvidesTenseEvidence`: BertBaseCased, which has a tense head)
+   gives, beside the results, the probability that each same-spelling verb (a verb with a past and a non-past analysis:
+   `read`, `put`, `found`) is past; the composition then sets the share of the past analyses of such a word to the
+   weighted sum of the log odds of that probability and of the past share of the fallback result (the weight 0.9 for
+   BertBaseCased, `TenseFusion`), keeping the probability of the verb as a whole, its senses and the other parts of
+   speech, and stepping down to the `PartOfSpeech` level only when another slot becomes the most probable one (`found`).
+   A word of one part of speech keeps the primary result when it scored
    senses (only the variants of a slot are refined), and otherwise takes the fallback result.
 6. The model returns a `ClassifyResult[]` parallel to the input. The confidence of each result is the probability of
    its answer at its own level (the probability of the slot of the selected analysis, times the probability of the

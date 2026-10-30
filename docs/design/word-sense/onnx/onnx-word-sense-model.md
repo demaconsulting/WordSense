@@ -20,7 +20,12 @@ distinct parts of speech or a word with scored senses, and there is no way to tu
 without such a word is answered from the lexicon alone: it loads no encoder and needs no model file. A model that
 carries a head it does not use, or has none, needs the encoder only for a word with scored senses (a trained lemma with
 several senses) and answers as it did without a head. `ProvidesPartOfSpeechEvidence` is true exactly when a head is
-named and in use; `FallbackWordSenseModel` reads it.
+named and in use; `FallbackWordSenseModel` reads it. The description also says whether the model answers with the tense
+head of its head file (`TenseHeadInUse`, which needs a head in use). A model that does needs the encoder, and so the
+model files, also for a classification that contains a same-spelling verb (a verb with a past and a non-past analysis:
+`read`, `put`, `found`), and gives the probability that such a verb is past beside its results
+(`ClassifyWithTenseAsync`, internal). `ProvidesTenseEvidence` is true exactly when a head is named, in use, and
+`TenseHeadInUse` is set.
 
 #### Data Model
 
@@ -52,9 +57,11 @@ named and in use; `FallbackWordSenseModel` reads it.
   `OperationCanceledException` (through the returned task) for an already canceled token, even for an empty list or a
   list that needs no model. It then loads the embedded weights table (no model file and no ONNX; cached) together with
   the embedded part-of-speech head (the same, whenever the description names one) and, when no
-  word needs the encoder (`OnnxClassifier.NeedsEncoder`, with the head's presence as its argument: no word is pending,
+  word needs the encoder (`OnnxClassifier.NeedsEncoder`, with the head's presence and whether the model judges tense as
+  its arguments: no word is pending,
   that is has several senses together with usable weights or a form chooser, and, for a model whose head is in use,
-  no known word has two or more distinct parts of speech in the lexicon), answers from the lexicon alone without any
+  no known word has two or more distinct parts of speech in the lexicon, and, for a model that judges tense, no word is
+  a same-spelling verb), answers from the lexicon alone without any
   model file: unknown words are `ClassifyResult.Unknown`, a word
   with one analysis and one sense is answered at the sense level, and every other known word with its analyses equally
   likely at the part of speech level and no scored senses (no first-sense guess). Otherwise it
@@ -62,8 +69,11 @@ named and in use; `FallbackWordSenseModel` reads it.
   callers share one ensure and a failed ensure is retried by the next call), registers with the in-flight tracker, opens
   the encoder on first need (cached) and runs the shared `OnnxClassifier` over the encoder and the weights table, built
   with the head and the view encoder (`OnnxEncoder.EncodeAllAsync` with `PossessiveView.IsLexiconPossessive`) when the
-  model uses its head and without them otherwise; the
-  registration is released in a `finally`. It is safe for concurrent use.
+  model uses its head and without them otherwise (with the tense head when the model judges tense); the
+  registration is released in a `finally`. `ClassifyAsync` is the results of `ClassifyWithTenseAsync` (internal, also
+  the member of `IPartOfSpeechEvidenceModel`), which gives the results with the probability of past of each
+  same-spelling verb (null for every word when no encoder was needed or the model does not judge tense). It is safe for
+  concurrent use.
 - `Dispose()`: idempotent and thread-safe; the first call marks the model disposed (new calls throw), cancels the
   disposal token, which aborts an in-flight download (its temporary files are removed), and closes the in-flight
   tracker (`InFlightTracker`, internal): when no classification is running the resources (the encoder session, once
@@ -81,7 +91,9 @@ named and in use; `FallbackWordSenseModel` reads it.
   weights table load (`GetTable`) and the opening of the classifier call it, so the first classification, or the open of
   the classifier, loads and checks the head. A failure is not remembered: the next call fails the same way. The
   classifier uses the head only when `ModelSpec.HeadInUse` is true; the model that declares it not in use validates the
-  head and never answers with it.
+  head and never answers with it. A model with `TenseHeadInUse` also requires the head file to have a tense head:
+  without one the load fails with an `InvalidDataException` ("The head file has no tense head."), which is reported
+  like any other head failure.
 
 #### Error Handling
 

@@ -136,12 +136,24 @@ model for another without code changes, and the composite `FallbackWordSenseMode
   class that implements `IDownloadableWordSenseModel` by composing two models. It owns both: it stores them and
   disposes both with its own `Dispose`. The primary weight `w` (the read-only property `PrimaryWeight`) is a number
   from 0 to 1, 1 when it is not given; a value below 0, above 1 or not a number is rejected with
-  `ArgumentOutOfRangeException`.
+  `ArgumentOutOfRangeException`. An internal constructor adds the tense weight (the property `TenseWeight`, 1 for the
+  public constructors, with the same range check); it applies only to a primary model that provides tense evidence.
 - `IPartOfSpeechEvidenceModel` (internal): the marker of a model whose slot probabilities for a word of two or more parts
-  of speech are an estimate of the part of speech from the sentence, not only the mass of senses. Its one property,
-  `ProvidesPartOfSpeechEvidence`, is true when the model has such evidence (for the encoder models, when a head is named
-  and in use). `FallbackWordSenseModel` reads it from its primary model. The interface is internal, so a third-party
+  of speech are an estimate of the part of speech from the sentence, not only the mass of senses. Its property
+  `ProvidesPartOfSpeechEvidence` is true when the model has such evidence (for the encoder models, when a head is named
+  and in use). A marked model can also provide tense evidence: `ProvidesTenseEvidence` is true when the model judges
+  the tense of every same-spelling verb (for BertBaseCased, when its head file has a tense head and the model uses it),
+  and `ClassifyWithTenseAsync(words, token)` then returns the results of `ClassifyAsync` together with, parallel to
+  them, the probability that each same-spelling verb is past (null for every other word and for a word the model could
+  not judge). `FallbackWordSenseModel` reads both from its primary model. The interface is internal, so a third-party
   model cannot claim the behavior, and a marked model that does not provide the evidence is composed as an unmarked one.
+- `TenseFusion` (internal, static): the tense of a verb whose past and non-past share a spelling. A word is a
+  same-spelling verb (`IsSameSpellingVerb`) when its analyses list a verb analysis that is past (`BasicClassifier.IsPast`:
+  a past tense or a participle) and a verb analysis that is not (infinitive, present, imperative). `PastShare(analyses)`
+  is the share of the past analyses in the probability of all verb analyses of a result, whatever the lemma, or null
+  when the result is not a same-spelling verb. `Fuse(head, other, weight)` combines two probabilities of past as a
+  weighted sum of their log odds (floor 1e-6; a null `other` counts as even odds): 1 takes the head alone, 0 the other
+  model alone. `Apply(result, past)` sets the share of a result to `past`.
 - `DownloadOptions(BaseUri, BearerToken, Credentials, StoreRoot, Timeout)`: a sealed record in its own file (formerly
   `MirrorOptions`; the `WORDSENSE_MIRROR_*` environment variable names are unchanged). The base URI is the
   mirror's root; the store root defaults to the per-user `DemaConsulting/WordSense/models` folder; the timeout is per
@@ -274,8 +286,21 @@ whether an id is null: a result at the `PartOfSpeech` level is a valid answer th
   confidence and no group or sense id. A base result taken from the fallback passes through `GuardSingleSense` on the
   reweighed result (0.97). A word of one part of speech is not reweighed: a scored primary result is only refined, and a
   primary result without scored senses is replaced by the guarded fallback result. A primary model without the marker, or
-  with the marker and no evidence (MiniLM), keeps the rules above exactly. The tense of a verb stays the one of the
-  fallback result (`Refine` and the variants of a fallback base result).
+  with the marker and no evidence (MiniLM), keeps the rules above exactly.
+- Tense (`TenseFusion`): when the primary model provides tense evidence (`ProvidesPartOfSpeechEvidence` and
+  `ProvidesTenseEvidence`), the composition calls `ClassifyWithTenseAsync` instead of `ClassifyAsync`. For every word that
+  has a probability of past `h` the composed result (after the rules above) gets the past share `Fuse(h, s, v)`, where
+  `s` is the `PastShare` of the fallback result (the split of Basic) and `v` the tense weight. `Apply` scales the past
+  verb analyses to `V × share` and the other verb analyses to `V × (1 − share)`, with `V` the probability of the verb
+  analyses together, so the probability of the verb as a whole, the shares inside the past analyses and inside the other
+  analyses, and the analyses of other parts of speech do not change. The slots are listed again, the most probable
+  first. When the answered slot is still the most probable, the level, the group and sense ids and the selected analysis
+  stay and the confidence is the new probability of the slot times the probability of the sense (or group) within it; a
+  slot of the same lemma keeps its probability, so only a form whose past and non-past belong to different lemmas
+  (`found`, of `find` and `found`) can change the slot. When another slot becomes the most probable, the result is at the
+  `PartOfSpeech` level on the best analysis of that slot with the probability of the slot as the confidence. A word
+  without a probability of past, and a primary model without tense evidence, keep the tense of the fallback result
+  (`Refine` and the variants of a fallback base result).
 - `Dispose()`: idempotent and thread-safe (an atomic flag); disposes the primary model and then, even when that throws,
   the fallback model, each once.
 
@@ -330,7 +355,8 @@ constructor range are unchanged.
 
 The records, the options and the exceptions depend on nothing. `FallbackWordSenseModel` depends on the
 `IWordSenseModel` and `IDownloadableWordSenseModel` contracts and on the internal marker `IPartOfSpeechEvidenceModel`
-only (the models it is given), not on any model package.
+only (the models it is given), not on any model package. `TenseFusion` depends on `BasicClassifier.IsPast`, `SenseFusion`
+and the result records.
 
 #### Callers
 

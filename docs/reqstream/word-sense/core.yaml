@@ -87,8 +87,9 @@ sections:
               The core subsystem shall provide a public composite model that combines two models, answering each word
               with the result of the primary model where it scored senses for the word and otherwise with the complete
               result of the fallback model, reweighing the part-of-speech probabilities of a primary model that
-              estimates the part of speech against those of the fallback, preparing the members that can be prepared,
-              and owning the lifetime of both.
+              estimates the part of speech against those of the fallback, combining the probability of past that a
+              primary model gives a same-spelling verb with the past share of the fallback, preparing the members that
+              can be prepared, and owning the lifetime of both.
             tags: [subsystem]
             justification: |
               Model packages differ in what they can score; a composite in the core package lets any pair of
@@ -101,6 +102,7 @@ sections:
               - WordSense-Core-WordSenseContracts-FallbackSingleSense
               - WordSense-Core-WordSenseContracts-FallbackReconcile
               - WordSense-Core-WordSenseContracts-FallbackEvidence
+              - WordSense-Core-WordSenseContracts-FallbackTense
               - WordSense-Core-WordSenseContracts-FallbackEnsure
             tests:
               - WordSenseContracts_FallbackWordSenseModel_PrimaryScoredSenses_UsesPrimary

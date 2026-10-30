@@ -47,7 +47,9 @@ embeds the part-of-speech head of
 this encoder (`head.bin`, the format `WSH1`): the encoder model loads and checks it with the weights and answers with
 it. For every known word of two or more parts of speech the probabilities of its slots are the head's, reweighed
 against those of the Basic model with the weight 0.8, and the encoder is needed (and the files ensured lazily) for the
-first text that has such a word.
+first text that has such a word. The head file also carries the tense head of this encoder (section 2 of the format): for
+every same-spelling verb (`read`, `put`, `found`) the share of the past analyses is the head's probability of past
+combined with the tense split of the Basic model with the weight 0.9, and the encoder is needed for such a verb too.
 
 The package ships a `NOTICE.md` (packed by the project file, as the core package does). The embedded weights carry a
 sense usage prior derived from the WordNet 3.0 sense counts (the builder adds it to the stored biases), so the notice
@@ -56,5 +58,5 @@ ids that the weights hold (the package license expression is `MIT AND CC-BY-4.0`
 statistical summaries of the project corpora (CC0 rows and annotations over public-domain and CC0 sentences) of
 this project, and records that the encoder model files are not in the package: they are downloaded from this repository
 (`model/bert-base-cased-int8/`, Apache License 2.0, with the license text in that folder) and are the int8 ONNX export
-of `bert-base-cased` cut at the last encoder layer. The notice also describes the embedded part-of-speech head: its
-content, the open corpus it is trained on and the license position that covers the tags of that corpus.
+of `bert-base-cased` cut at the last encoder layer. The notice also describes the embedded part-of-speech head and tense
+head: their content, the open corpus they are trained on and the license position that covers the tags of that corpus.

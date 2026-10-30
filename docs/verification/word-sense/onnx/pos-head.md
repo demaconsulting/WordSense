@@ -2,8 +2,9 @@
 
 #### Verification Approach
 
-The unit covers the `PosHeadBlob` reader, the binding checks and the arithmetic of `PosHead`. Tests in
-`test/DemaConsulting.WordSense.Onnx.Tests` (`PosHeadBlobTests`, `PosHeadTests`) use a tiny head of
+The unit covers the `PosHeadBlob` reader, the binding checks, the arithmetic of `PosHead` and the arithmetic of
+`TenseHead`. Tests in
+`test/DemaConsulting.WordSense.Onnx.Tests` (`PosHeadBlobTests`, `PosHeadTests`, `TenseHeadTests`) use a tiny head of
 hidden size 4 whose weights are multiples of 0.25, which half precision holds exactly. The test-local writer
 `HeadBlobWriter` builds the blobs; the production writer lives in the builder and is tested through the reader
 (`WordSenseBuilder_PosHeadBlobWriter_Write_RoundTripsThroughTheReader`). Damaged blobs are made by flipping bytes,
@@ -71,6 +72,21 @@ All scenarios below pass on every platform and target framework of the CI matrix
   probabilities are divided by their sum, they sum to one and the other parts of speech are zero.
 - **Restriction falls back** (`PosHead_Restrict_NothingAllowed_FallsBackToPosterior`): a mask that allows nothing, and a
   mask that allows only a part of speech of probability zero, return the posterior unchanged, as a new array.
+- **Tense section** (`PosHeadBlob_Read_TenseSection_ReturnsTheTenseHead`,
+  `WordSenseBuilder_PosHeadBlobWriter_Write_TenseSection_RoundTripsThroughTheReader`): a blob with section 2 of either
+  layout reads back with its layout, `C`, half-precision weights and bias, the part-of-speech weights are unchanged and
+  `PosHead.Tense` is set; the same blob without the section has no tense head (`PosHeadBlob_Read_UnknownSection_*`
+  covers a blob with another optional section).
+- **Invalid tense section** (`PosHeadBlob_Read_InvalidTenseSection_Throws`,
+  `WordSenseBuilder_PosHeadBlobWriter_Write_InvalidTenseHead_Throws`): an unknown layout, a weight count that does not
+  fit the layout or the hidden size, a `C` of zero or NaN, a NaN bias, an infinite weight, a trailing byte, a second
+  copy of the section and an empty payload each throw `InvalidDataException`; the writer refuses the same heads.
+- **Probability of past** (`TenseHead_PastProbability_WordLayout_IsTheLogisticOfTheDotProduct`,
+  `TenseHead_PastProbability_NeighborLayout_ReadsPreviousWordAndNext`,
+  `TenseHead_PastProbability_ExtremeScoresAndBadVectors_AreHandled`): with exact half-precision weights the word layout
+  gives the logistic function of the dot product plus the bias and ignores the neighbors; the neighbor layout reads the
+  previous word, the word and the next word in that order, and a missing neighbor counts as zeros; scores of +1000 and
+  -1000 give 1 and 0; a vector of another size throws `ArgumentException` and a missing word `ArgumentNullException`.
 - **Shipped heads are bound to their encoders**: the evidence is in the model units, which own the embedded
   resources (`MiniLMWordSenseModel_EmbeddedHead_*` and `BertBaseCasedWordSenseModel_EmbeddedHead_*`; see the
   `MiniLMWordSenseModel` and `BertBaseCasedWordSenseModel` verification documents).

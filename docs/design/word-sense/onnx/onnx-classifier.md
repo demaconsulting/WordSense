@@ -12,7 +12,8 @@ model.
 
 The classifier performs the whole decision of the encoder models: the lexicon resolution and the lexicon-only answer
 (steps 1, 2 and 8 below), for the words whose lemma has trained weights, the encoder run and the scoring (steps 3
-to 7) and, with a head, the part-of-speech evidence (step 9), without changing the lifecycle code of
+to 7) and, with a head, the part-of-speech evidence (step 9) and, with a tense head, the tense evidence (step 10),
+without changing the lifecycle code of
 `OnnxWordSenseModel`.
 
 #### Data Model
@@ -21,8 +22,9 @@ An internal sealed class that holds no mutable state; it holds the weights table
 encoder as a delegate (`PooledEncode`; the model supplies its shared `OnnxEncoder`, tests supply a fake, and a classifier
 without an encoder answers every word from the lexicon). A classifier built for a model that uses its head also holds
 the `PosHead` and a second delegate (`PooledViewEncode`) that encodes every word of the text in the possessive view
-(`OnnxEncoder.EncodeAllAsync`) and returns the tokens of the view with the pooled vector of each (`WordVectors`); the
-classifier of the build tool has no head and no view encoder, and sees the sense masses alone. It uses no other model:
+(`OnnxEncoder.EncodeAllAsync`) and returns the tokens of the view with the pooled vector of each (`WordVectors`); a
+classifier built to judge tense also uses the tense head of the `PosHead`; the classifier of the build tool has no head
+and no view encoder, and sees the sense masses alone. It uses no other model:
 it never uses the Basic model. Per call it builds one result per word and work lists: words answered at once, words
 pending an encoder decision, words of several parts of speech that get the head's evidence and words answered from the
 lexicon alone.
@@ -202,11 +204,24 @@ The probabilities are computed per slot, never per variant:
      that the view keeps whole is scored with the vector of the view.
    - A word of one part of speech whose senses are not scored, an unknown word and a word of one sense need neither the
      head nor the encoder for the part of speech.
+10. **Tense evidence (classifier with a tense head).** `ClassifyWithTenseAsync(words, token)` returns the results of
+    `ClassifyAsync` (which it implements) and, parallel to them, the probability that each same-spelling verb is past.
+    A same-spelling verb is a word whose analyses list a past verb analysis (a past tense or a participle) and a verb
+    analysis that is not past (`TenseFusion.IsSameSpellingVerb`); the tense head is asked only about such words, and a
+    word needs the encoder for it even when its senses are not scored and it has one part of speech (`put`, `read`).
+    The view that step 9 encodes serves the tense head too: it reads the vectors of the word and, for the neighbor
+    layout, of the previous and the next token, and gives the probability of past (`TenseHead.PastProbability`). A word
+    without a vector, or with a vector of another size than the head's, or with a probability that is not finite, has
+    no probability (null). The results do not depend on the tense head: the probability is reported beside them, and
+    the composite model combines it with the tense split of Basic. For every word that is not a same-spelling verb, and
+    for every word of a classifier without a tense head, the probability is null.
 
 `NeedsEncoder` and `ResolveWithoutModel` let the model answer text without ensuring or opening anything: `NeedsEncoder`
-takes the weights table (the embedded weights, which need no model file) and whether the classifier has a head, and is
+takes the weights table (the embedded weights, which need no model file), whether the classifier has a head and whether
+it judges tense, and is
 true when a word is pending, that is, has several senses together with usable weights (or a chooser), or, with a head,
-when a known word has two or more distinct parts of speech in the lexicon, whatever its lemma. There is no opt-out.
+when a known word has two or more distinct parts of speech in the lexicon, whatever its lemma, or, with a tense head,
+when a known word is a same-spelling verb. There is no opt-out.
 Words that are unknown, have one analysis or one sense, have one part of speech and are not pending, or (without a
 head) get the lexicon-only
 answer are answered without the encoder and without model files.
@@ -215,7 +230,8 @@ answer are answered without the encoder and without model files.
 
 A null list throws `ArgumentNullException`; a null element throws `ArgumentException`; a canceled token throws
 `OperationCanceledException`; an empty list gives an empty array and the result is parallel to the input. A head without
-its view encoder (or the reverse) throws `ArgumentNullException` at construction. A vector
+its view encoder (or the reverse) throws `ArgumentNullException` at construction; asking for tense without a tense head
+in the head file throws `ArgumentException`. A vector
 that cannot be used (no word pieces, or a dimension that differs from the weights or from the head) does not fail the
 call: the word gets the lexicon-only answer. The dimension case is a defensive guard of the classifier on its own; through
 `OnnxWordSenseModel` it cannot occur, because the model rejects an encoder whose hidden size differs from the one of its
@@ -224,7 +240,8 @@ description and weights when it opens the encoder. Encoder failures propagate.
 #### Dependencies
 
 `WordLexicon`, the core contracts, `OnnxEncoder` (through the `PooledEncode` and `PooledViewEncode` delegates),
-`PosHead` (posterior and restriction), `PossessiveView` and `LemmaWeights` (weights table, feature computation, scoring,
+`PosHead` (posterior and restriction), `TenseHead` (through `PosHead.Tense`), `TenseFusion` (the test for a same-spelling
+verb), `PossessiveView` and `LemmaWeights` (weights table, feature computation, scoring,
 levels). No other model: the classifier does not use the Basic model.
 
 #### Callers

@@ -110,7 +110,7 @@ they are sure enough. The [user guide][link-user-guide] shows their output for t
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
 | Basic | 4.33% @ 71.19% | 94.62% (ambiguous 92.78%) | 92.42% (ambiguous 89.82%) | 6.59% @ 33.37% (top-1 53.95%) | 98.65% (ambiguous 97.83%) | none | 272 KiB | 12 MiB | 0.11 ms | 43 ms + 62 ms | no |
 | MiniLM | 15.70% @ 95.80% | 94.61% (ambiguous 92.77%) | 92.84% (ambiguous 90.47%) | 16.03% @ 82.89% (top-1 54.71%) | 98.65% (ambiguous 97.83%) | 22 MiB | 8,785 KiB | 154 MiB | 1.73 ms | 568 ms + 82 ms | yes |
-| BERT base cased | 42.43% @ 95.97% | 97.04% (ambiguous 96.78%) | 94.68% (ambiguous 93.13%) | 37.23% @ 80.98% (top-1 60.08%) | 98.65% (ambiguous 97.83%) | 104 MiB | 17,144 KiB | 307 MiB | 9.71 ms | 877 ms + 58 ms | yes |
+| BERT base cased | 42.43% @ 95.97% | 97.04% (ambiguous 96.78%) | 94.68% (ambiguous 93.13%) | 37.23% @ 80.98% (top-1 60.28%) | 98.65% (ambiguous 97.83%) | 104 MiB | 17,144 KiB | 307 MiB | 9.71 ms | 877 ms + 58 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->
@@ -119,8 +119,9 @@ The models differ in part-of-speech quality and in what else they give, so choos
 
 - ⚡ **Basic**: no download. The part of speech of every word, the tense of verbs such as `put` and `read`, and the sense
   of a word that has one. Use it when the part of speech is enough, and as the fallback of the other two.
-- 🎯 **BertBaseCased**: the best part of speech, and the model for fine senses. It commits to a sense most often. It is
-  the largest and slowest, and it reads every sentence that has a word of several parts of speech.
+- 🎯 **BertBaseCased**: the best part of speech and tense, and the model for fine senses. It commits to a sense most
+  often. It is the largest and slowest, and it reads every sentence that has a word of several parts of speech or a verb
+  such as `put` or `read`.
 - ⚖️ **MiniLM**: a small download and fast answers, mostly at the part-of-speech and group levels, with the part of
   speech of `Basic` for the words it has no senses for.
 

@@ -2975,6 +2975,73 @@ sections:
               - WordSenseBuilder_PosHeadBlobWriter_Write_IsDeterministic
               - WordSenseBuilder_PosVectorCache_WriteAndRead_RoundTripsForTheSameKey
 
+          - id: WordSense-WordSenseBuilder-TrainTenseHead
+            title: >-
+              The builder shall add to the head file of an encoder model a tense head, a binary logistic regression on
+              the pooled encoder vectors of a same-spelling verb (a verb whose form has a past and a non-past verb
+              analysis in the lexicon), fitted on the representative training split of the open corpus alone, with the
+              gold tense of the corpus as the class, and shall keep the part-of-speech section of the file byte for
+              byte.
+            tags: [unit]
+            justification: |
+              The tense head is a trained artifact that ships in the packages; its inputs must be the declared training
+              data only, and the part-of-speech head that was measured must not change.
+            tests:
+              - WordSenseBuilder_TenseHeadTrainer_TrainAsync_ProducesALoadableDeterministicHead
+              - WordSenseBuilder_TenseHeadTrainer_Rows_AreTheSameSpellingVerbsWithTheirGoldTense
+
+          - id: WordSense-WordSenseBuilder-TrainTenseHeadSelection
+            title: >-
+              The builder shall choose the feature layout (the word, or the word and its neighbors) and the
+              regularization strength of a tense head on the development split of the open corpus by the mean log loss,
+              keeping the simpler layout and the smaller strength on a tie, and shall stop when the accuracy of the head
+              rounded to half precision differs by more than 0.02 points from that of the unrounded head.
+            tags: [unit]
+            justification: |
+              The selection must use held-out development data, and the head that ships (half precision) must be the
+              head that was measured.
+            tests:
+              - WordSenseBuilder_TenseHeadTrainer_TrainAsync_ProducesALoadableDeterministicHead
+              - WordSenseBuilder_PosHeadTrainer_CheckHalfPrecision_StopsBeyondTheGate
+
+          - id: WordSense-WordSenseBuilder-TrainTenseHeadInvalidInput
+            title: >-
+              The builder shall refuse to add a tense head to a head file that belongs to another encoder or was not
+              trained on the representative training split, to train on a corpus without tense rows on the training or
+              the development split, and to fit with a strength that is not a positive number, an unknown layout or no
+              row.
+            tags: [unit]
+            justification: |
+              A bad request must fail before it produces an artifact, and a tense head must only ever be attached to
+              the part-of-speech head of the same training data.
+            tests:
+              - WordSenseBuilder_TenseHeadTrainer_TrainAsync_ForeignHeadFile_Refused
+              - WordSenseBuilder_TenseHeadTrainer_TrainAsync_NoDevelopmentRows_Refused
+              - WordSenseBuilder_TenseHeadTrainer_Fit_InvalidSettings_Throw
+
+          - id: WordSense-WordSenseBuilder-TrainTenseHeadLeakage
+            title: >-
+              The builder shall stop training a tense head, before it fits anything, when a training sentence is also a
+              sentence of any held-out part, with the checks of the part-of-speech head.
+            tags: [unit]
+            justification: |
+              The tense head must never have seen an evaluation sentence.
+            tests:
+              - WordSenseBuilder_TenseHeadTrainer_TrainAsync_TrainingSentenceInAHeldOutPart_Aborts
+
+          - id: WordSense-WordSenseBuilder-TrainTenseHeadFile
+            title: >-
+              The builder shall write the tense head in the head file format that the Onnx package reads, shall write
+              the same bytes on every run and shall refuse to write a tense head that is not valid.
+            tags: [unit]
+            justification: |
+              The file it writes must be exactly the head that was measured, in the format the package loads, and
+              rebuildable byte for byte.
+            tests:
+              - WordSenseBuilder_PosHeadBlobWriter_Write_TenseSection_RoundTripsThroughTheReader
+              - WordSenseBuilder_PosHeadBlobWriter_Write_InvalidTenseHead_Throws
+              - WordSenseBuilder_TenseHeadTrainer_TrainAsync_ProducesALoadableDeterministicHead
+
           - id: WordSense-WordSenseBuilder-TrainPosHeadCache
             title: >-
               The builder shall use a cached set of pooled vectors only for the encoder files, runtime and feature
@@ -3082,7 +3149,8 @@ sections:
 
           - id: WordSense-WordSenseBuilder-Usage
             title: >-
-              The builder shall provide the commands compile-image, import-moby, weights, train-pos-head, evaluate,
+              The builder shall provide the commands compile-image, import-moby, weights, train-pos-head,
+              train-tense-head, evaluate,
               evaluate-senses, evaluate-allwords, allwords-sample, allwords-merge, gold2-power, gold2-sample,
               gold2-batches, gold2-merge, evaluate-gold2, compare-gold2,
               evaluate-running, compare-outcomes, evaluate-suite, evaluate-shapes, check-leakage, tiers, open-counts,

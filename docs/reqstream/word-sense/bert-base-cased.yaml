@@ -43,7 +43,7 @@ sections:
               The BertBaseCased package shall decide the part of speech of every word of two or more parts of speech
               from the sentence, with the probabilities of its part-of-speech head reweighed against those of the Basic
               model with the weight 0.8, and shall need the encoder files, and ensure them lazily, only for a text with
-              such a word or with a word of scored senses.
+              such a word, with a same-spelling verb or with a word of scored senses.
             tags: [subsystem]
             justification: |
               The part of speech of a word is decided by its sentence; the head reads it from the encoder, and the Basic
@@ -52,6 +52,20 @@ sections:
             children:
               - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-PartOfSpeechReweighed
               - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Lazy
+
+          - id: WordSense-BertBaseCased-Tense
+            title: >-
+              The BertBaseCased package shall embed a trained tense head in its head file, shall load it bound to the
+              pinned encoder file with the part-of-speech head, and shall set the tense of every same-spelling verb
+              from the probability of past of that head combined with the tense split of the Basic model with the
+              weight 0.9.
+            tags: [subsystem]
+            justification: |
+              The tense of read, put and found is decided by the sentence; the head reads it from the encoder and the
+              Basic model corrects it where the head has little evidence.
+            children:
+              - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-TenseHead
+              - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-TenseReweighed
 
           - id: WordSense-BertBaseCased-Composition
             title: >-
