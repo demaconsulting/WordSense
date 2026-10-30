@@ -400,7 +400,6 @@ internal static class Evaluator
         };
 
         using var outcomesLog = outcomesFile is null ? null : new StreamWriter(outcomesFile, false, new System.Text.UTF8Encoding(false)) { NewLine = "\n" };
-        var clock = Stopwatch.StartNew();
         var holdoutSplit = RealSplit.Classify(corpus, holdout, Corpus.ReadDirectory(Path.Join(corpus, "anchors")));
         var subsetSpecs = SubsetsOf(holdoutSplit);
         var overallName = subsetSpecs.Count == 0 ? "holdout" : EvaluationResult.AllRowsSetName;
@@ -413,9 +412,9 @@ internal static class Evaluator
             }
         }
 
-        var (holdoutResult, subsetResults) = await ScoreAsync(overallName, holdout, classifier, outcomesLog, subsetSpecs, r => sides.GetValueOrDefault(r, "other"), cancellationToken).ConfigureAwait(false);
-        clock.Stop();
-        var latency = holdout.Count == 0 ? 0 : clock.Elapsed.TotalMilliseconds / holdout.Count;
+        // The latency is the time of the classification calls alone: not the reading of the anchors, the grading or the outcomes file
+        var (holdoutResult, subsetResults, classification) = await ScoreAsync(overallName, holdout, classifier, outcomesLog, subsetSpecs, r => sides.GetValueOrDefault(r, "other"), cancellationToken).ConfigureAwait(false);
+        var latency = holdout.Count == 0 ? 0 : classification.TotalMilliseconds / holdout.Count;
         progress.WriteLine($"{info.Name}: holdout done.");
         List<SetResult> sets = [.. subsetResults, holdoutResult];
 
@@ -424,7 +423,7 @@ internal static class Evaluator
         if (!info.IsEncoder)
         {
             var wordCount = Math.Max(1, holdout.Sum(r => r.Words.Count));
-            var perWordUs = holdout.Count == 0 ? 0 : clock.Elapsed.TotalMilliseconds * 1000 / wordCount;
+            var perWordUs = holdout.Count == 0 ? 0 : classification.TotalMilliseconds * 1000 / wordCount;
             basic = new BasicDetails(tableBytes, coldLoadMs, perWordUs, latency * 1000);
         }
 
@@ -530,7 +529,7 @@ internal static class Evaluator
         return subsets;
     }
 
-    private static async Task<(SetResult Overall, List<SetResult> Subsets)> ScoreAsync(
+    internal static async Task<(SetResult Overall, List<SetResult> Subsets, TimeSpan Classification)> ScoreAsync(
         string name,
         List<CorpusRow> rows,
         IWordSenseModel classifier,
@@ -542,9 +541,12 @@ internal static class Evaluator
         var tallies = new List<Tally> { new(name, true) };
         tallies.AddRange(subsets.Select(s => new Tally(s.Name, false)));
         var index = 0;
+        var classification = new Stopwatch();
         foreach (var row in rows)
         {
+            classification.Start();
             var results = await classifier.ClassifyAsync(row.Words, cancellationToken).ConfigureAwait(false);
+            classification.Stop();
             var actual = results[row.TargetWordIndex];
             var verdict = Judge(row, actual);
             tallies[0].Add(verdict);
@@ -560,7 +562,7 @@ internal static class Evaluator
             index++;
         }
 
-        return (tallies[0].ToResult(), tallies.Skip(1).Select(t => t.ToResult()).ToList());
+        return (tallies[0].ToResult(), tallies.Skip(1).Select(t => t.ToResult()).ToList(), classification.Elapsed);
     }
 
     /// <summary>

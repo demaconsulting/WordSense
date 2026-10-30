@@ -302,11 +302,11 @@ public sealed class ImageCompilerTests : IDisposable
     public void WordSenseBuilder_ImageCompiler_Build_GroupIdWithoutMarkerOrEqualToSenseId_Fails()
     {
         var noMarker = WriteData(
-            _dir.Root + "-marker",
+            Path.Join(_dir.Root, "marker"),
             groups: ["bank#depository\tbank\tn\tdepository\tcurated\trelated"],
             members: [.. Members.Select(m => m.Replace("#group:", "#", StringComparison.Ordinal))]);
         var senseId = WriteData(
-            _dir.Root + "-sense",
+            Path.Join(_dir.Root, "sense"),
             groups: ["bank#incline\tbank\tn\tincline\tcurated\trelated"],
             members: [.. Members.Select(m => m.Replace("bank#group:depository", "bank#incline", StringComparison.Ordinal))]);
 
@@ -320,9 +320,9 @@ public sealed class ImageCompilerTests : IDisposable
     [Fact]
     public void WordSenseBuilder_ImageCompiler_Build_GroupOfOneSenseOrAllSenses_Fails()
     {
-        var one = WriteData(_dir.Root + "-one", members: [Members[0]]);
+        var one = WriteData(Path.Join(_dir.Root, "one"), members: [Members[0]]);
         var all = WriteData(
-            _dir.Root + "-all",
+            Path.Join(_dir.Root, "all"),
             members: [.. Members, "bank#group:depository\t" + Bank + "1.17.01..", "bank#group:depository\t" + Bank + "1.17.00.."]);
 
         var oneError = Assert.Throws<InvalidDataException>(() => ImageCompiler.Build(one));

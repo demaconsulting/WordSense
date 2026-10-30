@@ -118,7 +118,7 @@ public sealed class LeakageCheckTests
 
         // Assert: every kind of part is checked, and none leaks
         var names = sets.Select(s => s.Name).ToList();
-        foreach (var expected in new[] { "anchors", "chooser anchors", "holdout", "chooser holdout", "real text", "suite", "open corpus dev", "open corpus test", "all-words gold dev", "all-words gold test", "STE challenge set", "shape probe", "OEWN examples" })
+        foreach (var expected in new[] { "anchors", "chooser anchors", "holdout", "chooser holdout", "real text", "suite", "open corpus dev", "open corpus test", "all-words gold dev", "all-words gold test", "all-words v2 dev", "all-words v2 test", "STE challenge set", "shape probe", "OEWN examples" })
         {
             Assert.Contains(expected, names);
         }

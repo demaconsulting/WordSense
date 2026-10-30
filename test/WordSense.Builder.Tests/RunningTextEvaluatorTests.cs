@@ -68,6 +68,27 @@ public sealed class RunningTextEvaluatorTests : IDisposable
     }
 
     /// <summary>
+    ///     A split other than test keeps its own name, so a development measurement is never taken for the headline and
+    ///     never fills the test column of the model table.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RunningText_Load_DevelopmentSplit_IsNamedAndNotWrittenToTheTestColumn()
+    {
+        // Arrange
+        var corpus = Path.Join(FindRepositoryRoot().FullName, "corpus");
+        var (sets, _) = RunningTextEvaluator.Load(corpus, "dev", Path.Join(_dir.Root, "none.tsv"));
+        var score = new TaggerScore(sets[0].Name, 1, 1, 1, 0, 0, 0, 0);
+
+        // Act
+        var cells = RunningTextEvaluator.TableCells([score]);
+
+        // Assert
+        Assert.Equal("open corpus dev (representative)", sets[0].Name);
+        Assert.NotEqual(RunningTextEvaluator.OpenSetName, sets[0].Name);
+        Assert.Empty(cells);
+    }
+
+    /// <summary>
     ///     Any model is scored through its public interface on every set: the accuracy on all scored tokens and on the ambiguous
     ///     ones, the tokens that are not answered and the tokens that the convention excludes, and the table cells say both accuracies.
     /// </summary>

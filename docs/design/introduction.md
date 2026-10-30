@@ -249,6 +249,9 @@ corpus/open/                                       — the open English part-of-
                                                       (corpus/open/counts) that train the Basic tagger
 corpus/allwords/                                   — the all-words gold set (CC0 1.0 labels): tokens of untrained polysemous
                                                       lemmas of the open corpus, labeled blind by two labelers
+corpus/allwords/v2/                                — the second all-words gold set (CC0 1.0): tokens of new
+                                                      public-domain documents, drawn by stratum before labeling,
+                                                      labeled by two language models and an adjudicator
 ```
 
 The `generated/` folders of the packages hold the generated API reference and are not committed. The corpus files

@@ -389,11 +389,11 @@ internal static class RealCalibrator
             var startsGroup = i == 0 || usable[i].Distance > usable[i - 1].Distance;
             if (startsGroup)
             {
-                var shift = i == 0 ? 0 : usable[i].Distance;
-                lastShift = shift;
+                // The lowest shift keeps every answer (0); the largest shift that still keeps this many is the distance itself
+                lastShift = usable[i].Distance;
                 if (correct >= (target * total) - Tolerance)
                 {
-                    return (shift, true);
+                    return (i == 0 ? 0 : usable[i].Distance, true);
                 }
             }
 

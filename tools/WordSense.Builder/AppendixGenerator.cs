@@ -108,7 +108,7 @@ internal static class AppendixGenerator
         var heteronyms = Heteronyms.Build(data, Path.Join(corpus, "curation", "heteronyms.tsv"), image);
 
         // The encoder models train a classifier for a lemma only when two or more of its senses have anchors (WeightsTrainer)
-        var classified = Corpus.CountAnchoredSenses(anchorsDirectory).Count(p => senses.ContainsKey(p.Key) && p.Value >= 2);
+        var classified = Corpus.CountAnchoredSenses(anchorsDirectory).Count(p => senses.ContainsKey(p.Key) && WeightsTrainer.HasWeights(p.Value));
         return Render(image, listed, missing, heteronyms, classified);
     }
 

@@ -133,6 +133,7 @@ public sealed class SenseEvaluatorTests : IDisposable
         Assert.Equal([1, 3], rows.Select(r => r.TargetWordIndex));
         Assert.Equal([PartOfSpeech.Noun, PartOfSpeech.Noun], rows.Select(r => r.PartOfSpeech));
         Assert.Equal((3, 2, 2), (funnel.SingleKey, funnel.Mapped, funnel.Trained));
+        Assert.Equal((1, 0), (funnel.MultiKey, funnel.SampledOut));
         Assert.Equal([("zzzzzz%1:03:00::", 1)], funnel.Unmapped);
         var untrainedSentence = Assert.Single(none);
         Assert.Empty(untrainedSentence.Rows);
@@ -141,6 +142,11 @@ public sealed class SenseEvaluatorTests : IDisposable
         var (excluded, excludedFunnel) = SenseEvaluator.Select(sentences, counts, new HashSet<string> { "record" }, 1, new HashSet<string> { Corpus.Normalize(string.Join(' ', sentences[0].Words)) });
         Assert.Empty(excluded);
         Assert.Equal(1, excludedFunnel.LeftOutSentences);
+
+        // The word with two keys is counted directly: leaving its sentence out does not make a single-key word of it
+        Assert.Equal(1, excludedFunnel.MultiKey);
+        var (_, sampledFunnel) = SenseEvaluator.Select([sentences[0], sentences[0], sentences[0]], counts, new HashSet<string> { "record" }, 2);
+        Assert.Equal(1, sampledFunnel.SampledOut);
     }
 
     /// <summary>
@@ -395,7 +401,7 @@ public sealed class SenseEvaluatorTests : IDisposable
     public void WordSenseBuilder_SenseEval_Render_FormatsTheFunnel()
     {
         // Arrange
-        var funnel = new SenseEvalFunnel(new SemCorCounts(10, 200, 20, 5, 175), 170, 150, 100, [("a%1:00:00::", 3)], 2, 30, 20);
+        var funnel = new SenseEvalFunnel(new SemCorCounts(10, 200, 20, 5, 175), 170, 150, 100, [("a%1:00:00::", 3)], 2, 30, 20, 7, 3);
         var empty = Evaluator.Summarize("semcor", []);
 
         // Act
@@ -403,6 +409,8 @@ public sealed class SenseEvaluatorTests : IDisposable
 
         // Assert
         Assert.Contains("| annotated words | 200 |", text, StringComparison.Ordinal);
+        Assert.Contains("| left out: more than one sense key | 7 |", text, StringComparison.Ordinal);
+        Assert.Contains("not in the sample (the words they hold are not counted below) | 3 |", text, StringComparison.Ordinal);
         Assert.Contains("mapping coverage 88.24%", text, StringComparison.Ordinal);
         Assert.Contains("a%1:00:00:: (3)", text, StringComparison.Ordinal);
         Assert.Contains("(share of words of a trained lemma 76.92%) | 130 |", text, StringComparison.Ordinal);

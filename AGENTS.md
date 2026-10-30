@@ -28,13 +28,15 @@
 │                                part-of-speech corpus and the tag counts of the Basic tagger; corpus/suite is the
 │                                reviewed suite with the expectation of each model; corpus/shapes is the held-out shape
 │                                probe set; corpus/allwords is the independent
-│                                all-words gold set of the usage prior)
+│                                all-words gold set of the usage prior and corpus/allwords/v2 the second,
+│                                document-disjoint all-words gold set for part of speech, tense, lemma and sense)
 ├── data/                       (word data TSV tables from Open English WordNet, schema.yaml)
 ├── model/                      (one folder per model: model/<model-id>/ with ONNX encoder, vocabulary, tokenizer,
 │                                SHA256SUMS and README; stored in Git LFS)
 ├── tools/
 │   ├── WordSense.Builder/      (non-shipped builder: compile-image, weights, evaluate, evaluate-senses, evaluate-allwords,
-│   │                            allwords-sample, allwords-merge,
+│   │                            allwords-sample, allwords-merge, gold2-power, gold2-sample, gold2-batches,
+│   │                            gold2-merge, evaluate-gold2, compare-gold2,
 │   │                            evaluate-running, evaluate-suite, evaluate-shapes, check-leakage, tiers, open-counts, train-basic,
 │   │                            tune-basic, evaluate-tagger, appendix)
 │   ├── open-corpus/            (Python scripts that built the open part-of-speech corpus corpus/open)

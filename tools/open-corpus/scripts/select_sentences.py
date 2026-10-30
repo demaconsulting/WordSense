@@ -41,6 +41,7 @@ MALFORMED_TOKEN = re.compile(r'[,;:][A-Za-z"]|.["]|["].')
 
 
 def fewshot_ids():
+    """Return the sentence ids of the few-shot examples of the annotation prompts, which are never selected."""
     path = os.path.join(PROMPTS, "fewshot_ids.txt")
     return {l.strip() for l in open(path, encoding="utf-8") if l.strip() and not l.startswith("#")}
 
@@ -49,14 +50,18 @@ EXAMPLE_IDS = fewshot_ids()
 
 
 def key_of(text):
+    """Return the matching key of a sentence: lower case, letters and digits only (case and punctuation are ignored)."""
     return re.sub(r"[^a-z0-9]", "", text.lower())
 
 
 def malformed(tokens):
+    """Return True when a token has punctuation fused to letters (a comma before a letter, a quote inside a word)."""
     return any(MALFORMED_TOKEN.search(t) for t in tokens)
 
 
 def acceptable(text, tokens):
+    """Return True when a sentence passes every deterministic filter (the list in the module text): length, capital start,
+    final stop, balanced quotes, no URL or markup, few numbers, mostly words, not upper case, not a caption, tokenized without loss."""
     if not 4 <= len(tokens) <= 40:
         return False
     if not re.match(r"""^["'(]?[A-Z]""", text) or not re.search(r"""[.?!]["')]?$""", text):
@@ -79,6 +84,10 @@ def acceptable(text, tokens):
 
 
 def doc_candidates(doc_id, text):
+    """Return the acceptable sentences of a document's text as dicts (pos: its number in the document, text, tokens).
+
+    Sentences that are few-shot examples are skipped; the position counts every sentence, so ids stay stable.
+    """
     out, pos = [], 0
     for paragraph in text.split("\n\n"):
         for sent in split_sentences(paragraph.translate(LIGATURES)):
@@ -93,6 +102,7 @@ def doc_candidates(doc_id, text):
 
 
 def tatoeba_candidates():
+    """Return the acceptable English sentences of the Tatoeba CC0 export as dicts (id, date, text, tokens), ordered by id."""
     path = os.path.join(CACHE, "raw", "tatoeba-sentences_CC0.tar.bz2")
     out = []
     with tarfile.open(path, "r:bz2") as tar:
@@ -110,6 +120,7 @@ def tatoeba_candidates():
 
 
 def ud_keys(files):
+    """Return the matching keys of the `# text` lines of CoNLL-U files, used only as a negative filter."""
     keys = set()
     for fn in files:
         for line in open(fn, encoding="utf-8"):
@@ -119,6 +130,10 @@ def ud_keys(files):
 
 
 def ws_keys(root):
+    """Return the matching keys of every sentence-like cell (four or more words, a final stop) of the tsv files below root.
+
+    The folder is read only; the keys are a negative filter and nothing from the files is stored.
+    """
     keys = set()
     for fn in glob.glob(os.path.join(root, "**", "*.tsv"), recursive=True):
         for line in open(fn, encoding="utf-8", errors="replace"):
@@ -148,6 +163,7 @@ def allocate(room, need, rng):
 
 
 def main():
+    """Command line: filter, deduplicate and sample the sentences of every group, then write the outputs (see the module text)."""
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--pilot", required=True)
     ap.add_argument("--pilot-sources", default=os.path.join(BUILD, "pilot_sources.tsv"), help="sources.tsv rows of the pilot (for its Tatoeba sentences)")
@@ -202,6 +218,8 @@ def main():
             report["tatoeba_candidates_after_filters"] = len(pool)
             report["tatoeba_dropped"] = dict(dropped)
             pick = sorted(rng.sample(pool, need), key=lambda c: int(c["id"]))
+            # The sentences chosen here are seen, so a later family cannot select the same text
+            seen.update(key_of(c["text"]) for c in pick)
             for c in pick:
                 sid = f"tatoeba-{c['id']}"
                 selected.append({"group": group, "family": "tatoeba", "source_id": sid, "sent_id": sid, "text": c["text"], "tokens": c["tokens"], "pilot": 0})

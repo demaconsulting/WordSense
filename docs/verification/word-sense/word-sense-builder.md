@@ -22,9 +22,11 @@ the stored biases, the thresholds and the fit-cache key, and the options); `Real
 document and the real-text calibration of the thresholds on one-dimensional synthetic lemmas; `ChooserCorpusTests.cs`
 and `ChooserTrainingTests.cs` cover the chooser rows and the training of the form choosers; `TiersTests.cs`,
 `SenseEvaluatorTests.cs`, `RunningTextEvaluatorTests.cs`, `TenseEvaluatorTests.cs`, `ChallengeSetFloorTests.cs`,
-`SuiteFileTests.cs`, `ShapeProbeTests.cs`, `ShapeRowsTests.cs`, `LeakageCheckTests.cs` and `ModelTableTests.cs` cover the
+`SuiteFileTests.cs`, `ShapeProbeTests.cs`, `ShapeRowsTests.cs`, `LeakageCheckTests.cs`, `Gold2Tests.cs` and
+`ModelTableTests.cs` cover the
 quota report, the two independent evaluations, the suite reader and its grading, the shape probe reader and report, the
-shape rows of the corpus, the leakage check and the model table file with small synthetic corpora, a stub model and
+shape rows of the corpus, the leakage check, the second all-words gold set (power, draw, labeling, measurement and
+paired comparison) and the model table file with small synthetic corpora, a stub model and
 cached-file fixtures; `EvaluatorTests.cs` covers the per-level evaluation with a stub model. Commands that need a real
 encoder (`weights`, `evaluate`, `evaluate-senses`, `evaluate-running`, `evaluate-suite` and `evaluate-shapes` for the
 encoder models) are
@@ -367,7 +369,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `RealCalibrator_Apply_TargetNotReachable_ReportsItAndKeepsTheMinimumShare`): the shift is the largest one that
   keeps the minimum share of the answers, the result says that the target was not reached (the training summary line
   contains "fine pooled shift 5.000 (target not reached)" and says that the answers before and after cover all
-  calibration rows), and fewer answers than the minimum give shift 0.
+  calibration rows), and fewer answers than the minimum give shift 0. When every usable answer has one positive
+  distance and the target is not reached, the fallback shift is that distance, not zero
+  (`RealCalibrator_ChooseShift_OneDistanceAndTargetNotReachable_FallsBackToThatDistance`: 30 wrong answers at the
+  distance 1 give `(1, false)`).
 - **Reachable target** (`RealCalibrator_ChooseShift_TargetClearlyReachable_ReachesItOnEnoughAnswers`): when the
   precision clearly rises above the target, the lowest qualifying shift is chosen (4.1 in the fixture; the tail from
   4.0 has 96.9 percent and fails) and the kept answers reach it.
@@ -411,6 +416,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Shares and accuracy per level** (`Evaluator_RunAsync_ReportsShareAndAccuracyPerLevel`): with a stub model that
   answers rows at each level, the report gives the share answered at the sense, group and part-of-speech level, the
   accuracy at each level and the part-of-speech accuracy.
+- **Latency is the classification time** (`Evaluator_ScoreAsync_ClassificationTime_ExcludesWritingTheOutcomes`): with a
+  fast model and an outcomes writer that takes 40 ms a line, the classification time of six rows is less than half of
+  the elapsed time, so the latency does not include the outcomes file, the grading or the preparation.
 - **Real test split first** (`Evaluator_RunAsync_ProvenanceNamesTheOrigin_ReportsTheRealTestSplitFirst`): with a
   provenance file that marks held-out rows as real and written, the report has the real test split as its first
   (headline) set, then the test rows of documents without anchors, the calibration split, the written rows and the whole
@@ -429,7 +437,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Key mapping** (`WordSenseBuilder_SenseEval_MapKeys_WordNet30KeyToOewnSense`): a WordNet 3.0 sense key maps to the
   sense of the catalog that has it; a word with several keys is left out, a key without a sense is counted as
   unmapped, a word of an untrained lemma is not a trained-lemma word (it is an other row when the lemma has two or more
-  senses), and a sentence that is in the corpus is left out.
+  senses), and a sentence that is in the corpus is left out. The words with several keys are counted directly, whatever
+  the sampling or the exclusion of sentences (a sentence left out does not turn one into a single-key word), and the
+  sentences that the sampling does not keep are counted apart.
 - **Figures** (`WordSenseBuilder_SenseEval_Run_ReportsShareAndPrecisionPerLevelAndBaseline`): on a small annotated
   fixture and a stub model, the report gives for the words of trained lemmas the share answered and the precision at
   each level, the fine top-1, the part-of-speech accuracy, the accuracy of the first-sense baseline and the
@@ -483,7 +493,12 @@ and, for the measurement, a stub model.
 - **Batches** (`WordSenseBuilder_AllWords_Batches_ListEverySenseInTheOrderOfTheIds`, `..._Batches_HaveNoTagCount`,
   `..._Batches_MarkTheTargetWordAndSeparateTheSplits`): the batch of a group has every sense of the lemma and part of
   speech in the order of the ids, each with only `id`, `pos` and `gloss` (no tag count), and its sentences have the
-  target in braces; one batch is written for each split (the last test has no requirement).
+  target in braces; one batch is written for each split (the last test has no requirement). A lemma with more tokens
+  than the batch size is divided into batches of at most that size, each with the senses of the lemma
+  (`..._Batches_OversizedGroup_IsDividedToTheBatchSize`: four tokens in batches of three give batches of 3 and 1).
+- **Empty split** (`WordSenseBuilder_Program_AllWordsMerge_SplitWithNoKeptToken_GetsAnEmptyFile`): when both labelers
+  are unsure of every token of a split, `allwords-merge` overwrites an earlier gold file of the split with an empty
+  file, and the reader of the set finds no token.
 - **Merge** (`WordSenseBuilder_AllWords_Merge_KeepsTheTokensBothLabelersAgreeOn`, `..._Merge_Disagreement_DropsTheToken`,
   `..._Merge_UnsureAnswer_DropsTheToken`, `..._Merge_MissingAnswerLine_DropsTheToken`,
   `..._Merge_ReportsTheAgreement`, `..._Merge_WrongSense_Fails`, `..._Merge_MissingAnswerFile_Fails`): the merge keeps a
@@ -513,6 +528,141 @@ and, for the measurement, a stub model.
   half); without a gold set it fails with a message; `allwords-sample` writes batches and a table of 24 tokens (12 for
   each split) and `allwords-merge` writes the gold files and reports an agreement of 100% when both labelers choose the
   same senses (the last test has no requirement).
+
+#### gold2-power, gold2-sample, gold2-batches, gold2-merge, evaluate-gold2 and compare-gold2
+
+The tests are in `test/WordSense.Builder.Tests/Gold2Tests.cs`. They use the committed catalog, temporary directories,
+a small synthetic pool and a stub model; four tests read the committed set `corpus/allwords/v2` and the committed anchors
+and weights.
+
+- **Power plan** (`Gold2Power_PairedSampleSize_PlannedMeasures_MatchesThePlan`,
+  `Gold2Power_MinimumDetectable_IsTheInverseOfTheSampleSize`, `Program_Gold2Power_PrintsThePlan`): the sample size of
+  each planned measure follows the formula of the design (2,745, 1,175, 626, 438 and 375 tokens for the five measures)
+  and the planned test tokens are at least 80% of it; the minimum detectable improvement of 1,175 tokens at a
+  discordance of 24% is 4.0 points; the normal quantiles are right to five decimals and an improvement that the
+  discordance cannot hold, or a probability of 1, is an argument error; `gold2-power` exits with 0 and prints the
+  table.
+- **Exact McNemar** (`Gold2Power_ExactMcNemar_KnownSplits_GivesTheExactProbability`): the p value is 1 for no discordant
+  token and for an even split, `2 / 1024` for 10 against 0, and symmetric in the two counts.
+- **Strata** (`Gold2Strata_Of_Forms_FlagsFollowTheLexiconAndTheTrainedLemmas`,
+  `Gold2_TrainedLemmas_SingleAnchoredSense_IsUntrained`): `put` bears the same-spelling verb
+  flag, `bank` the noun-and-verb flag and the trained or untrained flag by its lemma, a heteronym spelling the
+  heteronym flag, `saw` the lemma-ambiguous flag, and a form that the lexicon does not know none (null); the families
+  of the sources are grouped into technical, news and literary text. In the committed anchors `always` has two sentences
+  for one sense: it is in the lemmas of the anchors but not in the lemmas that get weights
+  (`Corpus.ReadWeightedLemmas`), its sense flag is the untrained one, and `WeightsTrainer.HasWeights` is false for one
+  anchored sense and true for two.
+- **Trained lemmas** (`Gold2_TrainedLemmas_ShippedWeights_AreTheLemmasOfTheTrainerRule`,
+  `Gold2_TrainedLemmas_NoWeightsFile_UsesTheAnchorRule`): the lemmas that have weights in both shipped encoder models are
+  exactly the lemmas that the rule of the trainer finds in the committed anchors; without a weights file the same
+  rule is applied to the anchors of a small directory (a lemma of two senses is trained, a lemma of one is not).
+- **Candidates** (`Gold2Sampler_IsCandidateWord_NamesAcronymsAndSymbols_AreLeftOut`): lower-case words, a capitalized
+  word at the start of a sentence, `I` and `a` can be drawn; a capitalized word inside a sentence (a single capital
+  letter such as `D` included), an acronym, a word
+  with an apostrophe, a numeral and a symbol cannot.
+- **Draw** (`Gold2Sampler_Draw_SmallPool_RespectsSplitsCapsAndQuotas`): on a pool of 30 documents the same seed gives
+  the same tokens and another seed other ones; no document has tokens in both splits; no document exceeds its cap; no
+  sentence has more than the planned tokens and no two are adjacent; every token is the word at its index; the ids
+  are unique and start with `d-` and `t-`; the quotas of the same-spelling verb and untrained strata are filled.
+- **Split** (`Gold2Sampler_AssignSplits_ByFamily_GivesTheDevelopmentShareOfTheSentences`): of the 10 documents of each
+  family, 4 go to the development split and 6 to the test split, and each document goes to one split.
+- **Files** (`Gold2_Files_RoundTrip`, `Gold2_ReadManifest_WrongWordAtTheIndex_Throws`): a manifest, a documents file
+  and a rows file are written and read back the same (the sentence words included), the leakage parts of the set are
+  read (one part for the split that has tokens), and a manifest line whose word is not at its index is an
+  `InvalidDataException`.
+- **Document check** (`Gold2_ValidateDocuments_UsedMissingAndSharedDocuments_AreProblems`,
+  `Gold2_CanonicalDocumentKey_GutenbergSpellings_AreOneKey`,
+  `Gold2_ValidateDocuments_GutenbergBookUnderAnotherKeyFormat_IsAProblem`): a document whose id is in
+  the open corpus sources, a document whose address is there, a manifest token whose document is not listed and a
+  document with tokens in both splits are each a problem that names the document. `pg1419`, `PG01419`,
+  `gutenberg-1419` and the addresses of the book become `gutenberg-1419`, and other keys are unchanged. A book that the
+  provenance writes as `pg1419#s17295`, that the open corpus lists only by its address, or that the first all-words set
+  names in a sentence id (`gutenberg-88-s0012`) is a used document, and a book that no part uses is not.
+- **Committed set** (`Gold2_CommittedSet_DocumentsAreDisjointFromTheRepository`,
+  `Gold2_CommittedRows_AreConsistentWithTheLexiconAndTheManifest`, `Gold2_CommittedRows_MatchTheManifestOneToOne`): the
+  document check of the committed set finds no problem (every Gutenberg book under its canonical key); the committed
+  rows are one for each token of the manifest with its strata, a part of speech of the lexicon
+  or `Other`, a lemma, a status of agreed or adjudicated, a tense for a verb only and a sense of the lemma and part of
+  speech when one is given; they match the manifest one to one on id, document, source, sentence, target, form, strata
+  and words.
+- **Rows against the manifest** (`Gold2_ValidateRows_RowsOfTheManifest_HaveNoProblem`,
+  `Gold2_ValidateRows_MissingDuplicateUnknownAndRepeatedIds_AreProblems`,
+  `Gold2_ValidateRows_RowThatDiffersFromTheManifest_NamesWhatDiffers`,
+  `Gold2_ReadVerifiedRows_RowsThatDoNotMatchTheManifest_Throw`): rows of the manifest in any order have no problem; a
+  token without a row, a row that appears twice, a row that the manifest does not have for the split (an unknown id, or
+  the id of the other split) and a manifest id that appears twice are each named; a row with another document, sentence,
+  target, form or words says what differs; the reader of verified rows throws an `InvalidDataException` for a missing,
+  a duplicate and a different row, returns an empty list for a split without rows and tokens, and accepts the complete
+  set. The labeled fields are checked apart from the identity
+  (`Gold2_ValidateRowFields_ValidRows_HaveNoProblem`, `Gold2_ValidateRowFields_InvalidFields_AreProblemsThatNameTheField`,
+  `Gold2_ReadVerifiedRows_InvalidLabeledField_Throws`): a noun with a sense of `bank`, a verb with the tense of its
+  features, a token of `Other` and an adjudicated `none` are valid; a part of speech that is a number, in another case or
+  unknown, an empty lemma, a sense that is no sense of the lemma, on `Other` or on a lemma of one sense, a `none` of an
+  agreed row, a tense that is not allowed, on a noun or against the features, and a status or an agreement outside the
+  lists are each a problem that names the field, and the reader of verified rows throws for a part of speech `7`.
+- **Target index** (`Gold2_Readers_NegativeTargetIndex_Throws`): a manifest line and a row with the index `-1` are an
+  `InvalidDataException` that names the index, not an index out of range.
+- **Part of speech names** (`Gold2_TryParsePartOfSpeech_OnlyNames_AreParts`): `Noun` is a part of speech; `1`, `noun`,
+  `Other` and null are not, and the answer `other:1:reading` is invalid where `other:Noun:reading` is valid.
+- **Answers** (`Gold2Labeling_Resolve_Answers_ResolveToTheAnalysisAndItsSense`): the analyses of `read` come in the
+  order of lemma, part of speech and features; an answer resolves to its analysis and a sense of it; an unsure answer
+  of the adjudicator and a `none` of the adjudicator resolve to `none`, and a `none` of a labeler is a problem;
+  `other:Noun:reading` resolves to a noun without a sense; an analysis that does not exist, a sense that the lemma
+  does not have and a part of speech that does not exist are problems that name the answer.
+- **Merge** (`Gold2Labeling_Merge_AgreementAndAdjudication_NothingIsDropped`): of four tokens, the one both labelers
+  answered the same is settled (agreed, whatever the confidence of one of them) and the three others (another
+  analysis, an unsure answer, another sense) go to the adjudicator; a token without an adjudicator answer is the
+  problem `t-4: the adjudicator gave no answer.`; with all answers no token is dropped, the status and the agreement
+  (`pos`, `analysis`) of each token are right, a `none` is kept, the rows carry the tense class (`past`, `nonpast`) of
+  a verb, and the agreement counts, the table and the labels file are rendered.
+- **Merge command** (`Program_Gold2Merge_DocumentNotListed_WritesNothing`): with a manifest document that
+  `sources.tsv` does not list, `gold2-merge` exits with 1, prints that the document is not in `sources.tsv` and writes
+  neither split nor the labels; with the document listed it exits with 0, writes `dev.tsv`, `test.tsv` and `labels.tsv`
+  and the written test rows match the manifest.
+- **Missing and invalid answers** (`Gold2Labeling_Compare_MissingAndInvalidAnswers_AreReportedOrAdjudicated`): a token
+  that the second labeler did not answer is reported as missing and a token whose answer of the first labeler is
+  invalid goes to the adjudicator; nothing is settled.
+- **Batches** (`Gold2Labeling_WriteBatchesAndReadAnswers_RoundTrip`): a batch of the form `read` has two items with the
+  token in braces and the analyses with their senses and glosses; the answer table is read back (`a1` with `unsure`
+  and a high confidence, `a2` with a low one) and a line that is no answer is reported; the adjudication batch shows
+  the first labeler's answer, and its table is written.
+- **Duplicate answers** (`Gold2Labeling_ReadAnswers_DuplicateAnswer_Throws`): a token that two rounds of a labeler both
+  answer, and a token that one file answers twice, are an `InvalidDataException` that says the token is answered more
+  than once and names the file of its first answer.
+- **Retry round** (`Program_Gold2Batches_Missing_KeepsTheBatchIndexOfTheFirstRound`,
+  `Gold2Labeling_WriteBatches_TableWithAnotherMapping_IsNotOverwritten`): of three tokens of which the first has an
+  answer, `gold2-batches --missing` writes the other two as `sample-r1.tsv` and `g2-r1-t01.json`, leaves `sample.tsv`
+  byte for byte as it was, and the answers of both rounds are read together (the first token keeps its answer). Writing
+  the same batches again is accepted; writing a table with another mapping is an `InvalidDataException` that names
+  `--tag`; the retry tag is the one asked for when it is free, else the first free `-r<n>`.
+- **Measurement** (`Gold2Evaluator_MeasureAsync_PosLemmaTenseAndSense_AreScoredPerToken`): a stub model gives, for five
+  tokens: a right part of speech, lemma and sense; a right analysis with the wrong sense; a right lemma and part of
+  speech with the wrong tense and no scored sense; a token whose gold sense is `none`, which is not scored on the sense;
+  and a token that the model does not answer whose gold class is `Other`, which is not scored on the part of speech and
+  is wrong on the lemma. The sense on the right analysis
+  is scored apart; the tallies of all tokens, of the tense stratum and of the untrained stratum are right; and the
+  report has a row of the trained lemmas.
+- **Strata and power report** (`Gold2Evaluator_RenderStrataAndPower_FrozenFlagsAgainstTheTrainedLemmas_AreCounted`):
+  of three rows, one drawn as trained whose lemma has no weights and one drawn as untrained whose lemma has, the report
+  counts 2 drawn as `TR`, 1 still `TR`, 1 moved to `U`, 1 drawn as `U`, 1 now `TR`, 2 tokens of a trained gold lemma
+  and 1 of an untrained one; the power table gives 3 tokens for the part of speech and no tokens (n/a) for the tense.
+- **Baselines** (`Gold2Evaluator_Baseline_FirstAndMostFrequentSense_AreScoredOnTheSenseOnly`): the first-sense baseline
+  is right on a token whose gold sense is the top sense of `bank`, neither baseline is scored on the part of speech,
+  and a token without a gold sense is not scored.
+- **Paired comparison** (`Gold2Evaluator_Compare_TwoModels_CountsDiscordantTokensAndGivesAnInterval`): of 60 tokens
+  that one model gets 40 right and the other 50, the comparison counts 10 tokens that only the second gets right and
+  none for the first, gives the exact p value of that split, an interval that contains the difference of 16.67 points,
+  one row for each stratum of at least 20 tokens, no row for the sense (no token applies), and the same result again.
+  The bootstrap resamples only the documents that contribute tokens
+  (`Gold2Evaluator_BootstrapInterval_DocumentsWithoutTokens_AreNotResampled`): two documents of 10 tokens that each
+  differ by 2, among 100 documents without a token, give the interval 0.2 to 0.2, and no document at all gives (0, 0).
+- **Outcomes** (`Gold2Evaluator_Outcomes_RoundTrip`): the outcomes of two tokens are written and read back the same, and
+  a file with a value that is not a flag is an `InvalidDataException`.
+
+The commands that need the committed labeled set or a real model (`gold2-sample` on a real pool, `gold2-batches`,
+`gold2-merge`, `evaluate-gold2` and `compare-gold2`) are verified through their units above and through the committed
+files; the figures that they print are not asserted by a test. The leakage parts and the document check of the set are
+verified in the section _corpus_ below.
 
 #### evaluate-running (tense)
 
@@ -552,7 +702,8 @@ and, for the measurement, a stub model.
   gold file is the converted test file, never the development file.
 - **Sets** (`WordSenseBuilder_RunningText_Load_ReadsTheSetsAndNotesAMissingGoldFile`): the representative test split,
   the gold file and the challenge set are read; a missing gold file leaves its set out with a note that says how to
-  make it.
+  make it. A split other than `test` is named after the split and never fills the test column of the model table
+  (`WordSenseBuilder_RunningText_Load_DevelopmentSplit_IsNamedAndNotWrittenToTheTestColumn`).
 - **Figures for any model** (`WordSenseBuilder_RunningText_Run_ReportsAllAndAmbiguousTokensForAModel`): with a stub
   model, the accuracy on all scored tokens and on the ambiguous tokens, the tokens that are not answered and the
   excluded tokens are counted and rendered, and the table cells carry both accuracies.
@@ -948,19 +1099,29 @@ it leaves.
   all-words gold set and the split of the open corpus it is drawn from share their sentences and that is no leak; a gold
   sentence that a training part has too is a leak, and so is a gold sentence of the development half that the test split
   of the open corpus has.
+- **Second all-words gold set** (`Gold2_Files_RoundTrip`, `WordSenseBuilder_Corpus_Leakage_OnlyRealLeaksFail`,
+  `Gold2_ValidateDocuments_UsedMissingAndSharedDocuments_AreProblems`,
+  `Gold2_CommittedSet_DocumentsAreDisjointFromTheRepository`): the sentences of the development and the test split of
+  the second set are two parts of the check; they are views of no other part, so a sentence that either shares with
+  any other evaluation part is a leak by the rule that two evaluation parts do not share a sentence; the document
+  check reports a document that another part uses or has rejected (by id and by address), a token whose document is
+  not listed and a document in both splits, and finds nothing in the committed set.
 - **Committed corpus** (`WordSenseBuilder_Corpus_Disjointness_CoversSuiteEvaluationAndOewnExamples`): the anchors,
   chooser, held-out and real-text sentences, the suite, the shape probe set, the open corpus development and test
   splits, the two halves of
-  the all-words gold set, the challenge set
+  the all-words gold set, the two splits of the second all-words gold set, the challenge set
   and the Open English WordNet examples of the repository share no sentence in a way that leaks.
 - **Command** (`WordSenseBuilder_Program_CheckLeakage_ExitsWithOneOnALeak`): `check-leakage` prints the report and
-  exits with code 1 when a part shares a sentence with an evaluation part, and 0 otherwise.
+  exits with code 1 when a part shares a sentence with an evaluation part, and 0 otherwise; it also exits with code 1
+  and prints each document problem of the second set under its own heading (by inspection of the command; the
+  document check itself is tested above).
 
 #### Command line
 
 - **No arguments or unknown command**: exit code 1 and the usage text listing `compile-image`, `import-moby`,
   `weights <modelId>`, `evaluate <modelId>`, `evaluate-senses`, `evaluate-allwords`, `allwords-sample`,
-  `allwords-merge`, `evaluate-running`, `evaluate-suite`, `evaluate-shapes`, `check-leakage`,
+  `allwords-merge`, `gold2-power`, `gold2-sample`, `gold2-batches`, `gold2-merge`, `evaluate-gold2`, `compare-gold2`,
+  `evaluate-running`, `evaluate-suite`, `evaluate-shapes`, `check-leakage`,
   `tiers`, `open-counts`, `evaluate-tagger`, `coverage`, `train-basic`, `tune-basic`, `label-senses`,
   `import-wn30-counts`, `appendix`, `keys` and `heteronyms`
   (`Program_NoArguments_PrintsUsage`, `Program_UnknownCommand_ReportsCommandAndUsage`,

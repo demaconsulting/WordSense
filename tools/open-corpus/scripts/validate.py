@@ -27,6 +27,12 @@ SELECTION_RE = re.compile(r"^(sense|convention|form|genre|error|pattern)=\S.*$")
 
 
 def check_part(part, data_dir, names, pick, known, errors, seen_ids, seen_text):
+    """Validate the data files of one part of the corpus and append the problems found to errors.
+
+    part is "representative" or "targeted"; names are the split files to read; pick maps a source id to its expected split;
+    known is the set of source ids of sources.tsv; seen_ids and seen_text collect the sentence ids and texts across parts.
+    Returns {split: (sentences, tokens)}.
+    """
     targeted = part == "targeted"
     doc_split, totals = {}, {}
     for name in names:
@@ -44,7 +50,9 @@ def check_part(part, data_dir, names, pick, known, errors, seen_ids, seen_text):
             comments = {l[2:].split(" = ", 1)[0]: l.split(" = ", 1)[1] for l in lines if l.startswith("# ") and " = " in l}
             toks = [l.split("\t") for l in lines if not l.startswith("#")]
             if "sent_id" not in comments:
-                continue  # file header block
+                if toks:  # only a comment-only block is the file header
+                    errors.append(f"{part}/{name}: a block of {len(toks)} token lines has no `# sent_id` line")
+                continue
             sid = comments["sent_id"]
             n_sent += 1
             n_tok += len(toks)
@@ -88,6 +96,9 @@ def check_part(part, data_dir, names, pick, known, errors, seen_ids, seen_text):
                     errors.append(f"{sid}:{k} bad status {status}")
                 if feats != "_":
                     pairs = [p.split("=", 1) for p in feats.split("|")]
+                    names = [p[0] for p in pairs]
+                    if len(set(names)) != len(names):
+                        errors.append(f"{sid}:{k} repeated feature name in {feats}")
                     if pairs != sorted(pairs) or any(len(p) != 2 or p[0] not in FEATURE_VALUES or p[1] not in FEATURE_VALUES[p[0]]
                                                      or p[0] not in FEATURES_FOR_UPOS.get(upos, set()) for p in pairs):
                         errors.append(f"{sid}:{k} bad features {feats} for {upos}")
@@ -100,6 +111,7 @@ def check_part(part, data_dir, names, pick, known, errors, seen_ids, seen_text):
 
 
 def main():
+    """Command line: validate both parts of the corpus, print the problems and exit with 1 when there is any."""
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--rep-data", default=DATA)
     ap.add_argument("--targeted-data", default=TARGETED_DATA)

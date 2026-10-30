@@ -167,8 +167,18 @@ internal static class BasicTablesWriter
         return output.ToArray();
     }
 
+    /// <summary>
+    ///     Writes a number as a variable-length integer.
+    /// </summary>
+    /// <param name="stream">The destination.</param>
+    /// <param name="value">The number, not negative.</param>
     private static void WriteVarint(Stream stream, int value) => VarintWriter.WriteVarint(stream, value);
 
+    /// <summary>
+    ///     Writes a string as its UTF-8 length (a variable-length integer) and its UTF-8 bytes.
+    /// </summary>
+    /// <param name="stream">The destination.</param>
+    /// <param name="value">The string.</param>
     private static void WriteString(Stream stream, string value)
     {
         var bytes = Encoding.UTF8.GetBytes(value);
@@ -176,12 +186,22 @@ internal static class BasicTablesWriter
         stream.Write(bytes);
     }
 
+    /// <summary>
+    ///     Writes a number as two little-endian bytes.
+    /// </summary>
+    /// <param name="stream">The destination.</param>
+    /// <param name="value">The number, 0 to 65,535.</param>
     private static void WriteUInt16(Stream stream, int value)
     {
         stream.WriteByte((byte)(value & 0xFF));
         stream.WriteByte((byte)(value >> 8));
     }
 
+    /// <summary>
+    ///     Writes a number as a little-endian double.
+    /// </summary>
+    /// <param name="stream">The destination.</param>
+    /// <param name="value">The number.</param>
     private static void WriteDouble(Stream stream, double value)
     {
         Span<byte> bytes = stackalloc byte[sizeof(double)];

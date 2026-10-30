@@ -20,18 +20,28 @@ from common import COLLAPSE, read_tsv
 
 
 def kappa(pairs):
+    """Return Cohen's kappa of a list of (tag, tag) pairs, or None when there are no pairs (nothing was compared)."""
     n = len(pairs)
+    if n == 0:
+        return None
     po = sum(a == b for a, b in pairs) / n
     ca, cb = collections.Counter(a for a, _ in pairs), collections.Counter(b for _, b in pairs)
     pe = sum(ca[k] * cb[k] for k in ca) / (n * n)
     return (po - pe) / (1 - pe) if pe < 1 else 1.0
 
 
+def rounded(x, digits):
+    """Round a number, keeping None (no value) as None."""
+    return None if x is None else round(x, digits)
+
+
 def pct(x, n):
+    """Return x as a percentage of n, rounded to two places, or None when n is 0."""
     return round(100.0 * x / n, 2) if n else None
 
 
 def main():
+    """Command line: compute the agreement and the accuracy statistics of DIR/final.tsv and write them as JSON (see the module text)."""
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--workdir", required=True)
     ap.add_argument("--sentences")
@@ -48,8 +58,8 @@ def main():
     cpairs = [(COLLAPSE[a], COLLAPSE[b]) for a, b in pairs]
     nc = len(pairs)
     res["tokens_with_second_annotation"] = nc
-    res["agreement"] = {"upos_percent": pct(sum(a == b for a, b in pairs), nc), "upos_kappa": round(kappa(pairs), 4),
-                        "collapsed_percent": pct(sum(a == b for a, b in cpairs), nc), "collapsed_kappa": round(kappa(cpairs), 4)}
+    res["agreement"] = {"upos_percent": pct(sum(a == b for a, b in pairs), nc), "upos_kappa": rounded(kappa(pairs), 4),
+                        "collapsed_percent": pct(sum(a == b for a, b in cpairs), nc), "collapsed_kappa": rounded(kappa(cpairs), 4)}
     status = collections.Counter(r["status"] for r in final)
     res["status"] = {k: {"tokens": v, "percent": pct(v, n)} for k, v in sorted(status.items())}
     adj_path = os.path.join(args.workdir, "adjudication", f"adjudicated_{args.policy}.tsv")
@@ -91,7 +101,7 @@ def main():
             acc["second"] += r["second_upos"] == gu
             acc["final"] += r["upos"] == gu
             acc["primary_collapsed"] += COLLAPSE[r["primary_upos"]] == COLLAPSE[gu]
-            acc["second_collapsed"] += COLLAPSE[r["second_upos"]] == COLLAPSE[gu]
+            acc["second_collapsed"] += bool(r["second_upos"]) and COLLAPSE[r["second_upos"]] == COLLAPSE[gu]
             acc["final_collapsed"] += COLLAPSE[r["upos"]] == COLLAPSE[gu]
             acc["lemma_primary"] += r["lemma"].lower() == g["lemma"].lower()
             s = by_status[r["status"]]
@@ -109,7 +119,7 @@ def main():
             "tokens": len(excl),
             "upos_percent": pct(sum(r["upos"] == gold[(r["uid"], int(r["idx"]))]["upos"] for r in excl), len(excl)),
             "collapsed_percent": pct(sum(COLLAPSE[r["upos"]] == COLLAPSE[gold[(r["uid"], int(r["idx"]))]["upos"]] for r in excl), len(excl))}
-        dis = [r for r in final if r["primary_upos"] != r["second_upos"]]
+        dis = [r for r in final if r["second_upos"] and r["primary_upos"] != r["second_upos"]]
         gd = lambda r: gold[(r["uid"], int(r["idx"]))]["upos"]
         res["disagreement_tokens_vs_gold"] = {
             "tokens": len(dis), "primary_correct": sum(r["primary_upos"] == gd(r) for r in dis),
@@ -134,7 +144,7 @@ def main():
                 st[r["status"]]["okc"] += COLLAPSE[r["upos"]] == COLLAPSE[g2]
                 if r["upos"] != g2:
                     conf2[f"{g2}->{r['upos']}"] += 1
-            dis2 = [r for r in final if r["primary_upos"] != r["second_upos"]]
+            dis2 = [r for r in final if r["second_upos"] and r["primary_upos"] != r["second_upos"]]
             res["accuracy_vs_gold_convention_mapped"] = {
                 "upos_percent": pct(ok, n), "collapsed_percent": pct(okc, n), "reference_tokens_remapped": counts,
                 "reference_tokens_remapped_total": sum(counts.values()),
