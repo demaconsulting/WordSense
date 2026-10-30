@@ -41,6 +41,7 @@ def pct(x, n):
 
 
 def main():
+    """Command line: compute the agreement and the accuracy statistics of DIR/final.tsv and write them as JSON (see the module text)."""
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--workdir", required=True)
     ap.add_argument("--sentences")

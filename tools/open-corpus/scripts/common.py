@@ -94,11 +94,13 @@ def write_tsv(path, rows, columns):
 
 
 def read_json(path):
+    """Read a UTF-8 JSON file and return its content."""
     with open(path, encoding="utf-8") as f:
         return json.load(f)
 
 
 def write_json(path, obj):
+    """Write an object as UTF-8 JSON with sorted keys, one-space indent and LF line endings; the directory is created."""
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8", newline="\n") as f:
         json.dump(obj, f, ensure_ascii=False, indent=1, sort_keys=True)
@@ -185,6 +187,7 @@ def tokenize(text):
 
 
 def check_tokenization(text, tokens):
+    """Return True when the tokens, joined without spaces, are the text without its spaces (no character lost or invented)."""
     return "".join(tokens) == text.replace(" ", "")
 
 

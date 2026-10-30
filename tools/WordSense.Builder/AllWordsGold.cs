@@ -248,9 +248,24 @@ internal static class AllWordsGold
         return [.. drawn.OrderBy(s => s.SentenceId, StringComparer.Ordinal).Select((s, n) => s with { Id = $"{letter}-{(n + 1).ToString("D4", CultureInfo.InvariantCulture)}" })];
     }
 
+    /// <summary>
+    ///     Hashes a sentence and a position to a number that does not depend on the platform, to order the candidates of the draw.
+    /// </summary>
+    /// <param name="seed">The seed of the draw.</param>
+    /// <param name="sentenceId">The id of the sentence.</param>
+    /// <param name="index">The index of the token in the sentence.</param>
+    /// <returns>The first eight bytes of the SHA-256 of the seed, the sentence id and the index.</returns>
     private static ulong OrderOf(int seed, string sentenceId, int index) =>
         BitConverter.ToUInt64(SHA256.HashData(Encoding.UTF8.GetBytes($"{seed.ToString(CultureInfo.InvariantCulture)}|{sentenceId}|{index.ToString(CultureInfo.InvariantCulture)}")));
 
+    /// <summary>
+    ///     Finds the part of speech of a token that can be drawn: a noun, verb, adjective or adverb whose lemma is not
+    ///     trained, has two or more senses of that part of speech and is an analysis of the written form.
+    /// </summary>
+    /// <param name="token">The token of the open corpus.</param>
+    /// <param name="form">The token as written.</param>
+    /// <param name="trained">The trained lemmas.</param>
+    /// <returns>The part of speech, or null when the token is not a candidate (another tag, a disputed consensus, no letters only, a trained or monosemous lemma, or no such analysis).</returns>
     private static PartOfSpeech? CandidatePos(OpenToken token, string form, HashSet<string> trained)
     {
         PartOfSpeech? pos = token.Upos switch
@@ -333,6 +348,15 @@ internal static class AllWordsGold
         return batches;
     }
 
+    /// <summary>
+    ///     Writes one labeling batch as JSON and adds its rows to the table.
+    /// </summary>
+    /// <param name="directory">The directory that receives the batch file.</param>
+    /// <param name="split">The split of the tokens (its first letter is part of the batch id).</param>
+    /// <param name="number">The number of the batch, counted over all splits.</param>
+    /// <param name="groups">The lemma and part of speech groups of the batch, each with its tokens.</param>
+    /// <param name="glosses">The glosses by sense id.</param>
+    /// <param name="table">The table that receives one row for each token.</param>
     private static void WriteBatch(string directory, string split, int number, List<((string Lemma, PartOfSpeech PartOfSpeech) Key, List<AllWordsSample> Items)> groups, Dictionary<string, string> glosses, StringBuilder table)
     {
         var id = $"aw-{split[0]}{number.ToString("D2", CultureInfo.InvariantCulture)}";
@@ -373,6 +397,11 @@ internal static class AllWordsGold
         File.WriteAllText(Path.Join(directory, id + ".json"), json.ToString(), new UTF8Encoding(false));
     }
 
+    /// <summary>
+    ///     Renders a string as a JSON string literal (no escaping of non-ASCII letters).
+    /// </summary>
+    /// <param name="text">The text.</param>
+    /// <returns>The literal with its quotes.</returns>
     private static string Quote(string text) => System.Text.Json.JsonSerializer.Serialize(text, JsonOptions);
 
     private static readonly System.Text.Json.JsonSerializerOptions JsonOptions = new() { Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
@@ -457,7 +486,12 @@ internal static class AllWordsGold
         return (gold, agreement);
     }
 
-    // The words of every sampled token, from the batch files: the sentence with its braces is the only record of the words
+    /// <summary>
+    ///     Reads the words of every sampled token from the batch files: the sentence with its braces is the only record of the words.
+    /// </summary>
+    /// <param name="directory">The directory of the batches.</param>
+    /// <param name="rows">The rows of <c>sample.tsv</c> (batch, number, token id, ...).</param>
+    /// <returns>The words of the sentence of each token, by token id.</returns>
     private static Dictionary<string, string[]> ReadSampleSentences(string directory, List<string[]> rows)
     {
         var words = new Dictionary<string, string[]>(StringComparer.Ordinal);
@@ -478,6 +512,14 @@ internal static class AllWordsGold
         return words;
     }
 
+    /// <summary>
+    ///     Reads the answers of one labeler for every sampled token.
+    /// </summary>
+    /// <param name="directory">The directory of the batches and the answer files.</param>
+    /// <param name="suffix">The suffix of the labeler's files (<c>&lt;batch&gt;.&lt;suffix&gt;.tsv</c>).</param>
+    /// <param name="rows">The rows of <c>sample.tsv</c>.</param>
+    /// <returns>The sense (null when unsure or missing) and whether the confidence is high, by batch and number.</returns>
+    /// <exception cref="InvalidDataException">Thrown when an answer file is missing or an answer is not a sense of the lemma and part of speech of its token.</exception>
     private static Dictionary<(string Batch, string N), (string? Sense, bool High)> ReadAnswers(string directory, string suffix, List<string[]> rows)
     {
         var answers = new Dictionary<(string, string), (string?, bool)>();

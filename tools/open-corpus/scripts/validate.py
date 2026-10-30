@@ -27,6 +27,12 @@ SELECTION_RE = re.compile(r"^(sense|convention|form|genre|error|pattern)=\S.*$")
 
 
 def check_part(part, data_dir, names, pick, known, errors, seen_ids, seen_text):
+    """Validate the data files of one part of the corpus and append the problems found to errors.
+
+    part is "representative" or "targeted"; names are the split files to read; pick maps a source id to its expected split;
+    known is the set of source ids of sources.tsv; seen_ids and seen_text collect the sentence ids and texts across parts.
+    Returns {split: (sentences, tokens)}.
+    """
     targeted = part == "targeted"
     doc_split, totals = {}, {}
     for name in names:
@@ -105,6 +111,7 @@ def check_part(part, data_dir, names, pick, known, errors, seen_ids, seen_text):
 
 
 def main():
+    """Command line: validate both parts of the corpus, print the problems and exit with 1 when there is any."""
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--rep-data", default=DATA)
     ap.add_argument("--targeted-data", default=TARGETED_DATA)

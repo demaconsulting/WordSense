@@ -110,6 +110,10 @@ def parse(content, sents):
 
 
 def ask_retry(*a, **k):
+    """Call ask with the same arguments, trying up to four times with a growing wait after a network or server error.
+
+    Returns what ask returns; the last error is raised when every attempt fails.
+    """
     last = None
     for attempt in range(4):
         try:
@@ -121,6 +125,7 @@ def ask_retry(*a, **k):
 
 
 def main():
+    """Command line: tag the sentences that have no second annotation, resuming from the checkpoint (see the module text)."""
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--sentences", required=True)
     ap.add_argument("--workdir", required=True)
@@ -162,6 +167,10 @@ def main():
     chunks = [todo[i:i + args.per_request] for i in range(0, len(todo), args.per_request)]
 
     def work(chunk):
+        """Tag one chunk: ask for all its sentences, ask again for those that fail validation, then one at a time.
+
+        Returns the validated tags by uid and the log entries of every request.
+        """
         entries = []
         content, secs, evals, pevals = ask_retry(args.host, args.model, system, chunk, args.num_ctx, hint=args.hint_counts)
         ok, bad = parse(content, chunk)
