@@ -84,6 +84,50 @@ public class PosHeadTests
     }
 
     /// <summary>
+    ///     The posterior is bit for bit the sum of one class at a time in the fixed order: bias, previous, word, next.
+    /// </summary>
+    [Fact]
+    public void PosHead_Posterior_FixedOrder_IsBitIdenticalToOneClassAtATime()
+    {
+        // Arrange: a head and vectors with values that are not exact in 32 bits
+        var head = Create();
+        double[] previous = [0.1, -1.0 / 3.0, 0.25, 2.0 / 7.0];
+        double[] word = [1.0 / 9.0, 0.5, -0.5, 1e-3];
+        double[] next = [-0.25, 0.75, Math.PI, -1.0];
+        double[][] vectors = [previous, word, next];
+        var f = 3 * Hidden;
+        var logits = new double[head.ClassCount];
+        for (var c = 0; c < logits.Length; c++)
+        {
+            double sum = head.Data.Biases[c];
+            for (var block = 0; block < 3; block++)
+            {
+                var vector = vectors[block];
+                for (var j = 0; j < Hidden; j++)
+                {
+                    sum += head.Data.Weights[(c * f) + (block * Hidden) + j] * (double)(float)vector[j];
+                }
+            }
+
+            logits[c] = sum;
+        }
+
+        var max = logits.Max();
+        var exp = logits.Select(l => Math.Exp(l - max)).ToArray();
+        var total = 0.0;
+        foreach (var e in exp)
+        {
+            total += e;
+        }
+
+        // Act: compute the posterior
+        var posterior = head.Posterior(previous, word, next);
+
+        // Assert: every probability is identical to the last bit
+        Assert.Equal(exp.Select(e => e / total).ToArray(), posterior);
+    }
+
+    /// <summary>
     ///     The same input always gives bit-identical output.
     /// </summary>
     [Fact]

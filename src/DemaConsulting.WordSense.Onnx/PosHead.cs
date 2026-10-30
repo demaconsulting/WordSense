@@ -23,7 +23,7 @@ namespace DemaConsulting.WordSense.Onnx;
 /// </remarks>
 internal sealed class PosHead
 {
-    private readonly float[] _weights;
+    private readonly double[] _weights;
     private readonly float[] _biases;
 
     /// <summary>
@@ -34,7 +34,9 @@ internal sealed class PosHead
     {
         ArgumentNullException.ThrowIfNull(data);
         Data = data;
-        _weights = data.Weights;
+
+        // A 32-bit weight widens to 64 bits without loss, so the products are the same as from the 32-bit weights
+        _weights = Array.ConvertAll(data.Weights, w => (double)w);
         _biases = data.Biases;
     }
 
@@ -114,21 +116,107 @@ internal sealed class PosHead
         CheckLength(previous);
         CheckLength(word);
         CheckLength(next);
-        var d = HiddenSize;
         var k = ClassCount;
+        var d = HiddenSize;
         var logits = new double[k];
-        for (var c = 0; c < k; c++)
+
+        // The vectors are rounded to 32 bits once, not once per class
+        Span<double> rounded = stackalloc double[3 * d];
+        Round(previous, rounded[..d]);
+        Round(word, rounded.Slice(d, d));
+        Round(next, rounded.Slice(2 * d, d));
+        ReadOnlySpan<bool> present = [previous is not null, word is not null, next is not null];
+
+        // Five classes at a time share the rounded vector elements and run five independent sums. Every logit is still
+        // one sum in the fixed order: bias, previous block, word block, next block, each from the first feature to the
+        // last, so the result is bit for bit that of one class at a time.
+        var c = 0;
+        for (; c + 5 <= k; c += 5)
         {
-            // Sum the three blocks in the fixed order previous, word, next; a missing block adds nothing (zeros)
-            var row = c * 3 * d;
+            Rows5(c, rounded, present, logits);
+        }
+
+        for (; c < k; c++)
+        {
             var sum = (double)_biases[c];
-            sum = Accumulate(sum, row, previous);
-            sum = Accumulate(sum, row + d, word);
-            sum = Accumulate(sum, row + (2 * d), next);
+            for (var block = 0; block < 3; block++)
+            {
+                if (present[block])
+                {
+                    var w = _weights.AsSpan((c * 3 * d) + (block * d), d);
+                    var x = rounded.Slice(block * d, d);
+                    for (var j = 0; j < w.Length; j++)
+                    {
+                        sum += w[j] * x[j];
+                    }
+                }
+            }
+
             logits[c] = sum;
         }
 
         return Softmax(logits);
+    }
+
+    /// <summary>
+    ///     Rounds a vector to 32 bits, the precision of the cache the head was trained from.
+    /// </summary>
+    /// <param name="vector">The vector, or null for a missing one (nothing is written).</param>
+    /// <param name="target">Receives the rounded vector.</param>
+    private static void Round(double[]? vector, Span<double> target)
+    {
+        if (vector is null)
+        {
+            return;
+        }
+
+        for (var j = 0; j < target.Length; j++)
+        {
+            target[j] = (float)vector[j];
+        }
+    }
+
+    /// <summary>
+    ///     Computes the logits of five consecutive classes.
+    /// </summary>
+    /// <param name="first">The first class.</param>
+    /// <param name="rounded">The rounded vectors of the previous word, the word and the next word, one after the other.</param>
+    /// <param name="present">Tells for each of the three vectors whether it is present.</param>
+    /// <param name="logits">Receives the five logits.</param>
+    private void Rows5(int first, ReadOnlySpan<double> rounded, ReadOnlySpan<bool> present, double[] logits)
+    {
+        var d = HiddenSize;
+        var stride = 3 * d;
+        double s0 = _biases[first], s1 = _biases[first + 1], s2 = _biases[first + 2], s3 = _biases[first + 3], s4 = _biases[first + 4];
+        for (var block = 0; block < 3; block++)
+        {
+            if (!present[block])
+            {
+                continue;
+            }
+
+            var x = rounded.Slice(block * d, d);
+            var w0 = _weights.AsSpan((first * stride) + (block * d), d);
+            var w1 = _weights.AsSpan(((first + 1) * stride) + (block * d), d);
+            var w2 = _weights.AsSpan(((first + 2) * stride) + (block * d), d);
+            var w3 = _weights.AsSpan(((first + 3) * stride) + (block * d), d);
+            var w4 = _weights.AsSpan(((first + 4) * stride) + (block * d), d);
+            for (var j = 0; j < x.Length; j++)
+            {
+                var v = x[j];
+                s0 += w0[j] * v;
+                s1 += w1[j] * v;
+                s2 += w2[j] * v;
+                s3 += w3[j] * v;
+                s4 += w4[j] * v;
+            }
+        }
+
+        logits[first] = s0;
+        logits[first + 1] = s1;
+        logits[first + 2] = s2;
+        logits[first + 3] = s3;
+        logits[first + 4] = s4;
     }
 
     /// <summary>
@@ -194,29 +282,6 @@ internal sealed class PosHead
         }
 
         return result;
-    }
-
-    /// <summary>
-    ///     Adds the product of a weight block and a vector to a running sum.
-    /// </summary>
-    /// <param name="sum">The running sum.</param>
-    /// <param name="offset">The index of the first weight of the block.</param>
-    /// <param name="vector">The vector, or null for zeros.</param>
-    /// <returns>The new sum.</returns>
-    private double Accumulate(double sum, int offset, double[]? vector)
-    {
-        if (vector is null)
-        {
-            return sum;
-        }
-
-        var weights = _weights;
-        for (var j = 0; j < vector.Length; j++)
-        {
-            sum += weights[offset + j] * (double)(float)vector[j];
-        }
-
-        return sum;
     }
 
     /// <summary>

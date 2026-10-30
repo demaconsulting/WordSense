@@ -342,7 +342,7 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
             // A word needs the encoder when it has scored senses or two or more parts of speech; the weights and the head
             // are embedded in the assembly, so deciding this needs no model file, download or ONNX session
             var table = GetTable();
-            if (!OnnxClassifier.NeedsEncoder(list, table, GetHead() is not null))
+            if (!OnnxClassifier.NeedsEncoder(list, table, _spec.HeadInUse && GetHead() is not null))
             {
                 return OnnxClassifier.ResolveWithoutModel(list, cancellationToken);
             }
@@ -507,7 +507,7 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
                 _table ??= LoadTable();
                 LoadHeadOnce();
                 _encoder ??= OpenEncoderChecked(directory);
-                _classifier = _head is { } head
+                _classifier = _spec.HeadInUse && _head is { } head
                     ? new OnnxClassifier(_table, _encoder.EncodeAsync, head, (words, token) => _encoder.EncodeAllAsync(words, PossessiveView.IsLexiconPossessive, token))
                     : new OnnxClassifier(_table, _encoder.EncodeAsync);
             }
@@ -666,9 +666,9 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
     internal ModelSpec Spec => _spec;
 
     /// <summary>
-    ///     Gets a value that tells whether the model has a part-of-speech head: the model description names one.
+    ///     Gets a value that tells whether the model answers with a part-of-speech head: the model description names one and uses it.
     /// </summary>
-    bool IPartOfSpeechEvidenceModel.ProvidesPartOfSpeechEvidence => _spec.HeadResourceName is not null;
+    bool IPartOfSpeechEvidenceModel.ProvidesPartOfSpeechEvidence => _spec.HeadResourceName is not null && _spec.HeadInUse;
 
     /// <summary>
     ///     Makes the model files available and verified; failures are reported with the typed exceptions.
