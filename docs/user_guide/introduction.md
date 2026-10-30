@@ -298,16 +298,16 @@ bow       Noun         PartOfSpeech 1.00
 at        Preposition  Sense        1.00  at#preposition
 a         Determiner   Sense        1.00  a#determiner
 deer      Noun         Sense        1.00  deer#noun
-so        Adverb       PartOfSpeech 0.51
+so        Adverb       Sense        0.60  so#adverb
 we        Pronoun      Sense        1.00  we#pronoun
 will      Auxiliary    Sense        1.00  will#auxiliary
-record    Verb         PartOfSpeech 0.98
+record    Verb         PartOfSpeech 1.00
 a         Determiner   Sense        1.00  a#determiner
-record    Noun         PartOfSpeech 0.91
-then      Adverb       PartOfSpeech 1.00
+record    Noun         PartOfSpeech 1.00
+then      Adverb       Sense        0.96  then#and-so
 go        Verb         PartOfSpeech 1.00
-back      Adverb       Sense        1.00  back#to-former-place
-home      Adverb       Sense        0.99  home#to-residence
+back      Adverb       Sense        0.99  back#to-former-place
+home      Adverb       PartOfSpeech 0.99
 ```
 
 ## How the Models Decide
