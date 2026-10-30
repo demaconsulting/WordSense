@@ -160,7 +160,7 @@ scored are used and reconciled (`WordSenseContracts_FallbackWordSenseModel_Prima
 and a reconciled result keeps the kind of every analysis
 (`WordSenseContracts_FallbackWordSenseModel_Reconcile_KeepsTheRankingKindOfEveryAnalysis`). The shipped encoder
 compositions are unaffected because an encoder lists no senses for an untrained lemma: the committed evaluation outcomes
-of MiniLM, BertBaseCased and Basic and the running-text report are identical before and after the change, and the
+of MiniLM, BertBaseCased and Basic and the running-text report do not depend on the ranking, and the
 end-to-end tests assert that the trained lemma `back` lists scored senses and the untrained `garden` lists a ranking
 marked by usage (`WordSense_Classifier_EndToEnd_SensesAreRankedAndSumToOne`,
 `MiniLM_Classifier_EndToEnd_UntrainedWord_RanksItsSensesByUsage`).

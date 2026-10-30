@@ -44,6 +44,27 @@ sections:
                   - MiniLMWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel
                   - WordSense_Classifier_EndToEnd_ClassifiesRecord
 
+              - id: WordSense-MiniLM-MiniLMWordSenseModel-Head
+                title: >-
+                  The encoder model of MiniLMWordSenseModel shall load the part-of-speech head embedded in its
+                  assembly, bound to the pinned all-MiniLM-L6-v2 ONNX file, hidden size 384, the feature layout and the
+                  parts of speech of the library, without any model file.
+                tags: [unit]
+                justification: |
+                  The head was trained on the vectors of this exact encoder file and these classes.
+                tests:
+                  - MiniLMWordSenseModel_EmbeddedHead_MatchesEncoderAndClasses
+
+              - id: WordSense-MiniLM-MiniLMWordSenseModel-HeadRejected
+                title: >-
+                  The embedded part-of-speech head of MiniLMWordSenseModel shall be rejected as invalid data when it is
+                  read against another encoder file or another model identifier.
+                tags: [unit]
+                justification: |
+                  A changed encoder file must fail loudly at load instead of feeding the head other vectors.
+                tests:
+                  - MiniLMWordSenseModel_EmbeddedHead_AgainstAnotherEncoderFile_IsRejected
+
               - id: WordSense-MiniLM-MiniLMWordSenseModel-Composition
                 title: >-
                   MiniLMWordSenseModel shall wrap a FallbackWordSenseModel of its encoder model (primary) and a
@@ -70,16 +91,11 @@ sections:
                   the slot probabilities of the encoder and of the Basic model combined.
                 tags: [unit]
                 justification: |
-                  The slot probability of the encoder is the mass of its senses, not a part-of-speech estimate: measured
-                  with the English EWT treebank, MiniLM called 42 of 157 verb uses of "use" a noun at the part-of-speech
-                  level, a mistake that the Basic tagger makes twice. Combining the two estimates with a weight of 0.6
-                  (the optimum of the development splits, the open corpus dev split and the EWT dev file, never the
-                  test splits) gains 0.24 points of accuracy on the open corpus test split and 0.27 points on the
-                  treebank test file of the final build, and repairs 34 of the 42 errors (measured on the branch of the
-                  change). It was a deliberate trade under rule 3 of the reviewed suite on that branch: the row
-                  M-change-4 ("The leaves change color in the fall", where Basic read a noun compound) went from fine
-                  to miss at every weight of 0.9 or less; the clause state of the Basic tagger repairs it, so no row is
-                  below the main branch in the final build, and five rows go up.
+                  The slot probability of the encoder is the mass of its senses, not a part-of-speech estimate: the
+                  encoder alone calls many verb uses of "use" a noun at the part-of-speech level, a mistake that the
+                  Basic tagger rarely makes. Combining the two estimates with a weight of 0.6, the optimum of the
+                  development splits (the open corpus dev split and the EWT dev file, never the test splits), repairs
+                  most of those errors. The reviewed suite holds the rows that depend on the blend.
                 tests:
                   - MiniLMWordSenseModel_Classify_VerbUse_IsAnsweredWithTheCombinedSlotProbabilities
 

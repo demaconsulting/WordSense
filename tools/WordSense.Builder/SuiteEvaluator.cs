@@ -30,19 +30,33 @@ internal static class SuiteEvaluator
     /// <returns>The grades parallel to the rows, by model name.</returns>
     public static async Task<IReadOnlyDictionary<string, IReadOnlyList<SuiteGrade>>> RunAsync(string repository, IReadOnlyList<SuiteRow> rows, TextWriter progress, CancellationToken cancellationToken)
     {
+        var answers = await RunDetailedAsync(repository, rows, progress, cancellationToken).ConfigureAwait(false);
+        return answers.ToDictionary(p => p.Key, p => (IReadOnlyList<SuiteGrade>)[.. p.Value.Select(a => a.Grade)], StringComparer.Ordinal);
+    }
+
+    /// <summary>
+    ///     Records the answer of every model of the expectation file on every row.
+    /// </summary>
+    /// <param name="repository">The repository root.</param>
+    /// <param name="rows">The rows.</param>
+    /// <param name="progress">Receives progress messages.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The answers parallel to the rows, by model name.</returns>
+    public static async Task<IReadOnlyDictionary<string, IReadOnlyList<SuiteAnswer>>> RunDetailedAsync(string repository, IReadOnlyList<SuiteRow> rows, TextWriter progress, CancellationToken cancellationToken)
+    {
         ArgumentNullException.ThrowIfNull(rows);
         ArgumentNullException.ThrowIfNull(progress);
-        var grades = new Dictionary<string, IReadOnlyList<SuiteGrade>>(StringComparer.Ordinal);
+        var answers = new Dictionary<string, IReadOnlyList<SuiteAnswer>>(StringComparer.Ordinal);
         foreach (var name in SuiteFile.Models)
         {
             var info = ModelCatalog.Find(name);
             using var model = ModelCatalog.Open(info, repository);
             await ModelCatalog.EnsureAsync(model, cancellationToken).ConfigureAwait(false);
-            grades[name] = await SuiteFile.GradeAsync(model, rows, cancellationToken).ConfigureAwait(false);
+            answers[name] = await SuiteDiff.AnswerAsync(model, rows, cancellationToken).ConfigureAwait(false);
             progress.WriteLine($"{name}: suite done.");
         }
 
-        return grades;
+        return answers;
     }
 
     /// <summary>

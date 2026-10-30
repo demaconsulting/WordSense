@@ -28,7 +28,8 @@ embedded in its own assembly.
 The package has an internal sealed class `BertBaseCasedEncoderModel` that derives from `OnnxWordSenseModel` and holds a
 static model description (model id `bert-base-cased-int8`; files `model_int8.onnx`, `vocab.txt`,
 `config.json` and `tokenizer.json` with their SHA-256 digests; ONNX file `model_int8.onnx`; vocabulary `vocab.txt`;
-case-preserving tokenizer; the embedded weights resource of this assembly; hidden size 768). It adds no members and no
+case-preserving tokenizer; the embedded weights resource of this assembly; hidden size 768; the embedded
+part-of-speech head resource). It adds no members and no
 logic. The `model_int8.onnx` file is the derived encoder export of the
 model, not the upstream masked language model export. The public `BertBaseCasedWordSenseModel` creates an encoder model
 and a `BasicWordSenseModel` and wraps them in a `FallbackWordSenseModel` (the encoder is the primary model and Basic the
@@ -41,7 +42,9 @@ against the shipped word image at load. The encoder scores the senses of the tra
 sense, group or part-of-speech level its thresholds allow, listing the probabilities of their analyses and senses;
 every word for which the encoder scored no senses (the other ambiguous words) is answered by the Basic model, with the
 probabilities of its analyses, at the part of speech level (or at the sense level when its selected analysis has
-exactly one sense, which the Basic model names without scoring).
+exactly one sense, which the Basic model names without scoring). The assembly also embeds the part-of-speech head of
+this encoder (`head.bin`, the format `WSH1`): the encoder model loads and checks it with the weights, and no answer uses
+it.
 
 The package ships a `NOTICE.md` (packed by the project file, as the core package does). The embedded weights carry a
 sense usage prior derived from the WordNet 3.0 sense counts (the builder adds it to the stored biases), so the notice
@@ -50,4 +53,5 @@ ids that the weights hold (the package license expression is `MIT AND CC-BY-4.0`
 statistical summaries of the project corpora (CC0 rows and annotations over public-domain and CC0 sentences) of
 this project, and records that the encoder model files are not in the package: they are downloaded from this repository
 (`model/bert-base-cased-int8/`, Apache License 2.0, with the license text in that folder) and are the int8 ONNX export
-of `bert-base-cased` cut at the last encoder layer.
+of `bert-base-cased` cut at the last encoder layer. The notice also describes the embedded part-of-speech head: its
+content, the open corpus it is trained on and the license position that covers the tags of that corpus.

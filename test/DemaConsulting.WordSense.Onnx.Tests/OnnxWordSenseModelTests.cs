@@ -585,6 +585,7 @@ public class OnnxWordSenseModelTests
         using var model = new FixtureEncoderModel(ModelAssets.RequireModelDirectory(), spec => spec with
         {
             HiddenSize = wrongSize,
+            HeadResourceName = null,
             WeightsAssembly = new FixtureAssembly(
                 FixtureEncoderModel.ResourceName,
                 BlobWriter.Write(new WeightsData(spec.ModelId, Fixtures.InventoryHash(), wrongSize, new float[wrongSize], [Fixtures.Lemma("just", dimension: wrongSize)]))),
@@ -599,6 +600,70 @@ public class OnnxWordSenseModelTests
         Assert.Contains("768", failure.Message, StringComparison.Ordinal);
         Assert.Contains(model.ModelId, failure.Message, StringComparison.Ordinal);
         Assert.True(model.IsEncoderReleased);
+    }
+
+    /// <summary>
+    ///     The embedded part-of-speech head is loaded and checked with the weights, needs no model file, and is not used
+    ///     for the answers.
+    /// </summary>
+    [Fact]
+    public async Task OnnxWordSenseModel_ClassifyAsync_EmbeddedHead_LoadsWithoutModelFiles()
+    {
+        // Arrange: a model whose directory does not exist, so that nothing can be read from it
+        using var model = new FixtureEncoderModel(MissingDirectory());
+
+        // Act: a text that needs no encoder still loads and checks the head
+        var results = await model.ClassifyAsync(["the"], TestContext.Current.CancellationToken);
+
+        // Assert
+        Assert.Single(results);
+        var head = model.GetHead();
+        Assert.NotNull(head);
+        Assert.Equal(FixtureEncoderModel.HiddenDimension, head.HiddenSize);
+        Assert.Same(head, model.GetHead());
+    }
+
+    /// <summary>
+    ///     A model description without a head resource has no head and loads.
+    /// </summary>
+    [Fact]
+    public async Task OnnxWordSenseModel_GetHead_NoHeadResource_ReturnsNull()
+    {
+        // Arrange: a model description without a head resource, in a directory that does not exist
+        using var model = new FixtureEncoderModel(MissingDirectory(), spec => spec with { HeadResourceName = null });
+
+        // Act: classify a text that needs no encoder
+        var results = await model.ClassifyAsync(["the"], TestContext.Current.CancellationToken);
+
+        // Assert: the model answers and has no head
+        Assert.Single(results);
+        Assert.Null(model.GetHead());
+    }
+
+    /// <summary>
+    ///     A missing head resource and a head for another encoder file are reported as
+    ///     <see cref="ModelIntegrityException"/> with the original exception as the inner exception.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxWordSenseModel_ClassifyAsync_DamagedOrMismatchedHead_ThrowsModelIntegrity()
+    {
+        // Arrange: the head resource is missing; the pinned encoder digest differs
+        using var missing = new FixtureEncoderModel(MissingDirectory(), spec => spec with { HeadResourceName = "no.such.head.bin" });
+        using var digest = new FixtureEncoderModel(MissingDirectory(), spec => spec with
+        {
+            Files = [.. spec.Files.Select(f => f.Name == spec.OnnxFileName ? f with { Sha256 = new string('a', 64) } : f)],
+        });
+
+        // Act
+        var first = await Assert.ThrowsAsync<ModelIntegrityException>(() => missing.ClassifyAsync(["the"], TestContext.Current.CancellationToken));
+        var second = await Assert.ThrowsAsync<ModelIntegrityException>(() => digest.ClassifyAsync(["the"], TestContext.Current.CancellationToken));
+
+        // Assert
+        Assert.IsType<InvalidDataException>(first.InnerException);
+        Assert.Contains("head", first.Message, StringComparison.Ordinal);
+        Assert.IsType<InvalidDataException>(second.InnerException);
+        Assert.Contains("another encoder file", second.InnerException.Message, StringComparison.Ordinal);
     }
 
     /// <summary>

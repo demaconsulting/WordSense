@@ -34,10 +34,11 @@
 ├── model/                      (one folder per model: model/<model-id>/ with ONNX encoder, vocabulary, tokenizer,
 │                                SHA256SUMS and README; stored in Git LFS)
 ├── tools/
-│   ├── WordSense.Builder/      (non-shipped builder: compile-image, weights, evaluate, evaluate-senses, evaluate-allwords,
-│   │                            allwords-sample, allwords-merge, gold2-power, gold2-sample, gold2-batches,
-│   │                            gold2-merge, evaluate-gold2, compare-gold2,
-│   │                            evaluate-running, evaluate-suite, evaluate-shapes, check-leakage, tiers, open-counts, train-basic,
+│   ├── WordSense.Builder/      (non-shipped builder: compile-image, weights, train-pos-head, evaluate, evaluate-senses,
+│   │                            evaluate-allwords, allwords-sample, allwords-merge, gold2-power, gold2-sample,
+│   │                            gold2-batches, gold2-merge, evaluate-gold2, compare-gold2,
+│   │                            evaluate-running, compare-outcomes, evaluate-suite, evaluate-shapes, check-leakage,
+│   │                            tiers, open-counts, train-basic,
 │   │                            tune-basic, evaluate-tagger, appendix)
 │   ├── open-corpus/            (Python scripts that built the open part-of-speech corpus corpus/open)
 │   ├── quota-fill/             (Python scripts that fill the per-sense quotas of the corpus, and the usage-weighted
@@ -59,9 +60,9 @@
 ├── src/
 │   ├── DemaConsulting.WordSense/                (core: contracts, WordLexicon, embedded wordsense.img, the Basic
 │   │                                             statistical model and its embedded basic.bin; no files, no network)
-│   ├── DemaConsulting.WordSense.Onnx/           (tokenizer, encoder, downloader, lemma weights, abstract model)
-│   ├── DemaConsulting.WordSense.MiniLM/         (MiniLM model: pinned files, embedded weights)
-│   └── DemaConsulting.WordSense.BertBaseCased/  (BERT base cased model: pinned files, embedded weights)
+│   ├── DemaConsulting.WordSense.Onnx/           (tokenizer, encoder, downloader, lemma weights, POS head, abstract model)
+│   ├── DemaConsulting.WordSense.MiniLM/         (MiniLM model: pinned files, embedded weights and head)
+│   └── DemaConsulting.WordSense.BertBaseCased/  (BERT base cased model: pinned files, embedded weights and head)
 └── test/
     ├── DemaConsulting.WordSense.Tests/
     ├── DemaConsulting.WordSense.Onnx.Tests/

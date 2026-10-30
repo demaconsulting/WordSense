@@ -5,7 +5,8 @@
 ### Overview
 
 The Onnx subsystem is the package `DemaConsulting.WordSense.Onnx`. It holds everything the encoder models share:
-verified model files, the ONNX encoder and its tokenizer, the trained per-lemma weights and the classifier that
+verified model files, the ONNX encoder and its tokenizer, the trained per-lemma weights, the trained part-of-speech head
+and the classifier that
 scores the fine senses of an ambiguous word and decides the level of the answer. It is the only package with a
 third-party runtime dependency, ONNX Runtime, and it references only the core package. Its single public type is the
 abstract `OnnxWordSenseModel`; the model packages derive from it and supply the model identity. The encoder model is
@@ -18,17 +19,22 @@ statistical choice among the analyses of such a word is not made in this package
 packages compose the encoder model with the Basic model through the core `FallbackWordSenseModel`, which uses the Basic
 result for every word the encoder did not score.
 
-The subsystem contains seven units:
+The subsystem contains eight units:
 
 - **OnnxWordSenseModel**: file management, lazy loading and classification.
 - **OnnxClassifier**: lexicon resolution, analysis and sense scoring, level decision and the lexicon-only answer of a
   word without scored senses.
-- **OnnxEncoder**: tokenization, inference and mean pooling.
+- **OnnxEncoder**: tokenization, inference and mean pooling, and the possessive view of a text.
 - **WordPieceTokenizer**: the BERT WordPiece tokenizer, uncased or cased.
 - **ModelDownloader**: ordered, verified download of model files.
 - **DownloadMirror**: validated download source configuration (the mirror settings of `DownloadOptions`).
 - **LemmaWeights**: the weights blob reader, the matching to the word image, the feature computation, the scoring, the
   group scores and the levels.
+- **PosHead**: the part-of-speech head blob reader, its binding to the encoder and to the parts of speech, the
+  probabilities of the parts of speech of a word and their restriction.
+
+The embedded part-of-speech head of a model is loaded and validated together with its embedded weights, whether or not
+a word needs the encoder. It is not used for any answer.
 
 ### Interfaces
 
@@ -36,13 +42,14 @@ It exposes the abstract `OnnxWordSenseModel` (implements `IDownloadableWordSense
 is `IDisposable`) with the properties
 `HiddenSize` and `ModelId`. Its constructor is private protected, so only the WordSense model packages can derive.
 It consumes the core contracts and the `WordLexicon` (analyses, senses, groups), the ONNX Runtime inference API,
-HTTP(S) for downloads, the file system for the model store, and the embedded
-weights of the derived model's assembly. All other members are internal and visible to the MiniLM and BertBaseCased
-packages, the builder and the test projects.
+HTTP(S) for downloads, the file system for the model store, and the embedded weights and part-of-speech head of the
+derived model's assembly. All other members are internal and visible to the MiniLM and BertBaseCased packages, the
+builder and the test projects.
 
 The model description passed by a derived class is an internal `ModelSpec`: the model id, the files with their
 SHA-256 digests, the ONNX file name, the vocabulary file name, whether the tokenizer lower-cases, the assembly and
-resource name of the weights, and the hidden size.
+resource name of the weights, the hidden size and `HeadResourceName`, the resource name of the part-of-speech head in
+the same assembly (null for a model without a head).
 
 ### Design
 
@@ -53,12 +60,14 @@ The units collaborate as follows:
    environment), reuses valid files from the store and downloads the others. The downloader units keep their raw
    exceptions as internal vocabulary; `OnnxWordSenseModel` wraps them at the public boundary as
    `ModelUnavailableException`, `ModelIntegrityException` or `DownloadConfigurationException` (see _OnnxWordSenseModel
-   Unit Design_), and likewise reports a damaged embedded weights resource or ONNX file from `ClassifyAsync` as a
-   `ModelIntegrityException`.
+   Unit Design_), and likewise reports a damaged embedded weights resource, a damaged, missing or mismatched embedded
+   head, or an ONNX file from `ClassifyAsync` as a `ModelIntegrityException`.
 2. `OnnxWordSenseModel.ClassifyAsync` (lazily ensuring first when a word needs the encoder) loads the embedded weights
-   once through `LemmaWeights` (blob reader and all-or-nothing match to the word image), opens one `OnnxEncoder` once
+   once through `LemmaWeights` (blob reader and all-or-nothing match to the word image) and the embedded part-of-speech
+   head once through `PosHead` (blob reader and binding to the pinned encoder file, the hidden size and the parts of
+   speech), opens one `OnnxEncoder` once
    (which builds a `WordPieceTokenizer` and the ONNX session) and runs an `OnnxClassifier` over the shared encoder and
-   weights.
+   weights. The head is checked and kept, and no answer uses it.
 3. `OnnxClassifier.ClassifyAsync` resolves every word from the lexicon, asks `OnnxEncoder` for the pooled vector of
    the words that need context, turns each vector into a feature with the global mean of the weights, scores the
    fine senses of the word's analyses with `LemmaWeights`, lets `LemmaWeights` decide the level of the answer and
@@ -302,10 +311,12 @@ not a public extension point. A contributor adds a model as follows:
    `OnnxWordSenseModel` and
    passes a `ModelSpec` (model id, each `ModelFile` with its SHA-256 and
    exact length, ONNX and vocabulary file names, whether the tokenizer lower-cases, the weights assembly and resource
-   name, the hidden size) and a default maximum sequence length of 128, and a public sealed model class that wraps a
+   name, the hidden size and the resource name of the part-of-speech head) and a default maximum sequence length of 128,
+   and a public sealed model class that wraps a
    `FallbackWordSenseModel` of the encoder class (primary) and a `BasicWordSenseModel` (fallback).
 3. Register the model in the builder's `ModelCatalog`, run `weights <modelId>` to train the weights and the per-lemma
-   thresholds for that encoder and embed the resulting `weights.bin` as the manifest resource named in the spec, and run
+   thresholds for that encoder and embed the resulting `weights.bin` as the manifest resource named in the spec, run
+   `train-pos-head <modelId>` and embed the resulting `head.bin` the same way, and run
    `evaluate <modelId>` to record the per-level accuracy in the model comparison table (`docs/user_guide/model-table.md`).
 4. Add the test project, the requirements, the design and verification documents, the SysML2 model entries and the
    review-set entries that the other model packages have.

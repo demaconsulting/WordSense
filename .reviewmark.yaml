@@ -493,7 +493,9 @@ reviews:
       - "docs/design/word-sense/onnx/onnx-encoder.md"
       - "docs/verification/word-sense/onnx/onnx-encoder.md"
       - "src/DemaConsulting.WordSense.Onnx/OnnxEncoder.cs"
+      - "src/DemaConsulting.WordSense.Onnx/PossessiveView.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/OnnxEncoderTests*.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/PossessiveViewTests.cs"
 
   # WordSense-Onnx-WordPieceTokenizer Review (one per unit)
   - id: WordSense-Onnx-WordPieceTokenizer
@@ -559,6 +561,22 @@ reviews:
       - "test/DemaConsulting.WordSense.Onnx.Tests/BlobWriter.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/Fixtures.cs"
 
+  # WordSense-Onnx-PosHead Review (one per unit)
+  - id: WordSense-Onnx-PosHead
+    title: Review that WordSense PosHead Implementation is Correct
+    context:
+      - "docs/design/word-sense/onnx.md"
+      - "docs/reqstream/word-sense/onnx.yaml"
+    paths:
+      - "docs/reqstream/word-sense/onnx/pos-head.yaml"
+      - "docs/design/word-sense/onnx/pos-head.md"
+      - "docs/verification/word-sense/onnx/pos-head.md"
+      - "src/DemaConsulting.WordSense.Onnx/PosHead.cs"
+      - "src/DemaConsulting.WordSense.Onnx/PosHeadBlob.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/PosHeadBlobTests.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/PosHeadTests.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/HeadBlobWriter.cs"
+
   # WordSense-MiniLM Review (one per subsystem)
   - id: WordSense-MiniLM
     title: Review that WordSense MiniLM Subsystem Satisfies Requirements
@@ -587,6 +605,7 @@ reviews:
       - "src/DemaConsulting.WordSense.MiniLM/MiniLMWordSenseModel.cs"
       - "src/DemaConsulting.WordSense.MiniLM/MiniLMEncoderModel.cs"
       - "test/DemaConsulting.WordSense.MiniLM.Tests/MiniLMWordSenseModelTests.cs"
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/EmbeddedHeadTests.cs"
       - "test/DemaConsulting.WordSense.MiniLM.Tests/ModelFolder.cs"
 
   # WordSense-BertBaseCased Review (one per subsystem)
@@ -616,6 +635,7 @@ reviews:
       - "src/DemaConsulting.WordSense.BertBaseCased/BertBaseCasedWordSenseModel.cs"
       - "src/DemaConsulting.WordSense.BertBaseCased/BertBaseCasedEncoderModel.cs"
       - "test/DemaConsulting.WordSense.BertBaseCased.Tests/BertBaseCasedWordSenseModelTests.cs"
+      - "test/DemaConsulting.WordSense.BertBaseCased.Tests/EmbeddedHeadTests.cs"
       - "test/DemaConsulting.WordSense.BertBaseCased.Tests/EndToEndTests.cs"
       - "test/DemaConsulting.WordSense.BertBaseCased.Tests/ModelFolder.cs"
 

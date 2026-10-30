@@ -26,6 +26,18 @@ sections:
               - BertBaseCased_Classifier_EndToEnd_ClassifiesRecord
               - BertBaseCasedWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel
 
+          - id: WordSense-BertBaseCased-Head
+            title: >-
+              The BertBaseCased package shall embed a trained part-of-speech head for its bert-base-cased encoder, and
+              its encoder model shall load the head bound to the pinned encoder file.
+            tags: [subsystem]
+            justification: |
+              The head ships in the package with the weights; a head that does not belong to the pinned encoder file
+              must never load.
+            children:
+              - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Head
+              - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-HeadRejected
+
           - id: WordSense-BertBaseCased-Composition
             title: >-
               The BertBaseCased package shall depend on the core and Onnx packages, and its public model shall

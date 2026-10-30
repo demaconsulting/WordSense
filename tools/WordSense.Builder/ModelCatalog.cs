@@ -25,6 +25,13 @@ internal sealed record ModelInfo(string Name, string Package, string? ModelDirec
     /// <param name="repository">The repository root.</param>
     /// <returns>The path.</returns>
     public string WeightsPath(string repository) => Path.Join(repository, "src", Package, "Resources", "weights.bin");
+
+    /// <summary>
+    ///     Gets the path of the part-of-speech head file of the model.
+    /// </summary>
+    /// <param name="repository">The repository root.</param>
+    /// <returns>The path.</returns>
+    public string HeadPath(string repository) => Path.Join(repository, "src", Package, "Resources", "head.bin");
 }
 
 /// <summary>

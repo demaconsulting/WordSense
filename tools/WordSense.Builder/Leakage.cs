@@ -207,6 +207,179 @@ internal static class LeakageCheck
         new(name, LeakageRole.External, [.. TaggerEvaluator.ReadGold(goldFile).Select((s, i) => ("sentence " + (i + 1).ToString(CultureInfo.InvariantCulture), string.Join(' ', s.Words)))]);
 
     /// <summary>
+    ///     Reads the gold files of the treebank (train, development and test) that exist in a directory, as evaluation
+    ///     sets that no training sentence may overlap.
+    /// </summary>
+    /// <param name="goldDirectory">The directory with <c>ud_train.tsv</c>, <c>ud_dev.tsv</c> and <c>ud_test.tsv</c>; a file that does not exist is left out.</param>
+    /// <returns>The parts.</returns>
+    public static List<LeakageSet> FromGoldDirectory(string goldDirectory)
+    {
+        ArgumentNullException.ThrowIfNull(goldDirectory);
+        var sets = new List<LeakageSet>();
+        foreach (var split in new[] { "train", "dev", "test" })
+        {
+            var file = Path.Join(goldDirectory, "ud_" + split + ".tsv");
+            if (File.Exists(file))
+            {
+                sets.Add(FromGold("UD-EWT " + split, file));
+            }
+        }
+
+        return sets;
+    }
+
+    /// <summary>
+    ///     Reads the <c>read</c> set (the tense probe sentences of the heteronym work) as an external evaluation set.
+    /// </summary>
+    /// <param name="path">The TSV file: a header line, then <c>id</c>, <c>split</c>, <c>label</c>, <c>tokens</c>, <c>idx</c>, <c>family</c> and <c>sentence</c>.</param>
+    /// <returns>The part.</returns>
+    /// <exception cref="InvalidDataException">Thrown when a line is malformed.</exception>
+    public static LeakageSet FromReadSet(string path)
+    {
+        ArgumentNullException.ThrowIfNull(path);
+        var sentences = new List<(string, string)>();
+        foreach (var line in File.ReadLines(path, new UTF8Encoding(false)).Skip(1))
+        {
+            if (line.Length == 0)
+            {
+                continue;
+            }
+
+            var columns = line.TrimEnd('\r').Split('\t');
+            sentences.Add(columns.Length >= 7
+                ? (columns[0], columns[^1])
+                : throw new InvalidDataException($"The read set '{Path.GetFileName(path)}' has a line with fewer than seven columns."));
+        }
+
+        return new LeakageSet("read set", LeakageRole.External, sentences);
+    }
+
+    /// <summary>
+    ///     Reads the treebank gold files of a directory that the caller named explicitly.
+    /// </summary>
+    /// <remarks>
+    ///     An explicit path that cannot be used stops the run, because a check that quietly skips a part would pass on
+    ///     fewer parts than the caller asked for. A single file of the three that is absent is still left out (see
+    ///     <see cref="FromGoldDirectory"/>), as the treebank may be given in part.
+    /// </remarks>
+    /// <param name="goldDirectory">The directory named by <c>--gold-dir</c>.</param>
+    /// <returns>The parts; at least one.</returns>
+    /// <exception cref="DirectoryNotFoundException">Thrown when the directory does not exist.</exception>
+    /// <exception cref="InvalidDataException">Thrown when the directory has none of the three gold files.</exception>
+    public static List<LeakageSet> FromExplicitGoldDirectory(string goldDirectory)
+    {
+        ArgumentNullException.ThrowIfNull(goldDirectory);
+        if (!Directory.Exists(goldDirectory))
+        {
+            throw new DirectoryNotFoundException($"The gold directory '{goldDirectory}' given by --gold-dir does not exist.");
+        }
+
+        var sets = FromGoldDirectory(goldDirectory);
+        return sets.Count > 0
+            ? sets
+            : throw new InvalidDataException($"The gold directory '{goldDirectory}' given by --gold-dir has none of ud_train.tsv, ud_dev.tsv and ud_test.tsv.");
+    }
+
+    /// <summary>
+    ///     Reads the <c>read</c> set file that the caller named explicitly.
+    /// </summary>
+    /// <param name="path">The file named by <c>--read-set</c>.</param>
+    /// <returns>The part.</returns>
+    /// <exception cref="FileNotFoundException">Thrown when the file does not exist.</exception>
+    /// <exception cref="InvalidDataException">Thrown when a line is malformed.</exception>
+    public static LeakageSet FromExplicitReadSet(string path)
+    {
+        ArgumentNullException.ThrowIfNull(path);
+        return File.Exists(path)
+            ? FromReadSet(path)
+            : throw new FileNotFoundException($"The read set '{path}' given by --read-set does not exist.", path);
+    }
+
+    /// <summary>
+    ///     Lists the sets that no training sentence of a part-of-speech head may overlap: every evaluation part of the
+    ///     repository and every external evaluation set that is given.
+    /// </summary>
+    /// <remarks>
+    ///     Without <paramref name="goldDirectory"/> and <paramref name="readSet"/> the head is checked against the parts
+    ///     of the repository only. A path that is given must exist.
+    /// </remarks>
+    /// <param name="corpus">The corpus directory.</param>
+    /// <param name="data">The data directory.</param>
+    /// <param name="goldDirectory">The directory of the treebank gold files, or null.</param>
+    /// <param name="readSet">The <c>read</c> set file, or null.</param>
+    /// <returns>The held-out parts.</returns>
+    /// <exception cref="DirectoryNotFoundException">Thrown when a given gold directory does not exist.</exception>
+    /// <exception cref="FileNotFoundException">Thrown when a given read set does not exist.</exception>
+    /// <exception cref="InvalidDataException">Thrown when a given gold directory has no gold file or the read set is malformed.</exception>
+    public static List<LeakageSet> HeldOutSets(string corpus, string data, string? goldDirectory, string? readSet)
+    {
+        var sets = Load(corpus, data).Where(s => s.Role == LeakageRole.Evaluation).ToList();
+        if (goldDirectory is not null)
+        {
+            sets.AddRange(FromExplicitGoldDirectory(goldDirectory));
+        }
+
+        if (readSet is not null)
+        {
+            sets.Add(FromExplicitReadSet(readSet));
+        }
+
+        return sets;
+    }
+
+    /// <summary>
+    ///     Finds the training sentences that overlap a held-out part: the same sentence after normalization in any part,
+    ///     or, for an external part (the treebank, the read set), a run of <see cref="GramLength"/> words in common.
+    /// </summary>
+    /// <param name="train">The training sentences with the place of each.</param>
+    /// <param name="heldOut">The held-out parts.</param>
+    /// <returns>One entry per overlap: the part, the place in the training file, the place in the part and the kind (<c>sentence</c> or <c>run of 8 words</c>).</returns>
+    /// <exception cref="ArgumentNullException">Thrown when an argument is null.</exception>
+    public static List<(string Part, string TrainSource, string HeldOutSource, string Kind)> FindTrainingOverlaps(IReadOnlyList<(string Source, string Sentence)> train, IReadOnlyList<LeakageSet> heldOut)
+    {
+        ArgumentNullException.ThrowIfNull(train);
+        ArgumentNullException.ThrowIfNull(heldOut);
+        var found = new List<(string, string, string, string)>();
+        var normalizedTrain = train.Select(t => (t.Source, Text: Corpus.Normalize(t.Sentence))).Where(t => t.Text.Length > 0).ToList();
+        foreach (var part in heldOut)
+        {
+            var sentences = new Dictionary<string, string>(StringComparer.Ordinal);
+            var grams = new Dictionary<ulong, string>();
+            foreach (var (source, sentence) in part.Sentences)
+            {
+                var text = Corpus.Normalize(sentence);
+                if (text.Length == 0)
+                {
+                    continue;
+                }
+
+                sentences.TryAdd(text, source);
+                if (part.Role == LeakageRole.External)
+                {
+                    foreach (var gram in GramsOf(text))
+                    {
+                        grams.TryAdd(gram, source);
+                    }
+                }
+            }
+
+            foreach (var (source, text) in normalizedTrain)
+            {
+                if (sentences.TryGetValue(text, out var same))
+                {
+                    found.Add((part.Name, source, same, "sentence"));
+                }
+                else if (part.Role == LeakageRole.External && GramsOf(text).Select(g => grams.GetValueOrDefault(g)).FirstOrDefault(s => s is not null) is { } shared)
+                {
+                    found.Add((part.Name, source, shared, "run of " + GramLength.ToString(CultureInfo.InvariantCulture) + " words"));
+                }
+            }
+        }
+
+        return found;
+    }
+
+    /// <summary>
     ///     Checks the parts against each other.
     /// </summary>
     /// <param name="sets">The parts, in check order.</param>

@@ -38,7 +38,8 @@ sections:
                   OnnxWordSenseModel shall report, from its preparation step and from the lazy preparation of
                   ClassifyAsync, a model file that no source could deliver, or that is missing from a supplied
                   directory, as ModelUnavailableException, a file that fails its pinned SHA-256 in a supplied
-                  directory, a corrupt or foreign embedded weights resource and an ONNX or vocabulary file that
+                  directory, a corrupt or foreign embedded weights resource or part-of-speech head and an ONNX or
+                  vocabulary file that
                   cannot be used (including an ONNX model whose hidden size differs from the model description) as
                   ModelIntegrityException, and an invalid mirror address, credential, timeout,
                   store location or
@@ -61,6 +62,7 @@ sections:
                   - OnnxWordSenseModel_ClassifyAsync_MissingDirectory_ThrowsModelUnavailable
                   - OnnxWordSenseModel_ClassifyAsync_InvalidMirrorEnvironment_ThrowsDownloadConfiguration
                   - OnnxWordSenseModel_ClassifyAsync_WeightsOfAnotherImage_ThrowsModelIntegrity
+                  - OnnxWordSenseModel_ClassifyAsync_DamagedOrMismatchedHead_ThrowsModelIntegrity
                   - OnnxWordSenseModel_ClassifyAsync_UnreadableOnnxFile_ThrowsModelIntegrity
                   - OnnxWordSenseModel_ClassifyAsync_VocabularyWithoutRequiredToken_ThrowsModelIntegrity
                   - OnnxWordSenseModel_ClassifyAsync_EncoderHiddenSizeMismatch_ThrowsModelIntegrity
@@ -99,6 +101,37 @@ sections:
                   - OnnxWordSenseModel_ClassifyAsync_AfterFailedLazyEnsure_CanBeRetried
                   - OnnxWordSenseModel_ClassifyAsync_MissingDirectory_ThrowsModelUnavailable
                   - OnnxWordSenseModel_ClassifyAsync_Repeated_ShareTheEncoder
+
+              - id: WordSense-Onnx-OnnxWordSenseModel-Head
+                title: >-
+                  OnnxWordSenseModel shall load and check the part-of-speech head embedded in its package together with
+                  the embedded weights, without any model file.
+                tags: [unit]
+                justification: |
+                  The head and the weights are shipped in the package; loading them together keeps a model usable
+                  offline once the package is installed.
+                tests:
+                  - OnnxWordSenseModel_ClassifyAsync_EmbeddedHead_LoadsWithoutModelFiles
+
+              - id: WordSense-Onnx-OnnxWordSenseModel-HeadNone
+                title: >-
+                  OnnxWordSenseModel shall have no part-of-speech head when its model description names none.
+                tags: [unit]
+                justification: |
+                  A model without a head must work as before, not fail at load.
+                tests:
+                  - OnnxWordSenseModel_GetHead_NoHeadResource_ReturnsNull
+
+              - id: WordSense-Onnx-OnnxWordSenseModel-HeadIntegrity
+                title: >-
+                  OnnxWordSenseModel shall report a missing, damaged or mismatched part-of-speech head as
+                  ModelIntegrityException with the original exception as inner exception.
+                tags: [unit]
+                justification: |
+                  A defect in the shipped head is a defect of the installation that must surface at load, as an
+                  integrity failure, not as wrong answers later.
+                tests:
+                  - OnnxWordSenseModel_ClassifyAsync_DamagedOrMismatchedHead_ThrowsModelIntegrity
 
               - id: WordSense-Onnx-OnnxWordSenseModel-Dispose
                 title: >-

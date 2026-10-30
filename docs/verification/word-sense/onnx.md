@@ -2,12 +2,13 @@
 
 This document describes the verification of the Onnx subsystem, the package `DemaConsulting.WordSense.Onnx`: the
 shared implementation of the encoder models. It holds the abstract `OnnxWordSenseModel`, the classifier, the encoder,
-the WordPiece tokenizer, the model downloader with its mirror, and the lemma weights.
+the WordPiece tokenizer, the model downloader with its mirror, the lemma weights and the part-of-speech head.
 
 ### Verification Approach
 
 The subsystem is verified at three levels. The pure units (`WordPieceTokenizer`, `LemmaWeights` with its blob and table,
-`DownloadMirror`) are verified with hand-built inputs. The `ModelDownloader` is verified against a loopback
+`PosHead` with its blob, `DownloadMirror`) are verified with hand-built inputs. The `ModelDownloader` is verified
+against a loopback
 `HttpListener` (`LocalServer`) that serves small files, failures, corrupt files and redirects; pinned digests are
 substituted for the test files, so no test reaches a public host. The model-level units (`OnnxWordSenseModel`,
 `OnnxClassifier`, `OnnxEncoder`) are verified with fake weights (with chosen thresholds, so that each answer level is
@@ -28,7 +29,7 @@ variables are never modified by a test: the mirror environment is read through a
 ### Acceptance Criteria
 
 All subsystem scenarios pass on every platform and target framework of the CI matrix, and the unit scenarios of the
-seven units pass.
+eight units pass.
 
 ### Test Scenarios
 
@@ -101,6 +102,16 @@ mismatch is a load failure and nothing is dropped. The weights embedded in the m
 the shipped image (`EmbeddedWeights_MiniLM_MatchesWordImage`, `EmbeddedWeights_BertBaseCased_MatchesWordImage`; see the
 `LemmaWeights` unit document).
 
+#### The Embedded Head Is Bound to Its Encoder
+
+The part-of-speech head embedded in each model package is loaded with the weights, needs no model file, and is bound to
+the pinned ONNX file of its encoder, the hidden size, the model identifier and the parts of speech of the library
+(`MiniLMWordSenseModel_EmbeddedHead_MatchesEncoderAndClasses`,
+`BertBaseCasedWordSenseModel_EmbeddedHead_MatchesEncoderAndClasses`, in the model test projects); a head read
+against another encoder file is rejected (`MiniLMWordSenseModel_EmbeddedHead_AgainstAnotherEncoderFile_IsRejected`,
+`BertBaseCasedWordSenseModel_EmbeddedHead_AgainstAnotherEncoderFile_IsRejected`; see the `PosHead`,
+`OnnxWordSenseModel` and model unit documents).
+
 #### Model Files Come From a Verified Source
 
 Model files are obtained from the mirror and then GitHub LFS, verified against their SHA-256 digest, stored atomically
@@ -114,11 +125,12 @@ with a type check; options are `DownloadOptions`.
 A failure to obtain, verify or configure the model files is reported with the typed exceptions of the core package,
 each keeping the original exception as inner exception: a model file that no source delivers (including bytes with a
 wrong SHA-256) or that is missing from a supplied directory is `ModelUnavailableException`; a file of a supplied
-directory that fails its SHA-256, weights of another image and an unreadable ONNX file are `ModelIntegrityException`;
+directory that fails its SHA-256, weights of another image, a damaged or mismatched part-of-speech head and an
+unreadable ONNX file are `ModelIntegrityException`;
 an invalid option or `WORDSENSE_MIRROR_*` setting is `DownloadConfigurationException`
 (`OnnxWordSenseModel_EnsureModelAsync_AllSourcesFail_ThrowsModelUnavailable`,
 `OnnxWordSenseModel_EnsureModelAsync_InvalidOptions_ThrowsDownloadConfiguration`; see the `OnnxWordSenseModel` unit
-document). The lower units (`ModelDownloader`, `DownloadMirror`, `LemmaWeights`) keep their raw exceptions.
+document). The lower units (`ModelDownloader`, `DownloadMirror`, `LemmaWeights`, `PosHead`) keep their raw exceptions.
 
 #### Disposal Releases the Encoder
 

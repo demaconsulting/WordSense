@@ -18,7 +18,11 @@ for the tests. The encoder model's description: model id
 `config.json` and `tokenizer.json`, each
 with a pinned SHA-256; case-preserving tokenizer; hidden size 768; embedded weights `weights.bin` (fine-sense
 classifiers, form choosers and per-lemma fine and group thresholds calibrated for this encoder) trained at sequence
-length 128. The `model_int8.onnx` file is the derived encoder export, not the upstream masked language model export.
+length 128; embedded part-of-speech head `head.bin` (the format `WSH1`, bound to the pinned ONNX file; loaded and
+checked with the weights and not used for answers). The encoder model loads the head through `OnnxWordSenseModel` and
+`PosHead` (see their unit documents): it must belong to the pinned ONNX file, the hidden size 768, the model id and the
+parts of speech of the library, and a head read against another encoder file or model id is rejected as invalid data.
+The `model_int8.onnx` file is the derived encoder export, not the upstream masked language model export.
 
 #### Key Methods
 

@@ -23,7 +23,8 @@ internal sealed class MiniLMEncoderModel : OnnxWordSenseModel
         true,
         typeof(MiniLMEncoderModel).Assembly,
         "DemaConsulting.WordSense.MiniLM.weights.bin",
-        384);
+        384,
+        "DemaConsulting.WordSense.MiniLM.head.bin");
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="MiniLMEncoderModel"/> class.

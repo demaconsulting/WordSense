@@ -71,7 +71,7 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     <see cref="WordSenseException"/>s that carry the original exception as <see cref="Exception.InnerException"/>:
 ///     <see cref="ModelUnavailableException"/> (a model file that no source delivered, or that is missing from a
 ///     supplied directory), <see cref="ModelIntegrityException"/> (a file that fails its pinned SHA-256 in a supplied
-///     directory, damaged embedded weights, an ONNX file that cannot be opened) and
+///     directory, damaged embedded weights or part-of-speech head, an ONNX file that cannot be opened) and
 ///     <see cref="DownloadConfigurationException"/> (invalid download options or <c>WORDSENSE_MIRROR_*</c> settings).
 ///     Cancellation, disposal and argument exceptions keep their usual types.
 ///     </para>
@@ -138,6 +138,8 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel
     private OnnxEncoder? _encoder;
     private OnnxClassifier? _classifier;
     private WeightedLemmaTable? _table;
+    private PosHead? _head;
+    private bool _headLoaded;
     private readonly CancellationTokenSource _disposeCts = new();
     private readonly CancellationToken _disposeToken;
     private volatile bool _disposed;
@@ -420,17 +422,63 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel
     }
 
     /// <summary>
-    ///     Gets the embedded weights, loading and checking them on first use (no model file is needed).
+    ///     Gets the embedded weights, loading and checking them on first use (no model file is needed). The embedded
+    ///     part-of-speech head is loaded and checked with them.
     /// </summary>
     /// <returns>The table.</returns>
-    /// <exception cref="ModelIntegrityException">Thrown when the embedded weights are missing, corrupt or not for this model and word image.</exception>
+    /// <exception cref="ModelIntegrityException">Thrown when the embedded weights or the embedded head are missing, corrupt or not for this model (and, for the weights, word image).</exception>
     private WeightedLemmaTable GetTable()
     {
         lock (_gate)
         {
             ObjectDisposedException.ThrowIf(_disposed, this);
+            LoadHeadOnce();
             return _table ??= LoadTable();
         }
+    }
+
+    /// <summary>
+    ///     Gets the embedded part-of-speech head, loading and checking it on first use (no model file is needed).
+    /// </summary>
+    /// <returns>The head, or null when the model description names none.</returns>
+    /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed.</exception>
+    /// <exception cref="ModelIntegrityException">Thrown when the embedded head is missing, corrupt or not for this model.</exception>
+    internal PosHead? GetHead()
+    {
+        lock (_gate)
+        {
+            ObjectDisposedException.ThrowIf(_disposed, this);
+            LoadHeadOnce();
+            return _head;
+        }
+    }
+
+    /// <summary>
+    ///     Loads the embedded part-of-speech head once; a failure is not remembered, so the next call fails the same way.
+    ///     The caller holds the gate.
+    /// </summary>
+    /// <exception cref="ModelIntegrityException">Thrown when the embedded head is missing, corrupt or not for this model.</exception>
+    private void LoadHeadOnce()
+    {
+        if (_headLoaded)
+        {
+            return;
+        }
+
+        if (_spec.HeadResourceName is { } name)
+        {
+            var onnx = _spec.Files.First(f => f.Name == _spec.OnnxFileName);
+            try
+            {
+                _head = PosHead.LoadEmbedded(_spec.WeightsAssembly, name, _spec.ModelId, _spec.HiddenSize, onnx.Sha256);
+            }
+            catch (InvalidDataException ex)
+            {
+                throw new ModelIntegrityException($"The embedded part-of-speech head of the model '{_spec.ModelId}' is damaged or does not belong to this model: {ex.Message}", ex);
+            }
+        }
+
+        _headLoaded = true;
     }
 
     /// <summary>
@@ -448,6 +496,7 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel
             {
                 var directory = _directory ?? throw new InvalidOperationException("The model files are not available; call EnsureModelAsync first.");
                 _table ??= LoadTable();
+                LoadHeadOnce();
                 _encoder ??= OpenEncoderChecked(directory);
                 _classifier = new OnnxClassifier(_table, _encoder.EncodeAsync);
             }

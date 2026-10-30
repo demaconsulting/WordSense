@@ -50,12 +50,15 @@ software items, specifically:
   - **OnnxWordSenseModel (Unit)** — the public abstract encoder model with file management, usable on its own
   - **OnnxClassifier (Unit)** — scoring of the fine senses of a word from the encoder output, the answer level, the
     form chooser and the lexicon-only answer of a word without scored senses
-  - **OnnxEncoder (Unit)** — ONNX inference session and mean pooling per word
+  - **OnnxEncoder (Unit)** — ONNX inference session, mean pooling per word, windowed encoding of a whole text and the
+    possessive view
   - **WordPieceTokenizer (Unit)** — BERT WordPiece tokenizer, uncased or cased
   - **ModelDownloader (Unit)** — ordered, verified download of model files
   - **DownloadMirror (Unit)** — validated download source configuration (the mirror settings of `DownloadOptions`)
   - **LemmaWeights (Unit)** — per-lemma weights and thresholds, their blob reader, matching to the lexicon and the
     feature computation
+  - **PosHead (Unit)** — the part-of-speech head: its blob reader, its binding to the encoder and to the parts of
+    speech, the probabilities of the parts of speech of a word and their restriction
 - **MiniLM (Subsystem)** — the package `DemaConsulting.WordSense.MiniLM`; it references the core and Onnx packages
   - **MiniLMWordSenseModel (Unit)** — the all-MiniLM-L6-v2 int8 model, its encoder model composed with the core Basic
     model
@@ -63,8 +66,8 @@ software items, specifically:
   packages
   - **BertBaseCasedWordSenseModel (Unit)** — the bert-base-cased int8 model, its encoder model composed with the core
     Basic model
-- **WordSenseBuilder (Unit)** — the non-shipped build-time tool that creates the lexicon blob and the weights blobs,
-  chooses the thresholds and measures the models
+- **WordSenseBuilder (Unit)** — the non-shipped build-time tool that creates the lexicon blob, the weights blobs and the
+  part-of-speech head blobs, chooses the thresholds and measures the models
 - **WordData (Subsystem)** — the TSV word data under `data/` (imported from Open English WordNet, CC BY 4.0, with the
   WordNet 3.0 sense counts for the usage prior) and the non-shipped builder code that imports, labels and validates it
   - **DataSchema**, **DataLayout**, **OewnImporter**, **FormGenerator**, **FormAuditor**, **DataValidator** and
@@ -156,7 +159,8 @@ tool references all four packages and is never shipped. Further rules of the spl
 - The core knows nothing of encoder models: it has no vectors, encoder weights, ONNX or tokenizer, and names no model
   package in code. A model is anything that implements `IWordSenseModel`.
 - Weights belong to a model package: each encoder package embeds one `weights.bin` trained for its exact model files and
-  checked against their SHA-256 digests. Model files live in `model/<model-id>/`, which also names the mirror folder, the
+  checked against their SHA-256 digests, and one `head.bin`, the part-of-speech head, bound to the SHA-256 of its ONNX
+  file. Model files live in `model/<model-id>/`, which also names the mirror folder, the
   per-user store folder and the GitHub LFS path.
 - The word table is shared: `WordLexicon` serves the analyses of all known spellings, including the inflections that the
   builder materializes at build time, so no model needs morphology at run time.
@@ -208,22 +212,25 @@ src/DemaConsulting.WordSense/                      — core subsystem
 src/DemaConsulting.WordSense.Onnx/                 — onnx subsystem
 ├── OnnxWordSenseModel.cs                           — onnx-word-sense-model unit
 ├── OnnxClassifier.cs                               — onnx-classifier unit
-├── OnnxEncoder.cs                                  — onnx-encoder unit
+├── OnnxEncoder.cs, PossessiveView.cs               — onnx-encoder unit
 ├── WordPieceTokenizer.cs, TokenizedText.cs         — word-piece-tokenizer unit
 ├── ModelDownloader.cs (also ModelSpec, ModelFile)  — model-downloader unit
 ├── DownloadMirror.cs                               — download-mirror unit
 ├── LemmaWeights.cs, WeightsBlob.cs, WeightedLemmaTable.cs, FeatureExtractor.cs, VectorMath.cs — lemma-weights unit
+├── PosHead.cs, PosHeadBlob.cs                      — pos-head unit
 └── NamespaceDoc.cs
 
 src/DemaConsulting.WordSense.MiniLM/               — mini-lm subsystem
 ├── MiniLMWordSenseModel.cs, MiniLMEncoderModel.cs  — mini-lm-word-sense-model unit
 ├── NamespaceDoc.cs
-└── Resources/weights.bin                           — embedded weights of the MiniLM model
+├── Resources/weights.bin                           — embedded weights of the MiniLM model
+└── Resources/head.bin                              — embedded part-of-speech head of the MiniLM model
 
 src/DemaConsulting.WordSense.BertBaseCased/        — bert-base-cased subsystem
 ├── BertBaseCasedWordSenseModel.cs, BertBaseCasedEncoderModel.cs — bert-base-cased-word-sense-model unit
 ├── NamespaceDoc.cs
-└── Resources/weights.bin                           — embedded weights of the bert-base-cased model
+├── Resources/weights.bin                           — embedded weights of the bert-base-cased model
+└── Resources/head.bin                              — embedded part-of-speech head of the bert-base-cased model
 
 model/<model-id>/                                  — model files (ONNX file, vocabulary, tokenizer and config files,
                                                       SHA256SUMS, the Apache License 2.0 LICENSE) of each encoder

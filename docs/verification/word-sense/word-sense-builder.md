@@ -27,11 +27,21 @@ and `ChooserTrainingTests.cs` cover the chooser rows and the training of the for
 quota report, the two independent evaluations, the suite reader and its grading, the shape probe reader and report, the
 shape rows of the corpus, the leakage check, the second all-words gold set (power, draw, labeling, measurement and
 paired comparison) and the model table file with small synthetic corpora, a stub model and
-cached-file fixtures; `EvaluatorTests.cs` covers the per-level evaluation with a stub model. Commands that need a real
+cached-file fixtures; `EvaluatorTests.cs` covers the per-level evaluation with a stub model. `LbfgsTests.cs`,
+`MultinomialLogisticTrainerTests.cs`, `PosHeadBlobWriterTests.cs`, `PosVectorCacheTests.cs` and `PosHeadTrainerTests.cs`
+cover the part-of-speech head: the minimizer on known functions, the fit on synthetic vectors against an independent
+dense implementation of its objective, the writer against the reader of the Onnx package, the vector cache, and the
+trainer end to end on a synthetic corpus with an encoder stub that gives every word a vector, without a model file.
+`TrainingOverlapTests.cs` covers the overlap check of the training sentences, `OutcomeComparerTests.cs` the outcome file
+and the paired comparison, `SuiteDiffTests.cs` the recording and the diff of the suite answers, and
+`RunningTextOutcomesTests.cs` the outcomes, the documents and the latency sample of the running-text evaluation.
+`PosHeadProvenanceTests.cs` reads the heads embedded in the model packages and the committed training file. Commands
+that need a real
 encoder (`weights`, `evaluate`, `evaluate-senses`, `evaluate-running`, `evaluate-suite` and `evaluate-shapes` for the
-encoder models) are
+encoder models, and `train-pos-head`) are
 verified through the data they produce: the weights embedded in the model packages are loaded and matched in the
-MiniLM and BertBaseCased tests, the expectations of the suite are checked by the suite tests of the three model test
+MiniLM and BertBaseCased tests, the heads embedded in them are loaded and bound to their encoders by `EmbeddedHeadTests`
+of the same two test projects, the expectations of the suite are checked by the suite tests of the three model test
 projects (`BasicSuiteTests`, `MiniLMSuiteTests`, `BertBaseCasedSuiteTests`) and the floors of the challenge set by
 `ChallengeSetFloorTests` (both skip when the model files are not present, and fail when `WORDSENSE_REQUIRE_MODELS` is
 set), and the accuracy figures are recorded in
@@ -719,6 +729,137 @@ verified in the section _corpus_ below.
   `tools/open-corpus/scripts/prepare_tagger_eval.py`, which is verified by running it (it exits with an error when a
   file has another SHA-256).
 
+#### train-pos-head
+
+The trainer is tested with a synthetic corpus whose sentences are the combinations of small word lists, laid out like
+`corpus/open/representative`, and an encoder stub that returns a fixed vector for each word; no model file is needed.
+
+- **Loadable, deterministic head** (`WordSenseBuilder_PosHeadTrainer_TrainAsync_ProducesALoadableDeterministicHead`):
+  runs with one thread and with six write the same bytes; the file reads with the reader of the Onnx package, carries the
+  model id, the classes, the variant `word+-1` and the SHA-256 of the training file, predicts the part of speech of
+  the words of the corpus from the word and its neighbors, and the report names the selected `C` and the half-precision
+  check.
+- **Cache** (`WordSenseBuilder_PosHeadTrainer_TrainAsync_SecondRunUsesTheCache`): a second run with the same cache
+  directory encodes nothing and writes the same bytes.
+- **Selection of C** (`WordSenseBuilder_PosHeadTrainer_TrainAsync_TieGoesToTheSmallestC`): every `C` of the grid is fitted
+  and reported, and when several give the same development accuracy the smallest is selected and recorded in the file.
+- **Gold classes** (`WordSenseBuilder_PosHeadTrainer_ReadSentences_MapsTheGoldClasses`): the gold class of a token is
+  its part of speech, the infinitive marker is a preposition, and punctuation and other tokens have none.
+- **Scoring** (`WordSenseBuilder_PosHeadTrainer_Score_AppliesTheLexiconRestriction`,
+  `WordSenseBuilder_PosHeadTrainer_LexiconMask_ListsThePartsOfSpeech`): a posterior is restricted to the parts of speech
+  of the lexicon, ambiguous words are counted, and tokens that are not scored are skipped; the mask of a word lists its
+  parts of speech and is zero for an unknown word and for punctuation.
+- **Table of tokens** (`WordSenseBuilder_PosTokenTable_NeighborsAndRows`): the neighbors of a token are found inside its
+  sentence only, and the training rows are the tokens with a vector and a class.
+- **Fit** (`WordSenseBuilder_MultinomialLogisticTrainer_Fit_Optimum_HasZeroGradientOfTheDenseObjective`,
+  `WordSenseBuilder_MultinomialLogisticTrainer_Fit_LearnsTheNeighborRule`,
+  `WordSenseBuilder_MultinomialLogisticTrainer_Fit_InvalidInput_Throws`): at the optimum the gradient of an independent,
+  dense implementation of the objective vanishes (so the chunked objective and the folding of the standardization are
+  right); a rule that depends on the previous word is learned, and a larger `C` fits the training data more tightly; an
+  empty table, a class outside the parts of speech and a `C` that is not positive are rejected.
+- **Determinism of the fit** (`WordSenseBuilder_MultinomialLogisticTrainer_Fit_IsDeterministicAcrossThreadCounts`): the
+  weights and biases are equal, bit for bit, on every run and for every number of threads.
+- **Minimizer** (`WordSenseBuilder_Lbfgs_Minimize_Quadratic_FindsTheMinimum`,
+  `WordSenseBuilder_Lbfgs_Minimize_Rosenbrock_FindsTheMinimum`,
+  `WordSenseBuilder_Lbfgs_Minimize_IsDeterministicAndKeepsTheStart`,
+  `WordSenseBuilder_Lbfgs_Minimize_IterationCapAndStartAtMinimum`, `WordSenseBuilder_Lbfgs_Minimize_InvalidArguments_Throw`):
+  a convex quadratic and the Rosenbrock valley (which needs the line search) reach their known minimum; the same
+  objective and start give the same point bit for bit and the start is not changed; the iteration cap stops the run and
+  says it did not converge, and a start at the minimum converges at once; null arguments and limits that are not positive
+  are rejected.
+- **Head file** (`WordSenseBuilder_PosHeadBlobWriter_Write_RoundTripsThroughTheReader`,
+  `WordSenseBuilder_PosHeadBlobWriter_Write_IsDeterministic`,
+  `WordSenseBuilder_PosHeadBlobWriter_Round_IsIdempotentAndRejectsOverflow`,
+  `WordSenseBuilder_PosHeadBlobWriter_Write_InvalidHead_Throws`,
+  `WordSenseBuilder_PosHeadBlobWriter_Write_LoadsAsAPosHead`): a written head reads back with every field and half
+  precision weights; the same head gives the same bytes and another head other bytes; rounding is idempotent and refuses
+  weights that half precision cannot hold; an inconsistent head, a digest of the wrong size and a non-finite bias are
+  refused; the written head loads into the posterior arithmetic of the library.
+- **Vector cache** (`WordSenseBuilder_PosVectorCache_WriteAndRead_RoundTripsForTheSameKey`,
+  `WordSenseBuilder_PosVectorCache_TryRead_DamagedFile_ReturnsNull`,
+  `WordSenseBuilder_PosVectorCache_Hashes_DependOnTheirInputs`): a written file reads back with its vectors and flags
+  for the same digest and words only; a damaged file, a truncated file and a file with another magic are not used; the
+  digest depends on every part of the encoder identity and the word hash on the sentence boundaries.
+- **Command** (`WordSenseBuilder_Program_TrainPosHead_RejectsBadModelsAndGrids`): the command needs a model, rejects an
+  unknown model and a model without an encoder (`basic`), and rejects a `--c-grid` that is not a comma-separated list of
+  positive numbers, each with exit code 1 and a one-line message.
+- **Gate and read-back**: the report of a run states the half-precision comparison with the 0.02-point gate, and the
+  trainer reads the file back and compares its predictions. The failing path of the gate needs weights that half
+  precision changes by more than the tolerance and is verified by inspection, not by a test.
+
+#### train-pos-head leakage assertion
+
+- **Held-out sentence** (`WordSenseBuilder_PosHeadTrainer_TrainAsync_TrainingSentenceInAHeldOutPart_Aborts`): a training
+  sentence that is also a treebank sentence, a read-set sentence or a development sentence stops the run before anything
+  is encoded.
+- **Run of words** (`WordSenseBuilder_PosHeadTrainer_TrainAsync_SharedRunOfWordsWithTheTreebank_Aborts`): a run of
+  eight words that a training sentence shares with a treebank sentence also stops the run.
+- **Other training file** (`WordSenseBuilder_PosHeadTrainer_TrainAsync_OtherTrainingFile_Refused`): a `--train` file that
+  is not the representative training split is refused.
+- **Explicit paths** (`WordSenseBuilder_LeakageCheck_HeldOutSets_ExplicitPathThatDoesNotExist_Throws`,
+  `WordSenseBuilder_Program_CheckLeakage_ExplicitPathThatDoesNotExist_Fails`,
+  `WordSenseBuilder_Program_CheckLeakage_ExplicitGoldFileThatDoesNotExist_Fails`): without `--gold-dir` and `--read-set`
+  the held-out parts are those of the repository; a `--gold-dir` that does not exist throws `DirectoryNotFoundException`,
+  one without a gold file throws `InvalidDataException`, a `--read-set` that does not exist throws `FileNotFoundException`
+  (each message names the option), and `check-leakage` exits with 1 and the same message, also for a `--gold` file that
+  does not exist.
+- **Overlap rule** (`WordSenseBuilder_LeakageCheck_FindTrainingOverlaps_FindsTheSameSentence`,
+  `WordSenseBuilder_LeakageCheck_FindTrainingOverlaps_RunOfWordsCountsForExternalPartsOnly`): a training sentence that a
+  held-out part has too, after normalization, is an overlap and others are not; a run of eight words in common counts for
+  an external part (the treebank, the read set) and not for a part of the repository.
+- **Held-out parts** (`WordSenseBuilder_LeakageCheck_FromGoldDirectoryAndReadSet_ReadTheFiles`,
+  `WordSenseBuilder_LeakageCheck_FromReadSet_ShortLine_Throws`,
+  `WordSenseBuilder_LeakageCheck_HeldOutSets_ListsEvaluationAndExternalPartsOnly`): the treebank files that exist in a
+  directory are read as external parts and the read set from its sentence column; a read set with a short line is
+  refused; the held-out parts of a corpus are its evaluation parts, the treebank files and the read set, never its
+  training parts.
+
+#### Head provenance
+
+- **Trained on the committed file** (`WordSenseBuilder_PosHeadProvenance_HeadsAreTrainedOnTheCommittedTrainingFile`): the
+  training-file digest recorded in the head embedded in each encoder package equals the SHA-256 of
+  `corpus/open/representative/data/train.tsv`.
+
+#### evaluate-running outcomes, compare-outcomes and latency
+
+- **Outcomes** (`WordSenseBuilder_RunningText_Run_RecordsTheOutcomeOfEveryScoredToken`): a scored token is recorded with
+  its set, sentence, document, gold and answer; punctuation and unanswered tokens are not.
+- **Documents** (`WordSenseBuilder_RunningText_Documents_AreTheSourceIdsOfTheOpenSets`): the documents of the open sets
+  are the source ids of their sentences, parallel to the sentences of the set.
+- **Outcome file** (`WordSenseBuilder_OutcomeFile_RenderAndRead_RoundTrip`): an outcome file reads back what was written,
+  and a malformed file is refused.
+- **Exact test** (`WordSenseBuilder_OutcomeComparer_McNemar_IsTheExactTwoSidedBinomialTest`): the p-value is one without
+  discordant tokens, the doubled binomial tail otherwise, and tiny for many more repairs than regressions.
+- **Gain and interval** (`WordSenseBuilder_OutcomeComparer_Compare_CountsRepairsAndRegressionsWithAnInterval`): the gain,
+  the repairs and the regressions are counted over the paired tokens; the interval contains the gain and is the same for
+  the same seed.
+- **Degenerate gain and the ambiguous subset** (`WordSenseBuilder_OutcomeComparer_Compare_DegenerateGainAndAmbiguousSubset`):
+  a version that is right on every token the base gets wrong has an interval that is exactly the gain, and the ambiguous
+  subset counts only ambiguous tokens.
+- **Clusters and unpaired tokens** (`WordSenseBuilder_OutcomeComparer_Compare_ClustersByDocumentAndCountsUnpairedTokens`):
+  clustering by document merges the sentences of a document, and tokens that only one file has are left out and counted.
+- **Invalid input** (`WordSenseBuilder_OutcomeComparer_Compare_InvalidInput_Throws`): an unknown cluster unit, no common
+  token and a number of replicates below one are rejected.
+- **Report** (`WordSenseBuilder_OutcomeComparer_Render_ListsTheConfusionChanges`): the changes of the wrong cells are
+  listed, a cell that grows by more than 0.3 points is named, and the report states the interval method.
+- **Latency sample** (`WordSenseBuilder_RunningText_MeasureLatency_UsesASeededSample`): the sample is the same for a seed
+  and differs for another one, it is bounded by the number of sentences, and an empty sample gives zeros.
+- **Latency label and footer** (`WordSenseBuilder_RunningText_RenderLatency_NamesTheSplitThatWasRead`,
+  `WordSenseBuilder_RunningText_Render_FooterNamesTheSplitThatWasRead`): the latency table and the footer of the report
+  name the split that was read, `dev` for `--split dev` and `test` by default.
+- **Commands** (`WordSenseBuilder_Program_EvaluateRunningAndCompareOutcomes_Basic_WriteAndCompare`,
+  `WordSenseBuilder_Program_CompareOutcomes_RejectsBadInput`): `evaluate-running` for Basic writes the outcomes and the
+  latency; the comparison of a file with itself shows no gain and a degenerate interval; a file with two models needs the
+  model to be named; `compare-outcomes` rejects a missing `--new`, an unknown `--cluster` and a `--reps` below one with
+  exit code 1.
+- **Report without outcomes** (`WordSenseBuilder_Program_EvaluateRunning_ReportWithoutOutcomes_Succeeds`):
+  `evaluate-running --report running` without `--outcomes` exits 0 with no error, and `--report tense` with `--outcomes`
+  writes no outcome file.
+- **Development split** (`WordSenseBuilder_Program_EvaluateRunning_DevelopmentSplit_KeepsTheTestColumnAndRecordsDocuments`):
+  `evaluate-running --split dev` names its open set `open corpus dev (representative)`, leaves the running-text column
+  of the model table unmeasured, records the outcomes under that name with the source documents of the sentences, and
+  times the sample of the development split.
+
 #### suite
 
 - **Rows and expectations** (`WordSenseBuilder_Suite_Read_ParsesRowsAndExpectations`): a well-formed suite gives the
@@ -743,6 +884,15 @@ verified in the section _corpus_ below.
 - The expected passes of the committed suite are asserted by `BasicSuite_ExpectedPasses_StillPass`,
   `MiniLMSuite_ExpectedPasses_StillPass` and `BertBaseCasedSuite_ExpectedPasses_StillPass` in the test projects of the
   models (see their verification documents); the encoder tests skip when the model files are not present.
+- **Answers of the suite** (`WordSenseBuilder_SuiteDiff_AnswerOf_DescribesTheAnswer`): the answer of a row has its grade,
+  level, analysis and sense or group, and reads as one line.
+- **Outcome file** (`WordSenseBuilder_SuiteDiff_RenderAndReadOutcomes_RoundTrip`): the answers written to an outcome
+  file read back, and a malformed file is rejected.
+- **Diff against a baseline** (`WordSenseBuilder_SuiteDiff_Diff_ListsEveryChangeInBothDirections`): every row whose
+  grade or answer changed is listed, in both directions, with its verdict (better, WORSE or same grade with another
+  answer), the gold of the row and the expectation of the model; rows that did not change are not listed.
+- **Baseline without a row** (`WordSenseBuilder_SuiteDiff_Diff_MissingBaselineRow_Throws`): a baseline that lacks a row
+  of a model is rejected, and the gold of a row that has senses lists them.
 
 #### shape probe
 
@@ -1119,13 +1269,14 @@ it leaves.
 #### Command line
 
 - **No arguments or unknown command**: exit code 1 and the usage text listing `compile-image`, `import-moby`,
-  `weights <modelId>`, `evaluate <modelId>`, `evaluate-senses`, `evaluate-allwords`, `allwords-sample`,
+  `weights <modelId>`, `train-pos-head <modelId>`, `evaluate <modelId>`, `evaluate-senses`, `evaluate-allwords`,
+  `allwords-sample`,
   `allwords-merge`, `gold2-power`, `gold2-sample`, `gold2-batches`, `gold2-merge`, `evaluate-gold2`, `compare-gold2`,
-  `evaluate-running`, `evaluate-suite`, `evaluate-shapes`, `check-leakage`,
+  `evaluate-running`, `compare-outcomes`, `evaluate-suite`, `evaluate-shapes`, `check-leakage`,
   `tiers`, `open-counts`, `evaluate-tagger`, `coverage`, `train-basic`, `tune-basic`, `label-senses`,
   `import-wn30-counts`, `appendix`, `keys` and `heteronyms`
   (`Program_NoArguments_PrintsUsage`, `Program_UnknownCommand_ReportsCommandAndUsage`,
-  `Program_Usage_ListsTheSenseCommands`).
+  `Program_Usage_ListsTheSenseCommands`, `Program_Usage_ListsThePosHeadCommands`).
 - **Removed command** (`Program_RemovedCommand_IsUnknown`): the old command names (`build`, `train`,
   `generate-appendix`, `validate-pos`) and the treebank commands (`ud-counts`, `ud-irregular`) are unknown commands and
   exit with code 1.

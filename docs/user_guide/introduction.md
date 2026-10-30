@@ -501,6 +501,9 @@ it that do not contain its sentences. This is the project's reading and not lega
 - **Project-authored data**: the inflected forms, written sentences and the annotations and selection of the open
   part-of-speech corpus `corpus/open` are CC0 1.0. The sense labels, groups and project senses are MIT. The README
   section "Credits and Licenses" gives the owner's position on the content that language models wrote or labeled.
+- **Part-of-speech heads**: the MiniLM and BertBaseCased packages each embed a numeric part-of-speech classifier for
+  their encoder. It is trained only on the training split of `corpus/open`, holds no text and is described in the
+  `NOTICE.md` of the package.
 - **Real sentences**: Tatoeba sentences of the official CC0 export, Project Gutenberg books published 1930 or earlier,
   and works of US federal agencies (VOA Learning English, USGS, NPS, NOAA National Weather Service and FAA; public domain
   under 17 U.S.C. §105). The open corpus uses no FAA text; its sentences are these public-domain and CC0 sources plus

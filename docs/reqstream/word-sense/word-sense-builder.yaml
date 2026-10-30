@@ -2836,12 +2836,257 @@ sections:
             tests:
               - WordSenseBuilder_ShapeRows_NounUnitOfRareNounLemma_IsAbsent
 
+          - id: WordSense-WordSenseBuilder-TrainPosHead
+            title: >-
+              The builder shall train the part-of-speech head of an encoder model with a multinomial logistic
+              regression on the pooled encoder vectors of a word and of its previous and next word, taken from the
+              representative training split of the open corpus alone.
+            tags: [unit]
+            justification: |
+              The head is a trained artifact that ships in the packages; its inputs must be the declared training data
+              only.
+            tests:
+              - WordSenseBuilder_PosHeadTrainer_TrainAsync_ProducesALoadableDeterministicHead
+              - WordSenseBuilder_PosHeadTrainer_ReadSentences_MapsTheGoldClasses
+              - WordSenseBuilder_MultinomialLogisticTrainer_Fit_Optimum_HasZeroGradientOfTheDenseObjective
+              - WordSenseBuilder_MultinomialLogisticTrainer_Fit_LearnsTheNeighborRule
+              - WordSenseBuilder_PosTokenTable_NeighborsAndRows
+              - WordSenseBuilder_Lbfgs_Minimize_Quadratic_FindsTheMinimum
+              - WordSenseBuilder_Lbfgs_Minimize_Rosenbrock_FindsTheMinimum
+              - WordSenseBuilder_Lbfgs_Minimize_IterationCapAndStartAtMinimum
+
+          - id: WordSense-WordSenseBuilder-TrainPosHeadSelection
+            title: >-
+              The builder shall choose the regularization strength of a part-of-speech head on the development split
+              of the open corpus by the accuracy restricted to the parts of speech that the lexicon lists for each
+              word, and the smaller strength on a tie.
+            tags: [unit]
+            justification: |
+              The selection must use held-out development data and the same restriction that the head meets when it is
+              used, and a tie must resolve the same way on every run.
+            tests:
+              - WordSenseBuilder_PosHeadTrainer_TrainAsync_TieGoesToTheSmallestC
+              - WordSenseBuilder_PosHeadTrainer_Score_AppliesTheLexiconRestriction
+              - WordSenseBuilder_PosHeadTrainer_LexiconMask_ListsThePartsOfSpeech
+
+          - id: WordSense-WordSenseBuilder-TrainPosHeadPrecision
+            title: >-
+              The builder shall stop training a part-of-speech head when the head rounded to half precision predicts
+              the development tokens with an accuracy that differs by more than 0.02 points from that of the unrounded
+              head.
+            tags: [unit]
+            justification: |
+              The file stores half-precision weights; the head that ships must be the head that was measured.
+            tests:
+              - WordSenseBuilder_PosHeadTrainer_CheckHalfPrecision_StopsBeyondTheGate
+
+          - id: WordSense-WordSenseBuilder-TrainPosHeadFile
+            title: >-
+              The builder shall write a trained part-of-speech head in the file format that the Onnx package reads, and
+              the file shall read back to the head that was trained.
+            tags: [unit]
+            justification: |
+              The file it writes must be exactly the head that was measured, in the format the package loads.
+            tests:
+              - WordSenseBuilder_PosHeadBlobWriter_Write_RoundTripsThroughTheReader
+              - WordSenseBuilder_PosHeadBlobWriter_Round_IsIdempotentAndRejectsOverflow
+              - WordSenseBuilder_PosHeadBlobWriter_Write_LoadsAsAPosHead
+
+          - id: WordSense-WordSenseBuilder-TrainPosHeadInvalidInput
+            title: >-
+              The builder shall refuse to train a part-of-speech head for a model without an encoder, with a grid of
+              strengths that is not a list of positive numbers or with training data that cannot be fitted, and shall
+              refuse to write a head that is not valid.
+            tags: [unit]
+            justification: |
+              A bad request must fail before it produces an artifact.
+            tests:
+              - WordSenseBuilder_Program_TrainPosHead_RejectsBadModelsAndGrids
+              - WordSenseBuilder_MultinomialLogisticTrainer_Fit_InvalidInput_Throws
+              - WordSenseBuilder_Lbfgs_Minimize_InvalidArguments_Throw
+              - WordSenseBuilder_PosHeadBlobWriter_Write_InvalidHead_Throws
+
+          - id: WordSense-WordSenseBuilder-TrainPosHeadLeakage
+            title: >-
+              The builder shall stop training a part-of-speech head, before it encodes anything, when a training
+              sentence is also a sentence of any held-out part (the evaluation parts of the corpus, the treebank files
+              and the read set that are given) after normalization, or shares a run of eight words with a treebank file
+              or the read set.
+            tags: [unit]
+            justification: |
+              A head that has seen an evaluation sentence would be measured on its training data; the check runs
+              before the fit so that no head is ever trained on a leaked sentence.
+            tests:
+              - WordSenseBuilder_PosHeadTrainer_TrainAsync_TrainingSentenceInAHeldOutPart_Aborts
+              - WordSenseBuilder_PosHeadTrainer_TrainAsync_SharedRunOfWordsWithTheTreebank_Aborts
+              - WordSenseBuilder_LeakageCheck_FindTrainingOverlaps_FindsTheSameSentence
+              - WordSenseBuilder_LeakageCheck_FindTrainingOverlaps_RunOfWordsCountsForExternalPartsOnly
+              - WordSenseBuilder_LeakageCheck_FromGoldDirectoryAndReadSet_ReadTheFiles
+              - WordSenseBuilder_LeakageCheck_FromReadSet_ShortLine_Throws
+              - WordSenseBuilder_LeakageCheck_HeldOutSets_ListsEvaluationAndExternalPartsOnly
+
+          - id: WordSense-WordSenseBuilder-TrainPosHeadExplicitPaths
+            title: >-
+              The builder shall stop with an error that names the option when a gold directory or a read set that the
+              caller gave for the leakage check of a part-of-speech head, or for check-leakage, does not exist or the
+              gold directory has none of the gold files, and shall check against the parts of the repository only when
+              the options are not given.
+            tags: [unit]
+            justification: |
+              A check that quietly skips a part the caller asked for would pass on fewer parts than the caller believes.
+            tests:
+              - WordSenseBuilder_LeakageCheck_HeldOutSets_ExplicitPathThatDoesNotExist_Throws
+              - WordSenseBuilder_Program_CheckLeakage_ExplicitPathThatDoesNotExist_Fails
+
+          - id: WordSense-WordSenseBuilder-CheckLeakageGold
+            title: >-
+              The builder shall stop check-leakage with an error that names --gold when the treebank test file that the
+              caller gave does not exist.
+            tags: [unit]
+            justification: |
+              A check that quietly leaves out the treebank test file the caller named would pass on fewer parts than
+              the caller believes.
+            tests:
+              - WordSenseBuilder_Program_CheckLeakage_ExplicitGoldFileThatDoesNotExist_Fails
+
+          - id: WordSense-WordSenseBuilder-TrainPosHeadTrainingFile
+            title: >-
+              The builder shall refuse to train a part-of-speech head on a training file other than the
+              representative training split of the open corpus.
+            tags: [unit]
+            justification: |
+              The recorded provenance names the representative training file; another file would break it.
+            tests:
+              - WordSenseBuilder_PosHeadTrainer_TrainAsync_OtherTrainingFile_Refused
+
+          - id: WordSense-WordSenseBuilder-TrainPosHeadDeterminism
+            title: >-
+              The builder shall write the same part-of-speech head bytes for the same corpus, encoder files and
+              settings, whatever the number of threads and whether the pooled vectors come from the cache or from the
+              encoder.
+            tags: [unit]
+            justification: |
+              A shipped artifact that cannot be rebuilt byte for byte cannot be audited.
+            tests:
+              - WordSenseBuilder_PosHeadTrainer_TrainAsync_ProducesALoadableDeterministicHead
+              - WordSenseBuilder_PosHeadTrainer_TrainAsync_SecondRunUsesTheCache
+              - WordSenseBuilder_MultinomialLogisticTrainer_Fit_IsDeterministicAcrossThreadCounts
+              - WordSenseBuilder_Lbfgs_Minimize_IsDeterministicAndKeepsTheStart
+              - WordSenseBuilder_PosHeadBlobWriter_Write_IsDeterministic
+              - WordSenseBuilder_PosVectorCache_WriteAndRead_RoundTripsForTheSameKey
+
+          - id: WordSense-WordSenseBuilder-TrainPosHeadCache
+            title: >-
+              The builder shall use a cached set of pooled vectors only for the encoder files, runtime and feature
+              version it was written for, and shall discard a damaged cache file.
+            tags: [unit]
+            justification: |
+              A stale cache must never feed the fit with vectors of another encoder.
+            tests:
+              - WordSenseBuilder_PosVectorCache_TryRead_DamagedFile_ReturnsNull
+              - WordSenseBuilder_PosVectorCache_Hashes_DependOnTheirInputs
+
+          - id: WordSense-WordSenseBuilder-HeadProvenance
+            title: >-
+              The part-of-speech head embedded in each encoder package shall record the SHA-256 of the committed
+              representative training file of the open corpus as the file it was trained on.
+            tags: [unit]
+            justification: |
+              The recorded digest ties each shipped head to its training data; a head trained on another file, or a
+              training file that changed after the head was trained, is detected.
+            tests:
+              - WordSenseBuilder_PosHeadProvenance_HeadsAreTrainedOnTheCommittedTrainingFile
+
+          - id: WordSense-WordSenseBuilder-OutcomeFile
+            title: >-
+              The builder shall, on request, record the outcome of every scored token of the running-text evaluation
+              of a model (set, sentence, document, token, word, gold part of speech, answered part of speech, whether
+              it is right and whether the word is ambiguous) in a tab-separated file that it reads back, with the
+              source of the sentence in the open corpus as its document, and shall reject a file with another header
+              or a malformed line; the running-text report shall not need the option when no file is requested.
+            tags: [unit]
+            justification: |
+              Comparing two versions of a model needs their answers on the same tokens, not only their accuracy
+              figures.
+            tests:
+              - WordSenseBuilder_RunningText_Run_RecordsTheOutcomeOfEveryScoredToken
+              - WordSenseBuilder_RunningText_Documents_AreTheSourceIdsOfTheOpenSets
+              - WordSenseBuilder_OutcomeFile_RenderAndRead_RoundTrip
+              - WordSenseBuilder_Program_EvaluateRunning_ReportWithoutOutcomes_Succeeds
+              - WordSenseBuilder_Program_EvaluateRunning_DevelopmentSplit_KeepsTheTestColumnAndRecordsDocuments
+
+          - id: WordSense-WordSenseBuilder-OutcomeComparison
+            title: >-
+              The builder shall compare two outcome files on the tokens they share, per set and for all and for the
+              ambiguous tokens, and report the tokens that only one file has, the accuracy of each, the repairs and the
+              regressions, the gain with a 95 percent paired bootstrap interval over sentences or documents that is
+              the same for the same seed, the exact McNemar p-value, the wrong cells of the confusion that changed most
+              and the cells that grow by more than 0.3 points, and shall reject an unknown cluster unit, a number of
+              replicates below one, files without a common token and a file with several models when no model is
+              named.
+            tags: [unit]
+            justification: |
+              A change of a model is accepted on evidence about the tokens it moved, with an interval that accounts for
+              the dependence of tokens in a sentence or a document, not on a bare difference of two percentages.
+            tests:
+              - WordSenseBuilder_OutcomeComparer_McNemar_IsTheExactTwoSidedBinomialTest
+              - WordSenseBuilder_OutcomeComparer_Compare_CountsRepairsAndRegressionsWithAnInterval
+              - WordSenseBuilder_OutcomeComparer_Compare_DegenerateGainAndAmbiguousSubset
+              - WordSenseBuilder_OutcomeComparer_Compare_ClustersByDocumentAndCountsUnpairedTokens
+              - WordSenseBuilder_OutcomeComparer_Compare_InvalidInput_Throws
+              - WordSenseBuilder_OutcomeComparer_Render_ListsTheConfusionChanges
+              - WordSenseBuilder_Program_CompareOutcomes_RejectsBadInput
+              - WordSenseBuilder_Program_EvaluateRunningAndCompareOutcomes_Basic_WriteAndCompare
+
+          - id: WordSense-WordSenseBuilder-SuiteDiff
+            title: >-
+              The builder shall, on request, record the answer of every model on every row of the reviewed suite
+              (grade, level, analysis, sense or group and confidence) in a file that it reads back, and list against
+              such a baseline every row whose answer or grade changed, in either direction, with the sentence, the old
+              and the new answer, the gold of the row, the expectation of the model and a verdict (better, worse or
+              the same grade with another answer), and shall reject a baseline that lacks a row.
+            tags: [unit]
+            justification: |
+              A change of a model moves suite rows in both directions; a reviewer must be able to read every moved
+              row, not only the ones that fall below the expectation.
+            tests:
+              - WordSenseBuilder_SuiteDiff_AnswerOf_DescribesTheAnswer
+              - WordSenseBuilder_SuiteDiff_RenderAndReadOutcomes_RoundTrip
+              - WordSenseBuilder_SuiteDiff_Diff_ListsEveryChangeInBothDirections
+              - WordSenseBuilder_SuiteDiff_Diff_MissingBaselineRow_Throws
+
+          - id: WordSense-WordSenseBuilder-RunningLatency
+            title: >-
+              The builder shall, on request, measure the time a model needs for one sentence of the open corpus split
+              that the run reads (test by default), one sentence at a time, on a seeded sample that is the same for
+              every model and run and after a warm-up, report the median, the mean and the 95th percentile in
+              milliseconds, and name that split in the table.
+            tags: [unit]
+            justification: |
+              The cost of an answer is part of the comparison of models; a fixed sample makes the figure comparable
+              between models and runs, and the label must name the sample that was timed.
+            tests:
+              - WordSenseBuilder_RunningText_MeasureLatency_UsesASeededSample
+              - WordSenseBuilder_RunningText_RenderLatency_NamesTheSplitThatWasRead
+              - WordSenseBuilder_Program_EvaluateRunningAndCompareOutcomes_Basic_WriteAndCompare
+
+          - id: WordSense-WordSenseBuilder-RunningFooter
+            title: >-
+              The builder shall name in the footer of the running-text report the split of the open corpus that the run
+              read (test by default).
+            tags: [unit]
+            justification: |
+              A report of a development run that calls the test split the headline would mislabel its figures.
+            tests:
+              - WordSenseBuilder_RunningText_Render_FooterNamesTheSplitThatWasRead
+
           - id: WordSense-WordSenseBuilder-Usage
             title: >-
-              The builder shall provide the commands compile-image, import-moby, weights, evaluate, evaluate-senses,
-              evaluate-allwords, allwords-sample, allwords-merge, gold2-power, gold2-sample, gold2-batches,
-              gold2-merge, evaluate-gold2, compare-gold2,
-              evaluate-running, evaluate-suite, evaluate-shapes, check-leakage, tiers, open-counts, evaluate-tagger,
+              The builder shall provide the commands compile-image, import-moby, weights, train-pos-head, evaluate,
+              evaluate-senses, evaluate-allwords, allwords-sample, allwords-merge, gold2-power, gold2-sample,
+              gold2-batches, gold2-merge, evaluate-gold2, compare-gold2,
+              evaluate-running, compare-outcomes, evaluate-suite, evaluate-shapes, check-leakage, tiers, open-counts,
+              evaluate-tagger,
               coverage, train-basic, tune-basic, label-senses, import-wn30-counts, appendix, keys and heteronyms, print
               usage when given no
               arguments, and shall report an unknown or removed command (the treebank commands ud-counts and
@@ -2859,3 +3104,4 @@ sections:
               - WordSenseBuilder_Program_MalformedNumberOption_ReportsOneLineError
               - WordSenseBuilder_Program_UnknownCommand_ReportsCommandAndUsage
               - WordSenseBuilder_Program_Usage_ListsTheSenseCommands
+              - WordSenseBuilder_Program_Usage_ListsThePosHeadCommands

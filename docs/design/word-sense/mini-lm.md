@@ -25,7 +25,8 @@ of the core package, `BasicWordSenseModel` (also of the core package) and the we
 The package has an internal sealed class `MiniLMEncoderModel` that derives from `OnnxWordSenseModel` and holds a static
 model description (model id `all-MiniLM-L6-v2-int8`; files `model_int8.onnx` and
 `vocab.txt` with their SHA-256 digests; ONNX file `model_int8.onnx`; vocabulary `vocab.txt`; lower-casing tokenizer;
-the embedded weights resource of this assembly; hidden size 384). It adds no members and no logic. The public
+the embedded weights resource of this assembly; hidden size 384; the embedded part-of-speech head resource). It adds no
+members and no logic. The public
 `MiniLMWordSenseModel` creates an encoder model and a `BasicWordSenseModel` and wraps them in a
 `FallbackWordSenseModel` (the encoder is the primary model and Basic the fallback), to which it delegates
 `EnsureModelAsync` (optional; the composite forwards it to the encoder, which is downloadable, and skips Basic, which
@@ -37,7 +38,8 @@ load. The encoder scores the senses of the trained lemmas and answers them at th
 its thresholds allow, listing the probabilities of their analyses and senses; every word for which the encoder scored no
 senses (the other ambiguous words) is answered by the Basic model, with the probabilities of its analyses, at the part
 of speech level (or at the sense level when its selected analysis has exactly one sense, which the Basic model names
-without scoring).
+without scoring). The assembly also embeds the part-of-speech head of this encoder (`head.bin`, the format `WSH1`): the
+encoder model loads and checks it with the weights, and no answer uses it.
 
 The package ships a `NOTICE.md` (packed by the project file, as the core package does). The embedded weights carry a
 sense usage prior derived from the WordNet 3.0 sense counts (the builder adds it to the stored biases), so the notice
@@ -46,4 +48,5 @@ ids that the weights hold (the package license expression is `MIT AND CC-BY-4.0`
 statistical summaries of the project corpora (CC0 rows and annotations over public-domain and CC0 sentences) of
 this project, and records that the encoder model files are not in the package: they are downloaded from this repository
 (`model/all-MiniLM-L6-v2-int8/`, Apache License 2.0, with the license text in that folder) and are the int8 ONNX export
-of `sentence-transformers/all-MiniLM-L6-v2`.
+of `sentence-transformers/all-MiniLM-L6-v2`. The notice also describes the embedded part-of-speech head: its content,
+the open corpus it is trained on and the license position that covers the tags of that corpus.

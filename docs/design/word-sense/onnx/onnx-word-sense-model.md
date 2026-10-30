@@ -19,12 +19,13 @@ the weights are used only for a text with a trained lemma.
   to a full path) and the maximum sequence length, which shall be from 8 to 512.
 - Public properties: `HiddenSize` and `ModelId`. They are public on purpose: callers and the model packages read them
   (for example to show which model and encoder size is in use) before an explicit ensure has run.
-- State: the in-flight (or finished) ensure task, the shared classifier, the encoder and the weights table (opened and
+- State: the in-flight (or finished) ensure task, the shared classifier, the encoder, the weights table and the
+  part-of-speech head (opened and
   loaded on first need), the disposed flag and an in-flight tracker that counts running classifications, all
   guarded by a lock, plus a cancellation source that disposal cancels and then disposes (the download holds a copy of
   its token, which stays cancelled).
 - Internal test and builder hooks: the ONNX intra-op thread count, the HTTP client, the GitHub base URI, the
-  environment variable reader, `OpenEncoder()` (builder training) and the description.
+  environment variable reader, `OpenEncoder()` (builder training), `GetHead()` and the description.
 
 #### Key Methods
 
@@ -40,7 +41,8 @@ the weights are used only for a text with a trained lemma.
   at this public boundary (see _Error Handling_).
 - `ClassifyAsync(words, cancellationToken)`: checks the disposed flag, validates the words, throws
   `OperationCanceledException` (through the returned task) for an already canceled token, even for an empty list or a
-  list that needs no model. It then loads the embedded weights table (no model file and no ONNX; cached) and, when no
+  list that needs no model. It then loads the embedded weights table (no model file and no ONNX; cached) together with
+  the embedded part-of-speech head (the same) and, when no
   word is pending (`OnnxClassifier.NeedsModel`: no word has several senses together with usable weights, or a form
   chooser), answers from the lexicon alone without any model file: unknown words are `ClassifyResult.Unknown`, a word
   with one analysis and one sense is answered at the sense level, and every other known word with its analyses equally
@@ -60,6 +62,12 @@ the weights are used only for a text with a trained lemma.
 - `AcquireClassifier()` / `ReleaseClassifier()` (internal): `ClassifyAsync` registers itself with the in-flight tracker
   (throwing `ObjectDisposedException` when the model is already disposed) before it takes the classifier and
   unregisters in a `finally`, so the session cannot be released under a running inference.
+- `GetHead()` (internal): the embedded part-of-speech head, loaded once under the lock and kept; null when the model
+  description names no head resource (`ModelSpec.HeadResourceName`). The load is `PosHead.LoadEmbedded` with the model
+  id, the hidden size and the pinned SHA-256 of the ONNX file from the description, so it needs no model file. The
+  weights table load (`GetTable`) and the opening of the classifier call it, so the first classification, or the open of
+  the classifier, loads and checks the head. A failure is not remembered: the next call fails the same way. No answer
+  uses the head.
 
 #### Error Handling
 
@@ -87,9 +95,13 @@ the weights are used only for a text with a trained lemma.
   - `IOException` and `UnauthorizedAccessException` of an unwritable store are not wrapped;
     `OperationCanceledException` (a canceled caller, or disposal during a download) is unchanged.
 - `ClassifyAsync` wraps at the points where it loads its own resources (`LoadTable` for `GetTable` and `GetClassifier`,
-  and the encoder opening): an `InvalidDataException` of `WeightedLemmaTable` (embedded weights missing, corrupt or not
+  the head load, and the encoder opening): an `InvalidDataException` of `WeightedLemmaTable` (embedded weights missing,
+  corrupt or not
   for this word image or dimension) and of the classifier (weights and image inconsistent) becomes a
-  `ModelIntegrityException`; a structural failure of the encoder constructor on files that passed their SHA-256 (an
+  `ModelIntegrityException`, and so does an `InvalidDataException` of `PosHead` (the embedded head missing, corrupt, or
+  trained for another model, hidden size, encoder file, feature layout or class order) with a message that names the
+  model and the original as inner exception; a structural failure of the encoder constructor on files that passed
+  their SHA-256 (an
   `OnnxRuntimeException`, `InvalidDataException`, `FormatException`, `InvalidOperationException` or
   `IndexOutOfRangeException` of the ONNX file or its metadata, or an `ArgumentException` such as a vocabulary without a
   required `[UNK]`, `[CLS]` or `[SEP]` token) becomes a `ModelIntegrityException` with the original as inner exception;
@@ -107,7 +119,8 @@ the weights are used only for a text with a trained lemma.
 
 #### Dependencies
 
-`ModelDownloader`, `DownloadMirror` (through the downloader), `LemmaWeights` (weights table), `OnnxEncoder`,
+`ModelDownloader`, `DownloadMirror` (through the downloader), `LemmaWeights` (weights table), `PosHead` (the embedded
+head), `OnnxEncoder`,
 `OnnxClassifier` and the core contracts (`IDownloadableWordSenseModel`, `DownloadOptions` and the typed exceptions).
 No other model package.
 
