@@ -33,9 +33,10 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     <see cref="SenseLevel.PartOfSpeech"/>, or <see cref="SenseLevel.Sense"/> when its selected analysis has exactly
 ///     one sense. The composition rules (which model answers a word, and that a result always belongs completely to one
 ///     of the two models) are those of <see cref="FallbackWordSenseModel"/>. <see cref="ClassifyAsync"/> needs the
-///     encoder files for a text that contains a word of two or more parts of speech, trained lemma or not (it ensures
-///     them on first use; there is no opt-out), and never downloads a file or fails because a file is missing for a
-///     text made only of words with one part of speech.
+///     encoder files for a text that contains a known word of two or more parts of speech, or a word whose lemma has
+///     scored senses (it ensures them on first use; there is no opt-out), and never downloads a file or fails because a
+///     file is missing for any other text (unknown words and known words of one part of speech whose senses are not
+///     scored).
 ///     </para>
 ///     <para>
 ///     Choose BertBaseCased when case-awareness matters and the larger download is acceptable: 104 MiB; it
@@ -214,7 +215,8 @@ public sealed class BertBaseCasedWordSenseModel : IDownloadableWordSenseModel
     ///     trained weights is answered at the <see cref="SenseLevel.PartOfSpeech"/> level with the senses of its
     ///     analyses ranked by how often they are used (the usage prior: a ranking of the lemma, never an answer), or
     ///     at the <see cref="SenseLevel.Sense"/> level when its selected analysis has exactly one sense, which the Basic
-    ///     model names without scoring. A text made only of words with one part of speech needs no model file. An
+    ///     model names without scoring. A text of unknown words and of known words of one part of speech whose senses are
+    ///     not scored needs no model file. An
     ///     unknown word has no analysis, the level <see cref="SenseLevel.None"/> and confidence 0.
     ///     </para>
     /// </remarks>

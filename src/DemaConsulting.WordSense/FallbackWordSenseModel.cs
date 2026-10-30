@@ -43,7 +43,8 @@ namespace DemaConsulting.WordSense;
 ///     primary weight <c>w</c> below 1 (the constructor argument <c>primaryWeight</c>; 1 when it is not given, which turns the
 ///     refinement off) the probability of every slot, over the union of the slots of both results, becomes proportional to
 ///     <c>p_primary^w × p_fallback^(1−w)</c>, where the probability of a slot is the sum of the probabilities of its analyses
-///     and a slot that a result does not list counts with the small floor 1e-6. A slot that only the fallback result lists
+///     and a slot that a result does not list counts with the small floor 1e-6 (at the weights 0 and 1 one result alone decides and
+///     a slot that only the other result lists has no probability). A slot that only the fallback result lists
 ///     is added to the result with the analyses of the fallback result (with the senses and the ranking kind that the
 ///     fallback result lists for them: for the Basic model the senses ranked by usage of a polysemous slot, see
 ///     <see cref="AnalysisCandidate.SensesRankedByUsage"/>), so the result can list
@@ -62,7 +63,7 @@ namespace DemaConsulting.WordSense;
 ///     model. For a word of two or more parts of speech the primary weight <c>w</c> is then the weight of the part-of-speech
 ///     classifier against the fallback model, applied at every level of the answer and not only at the part-of-speech
 ///     level: the probability of every slot over the union of the slots of both results is proportional to
-///     <c>p_primary^w × p_fallback^(1−w)</c> (floor 1e-6, as above). The base result keeps the senses, the level, the group
+///     <c>p_primary^w × p_fallback^(1−w)</c> (floor 1e-6 for a weight between 0 and 1, as above). The base result keeps the senses, the level, the group
 ///     and the ids: it is the primary result when the primary model scored senses (with its tied variants refined as
 ///     above), otherwise the fallback result (for the Basic model the senses ranked by usage and the variants of its tense
 ///     model); a slot that the base result does not list takes the analyses of the other result. When the most probable slot
@@ -288,7 +289,7 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
     /// <remarks>
     ///     <para>
     ///     The slot probability over the slots of both results becomes proportional to
-    ///     <c>p_primary^w × p_fallback^(1−w)</c> (a slot that a result does not list counts with <see cref="SlotFloor"/>), where
+    ///     <c>p_primary^w × p_fallback^(1−w)</c> (a slot that a result does not list counts with <see cref="SlotFloor"/> for a weight between 0 and 1, and has no probability at the weights 0 and 1 when the other result lists it), where
     ///     <c>w</c> is the primary weight. The base result keeps the senses, the level, the group and the identifiers: it
     ///     is the primary result when the primary model scored senses (with its tied variants refined by the fallback
     ///     model), otherwise the fallback result (the senses ranked by usage and the tense variants of the Basic model). The analyses
@@ -327,7 +328,7 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
         }
 
         // The combination in the log domain, normalized with the largest score subtracted
-        var scores = slots.Select(s => (weight * Math.Log(Math.Max(s.Primary, SlotFloor))) + ((1.0 - weight) * Math.Log(Math.Max(s.Fallback, SlotFloor)))).ToArray();
+        var scores = CombinedScores(slots.Select(s => (s.Primary, s.Fallback)), weight);
         var best = scores.Max();
         var exponents = scores.Select(x => Math.Exp(x - best)).ToArray();
         var total = exponents.Sum();
@@ -590,7 +591,7 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
         }
 
         // The combination in the log domain over the other slots, normalized with the largest score subtracted
-        var scores = slots.Select(s => (weight * Math.Log(Math.Max(s.Primary, SlotFloor))) + ((1.0 - weight) * Math.Log(Math.Max(s.Fallback, SlotFloor)))).ToArray();
+        var scores = CombinedScores(slots.Select(s => (s.Primary, s.Fallback)), weight);
         var best = Enumerable.Range(0, slots.Count).Where(k => !isFixed[k]).Max(k => scores[k]);
         var exponents = scores.Select(x => Math.Exp(x - best)).ToArray();
         var total = Enumerable.Range(0, slots.Count).Where(k => !isFixed[k]).Sum(k => exponents[k]);
@@ -614,6 +615,33 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
 
         var analysesOfResult = combined.ToImmutable();
         return new ClassifyResult(primary.Word, primary.IsKnown, analysesOfResult, analysesOfResult[0].Details, SenseLevel.PartOfSpeech, probability[order[0]], null, null);
+    }
+
+    /// <summary>
+    ///     Computes the log score of every slot of the weighted combination <c>p_primary^w × p_fallback^(1−w)</c>.
+    /// </summary>
+    /// <param name="slots">The probability of every slot in the primary result and in the fallback result (0 when a result does not list it).</param>
+    /// <param name="weight">The primary weight, from 0 to 1.</param>
+    /// <returns>One score per slot.</returns>
+    /// <remarks>
+    ///     A slot that a result does not list counts with <see cref="SlotFloor"/> when that result has a weight above 0, so
+    ///     that it is unlikely and not impossible. A result with the weight 0 does not take part at all, so at the
+    ///     endpoints the combination is that of one result alone (a slot that only the other result lists has no
+    ///     probability). When the one result lists none of the slots the floor applies as in between.
+    /// </remarks>
+    private static double[] CombinedScores(IEnumerable<(double Primary, double Fallback)> slots, double weight)
+    {
+        var list = slots.ToList();
+        if (weight >= 1.0 || weight <= 0.0)
+        {
+            var scores = list.Select(s => Math.Log(weight >= 1.0 ? s.Primary : s.Fallback)).ToArray();
+            if (scores.Any(double.IsFinite))
+            {
+                return scores;
+            }
+        }
+
+        return [.. list.Select(s => (weight * Math.Log(Math.Max(s.Primary, SlotFloor))) + ((1.0 - weight) * Math.Log(Math.Max(s.Fallback, SlotFloor))))];
     }
 
     /// <summary>

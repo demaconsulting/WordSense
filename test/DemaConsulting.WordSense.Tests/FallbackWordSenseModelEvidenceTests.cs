@@ -185,6 +185,37 @@ public class FallbackWordSenseModelEvidenceTests
     }
 
     /// <summary>
+    ///     At the weight 1 a slot that only the fallback result lists has no probability, and at the weight 0 a slot that
+    ///     only the primary result lists has none: the endpoints are the pure results, without the floor.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_EvidenceWeight_EndpointsGiveNoProbabilityToTheOtherResultsSlots()
+    {
+        // Arrange: the fallback lists an adjective slot that the primary does not, the primary lists a noun slot that the fallback does not
+        var adjective = new WordDetails("use", PartOfSpeech.Adjective, "Degree=Pos");
+        var primary = Primary(0.7, 0.15, 0.15);
+        ClassifyResult fallback = new("use", true, [new(UseInf, 0.5, VerbSenses, true), new(UsePres, 0.2, VerbSenses, true), new(adjective, 0.3, [], true)], UseInf, SenseLevel.PartOfSpeech, 0.7, null, null);
+
+        // Act
+        var one = await RunAsync(primary, fallback, 1.0);
+        var zero = await RunAsync(primary, fallback, 0.0);
+        var between = await RunAsync(primary, fallback, 0.8);
+
+        // Assert: exactly the primary's slots at 1 and the fallback's at 0, still summing to one, and the floor between
+        Assert.Equal(0.0, Slot(one, PartOfSpeech.Adjective));
+        Assert.Equal(0.7, Slot(one, PartOfSpeech.Noun), 12);
+        Assert.Equal(0.3, Slot(one, PartOfSpeech.Verb), 12);
+        Assert.Equal(1.0, one.Analyses.Sum(a => a.Probability), 12);
+        Assert.Equal(0.0, Slot(zero, PartOfSpeech.Noun));
+        Assert.Equal(0.7, Slot(zero, PartOfSpeech.Verb), 12);
+        Assert.Equal(0.3, Slot(zero, PartOfSpeech.Adjective), 12);
+        Assert.Equal(1.0, zero.Analyses.Sum(a => a.Probability), 12);
+        Assert.True(Slot(between, PartOfSpeech.Adjective) > 0.0);
+        Assert.True(Slot(between, PartOfSpeech.Noun) > 0.0);
+    }
+
+    /// <summary>
     ///     A primary model that provides the evidence has its closed-class slots weighed like every other slot: the split
     ///     of the closed-class slots from the fallback result is not applied.
     /// </summary>

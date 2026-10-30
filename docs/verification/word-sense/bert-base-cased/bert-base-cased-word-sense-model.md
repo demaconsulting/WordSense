@@ -87,8 +87,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
   the weight is 0.8 by default (`PartOfSpeechHeadWeight`, internal) and reaches the composition (`PrimaryWeight`), the
   internal constructor sets another one (0.25) and rejects a weight below 0; it needs no model file.
 - **Lexicon-only text needs no ensure** (`BertBaseCasedWordSenseModel_ClassifyAsync_LexiconOnly_NeedsNoEnsure`): a text
-  of words that have one part of speech or are unknown is answered on a model that was never ensured, without any model
-  file; a text with a word of several parts of speech ensures the files lazily (verified for the shared base class in
+  of unknown words and of known words of one part of speech with no scored senses is answered on a model that was never
+  ensured, without any model
+  file; a text with a word of several parts of speech or a word with scored senses ensures the files lazily (verified
+  for the shared base class in
   `OnnxWordSenseModel_ClassifyAsync_WordOfSeveralPartsOfSpeech_NeedsTheEncoder`).
 - **Disposal** (`Dispose_DisposesEncoderAndFallback`): disposing disposes the encoder model and the Basic model, and
   `EnsureModelAsync` and `ClassifyAsync` after disposal throw `ObjectDisposedException`.

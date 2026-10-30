@@ -68,7 +68,8 @@ internal delegate ValueTask<WordVectors> PooledViewEncode(IReadOnlyList<string> 
 ///     scored (no weights, fewer than two scored senses, no usable vector) has the head's probability for each part of
 ///     speech, shared equally by its lemmas, the analyses of a slot split it equally (the lexicon order is kept), at the
 ///     <see cref="SenseLevel.PartOfSpeech"/> level, without scored senses. Such a word is left to the fallback model of a
-///     composition for its senses (see <see cref="FallbackWordSenseModel"/>). A word of one part of speech, a word without
+///     composition for its senses (see <see cref="FallbackWordSenseModel"/>). A word of one part of speech whose senses are
+///     not scored, a word without
 ///     a usable vector, and a classifier without a head (tests and the build tool) are answered from the lexicon alone:
 ///     every lemma and part of speech has the same probability 1/s for s of them. No fine sense is ever guessed.
 ///     </para>

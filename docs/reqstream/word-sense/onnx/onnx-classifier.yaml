@@ -39,8 +39,9 @@ sections:
                   OnnxClassifier shall read the words as one running text joined by single spaces, and shall run the
                   encoder only when at least one word needs it: a word that has several senses and intact lemma
                   weights or, for a classifier with a part-of-speech head, a known word of two or more distinct parts
-                  of speech whatever its lemma; a text of words of one part of speech, unknown words and words of one
-                  sense shall be answered without running the encoder, whatever the head.
+                  of speech whatever its lemma; a text of unknown words, words of one sense and known words of one part
+                  of speech whose senses are not scored shall be answered without running the encoder, whatever the
+                  head.
                 tags: [unit]
                 justification: |
                   Encoding is the expensive step; a text without ambiguous words must not pay for it. With a head the

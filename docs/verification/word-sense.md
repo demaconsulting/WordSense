@@ -88,7 +88,8 @@ results of the encoder model and of the Basic model; `BertBaseCasedWordSenseMode
 `BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersAtThePartOfSpeechLevel`;
 system requirement `WordSense-Lib-PartOfSpeech`). Its model files are needed, and ensured lazily, only for a text that
 has such a
-word or a word with scored senses, so a text of words of one part of speech and unknown words never touches a model file
+word or a word with scored senses, so a text of unknown words and of known words of one part of speech with no scored
+senses never touches a model file
 (`BertBaseCasedWordSenseModel_ClassifyAsync_LexiconOnly_NeedsNoEnsure`,
 `OnnxWordSenseModel_ClassifyAsync_WordOfSeveralPartsOfSpeech_NeedsTheEncoder`). The MiniLM model carries a head that it
 validates and does not use, so it keeps its behavior: it answers an untrained ambiguous word from the Basic model without

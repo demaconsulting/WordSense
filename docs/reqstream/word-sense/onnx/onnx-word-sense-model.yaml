@@ -86,7 +86,8 @@ sections:
                   ensure its model files lazily on first need (with the default and environment mirror settings,
                   sharing one ensure between concurrent callers and allowing a failed ensure to be retried), and shall
                   answer words that need no model without touching model files or the encoder: unknown and
-                  single-sense words, words of one part of speech, and, for a model without a part-of-speech head in
+                  single-sense words, known words of one part of speech whose senses are not scored, and, for a model
+                  without a part-of-speech head in
                   use, an ambiguous word without trained weights, which gets the lexicon analyses at the part of
                   speech level (every lemma and part of speech equally likely, the feature variants of one sharing its
                   probability, no scored senses). For a model whose head is in use, the first text that has a known word

@@ -332,8 +332,11 @@ next to it, so it decides the part of speech of every word that has two or more 
 whether or not the word has trained senses. The probability of a part of speech is the classifier's, limited to the parts
 of speech the dictionary lists for the word; the probability of a lemma inside one part of speech and of a sense inside
 a lemma are still the encoder's. A word with several parts of speech therefore makes the model read the whole sentence
-(encoder run and, on first use, a file download), even when no trained lemma is in it; a text of words with one part of
-speech never does. There is no option to turn this off. `MiniLM` does not use the classifier: it scores a part of speech
+(encoder run and, on first use, a file download), even when no trained lemma is in it. The model needs its files when
+the text has a known word of two or more parts of speech, or a word whose lemma has scored senses (a trained lemma with
+several senses, even of one part of speech); a text of unknown words and of known words of one part of speech whose
+senses are not scored does not. There is no option to turn this off. `MiniLM` does not use the classifier: it scores a
+part of speech
 by the mass of its senses, as described next.
 
 **Fallback.** `FallbackWordSenseModel(primary, fallback)` combines two models. A word gets the complete result of the
@@ -380,9 +383,10 @@ The SHA-256 values are in `SHA256SUMS` of each model folder (`model/<model-id>/`
 ## Preparing a Model
 
 `EnsureModelAsync` is optional: `ClassifyAsync` ensures the files lazily. `MiniLM` does it on the first word that has a
-trained lemma with several senses. `BertBaseCased` does it on the first sentence that has a word of two or more parts of
-speech in the dictionary (most English text does), whether or not the word is trained, and there is no option to avoid
-it; a text of words with one part of speech never touches the files. Call `EnsureModelAsync` to control when the
+trained lemma with several senses. `BertBaseCased` does it on the first text that has a known word of two or more parts
+of speech in the dictionary (most English text does) or a word whose lemma has scored senses, and there is no option to
+avoid it; a text of unknown words and of known words of one part of speech whose senses are not scored never touches the
+files. Call `EnsureModelAsync` to control when the
 download happens and to handle failures up front. Concurrent callers share one ensure, and a failed ensure can be
 retried.
 

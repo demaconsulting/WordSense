@@ -78,8 +78,8 @@ of the Basic model (the weight 0.8), and disposing the model disposes the encode
 (`BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersAtThePartOfSpeechLevel`,
 `BertBaseCasedWordSenseModel_PartOfSpeechAnswer_ReweighsTheHeadAgainstBasic`,
 `BertBaseCasedWordSenseModel_Dispose_DisposesEncoderAndFallback`). The assembly references the core and Onnx
-packages (`BertBaseCasedWordSenseModel_Assembly_ReferencesCoreAndOnnx`). A text of words of one part of speech and
-unknown words needs no model file (`BertBaseCasedWordSenseModel_ClassifyAsync_LexiconOnly_NeedsNoEnsure`).
+packages (`BertBaseCasedWordSenseModel_Assembly_ReferencesCoreAndOnnx`). A text of unknown words and of known words of
+one part of speech with no scored senses needs no model file (`BertBaseCasedWordSenseModel_ClassifyAsync_LexiconOnly_NeedsNoEnsure`).
 
 #### The Embedded Head Is Used
 

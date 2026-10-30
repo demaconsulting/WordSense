@@ -34,7 +34,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Store is used without a directory**: without a model directory the files are obtained through the downloader into
   `<store>/<model-id>/`.
 - **Lexicon-only words never touch model files** (`LexiconOnlyWords_NeverTouchesModelFiles`): `ClassifyAsync` on words
-  with at most one sense or one part of speech, on a model whose directory does not exist, returns the lexicon answers
+  with at most one sense, or one part of speech and no scored senses, on a model whose directory does not exist,
+  returns the lexicon answers
   without any ensure.
 - **Untrained ambiguous words need no model without a head**
   (`NoHead_UntrainedAmbiguousWords_AnswerPartOfSpeechWithoutModelFiles`): `ClassifyAsync(["They", "will", "record",
@@ -47,7 +48,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   (`OnnxWordSenseModel_ClassifyAsync_MissingDirectory_ThrowsModelUnavailable`).
 - **A word of several parts of speech needs the encoder with a head**
   (`WordOfSeveralPartsOfSpeech_NeedsTheEncoder`): on a model whose description names a head and declares it in use, and
-  whose directory does not exist, a text of words of one part of speech and unknown words (`knowledge`, a made-up
+  whose directory does not exist, a text of unknown words and of known words of one part of speech whose senses are not
+  scored (`knowledge`, a made-up
   word) is
   answered without any file, and a text that has `record` (a noun and a verb, an untrained lemma) throws
   `ModelUnavailableException` from the lazy ensure, which the model cannot be told to skip. A model that carries a head

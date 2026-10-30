@@ -200,14 +200,15 @@ The probabilities are computed per slot, never per variant:
    - A pending word whose view splits it (a possessive written as one token) is scored with its vector pooled over all
      its pieces, from a second encoder pass for that word, so the weights see the vector they were trained on; a word
      that the view keeps whole is scored with the vector of the view.
-   - A word of one part of speech, an unknown word and a word of one sense need neither the head nor the encoder
-     for the part of speech.
+   - A word of one part of speech whose senses are not scored, an unknown word and a word of one sense need neither the
+     head nor the encoder for the part of speech.
 
 `NeedsEncoder` and `ResolveWithoutModel` let the model answer text without ensuring or opening anything: `NeedsEncoder`
 takes the weights table (the embedded weights, which need no model file) and whether the classifier has a head, and is
 true when a word is pending, that is, has several senses together with usable weights (or a chooser), or, with a head,
 when a known word has two or more distinct parts of speech in the lexicon, whatever its lemma. There is no opt-out.
-Words that are unknown, have one part of speech and one analysis or one sense, or (without a head) get the lexicon-only
+Words that are unknown, have one analysis or one sense, have one part of speech and are not pending, or (without a
+head) get the lexicon-only
 answer are answered without the encoder and without model files.
 
 #### Error Handling

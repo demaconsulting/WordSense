@@ -55,8 +55,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `WordsOfOnePartOfSpeech_DoNotRunTheEncoder`; scoring increment): the encoder runs once for a text in which at least one
   word has several senses and usable weights, only for those words, and never for a text in which no word does.
   `NeedsEncoder` is true for a pending word, and, with a head, for a known word of two or more distinct parts of
-  speech whatever its lemma, and false for unknown words, words of one part of speech and words of one sense; a text of
-  such words does not run the encoder even with a head.
+  speech whatever its lemma, and false for unknown words, words of one sense and known words of one part of speech that
+  are not pending; a text of such words does not run the encoder even with a head.
 - **Part of speech from the head** (`UntrainedWordOfSeveralPartsOfSpeech_TakesTheRestrictedPosterior`,
   `UntrainedWord_FollowsTheHead`, `SeveralSlotsOfOnePartOfSpeech_ShareItsProbabilityEqually`; part-of-speech
   increment): a word of two parts of speech whose lemma has no weights gets the posterior of the head restricted to the

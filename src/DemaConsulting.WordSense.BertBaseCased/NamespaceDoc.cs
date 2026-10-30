@@ -28,8 +28,9 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     thresholds support; the part of speech of every word of several parts of speech comes from the embedded
 ///     part-of-speech head, combined with that of the Basic model, and every other ambiguous word is answered by the
 ///     Basic model, at the part-of-speech level (or at the sense level when its selected analysis has exactly one
-///     sense). A text made only of words with one part of speech is classified without reading the model files, and a
-///     text that has a word of several parts of speech ensures them on first use (no opt-out). The files are described
+///     sense). A text of unknown words and of known words of one part of speech whose senses are not scored is
+///     classified without reading the model files, and a text that has a known word of several parts of speech or a word
+///     whose lemma has scored senses ensures them on first use (no opt-out). The files are described
 ///     in the repository at
 ///     https://github.com/demaconsulting/WordSense/tree/main/model/bert-base-cased-int8. The model identifier
 ///     (<c>ModelId</c>) is <c>bert-base-cased-int8</c>; it names the store folder and the folder on a mirror. The encoder is

@@ -22,7 +22,8 @@ namespace DemaConsulting.WordSense;
 ///     the sentence, so almost every sentence of running text needs it) or a word whose senses it scores. The MiniLM
 ///     model needs them only for a word whose senses it scores (a trained lemma with several senses): its part of
 ///     speech comes from the mass of those senses and from the Basic model. There is no way to turn either rule off. A
-///     list that needs no encoder (for BertBaseCased: unknown words and words of one part of speech) is answered from
+///     list that needs no encoder (for BertBaseCased: unknown words and known words of one part of speech whose senses
+///     it does not score) is answered from
 ///     the lexicon and the Basic model alone and never touches model files or ONNX. When the model is needed
 ///     and was not ensured yet, the call ensures it with the defaults (no explicit download options; the
 ///     <c>WORDSENSE_MIRROR_*</c> environment variables apply). Concurrent callers share one ensure, and a failed ensure
