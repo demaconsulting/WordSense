@@ -7,7 +7,11 @@ real embedded lexicon, so the expected analyses, senses and levels follow from t
 need no model, no encoder and no other model package. The scoring scenarios build the classifier over a fake encoder
 (a delegate that returns designed vectors and counts its calls) and hand-made weights over the real senses of the
 shipped catalog, so the expected sense, group and confidence follow from the arithmetic; the thresholds of the weights
-are chosen so that a specific level is reached. Real-model behavior is verified in the MiniLM and BertBaseCased
+are chosen so that a specific level is reached. The part-of-speech evidence scenarios are in
+`OnnxClassifierPosTests.cs`: they build the classifier over a hand-made head, whose weights make the vector of a word
+point to a designed part of speech, and a fake view encoder that splits the possessives like the real one, returns
+designed vectors and records what it was asked, so the expected probabilities follow from the arithmetic of the head
+(`PosHead.Restrict`) and of the shares. Real-model behavior is verified in the MiniLM and BertBaseCased
 subsystem documents.
 
 #### Test Environment
@@ -47,12 +51,46 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Later analysis with one sense** (`SeveralAnalysesLaterWithOneSense_StaysAtPartOfSpeech`): likewise when only a later
   analysis has exactly one sense: no analysis lists scored senses and the answer stays at the `PartOfSpeech` level.
 - **Encoder only when needed** (`NoAmbiguousWords_DoesNotEncode`, `AmbiguousWords_UseTheEncoder`,
-  `OnlyAmbiguousWordsAreEncoded`; scoring increment): the encoder runs once for a text in which at least one word has
-  several senses and usable weights, only for those words, and never for a text in which no word does.
+  `OnlyAmbiguousWordsAreEncoded`, `NeedsEncoder_PendingWordsAndWordsOfSeveralPartsOfSpeech_AreTrue`,
+  `WordsOfOnePartOfSpeech_DoNotRunTheEncoder`; scoring increment): the encoder runs once for a text in which at least one
+  word has several senses and usable weights, only for those words, and never for a text in which no word does.
+  `NeedsEncoder` is true for a pending word, and, with a head, for a known word of two or more distinct parts of
+  speech whatever its lemma, and false for unknown words, words of one part of speech and words of one sense; a text of
+  such words does not run the encoder even with a head.
+- **Part of speech from the head** (`UntrainedWordOfSeveralPartsOfSpeech_TakesTheRestrictedPosterior`,
+  `UntrainedWord_FollowsTheHead`, `SeveralSlotsOfOnePartOfSpeech_ShareItsProbabilityEqually`; part-of-speech
+  increment): a word of two parts of speech whose lemma has no weights gets the posterior of the head restricted to the
+  parts of speech of the lexicon and renormalized, at the `PartOfSpeech` level with no scored senses, the slots listed
+  most probable first; the same word gets the other part of speech when the vector says so; slots of one part of speech
+  without scored senses share its probability equally.
+- **Closed-class slots with a head** (`ClosedClassSlots_GetPartOfSpeechMassAndNoSenses`): a closed-class slot of a word
+  of several parts of speech has the head's probability of its part of speech and lists no senses.
+- **Head and senses agree or disagree** (`TrainedLemma_HeadAgrees_KeepsTheSenseLevelWithTheHeadProbability`,
+  `TrainedLemma_HeadDisagrees_StepsDownToThePartOfSpeech`, `TrainedLemma_SensesInsideASlotDoNotDependOnTheHead`): when
+  the head ranks the slot of the best sense first the answer keeps its level and its confidence is the probability of
+  the part of speech times the probability of the sense within the slot; when it ranks another slot first the answer is
+  at the `PartOfSpeech` level with the probability of that slot, and the senses of every slot are still listed; the ranked
+  senses of every analysis equal those of a classifier without a head.
+- **Neighbors and the possessive view** (`Neighbors_AreThoseOfThePossessiveView`, `NextWord_ReachesTheHead`): the head
+  reads the vectors of the previous and the next token of the view, the first word has no previous vector, and across a
+  possessive written as one token the marker is the neighbor of the stem and of the next word.
+- **Vector of a pending word** (`PendingPossessive_UsesTheJoinedVector`, `PendingWordKeptWhole_UsesTheViewVector`): a
+  possessive of a trained lemma is scored with its vector pooled over all its pieces from a second pass for that
+  target; a word that the view keeps whole is scored with the vector of the view and needs no second pass.
+- **No usable vector for the head** (`WordWithoutVector_IsAnsweredFromTheLexicon`,
+  `VectorOfAnotherSize_IsAnsweredFromTheLexicon`): a word without a vector, or with a vector that does not have the
+  hidden size of the head, keeps the equal split of the lexicon.
+- **Invariants** (`ManyWords_KeepTheInvariants`): over many words and designed vectors the probabilities sum to one,
+  the analyses are ordered by their slot, the selected analysis is the first one, a closed-class slot lists no senses,
+  an answer at the part-of-speech level has the probability of its slot as confidence and an answer at a finer level
+  lies in the selected slot with a confidence not above the probability of the slot.
+- **Head without encoders** (`Constructor_HeadWithoutEncoders_Throws`): a classifier needs both the head and its view
+  encoder.
 - **Senses of every analysis** (`WordWithSeveralAnalyses_RanksTheSensesOfEveryAnalysis`,
   `ClosedClassUseOfLike_IsNotScored`, `ClosedClassSlotOfAnUnscoredLemma_HasNoProbability`,
   `ClosedOnlyChooserLabel_GivesItsProbabilityToNoSlot`, `EveryLabelClosedOnly_SharesEquallyAndIsFinite`,
-  `InflectedForm_RanksTheSensesOfItsLemma`; scoring increment): a chooser label that stands for the auxiliary `be` only
+  `InflectedForm_RanksTheSensesOfItsLemma`; scoring increment): for a classifier without a head, a chooser label that
+  stands for the auxiliary `be` only
   (`there's`) gives its probability to no slot, so the adverb takes all of it and the auxiliary stays at 0; a form whose
   two labels are both closed-only (`that's`) shares equally and stays finite; the determiner of `more` (a lemma without
   weights) has probability 0 while the open-class slots of untrained lemmas still share the mass; a word with

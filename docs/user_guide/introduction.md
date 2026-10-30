@@ -149,7 +149,8 @@ so test the `Level`, not whether the confidence is 1.
 
 The confidence is a score, not a calibrated probability. Compare it only within one result, never across models, words
 or levels: 0.9 at the `Group` level means something other than 0.9 at the `Sense` level. Choose a threshold per model
-and level on your own text.
+and level on your own text. How far the part-of-speech probability of `BertBaseCased` can be trusted is measured in
+"Accuracy and Model Choice".
 
 ## Analyses and Senses
 
@@ -242,8 +243,8 @@ writes the table as a TSV.
 # Choosing a Model
 
 The chapter "Model Comparison Table" lists accuracy, size and speed, and "Accuracy and Model Choice" explains the
-columns. The part of speech is the dependable part of an answer in all three models. Treat a sense as a candidate to
-check.
+columns. The part of speech is the dependable part of an answer; `BertBaseCased` decides it best. Treat a sense as a
+candidate to check.
 
 - Use the **core package alone** to look up analyses and senses, resolve a sense id or key, and answer words that have
   one sense.
@@ -251,7 +252,9 @@ check.
   also the fallback of the encoder models.
 - Use **`MiniLM`** (uncased, 22 MiB) for a small download and fast answers. It answers mostly at the part-of-speech and
   group levels.
-- Use **`BertBaseCased`** (cased, 104 MiB) for fine senses. It commits to a sense most often and ranks senses best.
+- Use **`BertBaseCased`** (cased, 104 MiB) for the best part of speech and for fine senses. It reads every sentence that
+  has a word of several parts of speech, so it needs its files for such text (see "Preparing a Model"). It commits to a
+  sense most often and ranks senses best.
 
 The sentence of the README, answered by the encoder models. The confidences differ slightly between CPUs, and a word
 near its threshold can be answered one level finer or coarser (`BertBaseCased` answers `back` at the group
@@ -304,7 +307,7 @@ record    Noun         PartOfSpeech 0.91
 then      Adverb       PartOfSpeech 1.00
 go        Verb         PartOfSpeech 1.00
 back      Adverb       Sense        1.00  back#to-former-place
-home      Adverb       PartOfSpeech 0.79
+home      Adverb       Sense        0.99  home#to-residence
 ```
 
 ## How the Models Decide
@@ -323,18 +326,35 @@ analysis that belongs to several lemmas or tenses is first chosen by a
 per-form classifier. The scores are corrected to the usage of the senses (the WordNet 3.0 counts), so the most probable
 sense is the usual one unless the context says otherwise.
 
+**The part of speech of `BertBaseCased`.** The model carries a small classifier of the part of speech, trained on the
+open corpus of the project (see "Licensing and Attribution"). It reads the encoder vectors of the word and of the words
+next to it, so it decides the part of speech of every word that has two or more parts of speech in the dictionary,
+whether or not the word has trained senses. The probability of a part of speech is the classifier's, limited to the parts
+of speech the dictionary lists for the word; the probability of a lemma inside one part of speech and of a sense inside
+a lemma are still the encoder's. A word with several parts of speech therefore makes the model read the whole sentence
+(encoder run and, on first use, a file download), even when no trained lemma is in it; a text of words with one part of
+speech never does. There is no option to turn this off. `MiniLM` does not use the classifier: it scores a part of speech
+by the mass of its senses, as described next.
+
 **Fallback.** `FallbackWordSenseModel(primary, fallback)` combines two models. A word gets the complete result of the
 primary model when the primary scored senses for it, and otherwise the complete result of the fallback. A result is
 never a mixture. MiniLM and BertBaseCased are an encoder with `Basic` as the fallback, so an ambiguous word that the
-encoder was not trained for gets the `Basic` analysis at the `PartOfSpeech` level, with its senses ranked by usage. When
+encoder was not trained for gets the `Basic` analysis at the `PartOfSpeech` level, with its senses ranked by usage; the
+exception is `BertBaseCased`, below. When
 the primary gives every feature variant of a slot the same probability, as an encoder does, the variants take the
 proportions of the fallback, which reads the tense. The constructor `FallbackWordSenseModel(primary, fallback,
 primaryWeight)` takes a weight: below 1, an answer at the part-of-speech level combines the slot probabilities of both
-models as `p_primary^w × p_fallback^(1−w)`. `MiniLM` uses 0.6 and `BertBaseCased` uses 1 (off). The encoders score no
+models as `p_primary^w × p_fallback^(1−w)`. `MiniLM` uses 0.6. The `MiniLM` encoder scores no
 closed-class use of a word (an auxiliary, determiner, pronoun, preposition, conjunction or interjection), so those slots
 take their probability from the fallback, and the answer is at the `PartOfSpeech` level when one of them is the most
 probable. A one-sense answer of the fallback for a word with several analyses stays at the `Sense` level only at a
 confidence of 0.97 or more; below that it is the same analysis at the `PartOfSpeech` level.
+
+`BertBaseCased` combines its part-of-speech probabilities with those of `Basic` for every word of several parts of
+speech, with the weight 0.8, whether or not the word has trained senses. When the combined top part of speech is the
+one the encoder answered, the answer keeps its level; when it changes, the answer steps down to the `PartOfSpeech`
+level of the new one. The classifier scores closed-class uses too, so they need no special rule; the 0.97 rule for
+a one-sense answer of `Basic` and the tense split of `Basic` stay.
 
 **Your own model.** Implement `IWordSenseModel` (`ClassifyAsync` and `Dispose`) to wrap another engine. Return a non-null
 array parallel to the input, `ClassifyResult.Unknown(word)` for an unknown word, and for a known word all analyses
@@ -359,9 +379,12 @@ The SHA-256 values are in `SHA256SUMS` of each model folder (`model/<model-id>/`
 
 ## Preparing a Model
 
-`EnsureModelAsync` is optional: `ClassifyAsync` ensures the files lazily, on the first word that needs the encoder. Call
-it to control when the download happens and to handle failures up front. Concurrent callers share one ensure, and a
-failed ensure can be retried.
+`EnsureModelAsync` is optional: `ClassifyAsync` ensures the files lazily. `MiniLM` does it on the first word that has a
+trained lemma with several senses. `BertBaseCased` does it on the first sentence that has a word of two or more parts of
+speech in the dictionary (most English text does), whether or not the word is trained, and there is no option to avoid
+it; a text of words with one part of speech never touches the files. Call `EnsureModelAsync` to control when the
+download happens and to handle failures up front. Concurrent callers share one ensure, and a failed ensure can be
+retried.
 
 <!-- sample:download -->
 ```csharp
@@ -436,7 +459,8 @@ used only when it is set), `WORDSENSE_MIRROR_USER` and `WORDSENSE_MIRROR_PASSWOR
   call, an encoder through the returned task, so put the `await` inside the `try`.
 - `ClassifyAsync` is safe for concurrent use. Calls share one ONNX session. The encoder models run on the CPU only.
 - `Basic` runs synchronously. An encoder runs inference on the thread that continues the call: offload it yourself if
-  the caller must not block.
+  the caller must not block. `BertBaseCased` reads whole sentences, in overlapping windows of up to 128 word pieces,
+  so the time grows in step with the length of the text (the cost of long text is in "Accuracy and Model Choice").
 - A cancellation token cancels the wait of that call only. The shared ensure keeps running until it finishes or the model
   is disposed. A single ONNX run is never interrupted.
 
@@ -464,19 +488,23 @@ data, from `WordLexicon` and `Basic`.
 
 - **The word table decides what is known.** A word that `WordLexicon.Lookup` does not find is unknown: numbers written
   with digits, most names, dialect spellings and archaic verb endings.
-- **Only some ambiguous words are decided by an encoder.** The encoders choose from context for the lemmas with trained
-  weights (see the appendix). Any other ambiguous word, such as `sheet`, `trade` or `crack`, is answered at the
-  part-of-speech level by `Basic`, with its senses ranked by usage.
+- **Only some ambiguous words get senses from an encoder.** The encoders choose senses from context for the lemmas with
+  trained weights (see the appendix). Any other ambiguous word, such as `sheet`, `trade` or `crack`, has its senses
+  ranked by usage. `MiniLM` answers such a word at the part-of-speech level with the part of speech of `Basic`;
+  `BertBaseCased` decides its part of speech from the sentence and combines it with that of `Basic`.
 - **`Basic` decides the part of speech from the words next to a word and from word statistics, not from the whole
   sentence** (a hidden Markov model with context cues). A clue further away is out of its reach.
 - **Its known weak spots** are a noun use of a word that is mostly a verb after a modifier noun (`security check`,
   `monitor stand`, `dial travel`: on the development splits 9 of 23 such nouns were right, against 303 of 324 verb uses
   of the same words), short fragments without a determiner (`Wash pump`) and a gerund that opens a sentence.
-- **When these matter, use `MiniLM` or `BertBaseCased`.** For the lemmas they are trained for (see the appendix) they
-  read the whole sentence and decide the part of speech better; every other word keeps the part of speech of `Basic`.
+- **When these matter, use `BertBaseCased`.** It reads the whole sentence for every word of several parts of speech.
+  `MiniLM` does so only for the lemmas it is trained for (see the appendix); every other word keeps the part of speech
+  of `Basic`.
 - **Treat the part of speech of `Basic` as reliable at a confidence of 0.8 or more, or when an encoder model agrees.**
   Below that, check the alternatives in `Analyses`. The weak spots above can be wrong with high confidence, so check
-  them whatever the confidence.
+  them whatever the confidence. The part-of-speech probability of `BertBaseCased` is measured in "Accuracy and Model
+  Choice"; an answer at the `PartOfSpeech` level can have a lower confidence than that probability when the part of
+  speech has several lemmas, because the confidence is the probability of one lemma.
 - **Fine senses are WordNet's.** Even a trained model can often tell only the group.
 - **Group ids change between releases.** Sense ids are frozen.
 - **There is no pronunciation data.** Map the sense id, group id or key to your own pronunciations.
@@ -502,8 +530,9 @@ it that do not contain its sentences. This is the project's reading and not lega
   part-of-speech corpus `corpus/open` are CC0 1.0. The sense labels, groups and project senses are MIT. The README
   section "Credits and Licenses" gives the owner's position on the content that language models wrote or labeled.
 - **Part-of-speech heads**: the MiniLM and BertBaseCased packages each embed a numeric part-of-speech classifier for
-  their encoder. It is trained only on the training split of `corpus/open`, holds no text and is described in the
-  `NOTICE.md` of the package.
+  their encoder; only `BertBaseCased` uses it. It is trained only on the training split of `corpus/open`, holds no text
+  and is described in the `NOTICE.md` of the package. Language models produced the tags it learns from; see the README
+  section "Credits and Licenses".
 - **Real sentences**: Tatoeba sentences of the official CC0 export, Project Gutenberg books published 1930 or earlier,
   and works of US federal agencies (VOA Learning English, USGS, NPS, NOAA National Weather Service and FAA; public domain
   under 17 U.S.C. §105). The open corpus uses no FAA text; its sentences are these public-domain and CC0 sources plus

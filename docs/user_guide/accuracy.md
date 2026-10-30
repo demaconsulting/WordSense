@@ -43,22 +43,23 @@ in the model part of the first use and 2 MiB in memory. Read them as an order of
 models. RAM is the growth of the process from before the model was created to after warm-up, without the word table
 (about 15 MiB).
 
-Part of speech has the same quality in all three models (94.6 to 94.7% on the open corpus test split) and is the
-dependable part of an answer. BertBaseCased commits to a sense most often, and its most probable sense is right for 58.5%
-of the SemCor words of the trained lemmas, MiniLM's for 54.7%. Both are below the most-used-sense baseline of 66.1%, which
-has seen the answers (see "Caveats"). The levels of the encoder answers on the real test sentences:
+Part of speech is the dependable part of an answer, and `BertBaseCased` decides it best (the model table; the section
+"Part of Speech of BertBaseCased" explains how). It also commits to a sense most often, and its most probable sense is
+right for 60.1% of the SemCor words of the trained lemmas, MiniLM's for 54.7%. Both are below the most-used-sense
+baseline of 66.1%, which has seen the answers (see "Caveats"). The levels of the encoder answers on the real test
+sentences:
 
 | Model | Sense (share, precision) | Group (share, precision) | Part of speech (share, precision) | Fine top-1 |
 | --- | ---: | ---: | ---: | ---: |
 | MiniLM | 15.7%, 95.8% | 0.6%, 93.8% | 83.7%, 95.6% | 65.4% |
-| BERT base cased | 42.4%, 95.8% | 0.6%, 94.1% | 57.0%, 95.6% | 74.8% |
+| BERT base cased | 42.4%, 96.0% | 0.6%, 94.3% | 56.9%, 96.7% | 74.9% |
 
 ## Part of Speech
 
 Basic is a second-order hidden Markov model over thirteen tags, fused with naive Bayes context cues for lemmas with at
 least two senses. Its statistics come from the open part-of-speech corpus of this project (CC0 annotations), not from a
-treebank. The
-encoder models use its part of speech for the words they do not decide. Test figures as all tokens (ambiguous tokens;
+treebank. `MiniLM` uses its part of speech for the words it does not decide; `BertBaseCased` combines it with its own (see
+"Part of Speech of BertBaseCased"). Test figures as all tokens (ambiguous tokens;
 noun-verb tokens):
 
 <!-- markdownlint-disable MD013 -->
@@ -67,7 +68,7 @@ noun-verb tokens):
 | --- | ---: |
 | Open corpus test | 94.62% (92.78%; 95.41%) |
 | Treebank test (convention-mapped) | 92.42% (89.82%; 92.88%) |
-| Treebank test, MiniLM and BertBaseCased | 92.63 to 92.84% |
+| Treebank test, MiniLM | 92.84% |
 | Independent benchmark, all-token part of speech, pooled | 91.3% |
 | Targeted challenge set | 98.65% |
 
@@ -111,33 +112,27 @@ verb token whose form has both. The majority is the share of the more frequent g
 
 | Model | Open corpus test (110 tokens, majority 57.3%) | Treebank test (95, 63.2%) | Treebank pooled (994, 61.9%) | `read` on the treebank, pooled (72, 59.7%) | `read` on the independent read set, test half (198, always present 67.2%) |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Basic | 81.8% | 85.3% | 86.0% | 77.8% | 83.3% |
-| MiniLM | 82.7% | 85.3% | 85.6% | 77.8% | 83.3% |
-| BertBaseCased | 83.6% | 86.3% | 85.9% | 77.8% | 83.3% |
+| Basic | 81.8% | 86.3% | 86.2% | 77.8% | 83.3% |
+| MiniLM | 82.7% | 85.3% | 85.4% | 77.8% | 83.3% |
+| BertBaseCased | 83.6% | 85.3% | 85.8% | 77.8% | 84.8% |
 
 <!-- markdownlint-enable MD013 -->
 
-On the 68 other same-spelling verbs (753 treebank tokens never trained on) the models reach 82.5 to 83.7%, against 74.5%
+On the 68 other same-spelling verbs (753 treebank tokens never trained on) the models reach 82.6 to 83.7%, against 74.5%
 for always answering the non-past. The sets are small, so read the pooled column. The model is a bag of context words
 with a few positional features, so a time adverb far from the verb, or a plural present against a past after a bare
 subject (`I let everyone know`), can be wrong.
 
 ## Part of Speech of the Encoder Models
 
-The probability that an encoder gives a slot (a lemma and part of speech) is the mass of its senses, trained on
-sentences balanced by sense. It is not an estimate of the part of speech, so a top slot at the part-of-speech level can
-be wrong where Basic is right: on the treebank (157 verb tokens) MiniLM called 42 uses of the verb `use` a noun, and
-Basic called 2.
+**`MiniLM`.** The probability that the encoder gives a slot (a lemma and part of speech) is the mass of its senses,
+trained on sentences balanced by sense. It is not an estimate of the part of speech, so a top slot at the part-of-speech
+level can be wrong where Basic is right: on the treebank (157 verb tokens) MiniLM called 42 uses of the verb `use` a
+noun, and Basic called 2. For that case `FallbackWordSenseModel` combines the slot probabilities of the encoder and of
+Basic as `p_encoder^w × p_basic^(1−w)`, with `w` = 0.6 for MiniLM, chosen on development data only. Two more rules apply
+to the combination:
 
-For that case `FallbackWordSenseModel` combines the slot probabilities of the encoder and of Basic as
-`p_encoder^w × p_basic^(1−w)`. The primary weight `w` is 0.6 for MiniLM and 1 (no combination) for BertBaseCased,
-chosen on development data only. On the part-of-speech heteronyms of the independent benchmark (the treebank, SemCor
-and a read set; not part of the repository) BertBaseCased is right for 98.7% of the words, MiniLM for 97.8% and Basic for
-95.1%.
-
-Two more rules apply to the combination:
-
-- **Closed-class slots.** The encoders score no closed-class use of a word (an auxiliary, determiner, pronoun,
+- **Closed-class slots.** The `MiniLM` encoder scores no closed-class use of a word (an auxiliary, determiner, pronoun,
   preposition, conjunction or interjection: no WordNet senses). The probability of such a slot is Basic's, and the
   encoder decides only inside the open-class part. When a closed-class slot is the most probable, the answer is at the
   part-of-speech level (`have` as an auxiliary or a verb).
@@ -147,6 +142,35 @@ Two more rules apply to the combination:
   `much`).
 
 Otherwise an answer at the sense or group level is never touched.
+
+## Part of Speech of BertBaseCased
+
+`BertBaseCased` embeds a part-of-speech classifier (the head): a linear model on the encoder vectors of the word and of
+its two neighbors, trained only on the training split of the open corpus, with the settings chosen on its development
+split. Its posterior over the ten parts of speech, limited to the parts the dictionary lists for the word, gives the
+probability of each slot as `P(part of speech) × share(slot | part of speech)`, where the share is the slot's share of the
+sense mass among the slots of the same part of speech. Closed-class slots get probability from the head. The composite
+then combines the slot probabilities with those of Basic with the weight 0.8 (chosen on the development split, and
+flat between 0.6 and 1.0 (within 0.15 points on the same split). When the top slot changes in the combination, the
+answer steps down to the part-of-speech level. The head reads every word of the sentence, so any sentence with a word of
+several parts of speech runs the encoder; the cost of a text grows with its length (a text of 536 words takes about
+0.4 s, about 40 times the time of one sentence, on the machine of the model table).
+
+The model table gives the part of speech of the model on every set. Where the head and Basic disagree, the weight of 0.8
+decides for the head even when the sense mass of the encoder was sure of the other part of speech: `Every student was
+present at the morning assembly` is answered as the verb `present` at the `PartOfSpeech` level, because the head
+prefers the verb. The sense mass takes no part in the choice of the part of speech: blending it in did not raise the
+accuracy on the development split.
+
+**Calibration.** The part-of-speech probability of the selected part of speech is better calibrated than the sense mass
+it replaces. The expected calibration error (ECE) is 1.14% on the open development split, 1.45% on the open test split
+and 3.09% on the treebank test (4.00% there, and 2.69% on the open test, with the sense mass). It is over-confident on
+treebank-style text: in the top bin (0.9 and above, 93% of the tokens) 97.1% of the answers are right at a mean
+probability of 0.995, a gap of 2.5 points, because 3.9% of the tokens put most of the head's mass on a part of speech
+the dictionary does not list for the word, and the restriction to the listed parts renormalizes that mass. The tokens
+below 0.9 (6.5%) are over-confident by 9 to 28 points. The
+`Confidence` of an answer at the `PartOfSpeech` level is the probability of its slot, so it is lower than the
+part-of-speech probability for a word whose part of speech has several lemmas (the slot is one of them).
 
 ## The Usage Prior
 
@@ -165,14 +189,14 @@ weights and costs nothing at run time.
 
 **Independent measurement.** The fine top-1 counts a token when the first ranked sense of the selected analysis is the
 gold sense. The baselines are told the gold lemma and part of speech. The models choose their own, and pick the right
-lemma and part of speech for 94.8 to 95.1% (development half) and 95.7 to 96.0% (test half) of the tokens. All figures
+lemma and part of speech for 94.8 to 96.8% (development half) and 95.7 to 97.7% (test half) of the tokens. All figures
 are the output of `evaluate-allwords --model all`.
 
 | Model or baseline | Development half | Test half |
 | --- | ---: | ---: |
 | Basic | 62.90% | 65.49% |
 | MiniLM | 69.04% | 70.03% |
-| BertBaseCased | 71.25% | 71.79% |
+| BertBaseCased | 72.24% | 73.30% |
 | First sense in OEWN order | 66.58% | 68.51% |
 | Sense with the highest WordNet 3.0 tag count | 66.58% | 68.51% |
 | Random sense | 27.99% | 27.23% |
@@ -199,8 +223,8 @@ an untrained lemma with fewer than two senses, which every model answers at the 
 | Basic | all (184,323) | 7.43% | 47.18% | 59.09% |
 | MiniLM | untrained | 4.12% | 85.88% | 69.93% |
 | MiniLM | all | 12.25% | 83.21% | 59.53% |
-| BertBaseCased | untrained | 4.16% | 85.14% | 69.98% |
-| BertBaseCased | all | 26.42% | 81.47% | 62.14% |
+| BertBaseCased | untrained | 5.29% | 89.65% | 72.17% |
+| BertBaseCased | all | 27.10% | 81.52% | 63.92% |
 | First sense with the highest WordNet 3.0 tag count | trained | | | 66.14% |
 | First sense with the highest WordNet 3.0 tag count | untrained | | | 77.32% |
 | First sense with the highest WordNet 3.0 tag count | all | | | 69.68% |
@@ -216,7 +240,7 @@ Basic chose is right too.
 - **SemCor is circular for the usage prior.** The WordNet 3.0 counts include SemCor's own, so the fine top-1 of the models
   on SemCor, the word prior of the tagger and the tag-count and first-sense baselines have seen the answers (the OEWN
   order matches the WordNet 3.0 top-count sense in 10,047 of the 10,062 blocks with a unique maximum). Read them as
-  optimistic references. The untrained fine top-1 (69.9 to 70.0% against 77.3% for a baseline that is told the lemma and
+  optimistic references. The untrained fine top-1 (69.9 to 72.2% against 77.3% for a baseline that is told the lemma and
   part of speech) shows that the prior is applied, not how good it is. The gold set is the independent measurement.
 - **The sense level is a candidate to check.** SemCor is very unlike the training sentences, and the sense answers are
   less precise there than on the held-out text, which is balanced by sense and is not the precision on running text.

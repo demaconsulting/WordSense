@@ -41,10 +41,13 @@ choosers and the per-lemma fine and group thresholds measured on the embeddings 
 against the shipped word image at load. The encoder scores the senses of the trained lemmas and answers them at the
 sense, group or part-of-speech level its thresholds allow, listing the probabilities of their analyses and senses;
 every word for which the encoder scored no senses (the other ambiguous words) is answered by the Basic model, with the
-probabilities of its analyses, at the part of speech level (or at the sense level when its selected analysis has
-exactly one sense, which the Basic model names without scoring). The assembly also embeds the part-of-speech head of
-this encoder (`head.bin`, the format `WSH1`): the encoder model loads and checks it with the weights, and no answer uses
-it.
+senses and level of its result (at the part of speech level, or at the sense level when its selected analysis has
+exactly one sense, which the Basic model names without scoring, and the confidence reaches 0.97). The assembly also
+embeds the part-of-speech head of
+this encoder (`head.bin`, the format `WSH1`): the encoder model loads and checks it with the weights and answers with
+it. For every known word of two or more parts of speech the probabilities of its slots are the head's, reweighed
+against those of the Basic model with the weight 0.8, and the encoder is needed (and the files ensured lazily) for the
+first text that has such a word.
 
 The package ships a `NOTICE.md` (packed by the project file, as the core package does). The embedded weights carry a
 sense usage prior derived from the WordNet 3.0 sense counts (the builder adds it to the stored biases), so the notice

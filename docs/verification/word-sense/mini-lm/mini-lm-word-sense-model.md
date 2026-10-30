@@ -33,10 +33,12 @@ All scenarios below pass on every platform and target framework of the CI matrix
   project): the weights embedded in the assembly load for the model id and hidden size, carry the inventory hash of the
   shipped word image and every sense of every lemma resolves.
 - **Embedded head** (`MiniLMWordSenseModel_EmbeddedHead_MatchesEncoderAndClasses`, in `EmbeddedHeadTests.cs` of the MiniLM
-  test project; no model file): the encoder model loads the head embedded in the assembly, which carries the model id
+  test project; no model file): the encoder model loads and checks the head embedded in the assembly, which carries the
+  model id
   `all-MiniLM-L6-v2-int8`, hidden size 384, the feature layout 1, the variant `word+-1`, the classes of `PartOfSpeech`
   in order and the SHA-256 of the pinned ONNX file; its posterior for a zero vector sums to one and its restriction to
-  the noun class gives that class probability one.
+  the noun class gives that class probability one. The model does not use the head: the scenario below for an untrained
+  ambiguous word needs no model file, which a model that used its head could not satisfy.
 - **Embedded head is bound** (`MiniLMWordSenseModel_EmbeddedHead_AgainstAnotherEncoderFile_IsRejected`): the head read
   against the digest of another file, or against another model id, throws `InvalidDataException`.
 - **Classification** (`Classify_AmbiguousWord_ReturnsDeterministicResults`,
@@ -49,7 +51,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   with several senses that the encoder does not score gets the complete result of the Basic model (the same analyses,
   probabilities, selected analysis, level and confidence as `BasicWordSenseModel` gives for the same text; the level is
   the part of speech, or the sense when the selected analysis has exactly one sense), never a
-  mixture, with no ensure of the model files.
+  mixture, with no ensure of the model files (the head of the package is not used: the model description declares it not
+  in use, so a word of several parts of speech does not need the encoder).
 - **Untrained polysemous word lists its senses by usage** (`MiniLMWordSenseModel_Classify_UntrainedPolysemousWord_ListsSensesRankedByUsagePrior`,
   `..._AnswersPartOfSpeechLevelWithoutSenseOrGroup`, `..._KeyCarriesTheLabelOfTheTopRankedSense`, in
   `MiniLMWordSenseModelTests.cs`, with no model files): the second `shelter` of "They will shelter the shelter." (a noun,

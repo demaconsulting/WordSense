@@ -8,7 +8,7 @@ H-live-2	fine	fine	fine
 H-live-3	fine	fine	fine
 H-live-4	fine	fine	fine
 H-live-5	fine	miss	fine
-H-live-6	miss	miss	fine
+H-live-6	miss	miss	miss
 H-used-1	answer	fine	fine
 H-used-2	answer	fine	fine
 H-used-3	fine	fine	fine
@@ -105,7 +105,7 @@ H-separate-1	fine	fine	fine
 H-separate-2	fine	fine	fine
 H-separate-3	fine	fine	fine
 H-separate-4	fine	fine	fine
-H-present-1	answer	fine	fine
+H-present-1	answer	fine	miss
 H-present-2	fine	fine	fine
 H-present-3	answer	fine	fine
 H-present-4	miss	fine	fine

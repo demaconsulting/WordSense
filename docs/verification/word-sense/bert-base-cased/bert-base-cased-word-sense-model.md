@@ -3,10 +3,12 @@
 #### Verification Approach
 
 Tests in `test/DemaConsulting.WordSense.BertBaseCased.Tests/BertBaseCasedWordSenseModelTests.cs` use the public type with
-the committed `bert-base-cased-int8` files, the embedded weights and the embedded lexicon. The model is a composition
+the committed `bert-base-cased-int8` files, the embedded weights and head and the embedded lexicon. The model is a
+composition
 (`FallbackWordSenseModel`) of a thin subclass of `OnnxWordSenseModel` and the Basic model; the shared behavior is
-verified in the Onnx and Basic unit documents, so these tests check the pinned identity, the composition and one real
-classification path.
+verified in the Onnx and Basic unit documents, so these tests check the pinned identity, the composition, the
+reweighing of the head against Basic and one real classification path. A scenario that classifies a word of several
+parts of speech needs the model files, because the head reads the encoder.
 
 #### Test Environment
 
@@ -44,14 +46,16 @@ All scenarios below pass on every platform and target framework of the CI matrix
   classifies the words of "They will record the record." with the verb analysis for the first `record` and the noun
   analysis for the second, each at a level that the result states, with a group id only where the level and the sense
   carry one; a trained lemma is answered by the encoder at a sense, group or part-of-speech level.
-- **Untrained ambiguous word is answered by Basic** (`Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback`): a word
-  with several senses that the encoder does not score gets the complete result of the Basic model (the same analyses,
-  probabilities, selected analysis, level and confidence as `BasicWordSenseModel` gives for the same text; the level is
-  the part of speech, or the sense when the selected analysis has exactly one sense), never a
-  mixture, with no ensure of the model files.
+- **Untrained ambiguous word is answered at the part-of-speech level**
+  (`Classify_UntrainedAmbiguousWord_AnswersAtThePartOfSpeechLevel`, with the committed model files): in "They will record
+  the record ." a word with several senses that the encoder does not score gets, for each `record`, the part of speech
+  that the context decides (a verb after `will`, a noun after `the`), at the part-of-speech level, with no sense id and
+  no
+  group id, probabilities that sum to one, more than one analysis, and the senses of the selected analysis ranked by
+  usage (two or more). The word needs the encoder for its head, so the scenario needs the model files.
 - **Untrained polysemous word lists its senses by usage** (`BertBaseCasedWordSenseModel_Classify_UntrainedPolysemousWord_ListsSensesRankedByUsagePrior`,
   `..._AnswersPartOfSpeechLevelWithoutSenseOrGroup`, `..._KeyCarriesTheLabelOfTheTopRankedSense`, in
-  `BertBaseCasedWordSenseModelTests.cs`, with no model files): the second `shelter` of "They will shelter the shelter."
+  `BertBaseCasedWordSenseModelTests.cs`, with the model files): the second `shelter` of "They will shelter the shelter."
   (a noun, so a word that the encoder has no weights for, with two or more senses) is answered at the part-of-speech
   level
   with no sense id and no group id, the senses of its selected analysis are those of `UsagePrior.RankOf` for its lemma and
@@ -65,22 +69,27 @@ All scenarios below pass on every platform and target framework of the CI matrix
   in her bag before she left` the composite selects a non-past analysis in the first
   and third sentence and a past one (the past tense or the participle) in the second and fourth, the selected analysis is
   the first analysis, and the probabilities of the word sum to one. The same test compares the composite with the
-  encoder model on its own (`Encoder.ClassifyAsync`): where the encoder scored senses for the verb (`read`) the level,
-  the confidence, the group id and the sense id are equal and the probability of the slot of the verb (the sum of its
-  variants) is equal to within 1e-9, so only the split inside the slot moved; where it did not (`put`) the composite
-  gives the complete result of Basic, analysis by analysis. The re-split itself is verified in the
-  `FallbackWordSenseModel` scenarios of the
+  encoder model on its own (`Encoder.ClassifyAsync`): where the encoder scored senses for the verb (`read`) and the level
+  is kept, the group id and the sense id are equal and the probability of the answer within its slot (the confidence
+  divided by the probability of the slot) is equal to within 1e-9, so only the probability of the slot and the split
+  inside it moved; where it did not (`put`) the variants of the slot of the verb have the proportions of Basic. The
+  re-split itself is verified in the `FallbackWordSenseModel` scenarios of the
   `WordSenseContracts` unit document.
 - **Composition references** (`Assembly_ReferencesCoreAndOnnx`): the assembly references the core and Onnx
   assemblies (the Basic model is in the core).
-- **Part-of-speech answer is the encoder's** (`BertBaseCasedWordSenseModel_PartOfSpeechAnswer_KeepsTheEncoderSlotProbabilities`):
-  for "Do not use these guys ." the model answers `use` with the verb analysis, and the selected part of speech, the
-  level, the confidence and the probability of every part-of-speech slot are equal (to within 1e-9) to those of the
-  encoder model on its own (`Encoder.ClassifyAsync`), so the Basic tagger never replaces the part of speech of the
-  encoder (the scenario needs the model files).
-- **Weight (no requirement)** (`BertBaseCasedWordSenseModel_PrimaryWeight_DefaultIsOneAndAnExplicitWeightReachesTheComposition`):
-  the weight is 1 by default and reaches the composition (`PrimaryWeight`, internal), the internal constructor sets
-  another one (0.25) and rejects a weight below 0; it needs no model file.
+- **Part-of-speech probabilities are reweighed** (`BertBaseCasedWordSenseModel_PartOfSpeechAnswer_ReweighsTheHeadAgainstBasic`):
+  for "Do not use these guys ." the model answers `use` with the verb analysis, the probabilities of the analyses sum to
+  one, and the probability of every part-of-speech slot equals (to within 1e-9) the normalized
+  `p_head^w × p_basic^(1−w)` of the slot probabilities of the encoder model on its own (`Encoder.ClassifyAsync`) and
+  of the
+  Basic model (`Fallback.ClassifyAsync`) with the weight `w` of the model (the scenario needs the model files).
+- **Weight** (`BertBaseCasedWordSenseModel_PrimaryWeight_DefaultIsTunedAndAnExplicitWeightReachesTheComposition`):
+  the weight is 0.8 by default (`PartOfSpeechHeadWeight`, internal) and reaches the composition (`PrimaryWeight`), the
+  internal constructor sets another one (0.25) and rejects a weight below 0; it needs no model file.
+- **Lexicon-only text needs no ensure** (`BertBaseCasedWordSenseModel_ClassifyAsync_LexiconOnly_NeedsNoEnsure`): a text
+  of words that have one part of speech or are unknown is answered on a model that was never ensured, without any model
+  file; a text with a word of several parts of speech ensures the files lazily (verified for the shared base class in
+  `OnnxWordSenseModel_ClassifyAsync_WordOfSeveralPartsOfSpeech_NeedsTheEncoder`).
 - **Disposal** (`Dispose_DisposesEncoderAndFallback`): disposing disposes the encoder model and the Basic model, and
   `EnsureModelAsync` and `ClassifyAsync` after disposal throw `ObjectDisposedException`.
 - **Constructor defaults and validation** (`BertBaseCasedWordSenseModel_Constructor_Defaults_UseStoreAnd128`,

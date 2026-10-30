@@ -61,8 +61,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Missing vectors are zeros** (`PosHead_Posterior_MissingVectors_AreZeros`): a null neighbor or word gives the same
   probabilities as a vector of zeros, and the probabilities of a null word with null neighbors equal those of three
   zero vectors.
-- **Determinism** (`PosHead_Posterior_RepeatedCalls_AreIdentical`): the same input gives bit-identical probabilities on
-  two calls.
+- **Determinism** (`PosHead_Posterior_RepeatedCalls_AreIdentical`,
+  `PosHead_Posterior_FixedOrder_IsBitIdenticalToOneClassAtATime`): the same input gives bit-identical probabilities on
+  two calls, and the probabilities equal bit for bit those of an independent computation that sums one class at a time
+  in the fixed order bias, previous word, word, next word, over vector values rounded to 32 bits.
 - **Invalid use** (`PosHead_Posterior_WrongLength_Throws`, `PosHead_NullArguments_Throw`): a vector that is too long or
   too short throws `ArgumentException`; a null posterior or head data throws `ArgumentNullException`.
 - **Restriction** (`PosHead_Restrict_AllowedMask_RenormalizesAllowed`): with noun and verb allowed, the two kept

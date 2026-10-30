@@ -6,20 +6,26 @@
 
 `OnnxClassifier` is the internal helper of the encoder models: it resolves words from the lexicon, gives every analysis
 of a word its probability, decides the fine sense, the group or the part of speech of ambiguous words from the
-encoder's view of their context, and answers the words whose senses it does not score from the lexicon alone, so that
-a composite model can hand them to its fallback model.
+encoder's view of their context, and answers the words whose senses it does not score from the lexicon (with the
+probabilities of the part-of-speech head when it has one), so that a composite model can hand them to its fallback
+model.
 
 The classifier performs the whole decision of the encoder models: the lexicon resolution and the lexicon-only answer
-(steps 1, 2 and 8 below) and, for the words whose lemma has trained weights, the encoder run and the scoring (steps 3
-to 7), without changing the lifecycle code of `OnnxWordSenseModel`.
+(steps 1, 2 and 8 below), for the words whose lemma has trained weights, the encoder run and the scoring (steps 3
+to 7) and, with a head, the part-of-speech evidence (step 9), without changing the lifecycle code of
+`OnnxWordSenseModel`.
 
 #### Data Model
 
 An internal sealed class that holds no mutable state; it holds the weights table (`WeightedLemmaTable`) and the
 encoder as a delegate (`PooledEncode`; the model supplies its shared `OnnxEncoder`, tests supply a fake, and a classifier
-without an encoder answers every word from the lexicon). It uses no other model: it never uses the Basic
-model. Per call it builds one result per word and work lists: words answered at once, words pending an encoder
-decision and words answered from the lexicon alone.
+without an encoder answers every word from the lexicon). A classifier built for a model that uses its head also holds
+the `PosHead` and a second delegate (`PooledViewEncode`) that encodes every word of the text in the possessive view
+(`OnnxEncoder.EncodeAllAsync`) and returns the tokens of the view with the pooled vector of each (`WordVectors`); the
+classifier of the build tool has no head and no view encoder, and sees the sense masses alone. It uses no other model:
+it never uses the Basic model. Per call it builds one result per word and work lists: words answered at once, words
+pending an encoder decision, words of several parts of speech that get the head's evidence and words answered from the
+lexicon alone.
 
 A result is a core `ClassifyResult(Word, IsKnown, Analyses, Details, Level, Confidence, GroupId, SenseId)`; the
 `Analyses` are `AnalysisCandidate(Details, Probability, Senses)` with `SenseCandidate(SenseId, Probability)` senses.
@@ -53,13 +59,15 @@ The probabilities are computed per slot, never per variant:
 2. The probability of a slot is the mass of its senses in that softmax; for a form with a chooser it is the share of the
    probability of the chooser's labels that the slot's analyses carry (a label shares its probability among its slots in
    proportion to the mass of their senses). A slot of a closed class has no scored senses and so mass 0, whether or not
-   its lemma has weights (the fallback model takes its probability); an open-class slot whose lemma has no weights counts
+   its lemma has weights; an open-class slot whose lemma has no weights counts
    as mass 1 so that it still shares the probability. No fallback gives a closed-class slot mass either: when no slot of
    a chooser label has mass, the label shares its probability equally among its open-class slots, and a label that
    stands for closed-class slots only is dropped (the other labels are renormalized with the analyses); when nothing has
    mass, the open-class analyses share the probability equally, and a form without an open-class analysis (`that's`)
-   shares it equally among all, as there is nothing else to answer. The fallback model then takes the closed-class
-   slots from Basic (`SplitClosedClass` refuses a slot that the encoder gave a probability).
+   shares it equally among all, as there is nothing else to answer. Without a head the fallback model takes the
+   closed-class slots from Basic (`SplitClosedClass` refuses a slot that the encoder gave a probability).
+   With a head the masses are only the shares of step 9: the probability of a slot is the head's probability of its
+   part of speech times the share of the slot among the slots of that part of speech, closed-class slots included.
 3. The variants of a slot split its probability: by the labels of the chooser when it has one per variant (`read` as a
    past and a present tense), otherwise equally, the lexicon order breaking ties. This prior is documented, not
    learned, and it reaches neither the level nor the confidence.
@@ -75,8 +83,8 @@ The probabilities are computed per slot, never per variant:
    the word are those (`SensesOf`) of the lemma and part of speech of every analysis of the word, in lexicon order; no
    sense of another lemma is ever one of them. The senses of a closed-class analysis (auxiliary, determiner, pronoun,
    preposition, conjunction, interjection; `SenseFusion.IsClosedClass`) are not among the senses that are scored: its
-   analysis is listed with probability 0 and without senses, and `FallbackWordSenseModel` gives it the probability of
-   the Basic model.
+   analysis is listed without senses (with probability 0 for a classifier without a head, and with the head's
+   probability of its part of speech for one with a head, see step 9).
 2. **Single analysis and single sense.** A word with one analysis whose lemma and part of speech have exactly one sense
    gives that analysis with probability 1 and that sense with probability 1 at the `Sense` level with confidence 1 and no
    encoder run, in every model.
@@ -96,7 +104,8 @@ The probabilities are computed per slot, never per variant:
    the best sense is of another part of speech than the selected analysis), and the calibration observes only the rows
    whose outcome is that the threshold decides.
 4. **Encode.** When at least one word is pending, the words are joined by single spaces into one text and the encoder
-   runs once for the pending words. Each pooled vector goes through `FeatureExtractor.Center` (subtract the global
+   runs once for the pending words (for a classifier with a head see step 9). Each pooled vector goes through
+   `FeatureExtractor.Center` (subtract the global
    mean, scale to unit length). A word without word pieces, or a vector whose dimension differs from the weights, is
    answered from the lexicon alone.
 5. **Form chooser.** For a pending form whose analyses belong to several lemmas (`left`, `bases`, `rows`, `found`) or
@@ -150,8 +159,8 @@ The probabilities are computed per slot, never per variant:
    ids. A non-empty `Senses` list in the selected analysis, or the level `Group` or `Sense`, is what a
    `FallbackWordSenseModel` reads as "this model scored senses for the word": it then uses this result (and gives the
    variants of a slot that this classifier split equally the proportions of its fallback; this classifier never uses
-   Basic itself, and the probability of every slot stays as computed here), and otherwise
-   its fallback.
+   Basic itself), and otherwise its fallback. The probability of every slot stays as computed here, except that a
+   composite whose primary model uses a head reweighs it against Basic for a word of several parts of speech.
 8. **Lexicon-only answer.** For a known word whose senses are not scored (a word without usable weights, a word with a
    single analysis and many senses and no weights, a form of several lemmas without a chooser, a word whose encoder
    vector is unusable) the answer is built from the lexicon: every lemma and part of speech (slot) has probability 1/s
@@ -160,27 +169,62 @@ The probabilities are computed per slot, never per variant:
    single analysis whose lemma and part of speech have exactly one sense lists that sense with probability 1), and the
    level is `Sense` for that single-analysis, single-sense word and otherwise `PartOfSpeech`, with the probability of the
    slot of the selected analysis as confidence. No fine sense is ever guessed. The classifier does not choose among the
-   analyses
-   itself: the model it is composed with does.
+   analyses itself: the model it is composed with does. A word of several parts of speech gets this answer with the
+   head's probabilities instead of 1/s when the classifier has a head (step 9).
+9. **Part-of-speech evidence (classifier with a head).** A known word whose analyses have two or more distinct parts of
+   speech, whatever its lemma and including the closed classes, needs the head. The classifier asks the view encoder
+   once for the pooled vector of every word of the text in the possessive view: a possessive that the lexicon lists as
+   one token (`dog's`; `PossessiveView.IsLexiconPossessive`) is split into its stem and its marker, each with a vector
+   of its own, as in the open corpus on which the head was trained. `OnnxEncoder.EncodeAllAsync` runs a text that
+   exceeds the maximum sequence length of the model (128 word pieces by default, special tokens included) in
+   overlapping windows that start half a window apart, one pass per window, so the cost grows linearly with the
+   length of the text. For a word
+   the head reads the vectors of the word, of the previous token and of the next token of the view (the first word has
+   no previous vector and the last no next one) and gives a posterior over the ten parts of speech
+   (`PosHead.Posterior`); `PosHead.Restrict` keeps the parts of speech that the lexicon lists for the spelling and
+   renormalizes them. A word without a vector, or with a vector of another size than the head's, gets no posterior and
+   keeps the answer of steps 1 to 8.
+   - The posterior replaces the probability of each part of speech: the slot probability is
+     `P_pos(part of speech) × share(slot | part of speech)`, where the share is the probability that the senses (or the
+     chooser) give the slot, renormalized among the slots of its part of speech, and equal when those slots have none
+     (a closed-class slot has no senses; an untrained lemma counts as mass 1). Variants keep their shares of the slot.
+   - A word of several parts of speech whose senses are not scored gets the lexicon-only answer (step 8) with the
+     posterior as the probability of its parts of speech, shared equally by the slots of one part of speech; the slots
+     are listed most probable first, ties in lexicon order.
+   - The scores of the senses are computed as before and do not depend on the head, so the ranked senses of each
+     analysis and the best sense and group are those of a classifier without a head. The level is decided as in step 6
+     for the selected analysis, which is now the best variant of the slot that the head ranks first. When the best
+     sense lies in a slot that the head does not rank first, the answer is at the `PartOfSpeech` level with the
+     probability of the slot as confidence, and the senses of every slot are still listed. When the slot stays the same,
+     the confidence is `P_pos × share × P(sense | slot)`.
+   - A pending word whose view splits it (a possessive written as one token) is scored with its vector pooled over all
+     its pieces, from a second encoder pass for that word, so the weights see the vector they were trained on; a word
+     that the view keeps whole is scored with the vector of the view.
+   - A word of one part of speech, an unknown word and a word of one sense need neither the head nor the encoder
+     for the part of speech.
 
-`NeedsModel` and `ResolveWithoutModel` let the model answer text without ensuring or opening anything: `NeedsModel`
-takes the weights table (the embedded weights, which need no model file) and is true only when a word is pending, that
-is, has several senses together with usable weights (or a chooser). Words that are unknown, have one analysis and one
-sense, or get the lexicon-only answer are answered without the encoder and without model files.
+`NeedsEncoder` and `ResolveWithoutModel` let the model answer text without ensuring or opening anything: `NeedsEncoder`
+takes the weights table (the embedded weights, which need no model file) and whether the classifier has a head, and is
+true when a word is pending, that is, has several senses together with usable weights (or a chooser), or, with a head,
+when a known word has two or more distinct parts of speech in the lexicon, whatever its lemma. There is no opt-out.
+Words that are unknown, have one part of speech and one analysis or one sense, or (without a head) get the lexicon-only
+answer are answered without the encoder and without model files.
 
 #### Error Handling
 
 A null list throws `ArgumentNullException`; a null element throws `ArgumentException`; a canceled token throws
-`OperationCanceledException`; an empty list gives an empty array and the result is parallel to the input. A vector
-that cannot be used (no word pieces, or a dimension that differs from the weights) does not fail the call: the word
-gets the lexicon-only answer. The dimension case is a defensive guard of the classifier on its own; through
+`OperationCanceledException`; an empty list gives an empty array and the result is parallel to the input. A head without
+its view encoder (or the reverse) throws `ArgumentNullException` at construction. A vector
+that cannot be used (no word pieces, or a dimension that differs from the weights or from the head) does not fail the
+call: the word gets the lexicon-only answer. The dimension case is a defensive guard of the classifier on its own; through
 `OnnxWordSenseModel` it cannot occur, because the model rejects an encoder whose hidden size differs from the one of its
 description and weights when it opens the encoder. Encoder failures propagate.
 
 #### Dependencies
 
-`WordLexicon`, the core contracts, `OnnxEncoder` (through the `PooledEncode` delegate) and `LemmaWeights` (weights
-table, feature computation, scoring, levels). No other model: the classifier does not use the Basic model.
+`WordLexicon`, the core contracts, `OnnxEncoder` (through the `PooledEncode` and `PooledViewEncode` delegates),
+`PosHead` (posterior and restriction), `PossessiveView` and `LemmaWeights` (weights table, feature computation, scoring,
+levels). No other model: the classifier does not use the Basic model.
 
 #### Callers
 

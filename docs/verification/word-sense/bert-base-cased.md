@@ -34,7 +34,8 @@ All subsystem scenarios pass on every platform and target framework of the CI ma
 
 A model created from the committed directory classifies the words of "They will record the record." with the verb
 analysis for the first `record` and the noun analysis for the second, each answered at the part-of-speech level (the
-lemma `record` is not trained, so the Basic model answers). A trained lemma (`back` in "I will go back to the house.")
+lemma `record` is not trained, so the head decides the part of speech and the Basic model supplies the senses ranked by
+usage). A trained lemma (`back` in "I will go back to the house.")
 is answered by the encoder at a sense or group level that the result states, with the senses of every analysis listed
 whatever the level (`BertBaseCasedWordSenseModelTests`, `EndToEndTests`;
 `BertBaseCasedWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel`).
@@ -68,15 +69,23 @@ BertBaseCased model. It is a sample verification of the guarantee that the enume
 every model; the guarantee holds by construction, because the key of a result and the enumeration are built from the
 same analyses and catalog senses (see the `WordLexicon` unit design).
 
-#### Untrained Ambiguous Words Are Answered by the Basic Model
+#### Untrained Ambiguous Words Are Answered with the Basic Model
 
-A word with several senses that the encoder does not score is answered with the complete result of the Basic model of
-the composition (its analyses with their probabilities, the selected analysis, the level part of speech, or sense when
-the selected analysis has exactly one sense, and no group id), and disposing the model disposes the encoder model and
-the Basic model
-(`BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback`,
+A word with several senses that the encoder does not score is answered at the part-of-speech level (or at the sense
+level when the selected analysis has exactly one sense and the confidence reaches 0.97) with the senses and the level of
+the Basic model of the composition and no group id, its slot probabilities being the head's reweighed against those
+of the Basic model (the weight 0.8), and disposing the model disposes the encoder model and the Basic model
+(`BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersAtThePartOfSpeechLevel`,
+`BertBaseCasedWordSenseModel_PartOfSpeechAnswer_ReweighsTheHeadAgainstBasic`,
 `BertBaseCasedWordSenseModel_Dispose_DisposesEncoderAndFallback`). The assembly references the core and Onnx
-packages (`BertBaseCasedWordSenseModel_Assembly_ReferencesCoreAndOnnx`).
+packages (`BertBaseCasedWordSenseModel_Assembly_ReferencesCoreAndOnnx`). A text of words of one part of speech and
+unknown words needs no model file (`BertBaseCasedWordSenseModel_ClassifyAsync_LexiconOnly_NeedsNoEnsure`).
+
+#### The Embedded Head Is Used
+
+The head embedded for `bert-base-cased-int8` is bound to the pinned ONNX file, loads without any model file
+(`BertBaseCasedWordSenseModel_EmbeddedHead_MatchesEncoderAndClasses`, `..._AgainstAnotherEncoderFile_IsRejected`) and the
+model answers with it, as the reweighing scenario above shows.
 
 #### Embedded Weights Match the Word Image
 

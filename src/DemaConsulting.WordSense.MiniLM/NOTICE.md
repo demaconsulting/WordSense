@@ -34,6 +34,7 @@ are computed from two project-authored sources, one WordNet 3.0 source and the s
 The package also embeds `head.bin`, a linear classifier for the part of speech that reads the vectors of the encoder
 below for a word and its previous and next word. The file holds numeric weights and biases, the identity of the encoder
 file it was trained on, the order of the part-of-speech classes and the digest of its training file. It holds no text.
+`MiniLMWordSenseModel` does not use the head.
 
 - It is trained only on the training split of the open part-of-speech corpus of this repository
   (`corpus/open/representative`), and its settings were chosen on the development split of that corpus. The annotations

@@ -48,12 +48,15 @@ sections:
                 title: >-
                   The encoder model of BertBaseCasedWordSenseModel shall load the part-of-speech head embedded in its
                   assembly, bound to the pinned bert-base-cased ONNX file, hidden size 768, the feature layout and the
-                  parts of speech of the library, without any model file.
+                  parts of speech of the library, without any model file, and shall use it (the model description
+                  declares the head in use).
                 tags: [unit]
                 justification: |
-                  The head was trained on the vectors of this exact encoder file and these classes.
+                  The head was trained on the vectors of this exact encoder file and these classes; the model answers
+                  the part of speech of every word of several parts of speech with it.
                 tests:
                   - BertBaseCasedWordSenseModel_EmbeddedHead_MatchesEncoderAndClasses
+                  - BertBaseCasedWordSenseModel_PartOfSpeechAnswer_ReweighsTheHeadAgainstBasic
 
               - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-HeadRejected
                 title: >-
@@ -69,8 +72,10 @@ sections:
                 title: >-
                   BertBaseCasedWordSenseModel shall wrap a FallbackWordSenseModel of its encoder model (primary) and a
                   BasicWordSenseModel (fallback), answer every ambiguous word that the encoder does not score with the
-                  complete result of the Basic model (the analyses chosen in context, at the part of speech level or at
-                  the sense level when the selected analysis has exactly one sense), implement
+                  senses, level and ids of the result of the Basic model (the analyses chosen in context, at the part
+                  of speech level or at the sense level when the selected analysis has exactly one sense and the
+                  confidence reaches 0.97), the slot probabilities being reweighed as
+                  WordSense-BertBaseCased-BertBaseCasedWordSenseModel-PartOfSpeechReweighed states, implement
                   IDownloadableWordSenseModel so that EnsureModelAsync ensures the encoder files (the Basic model needs
                   none) and reports its failures with the typed exceptions of the encoder, and make Dispose dispose both
                   models.
@@ -79,24 +84,39 @@ sections:
                   Every word of a text must be answered, not only the lemmas the weights were trained for; the
                   composition lives in the model package so that the encoder base class needs no Basic model.
                 tests:
-                  - BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback
+                  - BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersAtThePartOfSpeechLevel
                   - BertBaseCasedWordSenseModel_Assembly_ReferencesCoreAndOnnx
                   - BertBaseCasedWordSenseModel_Dispose_DisposesEncoderAndFallback
                   - BertBaseCasedWordSenseModel_IsDownloadable
                   - BertBaseCasedWordSenseModel_EnsureModelAsync_MissingDirectory_ThrowsModelUnavailable
 
-              - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-PartOfSpeechKept
+              - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-PartOfSpeechReweighed
                 title: >-
-                  BertBaseCasedWordSenseModel shall answer a word that its encoder leaves at the part-of-speech level
-                  with the slot probabilities of the encoder, never combined with those of the Basic model.
+                  BertBaseCasedWordSenseModel shall give a word of two or more parts of speech the slot probabilities
+                  that the composition computes from those of the part-of-speech head of its encoder and those of the
+                  Basic model, proportional to p_head^w times p_basic^(1-w) with the weight w of 0.8, at every level of
+                  the answer, and shall allow an explicit weight from 0 to 1 and reject any other.
                 tags: [unit]
                 justification: |
-                  BERT base cased beats the Basic tagger on the part-of-speech heteronyms (99.2% against 94.0% on the
-                  English EWT treebank) and combining the two lost on them (the benchmark of a weight 0.6 for the
-                  encoder gave 98.8%), while the gain on running text was at most 0.15 points on the development
-                  splits; a model that must never lose keeps its own part of speech.
+                  The head reads the sentence and is the primary estimate of the part of speech; the Basic tagger
+                  corrects it where the head has little evidence. The weight is the specification constant that was
+                  chosen on the development splits of the open corpus, never on a test split.
                 tests:
-                  - BertBaseCasedWordSenseModel_PartOfSpeechAnswer_KeepsTheEncoderSlotProbabilities
+                  - BertBaseCasedWordSenseModel_PartOfSpeechAnswer_ReweighsTheHeadAgainstBasic
+                  - BertBaseCasedWordSenseModel_PrimaryWeight_DefaultIsTunedAndAnExplicitWeightReachesTheComposition
+
+              - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Lazy
+                title: >-
+                  BertBaseCasedWordSenseModel shall ensure its encoder files lazily on the first text that contains a
+                  word of several parts of speech or a word with scored senses, and shall classify a text of words that
+                  need neither (unknown words, words of one part of speech) without touching any model file.
+                tags: [unit]
+                justification: |
+                  A text of words that need no context must cost no download and no inference; a text with a word of
+                  several parts of speech needs the encoder for its head.
+                tests:
+                  - BertBaseCasedWordSenseModel_ClassifyAsync_LexiconOnly_NeedsNoEnsure
+                  - OnnxWordSenseModel_ClassifyAsync_WordOfSeveralPartsOfSpeech_NeedsTheEncoder
 
               - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-UsagePrior
                 title: >-

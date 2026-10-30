@@ -66,5 +66,6 @@ ONNX Runtime, `WordPieceTokenizer` and, for the possessive view, `WordLexicon`.
 
 #### Callers
 
-`OnnxWordSenseModel` (creates and disposes it) and `OnnxClassifier` (encodes through it), and the builder's trainer
+`OnnxWordSenseModel` (creates and disposes it) and `OnnxClassifier` (encodes through it: `EncodeAsync` for the target
+words, and, for a model that uses its head, `EncodeAllAsync` with the possessive view), and the builder's trainer
 through `OnnxWordSenseModel.OpenEncoder` (`train-pos-head` encodes whole sentences with `EncodeAllAsync`).

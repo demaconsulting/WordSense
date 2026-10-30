@@ -38,7 +38,31 @@ eight units pass.
 A text with single-sense words, unknown words, untrained ambiguous words and one trained ambiguous word runs the
 encoder only for the trained word, and a text without a trained ambiguous word never runs the encoder and needs no model
 file (`OnnxClassifier_ClassifyAsync_OnlyAmbiguousWordsAreEncoded`; see the `OnnxClassifier` and `OnnxWordSenseModel`
-unit documents).
+unit documents). With a part-of-speech head the encoder is also needed for every known word of two or more distinct
+parts of speech, whatever its lemma, and for no other word
+(`OnnxClassifier_NeedsEncoder_PendingWordsAndWordsOfSeveralPartsOfSpeech_AreTrue`,
+`OnnxClassifier_ClassifyAsync_WordsOfOnePartOfSpeech_DoNotRunTheEncoder`,
+`OnnxWordSenseModel_ClassifyAsync_WordOfSeveralPartsOfSpeech_NeedsTheEncoder`); a model without a head, or with a head
+that it does not use, needs it only for a trained word
+(`OnnxWordSenseModel_ClassifyAsync_NoHead_UntrainedAmbiguousWords_AnswerPartOfSpeechWithoutModelFiles`).
+
+#### The Head Decides the Part of Speech and Leaves the Senses Alone
+
+For a model that uses its head, a known word of several parts of speech gets the probability of each part of speech from
+the posterior of the head, read from the vectors of the word and of its neighbors in the possessive view of the whole
+text, restricted to the parts of speech of the lexicon; a slot has that probability times its share among the slots of
+its part of speech, closed classes included
+(`OnnxClassifier_ClassifyAsync_UntrainedWordOfSeveralPartsOfSpeech_TakesTheRestrictedPosterior`,
+`OnnxClassifier_ClassifyAsync_UntrainedWord_FollowsTheHead`,
+`OnnxClassifier_ClassifyAsync_ClosedClassSlots_GetPartOfSpeechMassAndNoSenses`,
+`OnnxClassifier_ClassifyAsync_Neighbors_AreThoseOfThePossessiveView`). The scores and the ranked senses do not depend on
+the head, an answer keeps its level when the head agrees on the slot and steps down to the part of speech when it
+does not
+(`OnnxClassifier_ClassifyAsync_TrainedLemma_HeadAgrees_KeepsTheSenseLevelWithTheHeadProbability`,
+`OnnxClassifier_ClassifyAsync_TrainedLemma_HeadDisagrees_StepsDownToThePartOfSpeech`,
+`OnnxClassifier_ClassifyAsync_TrainedLemma_SensesInsideASlotDoNotDependOnTheHead`), and a trained possessive is scored
+with its vector pooled over all its pieces
+(`OnnxClassifier_ClassifyAsync_PendingPossessive_UsesTheJoinedVector`).
 
 #### Words Are Answered at the Level the Lemma's Thresholds Allow
 
@@ -65,7 +89,8 @@ encoder did not score it
 
 #### Words Without Scored Senses Are Answered from the Lexicon
 
-A known word whose lemma has no usable weights is answered from the lexicon alone: its lemmas and parts of speech are
+A known word whose lemma has no usable weights is answered from the lexicon alone (with a head, a word of several parts
+of speech has the probabilities of the head instead): its lemmas and parts of speech are
 equally likely (the feature variants of one share its probability), the first analysis is selected, no senses are
 scored and the level is the part of speech, never a guessed fine sense (the exception is the lexical singleton: a word
 with a single analysis is certain about it, and is answered at the sense level, with that sense listed with
@@ -104,7 +129,8 @@ the shipped image (`EmbeddedWeights_MiniLM_MatchesWordImage`, `EmbeddedWeights_B
 
 #### The Embedded Head Is Bound to Its Encoder
 
-The part-of-speech head embedded in each model package is loaded with the weights, needs no model file, and is bound to
+The part-of-speech head embedded in each model package is loaded with the weights whenever the model names one, needs no
+model file, and is bound to
 the pinned ONNX file of its encoder, the hidden size, the model identifier and the parts of speech of the library
 (`MiniLMWordSenseModel_EmbeddedHead_MatchesEncoderAndClasses`,
 `BertBaseCasedWordSenseModel_EmbeddedHead_MatchesEncoderAndClasses`, in the model test projects); a head read

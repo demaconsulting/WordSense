@@ -34,16 +34,25 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Store is used without a directory**: without a model directory the files are obtained through the downloader into
   `<store>/<model-id>/`.
 - **Lexicon-only words never touch model files** (`LexiconOnlyWords_NeverTouchesModelFiles`): `ClassifyAsync` on words
-  with at most one sense, on a model whose directory does not exist, returns the lexicon answers without any ensure.
-- **Untrained ambiguous words need no model**
-  (`UntrainedAmbiguousWords_AnswerPartOfSpeechWithoutModelFiles`): `ClassifyAsync(["They", "will", "record", "the",
-  "record", "."])` on a model whose directory does not exist returns for each `record` (a lemma without weights, with a
-  noun and a verb analysis) its lexicon analyses (every lemma and part of speech equally likely, the first analysis
-  selected) at the part of speech level, with no scored senses, no group or sense id and the probability of the slot of
-  the selected analysis as
+  with at most one sense or one part of speech, on a model whose directory does not exist, returns the lexicon answers
+  without any ensure.
+- **Untrained ambiguous words need no model without a head**
+  (`NoHead_UntrainedAmbiguousWords_AnswerPartOfSpeechWithoutModelFiles`): `ClassifyAsync(["They", "will", "record",
+  "the", "record", "."])` on a model whose description names no head and whose directory does not exist returns for each
+  `record` (a lemma without weights, with a noun and a verb analysis) its lexicon analyses (every lemma and part of
+  speech equally likely, the first analysis selected) at the part of speech level, with no scored senses, no group or
+  sense id and the probability of the slot of the selected analysis as
   confidence, with no ensure and no first-sense guess; the same holds for every ambiguous word whose lemma has no
   trained weights, while a word with several senses and weights (`back`) ensures the files
   (`OnnxWordSenseModel_ClassifyAsync_MissingDirectory_ThrowsModelUnavailable`).
+- **A word of several parts of speech needs the encoder with a head**
+  (`WordOfSeveralPartsOfSpeech_NeedsTheEncoder`): on a model whose description names a head and declares it in use, and
+  whose directory does not exist, a text of words of one part of speech and unknown words (`knowledge`, a made-up
+  word) is
+  answered without any file, and a text that has `record` (a noun and a verb, an untrained lemma) throws
+  `ModelUnavailableException` from the lazy ensure, which the model cannot be told to skip. A model that carries a head
+  it
+  does not use is verified through the MiniLM scenario of the same behavior (see the MiniLM subsystem verification).
 - **Lazy ensure** (scoring increment): `ClassifyAsync` on an ambiguous word without a prior `EnsureModelAsync` ensures
   the files by itself (default settings) and classifies; a missing directory throws `ModelUnavailableException`.
 - **Concurrent EnsureModelAsync calls share one download**: parallel calls produce one set of requests; parallel
@@ -70,7 +79,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Embedded head is loaded and checked without model files**
   (`OnnxWordSenseModel_ClassifyAsync_EmbeddedHead_LoadsWithoutModelFiles`,
   `OnnxWordSenseModel_GetHead_NoHeadResource_ReturnsNull`): `ClassifyAsync(["the"])` on a model whose directory does not
-  exist loads the embedded head with the weights; `GetHead()` returns it, with the hidden size of the model, and the
+  exist loads the embedded head with the weights (whenever the description names one, whether or not it is in use);
+  `GetHead()` returns it, with the hidden size of the model, and the
   same object on a second call. A model description without a head resource has no head: `GetHead()` returns null and
   `ClassifyAsync` works.
 - **Damaged or mismatched head is an integrity failure**

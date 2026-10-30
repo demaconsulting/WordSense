@@ -215,6 +215,7 @@ sections:
                   the head uses fixed-order scalar arithmetic so that its result is a function of its input only.
                 tests:
                   - PosHead_Posterior_RepeatedCalls_AreIdentical
+                  - PosHead_Posterior_FixedOrder_IsBitIdenticalToOneClassAtATime
 
               - id: WordSense-Onnx-PosHead-Restrict
                 title: >-

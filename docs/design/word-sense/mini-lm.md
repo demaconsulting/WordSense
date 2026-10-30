@@ -39,7 +39,8 @@ its thresholds allow, listing the probabilities of their analyses and senses; ev
 senses (the other ambiguous words) is answered by the Basic model, with the probabilities of its analyses, at the part
 of speech level (or at the sense level when its selected analysis has exactly one sense, which the Basic model names
 without scoring). The assembly also embeds the part-of-speech head of this encoder (`head.bin`, the format `WSH1`): the
-encoder model loads and checks it with the weights, and no answer uses it.
+encoder model loads and checks it with the weights and does not use it (its description declares the head not in use),
+so the model behaves as a model without a head.
 
 The package ships a `NOTICE.md` (packed by the project file, as the core package does). The embedded weights carry a
 sense usage prior derived from the WordNet 3.0 sense counts (the builder adds it to the stored biases), so the notice

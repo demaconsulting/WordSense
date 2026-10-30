@@ -5,13 +5,22 @@
 #### Purpose
 
 `OnnxWordSenseModel` is the public abstract base of the encoder models. It implements `IDownloadableWordSenseModel` (the
-classification contract plus the optional explicit ensure). It prepares the model files, loads the
-encoder and weights lazily, and classifies words with them (lazily ensuring the files when a word needs the encoder).
+classification contract plus the optional explicit ensure) and the internal marker `IPartOfSpeechEvidenceModel`. It
+prepares the model files, loads the encoder, the weights and the part-of-speech head lazily, and classifies words with
+them (lazily ensuring the files when a word needs the encoder).
 It is usable on its own and depends only on the core package: it owns no other model, so a word whose senses it does
-not score is answered from the lexicon alone, and the choice among the analyses of such a word is left to the model it
-is composed with (see `FallbackWordSenseModel`). A classification that has no word with several scored senses is
-answered from the lexicon alone: it loads no encoder and needs no model file; the lazy ensure, the encoder session and
-the weights are used only for a text with a trained lemma.
+not score is answered from the lexicon (with the head's probabilities of its parts of speech when the model uses its
+head), and the choice of the senses of such a word is left to the model it is composed with (see
+`FallbackWordSenseModel`).
+
+The model description (`ModelSpec`) says whether a head is named (`HeadResourceName`) and whether the model answers
+with it (`HeadInUse`). A named head is loaded and integrity-checked whether or not it is in use. A model whose head is in
+use needs the encoder, and so the model files, for every classification that contains a known word of two or more
+distinct parts of speech or a word with scored senses, and there is no way to turn that off. A classification
+without such a word is answered from the lexicon alone: it loads no encoder and needs no model file. A model that
+carries a head it does not use, or has none, needs the encoder only for a word with scored senses (a trained lemma with
+several senses) and answers as it did without a head. `ProvidesPartOfSpeechEvidence` is true exactly when a head is
+named and in use; `FallbackWordSenseModel` reads it.
 
 #### Data Model
 
@@ -42,14 +51,18 @@ the weights are used only for a text with a trained lemma.
 - `ClassifyAsync(words, cancellationToken)`: checks the disposed flag, validates the words, throws
   `OperationCanceledException` (through the returned task) for an already canceled token, even for an empty list or a
   list that needs no model. It then loads the embedded weights table (no model file and no ONNX; cached) together with
-  the embedded part-of-speech head (the same) and, when no
-  word is pending (`OnnxClassifier.NeedsModel`: no word has several senses together with usable weights, or a form
-  chooser), answers from the lexicon alone without any model file: unknown words are `ClassifyResult.Unknown`, a word
+  the embedded part-of-speech head (the same, whenever the description names one) and, when no
+  word needs the encoder (`OnnxClassifier.NeedsEncoder`, with the head's presence as its argument: no word is pending,
+  that is has several senses together with usable weights or a form chooser, and, for a model whose head is in use,
+  no known word has two or more distinct parts of speech in the lexicon), answers from the lexicon alone without any
+  model file: unknown words are `ClassifyResult.Unknown`, a word
   with one analysis and one sense is answered at the sense level, and every other known word with its analyses equally
-  likely at the part of speech level and no scored senses (no first-sense guess). Only when a word is pending does it
-  await `EnsureModelAsync(null, cancellationToken)` (the default and environment download settings; concurrent
-  callers share one ensure and a failed ensure is retried by the next call), register with the in-flight tracker, open
-  the encoder on first need (cached) and run the shared `OnnxClassifier` over the encoder and the weights table; the
+  likely at the part of speech level and no scored senses (no first-sense guess). Otherwise it
+  awaits `EnsureModelAsync(null, cancellationToken)` (the default and environment download settings; concurrent
+  callers share one ensure and a failed ensure is retried by the next call), registers with the in-flight tracker, opens
+  the encoder on first need (cached) and runs the shared `OnnxClassifier` over the encoder and the weights table, built
+  with the head and the view encoder (`OnnxEncoder.EncodeAllAsync` with `PossessiveView.IsLexiconPossessive`) when the
+  model uses its head and without them otherwise; the
   registration is released in a `finally`. It is safe for concurrent use.
 - `Dispose()`: idempotent and thread-safe; the first call marks the model disposed (new calls throw), cancels the
   disposal token, which aborts an in-flight download (its temporary files are removed), and closes the in-flight
@@ -66,8 +79,9 @@ the weights are used only for a text with a trained lemma.
   description names no head resource (`ModelSpec.HeadResourceName`). The load is `PosHead.LoadEmbedded` with the model
   id, the hidden size and the pinned SHA-256 of the ONNX file from the description, so it needs no model file. The
   weights table load (`GetTable`) and the opening of the classifier call it, so the first classification, or the open of
-  the classifier, loads and checks the head. A failure is not remembered: the next call fails the same way. No answer
-  uses the head.
+  the classifier, loads and checks the head. A failure is not remembered: the next call fails the same way. The
+  classifier uses the head only when `ModelSpec.HeadInUse` is true; the model that declares it not in use validates the
+  head and never answers with it.
 
 #### Error Handling
 
@@ -121,7 +135,9 @@ the weights are used only for a text with a trained lemma.
 
 `ModelDownloader`, `DownloadMirror` (through the downloader), `LemmaWeights` (weights table), `PosHead` (the embedded
 head), `OnnxEncoder`,
-`OnnxClassifier` and the core contracts (`IDownloadableWordSenseModel`, `DownloadOptions` and the typed exceptions).
+`OnnxClassifier` and the core contracts (`IDownloadableWordSenseModel`, `IPartOfSpeechEvidenceModel`,
+`DownloadOptions` and
+the typed exceptions).
 No other model package.
 
 #### Callers

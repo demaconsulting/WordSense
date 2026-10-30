@@ -1,6 +1,6 @@
 package WordSense {
     part def BertBaseCasedSubsystem {
-        doc /* The BertBaseCased package DemaConsulting.WordSense.BertBaseCased (depends on core and Onnx): the bert-base-cased int8 encoder (cased) as a word-sense model, composed with the core Basic model as its fallback, with the fine-sense weights and per-lemma thresholds trained for it embedded in the assembly. */
+        doc /* The BertBaseCased package DemaConsulting.WordSense.BertBaseCased (depends on core and Onnx): the bert-base-cased int8 encoder (cased) as a word-sense model, composed with the core Basic model as its fallback, with the fine-sense weights, per-lemma thresholds and part-of-speech head trained for it embedded in the assembly; the head decides the part of speech of every word of several parts of speech, reweighed against the Basic model. */
 
         comment testRef /* Test: test/DemaConsulting.WordSense.BertBaseCased.Tests/BertBaseCasedWordSenseModelTests.cs, test/DemaConsulting.WordSense.BertBaseCased.Tests/EmbeddedHeadTests.cs, test/DemaConsulting.WordSense.BertBaseCased.Tests/EndToEndTests.cs, test/DemaConsulting.WordSense.BertBaseCased.Tests/XmlDocExampleTests.cs */
         comment designRef /* Design: docs/design/word-sense/bert-base-cased.md */
