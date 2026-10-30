@@ -176,6 +176,20 @@ internal static class Corpus
 
         return senses.ToDictionary(p => p.Key, p => p.Value.Count, StringComparer.Ordinal);
     }
+
+    /// <summary>
+    ///     Reads the lemmas that get weights from the sentences of a directory: the lemmas with a sentence for two or more
+    ///     distinct senses (<see cref="WeightsTrainer.HasWeights"/>), without validating the rows.
+    /// </summary>
+    /// <remarks>
+    ///     A lemma with sentences for a single sense is in <see cref="ReadLemmas"/> but has no weights, so a model answers it
+    ///     with the usage prior alone.
+    /// </remarks>
+    /// <param name="directory">The directory; a missing directory has no lemmas.</param>
+    /// <returns>The lemmas that get weights.</returns>
+    public static HashSet<string> ReadWeightedLemmas(string directory) =>
+        CountAnchoredSenses(directory).Where(p => WeightsTrainer.HasWeights(p.Value)).Select(p => p.Key).ToHashSet(StringComparer.Ordinal);
+
     /// <summary>
     ///     Reads one sentence file and validates every row.
     /// </summary>

@@ -1,7 +1,9 @@
 using System.Collections.Immutable;
 using System.Globalization;
 using System.Text;
+using System.Text.RegularExpressions;
 using DemaConsulting.WordSense;
+using DemaConsulting.WordSense.Onnx;
 
 namespace WordSense.Builder;
 
@@ -56,10 +58,10 @@ internal sealed record Gold2Row(Gold2Token Token, string Terms, string Pos, stri
 /// </summary>
 internal static class Gold2Strata
 {
-    /// <summary>The token has a polysemous analysis and none of the lemmas of its polysemous analyses is trained.</summary>
+    /// <summary>The token has a polysemous analysis and none of the lemmas of its polysemous analyses has weights.</summary>
     public const string Untrained = "U";
 
-    /// <summary>The token has a polysemous analysis whose lemma is trained.</summary>
+    /// <summary>The token has a polysemous analysis whose lemma has weights.</summary>
     public const string Trained = "TR";
 
     /// <summary>The form is a same-spelling verb: it has past and non-past verb analyses (<see cref="TenseEvaluator.GroupsOf"/>).</summary>
@@ -84,7 +86,7 @@ internal static class Gold2Strata
     ///     Finds the strata of a written form.
     /// </summary>
     /// <param name="form">The token as written.</param>
-    /// <param name="trained">The trained lemmas (the lemmas that have a sentence in <c>corpus/anchors</c>).</param>
+    /// <param name="trained">The trained lemmas (the lemmas that have weights: sentences for two or more senses, see <see cref="WeightsTrainer.HasWeights"/>).</param>
     /// <param name="heteronyms">The normalized heteronym spellings.</param>
     /// <returns>The flags in <see cref="DrawOrder"/> order; <c>C</c> alone when the form has none; null when the lexicon does not know the form.</returns>
     public static IReadOnlyList<string>? Of(string form, IReadOnlySet<string> trained, IReadOnlySet<string> heteronyms)
@@ -98,7 +100,6 @@ internal static class Gold2Strata
             return null;
         }
 
-        var polysemous = analyses.Where(a => WordLexicon.SensesOf(a.Lemma, a.PartOfSpeech).Length >= 2).Select(a => a.Lemma).Distinct(StringComparer.Ordinal).ToList();
         var open = analyses.Where(a => a.PartOfSpeech is PartOfSpeech.Noun or PartOfSpeech.Verb or PartOfSpeech.Adjective or PartOfSpeech.Adverb).Select(a => a.Lemma.ToLowerInvariant()).Distinct(StringComparer.Ordinal).Count();
         var flags = new List<string>();
         if (TenseEvaluator.GroupsOf(form).Count > 0)
@@ -121,9 +122,9 @@ internal static class Gold2Strata
             flags.Add(NounVerb);
         }
 
-        if (polysemous.Count > 0)
+        if (SenseFlag(form, trained) is { } sense)
         {
-            flags.Add(polysemous.Any(trained.Contains) ? Trained : Untrained);
+            flags.Add(sense);
         }
 
         if (flags.Count == 0)
@@ -132,6 +133,31 @@ internal static class Gold2Strata
         }
 
         return [.. DrawOrder.Where(flags.Contains)];
+    }
+
+    /// <summary>
+    ///     Finds the sense stratum of a written form: whether its polysemous lemmas are trained.
+    /// </summary>
+    /// <param name="form">The token as written.</param>
+    /// <param name="trained">The trained lemmas (the lemmas that have weights).</param>
+    /// <returns><see cref="Trained"/> when a polysemous analysis of the form has a trained lemma, <see cref="Untrained"/> when it has polysemous analyses and none is trained, null when it has no polysemous analysis or the lexicon does not know the form.</returns>
+    public static string? SenseFlag(string form, IReadOnlySet<string> trained)
+    {
+        ArgumentNullException.ThrowIfNull(form);
+        ArgumentNullException.ThrowIfNull(trained);
+        var key = BasicClassifier.Normalize(form);
+        if (key.Length == 0 || !WordLexicon.TryLookup(key, out var analyses) || analyses.IsDefaultOrEmpty)
+        {
+            return null;
+        }
+
+        var polysemous = analyses.Where(a => WordLexicon.SensesOf(a.Lemma, a.PartOfSpeech).Length >= 2).Select(a => a.Lemma).Distinct(StringComparer.Ordinal).ToList();
+        if (polysemous.Count == 0)
+        {
+            return null;
+        }
+
+        return polysemous.Any(trained.Contains) ? Trained : Untrained;
     }
 
     /// <summary>
@@ -151,7 +177,7 @@ internal static class Gold2Strata
 ///     The files of the second all-words gold set (<c>corpus/allwords/v2</c>): the frozen manifest of the sampled tokens,
 ///     the labeled rows of the two splits, the raw labels and the documents.
 /// </summary>
-internal static class Gold2
+internal static partial class Gold2
 {
     /// <summary>The folder below the corpus directory.</summary>
     public static readonly string Folder = Path.Join("allwords", "v2");
@@ -419,10 +445,43 @@ internal static class Gold2
     public static string LeakageName(string split) => $"all-words v2 {split}";
 
     /// <summary>
-    ///     Reads the ids and addresses of every document that the rest of the repository uses or has rejected: the documents of
-    ///     the open corpus (used, candidate list, rejected, downloaded) and the source keys of the provenance of the training
-    ///     and held-out sentences.
+    ///     Gets the one key of a document that the parts of the repository write in different ways: a Project Gutenberg book is
+    ///     <c>gutenberg-&lt;number&gt;</c> in the open corpus, the all-words sets and this set, <c>pg&lt;number&gt;</c> in the
+    ///     provenance of the anchors, and an address of the book is a third way.
     /// </summary>
+    /// <param name="key">A document id, a source key or an address.</param>
+    /// <returns><c>gutenberg-&lt;number&gt;</c> for a Gutenberg book (without leading zeros), the key itself otherwise.</returns>
+    public static string CanonicalDocumentKey(string key)
+    {
+        ArgumentNullException.ThrowIfNull(key);
+        var trimmed = key.Trim();
+        var match = GutenbergKey().Match(trimmed);
+        if (!match.Success)
+        {
+            match = GutenbergAddress().Match(trimmed);
+        }
+
+        return match.Success ? "gutenberg-" + match.Groups[1].Value.TrimStart('0') : trimmed;
+    }
+
+    [GeneratedRegex(@"^(?:pg|gutenberg[-_:]?)(\d+)$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase, 1000)]
+    private static partial Regex GutenbergKey();
+
+    [GeneratedRegex(@"gutenberg\.org/(?:cache/epub/|files/|ebooks/|epub/)(\d+)", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase, 1000)]
+    private static partial Regex GutenbergAddress();
+
+    [GeneratedRegex(@"-s\d+$", RegexOptions.CultureInvariant, 1000)]
+    private static partial Regex SentenceSuffix();
+
+    /// <summary>
+    ///     Reads the ids and addresses of every document that the rest of the repository uses or has rejected: the documents of
+    ///     the open corpus (used, candidate list, rejected, downloaded), the documents of the sentences of the first all-words
+    ///     set and the source keys of the provenance of the training and held-out sentences.
+    /// </summary>
+    /// <remarks>
+    ///     Every id and address is also added under its <see cref="CanonicalDocumentKey"/>, so a Gutenberg book is found
+    ///     whichever way a part of the repository writes it.
+    /// </remarks>
     /// <param name="corpus">The corpus directory.</param>
     /// <returns>The document ids and the addresses.</returns>
     public static (HashSet<string> Ids, HashSet<string> Urls) UsedDocuments(string corpus)
@@ -448,13 +507,38 @@ internal static class Gold2
                     if (c.Length >= 4)
                     {
                         var hash = c[3].IndexOf('#', StringComparison.Ordinal);
-                        ids.Add(hash < 0 ? c[3] : c[3][..hash]);
+                        AddId(ids, hash < 0 ? c[3] : c[3][..hash]);
                     }
                 }
             }
         }
 
+        // The first all-words set names the document in the id of the sentence (<doc id>-s0012), in column 2
+        foreach (var split in new[] { Dev, Test })
+        {
+            var path = Path.Join(corpus, "allwords", split + ".tsv");
+            if (!File.Exists(path))
+            {
+                continue;
+            }
+
+            foreach (var line in File.ReadLines(path, Utf8).Where(l => l.Length > 0 && l[0] != '#'))
+            {
+                var c = line.Split('\t');
+                if (c.Length > 1)
+                {
+                    AddId(ids, SentenceSuffix().Replace(c[1], string.Empty));
+                }
+            }
+        }
+
         return (ids, urls);
+    }
+
+    private static void AddId(HashSet<string> ids, string id)
+    {
+        ids.Add(id);
+        ids.Add(CanonicalDocumentKey(id));
     }
 
     private static void AddColumns(string path, string idColumn, string urlColumn, HashSet<string> ids, HashSet<string> urls)
@@ -477,13 +561,18 @@ internal static class Gold2
 
             if (idIndex >= 0 && idIndex < c.Length)
             {
-                ids.Add(c[idIndex]);
+                AddId(ids, c[idIndex]);
             }
 
             if (urlIndex >= 0 && urlIndex < c.Length)
             {
                 var hash = c[urlIndex].IndexOf('#', StringComparison.Ordinal);
-                urls.Add(hash < 0 ? c[urlIndex] : c[urlIndex][..hash]);
+                var url = hash < 0 ? c[urlIndex] : c[urlIndex][..hash];
+                urls.Add(url);
+                if (CanonicalDocumentKey(url) is var canonical && !string.Equals(canonical, url, StringComparison.Ordinal))
+                {
+                    ids.Add(canonical);
+                }
             }
         }
     }
@@ -492,7 +581,7 @@ internal static class Gold2
     ///     Checks the documents of the set against the rest of the repository.
     /// </summary>
     /// <param name="corpus">The corpus directory.</param>
-    /// <returns>The problems: a document that another part of the repository uses or has rejected, a manifest token whose document is not listed, a document with tokens in both splits, a duplicate id.</returns>
+    /// <returns>The problems: a document that another part of the repository uses or has rejected (a Gutenberg book under any of its keys), a manifest token whose document is not listed, a document with tokens in both splits, a duplicate id.</returns>
     public static List<string> ValidateDocuments(string corpus)
     {
         var problems = new List<string>();
@@ -501,18 +590,18 @@ internal static class Gold2
         var (ids, urls) = UsedDocuments(corpus);
         foreach (var d in documents)
         {
-            if (ids.Contains(d.DocId))
+            if (ids.Contains(d.DocId) || ids.Contains(CanonicalDocumentKey(d.DocId)))
             {
                 problems.Add($"The document '{d.DocId}' is already used or was rejected by another part of the repository.");
             }
 
-            if (urls.Contains(d.Url))
+            if (urls.Contains(d.Url) || ids.Contains(CanonicalDocumentKey(d.Url)))
             {
                 problems.Add($"The address '{d.Url}' of the document '{d.DocId}' is already used by another part of the repository.");
             }
         }
 
-        foreach (var duplicate in documents.GroupBy(d => d.DocId, StringComparer.Ordinal).Where(g => g.Count() > 1))
+        foreach (var duplicate in documents.GroupBy(d => CanonicalDocumentKey(d.DocId), StringComparer.Ordinal).Where(g => g.Count() > 1))
         {
             problems.Add($"The document '{duplicate.Key}' is listed {duplicate.Count().ToString(CultureInfo.InvariantCulture)} times.");
         }
@@ -529,5 +618,140 @@ internal static class Gold2
         }
 
         return problems;
+    }
+
+    /// <summary>
+    ///     Checks the labeled rows of a split against the manifest: the rows and the sampled tokens of the split must match one
+    ///     to one.
+    /// </summary>
+    /// <param name="manifest">The sampled tokens of the manifest (every split).</param>
+    /// <param name="rows">The labeled rows of the split.</param>
+    /// <param name="split"><see cref="Dev"/> or <see cref="Test"/>.</param>
+    /// <returns>The problems: a row that the manifest does not have for the split, a row that appears twice, a manifest token without a row, a manifest id that appears twice, and a row that differs from its token in the document, the source, the sentence, the target, the form, the strata or the words.</returns>
+    public static List<string> ValidateRows(IReadOnlyList<Gold2Token> manifest, IReadOnlyList<Gold2Row> rows, string split)
+    {
+        ArgumentNullException.ThrowIfNull(manifest);
+        ArgumentNullException.ThrowIfNull(rows);
+        var problems = new List<string>();
+        var file = split + ".tsv";
+        foreach (var duplicate in manifest.GroupBy(t => t.Id, StringComparer.Ordinal).Where(g => g.Count() > 1))
+        {
+            problems.Add($"{ManifestName}: the id '{duplicate.Key}' appears {duplicate.Count().ToString(CultureInfo.InvariantCulture)} times.");
+        }
+
+        var expected = manifest.Where(t => t.Split == split).GroupBy(t => t.Id, StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.First(), StringComparer.Ordinal);
+        var seen = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var token in rows.Select(row => row.Token))
+        {
+            if (!seen.Add(token.Id))
+            {
+                problems.Add($"{file}: the row '{token.Id}' appears more than once.");
+                continue;
+            }
+
+            if (!expected.TryGetValue(token.Id, out var sampled))
+            {
+                problems.Add($"{file}: the row '{token.Id}' is not a token of the {split} split of {ManifestName}.");
+                continue;
+            }
+
+            var differs = new List<string>();
+            AddDifference(differs, "document", sampled.DocId, token.DocId);
+            AddDifference(differs, "source", sampled.Source, token.Source);
+            AddDifference(differs, "sentence", sampled.SentenceId, token.SentenceId);
+            AddDifference(differs, "target", sampled.Target.ToString(CultureInfo.InvariantCulture), token.Target.ToString(CultureInfo.InvariantCulture));
+            AddDifference(differs, "form", sampled.Form, token.Form);
+            AddDifference(differs, "strata", sampled.Strata, token.Strata);
+            AddDifference(differs, "words", string.Join(' ', sampled.Words), string.Join(' ', token.Words));
+            if (differs.Count > 0)
+            {
+                problems.Add($"{file}: the row '{token.Id}' differs from {ManifestName} in {string.Join(", ", differs)}.");
+            }
+        }
+
+        foreach (var id in expected.Keys.Where(id => !seen.Contains(id)))
+        {
+            problems.Add($"{file}: the token '{id}' of {ManifestName} has no row.");
+        }
+
+        return problems;
+    }
+
+    private static void AddDifference(List<string> differences, string name, string expected, string actual)
+    {
+        if (!string.Equals(expected, actual, StringComparison.Ordinal))
+        {
+            differences.Add($"the {name} ('{expected}' against '{actual}')");
+        }
+    }
+
+    /// <summary>
+    ///     Reads the labeled rows of a split and checks them against the manifest.
+    /// </summary>
+    /// <param name="corpus">The corpus directory.</param>
+    /// <param name="split"><see cref="Dev"/> or <see cref="Test"/>.</param>
+    /// <returns>The rows in file order, or an empty list when the split has neither rows nor manifest tokens.</returns>
+    /// <exception cref="InvalidDataException">Thrown when a line is malformed or the rows do not match the manifest one to one (a missing, duplicate, unknown or different row).</exception>
+    public static List<Gold2Row> ReadVerifiedRows(string corpus, string split)
+    {
+        var rows = ReadRows(corpus, split);
+        var manifest = ReadManifest(corpus);
+        if (rows.Count == 0 && !manifest.Any(t => t.Split == split))
+        {
+            return rows;
+        }
+
+        var problems = ValidateRows(manifest, rows, split);
+        if (problems.Count > 0)
+        {
+            throw new InvalidDataException($"The rows of the {split} split do not match {ManifestName} ({problems.Count.ToString("N0", CultureInfo.InvariantCulture)} problems; first: {string.Join(" ", problems.Take(3))}).");
+        }
+
+        return rows;
+    }
+
+    /// <summary>
+    ///     Finds the lemmas that count as trained when the models are evaluated: the lemmas that have weights in every shipped
+    ///     encoder model (a model answers the sense of any other lemma with the usage prior alone).
+    /// </summary>
+    /// <remarks>
+    ///     When no weights file is present (a source tree without the packages), the lemmas that would get weights from the
+    ///     anchors of the corpus are used (<see cref="Corpus.ReadWeightedLemmas"/>, the rule of <see cref="WeightsTrainer"/>).
+    /// </remarks>
+    /// <param name="repository">The repository root.</param>
+    /// <param name="corpus">The corpus directory.</param>
+    /// <returns>The lemmas and a sentence that says where they come from.</returns>
+    public static (HashSet<string> Lemmas, string Basis) TrainedLemmas(string repository, string corpus)
+    {
+        HashSet<string>? lemmas = null;
+        var names = new List<string>();
+        foreach (var info in ModelCatalog.All.Where(m => m.IsEncoder))
+        {
+            var path = info.WeightsPath(repository);
+            if (!File.Exists(path))
+            {
+                continue;
+            }
+
+            var set = WeightsBlob.Read(File.ReadAllBytes(path)).Lemmas.Select(l => l.Lemma).ToHashSet(StringComparer.Ordinal);
+            if (lemmas is null)
+            {
+                lemmas = set;
+            }
+            else
+            {
+                lemmas.IntersectWith(set);
+            }
+
+            names.Add(info.Name);
+        }
+
+        if (lemmas is not null)
+        {
+            return (lemmas, $"{lemmas.Count.ToString("N0", CultureInfo.InvariantCulture)} lemmas that have weights in the shipped models ({string.Join(", ", names)})");
+        }
+
+        var fromAnchors = Corpus.ReadWeightedLemmas(Path.Join(corpus, "anchors"));
+        return (fromAnchors, $"{fromAnchors.Count.ToString("N0", CultureInfo.InvariantCulture)} lemmas with sentences for two or more senses in corpus/anchors (no weights file found)");
     }
 }

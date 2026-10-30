@@ -654,6 +654,315 @@ public sealed class Gold2Tests : IDisposable
     }
 
     /// <summary>
+    ///     The committed rows match the manifest one to one: the check that evaluation and merge rely on passes on the real set.
+    /// </summary>
+    [Fact]
+    public void Gold2_CommittedRows_MatchTheManifestOneToOne()
+    {
+        // Act
+        var manifest = Gold2.ReadManifest(Corpus);
+        var problems = new[] { Gold2.Dev, Gold2.Test }.SelectMany(s => Gold2.ValidateRows(manifest, Gold2.ReadRows(Corpus, s), s)).ToList();
+        var dev = Gold2.ReadVerifiedRows(Corpus, Gold2.Dev);
+        var test = Gold2.ReadVerifiedRows(Corpus, Gold2.Test);
+
+        // Assert
+        Assert.Empty(problems);
+        Assert.Equal(manifest.Count, dev.Count + test.Count);
+    }
+
+    private static Gold2Row RowOf(Gold2Token token) => new(token, "terms", "Verb", "read", "Tense=Past", "past", "-", "agreed", "full");
+
+    private static Gold2Token Sampled(string id, string split = "test", string doc = "voa-1") =>
+        new(id, split, doc, "voa", doc + "-s0001", 1, "read", "T", ["We", "read", "it", "."]);
+
+    /// <summary>
+    ///     Rows that match the manifest one to one are accepted, whatever their order.
+    /// </summary>
+    [Fact]
+    public void Gold2_ValidateRows_RowsOfTheManifest_HaveNoProblem()
+    {
+        // Arrange
+        var manifest = new[] { Sampled("t-1"), Sampled("t-2"), Sampled("d-1", "dev") };
+
+        // Act
+        var problems = Gold2.ValidateRows(manifest, [RowOf(manifest[1]), RowOf(manifest[0])], Gold2.Test);
+
+        // Assert
+        Assert.Empty(problems);
+    }
+
+    /// <summary>
+    ///     A missing row, a duplicate row, a row that the manifest does not have for the split and a manifest id that appears
+    ///     twice are each named.
+    /// </summary>
+    [Fact]
+    public void Gold2_ValidateRows_MissingDuplicateUnknownAndRepeatedIds_AreProblems()
+    {
+        // Arrange
+        var manifest = new[] { Sampled("t-1"), Sampled("t-2"), Sampled("t-2"), Sampled("d-1", "dev") };
+        var rows = new[] { RowOf(manifest[0]), RowOf(manifest[0]), RowOf(Sampled("t-9")), RowOf(Sampled("d-1")) };
+
+        // Act
+        var problems = Gold2.ValidateRows(manifest, rows, Gold2.Test);
+
+        // Assert
+        Assert.Contains(problems, p => p.Contains("'t-1'", StringComparison.Ordinal) && p.Contains("more than once", StringComparison.Ordinal));
+        Assert.Contains(problems, p => p.Contains("'t-9'", StringComparison.Ordinal) && p.Contains("not a token", StringComparison.Ordinal));
+        Assert.Contains(problems, p => p.Contains("'d-1'", StringComparison.Ordinal) && p.Contains("not a token", StringComparison.Ordinal));
+        Assert.Contains(problems, p => p.Contains("'t-2'", StringComparison.Ordinal) && p.Contains("has no row", StringComparison.Ordinal));
+        Assert.Contains(problems, p => p.Contains("'t-2'", StringComparison.Ordinal) && p.Contains("appears 2 times", StringComparison.Ordinal));
+    }
+
+    /// <summary>
+    ///     A row whose document, sentence, target, form or words differ from its token in the manifest is a problem.
+    /// </summary>
+    [Fact]
+    public void Gold2_ValidateRows_RowThatDiffersFromTheManifest_NamesWhatDiffers()
+    {
+        // Arrange
+        var token = Sampled("t-1");
+        var changed = new Gold2Token("t-1", "test", "voa-2", "voa", "voa-2-s0009", 2, "it", "T", ["We", "read", "it", "."]);
+        var reworded = new Gold2Token("t-1", "test", "voa-1", "voa", "voa-1-s0001", 1, "read", "T", ["They", "read", "it", "."]);
+
+        // Act
+        var first = Gold2.ValidateRows([token], [RowOf(changed)], Gold2.Test);
+        var second = Gold2.ValidateRows([token], [RowOf(reworded)], Gold2.Test);
+
+        // Assert
+        var message = Assert.Single(first);
+        Assert.All(new[] { "document", "sentence", "target", "form" }, name => Assert.Contains("the " + name, message, StringComparison.Ordinal));
+        Assert.Contains("the words", Assert.Single(second), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     Evaluation reads the rows only after they match the manifest: a missing, duplicate or different row is an error that
+    ///     says what is wrong; a split without rows and without tokens is empty.
+    /// </summary>
+    [Fact]
+    public void Gold2_ReadVerifiedRows_RowsThatDoNotMatchTheManifest_Throw()
+    {
+        // Arrange
+        var corpus = _dir.Root;
+        var folder = Gold2.Directory(corpus);
+        Directory.CreateDirectory(folder);
+        var manifest = new[] { Sampled("t-1"), Sampled("t-2") };
+        File.WriteAllText(Path.Join(folder, Gold2.ManifestName), Gold2.RenderManifest(manifest));
+        Assert.Empty(Gold2.ReadVerifiedRows(corpus, Gold2.Dev));
+
+        // Act / Assert: a missing row
+        File.WriteAllText(Gold2.RowsPath(corpus, Gold2.Test), Gold2.RenderRows(Gold2.Test, [RowOf(manifest[0])]));
+        var missing = Assert.Throws<InvalidDataException>(() => Gold2.ReadVerifiedRows(corpus, Gold2.Test));
+        Assert.Contains("has no row", missing.Message, StringComparison.Ordinal);
+
+        // A duplicate row
+        File.WriteAllText(Gold2.RowsPath(corpus, Gold2.Test), Gold2.RenderRows(Gold2.Test, [RowOf(manifest[0]), RowOf(manifest[0]), RowOf(manifest[1])]));
+        Assert.Contains("more than once", Assert.Throws<InvalidDataException>(() => Gold2.ReadVerifiedRows(corpus, Gold2.Test)).Message, StringComparison.Ordinal);
+
+        // A different row
+        var other = new Gold2Token("t-2", "test", "voa-1", "voa", "voa-1-s0001", 1, "read", "T", ["We", "read", "this", "."]);
+        File.WriteAllText(Gold2.RowsPath(corpus, Gold2.Test), Gold2.RenderRows(Gold2.Test, [RowOf(manifest[0]), RowOf(other)]));
+        Assert.Contains("differs from manifest.tsv in the words", Assert.Throws<InvalidDataException>(() => Gold2.ReadVerifiedRows(corpus, Gold2.Test)).Message, StringComparison.Ordinal);
+
+        // Every row present: accepted
+        File.WriteAllText(Gold2.RowsPath(corpus, Gold2.Test), Gold2.RenderRows(Gold2.Test, [RowOf(manifest[1]), RowOf(manifest[0])]));
+        Assert.Equal(2, Gold2.ReadVerifiedRows(corpus, Gold2.Test).Count);
+    }
+
+    /// <summary>
+    ///     The keys of one Project Gutenberg book in the open corpus, the provenance and an address become one key.
+    /// </summary>
+    [Fact]
+    public void Gold2_CanonicalDocumentKey_GutenbergSpellings_AreOneKey()
+    {
+        // Act / Assert
+        Assert.Equal("gutenberg-1419", Gold2.CanonicalDocumentKey("pg1419"));
+        Assert.Equal("gutenberg-1419", Gold2.CanonicalDocumentKey("gutenberg-1419"));
+        Assert.Equal("gutenberg-1419", Gold2.CanonicalDocumentKey("PG01419"));
+        Assert.Equal("gutenberg-1419", Gold2.CanonicalDocumentKey("https://www.gutenberg.org/cache/epub/1419/pg1419.txt"));
+        Assert.Equal("gutenberg-1419", Gold2.CanonicalDocumentKey("https://www.gutenberg.org/ebooks/1419"));
+        Assert.Equal("voa-7782072", Gold2.CanonicalDocumentKey("voa-7782072"));
+        Assert.Equal("faa-9", Gold2.CanonicalDocumentKey("faa-9"));
+        Assert.NotEqual(Gold2.CanonicalDocumentKey("pg14"), Gold2.CanonicalDocumentKey("pg1419"));
+    }
+
+    /// <summary>
+    ///     A gold v2 Gutenberg book that the provenance of the anchors writes as <c>pg&lt;number&gt;</c>, that the open corpus lists
+    ///     only by address, or that the first all-words set names in a sentence id, is a used document.
+    /// </summary>
+    [Fact]
+    public void Gold2_ValidateDocuments_GutenbergBookUnderAnotherKeyFormat_IsAProblem()
+    {
+        // Arrange
+        var corpus = _dir.Root;
+        _dir.Write("provenance/x.tsv", "id\tsplit\tsource\tsource_key\nabc\tanchors\tgutenberg\tpg1419#s17295\n");
+        _dir.Write("open/sources/urls.tsv", "doc_id\turl\nother-1\thttps://www.gutenberg.org/cache/epub/77/pg77.txt\n");
+        _dir.Write("allwords/dev.tsv", "# columns\nd-1\tgutenberg-88-s0012\t3\tword\n");
+        var folder = Gold2.Directory(corpus);
+        Directory.CreateDirectory(folder);
+        string[] ids = ["gutenberg-1419", "gutenberg-77", "gutenberg-88", "gutenberg-99"];
+        File.WriteAllText(Path.Join(folder, Gold2.SourcesName), Gold2.RenderDocuments(ids.Select(id =>
+            new Gold2Document(id, "gutenberg", "t", $"https://www.gutenberg.org/cache/epub/{id[10..]}/pg{id[10..]}.txt", string.Empty, string.Empty, "b", "u", "d", "a", "b", 1))));
+        File.WriteAllText(Path.Join(folder, Gold2.ManifestName), Gold2.RenderManifest([]));
+
+        // Act
+        var problems = Gold2.ValidateDocuments(corpus);
+
+        // Assert
+        Assert.Contains(problems, p => p.Contains("'gutenberg-1419'", StringComparison.Ordinal));
+        Assert.Contains(problems, p => p.Contains("'gutenberg-77'", StringComparison.Ordinal));
+        Assert.Contains(problems, p => p.Contains("'gutenberg-88'", StringComparison.Ordinal));
+        Assert.DoesNotContain(problems, p => p.Contains("'gutenberg-99'", StringComparison.Ordinal));
+    }
+
+    /// <summary>
+    ///     A lemma is trained when it has weights: sentences for two or more senses. A lemma with a single anchored sense is not,
+    ///     and the stratum of its forms is the untrained one.
+    /// </summary>
+    [Fact]
+    public void Gold2_TrainedLemmas_SingleAnchoredSense_IsUntrained()
+    {
+        // Arrange: the committed anchors have two sentences for one sense of 'always'
+        var anchors = Path.Join(Corpus, "anchors");
+
+        // Act
+        var weighted = WordSense.Builder.Corpus.ReadWeightedLemmas(anchors);
+        var any = WordSense.Builder.Corpus.ReadLemmas(anchors);
+
+        // Assert
+        Assert.Contains("always", any);
+        Assert.DoesNotContain("always", weighted);
+        Assert.Equal(Gold2Strata.Untrained, Gold2Strata.SenseFlag("always", weighted));
+        Assert.Equal(Gold2Strata.Trained, Gold2Strata.SenseFlag("always", new HashSet<string>(["always"], StringComparer.Ordinal)));
+        Assert.True(WeightsTrainer.HasWeights(2));
+        Assert.False(WeightsTrainer.HasWeights(1));
+    }
+
+    /// <summary>
+    ///     The lemmas that have weights in the shipped models are the lemmas that the rule of the trainer finds in the anchors.
+    /// </summary>
+    [Fact]
+    public void Gold2_TrainedLemmas_ShippedWeights_AreTheLemmasOfTheTrainerRule()
+    {
+        // Act
+        var (lemmas, basis) = Gold2.TrainedLemmas(DataFixture.RepositoryRoot(), Corpus);
+
+        // Assert
+        Assert.Contains("shipped models", basis, StringComparison.Ordinal);
+        Assert.Equal(WordSense.Builder.Corpus.ReadWeightedLemmas(Path.Join(Corpus, "anchors")).Order(StringComparer.Ordinal), lemmas.Order(StringComparer.Ordinal));
+    }
+
+    /// <summary>
+    ///     Without a weights file the lemmas come from the anchors by the same rule.
+    /// </summary>
+    [Fact]
+    public void Gold2_TrainedLemmas_NoWeightsFile_UsesTheAnchorRule()
+    {
+        // Arrange
+        _dir.Write("corpus/anchors/a.tsv", "walk\twalk#a\tNoun\tx\nwalk\twalk#b\tNoun\ty\nrun\trun#a\tVerb\tz\n");
+
+        // Act
+        var (lemmas, basis) = Gold2.TrainedLemmas(_dir.Root, Path.Join(_dir.Root, "corpus"));
+
+        // Assert
+        Assert.Equal(["walk"], lemmas);
+        Assert.Contains("no weights file", basis, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A further round of batches for the tokens that a labeler left unanswered sits beside the first round under a tag of its
+    ///     own: the table of the first round keeps its mapping, and the answers of both rounds are read together.
+    /// </summary>
+    [Fact]
+    public async Task Program_Gold2Batches_Missing_KeepsTheBatchIndexOfTheFirstRound()
+    {
+        // Arrange
+        var ct = TestContext.Current.CancellationToken;
+        var corpus = Path.Join(_dir.Root, "corpus");
+        var folder = Gold2.Directory(corpus);
+        Directory.CreateDirectory(folder);
+        await File.WriteAllTextAsync(Path.Join(folder, Gold2.ManifestName), Gold2.RenderManifest([ReadToken("t-1"), ReadToken("t-2"), ReadToken("t-3")]), ct);
+        var work = Path.Join(_dir.Root, "work");
+        Directory.CreateDirectory(work);
+        string[] common = ["--dir", work, "--corpus", corpus, "--data", DataFolder];
+        await RunBatchesAsync(["gold2-batches", .. common]);
+        var table = await File.ReadAllTextAsync(Path.Join(work, "sample.tsv"), ct);
+        await File.WriteAllTextAsync(Path.Join(work, "g2-t01.sol.tsv"), "n\tanalysis\tsense\tconfidence\n1\ta1\t-\thigh\n", ct);
+
+        // Act
+        var output = await RunBatchesAsync(["gold2-batches", .. common, "--missing", "sol"]);
+        await File.WriteAllTextAsync(Path.Join(work, "g2-r1-t01.sol.tsv"), "n\tanalysis\tsense\tconfidence\n1\ta2\t-\tlow\n2\ta1\t-\thigh\n", ct);
+        var (answers, problems) = Gold2Labeling.ReadAnswers(work, "sol", false);
+
+        // Assert
+        Assert.Equal(table, await File.ReadAllTextAsync(Path.Join(work, "sample.tsv"), ct));
+        Assert.Contains("Retry round '-r1' for the 2 tokens", output, StringComparison.Ordinal);
+        Assert.Contains("Wrote 1 labeling batches for 2 tokens", output, StringComparison.Ordinal);
+        Assert.True(File.Exists(Path.Join(work, "batches", "g2-r1-t01.json")));
+        Assert.Equal(["t-2", "t-3"], (await File.ReadAllLinesAsync(Path.Join(work, "sample-r1.tsv"), ct)).Skip(1).Select(l => l.Split('\t')[2]));
+        Assert.Empty(problems);
+        Assert.Equal(["t-1", "t-2", "t-3"], answers.Keys.Order(StringComparer.Ordinal));
+        Assert.Equal(new Gold2Answer("a1", "-", true), answers["t-1"]);
+        Assert.Equal(new Gold2Answer("a2", "-", false), answers["t-2"]);
+    }
+
+    private static async Task<string> RunBatchesAsync(string[] args)
+    {
+        using var output = new StringWriter();
+        var code = await Program.RunAsync(args, output, new StringWriter(), TestContext.Current.CancellationToken);
+        Assert.Equal(0, code);
+        return output.ToString();
+    }
+
+    /// <summary>
+    ///     A table that maps the batches to other tokens is never rewritten: the answers already given would be read as the
+    ///     answers of other tokens.
+    /// </summary>
+    [Fact]
+    public void Gold2Labeling_WriteBatches_TableWithAnotherMapping_IsNotOverwritten()
+    {
+        // Arrange
+        var directory = _dir.Root;
+        Gold2Labeling.WriteBatches(DataFolder, [ReadToken("t-1"), ReadToken("t-2")], directory, 100, "label");
+
+        // Act
+        var same = Gold2Labeling.WriteBatches(DataFolder, [ReadToken("t-1"), ReadToken("t-2")], directory, 100, "label");
+        var error = Assert.Throws<InvalidDataException>(() => Gold2Labeling.WriteBatches(DataFolder, [ReadToken("t-2")], directory, 100, "label"));
+
+        // Assert
+        Assert.Equal(1, same);
+        Assert.Contains("--tag", error.Message, StringComparison.Ordinal);
+        Assert.Equal("-r1", Gold2Labeling.RetryTag(directory, "label", string.Empty));
+        Assert.Equal("-x", Gold2Labeling.RetryTag(directory, "label", "-x"));
+    }
+
+    /// <summary>
+    ///     The report sets the strata of the draw, which the manifest froze, against the strata computed from the trained
+    ///     lemmas now, and gives the improvement that the scored tokens of each planned measure detect.
+    /// </summary>
+    [Fact]
+    public void Gold2Evaluator_RenderStrataAndPower_FrozenFlagsAgainstTheTrainedLemmas_AreCounted()
+    {
+        // Arrange: 'always' was drawn as trained but has no weights; 'bank' was drawn as untrained but has
+        var trained = new HashSet<string>(["bank"], StringComparer.Ordinal);
+        Gold2Row[] rows =
+        [
+            Row("t-1", "always", "Adverb", "always", string.Empty, "-", "-", strata: "TR"),
+            Row("t-2", "bank", "Noun", "bank", "Number=Sing", "-", "-", strata: "NV,U"),
+            Row("t-3", "bank", "Noun", "bank", "Number=Sing", "-", "-", strata: "NV,TR"),
+        ];
+        Gold2Scored[] scored = [.. rows.Select(r => new Gold2Scored(r.Token.Id, 1, 1, -1, -1, -1))];
+
+        // Act
+        var strata = Gold2Evaluator.RenderStrata(Gold2.Test, rows, trained);
+        var power = Gold2Evaluator.RenderPower(Gold2.Test, rows, scored, trained);
+
+        // Assert
+        Assert.Contains("| 2 | 1 | 1 | 1 | 1 | 2 | 1 |", strata, StringComparison.Ordinal);
+        Assert.Contains("| Part of speech (all tokens) | 1.0 points | 3.5% | 3 | ", power, StringComparison.Ordinal);
+        Assert.Contains("| Tense (same-spelling verbs) | 5.0 points | 14.0% | 0 | n/a |", power, StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     The builder prints the power plan.
     /// </summary>
     [Fact]

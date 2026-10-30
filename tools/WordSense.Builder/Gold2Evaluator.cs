@@ -61,7 +61,8 @@ internal sealed record Gold2Comparison(string Stratum, string Measure, int Token
 ///     <see cref="TenseEvaluator"/>: past is a past tense or a past participle). The sense is the first sense of the selected
 ///     analysis (<see cref="AllWordsEvaluator.TopSense"/>), scored on the tokens whose gold sense is one of the senses of a
 ///     lemma and part of speech of two or more senses (a token with no defensible single sense is left out and counted). Whether
-///     a lemma is trained is read from the current anchors, so the strata follow later lemma expansions.
+///     a lemma is trained is read from the weights of the shipped models (a lemma has weights when two or more of its senses
+///     have anchors), so the strata follow later lemma expansions.
 ///     </para>
 ///     <para>
 ///     A comparison of two models counts the tokens that only one gets right (McNemar, exact two-sided p) and gives the
@@ -360,6 +361,67 @@ internal static class Gold2Evaluator
             "0" => 0,
             _ => throw new InvalidDataException($"'{cell}' is no outcome."),
         };
+    }
+
+    /// <summary>
+    ///     Renders how the strata of the draw compare with the strata computed now: the flag <c>TR</c> or <c>U</c> of a token
+    ///     is frozen in the manifest, while the sense strata of the results are computed from the trained lemmas.
+    /// </summary>
+    /// <param name="split">The split.</param>
+    /// <param name="rows">The gold rows of the split.</param>
+    /// <param name="trained">The trained lemmas.</param>
+    /// <returns>The text with line feeds.</returns>
+    public static string RenderStrata(string split, IReadOnlyList<Gold2Row> rows, IReadOnlySet<string> trained)
+    {
+        ArgumentNullException.ThrowIfNull(rows);
+        ArgumentNullException.ThrowIfNull(trained);
+        var inv = CultureInfo.InvariantCulture;
+        var drawnTrained = rows.Where(r => r.Token.Strata.Split(',').Contains(Gold2Strata.Trained)).ToList();
+        var drawnUntrained = rows.Where(r => r.Token.Strata.Split(',').Contains(Gold2Strata.Untrained)).ToList();
+        var movedDown = drawnTrained.Count(r => Gold2Strata.SenseFlag(r.Token.Form, trained) == Gold2Strata.Untrained);
+        var movedUp = drawnUntrained.Count(r => Gold2Strata.SenseFlag(r.Token.Form, trained) == Gold2Strata.Trained);
+        var goldTrained = rows.Count(r => trained.Contains(r.Lemma));
+        var text = new StringBuilder();
+        text.Append("##### Strata of the draw against the strata now (").Append(split).Append(")\n\n");
+        text.Append("| Drawn as `TR` | `TR` now | Moved to `U` | Drawn as `U` | `U` now `TR` | Gold lemma trained | Gold lemma untrained |\n| ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n");
+        text.Append("| ").Append(drawnTrained.Count.ToString("N0", inv)).Append(" | ").Append((drawnTrained.Count - movedDown).ToString("N0", inv))
+            .Append(" | ").Append(movedDown.ToString("N0", inv)).Append(" | ").Append(drawnUntrained.Count.ToString("N0", inv))
+            .Append(" | ").Append(movedUp.ToString("N0", inv)).Append(" | ").Append(goldTrained.ToString("N0", inv))
+            .Append(" | ").Append((rows.Count - goldTrained).ToString("N0", inv)).Append(" |\n\n");
+        return text.ToString();
+    }
+
+    /// <summary>
+    ///     Renders the smallest improvement that the scored tokens of each planned measure detect (paired comparison, the
+    ///     discordance and the level of <see cref="Gold2Power"/>).
+    /// </summary>
+    /// <param name="split">The split.</param>
+    /// <param name="rows">The gold rows of the split.</param>
+    /// <param name="scored">The outcomes of any model (which tokens are scored does not depend on the model).</param>
+    /// <param name="trained">The trained lemmas.</param>
+    /// <returns>The text with line feeds.</returns>
+    public static string RenderPower(string split, IReadOnlyList<Gold2Row> rows, IReadOnlyList<Gold2Scored> scored, IReadOnlySet<string> trained)
+    {
+        ArgumentNullException.ThrowIfNull(rows);
+        ArgumentNullException.ThrowIfNull(scored);
+        var inv = CultureInfo.InvariantCulture;
+
+        // The stratum and the measure of each planned measure of Gold2Power.Measures, in its order
+        var cells = new (string Stratum, int Measure)[] { (All, 0), ("untrained lemma", 3), ("trained lemma", 3), ("tense", 2), ("lemma-ambiguous", 1) };
+        var text = new StringBuilder();
+        text.Append("##### Smallest improvement the scored tokens detect (").Append(split).Append(")\n\n");
+        text.Append("| Measure | Planned improvement | Discordance | Tokens scored | Improvement detected |\n| --- | ---: | ---: | ---: | ---: |\n");
+        for (var i = 0; i < Gold2Power.Measures.Count && i < cells.Length; i++)
+        {
+            var m = Gold2Power.Measures[i];
+            var (n, _) = Tally(rows, scored, trained, cells[i].Stratum, cells[i].Measure);
+            text.Append("| ").Append(m.Name).Append(" | ").Append((m.Mdi * 100).ToString("0.0", inv)).Append(" points | ").Append((m.Discordance * 100).ToString("0.0", inv))
+                .Append("% | ").Append(n.ToString("N0", inv)).Append(" | ")
+                .Append(n == 0 ? "n/a" : (Gold2Power.MinimumDetectable(n, m.Discordance) * 100).ToString("0.00", inv) + " points").Append(" |\n");
+        }
+
+        text.Append('\n');
+        return text.ToString();
     }
 
     /// <summary>

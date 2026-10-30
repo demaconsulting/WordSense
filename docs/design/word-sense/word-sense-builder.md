@@ -136,8 +136,9 @@ implementation of the feature computation.
   first-sense, tag-count and random baselines, and the smoothing sweep on the development half).
 - `Gold2Strata`, `Gold2Token`, `Gold2Document`, `Gold2Row`, `Gold2`: the second all-words gold set
   (`corpus/allwords/v2`): the strata of a form, the records of the frozen manifest, the documents and the labeled rows,
-  their readers and writers, the sentences of the set as parts of the leakage check and the document check
-  (`Gold2.ValidateDocuments`).
+  their readers and writers, the check of the rows against the manifest (`Gold2.ValidateRows`), the lemmas that count as
+  trained (`Gold2.TrainedLemmas`), the sentences of the set as parts of the leakage check and the document check
+  (`Gold2.ValidateDocuments`, with the one key of a Gutenberg book, `Gold2.CanonicalDocumentKey`).
 - `Gold2Plan`, `Gold2Sentence`, `Gold2Sampler`: the plan of the quotas and caps and the draw of the tokens from a pool
   of sentences of new documents, with the document-disjoint split.
 - `Gold2Labeling`, `Gold2Answer`, `Gold2Label`, `Gold2Outcome`, `Gold2Agreement`: the labeling batches, the answers of
@@ -242,13 +243,16 @@ instead of `--model`.
   [--missing SUFFIX] [--first SUFFIX --second SUFFIX]`: writes the labeling batches of the manifest or, for
   `--stage adjudicate`, the batches
   of the tokens on which the two labelers do not agree, with both answers shown; `--missing` writes only the tokens that
-  the answers of a labeler lack.
+  the answers of a labeler lack, under a retry tag of its own (`-r1`, `-r2`, ...) that sits beside the earlier tables.
 - `gold2-merge --dir DIR --first SUFFIX --second SUFFIX --adjudicator SUFFIX [--target DIR] [--output FILE]`: merges the
   answers of the two labelers and the adjudicator into `dev.tsv`, `test.tsv` and `labels.tsv` and prints the agreement;
-  it writes nothing and exits with 1 when an answer is missing or invalid.
+  it writes nothing and exits with 1 when an answer is missing or invalid, an answer names a token that the manifest does
+  not have, or a row would not match the manifest.
 - `evaluate-gold2 [--model all|NAME] [--splits dev,test] [--output FILE] [--outcomes DIR]`: measures the models on the
   second gold set (part of speech, lemma, tense and sense per stratum, the sense baselines and the paired comparison of
-  every pair of models); `--outcomes` writes the per-token outcomes of each model.
+  every pair of models) after checking that its rows match the manifest one to one; it reports the strata of the draw
+  against the strata computed now and the smallest improvement that the scored tokens detect; `--outcomes` writes the
+  per-token outcomes of each model.
 - `compare-gold2 --first FILE --second FILE [--split test] [--name-first A] [--name-second B] [--output FILE]`: compares
   two outcome files of `evaluate-gold2`, for example from two builds, on the same tokens.
 - `evaluate-running [--model all|NAME] [--split test] [--gold FILE] [--report all|running|tense] [--output FILE]
@@ -721,10 +725,14 @@ adjudication and no human review; the README of the set says so.
    model is right.
 2. `gold2-sample` (`Gold2Sampler.Draw`) draws from a pool of sentences of new documents. Before it, the sentences that
    any other part of the repository holds (normalized text, as in the leakage check) and the documents that any other
-   part uses or has rejected (by id and by address, `Gold2.UsedDocuments`) are left out. `Gold2Sampler.AssignSplits`
+   part uses or has rejected (by id and by address, `Gold2.UsedDocuments`) are left out. `Gold2.UsedDocuments` reads the
+   open corpus, the provenance of the anchors and the held-out sentences, and the first gold set, and adds every id and
+   address under one key (`Gold2.CanonicalDocumentKey`): a Gutenberg book is `gutenberg-<number>` whether it is written
+   `pg<number>` (the provenance), `gutenberg-<number>` (the open corpus) or as an address. `Gold2Sampler.AssignSplits`
    divides the documents of each source family between the development split (about 40% of the pooled sentences of the
    family) and the test split by a hash of the seed and the document id, so no document is in both.
-   `Gold2Strata.Of` flags each candidate from the lexicon and the anchors alone: `U` (a polysemous analysis, no
+   `Gold2Strata.Of` flags each candidate from the lexicon and the anchors alone (a lemma is trained when it has weights,
+   item 6): `U` (a polysemous analysis, no
    trained lemma), `TR` (a polysemous analysis of a trained lemma), `T` (a same-spelling past and non-past verb,
    `TenseEvaluator.GroupsOf`), `NV` (a noun and a verb analysis), `H` (a heteronym spelling, `Heteronyms.Build`),
    `L` (an inflected form of two or more open-class lemmas) and `C` (none of these). `Gold2Sampler.IsCandidateWord`
@@ -747,18 +755,28 @@ adjudication and no human review; the README of the set says so.
    goes to the adjudicator (`gold2-batches --stage adjudicate`, `gpt-5.6-luna`), who sees both answers and may answer
    `none` (no defensible single sense). That answer is kept as a category and left out of the sense accuracy.
    Nothing is dropped. A token that a labeler has not answered is reported first (`gold2-batches --missing` writes
-   those tokens again).
+   those tokens again under a retry tag, `Gold2Labeling.RetryTag`, so the table of the earlier round, which maps its
+   batches to tokens, is never rewritten; `Gold2Labeling.WriteBatches` refuses to replace a table with another mapping).
 5. `gold2-merge` (`Gold2Labeling.Merge`) writes `dev.tsv` and `test.tsv` (the gold part of speech, lemma, features,
    tense class, sense, status `agreed` or `adjudicated` and the agreement of the labelers: `full`, `analysis`, `pos` or
    `none`) and `labels.tsv` (the answers of all three), and prints the agreement table. It writes nothing and exits
-   with 1 when an answer is missing or invalid.
-6. `evaluate-gold2` (`Gold2Evaluator.MeasureAsync`) classifies every token inside its sentence and scores it: the part
+   with 1 when an answer is missing or invalid, an answer names a token that the manifest does not have, or the rows
+   would not match the manifest (`Gold2.ValidateRows`).
+6. `evaluate-gold2` (`Gold2Evaluator.MeasureAsync`) reads the rows with `Gold2.ReadVerifiedRows`, which requires an exact
+   one-to-one match with `manifest.tsv` on id, document, source, sentence, target, form, strata and words, and throws an
+   `InvalidDataException` that names a missing, duplicate, unknown or different row. It classifies every token inside its
+   sentence and scores it: the part
    of speech of the selected analysis (a token that is not answered is wrong), the lemma, the tense (only for a gold
    verb whose spelling is a same-spelling verb; past is a past tense or a participle, the rule of the tense evaluation)
    and the sense (the first sense listed by the selected analysis, `AllWordsEvaluator.TopSense`, scored when the gold
-   sense is a sense id; also scored on the tokens whose analysis is right). `Gold2Evaluator.Render` reports the counts
-   and the accuracy for all tokens and for each stratum: trained and untrained lemma (read from the current anchors, by
-   the gold lemma), heteronym, noun and verb, tense, lemma-ambiguous, and the source groups. `Gold2Evaluator.Baseline`
+   sense is a sense id; also scored on the tokens whose analysis is right). A lemma is trained when it has weights, which
+   is the rule of the trainer (`WeightsTrainer.HasWeights`: sentences for two or more senses): `Gold2.TrainedLemmas` reads
+   the lemmas that have weights in every shipped encoder model and, without weights files, applies the same rule to the
+   anchors (`Corpus.ReadWeightedLemmas`). `Gold2Evaluator.Render` reports the counts
+   and the accuracy for all tokens and for each stratum: trained and untrained lemma (by the gold lemma), heteronym,
+   noun and verb, tense, lemma-ambiguous, and the source groups. `Gold2Evaluator.RenderStrata` compares the `TR` and `U`
+   flags frozen in the manifest with the flags that `Gold2Strata.SenseFlag` gives now, and `Gold2Evaluator.RenderPower`
+   gives the smallest improvement that the scored tokens of each planned measure detect. `Gold2Evaluator.Baseline`
    gives the sense baselines, told the gold lemma and part of speech: the first sense in inventory order and the most
    frequent sense by the WordNet 3.0 tag counts.
 7. `Gold2Evaluator.Compare` compares every pair of models for each stratum and measure on the tokens that the measure
@@ -769,8 +787,8 @@ adjudication and no human review; the README of the set says so.
    builds of a model.
 8. The files are validated when they are read: a manifest line has its word at its index, and a row has a part of speech
    of the lexicon or `Other`, a sense of its lemma and part of speech when one is given, a status and a tense only for a
-   verb. The leakage check reads the sentences of each split as an evaluation part of its own and runs the document
-   check (`Gold2.ValidateDocuments`).
+   verb; the rows of a split match the manifest one to one (item 6). The leakage check reads the sentences of each split
+   as an evaluation part of its own and runs the document check (`Gold2.ValidateDocuments`).
 
 #### Running-text evaluation (`RunningTextEvaluator`)
 

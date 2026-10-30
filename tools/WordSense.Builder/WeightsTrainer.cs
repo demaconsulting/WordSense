@@ -59,6 +59,21 @@ internal sealed record TrainedWeights(WeightsData Data, IReadOnlyList<(string Le
 internal static class WeightsTrainer
 {
     /// <summary>
+    ///     The least number of senses of a lemma that must have an anchor for the lemma to get weights.
+    /// </summary>
+    public const int MinimumAnchoredSenses = 2;
+
+    /// <summary>
+    ///     Tells whether a lemma gets weights: it has something to choose between.
+    /// </summary>
+    /// <remarks>
+    ///     This is the one rule of "a trained lemma": the trainer, the appendix and the second all-words gold set all use it.
+    /// </remarks>
+    /// <param name="anchoredSenses">The number of distinct senses of the lemma that have an anchor.</param>
+    /// <returns>True when the number reaches <see cref="MinimumAnchoredSenses"/>.</returns>
+    public static bool HasWeights(int anchoredSenses) => anchoredSenses >= MinimumAnchoredSenses;
+
+    /// <summary>
     ///     Trains dense-feature weights from pooled encoder vectors.
     /// </summary>
     /// <param name="modelId">The model identifier recorded in the weights.</param>
@@ -215,7 +230,7 @@ internal static class WeightsTrainer
         }
 
         anchored = columns.Count;
-        if (columns.Count < 2)
+        if (!HasWeights(columns.Count))
         {
             return null;
         }

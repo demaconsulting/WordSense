@@ -576,8 +576,10 @@ sections:
           - WordSense-WordSenseBuilder-Gold2Documents
           - WordSense-WordSenseBuilder-Gold2Documents-Committed
           - WordSense-WordSenseBuilder-Gold2Rows
+          - WordSense-WordSenseBuilder-Gold2Rows-Manifest
           - WordSense-WordSenseBuilder-Gold2Labeling-Answers
           - WordSense-WordSenseBuilder-Gold2Labeling-Batches
+          - WordSense-WordSenseBuilder-Gold2Labeling-Retry
           - WordSense-WordSenseBuilder-Gold2Labeling-Merge
           - WordSense-WordSenseBuilder-Gold2Labeling-Missing
           - WordSense-WordSenseBuilder-Gold2Evaluation

@@ -519,7 +519,8 @@ and, for the measurement, a stub model.
 #### gold2-power, gold2-sample, gold2-batches, gold2-merge, evaluate-gold2 and compare-gold2
 
 The tests are in `test/WordSense.Builder.Tests/Gold2Tests.cs`. They use the committed catalog, temporary directories,
-a small synthetic pool and a stub model; two tests read the committed set `corpus/allwords/v2`.
+a small synthetic pool and a stub model; four tests read the committed set `corpus/allwords/v2` and the committed anchors
+and weights.
 
 - **Power plan** (`Gold2Power_PairedSampleSize_PlannedMeasures_MatchesThePlan`,
   `Gold2Power_MinimumDetectable_IsTheInverseOfTheSampleSize`, `Program_Gold2Power_PrintsThePlan`): the sample size of
@@ -530,10 +531,18 @@ a small synthetic pool and a stub model; two tests read the committed set `corpu
   table.
 - **Exact McNemar** (`Gold2Power_ExactMcNemar_KnownSplits_GivesTheExactProbability`): the p value is 1 for no discordant
   token and for an even split, `2 / 1024` for 10 against 0, and symmetric in the two counts.
-- **Strata** (`Gold2Strata_Of_Forms_FlagsFollowTheLexiconAndTheTrainedLemmas`): `put` bears the same-spelling verb
+- **Strata** (`Gold2Strata_Of_Forms_FlagsFollowTheLexiconAndTheTrainedLemmas`,
+  `Gold2_TrainedLemmas_SingleAnchoredSense_IsUntrained`): `put` bears the same-spelling verb
   flag, `bank` the noun-and-verb flag and the trained or untrained flag by its lemma, a heteronym spelling the
   heteronym flag, `saw` the lemma-ambiguous flag, and a form that the lexicon does not know none (null); the families
-  of the sources are grouped into technical, news and literary text.
+  of the sources are grouped into technical, news and literary text. In the committed anchors `always` has two sentences
+  for one sense: it is in the lemmas of the anchors but not in the lemmas that get weights
+  (`Corpus.ReadWeightedLemmas`), its sense flag is the untrained one, and `WeightsTrainer.HasWeights` is false for one
+  anchored sense and true for two.
+- **Trained lemmas** (`Gold2_TrainedLemmas_ShippedWeights_AreTheLemmasOfTheTrainerRule`,
+  `Gold2_TrainedLemmas_NoWeightsFile_UsesTheAnchorRule`): the lemmas that have weights in both shipped encoder models are
+  exactly the lemmas that the rule of the trainer finds in the committed anchors; without a weights file the same
+  rule is applied to the anchors of a small directory (a lemma of two senses is trained, a lemma of one is not).
 - **Candidates** (`Gold2Sampler_IsCandidateWord_NamesAcronymsAndSymbols_AreLeftOut`): lower-case words, a capitalized
   word at the start of a sentence, `I` and `a` can be drawn; a capitalized word inside a sentence, an acronym, a word
   with an apostrophe, a numeral and a symbol cannot.
@@ -547,14 +556,30 @@ a small synthetic pool and a stub model; two tests read the committed set `corpu
   and a rows file are written and read back the same (the sentence words included), the leakage parts of the set are
   read (one part for the split that has tokens), and a manifest line whose word is not at its index is an
   `InvalidDataException`.
-- **Document check** (`Gold2_ValidateDocuments_UsedMissingAndSharedDocuments_AreProblems`): a document whose id is in
+- **Document check** (`Gold2_ValidateDocuments_UsedMissingAndSharedDocuments_AreProblems`,
+  `Gold2_CanonicalDocumentKey_GutenbergSpellings_AreOneKey`,
+  `Gold2_ValidateDocuments_GutenbergBookUnderAnotherKeyFormat_IsAProblem`): a document whose id is in
   the open corpus sources, a document whose address is there, a manifest token whose document is not listed and a
-  document with tokens in both splits are each a problem that names the document.
+  document with tokens in both splits are each a problem that names the document. `pg1419`, `PG01419`,
+  `gutenberg-1419` and the addresses of the book become `gutenberg-1419`, and other keys are unchanged. A book that the
+  provenance writes as `pg1419#s17295`, that the open corpus lists only by its address, or that the first all-words set
+  names in a sentence id (`gutenberg-88-s0012`) is a used document, and a book that no part uses is not.
 - **Committed set** (`Gold2_CommittedSet_DocumentsAreDisjointFromTheRepository`,
-  `Gold2_CommittedRows_AreConsistentWithTheLexiconAndTheManifest`): the document check of the committed set finds no
-  problem; the committed rows are one for each token of the manifest with its strata, a part of speech of the lexicon
+  `Gold2_CommittedRows_AreConsistentWithTheLexiconAndTheManifest`, `Gold2_CommittedRows_MatchTheManifestOneToOne`): the
+  document check of the committed set finds no problem (every Gutenberg book under its canonical key); the committed
+  rows are one for each token of the manifest with its strata, a part of speech of the lexicon
   or `Other`, a lemma, a status of agreed or adjudicated, a tense for a verb only and a sense of the lemma and part of
-  speech when one is given.
+  speech when one is given; they match the manifest one to one on id, document, source, sentence, target, form, strata
+  and words.
+- **Rows against the manifest** (`Gold2_ValidateRows_RowsOfTheManifest_HaveNoProblem`,
+  `Gold2_ValidateRows_MissingDuplicateUnknownAndRepeatedIds_AreProblems`,
+  `Gold2_ValidateRows_RowThatDiffersFromTheManifest_NamesWhatDiffers`,
+  `Gold2_ReadVerifiedRows_RowsThatDoNotMatchTheManifest_Throw`): rows of the manifest in any order have no problem; a
+  token without a row, a row that appears twice, a row that the manifest does not have for the split (an unknown id, or
+  the id of the other split) and a manifest id that appears twice are each named; a row with another document, sentence,
+  target, form or words says what differs; the reader of verified rows throws an `InvalidDataException` for a missing,
+  a duplicate and a different row, returns an empty list for a split without rows and tokens, and accepts the complete
+  set.
 - **Answers** (`Gold2Labeling_Resolve_Answers_ResolveToTheAnalysisAndItsSense`): the analyses of `read` come in the
   order of lemma, part of speech and features; an answer resolves to its analysis and a sense of it; an unsure answer
   of the adjudicator and a `none` of the adjudicator resolve to `none`, and a `none` of a labeler is a problem;
@@ -573,6 +598,12 @@ a small synthetic pool and a stub model; two tests read the committed set `corpu
   token in braces and the analyses with their senses and glosses; the answer table is read back (`a1` with `unsure`
   and a high confidence, `a2` with a low one) and a line that is no answer is reported; the adjudication batch shows
   the first labeler's answer, and its table is written.
+- **Retry round** (`Program_Gold2Batches_Missing_KeepsTheBatchIndexOfTheFirstRound`,
+  `Gold2Labeling_WriteBatches_TableWithAnotherMapping_IsNotOverwritten`): of three tokens of which the first has an
+  answer, `gold2-batches --missing` writes the other two as `sample-r1.tsv` and `g2-r1-t01.json`, leaves `sample.tsv`
+  byte for byte as it was, and the answers of both rounds are read together (the first token keeps its answer). Writing
+  the same batches again is accepted; writing a table with another mapping is an `InvalidDataException` that names
+  `--tag`; the retry tag is the one asked for when it is free, else the first free `-r<n>`.
 - **Measurement** (`Gold2Evaluator_MeasureAsync_PosLemmaTenseAndSense_AreScoredPerToken`): a stub model gives, for five
   tokens: a right part of speech, lemma and sense; a right analysis with the wrong sense; a right lemma and part of
   speech with the wrong tense and no scored sense; a token whose gold sense is `none`, which is not scored on the sense;
@@ -580,6 +611,10 @@ a small synthetic pool and a stub model; two tests read the committed set `corpu
   is wrong on the lemma. The sense on the right analysis
   is scored apart; the tallies of all tokens, of the tense stratum and of the untrained stratum are right; and the
   report has a row of the trained lemmas.
+- **Strata and power report** (`Gold2Evaluator_RenderStrataAndPower_FrozenFlagsAgainstTheTrainedLemmas_AreCounted`):
+  of three rows, one drawn as trained whose lemma has no weights and one drawn as untrained whose lemma has, the report
+  counts 2 drawn as `TR`, 1 still `TR`, 1 moved to `U`, 1 drawn as `U`, 1 now `TR`, 2 tokens of a trained gold lemma
+  and 1 of an untrained one; the power table gives 3 tokens for the part of speech and no tokens (n/a) for the tense.
 - **Baselines** (`Gold2Evaluator_Baseline_FirstAndMostFrequentSense_AreScoredOnTheSenseOnly`): the first-sense baseline
   is right on a token whose gold sense is the top sense of `bank`, neither baseline is scored on the part of speech,
   and a token without a gold sense is not scored.

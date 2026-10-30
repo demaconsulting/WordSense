@@ -63,7 +63,7 @@ internal static partial class Program
         }
 
         output.WriteLine($"Pool: {pool.Count.ToString("N0", CultureInfo.InvariantCulture)} sentences of {pool.Select(s => s.DocId).Distinct(StringComparer.Ordinal).Count().ToString("N0", CultureInfo.InvariantCulture)} documents ({skippedKnown.ToString("N0", CultureInfo.InvariantCulture)} sentences already in the repository and {skippedDocument.ToString("N0", CultureInfo.InvariantCulture)} of used documents left out).");
-        var trained = Corpus.ReadLemmas(Path.Join(corpus, "anchors"));
+        var trained = Corpus.ReadWeightedLemmas(Path.Join(corpus, "anchors"));
         var (bytes, _) = ImageCompiler.Build(data);
         var image = WordImage.Open(bytes);
         var heteronyms = Heteronyms.Build(data, Path.Join(corpus, "curation", "heteronyms.tsv"), image).Select(h => h.Spelling).ToHashSet(StringComparer.Ordinal);
@@ -136,6 +136,10 @@ internal static partial class Program
             {
                 var (answers, _) = Gold2Labeling.ReadAnswers(directory, suffix, false);
                 tokens = [.. tokens.Where(x => !answers.ContainsKey(x.Id))];
+
+                // The retry batches sit beside the earlier ones under a tag of their own: the table of the earlier round keeps its mapping
+                tag = Gold2Labeling.RetryTag(directory, "label", tag);
+                output.WriteLine($"Retry round '{tag}' for the {tokens.Count.ToString("N0", CultureInfo.InvariantCulture)} tokens without an answer.");
             }
 
             var count = Gold2Labeling.WriteBatches(data, tokens, directory, size, "label", null, tag);
@@ -161,6 +165,8 @@ internal static partial class Program
         {
             var (judged, _) = Gold2Labeling.ReadAnswers(directory, adjudicator, true);
             pending = [.. pending.Where(x => !judged.ContainsKey(x.Id))];
+            tag = Gold2Labeling.RetryTag(directory, "adjudicate", tag);
+            output.WriteLine($"Retry round '{tag}' for the {pending.Count.ToString("N0", CultureInfo.InvariantCulture)} tokens without a verdict.");
         }
 
         var pairs = pending.ToDictionary(x => x.Id, x => (first[x.Id], second[x.Id]), StringComparer.Ordinal);
@@ -179,6 +185,21 @@ internal static partial class Program
         var (judge, p3) = Gold2Labeling.ReadAnswers(directory, Require(options, "adjudicator"), true);
         var (outcomes, problems) = Gold2Labeling.Merge(tokens, first, second, judge);
         problems.AddRange(p1.Concat(p2).Concat(p3));
+        var manifestIds = tokens.Select(t => t.Id).ToHashSet(StringComparer.Ordinal);
+        foreach (var (name, answers) in new[] { ("first labeler", first), ("second labeler", second), ("adjudicator", judge) })
+        {
+            problems.AddRange(answers.Keys.Where(id => !manifestIds.Contains(id)).Order(StringComparer.Ordinal).Select(id => $"{id}: the {name} answered a token that {Gold2.ManifestName} does not have."));
+        }
+
+        var documents = Gold2.ReadDocumentsFile(Path.Join(target, Gold2.SourcesName)).ToDictionary(d => d.DocId, StringComparer.Ordinal);
+        var rowsOf = new Dictionary<string, List<Gold2Row>>(StringComparer.Ordinal);
+        foreach (var split in new[] { Gold2.Dev, Gold2.Test })
+        {
+            rowsOf[split] = [.. outcomes.Where(o => o.Token.Split == split && documents.ContainsKey(o.Token.DocId)).Select(o => Gold2Labeling.ToRow(o, documents[o.Token.DocId].TermsUrl))];
+            problems.AddRange(Gold2.ValidateRows(tokens, rowsOf[split], split));
+        }
+
+        problems.AddRange(outcomes.Where(o => !documents.ContainsKey(o.Token.DocId)).Select(o => $"{o.Token.Id}: its document '{o.Token.DocId}' is not in {Gold2.SourcesName}."));
         if (problems.Count > 0)
         {
             foreach (var problem in problems.Take(50))
@@ -190,13 +211,11 @@ internal static partial class Program
             return 1;
         }
 
-        var documents = Gold2.ReadDocumentsFile(Path.Join(target, Gold2.SourcesName)).ToDictionary(d => d.DocId, StringComparer.Ordinal);
         var counts = new List<Gold2Agreement>();
         foreach (var split in new[] { Gold2.Dev, Gold2.Test })
         {
-            var part = outcomes.Where(o => o.Token.Split == split).ToList();
-            File.WriteAllText(Path.Join(target, split + ".tsv"), Gold2.RenderRows(split, part.Select(o => Gold2Labeling.ToRow(o, documents[o.Token.DocId].TermsUrl))), Utf8NoBom);
-            counts.Add(Gold2Labeling.Count(split, part));
+            File.WriteAllText(Path.Join(target, split + ".tsv"), Gold2.RenderRows(split, rowsOf[split]), Utf8NoBom);
+            counts.Add(Gold2Labeling.Count(split, [.. outcomes.Where(o => o.Token.Split == split)]));
         }
 
         File.WriteAllText(Path.Join(target, Gold2.LabelsName), Gold2Labeling.RenderLabels(outcomes), Utf8NoBom);
@@ -209,13 +228,13 @@ internal static partial class Program
     private static async Task<int> RunEvaluateGold2Async(Dictionary<string, string> options, string repository, string corpus, TextWriter output, CancellationToken cancellationToken)
     {
         var splits = options.GetValueOrDefault("splits", "dev,test").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
-        var halves = splits.Select(s => (Split: s, Rows: Gold2.ReadRows(corpus, s))).Where(h => h.Rows.Count > 0).ToList();
+        var halves = splits.Select(s => (Split: s, Rows: Gold2.ReadVerifiedRows(corpus, s))).Where(h => h.Rows.Count > 0).ToList();
         if (halves.Count == 0)
         {
             throw new InvalidDataException($"The labeled second all-words gold set is not in '{Gold2.Directory(corpus)}'.");
         }
 
-        var trained = Corpus.ReadLemmas(Path.Join(corpus, "anchors"));
+        var (trained, basis) = Gold2.TrainedLemmas(repository, corpus);
         var results = halves.ToDictionary(h => h.Split, _ => new List<(string Model, IReadOnlyList<Gold2Scored> Scored)>(), StringComparer.Ordinal);
         foreach (var info in ModelCatalog.Select(options.GetValueOrDefault("model")))
         {
@@ -231,6 +250,7 @@ internal static partial class Program
         }
 
         var text = new StringBuilder("### Second all-words gold set (document-disjoint, two labelers and an adjudicator)\n\n");
+        text.Append("Trained lemmas (the lemmas that have weights): ").Append(basis).Append(".\n\n");
         foreach (var (split, rows) in halves)
         {
             var models = results[split];
@@ -239,6 +259,8 @@ internal static partial class Program
                 ("first sense in inventory order (told the gold lemma and part of speech)", Gold2Evaluator.Baseline(rows, false)),
                 ("most frequent sense by WordNet 3.0 tag count (told the gold lemma and part of speech)", Gold2Evaluator.Baseline(rows, true)),
             };
+            text.Append(Gold2Evaluator.RenderStrata(split, rows, trained));
+            text.Append(Gold2Evaluator.RenderPower(split, rows, models[0].Scored, trained));
             text.Append(Gold2Evaluator.Render(split, rows, withBaselines, trained));
             if (options.TryGetValue("outcomes", out var directory))
             {
@@ -267,10 +289,10 @@ internal static partial class Program
         return 0;
     }
 
-    private static int RunCompareGold2(Dictionary<string, string> options, string corpus, TextWriter output)
+    private static int RunCompareGold2(Dictionary<string, string> options, string repository, string corpus, TextWriter output)
     {
         var split = options.GetValueOrDefault("split", Gold2.Test);
-        var rows = Gold2.ReadRows(corpus, split);
+        var rows = Gold2.ReadVerifiedRows(corpus, split);
         if (rows.Count == 0)
         {
             throw new InvalidDataException($"The labeled second all-words gold set has no '{split}' split in '{Gold2.Directory(corpus)}'.");
@@ -284,7 +306,7 @@ internal static partial class Program
             throw new InvalidDataException($"The outcome files do not cover every token of the {split} split (for example {string.Join(", ", missing)}); both files must come from the same split.");
         }
 
-        var trained = Corpus.ReadLemmas(Path.Join(corpus, "anchors"));
+        var (trained, _) = Gold2.TrainedLemmas(repository, corpus);
         var comparisons = Gold2Evaluator.Compare(rows, [.. rows.Select(r => first[r.Token.Id])], [.. rows.Select(r => second[r.Token.Id])], trained);
         var text = Gold2Evaluator.RenderComparison(split, options.GetValueOrDefault("name-first", "first"), options.GetValueOrDefault("name-second", "second"), comparisons);
         output.Write(text);

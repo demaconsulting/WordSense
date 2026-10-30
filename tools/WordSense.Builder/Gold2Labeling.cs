@@ -183,10 +183,11 @@ internal static class Gold2Labeling
         Directory.CreateDirectory(batchDirectory);
         var lemmas = tokens.SelectMany(t => AnalysesOf(t.Form)).Select(a => a.Lemma).Distinct(StringComparer.Ordinal).ToList();
         var glosses = AppendixGenerator.ReadGlosses(data, lemmas);
-        var tableName = (stage == "adjudicate" ? "adjudication" : "sample") + tag + ".tsv";
+        var tableName = TableName(stage, tag);
         var table = new StringBuilder("batch\tn\tid\n");
         var prefix = (stage == "adjudicate" ? "g2a" : "g2") + tag;
         var batches = 0;
+        var files = new List<(string Name, string Json)>();
         foreach (var split in tokens.Select(t => t.Split).Distinct(StringComparer.Ordinal))
         {
             var chunks = new List<List<Gold2Token>>();
@@ -211,12 +212,54 @@ internal static class Gold2Labeling
             {
                 batches++;
                 var id = $"{prefix}-{split[0]}{batches.ToString("D2", CultureInfo.InvariantCulture)}";
-                File.WriteAllText(Path.Join(batchDirectory, id + ".json"), BatchJson(id, stage, chunk, glosses, answers, table), new UTF8Encoding(false));
+                files.Add((id + ".json", BatchJson(id, stage, chunk, glosses, answers, table)));
             }
         }
 
-        File.WriteAllText(Path.Join(directory, tableName), table.ToString(), new UTF8Encoding(false));
+        // The table maps the batches back to the tokens: it is never rewritten with another mapping, or the answers already
+        // given would be read as the answers of other tokens
+        var tablePath = Path.Join(directory, tableName);
+        if (File.Exists(tablePath) && !string.Equals(File.ReadAllText(tablePath, new UTF8Encoding(false)), table.ToString(), StringComparison.Ordinal))
+        {
+            throw new InvalidDataException($"'{tablePath}' already maps batches to other tokens; use another --tag to write a further round of batches.");
+        }
+
+        foreach (var (name, json) in files)
+        {
+            File.WriteAllText(Path.Join(batchDirectory, name), json, new UTF8Encoding(false));
+        }
+
+        File.WriteAllText(tablePath, table.ToString(), new UTF8Encoding(false));
         return batches;
+    }
+
+    private static string TableName(string stage, string tag) => (stage == "adjudicate" ? "adjudication" : "sample") + tag + ".tsv";
+
+    /// <summary>
+    ///     Chooses the tag of a further round of batches that completes an earlier round (the tokens that a labeler left
+    ///     unanswered), so that its table and batches sit beside the earlier ones and never replace them.
+    /// </summary>
+    /// <param name="directory">The directory of the batches and their tables.</param>
+    /// <param name="stage"><c>label</c> or <c>adjudicate</c>.</param>
+    /// <param name="requested">The tag that was asked for, or empty.</param>
+    /// <returns>The requested tag when no table of that name exists yet, else the first free <c>-r1</c>, <c>-r2</c>, ...</returns>
+    public static string RetryTag(string directory, string stage, string requested)
+    {
+        ArgumentNullException.ThrowIfNull(requested);
+        if (requested.Length > 0 && !File.Exists(Path.Join(directory, TableName(stage, requested))))
+        {
+            return requested;
+        }
+
+        var n = 1;
+        var tag = $"-r{n.ToString(CultureInfo.InvariantCulture)}";
+        while (File.Exists(Path.Join(directory, TableName(stage, tag))))
+        {
+            n++;
+            tag = $"-r{n.ToString(CultureInfo.InvariantCulture)}";
+        }
+
+        return tag;
     }
 
     private static string BatchJson(string id, string stage, List<Gold2Token> chunk, Dictionary<string, string> glosses, IReadOnlyDictionary<string, (Gold2Answer First, Gold2Answer Second)>? answers, StringBuilder table)

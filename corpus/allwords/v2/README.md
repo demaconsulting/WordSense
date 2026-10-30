@@ -25,7 +25,9 @@ document that another part uses or has rejected.
 | `labels.tsv` | The raw answer of the first labeler, the second labeler and the adjudicator for every token (`Pos\|lemma\|features\|sense\|confidence`) |
 
 The two splits share no document: documents are divided by a hash, family by family, so each split holds about 40% and
-60% of the pooled sentences of every family.
+60% of the pooled sentences of every family. The rows of `dev.tsv` and `test.tsv` match the tokens of the manifest one to
+one (id, document, source, sentence, target, form, strata and words); `evaluate-gold2` and `compare-gold2` refuse a set
+whose rows are missing, duplicated, unknown or different.
 
 A line of `dev.tsv` and `test.tsv` has 16 tab-separated columns after the header comment lines (`#`):
 
@@ -46,7 +48,10 @@ A line of `dev.tsv` and `test.tsv` has 16 tab-separated columns after the header
 
 Only the kinds of source that the open corpus admits (`../../open/README.md`, "Sources and license basis"), and only
 documents that appear nowhere else in the repository: not in `corpus/open` (used, candidate list, rejected, downloaded),
-not in the provenance of the anchors and held-out sentences, not in the first all-words set. No FAA, NASA or NOS text
+not in the provenance of the anchors and held-out sentences, not in the first all-words set. A Project Gutenberg book is
+one document whichever way a part writes it (`gutenberg-<number>` in the open corpus and here, `pg<number>` in the
+provenance, or its address): the check compares one canonical key, and none of the 97 books of the set is in the anchors,
+the held-out sentences, the open corpus or the first all-words set. No FAA, NASA or NOS text
 (excluded by the owner for the open corpus), no Tatoeba, no CC BY or CC BY-SA text, no Universal Dependencies text,
 no consumer sentence. Pages were retrieved on 2026-10-29.
 
@@ -102,9 +107,14 @@ from the lexicon and the anchors alone.
 | dev | 320 | 298 | 133 | 669 | 800 | 489 | 733 | 2,025 |
 | test | 480 | 447 | 200 | 999 | 1,200 | 729 | 1,100 | 3,047 |
 
-The sentences are public-domain text and the selection is ours. Whether a lemma is trained is read from the **current**
-anchors at evaluation time (by the gold lemma), so the trained and untrained results follow the later stages of lemma
-expansion; the flags above are the ones of the draw.
+The sentences are public-domain text and the selection is ours. A lemma is **trained** when it has weights in the shipped
+models: sentences in `corpus/anchors` for two or more of its senses (the rule of `WeightsTrainer`; 1,404 lemmas). A lemma
+with sentences for one sense (`always`, `therefore`) has no classifier and is untrained. The draw flagged `U` and `TR` with
+a looser rule (any sentence of the lemma) and the manifest is frozen, so `evaluate-gold2` computes the trained and
+untrained results at evaluation time, by the gold lemma and from the weights of the shipped models; the results follow the
+later stages of lemma expansion. It also prints the flags of the draw against the flags computed now. No token of the draw
+changes its `U` or `TR` flag. Of the tokens whose gold lemma has sentences for one sense only (7 development, 11 test, all
+of a monosemous analysis), none is scored on the sense, so the sense strata have the same tokens under either rule.
 
 ## Size and power
 
@@ -248,7 +258,8 @@ dotnet run --project tools/WordSense.Builder -- check-leakage                   
 ```
 
 To draw and label again: `gold2-sample --pool FILE --docs FILE` writes the manifest, `gold2-batches --dir DIR` writes the
-labeling batches (with `--stage adjudicate --first A --second B` the adjudication batches), and `gold2-merge --dir DIR
---first A --second B --adjudicator C` writes `dev.tsv`, `test.tsv` and `labels.tsv`.
+labeling batches (with `--stage adjudicate --first A --second B` the adjudication batches; with `--missing SUFFIX` only
+the tokens without an answer, under a retry tag `-r1`, `-r2`, ... that leaves the tables of the earlier rounds as they
+are), and `gold2-merge --dir DIR --first A --second B --adjudicator C` writes `dev.tsv`, `test.tsv` and `labels.tsv`.
 
 <!-- markdownlint-enable MD013 -->
