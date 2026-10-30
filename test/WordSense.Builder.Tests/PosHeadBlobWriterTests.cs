@@ -28,10 +28,13 @@ public sealed class PosHeadBlobWriterTests
     [Fact]
     public void WordSenseBuilder_PosHeadBlobWriter_Write_RoundTripsThroughTheReader()
     {
+        // Arrange: a head with every field populated
         var head = Head();
 
+        // Act: write the head and read it back
         var read = PosHeadBlob.Read(PosHeadBlobWriter.Write(head));
 
+        // Assert: all fields match, with weights at half precision
         Assert.Equal(head.ModelId, read.ModelId);
         Assert.Equal(head.HiddenSize, read.HiddenSize);
         Assert.Equal(head.EncoderSha256, read.EncoderSha256);
@@ -51,6 +54,8 @@ public sealed class PosHeadBlobWriterTests
     [Fact]
     public void WordSenseBuilder_PosHeadBlobWriter_Write_IsDeterministic()
     {
+        // Arrange: two equal heads and one with a different weight scale
+        // Act / Assert: equal heads write equal bytes and the different head writes different bytes
         Assert.Equal(PosHeadBlobWriter.Write(Head()), PosHeadBlobWriter.Write(Head()));
         Assert.NotEqual(PosHeadBlobWriter.Write(Head()), PosHeadBlobWriter.Write(Head(0.5f)));
     }
@@ -61,8 +66,11 @@ public sealed class PosHeadBlobWriterTests
     [Fact]
     public void WordSenseBuilder_PosHeadBlobWriter_Round_IsIdempotentAndRejectsOverflow()
     {
+        // Arrange: weights rounded once, plus an overflowing, a NaN and a null input
+        // Act: round the weights
         var once = PosHeadBlobWriter.Round([0.1f, -2.7f, 1000.3f]);
 
+        // Assert: a second rounding changes nothing and the bad inputs are rejected
         Assert.Equal(once, PosHeadBlobWriter.Round(once));
         Assert.Throws<InvalidDataException>(() => PosHeadBlobWriter.Round([70000f]));
         Assert.Throws<InvalidDataException>(() => PosHeadBlobWriter.Round([float.NaN]));
@@ -75,8 +83,10 @@ public sealed class PosHeadBlobWriterTests
     [Fact]
     public void WordSenseBuilder_PosHeadBlobWriter_Write_InvalidHead_Throws()
     {
+        // Arrange: a valid head to derive each invalid variant from
         var head = Head();
 
+        // Act / Assert: each invalid head is rejected with the matching exception
         Assert.Throws<ArgumentNullException>(() => PosHeadBlobWriter.Write(null!));
         Assert.Throws<ArgumentException>(() => PosHeadBlobWriter.Write(head with { EncoderSha256 = [1, 2] }));
         Assert.Throws<ArgumentException>(() => PosHeadBlobWriter.Write(head with { TrainSha256 = [] }));
@@ -91,10 +101,13 @@ public sealed class PosHeadBlobWriterTests
     [Fact]
     public void WordSenseBuilder_PosHeadBlobWriter_Write_LoadsAsAPosHead()
     {
+        // Arrange: a head written, read back and loaded as a PosHead
         var head = new PosHead(PosHeadBlob.Read(PosHeadBlobWriter.Write(Head())));
 
+        // Act: compute the posterior for a word vector with no neighbors
         var posterior = head.Posterior(null, [.. Enumerable.Range(0, Hidden).Select(i => i / 4.0)], null);
 
+        // Assert: a distribution over the ten classes that sums to one
         Assert.Equal(1.0, posterior.Sum(), 10);
         Assert.Equal(10, posterior.Length);
     }

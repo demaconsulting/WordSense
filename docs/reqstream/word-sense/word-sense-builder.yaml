@@ -2838,46 +2838,80 @@ sections:
 
           - id: WordSense-WordSenseBuilder-TrainPosHead
             title: >-
-              The builder shall train the part-of-speech head of an encoder model on the pooled encoder vectors of a
-              word and of its previous and next word, taken from the representative training split of the open corpus
-              alone, with a multinomial logistic regression whose regularization strength it chooses on the development
-              split by the accuracy restricted to the parts of speech that the lexicon lists for each word (the
-              smaller strength on a tie), shall check that the head rounded to half precision predicts what the
-              unrounded
-              head predicts within 0.02 points of accuracy and that the head file reads back to the head that was
-              trained, shall write the file in the format that the Onnx package reads, and shall refuse a model without
-              an encoder and a grid of strengths that is not a list of positive numbers.
+              The builder shall train the part-of-speech head of an encoder model with a multinomial logistic
+              regression on the pooled encoder vectors of a word and of its previous and next word, taken from the
+              representative training split of the open corpus alone.
             tags: [unit]
             justification: |
               The head is a trained artifact that ships in the packages; its inputs must be the declared training data
-              only, its selection must use held-out development data, and the file it writes must be exactly the head
-              that was measured.
+              only.
             tests:
               - WordSenseBuilder_PosHeadTrainer_TrainAsync_ProducesALoadableDeterministicHead
-              - WordSenseBuilder_PosHeadTrainer_TrainAsync_TieGoesToTheSmallestC
               - WordSenseBuilder_PosHeadTrainer_ReadSentences_MapsTheGoldClasses
-              - WordSenseBuilder_PosHeadTrainer_Score_AppliesTheLexiconRestriction
-              - WordSenseBuilder_PosHeadTrainer_LexiconMask_ListsThePartsOfSpeech
               - WordSenseBuilder_MultinomialLogisticTrainer_Fit_Optimum_HasZeroGradientOfTheDenseObjective
               - WordSenseBuilder_MultinomialLogisticTrainer_Fit_LearnsTheNeighborRule
-              - WordSenseBuilder_MultinomialLogisticTrainer_Fit_InvalidInput_Throws
               - WordSenseBuilder_PosTokenTable_NeighborsAndRows
               - WordSenseBuilder_Lbfgs_Minimize_Quadratic_FindsTheMinimum
               - WordSenseBuilder_Lbfgs_Minimize_Rosenbrock_FindsTheMinimum
               - WordSenseBuilder_Lbfgs_Minimize_IterationCapAndStartAtMinimum
-              - WordSenseBuilder_Lbfgs_Minimize_InvalidArguments_Throw
+
+          - id: WordSense-WordSenseBuilder-TrainPosHeadSelection
+            title: >-
+              The builder shall choose the regularization strength of a part-of-speech head on the development split
+              of the open corpus by the accuracy restricted to the parts of speech that the lexicon lists for each
+              word, and the smaller strength on a tie.
+            tags: [unit]
+            justification: |
+              The selection must use held-out development data and the same restriction that the head meets when it is
+              used, and a tie must resolve the same way on every run.
+            tests:
+              - WordSenseBuilder_PosHeadTrainer_TrainAsync_TieGoesToTheSmallestC
+              - WordSenseBuilder_PosHeadTrainer_Score_AppliesTheLexiconRestriction
+              - WordSenseBuilder_PosHeadTrainer_LexiconMask_ListsThePartsOfSpeech
+
+          - id: WordSense-WordSenseBuilder-TrainPosHeadPrecision
+            title: >-
+              The builder shall stop training a part-of-speech head when the head rounded to half precision predicts
+              the development tokens with an accuracy that differs by more than 0.02 points from that of the unrounded
+              head.
+            tags: [unit]
+            justification: |
+              The file stores half-precision weights; the head that ships must be the head that was measured.
+            tests:
+              - WordSenseBuilder_PosHeadTrainer_CheckHalfPrecision_StopsBeyondTheGate
+
+          - id: WordSense-WordSenseBuilder-TrainPosHeadFile
+            title: >-
+              The builder shall write a trained part-of-speech head in the file format that the Onnx package reads, and
+              the file shall read back to the head that was trained.
+            tags: [unit]
+            justification: |
+              The file it writes must be exactly the head that was measured, in the format the package loads.
+            tests:
               - WordSenseBuilder_PosHeadBlobWriter_Write_RoundTripsThroughTheReader
               - WordSenseBuilder_PosHeadBlobWriter_Round_IsIdempotentAndRejectsOverflow
-              - WordSenseBuilder_PosHeadBlobWriter_Write_InvalidHead_Throws
               - WordSenseBuilder_PosHeadBlobWriter_Write_LoadsAsAPosHead
+
+          - id: WordSense-WordSenseBuilder-TrainPosHeadInvalidInput
+            title: >-
+              The builder shall refuse to train a part-of-speech head for a model without an encoder, with a grid of
+              strengths that is not a list of positive numbers or with training data that cannot be fitted, and shall
+              refuse to write a head that is not valid.
+            tags: [unit]
+            justification: |
+              A bad request must fail before it produces an artifact.
+            tests:
               - WordSenseBuilder_Program_TrainPosHead_RejectsBadModelsAndGrids
+              - WordSenseBuilder_MultinomialLogisticTrainer_Fit_InvalidInput_Throws
+              - WordSenseBuilder_Lbfgs_Minimize_InvalidArguments_Throw
+              - WordSenseBuilder_PosHeadBlobWriter_Write_InvalidHead_Throws
 
           - id: WordSense-WordSenseBuilder-TrainPosHeadLeakage
             title: >-
               The builder shall stop training a part-of-speech head, before it encodes anything, when a training
               sentence is also a sentence of any held-out part (the evaluation parts of the corpus, the treebank files
               and the read set that are given) after normalization, or shares a run of eight words with a treebank file
-              or the read set, and shall refuse a training file other than the representative training split.
+              or the read set.
             tags: [unit]
             justification: |
               A head that has seen an evaluation sentence would be measured on its training data; the check runs
@@ -2885,23 +2919,30 @@ sections:
             tests:
               - WordSenseBuilder_PosHeadTrainer_TrainAsync_TrainingSentenceInAHeldOutPart_Aborts
               - WordSenseBuilder_PosHeadTrainer_TrainAsync_SharedRunOfWordsWithTheTreebank_Aborts
-              - WordSenseBuilder_PosHeadTrainer_TrainAsync_OtherTrainingFile_Refused
               - WordSenseBuilder_LeakageCheck_FindTrainingOverlaps_FindsTheSameSentence
               - WordSenseBuilder_LeakageCheck_FindTrainingOverlaps_RunOfWordsCountsForExternalPartsOnly
               - WordSenseBuilder_LeakageCheck_FromGoldDirectoryAndReadSet_ReadTheFiles
               - WordSenseBuilder_LeakageCheck_FromReadSet_ShortLine_Throws
               - WordSenseBuilder_LeakageCheck_HeldOutSets_ListsEvaluationAndExternalPartsOnly
 
+          - id: WordSense-WordSenseBuilder-TrainPosHeadTrainingFile
+            title: >-
+              The builder shall refuse to train a part-of-speech head on a training file other than the
+              representative training split of the open corpus.
+            tags: [unit]
+            justification: |
+              The recorded provenance names the representative training file; another file would break it.
+            tests:
+              - WordSenseBuilder_PosHeadTrainer_TrainAsync_OtherTrainingFile_Refused
+
           - id: WordSense-WordSenseBuilder-TrainPosHeadDeterminism
             title: >-
               The builder shall write the same part-of-speech head bytes for the same corpus, encoder files and
               settings, whatever the number of threads and whether the pooled vectors come from the cache or from the
-              encoder, and shall use a cached set of vectors only for the encoder files, runtime and feature version
-              it was written for.
+              encoder.
             tags: [unit]
             justification: |
-              A shipped artifact that cannot be rebuilt byte for byte cannot be audited; a stale cache must never
-              feed the fit with vectors of another encoder.
+              A shipped artifact that cannot be rebuilt byte for byte cannot be audited.
             tests:
               - WordSenseBuilder_PosHeadTrainer_TrainAsync_ProducesALoadableDeterministicHead
               - WordSenseBuilder_PosHeadTrainer_TrainAsync_SecondRunUsesTheCache
@@ -2909,6 +2950,15 @@ sections:
               - WordSenseBuilder_Lbfgs_Minimize_IsDeterministicAndKeepsTheStart
               - WordSenseBuilder_PosHeadBlobWriter_Write_IsDeterministic
               - WordSenseBuilder_PosVectorCache_WriteAndRead_RoundTripsForTheSameKey
+
+          - id: WordSense-WordSenseBuilder-TrainPosHeadCache
+            title: >-
+              The builder shall use a cached set of pooled vectors only for the encoder files, runtime and feature
+              version it was written for, and shall discard a damaged cache file.
+            tags: [unit]
+            justification: |
+              A stale cache must never feed the fit with vectors of another encoder.
+            tests:
               - WordSenseBuilder_PosVectorCache_TryRead_DamagedFile_ReturnsNull
               - WordSenseBuilder_PosVectorCache_Hashes_DependOnTheirInputs
 

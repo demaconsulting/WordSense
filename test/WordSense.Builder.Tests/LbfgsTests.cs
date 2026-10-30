@@ -34,8 +34,11 @@ public sealed class LbfgsTests
     [Fact]
     public void WordSenseBuilder_Lbfgs_Minimize_Quadratic_FindsTheMinimum()
     {
+        // Arrange: a six-dimensional quadratic starting at the origin
+        // Act: minimize with a tight tolerance
         var result = Lbfgs.Minimize(Quadratic, new double[6], 1e-9, 200);
 
+        // Assert: converged on x_i = i with a near-zero value
         Assert.True(result.Converged);
         for (var i = 0; i < 6; i++)
         {
@@ -51,8 +54,11 @@ public sealed class LbfgsTests
     [Fact]
     public void WordSenseBuilder_Lbfgs_Minimize_Rosenbrock_FindsTheMinimum()
     {
+        // Arrange: the Rosenbrock objective from the classic start (-1.2, 1.0)
+        // Act: minimize with a generous iteration cap
         var result = Lbfgs.Minimize(Rosenbrock, [-1.2, 1.0], 1e-8, 500);
 
+        // Assert: converged on (1, 1)
         Assert.True(result.Converged);
         Assert.Equal(1.0, result.X[0], 5);
         Assert.Equal(1.0, result.X[1], 5);
@@ -64,11 +70,14 @@ public sealed class LbfgsTests
     [Fact]
     public void WordSenseBuilder_Lbfgs_Minimize_IsDeterministicAndKeepsTheStart()
     {
+        // Arrange: one start point shared by two runs
         double[] start = [-1.2, 1.0];
 
+        // Act: minimize twice from the same start
         var first = Lbfgs.Minimize(Rosenbrock, start, 1e-8, 500);
         var second = Lbfgs.Minimize(Rosenbrock, start, 1e-8, 500);
 
+        // Assert: identical results and an unchanged start
         Assert.Equal(first.X, second.X);
         Assert.Equal(first.Value, second.Value);
         Assert.Equal(first.Evaluations, second.Evaluations);
@@ -81,9 +90,12 @@ public sealed class LbfgsTests
     [Fact]
     public void WordSenseBuilder_Lbfgs_Minimize_IterationCapAndStartAtMinimum()
     {
+        // Arrange: Rosenbrock with a cap of three iterations, and a quadratic started at its minimum
+        // Act: minimize both
         var capped = Lbfgs.Minimize(Rosenbrock, [-1.2, 1.0], 1e-12, 3);
         var atMinimum = Lbfgs.Minimize(Quadratic, [0, 1, 2], 1e-9, 10);
 
+        // Assert: the capped run stops before it converges and the minimum start converges with no iterations
         Assert.False(capped.Converged);
         Assert.Equal(3, capped.Iterations);
         Assert.True(atMinimum.Converged);
@@ -96,6 +108,8 @@ public sealed class LbfgsTests
     [Fact]
     public void WordSenseBuilder_Lbfgs_Minimize_InvalidArguments_Throw()
     {
+        // Arrange: null objective, null start, and zero iteration or history limits
+        // Act / Assert: each invalid call is rejected with the matching exception
         Assert.Throws<ArgumentNullException>(() => Lbfgs.Minimize(null!, [0.0], 1e-6, 10));
         Assert.Throws<ArgumentNullException>(() => Lbfgs.Minimize(Quadratic, null!, 1e-6, 10));
         Assert.Throws<ArgumentOutOfRangeException>(() => Lbfgs.Minimize(Quadratic, [0.0], 1e-6, 0));

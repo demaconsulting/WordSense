@@ -25,12 +25,15 @@ public sealed class PosVectorCacheTests : IDisposable
     [Fact]
     public void WordSenseBuilder_PosVectorCache_WriteAndRead_RoundTripsForTheSameKey()
     {
+        // Arrange: a cache file written for a digest and word hash
         var path = Path.Join(_dir.Root, "cache", "set.bin");
         var words = PosVectorCache.HashWords([["a", "b"], ["c"]]);
         PosVectorCache.Write(path, Digest(), words, Table());
 
+        // Act: read it back with the same key
         var read = PosVectorCache.TryRead(path, Digest(), words, 3, 3);
 
+        // Assert: the data round-trips, every mismatched key or missing file gives null, and no temp file remains
         Assert.NotNull(read);
         Assert.Equal(Table().Vectors, read.Value.Vectors);
         Assert.Equal([true, false, true], read.Value.HasVector);
@@ -48,22 +51,32 @@ public sealed class PosVectorCacheTests : IDisposable
     [Fact]
     public void WordSenseBuilder_PosVectorCache_TryRead_DamagedFile_ReturnsNull()
     {
+        // Arrange: a valid cache file and its bytes
         var path = Path.Join(_dir.Root, "set.bin");
         var words = PosVectorCache.HashWords([["a", "b"], ["c"]]);
         PosVectorCache.Write(path, Digest(), words, Table());
         var bytes = File.ReadAllBytes(path);
 
+        // Act: damage the file by flipping a bit
         var flipped = (byte[])bytes.Clone();
         flipped[bytes.Length / 2] ^= 1;
         File.WriteAllBytes(path, flipped);
+
+        // Assert: the flipped file is not used
         Assert.Null(PosVectorCache.TryRead(path, Digest(), words, 3, 3));
 
+        // Act: truncate the file
         File.WriteAllBytes(path, bytes[..^3]);
+
+        // Assert: the truncated file is not used
         Assert.Null(PosVectorCache.TryRead(path, Digest(), words, 3, 3));
 
+        // Act: replace the magic
         var magic = (byte[])bytes.Clone();
         magic[0] = (byte)'X';
         File.WriteAllBytes(path, magic);
+
+        // Assert: the file with another magic is not used
         Assert.Null(PosVectorCache.TryRead(path, Digest(), words, 3, 3));
     }
 
@@ -73,6 +86,8 @@ public sealed class PosVectorCacheTests : IDisposable
     [Fact]
     public void WordSenseBuilder_PosVectorCache_Hashes_DependOnTheirInputs()
     {
+        // Arrange: digest inputs that differ in one part each, and word lists with different sentence boundaries
+        // Act / Assert: changed inputs change the hash, and a case-only change in the digest does not
         Assert.NotEqual(PosVectorCache.ComputeDigest("aa", "bb", true, "1"), PosVectorCache.ComputeDigest("ab", "bb", true, "1"));
         Assert.NotEqual(PosVectorCache.ComputeDigest("aa", "bb", true, "1"), PosVectorCache.ComputeDigest("aa", "bc", true, "1"));
         Assert.NotEqual(PosVectorCache.ComputeDigest("aa", "bb", true, "1"), PosVectorCache.ComputeDigest("aa", "bb", false, "1"));

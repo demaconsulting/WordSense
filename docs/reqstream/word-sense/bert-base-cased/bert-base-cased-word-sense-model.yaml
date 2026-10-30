@@ -44,6 +44,27 @@ sections:
                   - BertBaseCasedWordSenseModel_Classify_AmbiguousWord_ReturnsBestSense
                   - BertBaseCasedWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel
 
+              - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Head
+                title: >-
+                  The encoder model of BertBaseCasedWordSenseModel shall load the part-of-speech head embedded in its
+                  assembly, bound to the pinned bert-base-cased ONNX file, hidden size 768, the feature layout and the
+                  parts of speech of the library, without any model file.
+                tags: [unit]
+                justification: |
+                  The head was trained on the vectors of this exact encoder file and these classes.
+                tests:
+                  - BertBaseCasedWordSenseModel_EmbeddedHead_MatchesEncoderAndClasses
+
+              - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-HeadRejected
+                title: >-
+                  The embedded part-of-speech head of BertBaseCasedWordSenseModel shall be rejected as invalid data when
+                  it is read against another encoder file or another model identifier.
+                tags: [unit]
+                justification: |
+                  A changed encoder file must fail loudly at load instead of feeding the head other vectors.
+                tests:
+                  - BertBaseCasedWordSenseModel_EmbeddedHead_AgainstAnotherEncoderFile_IsRejected
+
               - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Composition
                 title: >-
                   BertBaseCasedWordSenseModel shall wrap a FallbackWordSenseModel of its encoder model (primary) and a

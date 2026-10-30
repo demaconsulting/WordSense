@@ -129,13 +129,16 @@ public sealed class PosHeadTrainerTests : IDisposable
     [Fact]
     public async Task WordSenseBuilder_PosHeadTrainer_TrainAsync_SecondRunUsesTheCache()
     {
+        // Arrange: a corpus and a cache directory
         var corpus = WriteCorpus();
         var cache = Path.Join(_dir.Root, "cache");
 
+        // Act: train twice with the same cache, counting the encoder calls after the first run
         var first = await PosHeadTrainer.TrainAsync(Request(corpus, cache), Encoder(), Encode, TextWriter.Null, TestContext.Current.CancellationToken);
         var encodedOnce = _encodes;
         var second = await PosHeadTrainer.TrainAsync(Request(corpus, cache), Encoder(), Encode, TextWriter.Null, TestContext.Current.CancellationToken);
 
+        // Assert: the first run encoded, the second did not, and the bytes are the same
         Assert.True(encodedOnce > 0);
         Assert.Equal(encodedOnce, _encodes);
         Assert.Equal(first.Blob, second.Blob);
@@ -147,10 +150,13 @@ public sealed class PosHeadTrainerTests : IDisposable
     [Fact]
     public async Task WordSenseBuilder_PosHeadTrainer_TrainAsync_TieGoesToTheSmallestC()
     {
+        // Arrange: a corpus and a grid of three C values in which several give the same dev accuracy
         var corpus = WriteCorpus();
 
+        // Act: train over the grid
         var outcome = await PosHeadTrainer.TrainAsync(Request(corpus, grid: [1, 0.5, 2]), Encoder(), Encode, TextWriter.Null, TestContext.Current.CancellationToken);
 
+        // Assert: the smallest C is selected and every C of the grid is reported
         Assert.Equal(0.5, outcome.C);
         Assert.Equal(0.5f, new PosHead(PosHeadBlob.Read(outcome.Blob)).Data.C);
         Assert.Contains("| 0.5 |", outcome.Report, StringComparison.Ordinal);
@@ -210,11 +216,14 @@ public sealed class PosHeadTrainerTests : IDisposable
     [Fact]
     public async Task WordSenseBuilder_PosHeadTrainer_TrainAsync_OtherTrainingFile_Refused()
     {
+        // Arrange: a corpus and a training file that is not the representative training split
         var corpus = WriteCorpus();
         var other = _dir.Write("other/train.tsv", Header);
 
+        // Act: train with the other file
         var error = await Assert.ThrowsAsync<InvalidDataException>(() => PosHeadTrainer.TrainAsync(Request(corpus, train: other), Encoder(), Encode, TextWriter.Null, TestContext.Current.CancellationToken));
 
+        // Assert: the run is refused, while the representative split itself is accepted
         Assert.Contains("representative training split", error.Message, StringComparison.Ordinal);
         var own = Path.Join(corpus, "open", "representative", "data", "train.tsv");
         Assert.NotNull(await PosHeadTrainer.TrainAsync(Request(corpus, train: own), Encoder(), Encode, TextWriter.Null, TestContext.Current.CancellationToken));
@@ -227,12 +236,15 @@ public sealed class PosHeadTrainerTests : IDisposable
     [Fact]
     public void WordSenseBuilder_PosHeadTrainer_ReadSentences_MapsTheGoldClasses()
     {
+        // Arrange: a training sentence with a pronoun, verbs, an infinitive marker, a number and punctuation
         _dir.Write(
             "corpus/open/representative/data/train.tsv",
             Header + SentenceOf(1, ("They", "PRON"), ("want", "VERB"), ("to", "PART"), ("go", "VERB"), ("2", "NUM"), (".", "PUNCT")));
 
+        // Act: read the sentences
         var sentence = Assert.Single(PosHeadTrainer.ReadSentences(Path.Join(_dir.Root, "corpus"), "train"));
 
+        // Assert: the infinitive marker is a preposition and the number and punctuation are excluded
         Assert.Equal([1, 2, 5, 2, -1, -1], sentence.Gold);
     }
 
@@ -273,6 +285,8 @@ public sealed class PosHeadTrainerTests : IDisposable
     [Fact]
     public void WordSenseBuilder_PosHeadTrainer_CheckHalfPrecision_StopsBeyondTheGate()
     {
+        // Arrange: dev accuracies with a difference of zero, 0.02 points either way, 0.09 points and 0.5 points
+        // Act / Assert: differences within the gate pass, and larger ones in either direction stop the run
         PosHeadTrainer.CheckHalfPrecision(96.99, 96.99);
         PosHeadTrainer.CheckHalfPrecision(96.99, 96.97);
         PosHeadTrainer.CheckHalfPrecision(96.97, 96.99);
@@ -288,8 +302,11 @@ public sealed class PosHeadTrainerTests : IDisposable
     [Fact]
     public void WordSenseBuilder_PosHeadTrainer_LexiconMask_ListsThePartsOfSpeech()
     {
+        // Arrange: a word with noun and verb entries, an unknown word and punctuation
+        // Act: look up the mask of an ambiguous word
         var record = PosHeadTrainer.LexiconMask("Record");
 
+        // Assert: the ambiguous word lists noun and verb, while the unknown word and punctuation give zero
         Assert.Equal((1 << (int)PartOfSpeech.Noun) | (1 << (int)PartOfSpeech.Verb), record & ((1 << (int)PartOfSpeech.Noun) | (1 << (int)PartOfSpeech.Verb)));
         Assert.Equal(0, PosHeadTrainer.LexiconMask("xyzzyq"));
         Assert.Equal(0, PosHeadTrainer.LexiconMask("."));

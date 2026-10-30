@@ -26,6 +26,18 @@ sections:
               - WordSense_Classifier_EndToEnd_ClassifiesRecord
               - MiniLMWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel
 
+          - id: WordSense-MiniLM-Head
+            title: >-
+              The MiniLM package shall embed a trained part-of-speech head for its all-MiniLM-L6-v2 encoder, and its
+              encoder model shall load the head bound to the pinned encoder file.
+            tags: [subsystem]
+            justification: |
+              The head ships in the package with the weights; a head that does not belong to the pinned encoder file
+              must never load.
+            children:
+              - WordSense-MiniLM-MiniLMWordSenseModel-Head
+              - WordSense-MiniLM-MiniLMWordSenseModel-HeadRejected
+
           - id: WordSense-MiniLM-Composition
             title: >-
               The MiniLM package shall depend on the core and Onnx packages, and its public model shall be the

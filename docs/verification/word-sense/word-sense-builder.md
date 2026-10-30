@@ -41,7 +41,7 @@ encoder (`weights`, `evaluate`, `evaluate-senses`, `evaluate-running`, `evaluate
 encoder models, and `train-pos-head`) are
 verified through the data they produce: the weights embedded in the model packages are loaded and matched in the
 MiniLM and BertBaseCased tests, the heads embedded in them are loaded and bound to their encoders by `EmbeddedHeadTests`
-of the Onnx tests, the expectations of the suite are checked by the suite tests of the three model test
+of the same two test projects, the expectations of the suite are checked by the suite tests of the three model test
 projects (`BasicSuiteTests`, `MiniLMSuiteTests`, `BertBaseCasedSuiteTests`) and the floors of the challenge set by
 `ChallengeSetFloorTests` (both skip when the model files are not present, and fail when `WORDSENSE_REQUIRE_MODELS` is
 set), and the accuracy figures are recorded in

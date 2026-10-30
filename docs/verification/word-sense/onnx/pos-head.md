@@ -3,19 +3,17 @@
 #### Verification Approach
 
 The unit covers the `PosHeadBlob` reader, the binding checks and the arithmetic of `PosHead`. Tests in
-`test/DemaConsulting.WordSense.Onnx.Tests` (`PosHeadBlobTests`, `PosHeadTests`, `EmbeddedHeadTests`) use a tiny head of
+`test/DemaConsulting.WordSense.Onnx.Tests` (`PosHeadBlobTests`, `PosHeadTests`) use a tiny head of
 hidden size 4 whose weights are multiples of 0.25, which half precision holds exactly. The test-local writer
 `HeadBlobWriter` builds the blobs; the production writer lives in the builder and is tested through the reader
 (`WordSenseBuilder_PosHeadBlobWriter_Write_RoundTripsThroughTheReader`). Damaged blobs are made by flipping bytes,
-cutting the blob and rewriting the section list; where a test needs a valid trailing hash it recomputes it. The
-arithmetic is checked against an independent computation with plain loops over the same weights. The embedded-head test
-uses the real heads of the model packages.
+cutting the blob and rewriting the section list, the hidden size, the class count and the varints; where a test needs a
+valid trailing hash it recomputes it. The arithmetic is checked against an independent computation with plain loops over
+the same weights. The real heads of the model packages are verified in the model units.
 
 #### Test Environment
 
-Standard xUnit v3 runner. No model files, no network access. `EmbeddedHeadTests` reads the heads embedded in the MiniLM
-and BertBaseCased assemblies and the pinned digests of their ONNX files from the model descriptions; it does not open
-the ONNX files.
+Standard xUnit v3 runner. No model files, no network access.
 
 #### Acceptance Criteria
 
@@ -40,10 +38,13 @@ All scenarios below pass on every platform and target framework of the CI matrix
   without the head, a NaN bias and an infinite weight each throw `InvalidDataException`.
 - **Bounds and varints** (`PosHeadBlob_Read_OversizedHiddenSize_ThrowsInvalidData`,
   `PosHeadBlob_Read_MaximumHiddenSizeWithoutWeights_ThrowsInvalidData`,
+  `PosHeadBlob_Read_ExcessiveClassCount_ThrowsInvalidData`,
   `PosHeadBlob_Read_VarintWithInvalidFifthByte_ThrowsInvalidData`,
   `PosHeadBlob_Read_VarintOfMaximumInt_IsReadAsThatNumber`): a hidden size of 16,385, of 700,000,000, of 1,000,000,000
   and of 2,147,483,647 throws exactly `InvalidDataException` (not an `OverflowException`), also through the binding; the
-  largest hidden size passes the bounds and fails only for its missing weights; a feature layout whose fifth byte sets a
+  largest hidden size passes the bounds and fails only for its missing weights; 1,025 classes, and a count of
+  2,147,483,647 classes in a body that has a valid hash, throw `InvalidDataException` before any list is allocated; a
+  feature layout whose fifth byte sets a
   bit above bit 30 or continues (which would wrap to the valid layout 1) throws `InvalidDataException`; the layout
   2,147,483,647 in five bytes reads as that number.
 - **Unknown sections** (`PosHeadBlob_Read_UnknownSection_SkippedWhenOptionalRejectedWhenRequired`): an unknown section
@@ -68,9 +69,6 @@ All scenarios below pass on every platform and target framework of the CI matrix
   probabilities are divided by their sum, they sum to one and the other parts of speech are zero.
 - **Restriction falls back** (`PosHead_Restrict_NothingAllowed_FallsBackToPosterior`): a mask that allows nothing, and a
   mask that allows only a part of speech of probability zero, return the posterior unchanged, as a new array.
-- **Shipped heads are bound to their encoders** (`EmbeddedHead_MiniLM_MatchesEncoderAndClasses`,
-  `EmbeddedHead_BertBaseCased_MatchesEncoderAndClasses`, `EmbeddedHead_AgainstTheOtherEncoder_IsRejected`): the head
-  embedded in each package loads through the model, carries the model id, hidden size (384 and 768), class names and
-  variant `word+-1`, records the pinned digest of the ONNX file of its package, gives probabilities that sum to one and
-  a restriction to the noun that gives the noun probability one; the head of MiniLM read against the digest of the BERT
-  encoder, or against the model id of BERT, is rejected.
+- **Shipped heads are bound to their encoders**: the evidence is in the model units, which own the embedded
+  resources (`MiniLMWordSenseModel_EmbeddedHead_*` and `BertBaseCasedWordSenseModel_EmbeddedHead_*`; see the
+  `MiniLMWordSenseModel` and `BertBaseCasedWordSenseModel` verification documents).

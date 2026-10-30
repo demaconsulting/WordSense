@@ -160,12 +160,15 @@ public sealed class MultinomialLogisticTrainerTests
     [Fact]
     public void WordSenseBuilder_MultinomialLogisticTrainer_Fit_LearnsTheNeighborRule()
     {
+        // Arrange: a table with a neighbor-dependent rule, and the loose and tight regularization strengths
         var table = Table(80, 8, 2);
         var rows = table.TrainingRows();
 
+        // Act: fit with a large C and with a very small C
         var loose = MultinomialLogisticTrainer.Fit(table, new PosFitOptions(100));
         var tight = MultinomialLogisticTrainer.Fit(table, new PosFitOptions(0.0001));
 
+        // Assert: the large C predicts over 90 percent right and better than the small C
         var looseRight = rows.Count(r => Predict(table, r, loose) == table.Gold[r]);
         var tightRight = rows.Count(r => Predict(table, r, tight) == table.Gold[r]);
         Assert.True(looseRight > 0.9 * rows.Length, $"{looseRight} of {rows.Length} right.");
@@ -178,12 +181,15 @@ public sealed class MultinomialLogisticTrainerTests
     [Fact]
     public void WordSenseBuilder_MultinomialLogisticTrainer_Fit_IsDeterministicAcrossThreadCounts()
     {
+        // Arrange: one table fitted with one thread twice and with eight threads
         var table = Table(120, 9, 3);
 
+        // Act: fit all three
         var one = MultinomialLogisticTrainer.Fit(table, new PosFitOptions(0.3, Parallelism: 1));
         var again = MultinomialLogisticTrainer.Fit(table, new PosFitOptions(0.3, Parallelism: 1));
         var many = MultinomialLogisticTrainer.Fit(table, new PosFitOptions(0.3, Parallelism: 8));
 
+        // Assert: weights, biases and iteration count are identical
         Assert.Equal(one.Weights, again.Weights);
         Assert.Equal(one.Weights, many.Weights);
         Assert.Equal(one.Biases, many.Biases);
@@ -196,10 +202,12 @@ public sealed class MultinomialLogisticTrainerTests
     [Fact]
     public void WordSenseBuilder_MultinomialLogisticTrainer_Fit_InvalidInput_Throws()
     {
+        // Arrange: a table, one variant with no trainable rows and one with an out-of-range class
         var table = Table(5, 5, 4);
         var empty = table with { Gold = [.. table.Gold.Select(_ => -1)] };
         var outside = table with { Gold = [.. table.Gold.Select(_ => 10)] };
 
+        // Act / Assert: each invalid table, C or null argument is rejected
         Assert.Throws<ArgumentException>(() => MultinomialLogisticTrainer.Fit(empty, new PosFitOptions(1)));
         Assert.Throws<ArgumentException>(() => MultinomialLogisticTrainer.Fit(outside, new PosFitOptions(1)));
         Assert.Throws<ArgumentException>(() => MultinomialLogisticTrainer.Fit(table, new PosFitOptions(0)));
@@ -214,8 +222,10 @@ public sealed class MultinomialLogisticTrainerTests
     [Fact]
     public void WordSenseBuilder_PosTokenTable_NeighborsAndRows()
     {
+        // Arrange: five tokens in two sentences, one without a vector and one without a class
         var table = new PosTokenTable(1, [1, 2, 0, 4, 5], [0, 0, 0, 1, 1], [0, -1, 2, 3, 3], [true, true, false, true, true]);
 
+        // Act / Assert: neighbors stop at sentence edges and the training rows skip the unusable tokens
         Assert.False(table.HasPrevious(0));
         Assert.True(table.HasPrevious(1));
         Assert.False(table.HasPrevious(3));

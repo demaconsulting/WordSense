@@ -124,7 +124,7 @@ internal static class PosHeadBlob
 
         var encoder = ReadBytes(body, ref p, HashSize);
         var layout = ReadVarint(body, ref p);
-        var classes = ReadStrings(body, ref p);
+        var classes = ReadStrings(body, ref p, MaxClassCount);
         var train = ReadBytes(body, ref p, HashSize);
         var c = ReadFloats(body, ref p, 1)[0];
         var variant = ReadString(body, ref p);
@@ -133,12 +133,7 @@ internal static class PosHeadBlob
             throw new InvalidDataException("The part-of-speech head has an invalid regularization strength.");
         }
 
-        if (classes.Count > MaxClassCount)
-        {
-            throw new InvalidDataException($"The part-of-speech head has too many classes; the most is {MaxClassCount}.");
-        }
-
-        // Both factors are bounded, so the products below cannot overflow
+        // The hidden size and the class count are bounded, so the products below cannot overflow
         var (weights, biases) = ReadSections(body, ref p, classes.Count, 3 * hiddenSize);
         return p == body.Length
             ? new PosHeadData(modelId, hiddenSize, encoder, layout, classes, train, c, variant, weights, biases)
@@ -221,10 +216,17 @@ internal static class PosHeadBlob
     /// </summary>
     /// <param name="span">The data.</param>
     /// <param name="p">The read position, advanced.</param>
+    /// <param name="maximum">The largest count accepted; it is checked before anything is allocated.</param>
     /// <returns>The strings.</returns>
-    private static List<string> ReadStrings(ReadOnlySpan<byte> span, ref int p)
+    /// <exception cref="InvalidDataException">Thrown when the count exceeds the maximum or the data, or a string is malformed.</exception>
+    private static List<string> ReadStrings(ReadOnlySpan<byte> span, ref int p, int maximum)
     {
         var count = ReadVarint(span, ref p);
+        if (count > maximum)
+        {
+            throw new InvalidDataException($"The part-of-speech head has too many classes; the most is {maximum}.");
+        }
+
         if (count > span.Length - p)
         {
             throw new InvalidDataException("The part-of-speech head is truncated.");

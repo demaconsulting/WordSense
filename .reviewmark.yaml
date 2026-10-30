@@ -448,7 +448,6 @@ reviews:
       - "docs/verification/word-sense/onnx.md"
       - "src/DemaConsulting.WordSense.Onnx/NamespaceDoc.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/EmbeddedWeightsTests.cs"
-      - "test/DemaConsulting.WordSense.Onnx.Tests/EmbeddedHeadTests.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/ModelAssets.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/ModelFileCheck.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/ModelFileCheckTests.cs"
@@ -577,7 +576,6 @@ reviews:
       - "test/DemaConsulting.WordSense.Onnx.Tests/PosHeadBlobTests.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/PosHeadTests.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/HeadBlobWriter.cs"
-      - "test/DemaConsulting.WordSense.Onnx.Tests/EmbeddedHeadTests.cs"
 
   # WordSense-MiniLM Review (one per subsystem)
   - id: WordSense-MiniLM
@@ -607,6 +605,7 @@ reviews:
       - "src/DemaConsulting.WordSense.MiniLM/MiniLMWordSenseModel.cs"
       - "src/DemaConsulting.WordSense.MiniLM/MiniLMEncoderModel.cs"
       - "test/DemaConsulting.WordSense.MiniLM.Tests/MiniLMWordSenseModelTests.cs"
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/EmbeddedHeadTests.cs"
       - "test/DemaConsulting.WordSense.MiniLM.Tests/ModelFolder.cs"
 
   # WordSense-BertBaseCased Review (one per subsystem)
@@ -636,6 +635,7 @@ reviews:
       - "src/DemaConsulting.WordSense.BertBaseCased/BertBaseCasedWordSenseModel.cs"
       - "src/DemaConsulting.WordSense.BertBaseCased/BertBaseCasedEncoderModel.cs"
       - "test/DemaConsulting.WordSense.BertBaseCased.Tests/BertBaseCasedWordSenseModelTests.cs"
+      - "test/DemaConsulting.WordSense.BertBaseCased.Tests/EmbeddedHeadTests.cs"
       - "test/DemaConsulting.WordSense.BertBaseCased.Tests/EndToEndTests.cs"
       - "test/DemaConsulting.WordSense.BertBaseCased.Tests/ModelFolder.cs"
 

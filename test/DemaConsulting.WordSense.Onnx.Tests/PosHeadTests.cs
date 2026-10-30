@@ -51,13 +51,16 @@ public class PosHeadTests
     [Fact]
     public void PosHead_Posterior_TinyHead_MatchesIndependentComputation()
     {
+        // Arrange: a tiny head and three distinct context vectors
         var head = Create();
         double[] previous = [0.5, -1.0, 0.25, 2.0];
         double[] word = [1.0, 0.5, -0.5, 0.0];
         double[] next = [-0.25, 0.75, 1.5, -1.0];
 
+        // Act: compute the posterior
         var posterior = head.Posterior(previous, word, next);
 
+        // Assert: one probability per part of speech, summing to one and matching the independent computation
         Assert.Equal(Enum.GetValues<PartOfSpeech>().Length, posterior.Length);
         Assert.Equal(1.0, posterior.Sum(), 12);
         AssertClose(Expected(head, previous, word, next), posterior);
@@ -69,10 +72,12 @@ public class PosHeadTests
     [Fact]
     public void PosHead_Posterior_MissingVectors_AreZeros()
     {
+        // Arrange: a word vector and an all-zero vector of the same length
         var head = Create();
         double[] word = [1.0, 0.5, -0.5, 0.0];
         double[] zeros = new double[Hidden];
 
+        // Act / Assert: null neighbors or a null word give the same posterior as explicit zeros
         Assert.Equal(head.Posterior(zeros, word, zeros), head.Posterior(null, word, null));
         Assert.Equal(head.Posterior(zeros, zeros, zeros), head.Posterior(null, null, null));
         AssertClose(Expected(head, null, word, null), head.Posterior(null, word, null));
@@ -84,12 +89,15 @@ public class PosHeadTests
     [Fact]
     public void PosHead_Posterior_RepeatedCalls_AreIdentical()
     {
+        // Arrange: a head and one input vector
         var head = Create();
         double[] word = [0.1, 0.2, 0.3, 0.4];
 
+        // Act: compute the posterior twice from the same input
         var first = head.Posterior(word, word, word);
         var second = head.Posterior(word, word, word);
 
+        // Assert: both results are identical
         Assert.Equal(first, second);
     }
 
@@ -99,8 +107,10 @@ public class PosHeadTests
     [Fact]
     public void PosHead_Posterior_WrongLength_Throws()
     {
+        // Arrange: a head whose hidden size is four
         var head = Create();
 
+        // Act / Assert: a word vector that is too long and a neighbor that is too short are rejected
         Assert.Throws<ArgumentException>(() => head.Posterior(null, new double[Hidden + 1], null));
         Assert.Throws<ArgumentException>(() => head.Posterior(new double[2], new double[Hidden], null));
     }
@@ -111,11 +121,14 @@ public class PosHeadTests
     [Fact]
     public void PosHead_Restrict_AllowedMask_RenormalizesAllowed()
     {
+        // Arrange: a posterior and a mask that allows only Noun and Verb
         double[] posterior = [0.4, 0.1, 0.3, 0.1, 0.05, 0.02, 0.01, 0.01, 0.0, 0.0];
         var mask = (1 << (int)PartOfSpeech.Noun) | (1 << (int)PartOfSpeech.Verb);
 
+        // Act: restrict the posterior to the mask
         var restricted = PosHead.Restrict(posterior, mask);
 
+        // Assert: the allowed values are renormalized to sum to one and the others are zero
         Assert.Equal(1.0, restricted.Sum(), 12);
         Assert.Equal(0.4 / 0.7, restricted[(int)PartOfSpeech.Noun], 12);
         Assert.Equal(0.3 / 0.7, restricted[(int)PartOfSpeech.Verb], 12);
@@ -128,8 +141,10 @@ public class PosHeadTests
     [Fact]
     public void PosHead_Restrict_NothingAllowed_FallsBackToPosterior()
     {
+        // Arrange: a posterior with probability only on Noun and Pronoun
         double[] posterior = [0.5, 0.5, 0, 0, 0, 0, 0, 0, 0, 0];
 
+        // Act / Assert: an empty mask and a mask of a zero-probability class give an equal copy of the posterior
         Assert.Equal(posterior, PosHead.Restrict(posterior, 0));
         Assert.Equal(posterior, PosHead.Restrict(posterior, 1 << (int)PartOfSpeech.Auxiliary));
         Assert.NotSame(posterior, PosHead.Restrict(posterior, 0));
@@ -141,6 +156,8 @@ public class PosHeadTests
     [Fact]
     public void PosHead_NullArguments_Throw()
     {
+        // Arrange: null for the posterior and for the head data
+        // Act / Assert: both calls throw
         Assert.Throws<ArgumentNullException>(() => PosHead.Restrict(null!, 1));
         Assert.Throws<ArgumentNullException>(() => new PosHead(null!));
     }

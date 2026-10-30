@@ -10,87 +10,200 @@ sections:
             requirements:
               - id: WordSense-Onnx-PosHead-Format
                 title: >-
-                  The part-of-speech head reader shall read the binary head of an encoder model: its model identifier,
-                  the hidden size, the SHA-256 of the pinned ONNX file of the encoder, the feature layout, the names of
-                  the classes in output order, the SHA-256 of the training file, the regularization strength, the name
-                  of the feature variant, and the weights and biases of the part-of-speech section, and the classes
-                  that a head must carry shall be the parts of speech of the library in declaration order.
+                  The part-of-speech head reader shall read from the binary head of an encoder model its model
+                  identifier, the hidden size, the SHA-256 of the pinned ONNX file of the encoder, the feature layout,
+                  the names of the classes in output order, the SHA-256 of the training file, the regularization
+                  strength, the name of the feature variant, and the weights and biases of the part-of-speech section.
                 tags: [unit]
                 justification: |
                   The trained head ships as one compact blob per encoder model; the reader must reproduce what the
-                  build tool wrote, together with the provenance that binds the head to its encoder and to the
-                  classes it predicts.
+                  build tool wrote, together with the provenance that binds the head to its encoder.
                 tests:
                   - PosHeadBlob_Read_RoundTrip_ReturnsEveryField
-                  - PosHeadBlob_ExpectedClassNames_AreThePartsOfSpeechInOrder
                   - WordSenseBuilder_PosHeadBlobWriter_Write_RoundTripsThroughTheReader
 
-              - id: WordSense-Onnx-PosHead-Integrity
+              - id: WordSense-Onnx-PosHead-Classes
                 title: >-
-                  The part-of-speech head reader shall reject a blob with another magic, a truncated blob, a blob
-                  whose trailing SHA-256 does not match its content, a section of the wrong length, a duplicate
-                  section, a blob without the part-of-speech section, a weight or bias that is not finite, a hidden
-                  size or class count above its bound, a number that does not fit a non-negative 32-bit integer
-                  (including a fifth byte that sets a bit above bit 30), and trailing data, each as an
-                  InvalidDataException.
+                  The classes that a part-of-speech head must carry shall be the parts of speech of the library in
+                  declaration order.
                 tags: [unit]
                 justification: |
-                  A damaged head must fail loudly at load, with the one exception type that the model maps to a
-                  ModelIntegrityException, instead of producing silently wrong probabilities or escaping as an
-                  overflow or a wrapped number.
+                  The index of a class is the value of the part of speech, so a changed class order would mislabel
+                  every answer.
                 tests:
-                  - PosHeadBlob_Read_FlippedByte_ThrowsChecksum
+                  - PosHeadBlob_ExpectedClassNames_AreThePartsOfSpeechInOrder
+
+              - id: WordSense-Onnx-PosHead-Magic
+                title: >-
+                  The part-of-speech head reader shall reject a blob with another magic and a blob that is truncated,
+                  as invalid data.
+                tags: [unit]
+                justification: |
+                  A file that is not a head, or that was cut off, must fail loudly at load.
+                tests:
                   - PosHeadBlob_Read_BadMagicOrTruncated_Throws
                   - PosHeadBlob_Read_TruncatedBodyWithValidHash_Throws
+
+              - id: WordSense-Onnx-PosHead-Checksum
+                title: >-
+                  The part-of-speech head reader shall reject a blob whose trailing SHA-256 does not match its content,
+                  as invalid data.
+                tags: [unit]
+                justification: |
+                  A damaged head must fail loudly at load instead of producing silently wrong probabilities.
+                tests:
+                  - PosHeadBlob_Read_FlippedByte_ThrowsChecksum
+
+              - id: WordSense-Onnx-PosHead-Structure
+                title: >-
+                  The part-of-speech head reader shall reject a blob with a section of the wrong length, a duplicate
+                  section, no part-of-speech section or data after the last section, as invalid data.
+                tags: [unit]
+                justification: |
+                  A blob that passes its checksum can still have been written by a faulty tool; its structure must be
+                  checked as well.
+                tests:
                   - PosHeadBlob_Read_InvalidSections_Throws
                   - PosHeadBlob_Read_NoHeadSection_Throws
+                  - PosHeadBlob_Read_TruncatedBodyWithValidHash_Throws
+
+              - id: WordSense-Onnx-PosHead-Values
+                title: >-
+                  The part-of-speech head reader shall reject a weight or a bias that is not a finite number, as
+                  invalid data.
+                tags: [unit]
+                justification: |
+                  A NaN or an infinity would turn every probability into garbage.
+                tests:
+                  - PosHeadBlob_Read_InvalidSections_Throws
+
+              - id: WordSense-Onnx-PosHead-Bounds
+                title: >-
+                  The part-of-speech head reader shall reject a hidden size above 16,384 and a class count above 1,024
+                  as invalid data, before it allocates anything or multiplies the two, however large the stated numbers
+                  are.
+                tags: [unit]
+                justification: |
+                  An authenticated blob can still state absurd sizes; the reader must answer with its one exception
+                  type, which the model maps to a ModelIntegrityException, and not with an overflow or an allocation
+                  failure.
+                tests:
                   - PosHeadBlob_Read_OversizedHiddenSize_ThrowsInvalidData
                   - PosHeadBlob_Read_MaximumHiddenSizeWithoutWeights_ThrowsInvalidData
+                  - PosHeadBlob_Read_ExcessiveClassCount_ThrowsInvalidData
+
+              - id: WordSense-Onnx-PosHead-Varint
+                title: >-
+                  The part-of-speech head reader shall reject a variable-length number that does not fit a non-negative
+                  32-bit integer, including a fifth byte that sets a bit above bit 30 or continues, as invalid data,
+                  and shall read 2,147,483,647 as that number.
+                tags: [unit]
+                justification: |
+                  A number that wraps silently could turn a malformed blob into a valid one.
+                tests:
                   - PosHeadBlob_Read_VarintWithInvalidFifthByte_ThrowsInvalidData
                   - PosHeadBlob_Read_VarintOfMaximumInt_IsReadAsThatNumber
 
-              - id: WordSense-Onnx-PosHead-Sections
+              - id: WordSense-Onnx-PosHead-SectionsOptional
                 title: >-
                   The part-of-speech head reader shall skip a section that it does not know when the section is marked
-                  optional and shall reject the blob when such a section is marked required.
+                  optional.
                 tags: [unit]
                 justification: |
                   Later heads (for example a tense head) can be added to the same file without breaking readers that
-                  do not need them, while a section that a reader must understand is never ignored.
+                  do not need them.
+                tests:
+                  - PosHeadBlob_Read_UnknownSection_SkippedWhenOptionalRejectedWhenRequired
+
+              - id: WordSense-Onnx-PosHead-SectionsRequired
+                title: >-
+                  The part-of-speech head reader shall reject the blob when a section that it does not know is marked
+                  required.
+                tags: [unit]
+                justification: |
+                  A section that a reader must understand is never ignored.
                 tests:
                   - PosHeadBlob_Read_UnknownSection_SkippedWhenOptionalRejectedWhenRequired
 
               - id: WordSense-Onnx-PosHead-Binding
                 title: >-
-                  The part-of-speech head shall load from an embedded resource only when it was trained for the
-                  requested model identifier and hidden size, on the pinned ONNX file of the encoder, with the known
-                  feature layout and with the parts of speech of the library as its classes in their order, and shall
-                  report a missing resource, a head for another encoder, size, layout or class order as invalid data.
+                  The part-of-speech head shall load from an embedded resource when it was trained for the requested
+                  model identifier and hidden size, on the pinned ONNX file of the encoder, with the known feature
+                  layout and with the parts of speech of the library as its classes in their order.
                 tags: [unit]
                 justification: |
-                  A head fitted on the vectors of one exact encoder file is meaningless for any other file, and a
-                  changed class order would mislabel every answer; every mismatch must fail loudly at load.
+                  A head that matches its encoder in every respect must load.
                 tests:
                   - PosHead_LoadEmbedded_MatchingBinding_Loads
+
+              - id: WordSense-Onnx-PosHead-BindingEncoder
+                title: >-
+                  The part-of-speech head shall be rejected as invalid data when it was trained on another ONNX file
+                  than the pinned file of the encoder.
+                tags: [unit]
+                justification: |
+                  A head fitted on the vectors of one exact encoder file is meaningless for any other file.
+                tests:
                   - PosHead_LoadEmbedded_WrongEncoderDigest_Throws
+
+              - id: WordSense-Onnx-PosHead-BindingClasses
+                title: >-
+                  The part-of-speech head shall be rejected as invalid data when its classes or their order differ from
+                  the parts of speech of the library.
+                tags: [unit]
+                justification: |
+                  A changed class order would mislabel every answer.
+                tests:
                   - PosHead_LoadEmbedded_WrongClassOrder_Throws
+
+              - id: WordSense-Onnx-PosHead-BindingIdentity
+                title: >-
+                  The part-of-speech head shall be rejected as invalid data when it was trained for another model
+                  identifier, another hidden size or another feature layout.
+                tags: [unit]
+                justification: |
+                  Vectors of another size or another feature layout cannot be fed to the head.
+                tests:
                   - PosHead_LoadEmbedded_WrongModelSizeOrLayout_Throws
+
+              - id: WordSense-Onnx-PosHead-BindingMissing
+                title: >-
+                  The part-of-speech head shall report a missing embedded resource as invalid data.
+                tags: [unit]
+                justification: |
+                  A package without its head must fail loudly at load.
+                tests:
                   - PosHead_LoadEmbedded_MissingResource_Throws
 
               - id: WordSense-Onnx-PosHead-Posterior
                 title: >-
                   The part-of-speech head shall compute from the pooled vectors of a word and of its previous and next
-                  word a probability for every part of speech, summing to one, shall treat a missing vector as zeros,
-                  and shall reject a vector that does not have the hidden size.
+                  word a probability for every part of speech, summing to one.
                 tags: [unit]
                 justification: |
-                  The head predicts the part of speech of a word from its context; a word at the edge of a sentence
-                  or without word pieces has no vector, which is how the head was trained.
+                  The head predicts the part of speech of a word from its context.
                 tests:
                   - PosHead_Posterior_TinyHead_MatchesIndependentComputation
-                  - PosHead_Posterior_MissingVectors_AreZeros
-                  - PosHead_Posterior_WrongLength_Throws
                   - PosHead_NullArguments_Throw
+
+              - id: WordSense-Onnx-PosHead-PosteriorMissing
+                title: >-
+                  The part-of-speech head shall treat a missing vector as zeros.
+                tags: [unit]
+                justification: |
+                  A word at the edge of a sentence or without word pieces has no vector, which is how the head was
+                  trained.
+                tests:
+                  - PosHead_Posterior_MissingVectors_AreZeros
+
+              - id: WordSense-Onnx-PosHead-PosteriorLength
+                title: >-
+                  The part-of-speech head shall reject a vector that does not have the hidden size.
+                tags: [unit]
+                justification: |
+                  A vector of another size comes from another encoder and would give meaningless probabilities.
+                tests:
+                  - PosHead_Posterior_WrongLength_Throws
 
               - id: WordSense-Onnx-PosHead-Deterministic
                 title: >-
@@ -106,28 +219,21 @@ sections:
               - id: WordSense-Onnx-PosHead-Restrict
                 title: >-
                   The part-of-speech head shall restrict a probability vector to an allowed set of parts of speech by
-                  keeping the allowed ones, renormalizing them to sum to one and giving the others zero, and shall
-                  return the unchanged probabilities when the set allows nothing or the allowed parts of speech have
-                  zero probability.
+                  keeping the allowed ones, renormalizing them to sum to one and giving the others zero.
                 tags: [unit]
                 justification: |
                   A spelling can only have the parts of speech that the lexicon lists for it; restricting the head to
-                  them removes impossible answers, and a spelling without a usable set must still get an answer.
+                  them removes impossible answers.
                 tests:
                   - PosHead_Restrict_AllowedMask_RenormalizesAllowed
-                  - PosHead_Restrict_NothingAllowed_FallsBackToPosterior
                   - PosHead_NullArguments_Throw
 
-              - id: WordSense-Onnx-PosHead-Embedded
+              - id: WordSense-Onnx-PosHead-RestrictFallback
                 title: >-
-                  The part-of-speech head embedded in each encoder package shall load and shall be bound to the pinned
-                  ONNX file, the hidden size and the model identifier of that package, and a head of one package shall
-                  be rejected against the other package's encoder.
+                  The part-of-speech head shall return the unchanged probabilities when the allowed set is empty or the
+                  allowed parts of speech have zero probability.
                 tags: [unit]
                 justification: |
-                  A head trained for another encoder file would predict from vectors it does not know; the shipped
-                  head and the shipped encoder pin must always have been produced together.
+                  A spelling without a usable set must still get an answer.
                 tests:
-                  - EmbeddedHead_MiniLM_MatchesEncoderAndClasses
-                  - EmbeddedHead_BertBaseCased_MatchesEncoderAndClasses
-                  - EmbeddedHead_AgainstTheOtherEncoder_IsRejected
+                  - PosHead_Restrict_NothingAllowed_FallsBackToPosterior

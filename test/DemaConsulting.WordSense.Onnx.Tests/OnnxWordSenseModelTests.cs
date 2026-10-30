@@ -629,10 +629,13 @@ public class OnnxWordSenseModelTests
     [Fact]
     public async Task OnnxWordSenseModel_GetHead_NoHeadResource_ReturnsNull()
     {
+        // Arrange: a model description without a head resource, in a directory that does not exist
         using var model = new FixtureEncoderModel(MissingDirectory(), spec => spec with { HeadResourceName = null });
 
+        // Act: classify a text that needs no encoder
         var results = await model.ClassifyAsync(["the"], TestContext.Current.CancellationToken);
 
+        // Assert: the model answers and has no head
         Assert.Single(results);
         Assert.Null(model.GetHead());
     }

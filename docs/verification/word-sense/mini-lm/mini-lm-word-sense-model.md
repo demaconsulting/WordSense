@@ -32,6 +32,13 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Embedded weights resolve against the word image** (`EmbeddedWeights_MiniLM_MatchesWordImage`, in the Onnx test
   project): the weights embedded in the assembly load for the model id and hidden size, carry the inventory hash of the
   shipped word image and every sense of every lemma resolves.
+- **Embedded head** (`MiniLMWordSenseModel_EmbeddedHead_MatchesEncoderAndClasses`, in `EmbeddedHeadTests.cs` of the MiniLM
+  test project; no model file): the encoder model loads the head embedded in the assembly, which carries the model id
+  `all-MiniLM-L6-v2-int8`, hidden size 384, the feature layout 1, the variant `word+-1`, the classes of `PartOfSpeech`
+  in order and the SHA-256 of the pinned ONNX file; its posterior for a zero vector sums to one and its restriction to
+  the noun class gives that class probability one.
+- **Embedded head is bound** (`MiniLMWordSenseModel_EmbeddedHead_AgainstAnotherEncoderFile_IsRejected`): the head read
+  against the digest of another file, or against another model id, throws `InvalidDataException`.
 - **Classification** (`Classify_AmbiguousWord_ReturnsDeterministicResults`,
   `Classify_TrainedLemma_AnswersAtASenseOrGroupLevel`): the
   committed model classifies the words of "They will record the record." with the verb analysis for the first `record`

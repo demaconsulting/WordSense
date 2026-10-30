@@ -26,6 +26,8 @@ public sealed class OutcomeComparerTests : IDisposable
     [Fact]
     public void WordSenseBuilder_OutcomeComparer_McNemar_IsTheExactTwoSidedBinomialTest()
     {
+        // Arrange: discordant-pair counts with none, balanced, one-sided, lopsided and very large splits
+        // Act / Assert: each count pair gives the exact two-sided binomial p-value
         Assert.Equal(1.0, OutcomeComparer.McNemar(0, 0));
         Assert.Equal(1.0, OutcomeComparer.McNemar(10, 10), 12);
         Assert.Equal(0.0625, OutcomeComparer.McNemar(5, 0), 12);
@@ -78,11 +80,14 @@ public sealed class OutcomeComparerTests : IDisposable
     [Fact]
     public void WordSenseBuilder_OutcomeComparer_Compare_DegenerateGainAndAmbiguousSubset()
     {
+        // Arrange: two wrong base tokens that the new version gets right, and one ambiguity-free token that is right in both
         List<TokenOutcome> baseline = [Token("set", 0, 0, false), Token("set", 1, 0, false), Token("set", 2, 0, true, ambiguous: false)];
         List<TokenOutcome> updated = [Token("set", 0, 0, true), Token("set", 1, 0, true), Token("set", 2, 0, true, ambiguous: false)];
 
+        // Act: compare by sentence
         var report = OutcomeComparer.Compare(baseline, updated, "sentence", 500, 1);
 
+        // Assert: the ambiguous subset has two tokens and a degenerate interval at the gain
         var all = report.Comparisons[0];
         var ambiguous = report.Comparisons[1];
         Assert.Equal(3, all.Tokens);
@@ -98,12 +103,15 @@ public sealed class OutcomeComparerTests : IDisposable
     [Fact]
     public void WordSenseBuilder_OutcomeComparer_Compare_ClustersByDocumentAndCountsUnpairedTokens()
     {
+        // Arrange: two sentences in document d1, one token each in d2 and d3 for the base, and unpaired tokens on both sides
         List<TokenOutcome> baseline = [Token("set", 0, 0, false, document: "d1"), Token("set", 1, 0, true, document: "d1"), Token("set", 2, 0, true, document: "d2"), Token("set", 3, 0, true, document: "d3")];
         List<TokenOutcome> updated = [Token("set", 0, 0, true, document: "d1"), Token("set", 1, 0, true, document: "d1"), Token("set", 2, 0, true, document: "d2"), Token("set", 9, 0, true, document: "d9")];
 
+        // Act: compare clustered by sentence and by document
         var bySentence = OutcomeComparer.Compare(baseline, updated, "sentence", 100, 1);
         var byDocument = OutcomeComparer.Compare(baseline, updated, "document", 100, 1);
 
+        // Assert: document clustering merges sentences and the unpaired tokens are counted
         Assert.Equal(3, bySentence.Comparisons[0].Clusters);
         Assert.Equal(2, byDocument.Comparisons[0].Clusters);
         Assert.Equal(2, bySentence.Unpaired["set"]);
@@ -116,9 +124,11 @@ public sealed class OutcomeComparerTests : IDisposable
     [Fact]
     public void WordSenseBuilder_OutcomeComparer_Compare_InvalidInput_Throws()
     {
+        // Arrange: one outcome set, and a second set with no token in common
         List<TokenOutcome> one = [Token("set", 0, 0, true)];
         List<TokenOutcome> other = [Token("other", 0, 0, true)];
 
+        // Act / Assert: each invalid unit, pairing, replicate count or null input is rejected
         Assert.Throws<ArgumentException>(() => OutcomeComparer.Compare(one, one, "page", 10, 1));
         Assert.Throws<ArgumentException>(() => OutcomeComparer.Compare(one, other, "sentence", 10, 1));
         Assert.Throws<ArgumentOutOfRangeException>(() => OutcomeComparer.Compare(one, one, "sentence", 0, 1));
@@ -162,11 +172,14 @@ public sealed class OutcomeComparerTests : IDisposable
     [Fact]
     public void WordSenseBuilder_OutcomeFile_RenderAndRead_RoundTrip()
     {
+        // Arrange: two outcomes rendered to a file
         (string, TokenOutcome)[] outcomes = [("basic", Token("set", 3, 4, false, document: "doc")), ("minilm", Token("set b", 0, 1, true, ambiguous: false))];
         var path = _dir.Write("o.tsv", OutcomeFile.Render(outcomes));
 
+        // Act: read the file back
         var read = OutcomeFile.Read(path);
 
+        // Assert: the outcomes round-trip, malformed files are refused and the tag names are mapped
         Assert.Equal(outcomes, read);
         Assert.Throws<InvalidDataException>(() => OutcomeFile.Read(_dir.Write("bad-header.tsv", "model\tset\n")));
         Assert.Throws<InvalidDataException>(() => OutcomeFile.Read(_dir.Write("bad-line.tsv", OutcomeFile.Render([]) + "basic\tset\tx\td\t1\tw\tNoun\tVerb\t1\t1\n")));

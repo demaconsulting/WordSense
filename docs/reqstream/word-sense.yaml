@@ -477,7 +477,6 @@ sections:
           - WordSense-Onnx-Levels
           - WordSense-Onnx-Untrained
           - WordSense-Onnx-Weights
-          - WordSense-Onnx-Head
           - WordSense-Onnx-Encoder
           - WordSense-MiniLM-Model
           - WordSense-BertBaseCased-Model
@@ -488,6 +487,50 @@ sections:
           - OnnxEncoder_EncodeAsync_ValidTargets_ReturnsDeterministicVectors
           - BertBaseCasedWordSenseModel_Classify_AmbiguousWord_ReturnsBestSense
           - WordSense_Classifier_EndToEnd_AnswersAtTheFinestConfidentLevel
+
+      - id: WordSense-Lib-PosHead
+        title: >-
+          The system shall embed in each encoder-based model package a trained part-of-speech head for its encoder,
+          loaded and bound to the pinned encoder file when the model loads.
+        tags: [system]
+        justification: |
+          A part-of-speech head trained on the vectors of the encoder lets a later change repair the part of speech
+          that the sense weights do not decide; a head that does not belong to the pinned encoder file must never load.
+        children:
+          - WordSense-Onnx-Head-Read
+          - WordSense-Onnx-Head-Integrity
+          - WordSense-Onnx-Head-Binding
+          - WordSense-Onnx-Head-Load
+          - WordSense-MiniLM-Head
+          - WordSense-BertBaseCased-Head
+        tests:
+          - MiniLMWordSenseModel_EmbeddedHead_MatchesEncoderAndClasses
+          - BertBaseCasedWordSenseModel_EmbeddedHead_MatchesEncoderAndClasses
+
+      - id: WordSense-Lib-PosHeadPosterior
+        title: >-
+          The system shall compute from a part-of-speech head and the encoder vectors of a word and of its neighbors a
+          probability for every part of speech, deterministically.
+        tags: [system]
+        justification: |
+          The head predicts the part of speech of a word from its context; a result that does not depend on the
+          hardware can be reproduced and compared.
+        children:
+          - WordSense-Onnx-Head-Posterior
+        tests:
+          - PosHead_Posterior_TinyHead_MatchesIndependentComputation
+
+      - id: WordSense-Lib-PosHeadRestrict
+        title: >-
+          The system shall restrict the probabilities of a part-of-speech head to the parts of speech that the lexicon
+          lists for a spelling.
+        tags: [system]
+        justification: |
+          A spelling can only have the parts of speech that the lexicon lists for it.
+        children:
+          - WordSense-Onnx-Head-Restrict
+        tests:
+          - PosHead_Restrict_AllowedMask_RenormalizesAllowed
 
       - id: WordSense-Lib-Confidence
         title: >-
@@ -681,8 +724,14 @@ sections:
           - WordSense-WordSenseBuilder-ImportDictionary
           - WordSense-WordSenseBuilder-Weights
           - WordSense-WordSenseBuilder-TrainPosHead
+          - WordSense-WordSenseBuilder-TrainPosHeadSelection
+          - WordSense-WordSenseBuilder-TrainPosHeadPrecision
+          - WordSense-WordSenseBuilder-TrainPosHeadFile
+          - WordSense-WordSenseBuilder-TrainPosHeadInvalidInput
           - WordSense-WordSenseBuilder-TrainPosHeadLeakage
+          - WordSense-WordSenseBuilder-TrainPosHeadTrainingFile
           - WordSense-WordSenseBuilder-TrainPosHeadDeterminism
+          - WordSense-WordSenseBuilder-TrainPosHeadCache
           - WordSense-WordSenseBuilder-HeadProvenance
           - WordSense-WordSenseBuilder-FormChoosers
           - WordSense-WordSenseBuilder-Thresholds

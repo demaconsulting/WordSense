@@ -11,10 +11,13 @@ public class PossessiveViewTests
     [Fact]
     public void PossessiveView_Expand_Possessives_SplitsStemAndMarker()
     {
+        // Arrange: words with a straight and a typographic possessive, and a predicate that recognizes both
         string[] words = ["The", "technician's", "tools", "of", "sergeants\u2019", "."];
 
+        // Act: expand the possessives
         var (tokens, start) = PossessiveView.Expand(words, w => w.EndsWith("'s", StringComparison.Ordinal) || w.EndsWith('\u2019'));
 
+        // Assert: stems and markers are separate tokens and the start indices point at each word's first token
         Assert.Equal(["The", "technician", "'s", "tools", "of", "sergeants", "\u2019", "."], tokens);
         Assert.Equal([0, 1, 3, 4, 5, 7], start);
     }
@@ -25,11 +28,14 @@ public class PossessiveViewTests
     [Fact]
     public void PossessiveView_Expand_NoPossessives_IsIdentity()
     {
+        // Arrange: a contraction, two bare markers and an ordinary word, with a predicate that accepts everything
         string[] words = ["don't", "'s", "'", "dog"];
 
+        // Act: expand the words, and an empty text
         var (tokens, start) = PossessiveView.Expand(words, _ => true);
         var (none, noStart) = PossessiveView.Expand([], _ => true);
 
+        // Assert: the tokens are the words, the starts are consecutive and the empty text stays empty
         Assert.Equal(words, tokens);
         Assert.Equal([0, 1, 2, 3], start);
         Assert.Empty(none);
@@ -42,6 +48,8 @@ public class PossessiveViewTests
     [Fact]
     public void PossessiveView_NullArguments_Throw()
     {
+        // Arrange: null words, a null predicate and a null word in the list
+        // Act / Assert: each call throws
         Assert.Throws<ArgumentNullException>(() => PossessiveView.Expand(null!, _ => true));
         Assert.Throws<ArgumentNullException>(() => PossessiveView.Expand(["a"], null!));
         Assert.Throws<ArgumentNullException>(() => PossessiveView.Expand([null!], _ => true));
@@ -55,6 +63,8 @@ public class PossessiveViewTests
     [Fact]
     public void PossessiveView_IsLexiconPossessive_DecidesByLexicon()
     {
+        // Arrange: possessives of known stems, and contractions, ordinary words and unknown stems
+        // Act / Assert: the lexicon test accepts the possessives
         Assert.True(PossessiveView.IsLexiconPossessive("technician's"));
         Assert.True(PossessiveView.IsLexiconPossessive("Technician\u2019s"));
         Assert.True(PossessiveView.IsLexiconPossessive("sergeants'"));

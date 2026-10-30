@@ -105,16 +105,32 @@ sections:
               - id: WordSense-Onnx-OnnxWordSenseModel-Head
                 title: >-
                   OnnxWordSenseModel shall load and check the part-of-speech head embedded in its package together with
-                  the embedded weights, without any model file, shall have no head when its model description names
-                  none, and shall report a missing, damaged or mismatched head as ModelIntegrityException with the
-                  original exception as inner exception.
+                  the embedded weights, without any model file.
                 tags: [unit]
                 justification: |
-                  The head and the weights are shipped in the package, so a defect in either is a defect of the
-                  installation that must surface at load, as an integrity failure, not as wrong answers later.
+                  The head and the weights are shipped in the package; loading them together keeps a model usable
+                  offline once the package is installed.
                 tests:
                   - OnnxWordSenseModel_ClassifyAsync_EmbeddedHead_LoadsWithoutModelFiles
+
+              - id: WordSense-Onnx-OnnxWordSenseModel-HeadNone
+                title: >-
+                  OnnxWordSenseModel shall have no part-of-speech head when its model description names none.
+                tags: [unit]
+                justification: |
+                  A model without a head must work as before, not fail at load.
+                tests:
                   - OnnxWordSenseModel_GetHead_NoHeadResource_ReturnsNull
+
+              - id: WordSense-Onnx-OnnxWordSenseModel-HeadIntegrity
+                title: >-
+                  OnnxWordSenseModel shall report a missing, damaged or mismatched part-of-speech head as
+                  ModelIntegrityException with the original exception as inner exception.
+                tags: [unit]
+                justification: |
+                  A defect in the shipped head is a defect of the installation that must surface at load, as an
+                  integrity failure, not as wrong answers later.
+                tests:
                   - OnnxWordSenseModel_ClassifyAsync_DamagedOrMismatchedHead_ThrowsModelIntegrity
 
               - id: WordSense-Onnx-OnnxWordSenseModel-Dispose

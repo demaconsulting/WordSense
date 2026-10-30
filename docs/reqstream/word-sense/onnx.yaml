@@ -152,31 +152,86 @@ sections:
               - EmbeddedWeights_MiniLM_MatchesWordImage
               - EmbeddedWeights_BertBaseCased_MatchesWordImage
 
-          - id: WordSense-Onnx-Head
+          - id: WordSense-Onnx-Head-Read
             title: >-
-              The Onnx subsystem shall read a trained part-of-speech head from a binary blob embedded in the model
-              package, bind it to the pinned encoder file, the hidden size, the model identifier and the parts of
-              speech of the library, compute from it the probabilities of the parts of speech of a word and restrict
-              them to a given set of parts of speech, and shall load and check the head with the weights of the
-              model, reporting a damaged, missing or mismatched head as a load failure.
+              The Onnx subsystem shall read a trained part-of-speech head from a binary blob that is embedded in the
+              model package.
+            tags: [subsystem]
+            justification: |
+              The trained head ships as one compact blob per encoder model; the subsystem must reproduce what the
+              build tool wrote.
+            children:
+              - WordSense-Onnx-PosHead-Format
+              - WordSense-Onnx-PosHead-Classes
+              - WordSense-Onnx-PosHead-SectionsOptional
+              - WordSense-Onnx-PosHead-SectionsRequired
+
+          - id: WordSense-Onnx-Head-Integrity
+            title: >-
+              The Onnx subsystem shall reject a damaged or malformed part-of-speech head blob as invalid data.
+            tags: [subsystem]
+            justification: |
+              A damaged head must fail loudly at load instead of producing silently wrong probabilities.
+            children:
+              - WordSense-Onnx-PosHead-Magic
+              - WordSense-Onnx-PosHead-Checksum
+              - WordSense-Onnx-PosHead-Structure
+              - WordSense-Onnx-PosHead-Values
+              - WordSense-Onnx-PosHead-Bounds
+              - WordSense-Onnx-PosHead-Varint
+
+          - id: WordSense-Onnx-Head-Binding
+            title: >-
+              The Onnx subsystem shall bind a part-of-speech head to the pinned encoder file, the hidden size, the model
+              identifier, the feature layout and the parts of speech of the library, and reject a head that does not
+              match.
             tags: [subsystem]
             justification: |
               A head fitted on the vectors of one exact encoder file is meaningless for any other file; binding it at
               load turns a stale or foreign head into a failure instead of a wrong answer.
             children:
-              - WordSense-Onnx-PosHead-Format
-              - WordSense-Onnx-PosHead-Integrity
-              - WordSense-Onnx-PosHead-Sections
               - WordSense-Onnx-PosHead-Binding
+              - WordSense-Onnx-PosHead-BindingEncoder
+              - WordSense-Onnx-PosHead-BindingClasses
+              - WordSense-Onnx-PosHead-BindingIdentity
+              - WordSense-Onnx-PosHead-BindingMissing
+
+          - id: WordSense-Onnx-Head-Posterior
+            title: >-
+              The Onnx subsystem shall compute from a part-of-speech head and the pooled vectors of a word and of its
+              neighbors a probability for every part of speech, with the same bits on every call.
+            tags: [subsystem]
+            justification: |
+              The head predicts the part of speech of a word from its context; its result must be a function of its
+              input only.
+            children:
               - WordSense-Onnx-PosHead-Posterior
+              - WordSense-Onnx-PosHead-PosteriorMissing
+              - WordSense-Onnx-PosHead-PosteriorLength
               - WordSense-Onnx-PosHead-Deterministic
+
+          - id: WordSense-Onnx-Head-Restrict
+            title: >-
+              The Onnx subsystem shall restrict the probabilities of a part-of-speech head to a given set of parts of
+              speech.
+            tags: [subsystem]
+            justification: |
+              A spelling can only have the parts of speech that the lexicon lists for it.
+            children:
               - WordSense-Onnx-PosHead-Restrict
-              - WordSense-Onnx-PosHead-Embedded
+              - WordSense-Onnx-PosHead-RestrictFallback
+
+          - id: WordSense-Onnx-Head-Load
+            title: >-
+              The Onnx subsystem shall load and check the part-of-speech head of a model with its embedded weights,
+              reporting a damaged, missing or mismatched head as a load failure.
+            tags: [subsystem]
+            justification: |
+              The head and the weights are shipped in the package, so a defect in either must surface at load.
+            children:
               - WordSense-Onnx-OnnxWordSenseModel-Head
-            tests:
-              - EmbeddedHead_MiniLM_MatchesEncoderAndClasses
-              - EmbeddedHead_BertBaseCased_MatchesEncoderAndClasses
-              - EmbeddedHead_AgainstTheOtherEncoder_IsRejected
+              - WordSense-Onnx-OnnxWordSenseModel-HeadNone
+              - WordSense-Onnx-OnnxWordSenseModel-HeadIntegrity
 
           - id: WordSense-Onnx-Encoder
             title: >-

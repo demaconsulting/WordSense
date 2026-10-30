@@ -34,10 +34,13 @@ public sealed class SuiteDiffTests : IDisposable
     [Fact]
     public void WordSenseBuilder_SuiteDiff_AnswerOf_DescribesTheAnswer()
     {
+        // Arrange: a row with a noun gold, and results that are right, wrong with lower confidence and unknown
+        // Act: grade the three answers
         var right = SuiteDiff.AnswerOf(Row("M-1"), Result(PartOfSpeech.Noun, SenseLevel.PartOfSpeech));
         var wrong = SuiteDiff.AnswerOf(Row("M-1"), Result(PartOfSpeech.Verb, SenseLevel.PartOfSpeech, confidence: 0.5));
         var none = SuiteDiff.AnswerOf(Row("M-1"), ClassifyResult.Unknown("record"));
 
+        // Assert: grade, level, analysis, target, confidence and text of each answer
         Assert.Equal((SuiteGrade.Fine, "PartOfSpeech", "record/Noun", string.Empty), (right.Grade, right.Level, right.Analysis, right.Target));
         Assert.Equal("PartOfSpeech record/Noun", right.Text);
         Assert.Equal(SuiteGrade.Miss, wrong.Grade);
@@ -106,11 +109,13 @@ public sealed class SuiteDiffTests : IDisposable
     [Fact]
     public void WordSenseBuilder_SuiteDiff_Diff_MissingBaselineRow_Throws()
     {
+        // Arrange: a row with two senses, expectations, an empty baseline and a missed answer
         SuiteRow[] rows = [Row("M-1", "record#a", "record#b")];
         var expectations = SuiteFile.Models.ToDictionary(m => m, _ => (IReadOnlyDictionary<string, SuiteGrade>)new Dictionary<string, SuiteGrade> { ["M-1"] = SuiteGrade.Answer }, StringComparer.Ordinal);
         var empty = new Dictionary<(string Model, string Id), SuiteAnswer>();
         var answer = new SuiteAnswer(SuiteGrade.Miss, "None", string.Empty, string.Empty, 0);
 
+        // Act / Assert: the empty baseline is refused, and a complete baseline gives a diff whose gold lists the senses
         Assert.Throws<InvalidDataException>(() => SuiteDiff.Diff(rows, expectations, empty, AllModels(answer)));
         var changes = SuiteDiff.Diff(rows, expectations, SuiteFile.Models.ToDictionary(m => (m, "M-1"), _ => answer with { Level = "Sense" }), AllModels(answer));
         Assert.Contains("  - gold: record/Noun record#a | record#b", SuiteDiff.RenderDiff(changes, 1), StringComparison.Ordinal);

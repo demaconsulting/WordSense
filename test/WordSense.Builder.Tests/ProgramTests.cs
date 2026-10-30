@@ -67,8 +67,11 @@ public sealed class ProgramTests : IDisposable
     [Fact]
     public async Task WordSenseBuilder_Program_Usage_ListsThePosHeadCommands()
     {
+        // Arrange: no arguments, which prints the usage
+        // Act: run the program without a command
         var (code, _, error) = await RunAsync();
 
+        // Assert: exit code 1 and the usage names the part-of-speech head commands
         Assert.Equal(1, code);
         foreach (var command in new[] { "train-pos-head <modelId>", "compare-outcomes" })
         {
@@ -83,11 +86,14 @@ public sealed class ProgramTests : IDisposable
     [Fact]
     public async Task WordSenseBuilder_Program_TrainPosHead_RejectsBadModelsAndGrids()
     {
+        // Arrange: invocations with no model, an unknown model, a model without an encoder and a malformed C grid
+        // Act: run each invocation
         var (missingCode, _, missing) = await RunAsync("train-pos-head", "--repository", _dir.Root);
         var (unknownCode, _, unknown) = await RunAsync("train-pos-head", "nosuchmodel", "--repository", _dir.Root);
         var (basicCode, _, basic) = await RunAsync("train-pos-head", "basic", "--repository", _dir.Root);
         var (gridCode, _, grid) = await RunAsync("train-pos-head", "minilm", "--repository", _dir.Root, "--c-grid", "0.1,abc");
 
+        // Assert: each fails with exit code 1 and a message naming the problem
         Assert.Equal(1, missingCode);
         Assert.Contains("--model is required", missing, StringComparison.Ordinal);
         Assert.Equal(1, unknownCode);
@@ -105,12 +111,15 @@ public sealed class ProgramTests : IDisposable
     [Fact]
     public async Task WordSenseBuilder_Program_CompareOutcomes_RejectsBadInput()
     {
+        // Arrange: an outcome file, used with a missing --new, an unknown cluster unit and zero replicates
         var file = _dir.Write("o.tsv", OutcomeFile.Render([("basic", new TokenOutcome("set", 0, "d", 0, "w", "Noun", "Noun", true, false))]));
 
+        // Act: run each invalid comparison
         var (missingCode, _, missing) = await RunAsync("compare-outcomes", "--base", file);
         var (clusterCode, _, cluster) = await RunAsync("compare-outcomes", "--base", file, "--new", file, "--cluster", "page");
         var (repsCode, _, reps) = await RunAsync("compare-outcomes", "--base", file, "--new", file, "--reps", "0");
 
+        // Assert: each fails with exit code 1 and a message naming the problem
         Assert.Equal(1, missingCode);
         Assert.Contains("--new is required", missing, StringComparison.Ordinal);
         Assert.Equal(1, clusterCode);

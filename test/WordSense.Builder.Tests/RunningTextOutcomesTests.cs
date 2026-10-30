@@ -70,11 +70,14 @@ public sealed class RunningTextOutcomesTests : IDisposable
     [Fact]
     public void WordSenseBuilder_RunningText_Documents_AreTheSourceIdsOfTheOpenSets()
     {
+        // Arrange: the corpus directory of the repository
         var corpus = Path.Join(FindRepositoryRoot(), "corpus");
 
+        // Act: read the documents and load the sets
         var documents = RunningTextEvaluator.Documents(corpus, "test");
         var (sets, _) = RunningTextEvaluator.Load(corpus, "test", Path.Join(_dir.Root, "none.tsv"));
 
+        // Assert: one document per sentence of each set, with documents shared in the open set
         Assert.Equal(sets[0].Sentences.Count, documents[RunningTextEvaluator.OpenSetName].Count);
         Assert.True(documents[RunningTextEvaluator.OpenSetName].Distinct(StringComparer.Ordinal).Count() < documents[RunningTextEvaluator.OpenSetName].Count);
         Assert.Equal(sets[1].Sentences.Count, documents[RunningTextEvaluator.ChallengeSetName].Count);

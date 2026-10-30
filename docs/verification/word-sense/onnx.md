@@ -106,9 +106,11 @@ the shipped image (`EmbeddedWeights_MiniLM_MatchesWordImage`, `EmbeddedWeights_B
 
 The part-of-speech head embedded in each model package is loaded with the weights, needs no model file, and is bound to
 the pinned ONNX file of its encoder, the hidden size, the model identifier and the parts of speech of the library
-(`EmbeddedHead_MiniLM_MatchesEncoderAndClasses`, `EmbeddedHead_BertBaseCased_MatchesEncoderAndClasses`); a head read
-against the other encoder is rejected (`EmbeddedHead_AgainstTheOtherEncoder_IsRejected`; see the `PosHead` and
-`OnnxWordSenseModel` unit documents).
+(`MiniLMWordSenseModel_EmbeddedHead_MatchesEncoderAndClasses`,
+`BertBaseCasedWordSenseModel_EmbeddedHead_MatchesEncoderAndClasses`, in the model test projects); a head read
+against another encoder file is rejected (`MiniLMWordSenseModel_EmbeddedHead_AgainstAnotherEncoderFile_IsRejected`,
+`BertBaseCasedWordSenseModel_EmbeddedHead_AgainstAnotherEncoderFile_IsRejected`; see the `PosHead`,
+`OnnxWordSenseModel` and model unit documents).
 
 #### Model Files Come From a Verified Source
 

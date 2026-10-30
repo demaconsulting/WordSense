@@ -120,13 +120,16 @@ public class OnnxEncoderTests
     [Fact]
     public async Task OnnxEncoder_EncodeAllAsync_ShortText_EqualsSinglePassVectors()
     {
+        // Arrange: an encoder, the single-pass vectors of every word, and the pass count before the call
         using var encoder = Open();
         var all = Enumerable.Range(0, Sentence.Length).ToArray();
         var expected = await encoder.EncodeAsync(Sentence, all, TestContext.Current.CancellationToken);
         var before = encoder.PassCount;
 
+        // Act: encode the whole text
         var vectors = await encoder.EncodeAllAsync(Sentence, TestContext.Current.CancellationToken);
 
+        // Assert: one pass was used and every vector equals the single-pass vector
         Assert.Equal(1, encoder.PassCount - before);
         Assert.Equal(expected.Length, vectors.Length);
         for (var i = 0; i < expected.Length; i++)
@@ -142,11 +145,14 @@ public class OnnxEncoderTests
     [Fact]
     public async Task OnnxEncoder_EncodeAllAsync_EmptyOrNoTokens_ReturnsEmptyOrNull()
     {
+        // Arrange: an encoder; the inputs are an empty text and a text whose middle word has no word pieces
         using var encoder = Open();
 
+        // Act: encode both texts
         var none = await encoder.EncodeAllAsync([], TestContext.Current.CancellationToken);
         var noTokens = await encoder.EncodeAllAsync(["record", "\u0001", "the"], TestContext.Current.CancellationToken);
 
+        // Assert: the empty text gives nothing and only the word without pieces gives null
         Assert.Empty(none);
         Assert.NotNull(noTokens[0]);
         Assert.Null(noTokens[1]);
@@ -474,15 +480,18 @@ public class OnnxEncoderTests
     [Fact]
     public async Task OnnxEncoder_EncodeAllAsync_InvalidUse_Throws()
     {
+        // Arrange: an encoder, a cancelled token, and invalid arguments
         using var encoder = Open();
         using var cancelled = new CancellationTokenSource();
         await cancelled.CancelAsync();
 
+        // Act / Assert: null text, a null word, a null predicate and a cancelled token are rejected
         await Assert.ThrowsAsync<ArgumentNullException>(async () => await encoder.EncodeAllAsync(null!, TestContext.Current.CancellationToken));
         await Assert.ThrowsAsync<ArgumentNullException>(async () => await encoder.EncodeAllAsync([null!], TestContext.Current.CancellationToken));
         await Assert.ThrowsAsync<ArgumentNullException>(async () => await encoder.EncodeAllAsync(Sentence, null!, TestContext.Current.CancellationToken));
         await Assert.ThrowsAnyAsync<OperationCanceledException>(async () => await encoder.EncodeAllAsync(Sentence, cancelled.Token));
 
+        // Act / Assert: use after disposal is rejected
         encoder.Dispose();
         await Assert.ThrowsAsync<ObjectDisposedException>(async () => await encoder.EncodeAllAsync(Sentence, TestContext.Current.CancellationToken));
     }
