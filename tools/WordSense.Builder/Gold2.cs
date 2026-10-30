@@ -464,12 +464,15 @@ internal static partial class Gold2
         return match.Success ? "gutenberg-" + match.Groups[1].Value.TrimStart('0') : trimmed;
     }
 
+    /// <summary>Matches a bare Gutenberg key: <c>pg1419</c> or <c>gutenberg-1419</c>; group 1 is the book number.</summary>
     [GeneratedRegex(@"^(?:pg|gutenberg[-_:]?)(\d+)$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase, 1000)]
     private static partial Regex GutenbergKey();
 
+    /// <summary>Matches an address of a Gutenberg book (<c>.../cache/epub/1419/...</c>, <c>.../ebooks/1419</c>); group 1 is the book number.</summary>
     [GeneratedRegex(@"gutenberg\.org/(?:cache/epub/|files/|ebooks/|epub/)(\d+)", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase, 1000)]
     private static partial Regex GutenbergAddress();
 
+    /// <summary>Matches the sentence suffix of a sentence id (<c>-s0012</c>), which a document id precedes.</summary>
     [GeneratedRegex(@"-s\d+$", RegexOptions.CultureInvariant, 1000)]
     private static partial Regex SentenceSuffix();
 
@@ -535,12 +538,25 @@ internal static partial class Gold2
         return (ids, urls);
     }
 
+    /// <summary>
+    ///     Adds a document id to the set under its own spelling and under its canonical key.
+    /// </summary>
+    /// <param name="ids">The set that receives the id.</param>
+    /// <param name="id">The document id or source key.</param>
     private static void AddId(HashSet<string> ids, string id)
     {
         ids.Add(id);
         ids.Add(CanonicalDocumentKey(id));
     }
 
+    /// <summary>
+    ///     Reads the id and the address columns of a tab-separated file that has a header line, into the two sets.
+    /// </summary>
+    /// <param name="path">The file; a missing file adds nothing.</param>
+    /// <param name="idColumn">The name of the column with the document id.</param>
+    /// <param name="urlColumn">The name of the column with the address (without a fragment).</param>
+    /// <param name="ids">The set that receives the ids (and the canonical key of an address that has one).</param>
+    /// <param name="urls">The set that receives the addresses.</param>
     private static void AddColumns(string path, string idColumn, string urlColumn, HashSet<string> ids, HashSet<string> urls)
     {
         if (!File.Exists(path))
@@ -677,6 +693,13 @@ internal static partial class Gold2
         return problems;
     }
 
+    /// <summary>
+    ///     Adds the description of a difference to a list when two values are not the same.
+    /// </summary>
+    /// <param name="differences">The list that receives the description.</param>
+    /// <param name="name">The name of the field.</param>
+    /// <param name="expected">The value of the manifest.</param>
+    /// <param name="actual">The value of the row.</param>
     private static void AddDifference(List<string> differences, string name, string expected, string actual)
     {
         if (!string.Equals(expected, actual, StringComparison.Ordinal))

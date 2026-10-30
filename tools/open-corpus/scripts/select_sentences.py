@@ -202,6 +202,8 @@ def main():
             report["tatoeba_candidates_after_filters"] = len(pool)
             report["tatoeba_dropped"] = dict(dropped)
             pick = sorted(rng.sample(pool, need), key=lambda c: int(c["id"]))
+            # The sentences chosen here are seen, so a later family cannot select the same text
+            seen.update(key_of(c["text"]) for c in pick)
             for c in pick:
                 sid = f"tatoeba-{c['id']}"
                 selected.append({"group": group, "family": "tatoeba", "source_id": sid, "sent_id": sid, "text": c["text"], "tokens": c["tokens"], "pilot": 0})

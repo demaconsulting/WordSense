@@ -437,6 +437,7 @@ sections:
             tests:
               - WordSenseBuilder_RealCalibrator_ChooseShift_ConfidentErrorsInTheTail_DoNotMoveTheShift
               - WordSenseBuilder_RealCalibrator_ChooseShift_TargetNotReachable_KeepsTheMinimumShareAndReportsIt
+              - WordSenseBuilder_RealCalibrator_ChooseShift_OneDistanceAndTargetNotReachable_FallsBackToThatDistance
               - WordSenseBuilder_RealCalibrator_ChooseShift_TargetClearlyReachable_ReachesItOnEnoughAnswers
               - WordSenseBuilder_RealCalibrator_ChooseShift_FewPooledAnswers_TheMinimumCountDominatesTheShare
               - WordSenseBuilder_RealCalibrator_ChooseShift_FewerThanThirtyUsableAnswers_GiveShiftZeroNotReached
@@ -598,6 +599,7 @@ sections:
             tests:
               - WordSenseBuilder_Evaluator_RunAsync_BasicModel_CountsHoldoutRows
               - WordSenseBuilder_Evaluator_RunAsync_ReportsShareAndAccuracyPerLevel
+              - WordSenseBuilder_Evaluator_ScoreAsync_ClassificationTime_ExcludesWritingTheOutcomes
               - WordSenseBuilder_Evaluator_RunAsync_ProvenanceNamesTheOrigin_ReportsTheRealTestSplitFirst
               - WordSenseBuilder_Program_Evaluate_BasicModel_PrintsMeasurements
               - WordSenseBuilder_Program_Evaluate_UnknownModel_ReportsError
@@ -1815,6 +1817,26 @@ sections:
             tests:
               - WordSenseBuilder_AllWords_Batches_HaveNoTagCount
 
+          - id: WordSense-WordSenseBuilder-AllWordsLabeling-BatchSize
+            title: >-
+              The labeling batches of the builder shall hold at most the requested number of tokens, dividing a lemma
+              that has more tokens than a batch holds and repeating its senses in each batch.
+            tags: [unit]
+            justification: |
+              The size of a batch is what a labeler can read at once; a batch of any size would break that limit.
+            tests:
+              - WordSenseBuilder_AllWords_Batches_OversizedGroup_IsDividedToTheBatchSize
+
+          - id: WordSense-WordSenseBuilder-AllWordsLabeling-EmptySplit
+            title: >-
+              The merge of the all-words labels shall write a gold file, empty but for its header, for a sampled split
+              of which no token is kept.
+            tags: [unit]
+            justification: |
+              An earlier gold file of the split would otherwise stay and be read as the gold of the new labels.
+            tests:
+              - WordSenseBuilder_Program_AllWordsMerge_SplitWithNoKeptToken_GetsAnEmptyFile
+
           - id: WordSense-WordSenseBuilder-AllWordsLabeling-Agreement
             title: >-
               The builder shall keep in the gold set a token for which both of two independent labelers chose the same
@@ -2115,12 +2137,13 @@ sections:
 
           - id: WordSense-WordSenseBuilder-Gold2Draw-Candidates
             title: >-
-              The builder shall not draw a capitalized word inside a sentence, an acronym, a word with an apostrophe, a
-              numeral or a symbol, but a lower-case word, a word at the start of a sentence and the pronoun I.
+              The builder shall not draw a capitalized word inside a sentence (a single capital letter included), an
+              acronym, a word with an apostrophe, a numeral or a symbol, but a lower-case word, a word at the start of a
+              sentence and the pronoun I.
             tags: [unit]
             justification: |
-              A name or an acronym has no sense in the lexicon, and a word that is not a word of the lexicon cannot be
-              labeled; the sentence start and the pronoun are capitalized by rule, not by name.
+              A name, an initial or an acronym has no sense in the lexicon, and a word that is not a word of the lexicon
+              cannot be labeled; the sentence start and the pronoun are capitalized by rule, not by name.
             tests:
               - Gold2Sampler_IsCandidateWord_NamesAcronymsAndSymbols_AreLeftOut
 
@@ -2258,6 +2281,18 @@ sections:
             tests:
               - Gold2Labeling_Merge_AgreementAndAdjudication_NothingIsDropped
 
+          - id: WordSense-WordSenseBuilder-Gold2Labeling-Merge-Command
+            title: >-
+              The gold2-merge command shall check every join of the answers, the manifest and the documents before it
+              writes, write nothing and exit with 1 when an answer is missing, invalid or for a token that the manifest
+              does not have, a document is not listed or a row would not match the manifest, and otherwise write the
+              rows of both splits and the raw labels.
+            tags: [unit]
+            justification: |
+              A merge that fails after one split is written would leave a gold set of two generations.
+            tests:
+              - Program_Gold2Merge_DocumentNotListed_WritesNothing
+
           - id: WordSense-WordSenseBuilder-Gold2Labeling-Missing
             title: >-
               The builder shall report a token that a labeler has not answered before the merge, and send a token whose
@@ -2376,6 +2411,7 @@ sections:
             tests:
               - WordSenseBuilder_RunningText_DefaultGold_IsTheTestFileAndNotTheDevelopmentFile
               - WordSenseBuilder_RunningText_Load_ReadsTheSetsAndNotesAMissingGoldFile
+              - WordSenseBuilder_RunningText_Load_DevelopmentSplit_IsNamedAndNotWrittenToTheTestColumn
               - WordSenseBuilder_RunningText_Run_ReportsAllAndAmbiguousTokensForAModel
               - WordSenseBuilder_Program_EvaluateRunning_Basic_PrintsTableAndWritesTheCells
               - WordSenseBuilder_ChallengeSet_Basic_StaysAboveItsFloor

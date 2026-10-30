@@ -141,6 +141,11 @@ internal static class Gold2Evaluator
         return new Gold2Scored(row.Token.Id, pos, lemma, tense, sense, onAnalysis);
     }
 
+    /// <summary>
+    ///     Turns a verdict into the outcome of a measure.
+    /// </summary>
+    /// <param name="right">Whether the model is right.</param>
+    /// <returns>1 when right, else 0.</returns>
     private static int Flag(bool right) => right ? 1 : 0;
 
     /// <summary>
@@ -283,6 +288,12 @@ internal static class Gold2Evaluator
         return comparisons;
     }
 
+    /// <summary>
+    ///     Finds the 95% interval of the difference of two models by resampling whole documents.
+    /// </summary>
+    /// <param name="sums">For each document, the tokens it contributes and the sum of the differences (second minus first) over them.</param>
+    /// <param name="seed">The seed of the pseudo-random generator, so the interval is reproducible.</param>
+    /// <returns>The 2.5th and the 97.5th percentile of the resampled differences, as shares.</returns>
     private static (double Low, double High) BootstrapInterval((int N, int Diff)[] sums, int seed)
     {
 #pragma warning disable S2245 // a seeded pseudo-random generator makes the bootstrap reproducible; nothing here is a secret
@@ -323,6 +334,11 @@ internal static class Gold2Evaluator
         return text.ToString();
     }
 
+    /// <summary>
+    ///     Writes an outcome as a cell of the outcomes file.
+    /// </summary>
+    /// <param name="value">1, 0 or -1 (the measure does not apply).</param>
+    /// <returns>The value, or a dash for -1.</returns>
     private static string Cell(int value) => value < 0 ? "-" : value.ToString(CultureInfo.InvariantCulture);
 
     /// <summary>
@@ -348,6 +364,12 @@ internal static class Gold2Evaluator
         return map;
     }
 
+    /// <summary>
+    ///     Reads a cell of the outcomes file.
+    /// </summary>
+    /// <param name="cell">The cell: <c>1</c>, <c>0</c> or a dash.</param>
+    /// <returns>1, 0 or -1.</returns>
+    /// <exception cref="InvalidDataException">Thrown when the cell is none of the three.</exception>
     private static int Parse(string cell)
     {
         if (cell == "-")

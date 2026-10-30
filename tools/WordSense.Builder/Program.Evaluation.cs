@@ -234,9 +234,11 @@ internal static partial class Program
         var target = options.TryGetValue("target", out var t) ? Path.GetFullPath(t) : Path.Join(corpus, AllWordsGold.Folder);
         var (gold, agreement) = AllWordsGold.Merge(directory, Require(options, "first"), Require(options, "second"));
         Directory.CreateDirectory(target);
-        foreach (var (split, items) in gold)
+
+        // A split with no kept token still gets a (header-only) file, or an earlier file of the split would stay and be read as gold
+        foreach (var split in agreement.Select(a => a.Split).Union(gold.Keys, StringComparer.Ordinal))
         {
-            File.WriteAllText(Path.Join(target, split + ".tsv"), AllWordsGold.Render(split, items), new System.Text.UTF8Encoding(false));
+            File.WriteAllText(Path.Join(target, split + ".tsv"), AllWordsGold.Render(split, gold.GetValueOrDefault(split) ?? []), new System.Text.UTF8Encoding(false));
         }
 
         var text = AllWordsGold.RenderAgreement(agreement);

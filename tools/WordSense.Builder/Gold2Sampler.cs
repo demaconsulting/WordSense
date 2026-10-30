@@ -199,11 +199,26 @@ internal static class Gold2Sampler
             return true;
         }
 
-        return word.Length == 1 || (index == 0 || char.IsLower(word[0])) && word[1..].All(char.IsLower);
+        return (index == 0 || char.IsLower(word[0])) && word[1..].All(char.IsLower);
     }
 
+    /// <summary>
+    ///     Writes a candidate token of the draw: the sentence, the index and the strata that it bears.
+    /// </summary>
+    /// <param name="Sentence">The sentence.</param>
+    /// <param name="Index">The index of the token in the sentence.</param>
+    /// <param name="Form">The token as written.</param>
+    /// <param name="Flags">The strata flags.</param>
+    /// <param name="Order">The pseudo-random rank of the candidate.</param>
     private sealed record Candidate(Gold2Sentence Sentence, int Index, string Form, IReadOnlyList<string> Flags, ulong Order);
 
+    /// <summary>
+    ///     Draws the tokens of one split: the strata rarest first, each in the weights of the source groups, within the caps.
+    /// </summary>
+    /// <param name="candidates">The candidates of the split.</param>
+    /// <param name="plan">The plan (caps and weights).</param>
+    /// <param name="quotas">The quota of each stratum.</param>
+    /// <returns>The drawn candidates.</returns>
     private static List<Candidate> DrawSplit(List<Candidate> candidates, Gold2Plan plan, IReadOnlyDictionary<string, int> quotas)
     {
         var ordered = candidates.OrderBy(c => c.Order).ThenBy(c => c.Sentence.SentenceId, StringComparer.Ordinal).ThenBy(c => c.Index).ToList();
@@ -285,6 +300,13 @@ internal static class Gold2Sampler
         return drawn;
     }
 
+    /// <summary>
+    ///     Hashes a text to a number that does not depend on the platform, to order the candidates of the draw.
+    /// </summary>
+    /// <param name="seed">The seed of the draw.</param>
+    /// <param name="purpose">What the hash is for (it keeps the orders for different purposes apart).</param>
+    /// <param name="text">The text to hash.</param>
+    /// <returns>The first eight bytes of the SHA-256 of the seed, the purpose and the text.</returns>
     private static ulong HashOf(int seed, string purpose, string text) =>
         BitConverter.ToUInt64(SHA256.HashData(Encoding.UTF8.GetBytes($"{seed.ToString(CultureInfo.InvariantCulture)}|{purpose}|{text}")));
 

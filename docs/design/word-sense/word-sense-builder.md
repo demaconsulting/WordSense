@@ -242,8 +242,10 @@ instead of `--model`.
 - `gold2-batches --dir DIR [--stage label|adjudicate] [--splits dev,test] [--batch-size 100] [--tag TAG]
   [--missing SUFFIX] [--first SUFFIX --second SUFFIX]`: writes the labeling batches of the manifest or, for
   `--stage adjudicate`, the batches
-  of the tokens on which the two labelers do not agree, with both answers shown; `--missing` writes only the tokens that
-  the answers of a labeler lack, under a retry tag of its own (`-r1`, `-r2`, ...) that sits beside the earlier tables.
+  of the tokens on which the two labelers do not agree, with both answers shown; `--missing SUFFIX` writes only the
+  tokens that are still without an answer, under a retry tag of its own (`-r1`, `-r2`, ...) that sits beside the earlier
+  tables: with `--stage label` the tokens that the labeler `SUFFIX` has not answered, with `--stage adjudicate` the tokens
+  that the adjudicator `SUFFIX` has not judged (the resume of an interrupted adjudication).
 - `gold2-merge --dir DIR --first SUFFIX --second SUFFIX --adjudicator SUFFIX [--target DIR] [--output FILE]`: merges the
   answers of the two labelers and the adjudicator into `dev.tsv`, `test.tsv` and `labels.tsv` and prints the agreement;
   it writes nothing and exits with 1 when an answer is missing or invalid, an answer names a token that the manifest does
@@ -754,9 +756,10 @@ adjudication and no human review; the README of the set says so.
    not exist; an invalid answer of a labeler is a disagreement). Every other token, a disagreement or an unsure answer,
    goes to the adjudicator (`gold2-batches --stage adjudicate`, `gpt-5.6-luna`), who sees both answers and may answer
    `none` (no defensible single sense). That answer is kept as a category and left out of the sense accuracy.
-   Nothing is dropped. A token that a labeler has not answered is reported first (`gold2-batches --missing` writes
-   those tokens again under a retry tag, `Gold2Labeling.RetryTag`, so the table of the earlier round, which maps its
-   batches to tokens, is never rewritten; `Gold2Labeling.WriteBatches` refuses to replace a table with another mapping).
+   Nothing is dropped. A token that a labeler has not answered is reported first (`gold2-batches --missing SUFFIX` writes
+   those tokens again under a retry tag, `Gold2Labeling.RetryTag`; with `--stage adjudicate` it writes the tokens that the
+   adjudicator has not judged). The table of the earlier round, which maps its
+   batches to tokens, is never rewritten; `Gold2Labeling.WriteBatches` refuses to replace a table with another mapping.
 5. `gold2-merge` (`Gold2Labeling.Merge`) writes `dev.tsv` and `test.tsv` (the gold part of speech, lemma, features,
    tense class, sense, status `agreed` or `adjudicated` and the agreement of the labelers: `full`, `analysis`, `pos` or
    `none`) and `labels.tsv` (the answers of all three), and prints the agreement table. It writes nothing and exits

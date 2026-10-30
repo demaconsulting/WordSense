@@ -147,10 +147,10 @@ CC0 export, or are 32 project-written CC0 sentences. **SemCor 3.0** and the UD E
 evaluation sources only: never committed, redistributed or trained on. The encoder models are Apache License 2.0. The
 [user guide][link-user-guide] has the full list with notices.
 
-Language models wrote or labeled the corpus anchors, the open-corpus tags, the all-words gold, the suite labels and the
-shape rows, and no human has reviewed the language-model labels. In the owner's position, GitHub claims no ownership of
-model outputs, so the repository owner, who prompted their creation, holds the rights in them and dedicates them to the
-public domain under CC0 1.0. That is the owner's position, not legal advice or a warranty.
+Language models wrote or labeled the corpus anchors, the open-corpus tags, the all-words gold sets, the suite labels and
+the shape rows, and no human has reviewed the language-model labels. In the owner's position, GitHub claims no
+ownership of model outputs, so the repository owner, who prompted their creation, holds the rights in them and
+dedicates them to the public domain under CC0 1.0. That is the owner's position, not legal advice or a warranty.
 
 ## Contributing
 

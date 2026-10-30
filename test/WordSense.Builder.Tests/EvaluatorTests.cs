@@ -110,6 +110,44 @@ public sealed class EvaluatorTests : IDisposable
     }
 
     /// <summary>
+    ///     A text writer that is slow, as an outcomes file on a slow disk is.
+    /// </summary>
+    private sealed class SlowWriter : StringWriter
+    {
+        /// <inheritdoc />
+        public override void WriteLine(string? value)
+        {
+            Thread.Sleep(40);
+            base.WriteLine(value);
+        }
+    }
+
+    /// <summary>
+    ///     The classification time that the latency is made of covers the calls of the model only: writing the outcomes of the
+    ///     sentences does not add to it.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_Evaluator_ScoreAsync_ClassificationTime_ExcludesWritingTheOutcomes()
+    {
+        // Arrange: six rows, a fast model and an outcomes writer that takes 40 ms a line
+        var (a1, _, _, _) = SenseFixtures.Grouped("test");
+        List<CorpusRow> rows = [.. Enumerable.Range(0, 6).Select(i => SenseFixtures.Row(a1, i))];
+        using var model = new FakeModel(words => [.. words.Select(ClassifyResult.Unknown)]);
+        using var writer = new SlowWriter();
+        var wall = System.Diagnostics.Stopwatch.StartNew();
+
+        // Act
+        var (overall, _, classification) = await Evaluator.ScoreAsync("holdout", rows, model, writer, [], null, TestContext.Current.CancellationToken);
+        wall.Stop();
+
+        // Assert
+        Assert.Equal(6, overall.Rows);
+        Assert.True(wall.ElapsedMilliseconds >= 200, "the writer takes 240 ms");
+        Assert.True(classification < wall.Elapsed / 2, $"classification {classification} against {wall.Elapsed}");
+    }
+
+    /// <summary>
     ///     A scripted model is measured on a small holdout corpus: the share answered at each level, the precision at
     ///     each level, the top-1 fine accuracy over all rows and over the ranked rows, the part-of-speech accuracy and
     ///     the share that is right at its own level.

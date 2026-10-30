@@ -54,14 +54,17 @@ FEATURES_FOR_UPOS = {
 
 
 def sha256_bytes(data):
+    """Return the SHA-256 of a bytes object as a lower-case hex string."""
     return hashlib.sha256(data).hexdigest()
 
 
 def sha256_text(text):
+    """Return the SHA-256 of a string (as UTF-8) as a lower-case hex string."""
     return sha256_bytes(text.encode("utf-8"))
 
 
 def sha256_file(path):
+    """Return the SHA-256 of a file, read in blocks of 1 MiB, as a lower-case hex string."""
     h = hashlib.sha256()
     with open(path, "rb") as f:
         for block in iter(lambda: f.read(1 << 20), b""):
@@ -78,6 +81,11 @@ def read_tsv(path):
 
 
 def write_tsv(path, rows, columns):
+    """Write dicts as a tab separated file: a header row, then one line per row with the given columns.
+
+    The directory of the file is created. A tab or a line feed inside a value is replaced by a space, and a missing
+    column is written empty. The file is UTF-8 with LF line endings.
+    """
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8", newline="\n") as f:
         f.write("\t".join(columns) + "\n")

@@ -44,7 +44,9 @@ def check_part(part, data_dir, names, pick, known, errors, seen_ids, seen_text):
             comments = {l[2:].split(" = ", 1)[0]: l.split(" = ", 1)[1] for l in lines if l.startswith("# ") and " = " in l}
             toks = [l.split("\t") for l in lines if not l.startswith("#")]
             if "sent_id" not in comments:
-                continue  # file header block
+                if toks:  # only a comment-only block is the file header
+                    errors.append(f"{part}/{name}: a block of {len(toks)} token lines has no `# sent_id` line")
+                continue
             sid = comments["sent_id"]
             n_sent += 1
             n_tok += len(toks)
@@ -88,6 +90,9 @@ def check_part(part, data_dir, names, pick, known, errors, seen_ids, seen_text):
                     errors.append(f"{sid}:{k} bad status {status}")
                 if feats != "_":
                     pairs = [p.split("=", 1) for p in feats.split("|")]
+                    names = [p[0] for p in pairs]
+                    if len(set(names)) != len(names):
+                        errors.append(f"{sid}:{k} repeated feature name in {feats}")
                     if pairs != sorted(pairs) or any(len(p) != 2 or p[0] not in FEATURE_VALUES or p[1] not in FEATURE_VALUES[p[0]]
                                                      or p[0] not in FEATURES_FOR_UPOS.get(upos, set()) for p in pairs):
                         errors.append(f"{sid}:{k} bad features {feats} for {upos}")

@@ -369,7 +369,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `RealCalibrator_Apply_TargetNotReachable_ReportsItAndKeepsTheMinimumShare`): the shift is the largest one that
   keeps the minimum share of the answers, the result says that the target was not reached (the training summary line
   contains "fine pooled shift 5.000 (target not reached)" and says that the answers before and after cover all
-  calibration rows), and fewer answers than the minimum give shift 0.
+  calibration rows), and fewer answers than the minimum give shift 0. When every usable answer has one positive
+  distance and the target is not reached, the fallback shift is that distance, not zero
+  (`RealCalibrator_ChooseShift_OneDistanceAndTargetNotReachable_FallsBackToThatDistance`: 30 wrong answers at the
+  distance 1 give `(1, false)`).
 - **Reachable target** (`RealCalibrator_ChooseShift_TargetClearlyReachable_ReachesItOnEnoughAnswers`): when the
   precision clearly rises above the target, the lowest qualifying shift is chosen (4.1 in the fixture; the tail from
   4.0 has 96.9 percent and fails) and the kept answers reach it.
@@ -413,6 +416,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Shares and accuracy per level** (`Evaluator_RunAsync_ReportsShareAndAccuracyPerLevel`): with a stub model that
   answers rows at each level, the report gives the share answered at the sense, group and part-of-speech level, the
   accuracy at each level and the part-of-speech accuracy.
+- **Latency is the classification time** (`Evaluator_ScoreAsync_ClassificationTime_ExcludesWritingTheOutcomes`): with a
+  fast model and an outcomes writer that takes 40 ms a line, the classification time of six rows is less than half of
+  the elapsed time, so the latency does not include the outcomes file, the grading or the preparation.
 - **Real test split first** (`Evaluator_RunAsync_ProvenanceNamesTheOrigin_ReportsTheRealTestSplitFirst`): with a
   provenance file that marks held-out rows as real and written, the report has the real test split as its first
   (headline) set, then the test rows of documents without anchors, the calibration split, the written rows and the whole
@@ -431,7 +437,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Key mapping** (`WordSenseBuilder_SenseEval_MapKeys_WordNet30KeyToOewnSense`): a WordNet 3.0 sense key maps to the
   sense of the catalog that has it; a word with several keys is left out, a key without a sense is counted as
   unmapped, a word of an untrained lemma is not a trained-lemma word (it is an other row when the lemma has two or more
-  senses), and a sentence that is in the corpus is left out.
+  senses), and a sentence that is in the corpus is left out. The words with several keys are counted directly, whatever
+  the sampling or the exclusion of sentences (a sentence left out does not turn one into a single-key word), and the
+  sentences that the sampling does not keep are counted apart.
 - **Figures** (`WordSenseBuilder_SenseEval_Run_ReportsShareAndPrecisionPerLevelAndBaseline`): on a small annotated
   fixture and a stub model, the report gives for the words of trained lemmas the share answered and the precision at
   each level, the fine top-1, the part-of-speech accuracy, the accuracy of the first-sense baseline and the
@@ -485,7 +493,12 @@ and, for the measurement, a stub model.
 - **Batches** (`WordSenseBuilder_AllWords_Batches_ListEverySenseInTheOrderOfTheIds`, `..._Batches_HaveNoTagCount`,
   `..._Batches_MarkTheTargetWordAndSeparateTheSplits`): the batch of a group has every sense of the lemma and part of
   speech in the order of the ids, each with only `id`, `pos` and `gloss` (no tag count), and its sentences have the
-  target in braces; one batch is written for each split (the last test has no requirement).
+  target in braces; one batch is written for each split (the last test has no requirement). A lemma with more tokens
+  than the batch size is divided into batches of at most that size, each with the senses of the lemma
+  (`..._Batches_OversizedGroup_IsDividedToTheBatchSize`: four tokens in batches of three give batches of 3 and 1).
+- **Empty split** (`WordSenseBuilder_Program_AllWordsMerge_SplitWithNoKeptToken_GetsAnEmptyFile`): when both labelers
+  are unsure of every token of a split, `allwords-merge` overwrites an earlier gold file of the split with an empty
+  file, and the reader of the set finds no token.
 - **Merge** (`WordSenseBuilder_AllWords_Merge_KeepsTheTokensBothLabelersAgreeOn`, `..._Merge_Disagreement_DropsTheToken`,
   `..._Merge_UnsureAnswer_DropsTheToken`, `..._Merge_MissingAnswerLine_DropsTheToken`,
   `..._Merge_ReportsTheAgreement`, `..._Merge_WrongSense_Fails`, `..._Merge_MissingAnswerFile_Fails`): the merge keeps a
@@ -544,7 +557,8 @@ and weights.
   exactly the lemmas that the rule of the trainer finds in the committed anchors; without a weights file the same
   rule is applied to the anchors of a small directory (a lemma of two senses is trained, a lemma of one is not).
 - **Candidates** (`Gold2Sampler_IsCandidateWord_NamesAcronymsAndSymbols_AreLeftOut`): lower-case words, a capitalized
-  word at the start of a sentence, `I` and `a` can be drawn; a capitalized word inside a sentence, an acronym, a word
+  word at the start of a sentence, `I` and `a` can be drawn; a capitalized word inside a sentence (a single capital
+  letter such as `D` included), an acronym, a word
   with an apostrophe, a numeral and a symbol cannot.
 - **Draw** (`Gold2Sampler_Draw_SmallPool_RespectsSplitsCapsAndQuotas`): on a pool of 30 documents the same seed gives
   the same tokens and another seed other ones; no document has tokens in both splits; no document exceeds its cap; no
@@ -591,6 +605,10 @@ and weights.
   problem `t-4: the adjudicator gave no answer.`; with all answers no token is dropped, the status and the agreement
   (`pos`, `analysis`) of each token are right, a `none` is kept, the rows carry the tense class (`past`, `nonpast`) of
   a verb, and the agreement counts, the table and the labels file are rendered.
+- **Merge command** (`Program_Gold2Merge_DocumentNotListed_WritesNothing`): with a manifest document that
+  `sources.tsv` does not list, `gold2-merge` exits with 1, prints that the document is not in `sources.tsv` and writes
+  neither split nor the labels; with the document listed it exits with 0, writes `dev.tsv`, `test.tsv` and `labels.tsv`
+  and the written test rows match the manifest.
 - **Missing and invalid answers** (`Gold2Labeling_Compare_MissingAndInvalidAnswers_AreReportedOrAdjudicated`): a token
   that the second labeler did not answer is reported as missing and a token whose answer of the first labeler is
   invalid goes to the adjudicator; nothing is settled.
@@ -668,7 +686,8 @@ verified in the section _corpus_ below.
   gold file is the converted test file, never the development file.
 - **Sets** (`WordSenseBuilder_RunningText_Load_ReadsTheSetsAndNotesAMissingGoldFile`): the representative test split,
   the gold file and the challenge set are read; a missing gold file leaves its set out with a note that says how to
-  make it.
+  make it. A split other than `test` is named after the split and never fills the test column of the model table
+  (`WordSenseBuilder_RunningText_Load_DevelopmentSplit_IsNamedAndNotWrittenToTheTestColumn`).
 - **Figures for any model** (`WordSenseBuilder_RunningText_Run_ReportsAllAndAmbiguousTokensForAModel`): with a stub
   model, the accuracy on all scored tokens and on the ambiguous tokens, the tokens that are not answered and the
   excluded tokens are counted and rendered, and the table cells carry both accuracies.

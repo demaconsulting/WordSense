@@ -543,6 +543,8 @@ sections:
           - WordSense-WordSenseBuilder-AllWordsDraw-Limits
           - WordSense-WordSenseBuilder-AllWordsLabeling
           - WordSense-WordSenseBuilder-AllWordsLabeling-NoCounts
+          - WordSense-WordSenseBuilder-AllWordsLabeling-BatchSize
+          - WordSense-WordSenseBuilder-AllWordsLabeling-EmptySplit
           - WordSense-WordSenseBuilder-AllWordsLabeling-Agreement
           - WordSense-WordSenseBuilder-AllWordsLabeling-Unsure
           - WordSense-WordSenseBuilder-AllWordsLabeling-WrongSense
@@ -581,6 +583,7 @@ sections:
           - WordSense-WordSenseBuilder-Gold2Labeling-Batches
           - WordSense-WordSenseBuilder-Gold2Labeling-Retry
           - WordSense-WordSenseBuilder-Gold2Labeling-Merge
+          - WordSense-WordSenseBuilder-Gold2Labeling-Merge-Command
           - WordSense-WordSenseBuilder-Gold2Labeling-Missing
           - WordSense-WordSenseBuilder-Gold2Evaluation
           - WordSense-WordSenseBuilder-Gold2Baselines

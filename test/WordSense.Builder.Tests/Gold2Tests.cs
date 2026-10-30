@@ -114,6 +114,9 @@ public sealed class Gold2Tests : IDisposable
         Assert.True(Gold2Sampler.IsCandidateWord("The", 0));
         Assert.True(Gold2Sampler.IsCandidateWord("I", 4));
         Assert.True(Gold2Sampler.IsCandidateWord("a", 2));
+        Assert.True(Gold2Sampler.IsCandidateWord("A", 0));
+        Assert.False(Gold2Sampler.IsCandidateWord("D", 5));
+        Assert.False(Gold2Sampler.IsCandidateWord("Y", 13));
         Assert.False(Gold2Sampler.IsCandidateWord("Paris", 3));
         Assert.False(Gold2Sampler.IsCandidateWord("USGS", 0));
         Assert.False(Gold2Sampler.IsCandidateWord("don't", 2));
@@ -911,6 +914,45 @@ public sealed class Gold2Tests : IDisposable
         var code = await Program.RunAsync(args, output, new StringWriter(), TestContext.Current.CancellationToken);
         Assert.Equal(0, code);
         return output.ToString();
+    }
+
+    /// <summary>
+    ///     A merge whose manifest names a document that <c>sources.tsv</c> does not list fails with a message and writes
+    ///     nothing, so no split is left half written; with the document listed it writes both splits and the labels.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task Program_Gold2Merge_DocumentNotListed_WritesNothing()
+    {
+        // Arrange: one token that both labelers answer the same way, and a sources file without its document
+        var ct = TestContext.Current.CancellationToken;
+        var corpus = Path.Join(_dir.Root, "corpus");
+        var folder = Gold2.Directory(corpus);
+        Directory.CreateDirectory(folder);
+        await File.WriteAllTextAsync(Path.Join(folder, Gold2.ManifestName), Gold2.RenderManifest([ReadToken("t-1")]), ct);
+        await File.WriteAllTextAsync(Path.Join(folder, Gold2.SourcesName), Gold2.RenderDocuments([]), ct);
+        var work = Path.Join(_dir.Root, "work");
+        Gold2Labeling.WriteBatches(DataFolder, [ReadToken("t-1")], work, 100, "label");
+        var answer = "n\tanalysis\tsense\tconfidence\n1\tother:Noun:reading\t-\thigh\n";
+        await File.WriteAllTextAsync(Path.Join(work, "g2-t01.a.tsv"), answer, ct);
+        await File.WriteAllTextAsync(Path.Join(work, "g2-t01.b.tsv"), answer, ct);
+        string[] args = ["gold2-merge", "--dir", work, "--first", "a", "--second", "b", "--adjudicator", "j", "--corpus", corpus];
+        using var failed = new StringWriter();
+        using var succeeded = new StringWriter();
+
+        // Act
+        var failure = await Program.RunAsync(args, failed, new StringWriter(), ct);
+        var written = new[] { "dev.tsv", "test.tsv", Gold2.LabelsName }.Where(n => File.Exists(Path.Join(folder, n))).ToList();
+        await File.WriteAllTextAsync(Path.Join(folder, Gold2.SourcesName), Gold2.RenderDocuments([new Gold2Document("voa-1", "voa", "t", "https://example.org/1", string.Empty, string.Empty, "b", "https://example.org/terms", "d", "a", "b", 1)]), ct);
+        var success = await Program.RunAsync(args, succeeded, new StringWriter(), ct);
+
+        // Assert
+        Assert.Equal(1, failure);
+        Assert.Contains("'voa-1' is not in sources.tsv", failed.ToString(), StringComparison.Ordinal);
+        Assert.Empty(written);
+        Assert.Equal(0, success);
+        Assert.True(File.Exists(Path.Join(folder, "dev.tsv")) && File.Exists(Path.Join(folder, "test.tsv")) && File.Exists(Path.Join(folder, Gold2.LabelsName)));
+        Assert.Single(Gold2.ReadVerifiedRows(corpus, Gold2.Test));
     }
 
     /// <summary>

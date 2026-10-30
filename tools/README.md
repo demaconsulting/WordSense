@@ -112,7 +112,9 @@ needs a network and the annotation steps need language-model agents. Downloads g
 scratch to `tools/open-corpus/work/` (both git-ignored). The builder command `open-counts` makes the tag counts.
 
 **Commands.** Section 10 of `corpus/open/README.md` has the recipe, for example
-`python tools/open-corpus/scripts/prepare_tagger_eval.py` (run from `corpus/open` as described there).
+`python tools/open-corpus/scripts/prepare_tagger_eval.py` (run from `corpus/open` as described there). The tests of the
+validation and the statistics scripts run with `python -m unittest discover -s tools/open-corpus/tests` (standard
+library only).
 
 ## quota-fill
 

@@ -304,19 +304,23 @@ internal static class AllWordsGold
                 .GroupBy(s => (s.Lemma, s.PartOfSpeech))
                 .OrderBy(g => g.Key.Lemma, StringComparer.Ordinal).ThenBy(g => g.Key.PartOfSpeech)
                 .ToList();
-            var current = new List<IGrouping<(string Lemma, PartOfSpeech PartOfSpeech), AllWordsSample>>();
+            var current = new List<((string Lemma, PartOfSpeech PartOfSpeech) Key, List<AllWordsSample> Items)>();
             var size = 0;
             foreach (var group in groups)
             {
-                if (size > 0 && size + group.Count() > batchSize)
+                // A lemma with more tokens than a batch holds is divided, and each batch repeats its senses
+                foreach (var slice in group.Chunk(Math.Max(1, batchSize)))
                 {
-                    WriteBatch(batchDirectory, split, ++batches, current, glosses, table);
-                    current.Clear();
-                    size = 0;
-                }
+                    if (size > 0 && size + slice.Length > batchSize)
+                    {
+                        WriteBatch(batchDirectory, split, ++batches, current, glosses, table);
+                        current.Clear();
+                        size = 0;
+                    }
 
-                current.Add(group);
-                size += group.Count();
+                    current.Add((group.Key, [.. slice]));
+                    size += slice.Length;
+                }
             }
 
             if (current.Count > 0)
@@ -329,7 +333,7 @@ internal static class AllWordsGold
         return batches;
     }
 
-    private static void WriteBatch(string directory, string split, int number, List<IGrouping<(string Lemma, PartOfSpeech PartOfSpeech), AllWordsSample>> groups, Dictionary<string, string> glosses, StringBuilder table)
+    private static void WriteBatch(string directory, string split, int number, List<((string Lemma, PartOfSpeech PartOfSpeech) Key, List<AllWordsSample> Items)> groups, Dictionary<string, string> glosses, StringBuilder table)
     {
         var id = $"aw-{split[0]}{number.ToString("D2", CultureInfo.InvariantCulture)}";
         var json = new StringBuilder();
@@ -352,7 +356,7 @@ internal static class AllWordsGold
             }
 
             json.Append("   ],\n   \"items\": [\n");
-            var items = groups[g].ToList();
+            var items = groups[g].Items;
             for (var k = 0; k < items.Count; k++)
             {
                 n++;

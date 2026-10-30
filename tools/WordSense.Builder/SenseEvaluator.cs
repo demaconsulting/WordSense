@@ -17,7 +17,9 @@ namespace WordSense.Builder;
 /// <param name="LeftOutSentences">The sentences left out because the same sentence is in a part of the corpus or an example sentence of Open English WordNet.</param>
 /// <param name="UntrainedPolysemous">The mapped words whose lemma is not trained and has two or more senses (over all parts of speech): with the trained words, the all-words set.</param>
 /// <param name="Monosemous">The mapped words whose lemma is not trained and has fewer than two senses: left out of the all-words set (every model answers them at the sense level).</param>
-internal sealed record SenseEvalFunnel(SemCorCounts Counts, int SingleKey, int Mapped, int Trained, IReadOnlyList<(string Key, int Count)> Unmapped, int LeftOutSentences = 0, int UntrainedPolysemous = 0, int Monosemous = 0);
+/// <param name="MultiKey">The annotated single words of the whole archive that have more than one sense key (counted directly, whatever the sampling and the sentences left out).</param>
+/// <param name="SampledOut">The sentences that the sampling did not keep.</param>
+internal sealed record SenseEvalFunnel(SemCorCounts Counts, int SingleKey, int Mapped, int Trained, IReadOnlyList<(string Key, int Count)> Unmapped, int LeftOutSentences = 0, int UntrainedPolysemous = 0, int Monosemous = 0, int MultiKey = 0, int SampledOut = 0);
 
 /// <summary>
 ///     The all-words measurement of one model: the words of untrained lemmas with two or more senses, and the two together with the trained words.
@@ -74,7 +76,11 @@ internal sealed record SenseEvalResult(SenseEvalFunnel Funnel, IReadOnlyList<Sen
         text.Append("| left out: multiword expressions | ").Append(counts.MultiWord.ToString("N0", inv)).Append(" |\n");
         text.Append("| left out: sense dropped by the mapping to WordNet 3.0 | ").Append(counts.MissingSense.ToString("N0", inv)).Append(" |\n");
         text.Append("| single words with an annotation | ").Append(counts.Used.ToString("N0", inv)).Append(" |\n");
-        text.Append("| left out: more than one sense key | ").Append((counts.Used - Funnel.SingleKey).ToString("N0", inv)).Append(" |\n");
+        text.Append("| left out: more than one sense key | ").Append(Funnel.MultiKey.ToString("N0", inv)).Append(" |\n");
+        if (Funnel.SampledOut > 0)
+        {
+            text.Append("| sentences not in the sample (the words they hold are not counted below) | ").Append(Funnel.SampledOut.ToString("N0", inv)).Append(" |\n");
+        }
         text.Append("| key is the key of a sense of the catalog (mapping coverage ").Append(EvaluationResult.Percent(Funnel.Mapped, Funnel.SingleKey)).Append(") | ").Append(Funnel.Mapped.ToString("N0", inv)).Append(" |\n");
         text.Append("| lemma is trained (the trained-lemma set) | ").Append(Funnel.Trained.ToString("N0", inv)).Append(" |\n");
         var allWords = Funnel.Trained + Funnel.UntrainedPolysemous;
@@ -251,7 +257,10 @@ internal static class SenseEvaluator
         }
 
         var top = unmapped.OrderByDescending(p => p.Value).ThenBy(p => p.Key, StringComparer.Ordinal).Select(p => (p.Key, p.Value)).ToList();
-        return (selected, new SenseEvalFunnel(counts, single, mapped, trained, top, leftOut, polysemous, monosemous));
+        var step = Math.Max(1, sample);
+        var multiKey = sentences.Sum(sentence => sentence.Targets.Count(t => t.SenseKeys.Count > 1));
+        var sampledOut = sentences.Count - ((sentences.Count + step - 1) / step);
+        return (selected, new SenseEvalFunnel(counts, single, mapped, trained, top, leftOut, polysemous, monosemous, multiKey, sampledOut));
     }
 
     private static bool IsPolysemous(string lemma, Dictionary<string, bool> memo)

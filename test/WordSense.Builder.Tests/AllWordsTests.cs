@@ -393,6 +393,58 @@ public sealed class AllWordsTests : IDisposable
     }
 
     /// <summary>
+    ///     A lemma with more tokens than a batch holds is divided into batches of at most that many tokens, each with the
+    ///     senses of the lemma.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_AllWords_Batches_OversizedGroup_IsDividedToTheBatchSize()
+    {
+        // Arrange
+        var directory = Path.Join(_dir.Root, "labels");
+
+        // Act
+        var batches = AllWordsGold.WriteBatches(DataFolder, FourSamples(), directory, 3);
+        var sizes = Directory.GetFiles(Path.Join(directory, "batches"), "*.json").Order(StringComparer.Ordinal).Select(f =>
+        {
+            using var document = JsonDocument.Parse(File.ReadAllText(f));
+            var group = Assert.Single(document.RootElement.GetProperty("groups").EnumerateArray());
+            Assert.True(group.GetProperty("senses").GetArrayLength() >= 2);
+            return group.GetProperty("items").GetArrayLength();
+        }).ToList();
+
+        // Assert
+        Assert.Equal(2, batches);
+        Assert.Equal([3, 1], sizes);
+    }
+
+    /// <summary>
+    ///     A split whose tokens are all dropped by the merge gets an empty gold file, so an earlier file of the split is not
+    ///     read as gold.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_Program_AllWordsMerge_SplitWithNoKeptToken_GetsAnEmptyFile()
+    {
+        // Arrange
+        var ct = TestContext.Current.CancellationToken;
+        var directory = Path.Join(_dir.Root, "labels");
+        AllWordsGold.WriteBatches(DataFolder, FourSamples(), directory, 10);
+        _dir.Write("labels/aw-d01.one.tsv", "1\tunsure\thigh\n2\tunsure\thigh\n3\tunsure\thigh\n4\tunsure\thigh\n");
+        _dir.Write("labels/aw-d01.two.tsv", "1\tunsure\thigh\n2\tunsure\thigh\n3\tunsure\thigh\n4\tunsure\thigh\n");
+        var target = Path.Join(_dir.Root, "corpus", "allwords");
+        _dir.Write("corpus/allwords/dev.tsv", "# an earlier file\nstale\n");
+        using var output = new StringWriter();
+
+        // Act
+        var code = await Program.RunAsync(["allwords-merge", "--batches", directory, "--first", "one", "--second", "two", "--target", target], output, new StringWriter(), ct);
+
+        // Assert
+        Assert.Equal(0, code);
+        Assert.DoesNotContain("stale", await File.ReadAllTextAsync(Path.Join(target, "dev.tsv"), ct), StringComparison.Ordinal);
+        Assert.Empty(AllWordsGold.Read(Path.Join(_dir.Root, "corpus"), AllWordsGold.Dev));
+    }
+
+    /// <summary>
     ///     The merge keeps a token when both labelers chose the same sense, also when one of them was not highly confident
     ///     (the agreement of the token is then low).
     /// </summary>

@@ -26,8 +26,16 @@ namespace WordSense.Builder;
 /// </remarks>
 internal static class RunningTextEvaluator
 {
-    /// <summary>The name of the headline set.</summary>
+    /// <summary>The name of the headline set (the test split of the representative part).</summary>
     public const string OpenSetName = "open corpus test (representative)";
+
+    /// <summary>
+    ///     Gets the name of the set of a split of the representative part.
+    /// </summary>
+    /// <param name="split">The split.</param>
+    /// <returns><see cref="OpenSetName"/> for the test split; for any other split a name that carries the split, so a development or training measurement is never taken for the headline or written to its column of the model table.</returns>
+    public static string OpenSetNameOf(string split) =>
+        string.Equals(split, "test", StringComparison.Ordinal) ? OpenSetName : $"open corpus {split} (representative)";
 
     /// <summary>The name of the treebank set.</summary>
     public const string TreebankSetName = "UD-EWT test (convention-mapped)";
@@ -54,7 +62,7 @@ internal static class RunningTextEvaluator
     {
         var sets = new List<(string, IReadOnlyList<TaggedSentence>)>
         {
-            (OpenSetName, [.. OpenCorpus.ReadSplit(corpus, OpenCorpus.Representative, split).Select(OpenCorpus.ToTagged)]),
+            (OpenSetNameOf(split), [.. OpenCorpus.ReadSplit(corpus, OpenCorpus.Representative, split).Select(OpenCorpus.ToTagged)]),
         };
         var notes = new List<string>();
         if (File.Exists(gold))

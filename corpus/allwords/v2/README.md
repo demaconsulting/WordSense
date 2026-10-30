@@ -39,7 +39,7 @@ A line of `dev.tsv` and `test.tsv` has 16 tab-separated columns after the header
 | `strata` | the sampling strata of the token (below), comma-separated; `C` for a control token |
 | `pos` | the gold part of speech: a part of speech of the lexicon or `Other` (a token that is no word class of the lexicon) |
 | `lemma`, `features` | the gold lemma and the features of the gold analysis (`-` when none) |
-| `tense` | for a verb, `past` (past tense or past participle) or `nonpast` (infinitive, present, imperative); `-` otherwise |
+| `tense` | for a verb whose gold analysis has features, `past` (past tense or past participle) or `nonpast` (infinitive, present, imperative); `-` for any other token and for the 14 verbs whose gold analysis has no features (6 development, 8 test: `provided`, `interfaced`, `broadcast`, `come`, `dove`) |
 | `sense` | the gold sense id; `-` when the analysis has fewer than two senses; `none` when no single sense is defensible |
 | `status`, `agreement` | `agreed` when the labelers settled the token alone, else `adjudicated`; what the labelers agreed on: `full`, `analysis`, `pos` or `none` |
 | `sentence` | the words of the sentence separated by single spaces, as a model receives them |
@@ -136,7 +136,8 @@ comparison on the first all-words set give 19% to 26%. No spike measured the lem
 | Lemma, lemma-ambiguous forms | 5.0 points | 12% | 375 | 447 | 4.58 points |
 
 Two measures fall a little short of the plan: the tense (only 72% of the `T` tokens are verbs in the gold labels, so
-347 of the planned 480 are scored) and the sense of untrained lemmas (a share of the `U` tokens is monosemous in the
+347 of the planned 480 are scored; a verb whose gold analysis has no features has no tense and is not scored, which is
+3 of the 236 verbs of the development `T` stratum and none of the test one) and the sense of untrained lemmas (a share of the `U` tokens is monosemous in the
 gold labels). The planned part-of-speech head is expected to gain several points on the tense (spike: 86% to 96%), far
 above what 347 tokens can detect. The development split is 40% of the set and detects about 1.16 points of part of
 speech, 5.2 of the sense of untrained lemmas and 6.8 of the tense: it is for choosing settings, not for confirming them.
@@ -170,7 +171,8 @@ has no particle class); the first labelers had no such rule.
 <!-- markdownlint-enable MD013 -->
 
 768 tokens went to the adjudicator. In 349 of them it chose the analysis and sense of the first labeler, in 325 those of
-the second, and in 94 neither. The labelers were unsure of the sense of 241 and 99 tokens. Seven tokens have the part of
+the second, and in 94 neither. Of the tokens on which the two labelers chose the same analysis, the first was unsure of
+the sense of 241 and the second of 99 (all tokens: 244 and 105). Seven tokens have the part of
 speech `Other` (a fragment such as `ki` or `Y`, and an infinitive `to` that the first labelers did not map); they are
 left out of the part-of-speech accuracy.
 
@@ -227,7 +229,11 @@ stratum, the source groups (technical, news, literary) and the paired comparison
 - **The set is enriched.** It over-represents ambiguous words, same-spelling verbs, heteronyms and untrained polysemous
   lemmas, and under-represents ordinary function words. Its accuracies are not the accuracy on running text (the open
   corpus test split is): compare models on the same stratum, never the set with another set.
-- **Names and capitalized words inside a sentence are not drawn**, so the part of speech of a proper noun is not measured.
+- **Names and capitalized words inside a sentence are not drawn**, so the part of speech of a proper noun is not
+  measured. Seven tokens are an exception: single capital letters inside a sentence (`C`, `D`, `E`, `Y`, `F`, `J`; ids
+  `d-0715`, `d-0833`, `d-0925`, `t-1282`, `t-1440`, `t-1518`, `t-2657`), which the draw let through because it exempted
+  every single letter, not only `I`. The manifest is frozen, so they stay in the set and are labeled and scored like the
+  others (0.14% of the tokens).
 - **The analyses are those of the lexicon.** A token the lexicon cannot analyze is `other:...` and has no sense; the
   part of speech `Other` is not scored.
 - **Genre.** English prose of five families: news (the plain-English register of VOA Learning English), US government
@@ -241,8 +247,10 @@ stratum, the source groups (technical, news, literary) and the paired comparison
 
 The sentences are public domain in the United States (works of US federal employees, 17 U.S.C. §105, and Project Gutenberg
 books published 1930 or earlier) and keep that status. The selection, the strata, the labels and the agreement are
-**dedicated to the public domain under CC0 1.0** by the project owner, like the annotations of the open corpus. They are
-the output of language models (GitHub makes no claim on them). The glosses that the labelers read are Open English WordNet
+project-authored and are **dedicated to the public domain under CC0 1.0** by the project owner, like the annotations of
+the open corpus. That dedication covers the labels, not the sentences. The labels are written by language models and are
+not human-reviewed; the owner's position on the rights in model outputs is in the
+[README](../../../README.md#credits-and-licenses). The glosses that the labelers read are Open English WordNet
 data (CC BY 4.0) and are not part of this folder. `sources.tsv` credits every document by link, with the statement it
 rests on and the date and hash of the retrieval; Project Gutenberg texts are public domain in the United States only.
 

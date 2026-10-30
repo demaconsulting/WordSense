@@ -163,6 +163,11 @@ internal static class Gold2Labeling
         return null;
     }
 
+    /// <summary>
+    ///     Tells whether a name is a part of speech of the lexicon or <c>Other</c>.
+    /// </summary>
+    /// <param name="name">The name.</param>
+    /// <returns>True when the name is valid.</returns>
     private static bool IsPosName(string name) => name == "Other" || Enum.TryParse<PartOfSpeech>(name, false, out _);
 
     /// <summary>
@@ -233,6 +238,12 @@ internal static class Gold2Labeling
         return batches;
     }
 
+    /// <summary>
+    ///     Gets the file name of the table that maps the batches of a round to the tokens.
+    /// </summary>
+    /// <param name="stage"><c>label</c> or <c>adjudicate</c>.</param>
+    /// <param name="tag">The tag of the round, or empty.</param>
+    /// <returns>The file name.</returns>
     private static string TableName(string stage, string tag) => (stage == "adjudicate" ? "adjudication" : "sample") + tag + ".tsv";
 
     /// <summary>
@@ -262,6 +273,16 @@ internal static class Gold2Labeling
         return tag;
     }
 
+    /// <summary>
+    ///     Renders one batch as JSON and adds its rows to the table.
+    /// </summary>
+    /// <param name="id">The id of the batch.</param>
+    /// <param name="stage"><c>label</c> or <c>adjudicate</c>.</param>
+    /// <param name="chunk">The tokens of the batch.</param>
+    /// <param name="glosses">The glosses by sense id.</param>
+    /// <param name="answers">The answers of the two labelers by token id (the adjudication stage), or null.</param>
+    /// <param name="table">The table that receives one row for each item.</param>
+    /// <returns>The JSON text.</returns>
     private static string BatchJson(string id, string stage, List<Gold2Token> chunk, Dictionary<string, string> glosses, IReadOnlyDictionary<string, (Gold2Answer First, Gold2Answer Second)>? answers, StringBuilder table)
     {
         var json = new StringBuilder();
@@ -328,9 +349,19 @@ internal static class Gold2Labeling
         return json.ToString();
     }
 
+    /// <summary>
+    ///     Renders the answer of a labeler as a JSON object for the adjudication batch.
+    /// </summary>
+    /// <param name="answer">The answer.</param>
+    /// <returns>The JSON text.</returns>
     private static string AnswerJson(Gold2Answer answer) =>
         "{\"analysis\": " + Quote(answer.Analysis) + ", \"sense\": " + Quote(answer.Sense) + ", \"confidence\": " + Quote(answer.High ? "high" : "low") + "}";
 
+    /// <summary>
+    ///     Renders a string as a JSON string literal (no escaping of non-ASCII letters).
+    /// </summary>
+    /// <param name="text">The text.</param>
+    /// <returns>The literal with its quotes.</returns>
     private static string Quote(string text) => System.Text.Json.JsonSerializer.Serialize(text, JsonOptions);
 
     /// <summary>

@@ -117,6 +117,11 @@ internal static class WeightsBlobWriter
         }
     }
 
+    /// <summary>
+    ///     Writes a string as its UTF-8 length (a variable-length integer) and its UTF-8 bytes.
+    /// </summary>
+    /// <param name="stream">The destination.</param>
+    /// <param name="value">The string.</param>
     private static void WriteString(Stream stream, string value)
     {
         var bytes = Encoding.UTF8.GetBytes(value);
@@ -124,6 +129,11 @@ internal static class WeightsBlobWriter
         stream.Write(bytes);
     }
 
+    /// <summary>
+    ///     Writes numbers as little-endian single-precision floats.
+    /// </summary>
+    /// <param name="stream">The destination.</param>
+    /// <param name="values">The numbers.</param>
     private static void WriteFloats(Stream stream, float[] values)
     {
         Span<byte> buffer = stackalloc byte[4];

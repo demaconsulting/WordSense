@@ -15,12 +15,25 @@ internal static partial class Program
 {
     private static readonly UTF8Encoding Utf8NoBom = new(false);
 
+    /// <summary>
+    ///     Runs <c>gold2-power</c>: prints the power plan.
+    /// </summary>
+    /// <param name="output">The writer for the plan.</param>
+    /// <returns>0.</returns>
     private static int RunGold2Power(TextWriter output)
     {
         output.Write(Gold2Power.Render());
         return 0;
     }
 
+    /// <summary>
+    ///     Runs <c>gold2-sample</c>: draws the tokens from a pool of sentences and writes the frozen manifest and the documents.
+    /// </summary>
+    /// <param name="options">The options (<c>pool</c>, <c>docs</c>, <c>seed</c>, <c>target</c>, <c>data</c>).</param>
+    /// <param name="repository">The repository root.</param>
+    /// <param name="corpus">The corpus directory.</param>
+    /// <param name="output">The writer for the report of the draw.</param>
+    /// <returns>0.</returns>
     private static int RunGold2Sample(Dictionary<string, string> options, string repository, string corpus, TextWriter output)
     {
         var data = options.TryGetValue("data", out var dataFolder) ? Path.GetFullPath(dataFolder) : Path.Join(repository, "data");
@@ -76,6 +89,11 @@ internal static partial class Program
         return 0;
     }
 
+    /// <summary>
+    ///     Renders the report of the draw: the tokens, documents, sentences and strata of each split and the tokens of each source.
+    /// </summary>
+    /// <param name="tokens">The drawn tokens.</param>
+    /// <returns>The Markdown text.</returns>
     private static string RenderDraw(IReadOnlyList<Gold2Token> tokens)
     {
         var inv = CultureInfo.InvariantCulture;
@@ -111,6 +129,15 @@ internal static partial class Program
         return text.ToString();
     }
 
+    /// <summary>
+    ///     Runs <c>gold2-batches</c>: writes the labeling or the adjudication batches of the manifest.
+    /// </summary>
+    /// <param name="options">The options (<c>dir</c>, <c>stage</c>, <c>splits</c>, <c>batch-size</c>, <c>tag</c>, <c>missing</c>, <c>first</c>, <c>second</c>, <c>data</c>).</param>
+    /// <param name="repository">The repository root.</param>
+    /// <param name="corpus">The corpus directory.</param>
+    /// <param name="output">The writer for the report.</param>
+    /// <returns>0.</returns>
+    /// <exception cref="InvalidDataException">Thrown when the stage is unknown, the manifest has no tokens, or a labeler has not answered a token that goes to the adjudicator.</exception>
     private static int RunGold2Batches(Dictionary<string, string> options, string repository, string corpus, TextWriter output)
     {
         var directory = Path.GetFullPath(Require(options, "dir"));
@@ -175,6 +202,13 @@ internal static partial class Program
         return 0;
     }
 
+    /// <summary>
+    ///     Runs <c>gold2-merge</c>: merges the answers of the labelers and the adjudicator into the labeled rows and the raw labels.
+    /// </summary>
+    /// <param name="options">The options (<c>dir</c>, <c>first</c>, <c>second</c>, <c>adjudicator</c>, <c>target</c>, <c>output</c>).</param>
+    /// <param name="corpus">The corpus directory.</param>
+    /// <param name="output">The writer for the agreement table, or for the problems.</param>
+    /// <returns>0, or 1 (nothing written) when an answer is missing, invalid or for a token the manifest does not have, a document is not listed, or a row would not match the manifest.</returns>
     private static int RunGold2Merge(Dictionary<string, string> options, string corpus, TextWriter output)
     {
         var directory = Path.GetFullPath(Require(options, "dir"));
@@ -225,6 +259,16 @@ internal static partial class Program
         return 0;
     }
 
+    /// <summary>
+    ///     Runs <c>evaluate-gold2</c>: measures the models on the splits and compares every pair of models.
+    /// </summary>
+    /// <param name="options">The options (<c>model</c>, <c>splits</c>, <c>output</c>, <c>outcomes</c>).</param>
+    /// <param name="repository">The repository root.</param>
+    /// <param name="corpus">The corpus directory.</param>
+    /// <param name="output">The writer for the progress and the report.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>0.</returns>
+    /// <exception cref="InvalidDataException">Thrown when the labeled set is missing or its rows do not match the manifest.</exception>
     private static async Task<int> RunEvaluateGold2Async(Dictionary<string, string> options, string repository, string corpus, TextWriter output, CancellationToken cancellationToken)
     {
         var splits = options.GetValueOrDefault("splits", "dev,test").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
@@ -289,6 +333,15 @@ internal static partial class Program
         return 0;
     }
 
+    /// <summary>
+    ///     Runs <c>compare-gold2</c>: compares two outcome files on the same tokens.
+    /// </summary>
+    /// <param name="options">The options (<c>first</c>, <c>second</c>, <c>split</c>, <c>name-first</c>, <c>name-second</c>, <c>output</c>).</param>
+    /// <param name="repository">The repository root.</param>
+    /// <param name="corpus">The corpus directory.</param>
+    /// <param name="output">The writer for the report.</param>
+    /// <returns>0.</returns>
+    /// <exception cref="InvalidDataException">Thrown when the split has no rows, its rows do not match the manifest, or an outcome file does not cover every token.</exception>
     private static int RunCompareGold2(Dictionary<string, string> options, string repository, string corpus, TextWriter output)
     {
         var split = options.GetValueOrDefault("split", Gold2.Test);

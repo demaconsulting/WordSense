@@ -514,6 +514,23 @@ public sealed class RealCalibratorTests
     }
 
     /// <summary>
+    ///     When every usable answer has the same positive distance and the target is not reached, the fallback shift is that
+    ///     distance (the largest shift that keeps the minimum number of answers), not zero.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealCalibrator_ChooseShift_OneDistanceAndTargetNotReachable_FallsBackToThatDistance()
+    {
+        // Arrange: 30 wrong answers, all at the distance 1
+        var answers = Enumerable.Range(0, 30).Select(_ => (1.0, false)).ToList();
+
+        // Act
+        var result = RealCalibrator.ChooseShift(answers, 0.97, 30);
+
+        // Assert
+        Assert.Equal((1.0, false), result);
+    }
+
+    /// <summary>
     ///     When the precision of the answers clearly rises above the target, the lowest shift that reaches it is chosen
     ///     (the candidate before it fails) and the answers it keeps do reach the target.
     /// </summary>

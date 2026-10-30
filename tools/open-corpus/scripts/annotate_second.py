@@ -37,6 +37,7 @@ SCHEMA = {
 
 
 def system_prompt():
+    """Build the system prompt: the task, the annotation guideline and the worked few-shot examples (input, then answer)."""
     guideline = open(os.path.join(ROOT, "GUIDELINE.md"), encoding="utf-8").read()
     shots = []
     for n, ex in enumerate(load_fewshot(), 1):
@@ -53,6 +54,7 @@ def system_prompt():
 
 
 def post(host, payload, timeout=900):
+    """POST a chat request to the Ollama server and return its JSON response (an error of the network or the server is raised)."""
     req = urllib.request.Request(host + "/api/chat", data=json.dumps(payload).encode("utf-8"),
                                  headers={"Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=timeout) as r:
@@ -60,6 +62,11 @@ def post(host, payload, timeout=900):
 
 
 def ask(host, model, system, sents, num_ctx, hint=False):
+    """Ask the model to tag some sentences once.
+
+    sents are dicts with uid and space-separated tokens; hint adds the token count of every sentence to the request.
+    Returns the content of the response, the seconds it took and the token counts the server reports.
+    """
     user = "Tag these sentences.\n" + "\n".join(
         f"{s['uid']}: " + " ".join(f"{k}:{t}" for k, t in enumerate(s["tokens"].split(" "))) for s in sents)
     if hint:

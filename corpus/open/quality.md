@@ -28,9 +28,8 @@ Our own measurements on the 300-sentence UD sample, with claude-sonnet-5.5 as pr
 ## 2. Method of the measurement
 
 The final pipeline (sol primary, gemma flag, guideline v4, the same few-shot examples) was run on a fixed sample of **300 sentences (3,597 tokens) from UD English-EWT dev** (pinned commit `4a4d77f599ea53cc405f85d0cec4b2f14f81d42b`; `en_ewt-ud-dev.conllu` SHA-256
-`39239E0A60DB3AE68F4B7036189F11B6692741D10FF8240DD91F74F2760D90F8`, verified by the script before use). The tokens given to the annotators are the UD word tokens so that comparison is token by token; UD tags were never shown to any annotator.
-The sample uses seed 3003 over dev sentences of at most 40 tokens, excluding the 500 sentences of an earlier exploratory test; ids are in `eval/ud_dev_sample_ids.txt` (ids only). **UD-EWT dev was used solely to measure annotation accuracy; it was never
-input to annotation (no tags, text or documentation of any UD treebank was given to any annotator, judge or prompt) and never used for training or tuning. UD test was never used.** No UD text is stored in this folder; the evaluation inputs and outputs were kept outside it.
+`39239E0A60DB3AE68F4B7036189F11B6692741D10FF8240DD91F74F2760D90F8`, verified by the script before use). The tokens given to the annotators of the measurement are the UD word tokens (the words of the 300 sentences, without their tags) so that comparison is token by token; UD tags were never shown to any annotator.
+The sample uses seed 3003 over dev sentences of at most 40 tokens, excluding the 500 sentences of an earlier exploratory test; ids are in `eval/ud_dev_sample_ids.txt` (ids only). **UD-EWT dev was used solely to measure annotation accuracy: apart from the words of these 300 sentences, given to the annotators of the measurement, no tag, text or documentation of any UD treebank was given to any annotator, judge or prompt, and none of it was ever input to the production of the corpus, to training or to tuning. UD test was never used.** No UD text is stored in this folder; the evaluation inputs and outputs were kept outside it.
 The sample was not re-drawn or re-run for the scale-up: the guideline, few-shot examples and models are the ones used for the corpus.
 
 ## 3. Results on the UD English-EWT dev sample
