@@ -120,15 +120,16 @@ public class OnnxWordSenseModelTests
 
     /// <summary>
     ///     Ambiguous words whose lemma has no weights are answered from the lexicon at the part of speech level, every
-    ///     analysis equally likely and no sense scored: no ensure, no model file, no ONNX.
+    ///     analysis equally likely and no sense scored, when the model description has no head: no ensure, no model file,
+    ///     no ONNX.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task OnnxWordSenseModel_ClassifyAsync_UntrainedAmbiguousWords_AnswerPartOfSpeechWithoutModelFiles()
+    public async Task OnnxWordSenseModel_ClassifyAsync_NoHead_UntrainedAmbiguousWords_AnswerPartOfSpeechWithoutModelFiles()
     {
         // Arrange: the directory does not exist, so an ensure would throw FileNotFoundException; "record" has no weights
         var missing = MissingDirectory();
-        using var model = Fixture(missing);
+        using var model = new FixtureEncoderModel(missing, spec => spec with { HeadResourceName = null });
 
         // Act
         var result = await model.ClassifyAsync(["They", "will", "record", "the", "record", "."], TestContext.Current.CancellationToken);
@@ -148,6 +149,31 @@ public class OnnxWordSenseModelTests
 
         Assert.False(Directory.Exists(missing));
         Assert.True(model.IsEncoderReleased);
+    }
+
+    /// <summary>
+    ///     With a head, a word of several parts of speech needs the encoder even when its lemma has no weights, so a
+    ///     model with an unavailable directory fails with the ensure error; a text of words that need no encoder (single
+    ///     part of speech, unknown) is answered without any file.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxWordSenseModel_ClassifyAsync_WordOfSeveralPartsOfSpeech_NeedsTheEncoder()
+    {
+        // Arrange: "knowledge" has one part of speech; "record" has two
+        var missing = MissingDirectory();
+        using var model = Fixture(missing);
+        Assert.Single(WordLexicon.Lookup("knowledge").Select(d => d.PartOfSpeech).Distinct());
+
+        // Act
+        var answered = await model.ClassifyAsync(["knowledge", "zzqxjw", "."], TestContext.Current.CancellationToken);
+        var failure = await Assert.ThrowsAsync<ModelUnavailableException>(() => model.ClassifyAsync(["They", "will", "record", "."], TestContext.Current.CancellationToken));
+
+        // Assert
+        Assert.Equal(3, answered.Length);
+        Assert.Equal("knowledge", answered[0].Details?.Lemma);
+        Assert.NotNull(failure);
+        Assert.False(Directory.Exists(missing));
     }
 
     /// <summary>
@@ -445,7 +471,7 @@ public class OnnxWordSenseModelTests
         using var model = Fixture(MissingDirectory());
 
         // Act
-        var result = await model.ClassifyAsync(["record"], TestContext.Current.CancellationToken);
+        var result = await model.ClassifyAsync(["The"], TestContext.Current.CancellationToken);
 
         // Assert: the word is answered, while the explicit ensure still fails
         Assert.Single(result);
@@ -603,8 +629,7 @@ public class OnnxWordSenseModelTests
     }
 
     /// <summary>
-    ///     The embedded part-of-speech head is loaded and checked with the weights, needs no model file, and is not used
-    ///     for the answers.
+    ///     The embedded part-of-speech head is loaded and checked with the weights and needs no model file.
     /// </summary>
     [Fact]
     public async Task OnnxWordSenseModel_ClassifyAsync_EmbeddedHead_LoadsWithoutModelFiles()

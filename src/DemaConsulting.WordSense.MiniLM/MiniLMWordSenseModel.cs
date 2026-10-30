@@ -118,7 +118,7 @@ public sealed class MiniLMWordSenseModel : IDownloadableWordSenseModel
     /// </remarks>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="maxSequenceLength"/> is outside 8 to 512.</exception>
     public MiniLMWordSenseModel(string? modelDirectory = null, int maxSequenceLength = 128)
-        : this(modelDirectory, maxSequenceLength, PartOfSpeechPrimaryWeight)
+        : this(modelDirectory, maxSequenceLength, PartOfSpeechHeadWeight)
     {
     }
 
@@ -128,7 +128,7 @@ public sealed class MiniLMWordSenseModel : IDownloadableWordSenseModel
     /// </summary>
     /// <param name="modelDirectory">A directory that holds <c>model_int8.onnx</c> and <c>vocab.txt</c>, or null to use the per-user store.</param>
     /// <param name="maxSequenceLength">The maximum sequence length including special tokens; 8 to 512.</param>
-    /// <param name="primaryWeight">The weight of the encoder in the combination of the slot probabilities, from 0 to 1; see <see cref="PartOfSpeechPrimaryWeight"/>.</param>
+    /// <param name="primaryWeight">The weight of the encoder's part-of-speech head in the combination of the slot probabilities, from 0 to 1; see <see cref="PartOfSpeechHeadWeight"/>.</param>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="maxSequenceLength"/> is outside 8 to 512 or <paramref name="primaryWeight"/> is outside 0 to 1.</exception>
     internal MiniLMWordSenseModel(string? modelDirectory, int maxSequenceLength, double primaryWeight)
     {
@@ -138,11 +138,11 @@ public sealed class MiniLMWordSenseModel : IDownloadableWordSenseModel
     }
 
     /// <summary>
-    ///     The weight of the encoder when its slot probabilities are combined with those of the Basic model for a word that
-    ///     the encoder answers at the part-of-speech level (see <see cref="FallbackWordSenseModel"/>): 1 keeps the answer
-    ///     of the encoder, 0 takes the part of speech of Basic.
+    ///     The weight of the encoder's part-of-speech head when the slot probabilities of a word of several parts of speech
+    ///     are combined with those of the Basic model (see <see cref="FallbackWordSenseModel"/>): 1 takes the head alone,
+    ///     0 takes the part of speech of Basic. Chosen on the development split of the open corpus.
     /// </summary>
-    internal const double PartOfSpeechPrimaryWeight = 0.6;
+    internal const double PartOfSpeechHeadWeight = 0.4;
 
     /// <summary>
     ///     Gets the identifier of the model, which names its folder in the repository, on a mirror and in the store.

@@ -273,8 +273,9 @@ public class MiniLMWordSenseModelTests
     }
 
     /// <summary>
-    ///     The weight of the encoder in the combination of slot probabilities is the tuned 0.6 by default, reaches the
-    ///     composition, and an explicit weight of the internal constructor replaces it; it needs no model file.
+    ///     The weight of the encoder's part-of-speech head in the combination of slot probabilities is the tuned 0.4 by
+    ///     default, reaches the composition, and an explicit weight of the internal constructor replaces it; it needs no
+    ///     model file.
     /// </summary>
     [Fact]
     public void MiniLMWordSenseModel_PrimaryWeight_IsTunedAndReachesTheComposition()
@@ -289,8 +290,8 @@ public class MiniLMWordSenseModelTests
         var invalid = () => new MiniLMWordSenseModel(null, 128, 1.5);
 
         // Assert
-        Assert.Equal(0.6, MiniLMWordSenseModel.PartOfSpeechPrimaryWeight);
-        Assert.Equal(0.6, defaultWeight);
+        Assert.Equal(0.4, MiniLMWordSenseModel.PartOfSpeechHeadWeight);
+        Assert.Equal(0.4, defaultWeight);
         Assert.Equal(1.0, explicitValue);
         Assert.Throws<ArgumentOutOfRangeException>(invalid);
     }

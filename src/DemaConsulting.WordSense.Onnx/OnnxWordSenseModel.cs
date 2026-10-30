@@ -127,7 +127,7 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     ClassifyResult[] results = await ClassifyAsync(model, ["They", "will", "record", "the", "record", "."]);
 ///     </code>
 /// </example>
-public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel
+public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfSpeechEvidenceModel
 {
     private readonly ModelSpec _spec;
     private readonly string? _modelDirectory;
@@ -289,16 +289,24 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel
     ///     that a sense is known (test the level). A word whose lemma has trained
     ///     weights and several scored senses is scored with the encoder: its analyses get their probabilities, each
     ///     lists its senses ranked by their probability, and the answer is at the finest level the lemma's thresholds
-    ///     support (sense, group or part of speech). Every other known word (no trained weights) is answered from the
-    ///     lexicon with every lemma and part of speech equally likely (probability 1/s for s of them, shared equally by
-    ///     its analyses that differ only in features, and the first analysis of the
-    ///     lexicon is the selected one) at the <see cref="SenseLevel.PartOfSpeech"/> level and without scored senses,
-    ///     which makes a composition use its fallback model for the word (see <see cref="FallbackWordSenseModel"/>).
-    ///     A list in which no word needs the encoder is answered without any model file: nothing is ensured,
-    ///     downloaded or verified, so it works before <see cref="EnsureModelAsync"/> and when the model directory does
-    ///     not exist. A word that needs the encoder ensures the model lazily (with the default and environment mirror
-    ///     settings; call <see cref="EnsureModelAsync"/> yourself first to pass <see cref="DownloadOptions"/>), shared
-    ///     with concurrent callers; a failed ensure can be retried by the next call. The method is
+    ///     support (sense, group or part of speech). A known word of two or more parts of speech gets the
+    ///     probabilities of its parts of speech from the part-of-speech head: the head reads the word and its neighbors
+    ///     in the whole text, and the parts of speech that the lexicon does not list for the word are excluded. The
+    ///     probability of a slot (a lemma and a part of speech) is the head's probability of its part of speech times
+    ///     the share of the slot among the slots of that part of speech (the share of its senses, equal for an untrained
+    ///     lemma). A word of two or more parts of speech whose senses are not scored (no trained weights) is answered at
+    ///     the <see cref="SenseLevel.PartOfSpeech"/> level without scored senses, which makes a composition use its
+    ///     fallback model for the senses of the word (see <see cref="FallbackWordSenseModel"/>).
+    ///     <para>
+    ///     The model needs the encoder, and so the model files, for every list that has a known word of two or more parts of
+    ///     speech or a word with scored senses, and there is no way to turn that off: the first such list ensures the
+    ///     model lazily (with the default and environment mirror settings; call <see cref="EnsureModelAsync"/> yourself
+    ///     first to pass <see cref="DownloadOptions"/>), shared with concurrent callers; a failed ensure can be retried
+    ///     by the next call. A list in which every word is unknown, has one part of speech and needs no scoring is answered
+    ///     without any model file: nothing is ensured, downloaded or verified, so it works before
+    ///     <see cref="EnsureModelAsync"/> and when the model directory does not exist.
+    ///     </para>
+    ///     The method is
     ///     thread-safe. Every exception, including <see cref="ObjectDisposedException"/>, is reported through the
     ///     returned task, so an <c>await</c> in a <c>try</c> catches it; a disposed model wins over an already cancelled
     ///     token. Disposing while this call is running is safe: the call completes normally and the model's resources
@@ -312,7 +320,7 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel
     /// <exception cref="ArgumentNullException">Thrown when the list is null.</exception>
     /// <exception cref="ArgumentException">Thrown when an element is null.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled, or when the model is disposed during the lazy ensure.</exception>
-    /// <exception cref="ModelIntegrityException">Thrown when a file of a supplied model directory does not match its pinned SHA-256 (lazy ensure), the embedded weights are corrupt or do not match the word image, or the ONNX model cannot be read.</exception>
+    /// <exception cref="ModelIntegrityException">Thrown when a file of a supplied model directory does not match its pinned SHA-256 (lazy ensure), the embedded weights or the embedded part-of-speech head are corrupt or do not match the word image or the model, or the ONNX model cannot be read.</exception>
     /// <exception cref="ModelUnavailableException">Thrown by the lazy ensure when a file could not be obtained and verified, or a supplied model directory does not exist or lacks a model file.</exception>
     /// <exception cref="DownloadConfigurationException">Thrown by the lazy ensure when the settings of the <c>WORDSENSE_MIRROR_*</c> environment variables are invalid.</exception>
     /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed, whatever the words.</exception>
@@ -331,14 +339,15 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel
 
         try
         {
-            // A word needs the model only when its lemma has trained weights and several scored senses; the weights are
-            // embedded in the assembly, so deciding this needs no model file, download or ONNX session
-            if (!OnnxClassifier.NeedsModel(list, GetTable()))
+            // A word needs the encoder when it has scored senses or two or more parts of speech; the weights and the head
+            // are embedded in the assembly, so deciding this needs no model file, download or ONNX session
+            var table = GetTable();
+            if (!OnnxClassifier.NeedsEncoder(list, table, GetHead() is not null))
             {
                 return OnnxClassifier.ResolveWithoutModel(list, cancellationToken);
             }
 
-            // Ambiguous words need the model: ensure it lazily (shared with concurrent callers), then open the resources
+            // Such words need the model: ensure it lazily (shared with concurrent callers), then open the resources
             await EnsureModelAsync(null, cancellationToken).ConfigureAwait(false);
             var classifier = AcquireClassifier();
             try
@@ -498,7 +507,9 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel
                 _table ??= LoadTable();
                 LoadHeadOnce();
                 _encoder ??= OpenEncoderChecked(directory);
-                _classifier = new OnnxClassifier(_table, _encoder.EncodeAsync);
+                _classifier = _head is { } head
+                    ? new OnnxClassifier(_table, _encoder.EncodeAsync, head, (words, token) => _encoder.EncodeAllAsync(words, PossessiveView.IsLexiconPossessive, token))
+                    : new OnnxClassifier(_table, _encoder.EncodeAsync);
             }
 
             return _classifier;
@@ -653,6 +664,11 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel
     ///     Gets the description of this model.
     /// </summary>
     internal ModelSpec Spec => _spec;
+
+    /// <summary>
+    ///     Gets a value that tells whether the model has a part-of-speech head: the model description names one.
+    /// </summary>
+    bool IPartOfSpeechEvidenceModel.ProvidesPartOfSpeechEvidence => _spec.HeadResourceName is not null;
 
     /// <summary>
     ///     Makes the model files available and verified; failures are reported with the typed exceptions.

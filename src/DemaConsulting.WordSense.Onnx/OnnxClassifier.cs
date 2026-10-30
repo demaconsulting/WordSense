@@ -12,6 +12,14 @@ namespace DemaConsulting.WordSense.Onnx;
 internal delegate ValueTask<double[]?[]> PooledEncode(IReadOnlyList<string> words, IReadOnlyList<int> targets, CancellationToken cancellationToken);
 
 /// <summary>
+///     Encodes every word of a tokenized text in the possessive view that the part-of-speech head reads (see <see cref="WordVectors"/>).
+/// </summary>
+/// <param name="words">The words of the text.</param>
+/// <param name="cancellationToken">A token that cancels the operation.</param>
+/// <returns>The tokens of the view and the pooled vector of each.</returns>
+internal delegate ValueTask<WordVectors> PooledViewEncode(IReadOnlyList<string> words, CancellationToken cancellationToken);
+
+/// <summary>
 ///     The classifier of the encoder models: the unit that decides the answer for every word of a tokenized text.
 /// </summary>
 /// <remarks>
@@ -59,6 +67,8 @@ internal sealed class OnnxClassifier
 {
     private readonly WeightedLemmaTable _table;
     private readonly PooledEncode? _encode;
+    private readonly PosHead? _head;
+    private readonly PooledViewEncode? _encodeView;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="OnnxClassifier"/> class that answers from the lexicon alone.
@@ -69,7 +79,8 @@ internal sealed class OnnxClassifier
     }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="OnnxClassifier"/> class.
+    ///     Initializes a new instance of the <see cref="OnnxClassifier"/> class that scores senses and has no
+    ///     part-of-speech head.
     /// </summary>
     /// <param name="table">The trained weights.</param>
     /// <param name="encode">The encoder of the target words, or null to answer every word from the lexicon alone; its owner is the caller.</param>
@@ -81,18 +92,47 @@ internal sealed class OnnxClassifier
     }
 
     /// <summary>
-    ///     Tells whether any word of a list is pending (has several scored senses, or a form chooser), which is the only
-    ///     case that needs the encoder and therefore the model files.
+    ///     Initializes a new instance of the <see cref="OnnxClassifier"/> class with a part-of-speech head.
+    /// </summary>
+    /// <param name="table">The trained weights.</param>
+    /// <param name="encode">The encoder of target words, which gives the vector of a possessive that is written as one token; its owner is the caller.</param>
+    /// <param name="head">The part-of-speech head of the encoder.</param>
+    /// <param name="encodeView">The encoder of every word of a text in the possessive view; its owner is the caller.</param>
+    /// <exception cref="ArgumentNullException">Thrown when an argument is null.</exception>
+    public OnnxClassifier(WeightedLemmaTable table, PooledEncode encode, PosHead head, PooledViewEncode encodeView)
+        : this(table, encode ?? throw new ArgumentNullException(nameof(encode)))
+    {
+        _head = head ?? throw new ArgumentNullException(nameof(head));
+        _encodeView = encodeView ?? throw new ArgumentNullException(nameof(encodeView));
+    }
+
+    /// <summary>
+    ///     Tells whether any word of a list needs the encoder, and therefore the model files: a word whose senses are
+    ///     pending (a trained lemma with several scored senses, or a form chooser) or, for a classifier with a
+    ///     part-of-speech head, a known word of two or more parts of speech.
     /// </summary>
     /// <param name="words">The words.</param>
     /// <param name="table">The trained weights.</param>
-    /// <returns>True when the model files, the encoder and the weights are needed to classify the list.</returns>
-    internal static bool NeedsModel(IReadOnlyList<string> words, WeightedLemmaTable table)
+    /// <param name="hasHead">Whether the classifier has a part-of-speech head.</param>
+    /// <returns>True when the model files, the encoder, the weights and the head are needed to classify the list.</returns>
+    internal static bool NeedsEncoder(IReadOnlyList<string> words, WeightedLemmaTable table, bool hasHead)
     {
         ArgumentNullException.ThrowIfNull(words);
         ArgumentNullException.ThrowIfNull(table);
-        return words.Any(w => Plan(w, table).Pending is not null);
+        return words.Any(w =>
+        {
+            var plan = Plan(w, table);
+            return plan.Pending is not null || (hasHead && plan.Result is { } result && HasSeveralPartsOfSpeech(result.Analyses.Select(a => a.Details.PartOfSpeech)));
+        });
     }
+
+    /// <summary>
+    ///     Tells whether a list of parts of speech holds two or more distinct ones.
+    /// </summary>
+    /// <param name="partsOfSpeech">The parts of speech.</param>
+    /// <returns>True when at least two of them differ.</returns>
+    private static bool HasSeveralPartsOfSpeech(IEnumerable<PartOfSpeech> partsOfSpeech) =>
+        partsOfSpeech.Distinct().Skip(1).Any();
 
     /// <summary>
     ///     Classifies a list that needs no model, using the lexicon alone: no model file, encoder or weights.
@@ -139,6 +179,7 @@ internal sealed class OnnxClassifier
         cancellationToken.ThrowIfCancellationRequested();
         var results = new ClassifyResult[list.Count];
         var pending = new List<(int Index, Pending Plan)>();
+        var headWords = new List<int>();
         for (var i = 0; i < list.Count; i++)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -146,6 +187,12 @@ internal sealed class OnnxClassifier
             if (plan.Result is { } result)
             {
                 results[i] = result;
+
+                // A known word of several parts of speech, whose senses are not scored, still gets the head's evidence
+                if (_head is not null && HasSeveralPartsOfSpeech(result.Analyses.Select(a => a.Details.PartOfSpeech)))
+                {
+                    headWords.Add(i);
+                }
             }
             else
             {
@@ -153,8 +200,14 @@ internal sealed class OnnxClassifier
             }
         }
 
-        if (pending.Count == 0)
+        if (pending.Count == 0 && headWords.Count == 0)
         {
+            return results;
+        }
+
+        if (_head is not null)
+        {
+            await ResolveWithHeadAsync(list, results, pending, headWords, cancellationToken).ConfigureAwait(false);
             return results;
         }
 
@@ -164,10 +217,121 @@ internal sealed class OnnxClassifier
         {
             var (index, plan) = pending[p];
             var feature = pooled[p] is { } vector && vector.Length == mean.Length ? FeatureExtractor.Center(vector, mean) : null;
-            results[index] = feature is not null ? Decide(list[index], plan, feature) : LexiconOnly(list[index], plan.Details);
+            results[index] = feature is not null ? Decide(list[index], plan, feature, null) : LexiconOnly(list[index], plan.Details, null);
         }
 
         return results;
+    }
+
+    /// <summary>
+    ///     Encodes a text once in the possessive view and answers the pending words and the words of several parts of
+    ///     speech with the head's evidence.
+    /// </summary>
+    /// <param name="list">The words.</param>
+    /// <param name="results">The results; filled in here for the words that are answered with the head.</param>
+    /// <param name="pending">The words whose senses are scored.</param>
+    /// <param name="headWords">The other words of several parts of speech.</param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    private async Task ResolveWithHeadAsync(List<string> list, ClassifyResult[] results, List<(int Index, Pending Plan)> pending, List<int> headWords, CancellationToken cancellationToken)
+    {
+        var head = _head!;
+        var view = await _encodeView!(list, cancellationToken).ConfigureAwait(false);
+        var features = await FeaturesAsync(list, pending, view, cancellationToken).ConfigureAwait(false);
+        for (var p = 0; p < pending.Count; p++)
+        {
+            var (index, plan) = pending[p];
+            var posterior = HasSeveralPartsOfSpeech(plan.Slots.Select(s => s.PartOfSpeech)) ? PosteriorOf(head, view, index, plan.Details) : null;
+            if (features[p] is { } feature)
+            {
+                results[index] = Decide(list[index], plan, feature, posterior);
+            }
+            else
+            {
+                results[index] = LexiconOnly(list[index], plan.Details, posterior);
+            }
+        }
+
+        foreach (var index in headWords)
+        {
+            var details = results[index].Analyses.Select(a => a.Details).ToImmutableArray();
+            if (PosteriorOf(head, view, index, details) is { } posterior)
+            {
+                results[index] = LexiconOnly(list[index], details, posterior);
+            }
+        }
+    }
+
+    /// <summary>
+    ///     Gets the centered, unit-length feature of every pending word: the vector of the word as it is pooled over
+    ///     all its word pieces (what the weights were trained on).
+    /// </summary>
+    /// <param name="list">The words.</param>
+    /// <param name="pending">The pending words.</param>
+    /// <param name="view">The text in the possessive view.</param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <returns>One feature per pending word, or null for a word without a usable vector.</returns>
+    /// <remarks>
+    ///     A word that the view keeps whole has the vector of the view. A possessive that is written as one token is split
+    ///     in the view (its stem and its marker have vectors of their own, for the head), so its vector, pooled over all
+    ///     its pieces, comes from a second pass of the encoder.
+    /// </remarks>
+    private async Task<float[]?[]> FeaturesAsync(List<string> list, List<(int Index, Pending Plan)> pending, WordVectors view, CancellationToken cancellationToken)
+    {
+        var vectors = new double[]?[pending.Count];
+        var split = new List<int>();
+        for (var p = 0; p < pending.Count; p++)
+        {
+            var index = pending[p].Index;
+            var end = index + 1 < view.Start.Length ? view.Start[index + 1] : view.Tokens.Count;
+            if (end - view.Start[index] > 1)
+            {
+                split.Add(p);
+            }
+            else
+            {
+                vectors[p] = view.Vectors[view.Start[index]];
+            }
+        }
+
+        if (split.Count > 0)
+        {
+            var joined = await _encode!(list, split.Select(p => pending[p].Index).ToList(), cancellationToken).ConfigureAwait(false);
+            for (var s = 0; s < split.Count; s++)
+            {
+                vectors[split[s]] = joined[s];
+            }
+        }
+
+        var mean = _table.Data.Mean;
+        return [.. vectors.Select(v => v is not null && v.Length == mean.Length ? FeatureExtractor.Center(v, mean) : null)];
+    }
+
+    /// <summary>
+    ///     Computes the posterior of the parts of speech of a word that the lexicon lists for it.
+    /// </summary>
+    /// <param name="head">The head.</param>
+    /// <param name="view">The text in the possessive view.</param>
+    /// <param name="index">The index of the word.</param>
+    /// <param name="details">The analyses of the word.</param>
+    /// <returns>The posterior restricted to the parts of speech of the analyses and renormalized (indexed by <see cref="PartOfSpeech"/>), or null when the word has no usable vector.</returns>
+    private static double[]? PosteriorOf(PosHead head, WordVectors view, int index, ImmutableArray<WordDetails> details)
+    {
+        var at = view.Start[index];
+        var word = view.Vectors[at];
+        var previous = at > 0 ? view.Vectors[at - 1] : null;
+        var next = at + 1 < view.Vectors.Length ? view.Vectors[at + 1] : null;
+        if (word is null || word.Length != head.HiddenSize || (previous is not null && previous.Length != head.HiddenSize) || (next is not null && next.Length != head.HiddenSize))
+        {
+            return null;
+        }
+
+        var mask = 0;
+        foreach (var analysis in details)
+        {
+            mask |= 1 << (int)analysis.PartOfSpeech;
+        }
+
+        return PosHead.Restrict(head.Posterior(previous, word, next), mask);
     }
 
     /// <summary>
@@ -498,18 +662,21 @@ internal sealed class OnnxClassifier
     }
 
     /// <summary>
-    ///     Answers a word from the lexicon alone.
+    ///     Answers a word without scored senses: from the lexicon alone, or from the part-of-speech head.
     /// </summary>
     /// <param name="word">The word.</param>
     /// <param name="details">The analyses of the word, at least one.</param>
+    /// <param name="posterior">The head's posterior of the parts of speech of the word (restricted to them, indexed by <see cref="PartOfSpeech"/>), or null for the lexicon alone.</param>
     /// <returns>The result at the part of speech level without scored senses.</returns>
     /// <remarks>
-    ///     The probability is shared out by lemma and part of speech, not by analysis: every lemma and part of speech has
-    ///     the same probability and the analyses that differ only in features share it equally. The analyses are listed
-    ///     by slot in the order of the lexicon (a slot is placed where its first analysis is), so the selected analysis
-    ///     is the first one of the lexicon and the confidence is the probability of its slot.
+    ///     The probability is shared out by lemma and part of speech, not by analysis. Without a posterior every lemma
+    ///     and part of speech has the same probability. With one, a part of speech has the probability of the head and
+    ///     its lemmas share it equally. The analyses that differ only in features share the probability of their slot
+    ///     equally. The analyses are listed by slot, the most probable slot first, in the order of the lexicon for equal
+    ///     probabilities (a slot is placed where its first analysis is), so the selected analysis is the first one of the
+    ///     most probable slot and the confidence is the probability of its slot.
     /// </remarks>
-    private static ClassifyResult LexiconOnly(string word, ImmutableArray<WordDetails> details)
+    private static ClassifyResult LexiconOnly(string word, ImmutableArray<WordDetails> details, double[]? posterior = null)
     {
         var slots = new List<List<int>>();
         for (var i = 0; i < details.Length; i++)
@@ -524,17 +691,20 @@ internal sealed class OnnxClassifier
             slot.Add(i);
         }
 
-        var slotProbability = 1.0 / slots.Count;
+        var probability = slots
+            .Select(s => posterior is null ? 1.0 / slots.Count : posterior[(int)details[s[0]].PartOfSpeech] / slots.Count(o => details[o[0]].PartOfSpeech == details[s[0]].PartOfSpeech))
+            .ToArray();
+        var order = Enumerable.Range(0, slots.Count).OrderByDescending(k => probability[k]).ThenBy(k => k).ToArray();
         var analyses = ImmutableArray.CreateBuilder<AnalysisCandidate>(details.Length);
-        foreach (var slot in slots)
+        foreach (var k in order)
         {
-            foreach (var i in slot)
+            foreach (var i in slots[k])
             {
-                analyses.Add(new AnalysisCandidate(details[i], slotProbability / slot.Count, []));
+                analyses.Add(new AnalysisCandidate(details[i], probability[k] / slots[k].Count, []));
             }
         }
 
-        return new ClassifyResult(word, true, analyses.MoveToImmutable(), details[slots[0][0]], SenseLevel.PartOfSpeech, slotProbability, null, null);
+        return new ClassifyResult(word, true, analyses.MoveToImmutable(), details[slots[order[0]][0]], SenseLevel.PartOfSpeech, probability[order[0]], null, null);
     }
 
     /// <summary>
@@ -543,18 +713,21 @@ internal sealed class OnnxClassifier
     /// <param name="word">The word.</param>
     /// <param name="plan">The pending word.</param>
     /// <param name="feature">The unit-length feature of the word in context.</param>
+    /// <param name="posterior">The head's posterior of the parts of speech of the word, or null when no head decides them.</param>
     /// <returns>The result.</returns>
     /// <remarks>
     ///     The senses belong to a lemma and part of speech (a slot), not to the analyses that differ only in features, so
     ///     the probabilities are worked out per slot: the probability of a slot is the mass of its senses (or, for a form
     ///     with a chooser, the share of the chooser's labels that its analyses carry), the probability of a sense given
     ///     its slot is its mass renormalized in the slot, and the confidence is the probability of the slot times that.
+    ///     With a head, the probability of a part of speech is the head's and the slots of one part of speech share it by
+    ///     those masses (see <see cref="Weigh"/>).
     ///     The analyses of one slot split the probability of the slot: by the chooser when it has a label for each of
     ///     them, otherwise equally. The selected analysis is the best one of the most probable slot.
     /// </remarks>
-    private static ClassifyResult Decide(string word, Pending plan, float[] feature)
+    private static ClassifyResult Decide(string word, Pending plan, float[] feature, double[]? posterior)
     {
-        var weighed = Weigh(plan, feature);
+        var weighed = Weigh(plan, feature, posterior);
         var selectedSlot = weighed.SelectedSlot;
         var analysisProbability = weighed.SelectedProbability;
 
@@ -575,8 +748,16 @@ internal sealed class OnnxClassifier
     /// </summary>
     /// <param name="plan">The pending word.</param>
     /// <param name="feature">The unit-length feature of the word in context.</param>
+    /// <param name="posterior">The head's posterior of the parts of speech of the word (restricted to them, indexed by <see cref="PartOfSpeech"/>), or null when no head decides them.</param>
     /// <returns>The weighed word.</returns>
-    private static Weighed Weigh(Pending plan, float[] feature)
+    /// <remarks>
+    ///     With a posterior the probability of a part of speech is the head's, <c>P(slot) = P_pos(part of speech) ×
+    ///     share(slot | part of speech)</c>: the share is the probability that the senses (or the chooser) give the slot,
+    ///     renormalized among the slots of its part of speech (equal when they give those slots none). The scores of the
+    ///     senses, and so the sense and group of an answer and their probabilities within a slot, do not change. The
+    ///     build tool passes no posterior, so training and calibration see the sense masses alone.
+    /// </remarks>
+    private static Weighed Weigh(Pending plan, float[] feature, double[]? posterior = null)
     {
         var details = plan.Details;
         var lemmaScores = ScoreLemmas(plan, feature);
@@ -595,6 +776,11 @@ internal sealed class OnnxClassifier
         }
 
         Normalize(plan, weightOf);
+        if (posterior is not null)
+        {
+            ApplyPartOfSpeech(plan, weightOf, posterior);
+            Normalize(plan, weightOf);
+        }
 
         // The probability of every slot, and the order: the most probable slot first (ties keep the lexicon order of the
         // first analysis of the slot), and in a slot the most probable analysis first (ties keep the lexicon order)
@@ -724,6 +910,37 @@ internal sealed class OnnxClassifier
             foreach (var i in plan.Slots[s].Analyses)
             {
                 weightOf[i] = (total > 0 ? masses[s] / total : EqualShare(plan.Slots[s], openSlots)) / plan.Slots[s].Analyses.Count;
+            }
+        }
+    }
+
+    /// <summary>
+    ///     Replaces the probability of every part of speech of a weighed word by the head's, keeping the shares of its slots.
+    /// </summary>
+    /// <param name="plan">The pending word.</param>
+    /// <param name="weightOf">The probability of every analysis, summing to one; rewritten here.</param>
+    /// <param name="posterior">The head's posterior, indexed by <see cref="PartOfSpeech"/>.</param>
+    /// <remarks>
+    ///     A slot gets <c>P_pos × share</c>, where the share is the slot's probability among the slots of its part of
+    ///     speech (equal when those slots have none: a closed-class slot has no senses to give it any). The analyses of a
+    ///     slot keep their shares of it.
+    /// </remarks>
+    private static void ApplyPartOfSpeech(Pending plan, double[] weightOf, double[] posterior)
+    {
+        var slots = plan.Slots;
+        var slotWeight = slots.Select(s => s.Analyses.Sum(i => weightOf[i])).ToArray();
+        foreach (var partOfSpeech in slots.Select(s => s.PartOfSpeech).Distinct())
+        {
+            var members = Enumerable.Range(0, slots.Count).Where(k => slots[k].PartOfSpeech == partOfSpeech).ToArray();
+            var total = members.Sum(k => slotWeight[k]);
+            foreach (var k in members)
+            {
+                var share = total > 0 ? slotWeight[k] / total : 1.0 / members.Length;
+                var slotProbability = posterior[(int)partOfSpeech] * share;
+                foreach (var i in slots[k].Analyses)
+                {
+                    weightOf[i] = slotProbability * (slotWeight[k] > 0 ? weightOf[i] / slotWeight[k] : 1.0 / slots[k].Analyses.Count);
+                }
             }
         }
     }

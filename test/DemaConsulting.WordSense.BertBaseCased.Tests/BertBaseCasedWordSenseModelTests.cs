@@ -81,11 +81,11 @@ public class BertBaseCasedWordSenseModelTests
     }
 
     /// <summary>
-    ///     The weight of the encoder is 1 by default and reaches the composition, an explicit weight of the internal
-    ///     constructor (here 0.25) replaces it, and a weight outside 0 to 1 is rejected.
+    ///     The weight of the encoder's part-of-speech head is the tuned 0.8 by default and reaches the composition, an
+    ///     explicit weight of the internal constructor (here 0.25) replaces it, and a weight outside 0 to 1 is rejected.
     /// </summary>
     [Fact]
-    public void BertBaseCasedWordSenseModel_PrimaryWeight_DefaultIsOneAndAnExplicitWeightReachesTheComposition()
+    public void BertBaseCasedWordSenseModel_PrimaryWeight_DefaultIsTunedAndAnExplicitWeightReachesTheComposition()
     {
         // Arrange
         using var defaults = new BertBaseCasedWordSenseModel();
@@ -97,8 +97,8 @@ public class BertBaseCasedWordSenseModelTests
         var invalid = () => new BertBaseCasedWordSenseModel(null, 128, -0.1);
 
         // Assert
-        Assert.Equal(1.0, BertBaseCasedWordSenseModel.PartOfSpeechPrimaryWeight);
-        Assert.Equal(1.0, defaultWeight);
+        Assert.Equal(0.8, BertBaseCasedWordSenseModel.PartOfSpeechHeadWeight);
+        Assert.Equal(0.8, defaultWeight);
         Assert.Equal(0.25, explicitValue);
         Assert.Throws<ArgumentOutOfRangeException>(invalid);
     }
