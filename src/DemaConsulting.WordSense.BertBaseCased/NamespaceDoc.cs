@@ -25,10 +25,12 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     <c>ClassifyAsync</c>. <c>BertBaseCasedWordSenseModel</c> composes its encoder model with the Basic model as the
 ///     fallback (see <c>FallbackWordSenseModel</c>). The encoder model scores the fine senses of the lemmas that this
 ///     version has weights for and answers them at the sense, group or part-of-speech level, whichever its per-lemma
-///     thresholds support; every other ambiguous word is answered by the Basic model, at the part-of-speech level (or at
-///     the sense level when its selected analysis has exactly one sense). A text
-///     that has no trained lemma with several senses is classified without reading the model files, and a text that has
-///     one ensures them on first use. The files are described in the repository at
+///     thresholds support; the part of speech of every word of several parts of speech comes from the embedded
+///     part-of-speech head, combined with that of the Basic model, and every other ambiguous word is answered by the
+///     Basic model, at the part-of-speech level (or at the sense level when its selected analysis has exactly one
+///     sense). A text made only of words with one part of speech is classified without reading the model files, and a
+///     text that has a word of several parts of speech ensures them on first use (no opt-out). The files are described
+///     in the repository at
 ///     https://github.com/demaconsulting/WordSense/tree/main/model/bert-base-cased-int8. The model identifier
 ///     (<c>ModelId</c>) is <c>bert-base-cased-int8</c>; it names the store folder and the folder on a mirror. The encoder is
 ///     the base model without its masked-language head, cut and quantized with
