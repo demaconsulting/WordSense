@@ -240,6 +240,205 @@ public class OnnxEncoderTests
     }
 
     /// <summary>
+    ///     A word that fits a window is never cut by a window border: with a window of 14 pieces, a word that spans the
+    ///     pieces 6 to 14 straddles the grid windows at 0 and 7, so the plan adds a window that starts at the word.
+    /// </summary>
+    [Fact]
+    public void OnnxEncoder_PlanWindows_WordStraddlingGridBorder_GetsWindowThatContainsIt()
+    {
+        // Arrange: 6 one-piece words, one word of 9 pieces ([6,15)), then 20 one-piece words; 35 pieces
+        var (first, end) = Spans(Enumerable.Repeat(1, 6).Append(9).Concat(Enumerable.Repeat(1, 20)));
+
+        // Act
+        var (starts, windowOf) = OnnxEncoder.PlanWindows(35, 14, first, end);
+
+        // Assert: the grid has the windows 0, 7, 14 and 21; the added window starts at the word; every word is inside its window
+        Assert.Equal([0, 6, 7, 14, 21], starts);
+        Assert.Equal(6, starts[windowOf[6]]);
+        AssertEveryWordInsideItsWindow(starts, windowOf, first, end, 14);
+    }
+
+    /// <summary>
+    ///     A word that straddles a window border near the end of the text gets a window that starts at the word and stays
+    ///     inside the text.
+    /// </summary>
+    [Fact]
+    public void OnnxEncoder_PlanWindows_WordNearTextEnd_AddedWindowStaysInsideText()
+    {
+        // Arrange: 13 one-piece words, a word of 9 pieces ([13,22)) and 8 one-piece words; 30 pieces; the grid is 0, 7, 14, 16
+        var (first, end) = Spans(Enumerable.Repeat(1, 13).Append(9).Concat(Enumerable.Repeat(1, 8)));
+
+        // Act
+        var (starts, windowOf) = OnnxEncoder.PlanWindows(30, 14, first, end);
+
+        // Assert
+        Assert.Equal([0, 7, 13, 14, 16], starts);
+        AssertEveryWordInsideItsWindow(starts, windowOf, first, end, 14);
+    }
+
+    /// <summary>
+    ///     A word of more pieces than a window holds gets a window that starts at the word and is pooled from its first
+    ///     pieces; the other words keep a window that contains them, and a word without tokens has no window.
+    /// </summary>
+    [Fact]
+    public void OnnxEncoder_PlanWindows_WordLongerThanWindow_StartsItsOwnWindow()
+    {
+        // Arrange: 3 one-piece words, a word without pieces, a word of 20 pieces ([3,23)) and 10 one-piece words; 33 pieces
+        var (first, end) = Spans([1, 1, 1, 0, 20, .. Enumerable.Repeat(1, 10)]);
+
+        // Act
+        var (starts, windowOf) = OnnxEncoder.PlanWindows(33, 14, first, end);
+
+        // Assert
+        Assert.Equal(3, starts[windowOf[4]]);
+        Assert.Equal(-1, windowOf[3]);
+        AssertEveryWordInsideItsWindow(starts, windowOf, first, end, 14);
+    }
+
+    /// <summary>
+    ///     For every mix of word lengths, each word that fits a window is inside its window and the windows cover the
+    ///     whole text, in increasing order without repeats.
+    /// </summary>
+    [Fact]
+    public void OnnxEncoder_PlanWindows_RandomWordLengths_EveryFittingWordIsContained()
+    {
+        // Arrange
+        var random = new Random(7);
+        for (var round = 0; round < 300; round++)
+        {
+            var capacity = random.Next(6, 40);
+            var lengths = Enumerable.Range(0, random.Next(3, 60)).Select(_ => random.Next(0, 4) == 0 ? random.Next(1, capacity + 6) : random.Next(1, 3)).ToArray();
+            var count = lengths.Sum();
+            if (count <= capacity)
+            {
+                continue;
+            }
+
+            var (first, end) = Spans(lengths);
+
+            // Act
+            var (starts, windowOf) = OnnxEncoder.PlanWindows(count, capacity, first, end);
+
+            // Assert
+            AssertEveryWordInsideItsWindow(starts, windowOf, first, end, capacity);
+            Assert.Equal(starts.Order().Distinct().ToArray(), starts);
+            Assert.Equal(0, starts[0]);
+            Assert.Equal(count - capacity, starts[^1]);
+            Assert.All(starts, s => Assert.InRange(s, 0, count - capacity));
+        }
+    }
+
+    /// <summary>
+    ///     The vector of a word that straddles a window border of the grid is the pooled vector of all its pieces from a
+    ///     window that contains it, bit for bit: with a window of 14 pieces and the word at the pieces 6 to 14, the
+    ///     windows 0 and 7 hold only 8 of its 9 pieces.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxEncoder_EncodeAllAsync_WordStraddlingWindowBorder_IsPooledOverAllItsPieces()
+    {
+        // Arrange: a word of 9 pieces after 6 one-piece words, then 20 one-piece words; windows of 14 pieces
+        using var encoder = Open(maxSequenceLength: 16);
+        var tokenizer = WordPieceTokenizer.FromFile(Path.Join(ModelAssets.RequireModelDirectory(), "vocab.txt"), true);
+        var long9 = LongWord(tokenizer, 9);
+        string[] words = [.. Enumerable.Range(0, 6).Select(i => i % 2 == 0 ? "record" : "the"), long9, .. Enumerable.Range(0, 20).Select(i => i % 2 == 0 ? "of" : "and")];
+        var tokens = tokenizer.TokenizeWords(words);
+        Assert.Equal((6, 15), (tokens.WordFirst[6], tokens.WordEnd[6]));
+        Assert.Equal(35, tokens.Count);
+
+        // Act
+        var vectors = await encoder.EncodeAllAsync(words, TestContext.Current.CancellationToken);
+
+        // Assert: the window that starts at the word holds the word and the five words after it; encoded alone, it gives
+        // the same vector, bit for bit, whereas the grid windows hold only 8 of the 9 pieces
+        var alone = await encoder.EncodeAsync(words[6..12], [0], TestContext.Current.CancellationToken);
+        Assert.Equal(alone[0], vectors[6]);
+    }
+
+    /// <summary>
+    ///     A word of more pieces than a window holds is pooled from its first pieces, as many as the window holds, from a
+    ///     window that starts at the word.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxEncoder_EncodeAllAsync_WordLongerThanWindow_IsPooledOverItsFirstPieces()
+    {
+        // Arrange: 3 one-piece words, a word of 20 pieces and 10 one-piece words; windows of 14 pieces
+        using var encoder = Open(maxSequenceLength: 16);
+        var tokenizer = WordPieceTokenizer.FromFile(Path.Join(ModelAssets.RequireModelDirectory(), "vocab.txt"), true);
+        var long14 = LongWord(tokenizer, 14);
+        var long20 = LongWord(tokenizer, 20);
+        string[] words = ["the", "of", "and", long20, .. Enumerable.Repeat("in", 10)];
+        var tokens = tokenizer.TokenizeWords(words);
+        Assert.Equal((3, 23), (tokens.WordFirst[3], tokens.WordEnd[3]));
+
+        // The first 14 pieces of the long word are the 14 pieces of the shorter word
+        Assert.Equal(tokenizer.TokenizeWords([long14]).Ids.Take(14), tokens.Ids.Skip(3).Take(14));
+
+        // Act
+        var vectors = await encoder.EncodeAllAsync(words, TestContext.Current.CancellationToken);
+
+        // Assert: the window of 14 pieces that starts at the word is the whole text of the shorter word
+        var alone = await encoder.EncodeAsync([long14], [0], TestContext.Current.CancellationToken);
+        Assert.Equal(alone[0], vectors[3]);
+    }
+
+    private static (int[] First, int[] End) Spans(IEnumerable<int> lengths)
+    {
+        var first = new List<int>();
+        var end = new List<int>();
+        var at = 0;
+        foreach (var length in lengths)
+        {
+            first.Add(at);
+            at += length;
+            end.Add(at);
+        }
+
+        return ([.. first], [.. end]);
+    }
+
+    private static void AssertEveryWordInsideItsWindow(int[] starts, int[] windowOf, int[] first, int[] end, int capacity)
+    {
+        for (var w = 0; w < first.Length; w++)
+        {
+            if (end[w] <= first[w])
+            {
+                Assert.Equal(-1, windowOf[w]);
+                continue;
+            }
+
+            var start = starts[windowOf[w]];
+            if (end[w] - first[w] <= capacity)
+            {
+                Assert.True(start <= first[w] && end[w] <= start + capacity, $"Word {w} [{first[w]},{end[w]}) is cut by the window [{start},{start + capacity}).");
+            }
+            else
+            {
+                Assert.Equal(first[w], start);
+            }
+        }
+    }
+
+    /// <summary>
+    ///     Finds a made-up word that the tokenizer splits into exactly the given number of pieces.
+    /// </summary>
+    private static string LongWord(WordPieceTokenizer tokenizer, int pieces)
+    {
+        for (var length = 2; length < 80; length++)
+        {
+            var word = new string('q', length);
+            var tokens = tokenizer.TokenizeWords([word]);
+            if (tokens.Count == pieces)
+            {
+                return word;
+            }
+        }
+
+        throw new InvalidOperationException($"No word of {pieces} pieces was found.");
+    }
+
+    /// <summary>
     ///     The possessive view splits a possessive into a stem and a marker, each with a vector of its own, and the
     ///     vector of the stem differs from the vector of the joined token.
     /// </summary>

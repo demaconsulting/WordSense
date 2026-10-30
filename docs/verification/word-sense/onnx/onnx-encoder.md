@@ -38,6 +38,20 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Each word is pooled from its most central window** (`OnnxEncoder_EncodeAllAsync_LongText_PoolsEachWordFromItsMostCentralWindow`):
   the vector of every word equals, bit for bit, the vector of the window that an independent rule picks (the largest
   smaller side of context, the text edge unlimited, the earliest window on a tie), encoded on its own.
+- **No word that fits a window is cut** (`OnnxEncoder_PlanWindows_WordStraddlingGridBorder_GetsWindowThatContainsIt`,
+  `OnnxEncoder_PlanWindows_WordNearTextEnd_AddedWindowStaysInsideText`,
+  `OnnxEncoder_PlanWindows_RandomWordLengths_EveryFittingWordIsContained`): with a window of 14 word pieces, a word at
+  the pieces 6 to 14 straddles the grid windows at 0 and 7, so the plan has the windows 0, 6, 7, 14 and 21 and the word
+  is assigned to the window 6; the same holds next to the end of the text; and for 300 random mixes of word lengths and
+  window sizes every word that fits is inside its window, the windows are increasing and distinct, the first starts at 0
+  and the last ends at the end of the text.
+- **A word that cannot fit** (`OnnxEncoder_PlanWindows_WordLongerThanWindow_StartsItsOwnWindow`,
+  `OnnxEncoder_EncodeAllAsync_WordLongerThanWindow_IsPooledOverItsFirstPieces`): a word of 20 pieces with a window of 14
+  gets a window that starts at the word, a word without pieces gets none, and the vector of the word equals, bit for
+  bit, that of its first 14 pieces encoded alone.
+- **A straddling word is pooled over all its pieces** (`OnnxEncoder_EncodeAllAsync_WordStraddlingWindowBorder_IsPooledOverAllItsPieces`):
+  the vector of a word of 9 pieces at the pieces 6 to 14 equals, bit for bit, that of the window that starts at the
+  word, encoded on its own.
 - **Possessive view** (`OnnxEncoder_EncodeAllAsync_PossessiveView_PoolsStemAndMarkerApart`): for `The technician's tool
   broke .` the view has the tokens `The technician 's tool broke .`, the first-token indexes 0, 1, 3, 4, 5, the vectors
   of the split text, and the vector of the stem differs from that of the joined word.

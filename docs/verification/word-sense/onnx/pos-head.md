@@ -38,6 +38,14 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `PosHeadBlob_Read_InvalidSections_Throws`, `PosHeadBlob_Read_NoHeadSection_Throws`): a body cut at several lengths and
   hashed again, a body with a trailing byte, one weight too few, a second section with the id of the head, a section list
   without the head, a NaN bias and an infinite weight each throw `InvalidDataException`.
+- **Bounds and varints** (`PosHeadBlob_Read_OversizedHiddenSize_ThrowsInvalidData`,
+  `PosHeadBlob_Read_MaximumHiddenSizeWithoutWeights_ThrowsInvalidData`,
+  `PosHeadBlob_Read_VarintWithInvalidFifthByte_ThrowsInvalidData`,
+  `PosHeadBlob_Read_VarintOfMaximumInt_IsReadAsThatNumber`): a hidden size of 16,385, of 700,000,000, of 1,000,000,000
+  and of 2,147,483,647 throws exactly `InvalidDataException` (not an `OverflowException`), also through the binding; the
+  largest hidden size passes the bounds and fails only for its missing weights; a feature layout whose fifth byte sets a
+  bit above bit 30 or continues (which would wrap to the valid layout 1) throws `InvalidDataException`; the layout
+  2,147,483,647 in five bytes reads as that number.
 - **Unknown sections** (`PosHeadBlob_Read_UnknownSection_SkippedWhenOptionalRejectedWhenRequired`): an unknown section
   marked optional is skipped and the head reads as before; the same section marked required throws, and the message
   names the section.

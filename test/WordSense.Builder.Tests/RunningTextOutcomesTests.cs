@@ -158,4 +158,31 @@ public sealed class RunningTextOutcomesTests : IDisposable
         Assert.Equal(0, named);
         Assert.Contains("--base-model", failure.ToString(), StringComparison.Ordinal);
     }
+
+    /// <summary>
+    ///     Without <c>--outcomes</c> the running-text report does not look for the option, whatever the report: a
+    ///     <c>--report running</c> alone must not throw a missing-key exception. With <c>--report tense</c> a stated
+    ///     <c>--outcomes</c> is not written, as the tense report has no token outcomes.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_Program_EvaluateRunning_ReportWithoutOutcomes_Succeeds()
+    {
+        // Arrange
+        var root = FindRepositoryRoot();
+        var absent = Path.Join(_dir.Root, "absent.tsv");
+        var unused = Path.Join(_dir.Root, "unused.tsv");
+        using var output = new StringWriter();
+        using var error = new StringWriter();
+
+        // Act
+        var running = await Program.RunAsync(["evaluate-running", "--model", "basic", "--repository", root, "--gold", absent, "--report", "running"], output, error, TestContext.Current.CancellationToken);
+        var tense = await Program.RunAsync(["evaluate-running", "--model", "basic", "--repository", root, "--gold", absent, "--report", "tense", "--outcomes", unused], output, error, TestContext.Current.CancellationToken);
+
+        // Assert
+        Assert.Equal(0, running);
+        Assert.Equal(0, tense);
+        Assert.Equal(string.Empty, error.ToString());
+        Assert.False(File.Exists(unused));
+    }
 }

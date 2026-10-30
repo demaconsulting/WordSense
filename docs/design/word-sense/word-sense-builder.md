@@ -306,7 +306,8 @@ instead of `--model`.
   [--table FILE] [--outcomes FILE] [--latency] [--latency-sentences N] [--seed N]`: measures the
   part-of-speech accuracy of the models on the representative test split of the open corpus, the convention-mapped
   treebank test file and the challenge set, and the tense of the same-spelling verbs (`--report` restricts the output).
-  `--outcomes` writes the outcome of every scored token of the part-of-speech sets (see "Outcome comparison" below).
+  `--outcomes` writes the outcome of every scored token of the part-of-speech sets (see "Outcome comparison" below); it
+  applies to `--report all` and `--report running`, and a report without the option never looks for it.
   `--latency` times one sentence at a time on a seeded sample of the open test split (`--latency-sentences`, default
   1,000; `--seed`, default 20261029) and reports the median, the mean and the 95th percentile in milliseconds.
 - `compare-outcomes --base FILE --new FILE [--base-model NAME] [--new-model NAME] [--cluster sentence|document]

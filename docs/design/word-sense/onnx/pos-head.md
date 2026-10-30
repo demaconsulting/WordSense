@@ -35,10 +35,12 @@ speech that a spelling can have.
 #### Key Methods
 
 - `PosHeadBlob.Read`: decodes and validates the blob. It checks the magic and the trailing hash first, then the
-  structure: the hidden size and the regularization strength, the section list (a duplicate section, a flag other than 0
+  structure: the hidden size (1 to 16,384) and the regularization strength, the class count (at most 1,024, so no size
+  computed from the two can overflow), the section list (a duplicate section, a flag other than 0
   or 1, a required section that it does not know and a missing part-of-speech section are errors), the length of the
   part-of-speech section (`2·k·3d + 4·k` bytes, with at least two classes), finite weights and biases and the end of the
-  data. A section that is not known and is optional is skipped. It does not check the binding.
+  data. A varint is read in at most five bytes; the fifth byte may only set bits 28 to 30 and must not continue, so a
+  number is never wrapped. A section that is not known and is optional is skipped. It does not check the binding.
 - `PosHead.LoadEmbedded(assembly, resource, modelId, hiddenSize, encoderSha256)`: reads the resource into an array of
   exactly its length (`WeightedLemmaTable.ReadResource`), decodes it and binds the head: the model id, the hidden size,
   the encoder digest (compared with the pinned digest of the ONNX file, case-insensitive hexadecimal), the feature
@@ -60,7 +62,8 @@ speech that a spelling can have.
 #### Error Handling
 
 `InvalidDataException` for a missing resource, an unknown magic, a trailing hash that does not match (the head is
-corrupt), a truncated or malformed structure, a section that is duplicated, has the wrong length or is required and
+corrupt), a truncated or malformed structure, a number that does not fit a non-negative 32-bit integer, a hidden size or
+class count above its bound, a section that is duplicated, has the wrong length or is required and
 unknown, a missing part-of-speech section, a non-finite value, trailing data, and every binding mismatch of
 `LoadEmbedded`. `Posterior` throws `ArgumentException` for a vector of the wrong length and `Restrict` throws
 `ArgumentNullException` for a null posterior. These are the raw exceptions of the unit; `OnnxWordSenseModel` reports an

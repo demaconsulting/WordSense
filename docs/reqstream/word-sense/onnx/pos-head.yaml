@@ -29,17 +29,25 @@ sections:
                 title: >-
                   The part-of-speech head reader shall reject a blob with another magic, a truncated blob, a blob
                   whose trailing SHA-256 does not match its content, a section of the wrong length, a duplicate
-                  section, a blob without the part-of-speech section, a weight or bias that is not finite and
-                  trailing data.
+                  section, a blob without the part-of-speech section, a weight or bias that is not finite, a hidden
+                  size or class count above its bound, a number that does not fit a non-negative 32-bit integer
+                  (including a fifth byte that sets a bit above bit 30), and trailing data, each as an
+                  InvalidDataException.
                 tags: [unit]
                 justification: |
-                  A damaged head must fail loudly at load instead of producing silently wrong probabilities.
+                  A damaged head must fail loudly at load, with the one exception type that the model maps to a
+                  ModelIntegrityException, instead of producing silently wrong probabilities or escaping as an
+                  overflow or a wrapped number.
                 tests:
                   - PosHeadBlob_Read_FlippedByte_ThrowsChecksum
                   - PosHeadBlob_Read_BadMagicOrTruncated_Throws
                   - PosHeadBlob_Read_TruncatedBodyWithValidHash_Throws
                   - PosHeadBlob_Read_InvalidSections_Throws
                   - PosHeadBlob_Read_NoHeadSection_Throws
+                  - PosHeadBlob_Read_OversizedHiddenSize_ThrowsInvalidData
+                  - PosHeadBlob_Read_MaximumHiddenSizeWithoutWeights_ThrowsInvalidData
+                  - PosHeadBlob_Read_VarintWithInvalidFifthByte_ThrowsInvalidData
+                  - PosHeadBlob_Read_VarintOfMaximumInt_IsReadAsThatNumber
 
               - id: WordSense-Onnx-PosHead-Sections
                 title: >-

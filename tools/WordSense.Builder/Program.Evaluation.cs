@@ -76,7 +76,7 @@ internal static partial class Program
         var tenseByModel = new List<(string Model, List<TenseScore> Scores)>();
         var outcomes = new List<(string Model, TokenOutcome Outcome)>();
         var latencies = new List<(string Model, double Median, double Mean, double P95, int Sentences)>();
-        var wantOutcomes = options.ContainsKey("outcomes") && report is "all" or "running";
+        var wantOutcomes = options.ContainsKey("outcomes") && (report is "all" or "running");
         var documents = wantOutcomes ? RunningTextEvaluator.Documents(corpus, options.GetValueOrDefault("split", "test")) : null;
         foreach (var info in ModelCatalog.Select(options.GetValueOrDefault("model")))
         {

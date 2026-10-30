@@ -70,6 +70,17 @@ internal static class PosHeadBlob
     /// </summary>
     public const int HashSize = 32;
 
+    /// <summary>
+    ///     The largest hidden size the reader accepts; far above the hidden size of any encoder the library pins, and small
+    ///     enough that no size computed from it overflows.
+    /// </summary>
+    public const int MaxHiddenSize = 16384;
+
+    /// <summary>
+    ///     The largest class count the reader accepts.
+    /// </summary>
+    public const int MaxClassCount = 1024;
+
     private static readonly byte[] Magic = "WSH1"u8.ToArray();
 
     /// <summary>
@@ -106,9 +117,9 @@ internal static class PosHeadBlob
         var p = Magic.Length;
         var modelId = ReadString(body, ref p);
         var hiddenSize = ReadVarint(body, ref p);
-        if (hiddenSize <= 0)
+        if (hiddenSize is <= 0 or > MaxHiddenSize)
         {
-            throw new InvalidDataException("The part-of-speech head has an invalid hidden size.");
+            throw new InvalidDataException($"The part-of-speech head has an invalid hidden size; it must be 1 to {MaxHiddenSize}.");
         }
 
         var encoder = ReadBytes(body, ref p, HashSize);
@@ -122,7 +133,13 @@ internal static class PosHeadBlob
             throw new InvalidDataException("The part-of-speech head has an invalid regularization strength.");
         }
 
-        var (weights, biases) = ReadSections(body, ref p, classes.Count, checked(3 * hiddenSize));
+        if (classes.Count > MaxClassCount)
+        {
+            throw new InvalidDataException($"The part-of-speech head has too many classes; the most is {MaxClassCount}.");
+        }
+
+        // Both factors are bounded, so the products below cannot overflow
+        var (weights, biases) = ReadSections(body, ref p, classes.Count, 3 * hiddenSize);
         return p == body.Length
             ? new PosHeadData(modelId, hiddenSize, encoder, layout, classes, train, c, variant, weights, biases)
             : throw new InvalidDataException("The part-of-speech head has trailing data.");
@@ -185,8 +202,9 @@ internal static class PosHeadBlob
             throw new InvalidDataException("The part-of-speech head needs at least two classes.");
         }
 
-        var weightCount = checked(classCount * features);
-        var expected = checked((weightCount * 2L) + (classCount * 4L));
+        // The class count and the feature count are bounded by the caller: 1,024 × 49,152 fits an int
+        var weightCount = classCount * features;
+        var expected = (weightCount * 2L) + (classCount * 4L);
         if (payload.Length != expected)
         {
             throw new InvalidDataException("The part-of-speech section has the wrong length.");
@@ -227,29 +245,32 @@ internal static class PosHeadBlob
     /// <param name="span">The data.</param>
     /// <param name="position">The read position, advanced past the value.</param>
     /// <returns>The value.</returns>
-    /// <exception cref="InvalidDataException">Thrown when the data ends early or the value is too large.</exception>
+    /// <exception cref="InvalidDataException">Thrown when the data ends early or the value does not fit a non-negative 32-bit integer.</exception>
     private static int ReadVarint(ReadOnlySpan<byte> span, ref int position)
     {
-        uint result = 0;
-        var shift = 0;
-        while (true)
+        var result = 0;
+        for (var shift = 0; shift < 35; shift += 7)
         {
-            if (position >= span.Length || shift > 28)
+            if (position >= span.Length)
             {
                 throw new InvalidDataException("The part-of-speech head is truncated or malformed.");
             }
 
             var b = span[position++];
-            result |= (uint)(b & 0x7F) << shift;
-            if ((b & 0x80) == 0)
+            if (shift == 28 && (b & 0xF8) != 0)
             {
-                break;
+                // The fifth byte holds bits 28 to 34 and may only set bits 28 to 30, with no continuation
+                throw new InvalidDataException("A number in the part-of-speech head is too large.");
             }
 
-            shift += 7;
+            result |= (b & 0x7F) << shift;
+            if ((b & 0x80) == 0)
+            {
+                return result;
+            }
         }
 
-        return result > int.MaxValue ? throw new InvalidDataException("A number in the part-of-speech head is too large.") : (int)result;
+        throw new InvalidDataException("A number in the part-of-speech head is too large.");
     }
 
     /// <summary>

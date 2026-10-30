@@ -842,6 +842,9 @@ The trainer is tested with a synthetic corpus whose sentences are the combinatio
   latency; the comparison of a file with itself shows no gain and a degenerate interval; a file with two models needs the
   model to be named; `compare-outcomes` rejects a missing `--new`, an unknown `--cluster` and a `--reps` below one with
   exit code 1.
+- **Report without outcomes** (`WordSenseBuilder_Program_EvaluateRunning_ReportWithoutOutcomes_Succeeds`):
+  `evaluate-running --report running` without `--outcomes` exits 0 with no error, and `--report tense` with `--outcomes`
+  writes no outcome file.
 
 #### suite
 

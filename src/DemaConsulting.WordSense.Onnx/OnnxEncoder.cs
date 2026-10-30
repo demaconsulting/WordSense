@@ -137,10 +137,12 @@ internal sealed class OnnxEncoder : IDisposable
     /// <remarks>
     ///     A text that fits one window is encoded once and the result equals <see cref="EncodeAsync"/> for every word. A
     ///     longer text is cut into windows of the maximum length that start half a window apart (so about
-    ///     <c>n / (window / 2)</c> passes for <c>n</c> word pieces, not one pass per word). A word is pooled from the
-    ///     window that gives it the most context on its closer side; at the start and the end of the text the text edge
-    ///     counts as unlimited context, like the sentence edge of a single window. A word that is longer than a window is
-    ///     pooled from the part of it that the window keeps.
+    ///     <c>n / (window / 2)</c> passes for <c>n</c> word pieces, not one pass per word). A word is pooled from a
+    ///     window that contains all its pieces and gives it the most context on its closer side; at the start and the
+    ///     end of the text the text edge counts as unlimited context, like the sentence edge of a single window. A word
+    ///     that straddles the border of two windows of that grid gets a window of its own that starts at the word, so no
+    ///     word that fits a window is ever cut. A word of more word pieces than a window holds cannot fit: it gets a
+    ///     window that starts at the word and is pooled from its first pieces, as many as the window holds.
     /// </remarks>
     /// <param name="words">The words of the text.</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
@@ -172,14 +174,14 @@ internal sealed class OnnxEncoder : IDisposable
             return ValueTask.FromResult(result);
         }
 
-        // Several windows: assign every word to its best window, then encode each window once and pool its words
-        var starts = WindowStarts(tokens.Count, capacity);
+        // Several windows: plan the windows, assign every word to its best window, then encode each window once and pool its words
+        var (starts, windowOf) = PlanWindows(tokens.Count, capacity, tokens.WordFirst, tokens.WordEnd);
         var assigned = new List<int>[starts.Length];
         for (var w = 0; w < words.Count; w++)
         {
-            if (tokens.WordEnd[w] > tokens.WordFirst[w])
+            if (windowOf[w] >= 0)
             {
-                (assigned[BestWindow(starts, capacity, tokens.Count, tokens.WordFirst[w], tokens.WordEnd[w])] ??= []).Add(w);
+                (assigned[windowOf[w]] ??= []).Add(w);
             }
         }
 
@@ -249,19 +251,93 @@ internal sealed class OnnxEncoder : IDisposable
     }
 
     /// <summary>
-    ///     Chooses the window that gives a word the most context on its closer side.
+    ///     Plans the windows that cover a text longer than one window and assigns every word to one of them.
     /// </summary>
-    /// <param name="starts">The start tokens of the windows.</param>
+    /// <remarks>
+    ///     The windows start half a window apart, and the last one ends at the end of the text. A word that fits a window
+    ///     (at most <paramref name="capacity"/> word pieces) is always inside the window it is assigned to: when no window
+    ///     of the regular grid contains it, because it straddles a window border, a window that starts at the word is
+    ///     added. A word longer than a window cannot be contained; a window that starts at the word is added and the word
+    ///     is pooled from its first <paramref name="capacity"/> pieces.
+    /// </remarks>
+    /// <param name="count">The number of tokens of the text; more than <paramref name="capacity"/>.</param>
+    /// <param name="capacity">The number of text tokens in a window.</param>
+    /// <param name="wordFirst">The first token of every word.</param>
+    /// <param name="wordEnd">The exclusive end token of every word; a word without tokens has an end that is not after its first.</param>
+    /// <returns>The start tokens of the windows in increasing order, and per word the index of its window or -1 for a word without tokens.</returns>
+    internal static (int[] Starts, int[] WindowOf) PlanWindows(int count, int capacity, int[] wordFirst, int[] wordEnd)
+    {
+        var starts = new List<int>(WindowStarts(count, capacity));
+        var windowOf = new int[wordFirst.Length];
+        for (var w = 0; w < wordFirst.Length; w++)
+        {
+            var first = wordFirst[w];
+            var end = wordEnd[w];
+            if (end > first && (end - first > capacity || IndexOfContainingWindow(starts, capacity, first, end) < 0))
+            {
+                // A word longer than a window starts its window; a word that fits starts one as far left as the text allows
+                var start = Math.Min(first, count - capacity);
+                var at = starts.BinarySearch(start);
+                if (at < 0)
+                {
+                    starts.Insert(~at, start);
+                }
+            }
+        }
+
+        for (var w = 0; w < wordFirst.Length; w++)
+        {
+            if (wordEnd[w] <= wordFirst[w])
+            {
+                windowOf[w] = -1;
+            }
+            else if (wordEnd[w] - wordFirst[w] > capacity)
+            {
+                windowOf[w] = starts.BinarySearch(wordFirst[w]);
+            }
+            else
+            {
+                windowOf[w] = BestWindow(starts, capacity, count, wordFirst[w], wordEnd[w]);
+            }
+        }
+
+        return ([.. starts], windowOf);
+    }
+
+    /// <summary>
+    ///     Finds the first window that contains the tokens <c>[first, end)</c>.
+    /// </summary>
+    /// <param name="starts">The start tokens of the windows in increasing order.</param>
+    /// <param name="capacity">The number of text tokens in a window.</param>
+    /// <param name="first">The first token of the word.</param>
+    /// <param name="end">The exclusive end token of the word; at most <paramref name="capacity"/> after its first.</param>
+    /// <returns>The index of the window, or -1 when there is none.</returns>
+    private static int IndexOfContainingWindow(List<int> starts, int capacity, int first, int end)
+    {
+        // A window contains the word when its start is in [end - capacity, first]
+        var at = starts.BinarySearch(end - capacity);
+        if (at < 0)
+        {
+            at = ~at;
+        }
+
+        return at < starts.Count && starts[at] <= first ? at : -1;
+    }
+
+    /// <summary>
+    ///     Chooses, among the windows that contain a word, the one that gives it the most context on its closer side.
+    /// </summary>
+    /// <param name="starts">The start tokens of the windows in increasing order; one of them contains the word.</param>
     /// <param name="capacity">The number of text tokens in a window.</param>
     /// <param name="count">The number of tokens of the text.</param>
     /// <param name="first">The first token of the word.</param>
     /// <param name="end">The exclusive end token of the word.</param>
     /// <returns>The index of the window; the earliest one on a tie.</returns>
-    private static int BestWindow(int[] starts, int capacity, int count, int first, int end)
+    private static int BestWindow(List<int> starts, int capacity, int count, int first, int end)
     {
-        var best = 0;
+        var best = IndexOfContainingWindow(starts, capacity, first, end);
         var bestMargin = int.MinValue;
-        for (var i = 0; i < starts.Length; i++)
+        for (var i = best; i < starts.Count && starts[i] <= first; i++)
         {
             // Tokens of context before and after the word inside the window; a text edge is unlimited context
             var before = starts[i] == 0 ? int.MaxValue : first - starts[i];

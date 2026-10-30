@@ -33,7 +33,9 @@ first token of every word of the text, and the pooled vector of every token (nul
   pass per word. Each word is assigned to one window: the one that gives it the most context on its closer side, that
   is the larger of the smaller of the pieces before the word and the pieces after it inside the window, a text edge
   counting as unlimited context, and the earliest window on a tie. Each window that has words is encoded once and its
-  words are pooled from it. A word that is longer than a window is pooled from the part of it that the window keeps. A
+  words are pooled from it. A word that fits a window is never cut: when it straddles the border of two windows of the
+  regular grid, a window that starts at the word is added to the plan. A word of more word pieces than a window holds
+  gets a window that starts at the word and is pooled from its first pieces, as many as the window holds. A
   word without word pieces gets null and an empty text gives an empty result.
 - `EncodeAllAsync(words, isPossessive, cancellationToken)`: expands the text with `PossessiveView.Expand`, encodes the
   tokens of the view with `EncodeAllAsync` and returns them as `WordVectors`.

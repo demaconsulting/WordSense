@@ -208,6 +208,78 @@ public class PosHeadBlobTests
     }
 
     /// <summary>
+    ///     A hidden size above the bound is rejected as invalid data, whether the products computed from it would overflow
+    ///     (1,000,000,000 × 3, 700,000,000 × 3 × 10) or not.
+    /// </summary>
+    [Theory]
+    [InlineData(PosHeadBlob.MaxHiddenSize + 1)]
+    [InlineData(700_000_000)]
+    [InlineData(1_000_000_000)]
+    [InlineData(int.MaxValue)]
+    public void PosHeadBlob_Read_OversizedHiddenSize_ThrowsInvalidData(int hiddenSize)
+    {
+        // Arrange: a structurally valid blob that states the oversized hidden size
+        var blob = HeadBlobWriter.Write(HeadSpec.Create() with { HiddenSize = hiddenSize });
+
+        // Act / Assert: the exact type, so an OverflowException would fail the test
+        var ex = Assert.Throws<InvalidDataException>(() => PosHeadBlob.Read(blob));
+        Assert.Contains("hidden size", ex.Message, StringComparison.Ordinal);
+        Assert.Throws<InvalidDataException>(() => Load(blob, hiddenSize: hiddenSize));
+    }
+
+    /// <summary>
+    ///     The largest hidden size is accepted by the size checks and then rejected only for its missing weights.
+    /// </summary>
+    [Fact]
+    public void PosHeadBlob_Read_MaximumHiddenSizeWithoutWeights_ThrowsInvalidData()
+    {
+        var blob = HeadBlobWriter.Write(HeadSpec.Create() with { HiddenSize = PosHeadBlob.MaxHiddenSize });
+
+        var ex = Assert.Throws<InvalidDataException>(() => PosHeadBlob.Read(blob));
+
+        Assert.Contains("wrong length", ex.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A varint whose fifth byte sets a bit above bit 30, or continues, is rejected instead of wrapping to a small
+    ///     number: the feature layout 0x10_80_80_80_81 would wrap to 1, the layout of a valid head.
+    /// </summary>
+    [Theory]
+    [InlineData(new byte[] { 0x81, 0x80, 0x80, 0x80, 0x10 })]
+    [InlineData(new byte[] { 0x81, 0x80, 0x80, 0x80, 0x08 })]
+    [InlineData(new byte[] { 0x81, 0x80, 0x80, 0x80, 0xFF })]
+    [InlineData(new byte[] { 0x81, 0x80, 0x80, 0x80, 0x80, 0x00 })]
+    public void PosHeadBlob_Read_VarintWithInvalidFifthByte_ThrowsInvalidData(byte[] layout)
+    {
+        // Arrange: replace the one-byte feature layout (after magic, model id, hidden size and digest) and re-hash
+        var body = HeadBlobWriter.WriteBody(HeadSpec.Create());
+        const int layoutAt = 4 + 2 + 1 + PosHeadBlob.HashSize;
+        Assert.Equal(PosHeadBlob.WordAndNeighbors, body[layoutAt]);
+        byte[] changed = [.. body[..layoutAt], .. layout, .. body[(layoutAt + 1)..]];
+
+        // Act / Assert
+        Assert.Throws<InvalidDataException>(() => PosHeadBlob.Read([.. changed, .. SHA256.HashData(changed)]));
+    }
+
+    /// <summary>
+    ///     The largest value that fits, 2,147,483,647 in five bytes, is still read.
+    /// </summary>
+    [Fact]
+    public void PosHeadBlob_Read_VarintOfMaximumInt_IsReadAsThatNumber()
+    {
+        // Arrange: the feature layout int.MaxValue; the reader accepts the number and the binding rejects the layout
+        var body = HeadBlobWriter.WriteBody(HeadSpec.Create());
+        const int layoutAt = 4 + 2 + 1 + PosHeadBlob.HashSize;
+        byte[] changed = [.. body[..layoutAt], 0xFF, 0xFF, 0xFF, 0xFF, 0x07, .. body[(layoutAt + 1)..]];
+
+        // Act
+        var data = PosHeadBlob.Read([.. changed, .. SHA256.HashData(changed)]);
+
+        // Assert
+        Assert.Equal(int.MaxValue, data.FeatureLayout);
+    }
+
+    /// <summary>
     ///     The expected class names are the names of the parts of speech in order.
     /// </summary>
     [Fact]

@@ -2929,7 +2929,7 @@ sections:
               of a model (set, sentence, document, token, word, gold part of speech, answered part of speech, whether
               it is right and whether the word is ambiguous) in a tab-separated file that it reads back, with the
               source of the sentence in the open corpus as its document, and shall reject a file with another header
-              or a malformed line.
+              or a malformed line; the running-text report shall not need the option when no file is requested.
             tags: [unit]
             justification: |
               Comparing two versions of a model needs their answers on the same tokens, not only their accuracy
@@ -2938,6 +2938,7 @@ sections:
               - WordSenseBuilder_RunningText_Run_RecordsTheOutcomeOfEveryScoredToken
               - WordSenseBuilder_RunningText_Documents_AreTheSourceIdsOfTheOpenSets
               - WordSenseBuilder_OutcomeFile_RenderAndRead_RoundTrip
+              - WordSenseBuilder_Program_EvaluateRunning_ReportWithoutOutcomes_Succeeds
 
           - id: WordSense-WordSenseBuilder-OutcomeComparison
             title: >-
