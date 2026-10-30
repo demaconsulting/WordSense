@@ -26,7 +26,8 @@ internal sealed class BertBaseCasedEncoderModel : OnnxWordSenseModel
         typeof(BertBaseCasedEncoderModel).Assembly,
         "DemaConsulting.WordSense.BertBaseCased.weights.bin",
         768,
-        "DemaConsulting.WordSense.BertBaseCased.head.bin");
+        "DemaConsulting.WordSense.BertBaseCased.head.bin",
+        HeadInUse: true);
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="BertBaseCasedEncoderModel"/> class.

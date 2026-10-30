@@ -11,13 +11,15 @@ scores the fine senses of an ambiguous word and decides the level of the answer.
 third-party runtime dependency, ONNX Runtime, and it references only the core package. Its single public type is the
 abstract `OnnxWordSenseModel`; the model packages derive from it and supply the model identity. The encoder model is
 usable on its own. The classifier scores the fine senses of the lemmas that have trained weights (the lemmas of the
-relabeled corpus in this version) with the encoder and decides the level of the answer; every word whose
-lemma has no trained weights is answered from the lexicon alone (with all its lemmas and parts of speech equally likely
-and no scored
-senses). The
+relabeled corpus in this version) with the encoder and decides the level of the answer. A model that uses its
+part-of-speech head (BertBaseCased) also gives every known word of two or more parts of speech, whatever its lemma, the
+probabilities of its parts of speech from the head. Every word whose lemma has no trained weights is answered from
+the lexicon (with all its lemmas and parts of speech equally likely, or with the probabilities of the head, and no
+scored senses). The
 statistical choice among the analyses of such a word is not made in this package: the MiniLM and BertBaseCased
 packages compose the encoder model with the Basic model through the core `FallbackWordSenseModel`, which uses the Basic
-result for every word the encoder did not score.
+result for every word the encoder did not score and, for a model that uses its head, reweighs the part-of-speech
+probabilities of the head against those of Basic.
 
 The subsystem contains eight units:
 
@@ -33,13 +35,16 @@ The subsystem contains eight units:
 - **PosHead**: the part-of-speech head blob reader, its binding to the encoder and to the parts of speech, the
   probabilities of the parts of speech of a word and their restriction.
 
-The embedded part-of-speech head of a model is loaded and validated together with its embedded weights, whether or not
-a word needs the encoder. It is not used for any answer.
+The embedded part-of-speech head of a model is loaded and validated together with its embedded weights, whenever the
+model description names one and whether or not a word needs the encoder. Only a model whose description declares the
+head in use answers with it: BertBaseCased does; MiniLM carries a head that it validates and does not use, and
+behaves as a model without a head.
 
 ### Interfaces
 
 It exposes the abstract `OnnxWordSenseModel` (implements `IDownloadableWordSenseModel`, and so `IWordSenseModel`, which
-is `IDisposable`) with the properties
+is `IDisposable`, and the internal marker `IPartOfSpeechEvidenceModel` of the core, which is true when the model names
+a head and uses it) with the properties
 `HiddenSize` and `ModelId`. Its constructor is private protected, so only the WordSense model packages can derive.
 It consumes the core contracts and the `WordLexicon` (analyses, senses, groups), the ONNX Runtime inference API,
 HTTP(S) for downloads, the file system for the model store, and the embedded weights and part-of-speech head of the
@@ -48,8 +53,9 @@ builder and the test projects.
 
 The model description passed by a derived class is an internal `ModelSpec`: the model id, the files with their
 SHA-256 digests, the ONNX file name, the vocabulary file name, whether the tokenizer lower-cases, the assembly and
-resource name of the weights, the hidden size and `HeadResourceName`, the resource name of the part-of-speech head in
-the same assembly (null for a model without a head).
+resource name of the weights, the hidden size, `HeadResourceName`, the resource name of the part-of-speech head in
+the same assembly (null for a model without a head; a named head is loaded and validated), and `HeadInUse`, whether the
+model answers with the head (false for a model that carries a head it does not use).
 
 ### Design
 
@@ -62,17 +68,21 @@ The units collaborate as follows:
    `ModelUnavailableException`, `ModelIntegrityException` or `DownloadConfigurationException` (see _OnnxWordSenseModel
    Unit Design_), and likewise reports a damaged embedded weights resource, a damaged, missing or mismatched embedded
    head, or an ONNX file from `ClassifyAsync` as a `ModelIntegrityException`.
-2. `OnnxWordSenseModel.ClassifyAsync` (lazily ensuring first when a word needs the encoder) loads the embedded weights
+2. `OnnxWordSenseModel.ClassifyAsync` loads the embedded weights
    once through `LemmaWeights` (blob reader and all-or-nothing match to the word image) and the embedded part-of-speech
    head once through `PosHead` (blob reader and binding to the pinned encoder file, the hidden size and the parts of
-   speech), opens one `OnnxEncoder` once
-   (which builds a `WordPieceTokenizer` and the ONNX session) and runs an `OnnxClassifier` over the shared encoder and
-   weights. The head is checked and kept, and no answer uses it.
+   speech). It then decides from the lexicon whether any word needs the encoder (a word with scored senses or, for a
+   model that uses its head, a known word of two or more distinct parts of speech); only then does it ensure the files
+   lazily, open one `OnnxEncoder` once
+   (which builds a `WordPieceTokenizer` and the ONNX session) and run an `OnnxClassifier` over the shared encoder, the
+   weights and, for a model that uses its head, the head.
 3. `OnnxClassifier.ClassifyAsync` resolves every word from the lexicon, asks `OnnxEncoder` for the pooled vector of
-   the words that need context, turns each vector into a feature with the global mean of the weights, scores the
-   fine senses of the word's analyses with `LemmaWeights`, lets `LemmaWeights` decide the level of the answer and
+   the words that need context (with a head, for the pooled vector of every word of the text in the possessive view),
+   turns each vector of a pending word into a feature with the global mean of the weights, scores the
+   fine senses of the word's analyses with `LemmaWeights`, lets `LemmaWeights` decide the level of the answer, lets
+   `PosHead` give the probability of the parts of speech of a word of several parts of speech and
    builds the result (the analyses with their probabilities and the senses inside them, the selected analysis, the
-   level, the confidence and the ids). A word without scored senses is answered from the lexicon alone.
+   level, the confidence and the ids). A word without scored senses is answered from the lexicon.
 
 Training and inference share the feature computation, so the builder and the classifier cannot diverge. The encoder
 and the weights are shared by all callers of one model and are released when the model is disposed.
@@ -219,8 +229,10 @@ senses of its lemma and part of speech. It then decides:
 3. **Several senses and trained weights.** The word is pending. The encoder runs once over the text, the pooled vector
    of the word is turned into the feature, and the classifier scores the fine senses of every analysis of the word
    so every part of speech the word can have is reachable, such as the preposition use of `like`) and no sense of any
-   other lemma. The softmax of the fine scores gives each sense a probability; the probability of a lemma and part of
-   speech (a slot) is the mass of its senses, the probability of a sense given its slot is its mass renormalized within
+   other lemma. The softmax of the fine scores gives each sense a probability; without a part-of-speech head the
+   probability of a lemma and part of
+   speech (a slot) is the mass of its senses (with a head see case 5), the probability of a sense given its slot is its
+   mass renormalized within
    the slot, and the analyses of a slot that differ only in features (`cut` as an infinitive and as a past tense) share
    the probability of the slot, equally unless a chooser tells them apart. A
    form whose analyses belong to several lemmas or tenses first gets the probabilities of its analyses from its form
@@ -254,20 +266,37 @@ senses of its lemma and part of speech. It then decides:
    `FallbackWordSenseModel` use this result instead of its fallback (the composite may still give the equally likely
    variants of a slot the proportions of its fallback; the encoder itself never reads Basic).
 4. **No scored senses.** The lemma has no trained weights, the encoder produced no usable vector, or a multi-lemma form
-   has no chooser: the word is answered from the lexicon alone. Its lemmas and parts of speech (slots) are equally
-   likely (probability 1 for a single one, 1/s for s of them) and the analyses of a slot split its probability equally,
+   has no chooser: the word is answered from the lexicon. Its lemmas and parts of speech (slots) are equally
+   likely (probability 1 for a single one, 1/s for s of them; with a head see case 5) and the analyses of a slot split
+   its probability equally,
    the first analysis of the lexicon is the selected one, the senses lists are
    empty (a word with a single analysis whose lemma and part of speech have exactly one sense lists that sense with
    probability 1 and is answered at the sense level), and the level is `PartOfSpeech` with the probability of the
-   slot of the selected analysis as confidence. No fine sense is guessed. The choice among the analyses is left to the fallback
+   slot of the selected analysis as confidence. No fine sense is guessed. The choice among the senses is left to the fallback
    model of a composition: a word of this kind has no scored senses, so a
    `FallbackWordSenseModel` answers it with its fallback model, which the MiniLM and BertBaseCased packages set to the
    Basic model. A word with a single analysis but many senses and no weights (`bank` when untrained) is answered the
    same way, at the part of speech level with confidence 1.
+5. **Part-of-speech evidence (a model that uses its head).** A known word whose analyses have two or more distinct
+   parts of speech needs the encoder whatever its lemma. The encoder runs over the whole text in the possessive view (a
+   possessive that the lexicon lists as one token is split into its stem and its marker), windowed when the text is
+   longer than the encoder window, so the cost is linear in the length of the text. The head reads the pooled vectors of
+   the word and of its previous and next token and gives a posterior over the ten parts of speech, which is restricted
+   to the parts of speech that the lexicon lists for the spelling and renormalized. The probability of a slot is
+   `P_pos(part of speech) × share(slot | part of speech)`, where the share is the mass of the slot's senses (or of its
+   chooser labels) renormalized among the slots of its part of speech, and equal when none is scored. A closed-class
+   slot therefore has a probability of its own and still no senses, and a word whose lemma has no trained weights gets
+   the head's probabilities instead of equal shares. The scores of the senses, the ranked senses of every analysis and
+   the sense and the group of an answer do not depend on the head. The level is decided as in case 3 for the selected
+   analysis, the best variant of the slot that the head ranks first; when the best sense lies in another slot the answer
+   steps down to the `PartOfSpeech` level with the probability of the slot as the confidence. A word with a single part
+   of speech, a word without a usable vector and a classifier without a head are answered as in cases 1 to 4. The
+   MiniLM model has a head that it does not use and does not take this path.
 
 The shipped weights of this version cover the lemmas of the relabeled corpus (see `corpus/README.md` for their number)
 and the form choosers of the forms whose chooser rows cover every analysis; the lexicon answers every other word and
-every form of several lemmas without a chooser (the cases 1, 2 and 4), and case 3 holds for the trained lemmas.
+every form of several lemmas without a chooser (the cases 1, 2 and 4), and case 3 holds for the trained lemmas. Case 5
+applies on top of them to a model that uses its head.
 
 #### Evaluation Scope
 
@@ -311,7 +340,8 @@ not a public extension point. A contributor adds a model as follows:
    `OnnxWordSenseModel` and
    passes a `ModelSpec` (model id, each `ModelFile` with its SHA-256 and
    exact length, ONNX and vocabulary file names, whether the tokenizer lower-cases, the weights assembly and resource
-   name, the hidden size and the resource name of the part-of-speech head) and a default maximum sequence length of 128,
+   name, the hidden size, the resource name of the part-of-speech head and whether the model uses it) and a default
+   maximum sequence length of 128,
    and a public sealed model class that wraps a
    `FallbackWordSenseModel` of the encoder class (primary) and a `BasicWordSenseModel` (fallback).
 3. Register the model in the builder's `ModelCatalog`, run `weights <modelId>` to train the weights and the per-lemma

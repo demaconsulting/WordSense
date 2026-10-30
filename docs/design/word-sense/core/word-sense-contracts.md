@@ -117,8 +117,10 @@ model for another without code changes, and the composite `FallbackWordSenseMode
   `ClassifyAsync(IEnumerable<string> words, CancellationToken)` returns `Task<ClassifyResult[]>`
   with one result per input word in input order; empty input gives an empty array. The input is one running text whose
   words are joined by single spaces, with punctuation as separate elements. A model that needs files ensures them
-  lazily on first need inside `ClassifyAsync` (the default and `WORDSENSE_MIRROR_*` environment settings; lexicon-only
-  words never need the model; concurrent callers share one ensure; a failed ensure can be retried), and it is safe for
+  lazily on first need inside `ClassifyAsync` (the default and `WORDSENSE_MIRROR_*` environment settings; a text whose
+  words need no context never needs the model, and an encoder model that uses a part-of-speech head needs it for the
+  first text that has a word of several parts of speech; concurrent callers share one ensure; a failed ensure can be
+  retried), and it is safe for
   concurrent use. The model owns the lifetime; `Dispose` is idempotent and thread-safe, cancels a pending ensure
   (`OperationCanceledException`), and `ClassifyAsync` throws `ObjectDisposedException` afterwards.
 - `IDownloadableWordSenseModel : IWordSenseModel`: the capability of a model that needs files. It adds
@@ -135,6 +137,11 @@ model for another without code changes, and the composite `FallbackWordSenseMode
   disposes both with its own `Dispose`. The primary weight `w` (the read-only property `PrimaryWeight`) is a number
   from 0 to 1, 1 when it is not given; a value below 0, above 1 or not a number is rejected with
   `ArgumentOutOfRangeException`.
+- `IPartOfSpeechEvidenceModel` (internal): the marker of a model whose slot probabilities for a word of two or more parts
+  of speech are an estimate of the part of speech from the sentence, not only the mass of senses. Its one property,
+  `ProvidesPartOfSpeechEvidence`, is true when the model has such evidence (for the encoder models, when a head is named
+  and in use). `FallbackWordSenseModel` reads it from its primary model. The interface is internal, so a third-party
+  model cannot claim the behavior, and a marked model that does not provide the evidence is composed as an unmarked one.
 - `DownloadOptions(BaseUri, BearerToken, Credentials, StoreRoot, Timeout)`: a sealed record in its own file (formerly
   `MirrorOptions`; the `WORDSENSE_MIRROR_*` environment variable names are unchanged). The base URI is the
   mirror's root; the store root defaults to the per-user `DemaConsulting/WordSense/models` folder; the timeout is per
@@ -194,8 +201,10 @@ whether an id is null: a result at the `PartOfSpeech` level is a valid answer th
   of the slot is 1) and every other fallback result are used as they are, and the Basic model alone is not affected.
   The result of a word is the result
   of one model, never a mixture of the two
-  (its analyses, selected analysis, level, confidence and ids belong together), with three refinements (`SplitClosedClass`,
-  `Refine` and `Reconcile`, in this order). `SplitClosedClass`: a slot of the primary result whose part of speech is
+  (its analyses, selected analysis, level, confidence and ids belong together), with three refinements
+  (`SplitClosedClass`, `Refine` and `Reconcile`, in this order) for a primary model without part-of-speech evidence and
+  the reweighing described after them for a primary model with it. `SplitClosedClass`: a slot of the primary result
+  whose part of speech is
   closed class (not a noun, verb, adjective or adverb; `SenseFusion.IsClosedClass`) has no probability of its own, since
   a sense classifier has no evidence for it. When the primary result lists closed-class slots without probability (the
   encoder does not score them) and open-class slots, and
@@ -247,6 +256,26 @@ whether an id is null: a result at the `PartOfSpeech` level is a valid answer th
   contract of the confidence at that level says. The floor 1e-6 only keeps the logarithm defined; it is not tuned.
   The weight is a hyperparameter of each model package, tuned on development text only (see the MiniLM and
   BertBaseCased design).
+- Reweighing for a primary model with part-of-speech evidence (`Reweigh`): when the primary model implements
+  `IPartOfSpeechEvidenceModel` with `ProvidesPartOfSpeechEvidence` true, a word whose primary analyses have two or more
+  distinct parts of speech and for which the fallback result has analyses is not split or reconciled; its slot
+  probabilities are reweighed at every level of the answer. The marked primary has a probability for every slot of such
+  a word, closed classes included, so `SplitClosedClass` and `Reconcile` are skipped. The base result is the primary
+  result (with its tied variants refined by `Refine`) when the primary model scored senses, and otherwise the fallback
+  result (the usage-ranked senses and the tense variants of Basic). The slots of the union of both results get
+  the log score `w × ln(max(p_primary, 1e-6)) + (1 − w) × ln(max(p_fallback, 1e-6))` with the primary weight `w`, a
+  softmax gives the probability of every slot, and the slots and the analyses inside them are listed as in `Reconcile`
+  (every analysis keeps its share of the slot in its own result; a slot that the base result does not list takes the
+  analyses of the other result). When the most probable slot is the slot that the base result answered at the `Sense` or
+  `Group` level, the level, group id, sense id and selected analysis stay and the confidence is the new probability of the
+  slot times the probability of the sense (or group) within it, that is, the base confidence divided by the base
+  probability of the slot; when another slot is the most probable, or the base result was at the `PartOfSpeech` level,
+  the result is at the `PartOfSpeech` level on the first analysis of the most probable slot with its probability as the
+  confidence and no group or sense id. A base result taken from the fallback passes through `GuardSingleSense` on the
+  reweighed result (0.97). A word of one part of speech is not reweighed: a scored primary result is only refined, and a
+  primary result without scored senses is replaced by the guarded fallback result. A primary model without the marker, or
+  with the marker and no evidence (MiniLM), keeps the rules above exactly. The tense of a verb stays the one of the
+  fallback result (`Refine` and the variants of a fallback base result).
 - `Dispose()`: idempotent and thread-safe (an atomic flag); disposes the primary model and then, even when that throws,
   the fallback model, each once.
 
@@ -300,7 +329,8 @@ constructor range are unchanged.
 #### Dependencies
 
 The records, the options and the exceptions depend on nothing. `FallbackWordSenseModel` depends on the
-`IWordSenseModel` and `IDownloadableWordSenseModel` contracts only (the models it is given), not on any model package.
+`IWordSenseModel` and `IDownloadableWordSenseModel` contracts and on the internal marker `IPartOfSpeechEvidenceModel`
+only (the models it is given), not on any model package.
 
 #### Callers
 

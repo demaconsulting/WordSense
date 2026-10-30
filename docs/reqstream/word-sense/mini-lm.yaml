@@ -29,11 +29,12 @@ sections:
           - id: WordSense-MiniLM-Head
             title: >-
               The MiniLM package shall embed a trained part-of-speech head for its all-MiniLM-L6-v2 encoder, and its
-              encoder model shall load the head bound to the pinned encoder file.
+              encoder model shall load the head bound to the pinned encoder file and shall not use it.
             tags: [subsystem]
             justification: |
-              The head ships in the package with the weights; a head that does not belong to the pinned encoder file
-              must never load.
+              The head ships in the package with the weights and is validated at load; a head that does not belong to
+              the pinned encoder file must never load. The model does not answer with it, so its behavior does not
+              depend on it.
             children:
               - WordSense-MiniLM-MiniLMWordSenseModel-Head
               - WordSense-MiniLM-MiniLMWordSenseModel-HeadRejected

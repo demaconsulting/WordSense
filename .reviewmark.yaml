@@ -342,6 +342,7 @@ reviews:
       - "src/DemaConsulting.WordSense/ClassifyResult.cs"
       - "src/DemaConsulting.WordSense/AnalysisCandidate.cs"
       - "src/DemaConsulting.WordSense/FallbackWordSenseModel.cs"
+      - "src/DemaConsulting.WordSense/IPartOfSpeechEvidenceModel.cs"
       - "src/DemaConsulting.WordSense/WordDetails.cs"
       - "src/DemaConsulting.WordSense/SenseInfo.cs"
       - "src/DemaConsulting.WordSense/SenseLevel.cs"
@@ -350,6 +351,7 @@ reviews:
       - "test/DemaConsulting.WordSense.Tests/WordKeyTests.cs"
       - "test/DemaConsulting.WordSense.Tests/ContractsTests.cs"
       - "test/DemaConsulting.WordSense.Tests/FallbackWordSenseModelTests.cs"
+      - "test/DemaConsulting.WordSense.Tests/FallbackWordSenseModelEvidenceTests.cs"
       - "test/DemaConsulting.WordSense.Tests/WordSenseExceptionTests.cs"
 
   # WordSense-Core-BasicWordSenseModel Review (one per unit)
@@ -479,6 +481,7 @@ reviews:
       - "docs/verification/word-sense/onnx/onnx-classifier.md"
       - "src/DemaConsulting.WordSense.Onnx/OnnxClassifier.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/OnnxClassifierTests*.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/OnnxClassifierPosTests.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/Fixtures.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/OnnxLayeringTests.cs"
 

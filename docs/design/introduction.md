@@ -49,7 +49,7 @@ software items, specifically:
   references only the core package
   - **OnnxWordSenseModel (Unit)** — the public abstract encoder model with file management, usable on its own
   - **OnnxClassifier (Unit)** — scoring of the fine senses of a word from the encoder output, the answer level, the
-    form chooser and the lexicon-only answer of a word without scored senses
+    form chooser, the part-of-speech evidence of the head and the lexicon-only answer of a word without scored senses
   - **OnnxEncoder (Unit)** — ONNX inference session, mean pooling per word, windowed encoding of a whole text and the
     possessive view
   - **WordPieceTokenizer (Unit)** — BERT WordPiece tokenizer, uncased or cased
@@ -178,9 +178,11 @@ tool references all four packages and is never shipped. Further rules of the spl
 
 The data flows from the contracts upward: a caller obtains an `IWordSenseModel` from a model package, optionally
 calls `EnsureModelAsync` once when the model is an `IDownloadableWordSenseModel` (`ClassifyAsync` ensures lazily when
-a word needs the model; the explicit call only controls when the download happens) and classifies
+a word needs the encoder: a word with scored senses or, for BertBaseCased, a known word of several parts of speech; the
+explicit call only controls when the download happens) and classifies
 tokenized text, receiving one `ClassifyResult` per word in input order. Every model looks each word up in
-`WordLexicon` first; only a word with several senses needs the model's context decision, and each answer states the
+`WordLexicon` first; only a word with several senses (or, for BertBaseCased, several parts of speech) needs the model's
+context decision, and each answer states the
 level (part of speech, group or sense) at which it was made. The result is built from its `Analyses` (the probability
 of every analysis of the word and, where the model scored them, of the senses inside each analysis); the selected
 analysis, the level, the confidence and the ids are a summary of it.
@@ -193,7 +195,8 @@ The source code folder structure mirrors the packages, and the packages mirror t
 src/DemaConsulting.WordSense/                      — core subsystem
 ├── WordLexicon.cs, WordImage.cs, ImageFormat.cs   — word-lexicon unit
 ├── IWordSenseModel.cs (the classification contract only), IDownloadableWordSenseModel.cs, DownloadOptions.cs,
-│   FallbackWordSenseModel.cs, ClassifyResult.cs, AnalysisCandidate.cs, SenseCandidate.cs,
+│   FallbackWordSenseModel.cs, IPartOfSpeechEvidenceModel.cs (internal marker), ClassifyResult.cs,
+│   AnalysisCandidate.cs, SenseCandidate.cs,
 │   WordDetails.cs (also PartOfSpeech), SenseInfo.cs (also SenseGroup), SenseLevel.cs,
 │   WordSenseException.cs, ModelUnavailableException.cs, ModelIntegrityException.cs,
 │   DownloadConfigurationException.cs                — word-sense-contracts unit
@@ -224,7 +227,7 @@ src/DemaConsulting.WordSense.MiniLM/               — mini-lm subsystem
 ├── MiniLMWordSenseModel.cs, MiniLMEncoderModel.cs  — mini-lm-word-sense-model unit
 ├── NamespaceDoc.cs
 ├── Resources/weights.bin                           — embedded weights of the MiniLM model
-└── Resources/head.bin                              — embedded part-of-speech head of the MiniLM model
+└── Resources/head.bin                              — embedded part-of-speech head of the MiniLM model (validated, not used)
 
 src/DemaConsulting.WordSense.BertBaseCased/        — bert-base-cased subsystem
 ├── BertBaseCasedWordSenseModel.cs, BertBaseCasedEncoderModel.cs — bert-base-cased-word-sense-model unit

@@ -65,7 +65,7 @@ public class EndToEndTests
 
     /// <summary>
     ///     The tense of <c>read</c> and <c>put</c> follows the context: the encoder cannot tell the variants of the slot
-    ///     apart, so the Basic model splits them, and the slot keeps the probability the encoder gave it.
+    ///     apart, so the Basic model splits them.
     /// </summary>
     /// <param name="sentence">The sentence, words separated by spaces.</param>
     /// <param name="index">The index of the verb.</param>
@@ -96,20 +96,26 @@ public class EndToEndTests
         Assert.Equal(result.Details, result.Analyses[0].Details);
         Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
 
-        // Assert: when the encoder scored senses for the verb, the slot of the verb, the level, the confidence and the ids are
-        // those of the encoder (only the split inside the slot moved); otherwise the answer is the complete result of Basic
+        // Assert: when the encoder scored senses for the verb, the level and the ids are those of the encoder and the probability of
+        // the sense inside the slot is unchanged (only the split inside the slot moved, and the slot got the probability of the
+        // composition); otherwise the variants of the slot have the proportions of Basic
         var scored = encoded.Level is SenseLevel.Group or SenseLevel.Sense || encoded.Analyses.Any(a => a.Senses.Length > 0);
-        if (scored)
+        if (scored && result.Level == encoded.Level)
         {
-            Assert.Equal((encoded.Level, encoded.Confidence, encoded.GroupId, encoded.SenseId), (result.Level, result.Confidence, result.GroupId, result.SenseId));
-            Assert.Equal(SlotMass(encoded), SlotMass(result), 9);
+            Assert.Equal((encoded.GroupId, encoded.SenseId), (result.GroupId, result.SenseId));
+            Assert.Equal(encoded.Confidence / SlotMass(encoded), result.Confidence / SlotMass(result), 9);
         }
-        else
+        else if (!scored)
         {
             using var basic = new BasicWordSenseModel();
             var expected = (await basic.ClassifyAsync(words, TestContext.Current.CancellationToken))[index];
-            Assert.Equal((expected.Level, expected.Confidence, expected.Details), (result.Level, result.Confidence, result.Details));
-            Assert.Equal(expected.Analyses.Select(a => (a.Details, a.Probability)), result.Analyses.Select(a => (a.Details, a.Probability)));
+            var slot = result.Analyses.Where(a => a.Details.PartOfSpeech == details.PartOfSpeech && a.Details.Lemma == details.Lemma).ToArray();
+            var basicSlot = expected.Analyses.Where(a => a.Details.PartOfSpeech == details.PartOfSpeech && a.Details.Lemma == details.Lemma).ToArray();
+            Assert.Equal(basicSlot.Select(a => a.Details), slot.Select(a => a.Details));
+            for (var i = 0; i < slot.Length; i++)
+            {
+                Assert.Equal(basicSlot[i].Probability / basicSlot.Sum(b => b.Probability), slot[i].Probability / slot.Sum(b => b.Probability), 9);
+            }
         }
     }
 

@@ -22,15 +22,21 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     per-lemma thresholds support: the <see cref="SenseLevel.Sense"/> level with the sense id, the
 ///     <see cref="SenseLevel.Group"/> level with the group id, or the <see cref="SenseLevel.PartOfSpeech"/> level; the
 ///     ranked senses of every analysis are listed whatever the level. A word with one analysis and one sense is answered
-///     at the <see cref="SenseLevel.Sense"/> level. Every other ambiguous word is answered by the Basic fallback: it
-///     chooses the analysis (the part of speech) from the context, the analyses of the result carry its probabilities,
-///     no sense is decided (the senses of the analyses are ranked by how often they are used, which is a statement about
-///     the lemma and never an answer), and the level is <see cref="SenseLevel.PartOfSpeech"/>, or <see cref="SenseLevel.Sense"/> when
-///     its selected analysis has exactly one sense. The composition rules (which model answers a word,
-///     and that a result always belongs completely to one of the two models) are those of
-///     <see cref="FallbackWordSenseModel"/>. <see cref="ClassifyAsync"/> needs the encoder files only for a text that
-///     contains a trained lemma with several senses (it ensures them on first use), and never downloads a file or fails
-///     because a file is missing for any other text.
+///     at the <see cref="SenseLevel.Sense"/> level. The part of speech of every word that has two or more parts of speech
+///     comes from the sentence: the embedded part-of-speech head reads the encoder vectors of the word and its
+///     neighbors, and the composite combines its probabilities with those of the Basic fallback (weight
+///     <see cref="PartOfSpeechHeadWeight"/>, see <see cref="FallbackWordSenseModel"/>); the answer keeps its level when
+///     the most probable part of speech is the one the encoder answered, and otherwise steps down to
+///     <see cref="SenseLevel.PartOfSpeech"/>. Every other ambiguous word (no trained lemma) is answered by the Basic
+///     fallback with that part of speech: no sense is decided (the senses of the analyses are ranked by how often they
+///     are used, which is a statement about the lemma and never an answer), and the level is
+///     <see cref="SenseLevel.PartOfSpeech"/>, or <see cref="SenseLevel.Sense"/> when its selected analysis has exactly
+///     one sense. The composition rules (which model answers a word, and that a result always belongs completely to one
+///     of the two models) are those of <see cref="FallbackWordSenseModel"/>. <see cref="ClassifyAsync"/> needs the
+///     encoder files for a text that contains a known word of two or more parts of speech, or a word whose lemma has
+///     scored senses (it ensures them on first use; there is no opt-out), and never downloads a file or fails because a
+///     file is missing for any other text (unknown words and known words of one part of speech whose senses are not
+///     scored).
 ///     </para>
 ///     <para>
 ///     Choose BertBaseCased when case-awareness matters and the larger download is acceptable: 104 MiB; it
@@ -120,7 +126,7 @@ public sealed class BertBaseCasedWordSenseModel : IDownloadableWordSenseModel
     /// </remarks>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="maxSequenceLength"/> is outside 8 to 512.</exception>
     public BertBaseCasedWordSenseModel(string? modelDirectory = null, int maxSequenceLength = 128)
-        : this(modelDirectory, maxSequenceLength, PartOfSpeechPrimaryWeight)
+        : this(modelDirectory, maxSequenceLength, PartOfSpeechHeadWeight)
     {
     }
 
@@ -130,7 +136,7 @@ public sealed class BertBaseCasedWordSenseModel : IDownloadableWordSenseModel
     /// </summary>
     /// <param name="modelDirectory">A directory that holds <c>model_int8.onnx</c> and <c>vocab.txt</c>, or null to use the per-user store.</param>
     /// <param name="maxSequenceLength">The maximum sequence length including special tokens; 8 to 512.</param>
-    /// <param name="primaryWeight">The weight of the encoder in the combination of the slot probabilities, from 0 to 1; see <see cref="PartOfSpeechPrimaryWeight"/>.</param>
+    /// <param name="primaryWeight">The weight of the encoder's part-of-speech head in the combination of the slot probabilities, from 0 to 1; see <see cref="PartOfSpeechHeadWeight"/>.</param>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="maxSequenceLength"/> is outside 8 to 512 or <paramref name="primaryWeight"/> is outside 0 to 1.</exception>
     internal BertBaseCasedWordSenseModel(string? modelDirectory, int maxSequenceLength, double primaryWeight)
     {
@@ -140,11 +146,11 @@ public sealed class BertBaseCasedWordSenseModel : IDownloadableWordSenseModel
     }
 
     /// <summary>
-    ///     The weight of the encoder when its slot probabilities are combined with those of the Basic model for a word that
-    ///     the encoder answers at the part-of-speech level (see <see cref="FallbackWordSenseModel"/>): 1 keeps the answer
-    ///     of the encoder, 0 takes the part of speech of Basic.
+    ///     The weight of the encoder's part-of-speech head when the slot probabilities of a word of several parts of speech
+    ///     are combined with those of the Basic model (see <see cref="FallbackWordSenseModel"/>): 1 takes the head alone,
+    ///     0 takes the part of speech of Basic. Chosen on the development split of the open corpus.
     /// </summary>
-    internal const double PartOfSpeechPrimaryWeight = 1.0;
+    internal const double PartOfSpeechHeadWeight = 0.8;
 
     /// <summary>
     ///     Gets the identifier of the model, which names its folder in the repository, on a mirror and in the store.
@@ -203,13 +209,15 @@ public sealed class BertBaseCasedWordSenseModel : IDownloadableWordSenseModel
     ///     A word with one analysis and one sense is answered by the encoder model at the <see cref="SenseLevel.Sense"/>
     ///     level without running the encoder. A word whose lemma has trained weights and several senses is answered by the
     ///     encoder at the sense, group or part-of-speech level its thresholds allow, with the ranked senses of its
-    ///     analyses; the first call with such a word ensures the model files itself (it may download them, see
-    ///     <see cref="EnsureModelAsync"/>). A word whose lemma has no trained weights is answered by the Basic model: at
-    ///     the <see cref="SenseLevel.PartOfSpeech"/> level with the probabilities of its analyses and the senses of its
+    ///     analyses. The first call with a word of two or more parts of speech, trained or not, ensures the model files
+    ///     itself (it may download them, see <see cref="EnsureModelAsync"/>) and reads the whole sentence: the
+    ///     part-of-speech head and the Basic model give the probabilities of its analyses. A word whose lemma has no
+    ///     trained weights is answered at the <see cref="SenseLevel.PartOfSpeech"/> level with the senses of its
     ///     analyses ranked by how often they are used (the usage prior: a ranking of the lemma, never an answer), or
     ///     at the <see cref="SenseLevel.Sense"/> level when its selected analysis has exactly one sense, which the Basic
-    ///     model names without scoring. A text without a trained lemma needs no model file. An unknown word has no
-    ///     analysis, the level <see cref="SenseLevel.None"/> and confidence 0.
+    ///     model names without scoring. A text of unknown words and of known words of one part of speech whose senses are
+    ///     not scored needs no model file. An
+    ///     unknown word has no analysis, the level <see cref="SenseLevel.None"/> and confidence 0.
     ///     </para>
     /// </remarks>
     /// <exception cref="ArgumentNullException">Thrown when the list is null.</exception>

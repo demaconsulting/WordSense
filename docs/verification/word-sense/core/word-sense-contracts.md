@@ -6,7 +6,9 @@ The unit groups the public contract types `IWordSenseModel`, `IDownloadableWordS
 `DownloadOptions`, the typed exceptions `WordSenseException`, `ModelUnavailableException`, `ModelIntegrityException` and
 `DownloadConfigurationException`, `ClassifyResult`, `AnalysisCandidate`, `SenseCandidate`, `SenseLevel`, `WordDetails`,
 `PartOfSpeech`, `SenseInfo` and `SenseGroup`. Tests in `test/DemaConsulting.WordSense.Tests` (`ContractsTests.cs`,
-`WordSenseExceptionTests.cs` and the composite tests of `FallbackWordSenseModel`) exercise the records, the enums and
+`WordSenseExceptionTests.cs` and the composite tests of `FallbackWordSenseModel`, among them
+`FallbackWordSenseModelEvidenceTests.cs` for a primary model that provides part-of-speech evidence) exercise the
+records, the enums and
 the exceptions directly and implement the interfaces with small test doubles to show they are usable without a model
 package and to drive the composite: a double returns prepared `ClassifyResult` arrays, counts its ensure and dispose
 calls (a double of the downloadable capability also records the options and the token it receives) and can throw or
@@ -167,6 +169,36 @@ auxiliary 0 or omits it, keeps the auxiliary at 0 with weight 0.6; an encoder re
   of results and weights the probabilities sum to one, the selected analysis is the first analysis, the confidence is the
   probability of its slot, the level is part of speech, the number of analyses is unchanged and every analysis keeps its
   senses.
+- **Fallback reweighs the part-of-speech evidence of a marked primary**
+  (`..._EvidenceUnscoredPrimary_ReweighsTheFallbackResult`, `..._EvidenceWeight_OneTakesThePrimaryZeroTheFallback`,
+  in `FallbackWordSenseModelEvidenceTests.cs`): a double that implements the internal marker with the evidence is the
+  primary model. For a word whose primary analyses have a noun and verb slots, the slot probabilities of the result
+  equal the geometric blend `p_primary^w × p_fallback^(1−w)` of the two results, normalized (computed in the test
+  from the designed probabilities), the analyses sum to one, the result is at the part-of-speech level on the best variant
+  of the most probable slot, with the usage-ranked senses and the variants of the fallback
+  result; the weight 1 gives the primary slot probabilities and the weight 0 those of the fallback.
+- **A marked primary keeps its level while its slot stays on top**
+  (`..._EvidenceScoredPrimary_TopSlotUnchanged_KeepsTheSense`,
+  `..._EvidenceFallbackSenseLevel_KeepsOrStepsDownByTheFusedConfidence`): a scored sense-level primary result whose slot
+  stays the most probable keeps its level, group id, sense id, selected analysis and senses, with the new slot probability
+  times the probability of the sense within the slot as the confidence; a fallback result at the sense level with one
+  listed sense for a word of several slots is kept when the fused confidence reaches 0.97 and otherwise answered at the
+  part-of-speech level with the same analysis.
+- **A marked primary steps down when another slot wins**
+  (`..._EvidenceScoredPrimary_TopSlotChanges_StepsDownToThePartOfSpeech`): when the blend makes another slot the most
+  probable one, the answer is at the part-of-speech level on the best analysis of that slot with its probability as the
+  confidence, no group or sense id and the senses of the analyses kept.
+- **A marked primary has no closed-class split**
+  (`..._EvidencePrimary_DoesNotSplitTheClosedClass`): the auxiliary slot that the primary gave a probability is weighed
+  like every other slot (not replaced by the fallback's probability).
+- **The marker must provide the evidence**
+  (`..._MarkerWithoutEvidence_IsComposedLikeAPlainModel`): a primary that carries the marker with
+  `ProvidesPartOfSpeechEvidence` false gives the same result as the same results composed from an unmarked model.
+- **Words outside the reweighing** (`..._EvidencePrimary_OnePartOfSpeech_KeepsThePrimarySlots`,
+  `..._EvidencePrimary_FallbackWithoutAnalyses_UsesTheNormalRules`, `..._EvidenceScoredPrimary_RefinesTiedVariants`): a
+  word whose analyses share one part of speech keeps the scored primary result unchanged; a fallback without analyses
+  leaves the normal rules (the fallback result for an unscored primary); the tied variants of a scored primary result are
+  re-split by the proportions of the fallback and the slot probabilities stay the primary's (weight 1).
 - **The weight is validated and reported**
   (`..._PrimaryWeight_OutsideZeroToOne_Throws`, `..._PrimaryWeight_IsReported`): a weight
   below 0, above 1, NaN or infinite throws `ArgumentOutOfRangeException`; 0, 0.6 and 1 are accepted and reported, and

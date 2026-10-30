@@ -10,11 +10,13 @@ sections:
             title: >-
               The Onnx subsystem shall classify words from the core lexicon: an unknown word as unknown, a word with
               one analysis and one sense directly with that sense, a known word whose senses it does not score from the
-              lexicon alone, and a word whose lemma has trained weights and several senses by running the encoder only
-              for such words, scoring only the fine senses of the word's own analyses, giving each analysis a
+              lexicon alone (with the probabilities of the part-of-speech head when the word has several parts of
+              speech and the model uses a head), and a word whose lemma has trained weights and several senses by
+              running the encoder, scoring only the fine senses of the word's own analyses, giving each analysis a
               probability per lemma and part of speech (the feature variants of one sharing it)
               and choosing the analysis of a form that belongs to several lemmas or tenses from its context (a form of
-              several lemmas without a chooser is answered from the lexicon alone).
+              several lemmas without a chooser is answered from the lexicon alone), and shall run the encoder only
+              for a text that has such a word or, with a head, a word of several parts of speech.
             tags: [subsystem]
             justification: |
               Encoder inference is the expensive step; running it only for words that need context keeps
@@ -36,6 +38,46 @@ sections:
             tests:
               - OnnxClassifier_ClassifyAsync_OnlyAmbiguousWordsAreEncoded
               - OnnxClassifier_ClassifyAsync_FormOfTwoLemmas_ChoosesTheLemmaFromContext
+
+          - id: WordSense-Onnx-PartOfSpeech
+            title: >-
+              The Onnx subsystem shall, for a model that uses its part-of-speech head, give every known word of two or
+              more distinct parts of speech, whatever its lemma and including the closed classes, the probability of
+              each part of speech from the head, read from the whole sentence and restricted to the parts of speech
+              of the lexicon, shall give each lemma and part of speech the share of the mass of its senses among
+              those of its part of speech (equal when none is scored), and shall leave the scores of the senses and the
+              sense and group of an answer independent of the head, an answer whose best sense lies in a part of speech
+              that the head does not rank first being given at the part-of-speech level.
+            tags: [subsystem]
+            justification: |
+              The part of speech of a word is decided by its sentence, not by the mass of the senses of its lemma, and
+              the encoder is the evidence for the sentence; the senses keep the thresholds that were calibrated for
+              them.
+            children:
+              - WordSense-Onnx-OnnxClassifier-PartOfSpeech
+              - WordSense-Onnx-OnnxClassifier-PartOfSpeechClosedClass
+              - WordSense-Onnx-OnnxClassifier-PartOfSpeechSenses
+              - WordSense-Onnx-OnnxClassifier-PartOfSpeechContext
+              - WordSense-Onnx-OnnxClassifier-PartOfSpeechVector
+
+          - id: WordSense-Onnx-LazyEncoding
+            title: >-
+              The Onnx subsystem shall require the encoder, and so the model files, only for a text that has a word
+              with scored senses or, for a model that uses its part-of-speech head, a known word of two or more distinct
+              parts of speech, shall ensure the files lazily on the first such text, shall not touch a model file for
+              any other text, and shall load and check an embedded head whenever its model description names one,
+              whether or not the model uses it.
+            tags: [subsystem]
+            justification: |
+              A text of words that need no context must cost no download and no inference; the head and the weights are
+              embedded, so deciding the need touches no file.
+            children:
+              - WordSense-Onnx-OnnxClassifier-Encode
+              - WordSense-Onnx-OnnxWordSenseModel-Classify
+              - WordSense-Onnx-OnnxWordSenseModel-HeadInUse
+            tests:
+              - OnnxWordSenseModel_ClassifyAsync_WordOfSeveralPartsOfSpeech_NeedsTheEncoder
+              - OnnxWordSenseModel_ClassifyAsync_NoHead_UntrainedAmbiguousWords_AnswerPartOfSpeechWithoutModelFiles
 
           - id: WordSense-Onnx-Levels
             title: >-
@@ -87,10 +129,11 @@ sections:
           - id: WordSense-Onnx-Untrained
             title: >-
               The Onnx subsystem shall answer a known word whose senses it does not score (its lemma has no usable
-              trained weights, or the encoder produced no usable vector) from the lexicon alone, with its analyses (a
-              single analysis with probability 1, several lemmas and parts of speech equally likely, the feature
-              variants of one sharing its probability), no encoder-scored senses and the part of speech
-              level, and never with a guessed fine sense, leaving the choice between the analyses to the fallback
+              trained weights, or the encoder produced no usable vector) from the lexicon, with its analyses (a
+              single analysis with probability 1, several lemmas and parts of speech with equal probabilities, or with
+              the probabilities of the part-of-speech head for the parts of speech of a model that uses a head, the
+              feature variants of one sharing its probability), no encoder-scored senses and the part of speech
+              level, and never with a guessed fine sense, leaving the choice between the senses to the fallback
               model of a composition, and shall not depend on any other model package. The one exception is a lexical
               singleton: a word with a single analysis whose lemma and part of speech have exactly one sense is
               answered at the sense level with that sense listed with probability 1, which no encoder scored.
@@ -224,7 +267,8 @@ sections:
           - id: WordSense-Onnx-Head-Load
             title: >-
               The Onnx subsystem shall load and check the part-of-speech head of a model with its embedded weights,
-              reporting a damaged, missing or mismatched head as a load failure.
+              whenever the model description names one and whether or not the model uses it, reporting a damaged,
+              missing or mismatched head as a load failure.
             tags: [subsystem]
             justification: |
               The head and the weights are shipped in the package, so a defect in either must surface at load.

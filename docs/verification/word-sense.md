@@ -78,6 +78,25 @@ trained for is answered at the part of speech level by the statistical analysis 
 with no sense id and no group id, and never at level none because it is known
 (`WordSense_Classifier_EndToEnd_UntrainedWord_AnswersPartOfSpeech`).
 
+### Part of Speech from the Head and Lazy Encoding
+
+The BertBaseCased model decides the part of speech of every known word of two or more parts of speech from the sentence:
+the slot probabilities are those of its part-of-speech head reweighed against those of the Basic model with the
+weight 0.8, and an answer keeps its level only when its slot stays the most probable one
+(`BertBaseCasedWordSenseModel_PartOfSpeechAnswer_ReweighsTheHeadAgainstBasic`, which recomputes the blend from the
+results of the encoder model and of the Basic model; `BertBaseCasedWordSenseModel_PrimaryWeight_DefaultIsTunedAndAnExplicitWeightReachesTheComposition`;
+`BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersAtThePartOfSpeechLevel`;
+system requirement `WordSense-Lib-PartOfSpeech`). Its model files are needed, and ensured lazily, only for a text that
+has such a
+word or a word with scored senses, so a text of unknown words and of known words of one part of speech with no scored
+senses never touches a model file
+(`BertBaseCasedWordSenseModel_ClassifyAsync_LexiconOnly_NeedsNoEnsure`,
+`OnnxWordSenseModel_ClassifyAsync_WordOfSeveralPartsOfSpeech_NeedsTheEncoder`). The MiniLM model carries a head that it
+validates and does not use, so it keeps its behavior: it answers an untrained ambiguous word from the Basic model without
+any model file (`MiniLMWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback`) and combines the slot
+probabilities with the weight 0.6 at the part-of-speech level. The units are verified in the core and Onnx test projects
+(see the `OnnxClassifier`, `OnnxWordSenseModel` and `WordSenseContracts` verification documents).
+
 ### Analyses Are Ranked and Sum to One
 
 Each model classifies a word with several analyses (for example `record`) in a sentence. The analyses of the result

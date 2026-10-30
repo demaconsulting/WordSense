@@ -46,14 +46,19 @@ sections:
 
               - id: WordSense-MiniLM-MiniLMWordSenseModel-Head
                 title: >-
-                  The encoder model of MiniLMWordSenseModel shall load the part-of-speech head embedded in its
+                  The encoder model of MiniLMWordSenseModel shall load and check the part-of-speech head embedded in its
                   assembly, bound to the pinned all-MiniLM-L6-v2 ONNX file, hidden size 384, the feature layout and the
-                  parts of speech of the library, without any model file.
+                  parts of speech of the library, without any model file, and shall not use it: the model description
+                  declares the head not in use, so the model answers as a model without a head (it needs the encoder
+                  only for a word with scored senses, and its slot probability is the mass of its senses).
                 tags: [unit]
                 justification: |
-                  The head was trained on the vectors of this exact encoder file and these classes.
+                  The head was trained on the vectors of this exact encoder file and these classes; it is validated so
+                  that a defective package fails at load, and it is not used, so that the behavior of the model does not
+                  depend on it.
                 tests:
                   - MiniLMWordSenseModel_EmbeddedHead_MatchesEncoderAndClasses
+                  - MiniLMWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback
 
               - id: WordSense-MiniLM-MiniLMWordSenseModel-HeadRejected
                 title: >-

@@ -1156,21 +1156,28 @@ public class OnnxClassifierTests
     }
 
     /// <summary>
-    ///     Only a word that is pending (several scored senses, or a chooser) needs the model.
+    ///     A word that is pending (several scored senses, or a chooser) needs the encoder; with a head, so does a known
+    ///     word of several parts of speech.
     /// </summary>
     [Fact]
-    public void OnnxClassifier_NeedsModel_OnlyPendingWords_AreTrue()
+    public void OnnxClassifier_NeedsEncoder_PendingWordsAndWordsOfSeveralPartsOfSpeech_AreTrue()
     {
         // Arrange
         var table = JustTable();
 
-        // Act / Assert: trained and ambiguous needs it; unknown, single-sense and untrained words do not
-        Assert.True(OnnxClassifier.NeedsModel(["the", "just"], table));
-        Assert.False(OnnxClassifier.NeedsModel(["the", "zzqxjw", ".", "record"], table));
-        Assert.False(OnnxClassifier.NeedsModel(["just"], new WeightedLemmaTable()));
-        Assert.False(OnnxClassifier.NeedsModel([], table));
-        Assert.Throws<ArgumentNullException>(() => OnnxClassifier.NeedsModel(null!, table));
-        Assert.Throws<ArgumentNullException>(() => OnnxClassifier.NeedsModel(["just"], null!));
+        // Act / Assert: trained and ambiguous needs it; unknown, single-sense and untrained words do not without a head
+        Assert.True(OnnxClassifier.NeedsEncoder(["the", "just"], table, false));
+        Assert.False(OnnxClassifier.NeedsEncoder(["the", "zzqxjw", ".", "record"], table, false));
+        Assert.False(OnnxClassifier.NeedsEncoder(["just"], new WeightedLemmaTable(), false));
+        Assert.False(OnnxClassifier.NeedsEncoder([], table, false));
+
+        // With a head the words of two or more parts of speech need the encoder, the others still do not
+        Assert.True(OnnxClassifier.NeedsEncoder(["the", "zzqxjw", ".", "record"], table, true));
+        Assert.True(OnnxClassifier.NeedsEncoder(["just"], new WeightedLemmaTable(), true));
+        Assert.False(OnnxClassifier.NeedsEncoder(["the", "zzqxjw", "."], table, true));
+        Assert.False(OnnxClassifier.NeedsEncoder([], table, true));
+        Assert.Throws<ArgumentNullException>(() => OnnxClassifier.NeedsEncoder(null!, table, true));
+        Assert.Throws<ArgumentNullException>(() => OnnxClassifier.NeedsEncoder(["just"], null!, true));
     }
 
     /// <summary>

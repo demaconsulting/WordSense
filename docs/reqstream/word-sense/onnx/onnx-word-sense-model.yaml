@@ -85,17 +85,24 @@ sections:
                   OnnxWordSenseModel shall classify with one shared encoder session and one set of weights, shall
                   ensure its model files lazily on first need (with the default and environment mirror settings,
                   sharing one ensure between concurrent callers and allowing a failed ensure to be retried), and shall
-                  answer words that need no model (unknown, single-sense, or ambiguous without trained weights)
-                  without touching model files or the encoder, an ambiguous word without weights getting the
-                  lexicon analyses at the part of speech level (every lemma and part of speech equally likely, the
-                  feature variants of one sharing its probability, no scored senses).
+                  answer words that need no model without touching model files or the encoder: unknown and
+                  single-sense words, known words of one part of speech whose senses are not scored, and, for a model
+                  without a part-of-speech head in
+                  use, an ambiguous word without trained weights, which gets the lexicon analyses at the part of
+                  speech level (every lemma and part of speech equally likely, the feature variants of one sharing its
+                  probability, no scored senses). For a model whose head is in use, the first text that has a known word
+                  of two or more distinct parts of speech, whatever its lemma, shall ensure the files lazily and run
+                  the encoder, and the model shall offer no way to turn that off.
                 tags: [unit]
                 justification: |
                   Loading a session and weights is expensive and must happen once; a model that is never needed must
-                  never be downloaded, and callers should not have to sequence preparation and use themselves.
+                  never be downloaded, and callers should not have to sequence preparation and use themselves. A head
+                  decides the part of speech of every word of several parts of speech from its sentence, so such a word
+                  needs the encoder.
                 tests:
                   - OnnxWordSenseModel_ClassifyAsync_LexiconOnlyWords_NeverTouchesModelFiles
-                  - OnnxWordSenseModel_ClassifyAsync_UntrainedAmbiguousWords_AnswerPartOfSpeechWithoutModelFiles
+                  - OnnxWordSenseModel_ClassifyAsync_NoHead_UntrainedAmbiguousWords_AnswerPartOfSpeechWithoutModelFiles
+                  - OnnxWordSenseModel_ClassifyAsync_WordOfSeveralPartsOfSpeech_NeedsTheEncoder
                   - OnnxWordSenseModel_ClassifyAsync_WithoutEnsure_EnsuresLazily
                   - OnnxWordSenseModel_ClassifyAsync_Concurrent_ShareOneLazyEnsure
                   - OnnxWordSenseModel_ClassifyAsync_AfterFailedLazyEnsure_CanBeRetried
@@ -105,17 +112,36 @@ sections:
               - id: WordSense-Onnx-OnnxWordSenseModel-Head
                 title: >-
                   OnnxWordSenseModel shall load and check the part-of-speech head embedded in its package together with
-                  the embedded weights, without any model file.
+                  the embedded weights, whenever its model description names one, without any model file.
                 tags: [unit]
                 justification: |
                   The head and the weights are shipped in the package; loading them together keeps a model usable
-                  offline once the package is installed.
+                  offline once the package is installed, and a defect in a head that a model carries surfaces whether or
+                  not the model uses it.
                 tests:
                   - OnnxWordSenseModel_ClassifyAsync_EmbeddedHead_LoadsWithoutModelFiles
 
+              - id: WordSense-Onnx-OnnxWordSenseModel-HeadInUse
+                title: >-
+                  OnnxWordSenseModel shall answer with its part-of-speech head, and shall count as a source of
+                  part-of-speech evidence for a composition (implement the internal marker
+                  IPartOfSpeechEvidenceModel with a true value), only when its model description names a head and
+                  declares it in use; a model that carries a head it does not use shall answer as a model without a
+                  head.
+                tags: [unit]
+                justification: |
+                  A package can carry a validated head that it does not use; the model must then keep its behavior, and
+                  a composition must not treat its slot probabilities as an estimate of the part of speech.
+                tests:
+                  - OnnxWordSenseModel_ClassifyAsync_WordOfSeveralPartsOfSpeech_NeedsTheEncoder
+                  - OnnxWordSenseModel_ClassifyAsync_NoHead_UntrainedAmbiguousWords_AnswerPartOfSpeechWithoutModelFiles
+                  - MiniLMWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback
+                  - BertBaseCasedWordSenseModel_PartOfSpeechAnswer_ReweighsTheHeadAgainstBasic
+
               - id: WordSense-Onnx-OnnxWordSenseModel-HeadNone
                 title: >-
-                  OnnxWordSenseModel shall have no part-of-speech head when its model description names none.
+                  OnnxWordSenseModel shall have no part-of-speech head when its model description names none, and shall
+                  then classify as a model without a head.
                 tags: [unit]
                 justification: |
                   A model without a head must work as before, not fail at load.

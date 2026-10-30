@@ -18,8 +18,10 @@ for the tests. The encoder model's description: model id
 pinned SHA-256;
 lower-casing (uncased) tokenizer; hidden size 384; embedded weights `weights.bin` (fine-sense classifiers, form
 choosers and per-lemma fine and group thresholds calibrated for this encoder) trained at sequence length 128; embedded
-part-of-speech head `head.bin` (the format `WSH1`, bound to the pinned ONNX file; loaded and checked with the weights
-and not used for answers). The encoder model loads the head through `OnnxWordSenseModel` and `PosHead` (see their unit
+part-of-speech head `head.bin` (the format `WSH1`, bound to the pinned ONNX file; loaded and checked with the weights;
+the description declares it not in use, so the model answers as a model without a head: it needs the encoder only for a
+word with scored senses, and its slot probability is the mass of its senses). The encoder model loads the head through
+`OnnxWordSenseModel` and `PosHead` (see their unit
 documents): it must belong to the pinned ONNX file, the hidden size 384, the model id and the parts of speech of the
 library, and a head read against another encoder file or model id is rejected as invalid data.
 

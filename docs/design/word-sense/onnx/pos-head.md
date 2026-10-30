@@ -50,9 +50,10 @@ speech that a spelling can have.
   word, next word and within a block from the first to the last feature, of the weight times the vector value. The
   vectors are the raw pooled vectors of the encoder (the standardization of training is folded into the weights). A
   vector that is null (a neighbor beyond the sentence edge, or a word without word pieces) adds nothing, which is the
-  same as zeros. Each vector value is first rounded to a 32-bit float, the sum runs in 64-bit floats, and the logits go
-  through a softmax that subtracts the maximum. The code is plain scalar code, without vector instructions or
-  parallelism, so the result does not depend on the hardware or on the number of threads. A vector whose length is not
+  same as zeros. Each vector value is first rounded to a 32-bit float (once per call), the sum runs in 64-bit floats,
+  and the logits go through a softmax that subtracts the maximum. The code is plain scalar code, without vector
+  instructions or parallelism; it computes several classes in one loop, but every logit is still one sum in the fixed
+  order, so the result does not depend on the hardware or on the number of threads. A vector whose length is not
   the hidden size throws `ArgumentException`.
 - `Restrict(posterior, allowedMask)`: keeps the probabilities of the allowed parts of speech (bit `(int)PartOfSpeech` of
   the mask), sets the others to zero and divides by the sum of the kept ones. When the mask allows nothing, or the
@@ -75,5 +76,7 @@ unknown, a missing part-of-speech section, a non-finite value, trailing data, an
 
 #### Callers
 
-`OnnxWordSenseModel` (loads and checks the head with the weights and hands it out through `GetHead`) and the builder
+`OnnxWordSenseModel` (loads and checks the head with the weights and hands it out through `GetHead`), `OnnxClassifier`
+(asks for the posterior of a word of several parts of speech and restricts it to the parts of speech of the lexicon,
+for a model that uses its head) and the builder
 (`train-pos-head` writes and measures the head, and its blob writer produces the format this unit reads).

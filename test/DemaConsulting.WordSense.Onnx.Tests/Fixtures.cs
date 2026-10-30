@@ -293,6 +293,6 @@ internal sealed class FixtureEncoderModel : OnnxWordSenseModel
         var onnx = minilm.Spec.Files.First(f => f.Name == minilm.Spec.OnnxFileName);
         var head = HeadSpec.Create(minilm.HiddenSize) with { ModelId = minilm.Spec.ModelId, EncoderSha256 = Convert.FromHexString(onnx.Sha256) };
         var resources = new Dictionary<string, byte[]> { [ResourceName] = BlobWriter.Write(data), [HeadResourceName] = HeadBlobWriter.Write(head) };
-        return minilm.Spec with { WeightsAssembly = new FixtureAssembly(resources), WeightsResourceName = ResourceName, HeadResourceName = HeadResourceName };
+        return minilm.Spec with { WeightsAssembly = new FixtureAssembly(resources), WeightsResourceName = ResourceName, HeadResourceName = HeadResourceName, HeadInUse = true };
     }
 }

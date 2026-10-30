@@ -29,7 +29,8 @@ annotations) and the sentence corpus (CC0 rows, public-domain and CC0 real sente
 The subsystem contains eight units:
 
 - **WordLexicon**: the embedded lexicon of known words and the sense catalog, with its internal blob reader.
-- **WordSenseContracts**: `IWordSenseModel`, `IDownloadableWordSenseModel`, the composite `FallbackWordSenseModel`,
+- **WordSenseContracts**: `IWordSenseModel`, `IDownloadableWordSenseModel`, the composite `FallbackWordSenseModel`, its
+  internal marker `IPartOfSpeechEvidenceModel`,
   `DownloadOptions`, the typed exceptions (`WordSenseException`, `ModelUnavailableException`,
   `ModelIntegrityException` and `DownloadConfigurationException`),
   `ClassifyResult`, `AnalysisCandidate`, `SenseCandidate`, `SenseLevel`, `WordDetails`, `PartOfSpeech`, `SenseInfo` and
@@ -49,8 +50,10 @@ not download anything; `DownloadOptions` only carries the configuration that an 
 statistical model is not downloadable and has no use for it). The composite `FallbackWordSenseModel` adds no knowledge
 of its own: it only chooses,
 word by word, between the results of the two models it is given (lets the second model split the tied variants of
-a slot of the first, without changing the probability of any slot, and, for a primary weight below 1, combines the
-slot probabilities of the two models where the first committed to no sense and no group), and forwards an explicit
+a slot of the first, without changing the probability of any slot, for a primary weight below 1, combines the
+slot probabilities of the two models where the first committed to no sense and no group, and, for a first model that
+estimates the part of speech itself (the encoder model with a head), reweighs the slot probabilities of a word of
+several parts of speech at every level), and forwards an explicit
 ensure to the members that
 are downloadable.
 

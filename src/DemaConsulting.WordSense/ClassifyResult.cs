@@ -36,7 +36,12 @@ namespace DemaConsulting.WordSense;
 ///     and a part of speech and not to a feature variant). At the part-of-speech level it is the probability of that slot.
 ///     At the group level it is the probability of the slot times the sum of the probabilities of the member senses of
 ///     the group within it. At the sense level it is the probability of the slot times the probability of the answered
-///     sense within it. The split of a slot among its feature variants never lowers the confidence. It is 0 for an unknown
+///     sense within it. The split of a slot among its feature variants never lowers the confidence. The probability of a
+///     slot is model-specific: the Basic model estimates it from the tags and the cues of the sentence; the BertBaseCased
+///     model gives a word of two or more parts of speech the probability of its part of speech from a part-of-speech
+///     classifier that reads the sentence, times the share of the slot among the slots of that part of speech (combined
+///     with the Basic model); the MiniLM model takes the mass of the senses of the slot, combined with the Basic model.
+///     It is 0 for an unknown
 ///     word. It is 1 when nothing is left to decide at the level of the answer: for a word with a single lemma and part of
 ///     speech (a single slot) and a single sense, at the <see cref="SenseLevel.Sense"/> level (the sense is certain), and
 ///     also, at the <see cref="SenseLevel.PartOfSpeech"/> level, for a word with a single lemma and part of speech that has

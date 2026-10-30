@@ -27,7 +27,8 @@ internal sealed record ModelFile(string Name, string Sha256, long Length = 0);
 /// <param name="WeightsAssembly">The assembly that embeds the trained weights.</param>
 /// <param name="WeightsResourceName">The manifest resource name of the trained weights.</param>
 /// <param name="HiddenSize">The hidden size (output dimension) of the encoder.</param>
-/// <param name="HeadResourceName">The manifest resource name, in <paramref name="WeightsAssembly"/>, of the part-of-speech head, or null for a model without one.</param>
+/// <param name="HeadResourceName">The manifest resource name, in <paramref name="WeightsAssembly"/>, of the part-of-speech head, or null for a model without one. A head is loaded and validated whenever it is named.</param>
+/// <param name="HeadInUse">True when the model answers with its head: the encoder runs for every word of several parts of speech, the head gives the probability of the parts of speech and the model counts as a source of part-of-speech evidence for a composition. False for a model that carries a head it does not use.</param>
 internal sealed record ModelSpec(
     string ModelId,
     IReadOnlyList<ModelFile> Files,
@@ -37,7 +38,8 @@ internal sealed record ModelSpec(
     Assembly WeightsAssembly,
     string WeightsResourceName,
     int HiddenSize,
-    string? HeadResourceName = null);
+    string? HeadResourceName = null,
+    bool HeadInUse = false);
 
 /// <summary>
 ///     Obtains and verifies the files of a model: from the per-user store, a mirror or the GitHub LFS copy.

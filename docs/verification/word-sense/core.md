@@ -204,7 +204,11 @@ these guys ." and a primary weight of 0.3, the verb analysis selected by the Bas
 with the probabilities summing to one, while the primary weight 1 keeps the noun and the words that the primary model
 does not know are answered exactly as the Basic model answers them. The combination itself (the product of the powers,
 the floor, the union of the slots, the variants and senses kept, the sense and group answers left alone) is verified in
-the `FallbackWordSenseModel` scenarios of the `WordSenseContracts` unit document. The composite also prepares the
+the `FallbackWordSenseModel` scenarios of the `WordSenseContracts` unit document. A primary model that provides
+part-of-speech evidence (the internal marker) has the slot probabilities of a word of several parts of speech reweighed
+against the fallback at every level instead, and keeps its level while its slot stays on top
+(`FallbackWordSenseModel_EvidenceScoredPrimary_TopSlotUnchanged_KeepsTheSense`,
+`FallbackWordSenseModel_EvidenceScoredPrimary_TopSlotChanges_StepsDownToThePartOfSpeech`). The composite also prepares the
 members that can be prepared, only those, and reports a failure after all ran
 (`FallbackWordSenseModel_EnsureModelAsync_EnsuresBoth`, `FallbackWordSenseModel_EnsureModelAsync_OnlyCapableMemberEnsured`),
 and disposes both models once (`FallbackWordSenseModel_Dispose_DisposesBothOnce`). The scenarios are detailed in the

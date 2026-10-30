@@ -37,14 +37,23 @@ sections:
               - id: WordSense-Onnx-OnnxClassifier-Encode
                 title: >-
                   OnnxClassifier shall read the words as one running text joined by single spaces, and shall run the
-                  encoder only when at least one word has several senses and intact lemma weights.
+                  encoder only when at least one word needs it: a word that has several senses and intact lemma
+                  weights or, for a classifier with a part-of-speech head, a known word of two or more distinct parts
+                  of speech whatever its lemma; a text of unknown words, words of one sense and known words of one part
+                  of speech whose senses are not scored shall be answered without running the encoder, whatever the
+                  head.
                 tags: [unit]
                 justification: |
-                  Encoding is the expensive step; a text without ambiguous words must not pay for it.
+                  Encoding is the expensive step; a text without ambiguous words must not pay for it. With a head the
+                  part of speech of every word of several parts of speech is decided from the sentence, so such a
+                  word needs the encoder, and the model needs its files, even when the senses of its lemma are not
+                  scored; this cannot be turned off.
                 tests:
                   - OnnxClassifier_ClassifyAsync_NoAmbiguousWords_DoesNotEncode
                   - OnnxClassifier_ClassifyAsync_AmbiguousWords_UseTheEncoder
                   - OnnxClassifier_ClassifyAsync_OnlyAmbiguousWordsAreEncoded
+                  - OnnxClassifier_NeedsEncoder_PendingWordsAndWordsOfSeveralPartsOfSpeech_AreTrue
+                  - OnnxClassifier_ClassifyAsync_WordsOfOnePartOfSpeech_DoNotRunTheEncoder
 
               - id: WordSense-Onnx-OnnxClassifier-AnalysisSenses
                 title: >-
@@ -73,19 +82,23 @@ sections:
               - id: WordSense-Onnx-OnnxClassifier-ClosedClass
                 title: >-
                   OnnxClassifier shall list an analysis of a closed class (auxiliary, determiner, pronoun,
-                  preposition, conjunction, interjection) with probability 0 and without senses, and its senses shall
-                  not compete with the senses of the open-class analyses; no fallback of the probability (a chooser
-                  label without mass, a word without mass) shall give a closed-class slot any, and a chooser label that
-                  stands for closed-class slots only shall give its probability to no slot.
+                  preposition, conjunction, interjection) without senses, and its senses shall not compete with the
+                  senses of the open-class analyses; for a classifier without a part-of-speech head the probability of
+                  such a slot shall be 0 and no fallback of the probability (a chooser label without mass, a word
+                  without mass) shall give a closed-class slot any, and a chooser label that stands for closed-class
+                  slots only shall give its probability to no slot; for a classifier with a head the probability of the
+                  slot is the head's (WordSense-Onnx-OnnxClassifier-PartOfSpeech).
                 tags: [unit]
                 justification: |
                   A closed class has no WordNet senses and its project senses are few, so the mass of its senses says
-                  nothing about whether the word is used in that way; the tagger of the fallback model decides it
-                  (WordSense-Core-WordSenseContracts-FallbackClosedClass).
+                  nothing about whether the word is used in that way. Without a head the tagger of the fallback model
+                  decides it (WordSense-Core-WordSenseContracts-FallbackClosedClass); with a head the classifier has an
+                  estimate of its own for the slot.
                 tests:
                   - OnnxClassifier_ClassifyAsync_ClosedClassUseOfLike_IsNotScored
                   - OnnxClassifier_ClassifyAsync_ClosedOnlyChooserLabel_GivesItsProbabilityToNoSlot
                   - OnnxClassifier_ClassifyAsync_EveryLabelClosedOnly_SharesEquallyAndIsFinite
+                  - OnnxClassifier_ClassifyAsync_ClosedClassSlots_GetPartOfSpeechMassAndNoSenses
               - id: WordSense-Onnx-OnnxClassifier-SharedCandidates
                 title: >-
                   OnnxClassifier shall provide to the build tool the candidate selection that it uses itself for the
@@ -139,7 +152,9 @@ sections:
                 title: >-
                   OnnxClassifier shall compute the probabilities per lemma and part of speech (a slot), never per
                   feature variant: the probability of a slot is the mass of its senses (for a form with a chooser,
-                  the share of the chooser's labels that its analyses carry), the probability of a sense given its slot
+                  the share of the chooser's labels that its analyses carry; with a part-of-speech head this mass is
+                  the share of the slot among the slots of its part of speech, see
+                  WordSense-Onnx-OnnxClassifier-PartOfSpeech), the probability of a sense given its slot
                   is its mass renormalized in the slot, the analyses of one slot that differ only in features split the
                   probability of the slot (by the chooser when it has a label for each of them, otherwise equally,
                   ties in lexicon order), and the selected analysis is the best variant of the most probable slot, so
@@ -229,11 +244,14 @@ sections:
               - id: WordSense-Onnx-OnnxClassifier-Untrained
                 title: >-
                   OnnxClassifier shall answer a known word whose senses it does not score (its lemma has no usable
-                  trained weights, and no form chooser applies to it) from the lexicon alone: a single analysis with
+                  trained weights, and no form chooser applies to it) from the lexicon alone, except that a classifier
+                  with a part-of-speech head gives the parts of speech of such a word of several parts of speech the
+                  probabilities of the head (WordSense-Onnx-OnnxClassifier-PartOfSpeech): a single analysis with
                   probability 1 (at the sense level with
                   that sense listed with probability 1 when its lemma and part of speech have exactly one sense, else at
                   the part of speech level), and several analyses with the uniform probability 1/s for each of the s
-                  lemmas and parts of speech, shared equally by the analyses of one of them that differ only in
+                  lemmas and parts of speech (for a classifier without a head, or a word without a usable vector),
+                  shared equally by the analyses of one of them that differ only in
                   features, listed by lemma and part of speech in lexicon order with the first analysis as the
                   selected analysis, at the part of speech level with the probability of the lemma and part of speech
                   of the selected analysis as confidence and no scored senses, and never a guessed fine sense.
@@ -254,13 +272,18 @@ sections:
               - id: WordSense-Onnx-OnnxClassifier-NoVector
                 title: >-
                   OnnxClassifier shall answer a word that has trained weights but no usable encoder vector like a word
-                  without trained weights, from the lexicon at the part of speech level, not as unknown.
+                  without trained weights, from the lexicon at the part of speech level, not as unknown, and shall
+                  answer a word of several parts of speech that has no vector, or a vector that does not have the
+                  hidden size of the head, from the lexicon alone, with equal probabilities.
                 tags: [unit]
                 justification: |
                   Without evidence for the fine decision a guess would look like a trained answer; the analyses are
-                  still known, and the level tells the caller that no sense was decided.
+                  still known, and the level tells the caller that no sense was decided. A vector of another size
+                  cannot be fed to the head.
                 tests:
                   - OnnxClassifier_ClassifyAsync_DimensionMismatch_FallsBackToPartOfSpeech
+                  - OnnxClassifier_ClassifyAsync_WordWithoutVector_IsAnsweredFromTheLexicon
+                  - OnnxClassifier_ClassifyAsync_VectorOfAnotherSize_IsAnsweredFromTheLexicon
 
               - id: WordSense-Onnx-OnnxClassifier-MultiLemmaForm
                 title: >-
@@ -290,10 +313,90 @@ sections:
                   - OnnxClassifier_ClassifyAsync_FormOfTrainedAndUntrainedLemma_ChooserPicksUntrained_AnswersPartOfSpeech
                   - OnnxClassifier_ClassifyAsync_FormOfSeveralLemmasWithoutChooser_IsAnsweredFromTheLexicon
 
+              - id: WordSense-Onnx-OnnxClassifier-PartOfSpeech
+                title: >-
+                  OnnxClassifier with a part-of-speech head shall give a known word of two or more distinct parts of
+                  speech the probability of each part of speech from the head, the posterior restricted to the parts of
+                  speech that the lexicon lists for the word and renormalized, and shall give each slot (lemma and part
+                  of speech) the probability of its part of speech times the share of the slot among the slots of that
+                  part of speech: the share of the mass of its senses (or of its chooser labels) when its lemma is
+                  scored, else equal; the analyses shall be listed by slot, the most probable slot first, the
+                  probabilities of the analyses summing to one, and the selected analysis shall be the best analysis of
+                  the most probable slot.
+                tags: [unit]
+                justification: |
+                  The part of speech of a word is decided by the sentence, not by the senses of its lemma: the mass of
+                  the senses of an untrained or a closed-class slot says nothing about it. The head reads the sentence;
+                  restricting it to the parts of speech of the lexicon removes impossible answers, and the shares keep
+                  the evidence of the senses for the choice between slots of one part of speech.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_UntrainedWordOfSeveralPartsOfSpeech_TakesTheRestrictedPosterior
+                  - OnnxClassifier_ClassifyAsync_UntrainedWord_FollowsTheHead
+                  - OnnxClassifier_ClassifyAsync_SeveralSlotsOfOnePartOfSpeech_ShareItsProbabilityEqually
+                  - OnnxClassifier_ClassifyAsync_ManyWords_KeepTheInvariants
+
+              - id: WordSense-Onnx-OnnxClassifier-PartOfSpeechClosedClass
+                title: >-
+                  OnnxClassifier with a part-of-speech head shall give a closed-class slot of a word of several parts
+                  of speech the probability of its part of speech from the head and no senses, whether or not the
+                  lemma of the word has trained weights.
+                tags: [unit]
+                justification: |
+                  A closed class has no WordNet senses to give it mass; the head estimates it from the sentence (the
+                  auxiliary have against the verb have), so that no other model has to.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_ClosedClassSlots_GetPartOfSpeechMassAndNoSenses
+
+              - id: WordSense-Onnx-OnnxClassifier-PartOfSpeechSenses
+                title: >-
+                  OnnxClassifier with a part-of-speech head shall leave the scores of the senses, the ranked senses of
+                  every analysis and the sense and the group of an answer independent of the head, shall keep the
+                  level of an answer whose slot the head ranks first, with the probability of the part of speech
+                  times the probability of the sense (or of the group) within the slot as confidence, and shall answer
+                  at the part-of-speech level, with the probability of the slot as confidence and the senses of every
+                  slot still listed, when the best sense lies in a slot that the head does not rank first.
+                tags: [unit]
+                justification: |
+                  The head decides the part of speech only; the sense is decided by the weights of the lemma and the
+                  thresholds that were calibrated for them, so an answer is never finer than the evidence for its
+                  part of speech.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_TrainedLemma_HeadAgrees_KeepsTheSenseLevelWithTheHeadProbability
+                  - OnnxClassifier_ClassifyAsync_TrainedLemma_HeadDisagrees_StepsDownToThePartOfSpeech
+                  - OnnxClassifier_ClassifyAsync_TrainedLemma_SensesInsideASlotDoNotDependOnTheHead
+
+              - id: WordSense-Onnx-OnnxClassifier-PartOfSpeechContext
+                title: >-
+                  OnnxClassifier with a part-of-speech head shall encode every word of the text with one call of the
+                  encoder in the possessive view (a possessive that is written as one token as its stem and its
+                  marker), and shall feed the head the vectors of the word and of its previous and next token in that
+                  view, the first word having no previous vector and the last no next one.
+                tags: [unit]
+                justification: |
+                  The head was trained on the vectors of the neighbors in the form of the open corpus, which separates
+                  the possessive marker; the cost of the text is one encoder run, not one per word.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_Neighbors_AreThoseOfThePossessiveView
+                  - OnnxClassifier_ClassifyAsync_NextWord_ReachesTheHead
+
+              - id: WordSense-Onnx-OnnxClassifier-PartOfSpeechVector
+                title: >-
+                  OnnxClassifier with a part-of-speech head shall score the senses of a word of a trained lemma with
+                  the vector of the word pooled over all its word pieces: the vector of the possessive view when the
+                  view keeps the word whole, and a second encoder pass for the word when the view splits it (a
+                  possessive that is written as one token).
+                tags: [unit]
+                justification: |
+                  The weights were trained on the vector of a whole word; the stem of a possessive alone would score
+                  the senses on other evidence.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_PendingPossessive_UsesTheJoinedVector
+                  - OnnxClassifier_ClassifyAsync_PendingWordKeptWhole_UsesTheViewVector
+
               - id: WordSense-Onnx-OnnxClassifier-Validation
                 title: >-
                   OnnxClassifier shall return an empty array for an empty list and results parallel to the input, and
-                  shall reject a null list, a null element and a cancelled call.
+                  shall reject a null list, a null element and a cancelled call, and a head without both encoders.
                 tags: [unit]
                 justification: |
                   Misuse must fail fast with a documented exception, and results must map onto the input by index.
@@ -302,3 +405,4 @@ sections:
                   - OnnxClassifier_ClassifyAsync_NullWords_Throws
                   - OnnxClassifier_ClassifyAsync_NullElement_Throws
                   - OnnxClassifier_ClassifyAsync_Cancelled_Throws
+                  - OnnxClassifier_Constructor_HeadWithoutEncoders_Throws

@@ -65,10 +65,12 @@ The layering is strict. Core references nothing. Onnx references only core (and 
 Runtime). MiniLM and BertBaseCased reference core and Onnx. The composition of an encoder model with the Basic
 model is made in the model packages with the core `FallbackWordSenseModel`: the primary model (the encoder) answers a
 word when it scored senses for it, and the fallback model (Basic, from core) answers every other word with its complete
-result, never a mixture of the two (the two refinements: where the encoder gives the variants of a slot the same
-probability, the variants take the proportions of Basic, and the probability of the slot does not change; and where
+result, never a mixture of the two (the exceptions: where the encoder gives the variants of a slot the same
+probability, the variants take the proportions of Basic, and the probability of the slot does not change; where
 the encoder commits to no sense and no group, the slot probabilities of the two models are combined with a primary
-weight that each model package tunes, 0.6 for MiniLM and 1 for BertBaseCased). Model
+weight that the MiniLM package tunes, 0.6; and, for a model that estimates the part of speech itself with a head,
+BertBaseCased with a head weight of 0.8, the slot probabilities of a word of several parts of speech are
+reweighed against those of Basic at every level of the answer). Model
 packages never reference each other otherwise, so a consumer installs only
 the model it wants. The contracts in core are the seam between callers and models: a caller programs against
 `IWordSenseModel` and can swap models without code changes; a caller that wants to control when the files of a model
@@ -106,7 +108,9 @@ the curated table `corpus/curation/heteronyms.tsv`. An unknown word has no key.
   selected analysis `Details` (`WordDetails` of lemma, part of speech and features), the `SenseLevel`, the confidence
   of that level and the group and sense ids). The words are one running text with punctuation as
   its own elements. An encoder model ensures its
-  files lazily (default and environment download settings) when some word needs the encoder.
+  files lazily (default and environment download settings) when some word needs the encoder: a word with scored senses
+  or, for a model that uses its part-of-speech head (BertBaseCased), a known word of two or more parts of speech; a text
+  of words that need neither never touches a model file.
 - `FallbackWordSenseModel` (in/out): a model that composes two `IWordSenseModel` instances (primary and fallback) and
   implements `IDownloadableWordSenseModel` itself: its ensure forwards to the members that have the capability.
 - Typed exceptions (out): `ModelUnavailableException` (the model files are missing or cannot be downloaded),
@@ -173,8 +177,8 @@ analyses at the part of speech level, and the Basic model of a composition choos
 ## Data Flow
 
 1. The caller creates a model (`BasicWordSenseModel`, `MiniLMWordSenseModel` or `BertBaseCasedWordSenseModel`) and
-   calls `EnsureModelAsync` when the model is an `IDownloadableWordSenseModel` (optional, and for words the lexicon
-   alone resolves `ClassifyAsync` ensures lazily with the
+   calls `EnsureModelAsync` when the model is an `IDownloadableWordSenseModel` (optional, and for texts that need no
+   encoder `ClassifyAsync` ensures lazily with the
    default and environment download settings, and a model that is never needed is never downloaded). The Basic model
    is not downloadable and needs no files. An encoder model uses the files of its model
    directory when one was given, otherwise reuses valid files in the per-user store, otherwise downloads each missing
@@ -214,15 +218,23 @@ analyses at the part of speech level, and the Basic model of a composition choos
      threshold is met: the fine sense (level `Sense`, with its group id when the sense is in a group), else, for a
      lemma that has groups and a best sense in a group, the group (level `Group`, when the group threshold is met), else
      the part of speech (level `PartOfSpeech`, with the ranked senses still listed). The probabilities are worked
-     out per slot: a slot has the mass of its senses, the probability of a sense given its slot is its renormalized
+     out per slot: without a head a slot has the mass of its senses; with a head (BertBaseCased) a slot has the
+     head's probability of its part of speech times the share of the slot among the slots of that part of speech
+     (the share of its senses' mass, equal when none is scored; closed-class slots included), and the sense and the
+     group of an answer do not depend on the head. The probability of a sense given its slot is its renormalized
      mass, the feature variants of a slot split its probability (by the form chooser when it has a label for each,
      otherwise equally) and the split never reaches the level or the confidence. A word
-     whose lemma has no weights, or for which the encoder gave no usable vector, is answered from the lexicon alone by
-     the standalone Onnx classifier: the slots are equally likely (the variants of a slot split its share equally), the
-     first is selected, no senses are scored or listed, and the level is `PartOfSpeech`. The MiniLM and BertBaseCased
+     whose lemma has no weights, or for which the encoder gave no usable vector, is answered from the lexicon by
+     the standalone Onnx classifier: the slots are equally likely (the variants of a slot split its share equally), or,
+     for a word of several parts of speech and a model that uses its head, have the probabilities of the head, the
+     most probable slot is selected (the first in lexicon order for equal slots), no senses are scored or listed, and the
+     level is `PartOfSpeech`. The MiniLM and BertBaseCased
      composites do not return that result: they replace it by the answer of the Basic model for the word, whose
-     probabilities come from the tagger and the context cues and whose polysemous analyses list their senses ranked by the
-     usage prior (not scored; the level and the confidence are the part of speech answer, with no sense and no group).
+     senses and level come from the tagger and the context cues and whose polysemous analyses list their senses ranked
+     by the
+     usage prior (not scored; the level and the confidence are the part of speech answer, with no sense and no group),
+     and, for BertBaseCased and a word of several parts of speech, the probabilities of its slots are reweighed as
+     step 5 states.
 5. A composite model (`FallbackWordSenseModel`) answers each word with the result of its primary model when
    the primary model scored senses for it (the selected analysis lists senses scored in context, not merely ranked by
    usage, or the level is `Group` or `Sense`) and otherwise with the complete result of its fallback model. In the encoder
@@ -230,18 +242,36 @@ analyses at the part of speech level, and the Basic model of a composition choos
    the encoder model and the fallback is the Basic model, so a word that the encoder does not score is answered by Basic
    at the part of speech level with the probabilities of its analyses and its usage-ranked senses. A primary model that
    only ranks senses by usage (the Basic model itself, or a model that ranks by a prior) never counts as having scored
-   them: its result is not refined or reconciled, and the fallback result answers the word. The composite adds no
+   them: its result is not refined or reconciled, and the fallback result answers the word. For a primary model without
+   part-of-speech evidence (MiniLM, a third-party model) the composite adds no
    probability of its own: the
    slot rules above hold inside each of the two results. Where the primary result gives the variants of a slot the same
    probability (an encoder cannot tell the past of `put` from its infinitive), the variants take the proportions of the
    fallback result, with the probability of the slot unchanged, so the level, confidence and sense do not move.
    Where the primary result is at the part of speech level (the encoder committed to no sense and no group) and the
    primary weight `w` is below 1, the probability of every slot over the slots of both results becomes proportional to
-   `p_primary^w × p_fallback^(1−w)` (a slot a result does not list counts with the floor 1e-6): the encoder's slot
-   probability is the mass of its senses, not a part-of-speech estimate, and the tagger of Basic repairs its wrong top
+   `p_primary^w × p_fallback^(1−w)` (a slot a result does not list counts with the floor 1e-6): the slot probability
+   of such an encoder is the mass of its senses, not a part-of-speech estimate, and the tagger of Basic repairs its
+   wrong top
    slot (the verb `use` called a noun). The variants of a slot keep their shares and the analyses keep their senses,
    the selected analysis is the first analysis of the re-ordered result and the confidence is the probability of its
-   slot. An answer at the sense or group level is never touched.
+   slot. An answer at the sense or group level is never touched, and the slots that the encoder lists
+   without probability (the closed classes) take their probability from Basic (the closed-class split).
+
+   A primary model that provides part-of-speech evidence (the internal marker `IPartOfSpeechEvidenceModel`, which
+   `OnnxWordSenseModel` implements when its head is in use: BertBaseCased) is composed differently for a word whose
+   analyses have two or more distinct parts of speech. The closed-class split and the part-of-speech-level
+   combination are skipped, and the slot probability over the union of the slots of both results is the geometric blend
+   `p_primary^w × p_fallback^(1−w)` (floor 1e-6, renormalized) at every level of the answer, with the primary weight
+   `w` of the model (0.8 for BertBaseCased). The base result keeps the senses, the level and the ids: it is the primary
+   result when it scored senses, otherwise the fallback result (the usage-ranked senses and the tense variants of Basic).
+   When the most probable slot is the slot that the base result answered at the sense or group level, the level stays
+   and the confidence is the fused probability of the slot times the probability of the sense (or group) within it;
+   when another slot becomes the most probable one, the answer steps down to the `PartOfSpeech` level on the best
+   analysis of that slot with its probability as the confidence. A fallback base result at the sense level for a word of
+   several slots is kept only at a confidence of 0.97 or more, otherwise it is answered at the `PartOfSpeech` level. The
+   tense of a verb stays the one of Basic. A word of one part of speech keeps the primary result when it scored
+   senses (only the variants of a slot are refined), and otherwise takes the fallback result.
 6. The model returns a `ClassifyResult[]` parallel to the input. The confidence of each result is the probability of
    its answer at its own level (the probability of the slot of the selected analysis, times the probability of the
    answered sense, or the summed probability of the member senses of the answered group, within that slot); it is

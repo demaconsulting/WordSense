@@ -23,8 +23,11 @@ namespace DemaConsulting.WordSense.Onnx;
 /// </remarks>
 internal sealed class PosHead
 {
-    private readonly float[] _weights;
+    private readonly double[] _weights;
     private readonly float[] _biases;
+
+    // Below this total, the restriction of the full softmax has lost its precision: the allowed scores are used directly
+    private const double UnderflowLimit = 1e-250;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="PosHead"/> class from a structurally valid head.
@@ -34,7 +37,9 @@ internal sealed class PosHead
     {
         ArgumentNullException.ThrowIfNull(data);
         Data = data;
-        _weights = data.Weights;
+
+        // A 32-bit weight widens to 64 bits without loss, so the products are the same as from the 32-bit weights
+        _weights = Array.ConvertAll(data.Weights, w => (double)w);
         _biases = data.Biases;
     }
 
@@ -109,26 +114,199 @@ internal sealed class PosHead
     /// <param name="next">The vector of the next word, or null at the end of the sentence or for a word without word pieces.</param>
     /// <returns>The probabilities in the order of <see cref="PartOfSpeech"/>; they sum to one.</returns>
     /// <exception cref="ArgumentException">Thrown when a vector does not have the hidden size.</exception>
-    public double[] Posterior(double[]? previous, double[]? word, double[]? next)
+    public double[] Posterior(double[]? previous, double[]? word, double[]? next) => Softmax(Logits(previous, word, next));
+
+    /// <summary>
+    ///     Computes the posterior of the parts of speech of a word, limited to the parts of speech that are allowed.
+    /// </summary>
+    /// <param name="previous">The vector of the previous word, or null.</param>
+    /// <param name="word">The vector of the word, or null.</param>
+    /// <param name="next">The vector of the next word, or null.</param>
+    /// <param name="allowedMask">The allowed parts of speech as a bit set: bit <c>(int)PartOfSpeech</c> is set for an allowed one.</param>
+    /// <returns>
+    ///     The probabilities in the order of <see cref="PartOfSpeech"/>, zero for every part of speech that is not allowed,
+    ///     summing to one; or null when no usable distribution exists (the mask allows nothing, or a score is not a number).
+    /// </returns>
+    /// <remarks>
+    ///     Normally this is <see cref="Restrict"/> of <see cref="Posterior"/>, bit for bit. When the head gives every
+    ///     allowed part of speech so little probability that the product underflows (an excluded class with a far larger
+    ///     score), the restriction is computed from the scores themselves, as a softmax over the allowed scores only, so
+    ///     the result never has zero mass and never falls back to the unrestricted posterior.
+    /// </remarks>
+    /// <exception cref="ArgumentException">Thrown when a vector does not have the hidden size.</exception>
+    public double[]? RestrictedPosterior(double[]? previous, double[]? word, double[]? next, int allowedMask)
+    {
+        var logits = Logits(previous, word, next);
+        var masked = new double[logits.Length];
+        var total = 0.0;
+        var posterior = Softmax(logits);
+        for (var c = 0; c < masked.Length; c++)
+        {
+            if ((allowedMask & (1 << c)) != 0)
+            {
+                masked[c] = posterior[c];
+                total += posterior[c];
+            }
+        }
+
+        if (total >= UnderflowLimit && double.IsFinite(total))
+        {
+            for (var c = 0; c < masked.Length; c++)
+            {
+                masked[c] /= total;
+            }
+
+            return masked;
+        }
+
+        // The softmax over all classes left no usable mass for the allowed ones: a softmax over the allowed scores alone
+        var max = double.NegativeInfinity;
+        for (var c = 0; c < logits.Length; c++)
+        {
+            if ((allowedMask & (1 << c)) != 0)
+            {
+                if (double.IsNaN(logits[c]))
+                {
+                    return null;
+                }
+
+                max = Math.Max(max, logits[c]);
+            }
+        }
+
+        if (!double.IsFinite(max))
+        {
+            return null;
+        }
+
+        total = 0.0;
+        for (var c = 0; c < logits.Length; c++)
+        {
+            masked[c] = (allowedMask & (1 << c)) != 0 ? Math.Exp(logits[c] - max) : 0.0;
+            total += masked[c];
+        }
+
+        for (var c = 0; c < masked.Length; c++)
+        {
+            masked[c] /= total;
+        }
+
+        return masked;
+    }
+
+    /// <summary>
+    ///     Computes the scores of the parts of speech of a word before the softmax.
+    /// </summary>
+    /// <param name="previous">The vector of the previous word, or null.</param>
+    /// <param name="word">The vector of the word, or null.</param>
+    /// <param name="next">The vector of the next word, or null.</param>
+    /// <returns>One score per part of speech, in the order of <see cref="PartOfSpeech"/>.</returns>
+    private double[] Logits(double[]? previous, double[]? word, double[]? next)
     {
         CheckLength(previous);
         CheckLength(word);
         CheckLength(next);
-        var d = HiddenSize;
         var k = ClassCount;
+        var d = HiddenSize;
         var logits = new double[k];
-        for (var c = 0; c < k; c++)
+
+        // The vectors are rounded to 32 bits once, not once per class
+        Span<double> rounded = stackalloc double[3 * d];
+        Round(previous, rounded[..d]);
+        Round(word, rounded.Slice(d, d));
+        Round(next, rounded.Slice(2 * d, d));
+        ReadOnlySpan<bool> present = [previous is not null, word is not null, next is not null];
+
+        // Five classes at a time share the rounded vector elements and run five independent sums. Every logit is still
+        // one sum in the fixed order: bias, previous block, word block, next block, each from the first feature to the
+        // last, so the result is bit for bit that of one class at a time.
+        var c = 0;
+        for (; c + 5 <= k; c += 5)
         {
-            // Sum the three blocks in the fixed order previous, word, next; a missing block adds nothing (zeros)
-            var row = c * 3 * d;
+            Rows5(c, rounded, present, logits);
+        }
+
+        for (; c < k; c++)
+        {
             var sum = (double)_biases[c];
-            sum = Accumulate(sum, row, previous);
-            sum = Accumulate(sum, row + d, word);
-            sum = Accumulate(sum, row + (2 * d), next);
+            for (var block = 0; block < 3; block++)
+            {
+                if (present[block])
+                {
+                    var w = _weights.AsSpan((c * 3 * d) + (block * d), d);
+                    var x = rounded.Slice(block * d, d);
+                    for (var j = 0; j < w.Length; j++)
+                    {
+                        sum += w[j] * x[j];
+                    }
+                }
+            }
+
             logits[c] = sum;
         }
 
-        return Softmax(logits);
+        return logits;
+    }
+
+    /// <summary>
+    ///     Rounds a vector to 32 bits, the precision of the cache the head was trained from.
+    /// </summary>
+    /// <param name="vector">The vector, or null for a missing one (nothing is written).</param>
+    /// <param name="target">Receives the rounded vector.</param>
+    private static void Round(double[]? vector, Span<double> target)
+    {
+        if (vector is null)
+        {
+            return;
+        }
+
+        for (var j = 0; j < target.Length; j++)
+        {
+            target[j] = (float)vector[j];
+        }
+    }
+
+    /// <summary>
+    ///     Computes the logits of five consecutive classes.
+    /// </summary>
+    /// <param name="first">The first class.</param>
+    /// <param name="rounded">The rounded vectors of the previous word, the word and the next word, one after the other.</param>
+    /// <param name="present">Tells for each of the three vectors whether it is present.</param>
+    /// <param name="logits">Receives the five logits.</param>
+    private void Rows5(int first, ReadOnlySpan<double> rounded, ReadOnlySpan<bool> present, double[] logits)
+    {
+        var d = HiddenSize;
+        var stride = 3 * d;
+        double s0 = _biases[first], s1 = _biases[first + 1], s2 = _biases[first + 2], s3 = _biases[first + 3], s4 = _biases[first + 4];
+        for (var block = 0; block < 3; block++)
+        {
+            if (!present[block])
+            {
+                continue;
+            }
+
+            var x = rounded.Slice(block * d, d);
+            var w0 = _weights.AsSpan((first * stride) + (block * d), d);
+            var w1 = _weights.AsSpan(((first + 1) * stride) + (block * d), d);
+            var w2 = _weights.AsSpan(((first + 2) * stride) + (block * d), d);
+            var w3 = _weights.AsSpan(((first + 3) * stride) + (block * d), d);
+            var w4 = _weights.AsSpan(((first + 4) * stride) + (block * d), d);
+            for (var j = 0; j < x.Length; j++)
+            {
+                var v = x[j];
+                s0 += w0[j] * v;
+                s1 += w1[j] * v;
+                s2 += w2[j] * v;
+                s3 += w3[j] * v;
+                s4 += w4[j] * v;
+            }
+        }
+
+        logits[first] = s0;
+        logits[first + 1] = s1;
+        logits[first + 2] = s2;
+        logits[first + 3] = s3;
+        logits[first + 4] = s4;
     }
 
     /// <summary>
@@ -194,29 +372,6 @@ internal sealed class PosHead
         }
 
         return result;
-    }
-
-    /// <summary>
-    ///     Adds the product of a weight block and a vector to a running sum.
-    /// </summary>
-    /// <param name="sum">The running sum.</param>
-    /// <param name="offset">The index of the first weight of the block.</param>
-    /// <param name="vector">The vector, or null for zeros.</param>
-    /// <returns>The new sum.</returns>
-    private double Accumulate(double sum, int offset, double[]? vector)
-    {
-        if (vector is null)
-        {
-            return sum;
-        }
-
-        var weights = _weights;
-        for (var j = 0; j < vector.Length; j++)
-        {
-            sum += weights[offset + j] * (double)(float)vector[j];
-        }
-
-        return sum;
     }
 
     /// <summary>

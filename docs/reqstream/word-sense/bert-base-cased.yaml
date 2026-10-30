@@ -28,8 +28,8 @@ sections:
 
           - id: WordSense-BertBaseCased-Head
             title: >-
-              The BertBaseCased package shall embed a trained part-of-speech head for its bert-base-cased encoder, and
-              its encoder model shall load the head bound to the pinned encoder file.
+              The BertBaseCased package shall embed a trained part-of-speech head for its bert-base-cased encoder, its
+              encoder model shall load the head bound to the pinned encoder file, and shall answer with it.
             tags: [subsystem]
             justification: |
               The head ships in the package with the weights; a head that does not belong to the pinned encoder file
@@ -37,6 +37,21 @@ sections:
             children:
               - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Head
               - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-HeadRejected
+
+          - id: WordSense-BertBaseCased-PartOfSpeech
+            title: >-
+              The BertBaseCased package shall decide the part of speech of every word of two or more parts of speech
+              from the sentence, with the probabilities of its part-of-speech head reweighed against those of the Basic
+              model with the weight 0.8, and shall need the encoder files, and ensure them lazily, only for a text with
+              such a word or with a word of scored senses.
+            tags: [subsystem]
+            justification: |
+              The part of speech of a word is decided by its sentence; the head reads it from the encoder, and the Basic
+              model is a second estimate that corrects the head where it has little evidence. A text of words that need
+              no context must cost no download and no inference.
+            children:
+              - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-PartOfSpeechReweighed
+              - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Lazy
 
           - id: WordSense-BertBaseCased-Composition
             title: >-
@@ -51,9 +66,8 @@ sections:
               free of a dependency on the Basic model.
             children:
               - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Composition
-              - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-PartOfSpeechKept
             tests:
-              - BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback
+              - BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersAtThePartOfSpeechLevel
               - BertBaseCasedWordSenseModel_Assembly_ReferencesCoreAndOnnx
 
           - id: WordSense-BertBaseCased-Packaging
