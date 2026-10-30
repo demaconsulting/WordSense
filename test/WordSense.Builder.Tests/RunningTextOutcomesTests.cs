@@ -123,6 +123,36 @@ public sealed class RunningTextOutcomesTests : IDisposable
     }
 
     /// <summary>
+    ///     A development run has its own set name, never fills the test column of the model table, and still records the
+    ///     documents of its sentences, and times the sample of the split that it read.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_Program_EvaluateRunning_DevelopmentSplit_KeepsTheTestColumnAndRecordsDocuments()
+    {
+        // Arrange: the repository, a model table file and the outcome file of a development run
+        var root = FindRepositoryRoot();
+        var table = Path.Join(_dir.Root, "model-table.md");
+        var outcomes = Path.Join(_dir.Root, "dev.tsv");
+        using var output = new StringWriter();
+        using var error = new StringWriter();
+
+        // Act: run Basic on the development split with the table, the outcomes and the latency
+        var code = await Program.RunAsync(["evaluate-running", "--model", "basic", "--repository", root, "--gold", Path.Join(_dir.Root, "absent.tsv"), "--split", "dev", "--table", table, "--outcomes", outcomes, "--latency", "--latency-sentences", "10"], output, error, TestContext.Current.CancellationToken);
+
+        // Assert: the set carries its split, the test column stays unmeasured, and the documents are the sources of the corpus
+        Assert.Equal(0, code);
+        Assert.Equal(string.Empty, error.ToString());
+        Assert.Contains("| Basic | open corpus dev (representative) |", output.ToString(), StringComparison.Ordinal);
+        Assert.Equal(ModelTable.NotMeasured, ModelTable.Read(table)["Basic"][ModelTable.RunningColumn]);
+        var read = OutcomeFile.Read(outcomes);
+        var open = read.Where(o => o.Outcome.Set == RunningTextEvaluator.OpenSetNameOf("dev")).ToList();
+        Assert.NotEmpty(open);
+        Assert.DoesNotContain(read, o => o.Outcome.Set == RunningTextEvaluator.OpenSetName);
+        Assert.All(open, o => Assert.DoesNotMatch(@"^s\d+$", o.Outcome.Document));
+    }
+
+    /// <summary>
     ///     The footer of the running-text report names the split of the open corpus that was read, in the renderer and in
     ///     the command with <c>--split dev</c> and with the default.
     /// </summary>

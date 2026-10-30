@@ -855,6 +855,10 @@ The trainer is tested with a synthetic corpus whose sentences are the combinatio
 - **Report without outcomes** (`WordSenseBuilder_Program_EvaluateRunning_ReportWithoutOutcomes_Succeeds`):
   `evaluate-running --report running` without `--outcomes` exits 0 with no error, and `--report tense` with `--outcomes`
   writes no outcome file.
+- **Development split** (`WordSenseBuilder_Program_EvaluateRunning_DevelopmentSplit_KeepsTheTestColumnAndRecordsDocuments`):
+  `evaluate-running --split dev` names its open set `open corpus dev (representative)`, leaves the running-text column
+  of the model table unmeasured, records the outcomes under that name with the source documents of the sentences, and
+  times the sample of the development split.
 
 #### suite
 

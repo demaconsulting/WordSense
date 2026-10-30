@@ -121,7 +121,7 @@ internal static class RunningTextEvaluator
     {
         var documents = new Dictionary<string, IReadOnlyList<string>>(StringComparer.Ordinal)
         {
-            [OpenSetName] = [.. OpenCorpus.ReadSplit(corpus, OpenCorpus.Representative, split).Select(s => s.SourceId)],
+            [OpenSetNameOf(split)] = [.. OpenCorpus.ReadSplit(corpus, OpenCorpus.Representative, split).Select(s => s.SourceId)],
         };
         var challenge = OpenCorpus.DataFile(corpus, OpenCorpus.Targeted, "test");
         if (File.Exists(challenge))

@@ -3013,6 +3013,7 @@ sections:
               - WordSenseBuilder_RunningText_Documents_AreTheSourceIdsOfTheOpenSets
               - WordSenseBuilder_OutcomeFile_RenderAndRead_RoundTrip
               - WordSenseBuilder_Program_EvaluateRunning_ReportWithoutOutcomes_Succeeds
+              - WordSenseBuilder_Program_EvaluateRunning_DevelopmentSplit_KeepsTheTestColumnAndRecordsDocuments
 
           - id: WordSense-WordSenseBuilder-OutcomeComparison
             title: >-

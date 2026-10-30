@@ -97,7 +97,7 @@ internal static partial class Program
 
                 if (IsOn(options, "latency"))
                 {
-                    var open = sets.First(s => s.Name == RunningTextEvaluator.OpenSetName).Sentences;
+                    var open = sets.First(s => s.Name == RunningTextEvaluator.OpenSetNameOf(options.GetValueOrDefault("split", "test"))).Sentences;
                     var (median, mean, p95, timed) = await RunningTextEvaluator.MeasureLatencyAsync(model, open, IntOption(options, "latency-sentences", 1000, 1), IntOption(options, "seed", OutcomeComparer.DefaultSeed), cancellationToken).ConfigureAwait(false);
                     latencies.Add((display, median, mean, p95, timed));
                     output.WriteLine($"{info.Name}: latency done.");
