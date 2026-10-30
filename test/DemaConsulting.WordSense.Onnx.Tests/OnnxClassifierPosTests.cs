@@ -72,6 +72,18 @@ public class OnnxClassifierPosTests
 
     private static double[] Vector(params (PartOfSpeech Part, double Logit)[] logits) => Fixtures.Feature(WordLogits(logits));
 
+    // A vector with the given scores and no regard for the scale of the fixtures (for scores no encoder would give)
+    private static double[] RawVector(params (PartOfSpeech Part, double Logit)[] logits)
+    {
+        var vector = new double[Fixtures.Dimension];
+        foreach (var (component, score) in WordLogits(logits))
+        {
+            vector[component] = score;
+        }
+
+        return vector;
+    }
+
     private static OnnxClassifier Classifier(WeightedLemmaTable table, FakeViewEncoder view, FakeEncoder? joined = null) =>
         new(table, (joined ?? new FakeEncoder((double[]?)null)).EncodeAsync, Head(), view.EncodeAsync);
 
@@ -89,6 +101,53 @@ public class OnnxClassifierPosTests
         result.Analyses.Where(a => a.Details.PartOfSpeech == part).Sum(a => a.Probability);
 
     private static PartOfSpeech[] PartsOf(string word) => [.. WordLexicon.Lookup(word).Select(d => d.PartOfSpeech).Distinct()];
+
+    /// <summary>
+    ///     When the head gives every part of speech that the lexicon lists a probability that underflows (an excluded class
+    ///     with a score 1000 higher), the restriction is computed from the scores, so the probabilities still sum to one.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxClassifier_ClassifyAsync_ExtremeLogitOfAnExcludedClass_KeepsAUsableDistribution()
+    {
+        // Arrange: "record" is a noun and a verb; the head's adjective score is 1000 higher than theirs
+        var logits = new[] { (PartOfSpeech.Noun, 1.0), (PartOfSpeech.Verb, 0.0), (PartOfSpeech.Adjective, 1000.0) };
+        var view = new FakeViewEncoder(_ => RawVector(logits));
+        var classifier = Classifier(new WeightedLemmaTable(), view);
+
+        // Act
+        var result = (await RunAsync(classifier, "record"))[0];
+
+        // Assert: the restriction is the softmax of the scores of the listed parts of speech alone
+        var expected = Posterior([PartOfSpeech.Noun, PartOfSpeech.Verb], logits);
+        Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), Tolerance);
+        Assert.Equal(expected[0], PartMass(result, PartOfSpeech.Noun), Tolerance);
+        Assert.Equal(expected[1], PartMass(result, PartOfSpeech.Verb), Tolerance);
+        Assert.Equal(expected[0], result.Confidence, Tolerance);
+        Assert.Equal(PartOfSpeech.Noun, result.Details!.PartOfSpeech);
+    }
+
+    /// <summary>
+    ///     A word of several parts of speech whose analyses and head posterior cannot agree (the allowed scores are not
+    ///     numbers) is answered from the lexicon, with probabilities that sum to one.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxClassifier_ClassifyAsync_UnusableHeadScores_AnswersFromTheLexicon()
+    {
+        // Arrange: a vector whose component for the noun score is not finite
+        var view = new FakeViewEncoder(_ => RawVector((PartOfSpeech.Noun, double.PositiveInfinity), (PartOfSpeech.Verb, 0.0)));
+        var classifier = Classifier(new WeightedLemmaTable(), view);
+
+        // Act
+        var result = (await RunAsync(classifier, "record"))[0];
+
+        // Assert: both parts of speech have the same probability and they sum to one
+        Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), Tolerance);
+        Assert.Equal(0.5, PartMass(result, PartOfSpeech.Noun), Tolerance);
+        Assert.Equal(0.5, PartMass(result, PartOfSpeech.Verb), Tolerance);
+        Assert.Equal(0.5, result.Confidence, Tolerance);
+    }
 
     /// <summary>
     ///     A word of several parts of speech whose lemma has no weights gets the restricted posterior of the head as the

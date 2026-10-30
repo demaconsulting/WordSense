@@ -54,7 +54,8 @@ namespace DemaConsulting.WordSense;
 ///     <see cref="SenseLevel.Group"/> level is never touched by this refinement, and neither is a result of one slot.
 ///     </para>
 ///     <para>
-///     The encoder models of the WordSense packages estimate the part of speech themselves: their slot probabilities for a
+///     An encoder model that uses a part-of-speech head (in the WordSense packages, the BertBaseCased model; the MiniLM
+///     model does not) estimates the part of speech itself: its slot probabilities for a
 ///     word of two or more parts of speech come from a part-of-speech classifier that reads the sentence, closed-class slots
 ///     (auxiliary, determiner, pronoun, preposition, conjunction, interjection) included. A third-party model cannot claim
 ///     this behavior, and the composition does not split the closed-class slots from the fallback result for such a primary
@@ -85,7 +86,8 @@ namespace DemaConsulting.WordSense;
 ///     A typical composition is an encoder model as the primary model, which scores the fine senses of the lemmas it was
 ///     trained for, and the Basic model as the fallback, which chooses the analysis (part of speech) of every other
 ///     ambiguous word. The packages <c>DemaConsulting.WordSense.MiniLM</c> and <c>DemaConsulting.WordSense.BertBaseCased</c>
-///     compose exactly this by default.
+///     compose exactly this by default (MiniLM with the weight 0.6 and the second refinement, BertBaseCased with the
+///     part-of-speech evidence above).
 ///     </para>
 ///     <para>
 ///     The composite owns both models: <see cref="EnsureModelAsync"/> ensures the members that implement

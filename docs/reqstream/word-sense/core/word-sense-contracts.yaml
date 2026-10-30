@@ -709,11 +709,12 @@ sections:
                   IPartOfSpeechEvidenceModel with a true ProvidesPartOfSpeechEvidence.
                 tags: [unit]
                 justification: |
-                  The encoder models of this library give the parts of speech of a word of several parts of speech the
+                  An encoder model with a part-of-speech head (BertBaseCased) gives the parts of speech of a word of
+                  several parts of speech the
                   probabilities of a classifier that reads the sentence, closed classes included; the Basic tagger is a
                   second, differently wrong estimate, and a weighted geometric blend lets each overrule the other where
                   it has little evidence.
-                  The weight is tuned on development text by each model package. A parent requirement carries the terms
+                  The weight is tuned on development text by the model package. A parent requirement carries the terms
                   once; the child requirements state each behavior that can be tested on its own.
                 children:
                   - WordSense-Core-WordSenseContracts-FallbackEvidence-Marker

@@ -22,8 +22,9 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     (see <see cref="ClassifyResult"/> and <see cref="SenseLevel"/>). A word that is not in the lexicon is unknown, a
 ///     word with one analysis and one sense is answered at the <see cref="SenseLevel.Sense"/> level without any model
 ///     file, and every other known word whose senses are not scored (its lemma has no trained weights) is answered
-///     from the lexicon at the <see cref="SenseLevel.PartOfSpeech"/> level with every lemma and part of speech equally
-///     likely and without scored senses. Use the model composed with a fallback model that chooses the analysis of such words in
+///     from the lexicon at the <see cref="SenseLevel.PartOfSpeech"/> level without scored senses, with every lemma and
+///     part of speech equally likely, or, for a model that uses its part-of-speech head (BertBaseCased), with the
+///     probabilities of the head for its parts of speech. Use the model composed with a fallback model that chooses the analysis of such words in
 ///     context (see <see cref="FallbackWordSenseModel"/>), as the MiniLM and BertBaseCased packages do with the Basic
 ///     model.
 ///     </para>
@@ -289,20 +290,23 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
     ///     that a sense is known (test the level). A word whose lemma has trained
     ///     weights and several scored senses is scored with the encoder: its analyses get their probabilities, each
     ///     lists its senses ranked by their probability, and the answer is at the finest level the lemma's thresholds
-    ///     support (sense, group or part of speech). A known word of two or more parts of speech gets the
-    ///     probabilities of its parts of speech from the part-of-speech head: the head reads the word and its neighbors
+    ///     support (sense, group or part of speech). When the model uses its part-of-speech head (the BertBaseCased
+    ///     model does; the MiniLM model carries a head but does not use it), a known word of two or more parts of speech gets the
+    ///     probabilities of its parts of speech from the head: the head reads the word and its neighbors
     ///     in the whole text, and the parts of speech that the lexicon does not list for the word are excluded. The
     ///     probability of a slot (a lemma and a part of speech) is the head's probability of its part of speech times
     ///     the share of the slot among the slots of that part of speech (the share of its senses, equal for an untrained
-    ///     lemma). A word of two or more parts of speech whose senses are not scored (no trained weights) is answered at
+    ///     lemma); without the head it is the mass of its senses, equal for an untrained lemma. A word of two or more parts of speech whose senses are not scored (no trained weights) is answered at
     ///     the <see cref="SenseLevel.PartOfSpeech"/> level without scored senses, which makes a composition use its
     ///     fallback model for the senses of the word (see <see cref="FallbackWordSenseModel"/>).
     ///     <para>
-    ///     The model needs the encoder, and so the model files, for every list that has a known word of two or more parts of
-    ///     speech or a word with scored senses, and there is no way to turn that off: the first such list ensures the
+    ///     A model that uses its head needs the encoder, and so the model files, for every list that has a known word of
+    ///     two or more parts of speech or a word with scored senses; any other model needs them only for a word with
+    ///     scored senses. There is no way to turn that off: the first such list ensures the
     ///     model lazily (with the default and environment mirror settings; call <see cref="EnsureModelAsync"/> yourself
     ///     first to pass <see cref="DownloadOptions"/>), shared with concurrent callers; a failed ensure can be retried
-    ///     by the next call. A list in which every word is unknown, has one part of speech and needs no scoring is answered
+    ///     by the next call. A list that needs no encoder (for a model that uses its head: every word unknown or of one
+    ///     part of speech and none needs scoring) is answered
     ///     without any model file: nothing is ensured, downloaded or verified, so it works before
     ///     <see cref="EnsureModelAsync"/> and when the model directory does not exist.
     ///     </para>

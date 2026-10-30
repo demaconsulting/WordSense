@@ -26,6 +26,9 @@ internal sealed class PosHead
     private readonly double[] _weights;
     private readonly float[] _biases;
 
+    // Below this total, the restriction of the full softmax has lost its precision: the allowed scores are used directly
+    private const double UnderflowLimit = 1e-250;
+
     /// <summary>
     ///     Initializes a new instance of the <see cref="PosHead"/> class from a structurally valid head.
     /// </summary>
@@ -111,7 +114,94 @@ internal sealed class PosHead
     /// <param name="next">The vector of the next word, or null at the end of the sentence or for a word without word pieces.</param>
     /// <returns>The probabilities in the order of <see cref="PartOfSpeech"/>; they sum to one.</returns>
     /// <exception cref="ArgumentException">Thrown when a vector does not have the hidden size.</exception>
-    public double[] Posterior(double[]? previous, double[]? word, double[]? next)
+    public double[] Posterior(double[]? previous, double[]? word, double[]? next) => Softmax(Logits(previous, word, next));
+
+    /// <summary>
+    ///     Computes the posterior of the parts of speech of a word, limited to the parts of speech that are allowed.
+    /// </summary>
+    /// <param name="previous">The vector of the previous word, or null.</param>
+    /// <param name="word">The vector of the word, or null.</param>
+    /// <param name="next">The vector of the next word, or null.</param>
+    /// <param name="allowedMask">The allowed parts of speech as a bit set: bit <c>(int)PartOfSpeech</c> is set for an allowed one.</param>
+    /// <returns>
+    ///     The probabilities in the order of <see cref="PartOfSpeech"/>, zero for every part of speech that is not allowed,
+    ///     summing to one; or null when no usable distribution exists (the mask allows nothing, or a score is not a number).
+    /// </returns>
+    /// <remarks>
+    ///     Normally this is <see cref="Restrict"/> of <see cref="Posterior"/>, bit for bit. When the head gives every
+    ///     allowed part of speech so little probability that the product underflows (an excluded class with a far larger
+    ///     score), the restriction is computed from the scores themselves, as a softmax over the allowed scores only, so
+    ///     the result never has zero mass and never falls back to the unrestricted posterior.
+    /// </remarks>
+    /// <exception cref="ArgumentException">Thrown when a vector does not have the hidden size.</exception>
+    public double[]? RestrictedPosterior(double[]? previous, double[]? word, double[]? next, int allowedMask)
+    {
+        var logits = Logits(previous, word, next);
+        var masked = new double[logits.Length];
+        var total = 0.0;
+        var posterior = Softmax(logits);
+        for (var c = 0; c < masked.Length; c++)
+        {
+            if ((allowedMask & (1 << c)) != 0)
+            {
+                masked[c] = posterior[c];
+                total += posterior[c];
+            }
+        }
+
+        if (total >= UnderflowLimit && double.IsFinite(total))
+        {
+            for (var c = 0; c < masked.Length; c++)
+            {
+                masked[c] /= total;
+            }
+
+            return masked;
+        }
+
+        // The softmax over all classes left no usable mass for the allowed ones: a softmax over the allowed scores alone
+        var max = double.NegativeInfinity;
+        for (var c = 0; c < logits.Length; c++)
+        {
+            if ((allowedMask & (1 << c)) != 0)
+            {
+                if (double.IsNaN(logits[c]))
+                {
+                    return null;
+                }
+
+                max = Math.Max(max, logits[c]);
+            }
+        }
+
+        if (!double.IsFinite(max))
+        {
+            return null;
+        }
+
+        total = 0.0;
+        for (var c = 0; c < logits.Length; c++)
+        {
+            masked[c] = (allowedMask & (1 << c)) != 0 ? Math.Exp(logits[c] - max) : 0.0;
+            total += masked[c];
+        }
+
+        for (var c = 0; c < masked.Length; c++)
+        {
+            masked[c] /= total;
+        }
+
+        return masked;
+    }
+
+    /// <summary>
+    ///     Computes the scores of the parts of speech of a word before the softmax.
+    /// </summary>
+    /// <param name="previous">The vector of the previous word, or null.</param>
+    /// <param name="word">The vector of the word, or null.</param>
+    /// <param name="next">The vector of the next word, or null.</param>
+    /// <returns>One score per part of speech, in the order of <see cref="PartOfSpeech"/>.</returns>
+    private double[] Logits(double[]? previous, double[]? word, double[]? next)
     {
         CheckLength(previous);
         CheckLength(word);
@@ -155,7 +245,7 @@ internal sealed class PosHead
             logits[c] = sum;
         }
 
-        return Softmax(logits);
+        return logits;
     }
 
     /// <summary>

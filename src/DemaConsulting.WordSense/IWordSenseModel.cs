@@ -17,11 +17,13 @@ namespace DemaConsulting.WordSense;
 ///     </para>
 ///     <para>
 ///     Lazy ensure: <see cref="ClassifyAsync"/> ensures the files the model needs itself on first use, when (and only
-///     when) a word needs them. The Basic model never needs files. An encoder model needs its encoder files for every
-///     word list that contains a known word of two or more parts of speech (its part-of-speech classifier reads the
-///     sentence, so almost every sentence of running text needs it) or a word whose senses it scores, and there is no way
-///     to turn that off; a list of unknown words and words of one part of speech is answered from the lexicon alone and
-///     never touches model files or ONNX. When the model is needed
+///     when) a word needs them. The Basic model never needs files. The BertBaseCased model needs its encoder files for
+///     every word list that contains a known word of two or more parts of speech (its part-of-speech classifier reads
+///     the sentence, so almost every sentence of running text needs it) or a word whose senses it scores. The MiniLM
+///     model needs them only for a word whose senses it scores (a trained lemma with several senses): its part of
+///     speech comes from the mass of those senses and from the Basic model. There is no way to turn either rule off. A
+///     list that needs no encoder (for BertBaseCased: unknown words and words of one part of speech) is answered from
+///     the lexicon and the Basic model alone and never touches model files or ONNX. When the model is needed
 ///     and was not ensured yet, the call ensures it with the defaults (no explicit download options; the
 ///     <c>WORDSENSE_MIRROR_*</c> environment variables apply). Concurrent callers share one ensure, and a failed ensure
 ///     is retried by the next call. The ensured state belongs to one model instance (a new instance verifies again).
@@ -70,8 +72,9 @@ namespace DemaConsulting.WordSense;
 ///     <see cref="ClassifyResult.Details"/> means unknown.
 ///     Disposal while calls run: <c>Dispose</c> must be safe while calls are running (it must not break or hang a
 ///     running classification). Lazy ensure: an implementation that needs files should ensure them lazily and only when
-///     a word needs them (the supplied encoder models: a known word of two or more parts of speech, or a word with scored
-///     senses), never for a list that it answers without them; such an implementation should also implement
+///     a word needs them (the supplied BertBaseCased model: a known word of two or more parts of speech, or a word with
+///     scored senses; the supplied MiniLM model: a word with scored senses), never for a list that it answers without
+///     them; such an implementation should also implement
 ///     <see cref="IDownloadableWordSenseModel"/>. Word list: enumerate the
 ///     <c>words</c> argument exactly once (copy it to a list first).
 ///     Result content: each element of the result has <see cref="ClassifyResult.Word"/> equal to the input element at the
@@ -104,8 +107,8 @@ namespace DemaConsulting.WordSense;
 ///     instance (about 30 ms for the 22 MiB MiniLM files and about 110 ms for the 104 MiB BertBaseCased files with a
 ///     warm file cache; more on a slow disk). Warm the model at startup (ensure and classify one short text with an
 ///     ambiguous word) if the first request must be fast. Concurrent classifications share one ONNX session and run in
-///     parallel; the encoder models run on the CPU only. An encoder model runs the encoder once for every sentence that
-///     has a word of two or more parts of speech, so call <see cref="IDownloadableWordSenseModel.EnsureModelAsync"/> at
+///     parallel; the encoder models run on the CPU only. The BertBaseCased model runs the encoder once for every sentence
+///     that has a word of two or more parts of speech, so call <see cref="IDownloadableWordSenseModel.EnsureModelAsync"/> at
 ///     startup to control when the download happens.
 ///     </para>
 /// </remarks>
@@ -167,9 +170,9 @@ public interface IWordSenseModel : IDisposable
     ///     MiniLM is uncased and BertBaseCased is cased.
     ///     </para>
     ///     <para>
-    ///     The call ensures the model lazily, when a word needs it (see the remarks of the interface): for an encoder
-    ///     model that is a known word of two or more parts of speech or a word with scored senses, and a list without such
-    ///     a word never touches model files or ONNX. The lazy ensure uses the defaults (no explicit
+    ///     The call ensures the model lazily, when a word needs it (see the remarks of the interface): for BertBaseCased
+    ///     that is a known word of two or more parts of speech or a word with scored senses, for MiniLM a word with scored
+    ///     senses, and a list without such a word never touches model files or ONNX. The lazy ensure uses the defaults (no explicit
     ///     <see cref="DownloadOptions"/>; the <c>WORDSENSE_MIRROR_*</c> environment variables apply), is shared by
     ///     concurrent callers and is retried after a failure; for a model that implements
     ///     <see cref="IDownloadableWordSenseModel"/>, call <see cref="IDownloadableWordSenseModel.EnsureModelAsync"/>

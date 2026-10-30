@@ -47,7 +47,9 @@ internal delegate ValueTask<WordVectors> PooledViewEncode(IReadOnlyList<string> 
 ///     times the probability of the sense, or of the group, within it).
 ///     </para>
 ///     <para>
-///     The part-of-speech head decides the probability of a slot. A known word of two or more parts of speech needs
+///     With a head (the classifier of BertBaseCased; the MiniLM classifier, the tests of senses and the build tool have
+///     none, and there the probability of a slot is the mass of its senses) the part-of-speech head decides the
+///     probability of a slot. A known word of two or more parts of speech needs
 ///     the encoder whatever its lemma: the text is encoded once (in sliding windows when it is longer than the encoder
 ///     window, with a possessive written as one token split into its stem and its marker, see
 ///     <see cref="PossessiveView"/>), and the head reads the vectors of the word and of its previous and next token.
@@ -324,7 +326,7 @@ internal sealed class OnnxClassifier
     /// <param name="view">The text in the possessive view.</param>
     /// <param name="index">The index of the word.</param>
     /// <param name="details">The analyses of the word.</param>
-    /// <returns>The posterior restricted to the parts of speech of the analyses and renormalized (indexed by <see cref="PartOfSpeech"/>), or null when the word has no usable vector.</returns>
+    /// <returns>The posterior restricted to the parts of speech of the analyses and renormalized (indexed by <see cref="PartOfSpeech"/>), or null when the word has no usable vector or the head gives no usable distribution over those parts of speech (the word is then answered without the head).</returns>
     private static double[]? PosteriorOf(PosHead head, WordVectors view, int index, ImmutableArray<WordDetails> details)
     {
         var at = view.Start[index];
@@ -342,7 +344,7 @@ internal sealed class OnnxClassifier
             mask |= 1 << (int)analysis.PartOfSpeech;
         }
 
-        return PosHead.Restrict(head.Posterior(previous, word, next), mask);
+        return head.RestrictedPosterior(previous, word, next, mask);
     }
 
     /// <summary>
@@ -673,6 +675,18 @@ internal sealed class OnnxClassifier
     }
 
     /// <summary>
+    ///     Tells whether a posterior gives the listed parts of speech a positive, finite total probability.
+    /// </summary>
+    /// <param name="posterior">The posterior, indexed by <see cref="PartOfSpeech"/>.</param>
+    /// <param name="partsOfSpeech">The parts of speech of the word.</param>
+    /// <returns>True when the posterior can be used for the word.</returns>
+    private static bool HasMass(double[] posterior, IEnumerable<PartOfSpeech> partsOfSpeech)
+    {
+        var total = partsOfSpeech.Distinct().Sum(p => posterior[(int)p]);
+        return double.IsFinite(total) && total > 0;
+    }
+
+    /// <summary>
     ///     Answers a word without scored senses: from the lexicon alone, or from the part-of-speech head.
     /// </summary>
     /// <param name="word">The word.</param>
@@ -700,6 +714,12 @@ internal sealed class OnnxClassifier
             }
 
             slot.Add(i);
+        }
+
+        // A posterior that gives none of the listed parts of speech any probability cannot be used: the lexicon alone decides
+        if (posterior is not null && !HasMass(posterior, details.Select(d => d.PartOfSpeech)))
+        {
+            posterior = null;
         }
 
         var probability = slots
@@ -787,7 +807,7 @@ internal sealed class OnnxClassifier
         }
 
         Normalize(plan, weightOf);
-        if (posterior is not null)
+        if (posterior is not null && HasMass(posterior, plan.Slots.Select(s => s.PartOfSpeech)))
         {
             ApplyPartOfSpeech(plan, weightOf, posterior);
             Normalize(plan, weightOf);
