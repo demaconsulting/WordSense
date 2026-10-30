@@ -26,8 +26,9 @@ document that another part uses or has rejected.
 
 The two splits share no document: documents are divided by a hash, family by family, so each split holds about 40% and
 60% of the pooled sentences of every family. The rows of `dev.tsv` and `test.tsv` match the tokens of the manifest one to
-one (id, document, source, sentence, target, form, strata and words); `evaluate-gold2` and `compare-gold2` refuse a set
-whose rows are missing, duplicated, unknown or different.
+one (id, document, source, sentence, target, form, strata and words) and have valid labeled fields (a part of speech of
+the lexicon, a sense of the lemma, a tense that fits the features, a status and an agreement from their lists);
+`evaluate-gold2` and `compare-gold2` refuse a set whose rows are missing, duplicated, unknown, different or invalid.
 
 A line of `dev.tsv` and `test.tsv` has 16 tab-separated columns after the header comment lines (`#`):
 
@@ -218,7 +219,9 @@ On untrained lemmas the three models answer with the same usage prior, so they a
 for these lemmas); the prior is below the most frequent sense told the gold analysis because the models also choose
 the analysis. The three models have the same part of speech and the same lemma accuracy within 0.2 points, and the
 paired comparison on the test split finds no significant difference in part of speech (for BertBaseCased against
-Basic: 11 tokens right only for BertBaseCased, 14 only for Basic) and none in tense. `evaluate-gold2` prints every
+Basic: 11 tokens right only for BertBaseCased, 14 only for Basic) and none in tense by the exact McNemar test (the
+document-bootstrap interval of BertBaseCased against Basic on tense, which has 2 and 8 such tokens, excludes zero).
+`evaluate-gold2` prints every
 stratum, the source groups (technical, news, literary) and the paired comparisons with their intervals.
 
 ## Limits

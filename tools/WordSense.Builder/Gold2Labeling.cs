@@ -168,7 +168,7 @@ internal static class Gold2Labeling
     /// </summary>
     /// <param name="name">The name.</param>
     /// <returns>True when the name is valid.</returns>
-    private static bool IsPosName(string name) => name == "Other" || Enum.TryParse<PartOfSpeech>(name, false, out _);
+    private static bool IsPosName(string name) => name == "Other" || Gold2.TryParsePartOfSpeech(name, out _);
 
     /// <summary>
     ///     Writes the batches of a labeling stage and the table that maps them back to the tokens.
@@ -372,6 +372,7 @@ internal static class Gold2Labeling
     /// <param name="suffix">The suffix of the labeler's files.</param>
     /// <param name="adjudication">Whether the answers are the adjudicator's.</param>
     /// <returns>The answers by token id and the problems found in the files.</returns>
+    /// <exception cref="InvalidDataException">Thrown when a token is answered more than once (in one file or in two rounds of the same labeler).</exception>
     public static (Dictionary<string, Gold2Answer> Answers, List<string> Problems) ReadAnswers(string directory, string suffix, bool adjudication)
     {
         var tableStem = adjudication ? "adjudication" : "sample";
@@ -389,6 +390,7 @@ internal static class Gold2Labeling
         }
 
         var answers = new Dictionary<string, Gold2Answer>(StringComparer.Ordinal);
+        var firstFile = new Dictionary<string, string>(StringComparer.Ordinal);
         var problems = new List<string>();
         var batchDirectory = Path.Join(directory, "batches");
         foreach (var batch in map.Keys.Select(k => k.Batch).Distinct(StringComparer.Ordinal).Order(StringComparer.Ordinal))
@@ -419,6 +421,12 @@ internal static class Gold2Labeling
                     continue;
                 }
 
+                if (firstFile.TryGetValue(id, out var earlier))
+                {
+                    throw new InvalidDataException($"{Path.GetFileName(path)}: the token '{id}' (answer {c[0].Trim()} of batch {batch}) is answered more than once; its first answer is in {earlier}.");
+                }
+
+                firstFile[id] = Path.GetFileName(path);
                 var high = c.Length > 3 && c[3].Trim().Equals("high", StringComparison.OrdinalIgnoreCase);
                 answers[id] = new Gold2Answer(c[1].Trim(), c[2].Trim(), high);
             }

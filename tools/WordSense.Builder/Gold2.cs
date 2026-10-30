@@ -249,13 +249,18 @@ internal static partial class Gold2
             }
 
             var c = line.Split('\t');
-            if (c.Length != 9 || !int.TryParse(c[5], NumberStyles.None, CultureInfo.InvariantCulture, out var target))
+            if (c.Length != 9)
             {
                 throw new InvalidDataException($"{Path.GetFileName(path)}:{number.ToString(CultureInfo.InvariantCulture)}: expected 9 tab-separated columns (id, split, doc_id, source, sent_id, target, form, strata, sentence).");
             }
 
+            if (!int.TryParse(c[5], NumberStyles.None, CultureInfo.InvariantCulture, out var target))
+            {
+                throw new InvalidDataException($"{Path.GetFileName(path)}:{number.ToString(CultureInfo.InvariantCulture)}: the target index '{c[5]}' is not a number of zero or more.");
+            }
+
             var words = c[8].Split(' ');
-            if (target >= words.Length || !string.Equals(words[target], c[6], StringComparison.Ordinal))
+            if (target < 0 || target >= words.Length || !string.Equals(words[target], c[6], StringComparison.Ordinal))
             {
                 throw new InvalidDataException($"{Path.GetFileName(path)}:{number.ToString(CultureInfo.InvariantCulture)}: the word at index {c[5]} is not '{c[6]}'.");
             }
@@ -374,13 +379,18 @@ internal static partial class Gold2
             }
 
             var c = line.Split('\t');
-            if (c.Length != 16 || !int.TryParse(c[5], NumberStyles.None, CultureInfo.InvariantCulture, out var target))
+            if (c.Length != 16)
             {
                 throw new InvalidDataException($"{split}.tsv:{number.ToString(CultureInfo.InvariantCulture)}: expected 16 tab-separated columns.");
             }
 
+            if (!int.TryParse(c[5], NumberStyles.None, CultureInfo.InvariantCulture, out var target))
+            {
+                throw new InvalidDataException($"{split}.tsv:{number.ToString(CultureInfo.InvariantCulture)}: the target index '{c[5]}' is not a number of zero or more.");
+            }
+
             var words = c[15].Split(' ');
-            if (target >= words.Length || !string.Equals(words[target], c[6], StringComparison.Ordinal))
+            if (target < 0 || target >= words.Length || !string.Equals(words[target], c[6], StringComparison.Ordinal))
             {
                 throw new InvalidDataException($"{split}.tsv:{number.ToString(CultureInfo.InvariantCulture)}: the word at index {c[5]} is not '{c[6]}'.");
             }
@@ -643,7 +653,7 @@ internal static partial class Gold2
     /// <param name="manifest">The sampled tokens of the manifest (every split).</param>
     /// <param name="rows">The labeled rows of the split.</param>
     /// <param name="split"><see cref="Dev"/> or <see cref="Test"/>.</param>
-    /// <returns>The problems: a row that the manifest does not have for the split, a row that appears twice, a manifest token without a row, a manifest id that appears twice, and a row that differs from its token in the document, the source, the sentence, the target, the form, the strata or the words.</returns>
+    /// <returns>The problems: a row that the manifest does not have for the split, a row that appears twice, a manifest token without a row, a manifest id that appears twice, a row that differs from its token in the document, the source, the sentence, the target, the form, the strata or the words, and a row whose labeled fields are invalid (<see cref="ValidateRowFields"/>).</returns>
     public static List<string> ValidateRows(IReadOnlyList<Gold2Token> manifest, IReadOnlyList<Gold2Row> rows, string split)
     {
         ArgumentNullException.ThrowIfNull(manifest);
@@ -657,13 +667,16 @@ internal static partial class Gold2
 
         var expected = manifest.Where(t => t.Split == split).GroupBy(t => t.Id, StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.First(), StringComparer.Ordinal);
         var seen = new HashSet<string>(StringComparer.Ordinal);
-        foreach (var token in rows.Select(row => row.Token))
+        foreach (var row in rows)
         {
+            var token = row.Token;
             if (!seen.Add(token.Id))
             {
                 problems.Add($"{file}: the row '{token.Id}' appears more than once.");
                 continue;
             }
+
+            problems.AddRange(ValidateRowFields(row, file));
 
             if (!expected.TryGetValue(token.Id, out var sampled))
             {
@@ -688,6 +701,105 @@ internal static partial class Gold2
         foreach (var id in expected.Keys.Where(id => !seen.Contains(id)))
         {
             problems.Add($"{file}: the token '{id}' of {ManifestName} has no row.");
+        }
+
+        return problems;
+    }
+
+    /// <summary>
+    ///     Reads a part of speech by its name: a name of <see cref="PartOfSpeech"/>, never a number.
+    /// </summary>
+    /// <param name="name">The name (case sensitive).</param>
+    /// <param name="pos">Receives the part of speech.</param>
+    /// <returns>True when the name is the name of a part of speech.</returns>
+    public static bool TryParsePartOfSpeech(string? name, out PartOfSpeech pos)
+    {
+        pos = default;
+        return name is not null && Enum.GetNames<PartOfSpeech>().Contains(name, StringComparer.Ordinal) && Enum.TryParse(name, false, out pos);
+    }
+
+    /// <summary>
+    ///     Checks the labeled fields of a row, apart from its identity: the part of speech, the lemma, the sense, the tense, the
+    ///     status and the agreement.
+    /// </summary>
+    /// <remarks>
+    ///     The part of speech is a named part of speech of the lexicon or <c>Other</c>; the lemma is not empty; a sense is
+    ///     <c>-</c>, <c>none</c> (only in an adjudicated row) or a sense of the lemma and part of speech that has two or more
+    ///     senses; the tense is <c>-</c> for any token but a verb whose features give a past or non-past class, which the tense
+    ///     must be; the status is <c>agreed</c> or <c>adjudicated</c>; the agreement is <c>full</c>, <c>analysis</c>,
+    ///     <c>pos</c> or <c>none</c>.
+    /// </remarks>
+    /// <param name="row">The row.</param>
+    /// <param name="file">The name of the file, for the messages.</param>
+    /// <returns>The problems, empty when the row is valid.</returns>
+    public static List<string> ValidateRowFields(Gold2Row row, string file)
+    {
+        ArgumentNullException.ThrowIfNull(row);
+        var problems = new List<string>();
+        var id = row.Token.Id;
+        void Add(string field, string value, string reason) => problems.Add($"{file}: the row '{id}' has an invalid {field} '{value}': {reason}.");
+
+        var named = TryParsePartOfSpeech(row.Pos, out var pos);
+        if (!named && row.Pos != "Other")
+        {
+            Add("part of speech", row.Pos, "it is neither a part of speech of the lexicon nor Other");
+        }
+
+        if (string.IsNullOrWhiteSpace(row.Lemma))
+        {
+            Add("lemma", row.Lemma, "it is empty");
+        }
+
+        if (row.Sense is not ("-" or "none"))
+        {
+            if (!named)
+            {
+                Add("sense", row.Sense, "only a token of a part of speech of the lexicon has a sense");
+            }
+            else
+            {
+                var senses = WordLexicon.SensesOf(row.Lemma, pos);
+                if (senses.Length < 2)
+                {
+                    Add("sense", row.Sense, "the lemma and part of speech have fewer than two senses, so the sense must be -");
+                }
+                else if (!senses.Any(s => string.Equals(s.SenseId, row.Sense, StringComparison.Ordinal)))
+                {
+                    Add("sense", row.Sense, "it is no sense of the lemma and part of speech");
+                }
+            }
+        }
+        else if (row.Sense == "none" && row.Status != "adjudicated")
+        {
+            Add("sense", row.Sense, "only the adjudicator answers none, so the row must be adjudicated");
+        }
+
+        if (row.Tense is not ("past" or "nonpast" or "-"))
+        {
+            Add("tense", row.Tense, "it is not past, nonpast or -");
+        }
+        else
+        {
+            var expected = "-";
+            if (named && pos == PartOfSpeech.Verb && row.Features.Length > 0)
+            {
+                expected = BasicClassifier.IsPast(new WordDetails(row.Lemma, PartOfSpeech.Verb, row.Features)) ? "past" : "nonpast";
+            }
+
+            if (!string.Equals(row.Tense, expected, StringComparison.Ordinal))
+            {
+                Add("tense", row.Tense, $"a {(expected == "-" ? "token that is no verb with features" : "verb with these features")} has the tense {expected}");
+            }
+        }
+
+        if (row.Status is not ("agreed" or "adjudicated"))
+        {
+            Add("status", row.Status, "it is not agreed or adjudicated");
+        }
+
+        if (row.Agreement is not ("full" or "analysis" or "pos" or "none"))
+        {
+            Add("agreement", row.Agreement, "it is not full, analysis, pos or none");
         }
 
         return problems;

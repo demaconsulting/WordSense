@@ -1004,6 +1004,176 @@ public sealed class Gold2Tests : IDisposable
         Assert.Contains("| Tense (same-spelling verbs) | 5.0 points | 14.0% | 0 | n/a |", power, StringComparison.Ordinal);
     }
 
+    private static Gold2Row ValidRow(string id = "t-1") =>
+        new(Sampled(id), "terms", "Noun", "bank", "Number=Sing", "-", WordLexicon.SensesOf("bank", PartOfSpeech.Noun)[0].SenseId, "agreed", "full");
+
+    /// <summary>
+    ///     A row of the lexicon, with a sense of its lemma, is valid; so are a verb with the tense of its features, a token of
+    ///     the part of speech <c>Other</c> and an adjudicated row with no defensible sense.
+    /// </summary>
+    [Fact]
+    public void Gold2_ValidateRowFields_ValidRows_HaveNoProblem()
+    {
+        // Arrange
+        var verb = new Gold2Row(Sampled("t-2"), "terms", "Verb", "read", "Tense=Past+VerbForm=Part", "past", "-", "agreed", "full");
+        var other = new Gold2Row(Sampled("t-3"), "terms", "Other", "y", string.Empty, "-", "-", "agreed", "pos");
+        var none = ValidRow("t-4") with { Sense = "none", Status = "adjudicated", Agreement = "analysis" };
+
+        // Act
+        var problems = new[] { ValidRow(), verb, other, none }.SelectMany(r => Gold2.ValidateRowFields(r, "test.tsv")).ToList();
+
+        // Assert
+        Assert.Empty(problems);
+    }
+
+    /// <summary>
+    ///     A part of speech that is no name (a number, another case, an unknown word), an empty lemma, a sense that the lemma
+    ///     does not have, on a lemma of one sense or on <c>Other</c>, a <c>none</c> that no adjudicator gave, a tense that is
+    ///     not allowed, on a non-verb or against the features, and a status or an agreement outside the allowed values are each a
+    ///     problem that names the field.
+    /// </summary>
+    [Fact]
+    public void Gold2_ValidateRowFields_InvalidFields_AreProblemsThatNameTheField()
+    {
+        // Arrange
+        var verb = new Gold2Row(Sampled("t-2"), "terms", "Verb", "read", "Tense=Past+VerbForm=Part", "past", "-", "agreed", "full");
+        (Gold2Row Row, string Field)[] cases =
+        [
+            (ValidRow() with { Pos = "1" }, "part of speech"),
+            (ValidRow() with { Pos = "noun" }, "part of speech"),
+            (ValidRow() with { Pos = "Planet" }, "part of speech"),
+            (ValidRow() with { Lemma = " " }, "lemma"),
+            (ValidRow() with { Sense = "bank#no-such-sense" }, "sense"),
+            (ValidRow() with { Pos = "Other" }, "sense"),
+            (verb with { Lemma = "zzyzx", Sense = "zzyzx#x" }, "sense"),
+            (ValidRow() with { Sense = "none" }, "sense"),
+            (ValidRow() with { Tense = "future" }, "tense"),
+            (ValidRow() with { Tense = "past" }, "tense"),
+            (verb with { Tense = "nonpast" }, "tense"),
+            (verb with { Features = string.Empty, Tense = "past" }, "tense"),
+            (ValidRow() with { Status = "settled" }, "status"),
+            (ValidRow() with { Agreement = "most" }, "agreement"),
+        ];
+
+        // Act / Assert
+        foreach (var (row, field) in cases)
+        {
+            var problems = Gold2.ValidateRowFields(row, "test.tsv");
+            Assert.Contains(problems, p => p.Contains($"invalid {field} '", StringComparison.Ordinal) && p.Contains("'t-", StringComparison.Ordinal));
+        }
+
+        Assert.Empty(Gold2.ValidateRowFields(verb, "test.tsv"));
+    }
+
+    /// <summary>
+    ///     Evaluation reads no row with an invalid labeled field: the reader of verified rows names the field.
+    /// </summary>
+    [Fact]
+    public void Gold2_ReadVerifiedRows_InvalidLabeledField_Throws()
+    {
+        // Arrange
+        var corpus = _dir.Root;
+        var folder = Gold2.Directory(corpus);
+        Directory.CreateDirectory(folder);
+        var token = Sampled("t-1");
+        File.WriteAllText(Path.Join(folder, Gold2.ManifestName), Gold2.RenderManifest([token]));
+        File.WriteAllText(Gold2.RowsPath(corpus, Gold2.Test), Gold2.RenderRows(Gold2.Test, [ValidRow() with { Pos = "7" }]));
+
+        // Act
+        var error = Assert.Throws<InvalidDataException>(() => Gold2.ReadVerifiedRows(corpus, Gold2.Test));
+
+        // Assert
+        Assert.Contains("invalid part of speech '7'", error.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A target index that is negative (or no number) is an <see cref="InvalidDataException"/> in the manifest and in the
+    ///     rows, never an index out of range.
+    /// </summary>
+    [Fact]
+    public void Gold2_Readers_NegativeTargetIndex_Throws()
+    {
+        // Arrange
+        var corpus = _dir.Root;
+        var folder = Gold2.Directory(corpus);
+        Directory.CreateDirectory(folder);
+        File.WriteAllText(Path.Join(folder, Gold2.ManifestName), "t-0001\ttest\tvoa-1\tvoa\tvoa-1-s0001\t-1\tbank\tC\tthe river bank .\n");
+        File.WriteAllText(Gold2.RowsPath(corpus, Gold2.Test), "t-0001\tvoa-1\tvoa\tterms\tvoa-1-s0001\t-1\tbank\tC\tNoun\tbank\tNumber=Sing\t-\t-\tagreed\tfull\tthe river bank .\n");
+
+        // Act
+        var manifest = Assert.Throws<InvalidDataException>(() => Gold2.ReadManifest(corpus));
+        var rows = Assert.Throws<InvalidDataException>(() => Gold2.ReadRows(corpus, Gold2.Test));
+
+        // Assert
+        Assert.Contains("target index '-1'", manifest.Message, StringComparison.Ordinal);
+        Assert.Contains("target index '-1'", rows.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A part of speech is read by its name only: a number, another case and an unknown word are no part of speech.
+    /// </summary>
+    [Fact]
+    public void Gold2_TryParsePartOfSpeech_OnlyNames_AreParts()
+    {
+        // Act / Assert
+        Assert.True(Gold2.TryParsePartOfSpeech("Noun", out var pos));
+        Assert.Equal(PartOfSpeech.Noun, pos);
+        Assert.False(Gold2.TryParsePartOfSpeech("1", out _));
+        Assert.False(Gold2.TryParsePartOfSpeech("noun", out _));
+        Assert.False(Gold2.TryParsePartOfSpeech("Other", out _));
+        Assert.False(Gold2.TryParsePartOfSpeech(null, out _));
+        Assert.NotNull(Gold2Labeling.Resolve(ReadToken("t-1"), new Gold2Answer("other:1:reading", "-", true), false, out _));
+        Assert.Null(Gold2Labeling.Resolve(ReadToken("t-1"), new Gold2Answer("other:Noun:reading", "-", true), false, out _));
+    }
+
+    /// <summary>
+    ///     A token that is answered twice, in one file or in two rounds of a labeler, is an error that names the token and the
+    ///     file of its first answer; the first answer is never silently replaced.
+    /// </summary>
+    [Fact]
+    public void Gold2Labeling_ReadAnswers_DuplicateAnswer_Throws()
+    {
+        // Arrange: a table with two batches that both name t-1, as a retry round of a token that was answered would
+        var directory = _dir.Root;
+        Gold2Labeling.WriteBatches(DataFolder, [ReadToken("t-1"), ReadToken("t-2")], directory, 100, "label");
+        Gold2Labeling.WriteBatches(DataFolder, [ReadToken("t-1")], directory, 100, "label", null, "-r1");
+        File.WriteAllText(Path.Join(directory, "g2-t01.sol.tsv"), "n\tanalysis\tsense\tconfidence\n1\ta1\t-\thigh\n2\ta1\t-\thigh\n");
+        File.WriteAllText(Path.Join(directory, "g2-r1-t01.sol.tsv"), "n\tanalysis\tsense\tconfidence\n1\ta2\t-\tlow\n");
+        File.WriteAllText(Path.Join(directory, "g2-t01.dup.tsv"), "n\tanalysis\tsense\tconfidence\n1\ta1\t-\thigh\n1\ta2\t-\tlow\n");
+
+        // Act
+        var rounds = Assert.Throws<InvalidDataException>(() => Gold2Labeling.ReadAnswers(directory, "sol", false));
+        var sameFile = Assert.Throws<InvalidDataException>(() => Gold2Labeling.ReadAnswers(directory, "dup", false));
+
+        // Assert
+        Assert.Contains("'t-1'", rounds.Message, StringComparison.Ordinal);
+        Assert.Contains("answered more than once", rounds.Message, StringComparison.Ordinal);
+        Assert.Contains("g2-t01.sol.tsv", rounds.Message, StringComparison.Ordinal);
+        Assert.Contains("g2-t01.dup.tsv", sameFile.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The bootstrap resamples only the documents that contribute tokens: documents without a token add no empty draw, so
+    ///     the interval of documents that all differ by 0.2 is exactly 0.2, and no resample has a zero denominator.
+    /// </summary>
+    [Fact]
+    public void Gold2Evaluator_BootstrapInterval_DocumentsWithoutTokens_AreNotResampled()
+    {
+        // Arrange: two contributing documents of 10 tokens each with a difference of 2, among 100 documents with none
+        var sums = new (int N, int Diff)[102];
+        sums[10] = (10, 2);
+        sums[50] = (10, 2);
+
+        // Act
+        var (low, high) = Gold2Evaluator.BootstrapInterval(sums, 7);
+        var empty = Gold2Evaluator.BootstrapInterval(new (int N, int Diff)[5], 7);
+
+        // Assert
+        Assert.Equal(0.2, low, 9);
+        Assert.Equal(0.2, high, 9);
+        Assert.Equal((0.0, 0.0), empty);
+    }
+
     /// <summary>
     ///     The builder prints the power plan.
     /// </summary>

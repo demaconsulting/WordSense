@@ -766,7 +766,13 @@ adjudication and no human review; the README of the set says so.
    with 1 when an answer is missing or invalid, an answer names a token that the manifest does not have, or the rows
    would not match the manifest (`Gold2.ValidateRows`).
 6. `evaluate-gold2` (`Gold2Evaluator.MeasureAsync`) reads the rows with `Gold2.ReadVerifiedRows`, which requires an exact
-   one-to-one match with `manifest.tsv` on id, document, source, sentence, target, form, strata and words, and throws an
+   one-to-one match with `manifest.tsv` on id, document, source, sentence, target, form, strata and words, and checks
+   the labeled fields of every row (`Gold2.ValidateRowFields`, which `Gold2.ValidateRows` calls, so evaluation and merge
+   share it): a named part of speech of the lexicon or `Other` (never a number, `Gold2.TryParsePartOfSpeech`), a
+   lemma, a
+   sense that is `-`, `none` in an adjudicated row, or a sense of the lemma and part of speech that has two or more
+   senses, a tense that is `-` unless the row is a verb with features, whose class it must be, a status and an
+   agreement from their lists. It throws an
    `InvalidDataException` that names a missing, duplicate, unknown or different row. It classifies every token inside its
    sentence and scores it: the part
    of speech of the selected analysis (a token that is not answered is wrong), the lemma, the tense (only for a gold
@@ -784,13 +790,16 @@ adjudication and no human review; the README of the set says so.
    frequent sense by the WordNet 3.0 tag counts.
 7. `Gold2Evaluator.Compare` compares every pair of models for each stratum and measure on the tokens that the measure
    applies to (a stratum of at least 20 tokens): the counts of tokens that only one model gets right, the exact
-   two-sided McNemar p value and a 95% interval of the difference by a bootstrap that resamples documents (1,000
+   two-sided McNemar p value and a 95% interval of the difference by a bootstrap that resamples the documents that
+   contribute a token to the stratum and measure (`Gold2Evaluator.BootstrapInterval`: a document without a token is no
+   cluster, and every resample has tokens; 1,000
    resamples, a fixed seed). `--outcomes` writes the per-token outcomes of each model (`Gold2Evaluator.RenderOutcomes`);
    `compare-gold2` reads two such files (`Gold2Evaluator.ReadOutcomes`) and compares them on the same tokens, for two
    builds of a model.
-8. The files are validated when they are read: a manifest line has its word at its index, and a row has a part of speech
-   of the lexicon or `Other`, a sense of its lemma and part of speech when one is given, a status and a tense only for a
-   verb; the rows of a split match the manifest one to one (item 6). The leakage check reads the sentences of each split
+8. The files are validated when they are read: a manifest line or a row has a target index of zero or more and its
+   word at that index, and the rows of a split match the manifest one to one with valid labeled fields (item 6). The
+   answers of a labeler are read once: a token that is answered twice is an `InvalidDataException` that names the token
+   and the file of its first answer (`Gold2Labeling.ReadAnswers`). The leakage check reads the sentences of each split
    as an evaluation part of its own and runs the document check (`Gold2.ValidateDocuments`).
 
 #### Running-text evaluation (`RunningTextEvaluator`)

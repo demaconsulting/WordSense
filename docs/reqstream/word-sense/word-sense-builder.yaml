@@ -2162,14 +2162,15 @@ sections:
 
           - id: WordSense-WordSenseBuilder-Gold2Files-Index
             title: >-
-              The reader of the manifest shall reject a line whose word is not at its index with an
-              InvalidDataException.
+              The reader of the manifest and of the labeled rows shall reject a line whose word is not at its index, or
+              whose index is negative or no number, with an InvalidDataException.
             tags: [unit]
             justification: |
               The index names the token that the gold label belongs to; a wrong index must be a data error and never a
-              label of another word.
+              label of another word or an index out of range.
             tests:
               - Gold2_ReadManifest_WrongWordAtTheIndex_Throws
+              - Gold2_Readers_NegativeTargetIndex_Throws
 
           - id: WordSense-WordSenseBuilder-Gold2Documents
             title: >-
@@ -2228,18 +2229,39 @@ sections:
               - Gold2_ReadVerifiedRows_RowsThatDoNotMatchTheManifest_Throw
               - Gold2_CommittedRows_MatchTheManifestOneToOne
 
+          - id: WordSense-WordSenseBuilder-Gold2Rows-Fields
+            title: >-
+              The builder shall check the labeled fields of every row of the second all-words gold set before it
+              evaluates or merges them, and reject a row with an InvalidDataException that names the field when its part
+              of speech is no name of a part of speech of the lexicon (a number included) and not Other, its lemma is
+              empty, its sense is neither a dash, nor none in an adjudicated row, nor a sense of its lemma and part of
+              speech that has two or more senses, its tense is not past, nonpast or a dash or is not the class that its
+              features give (a dash for any token but a verb with features), its status is not agreed or adjudicated, or
+              its agreement is not full, analysis, pos or none.
+            tags: [unit]
+            justification: |
+              A row that the lexicon cannot have would count every model wrong for the wrong reason, and a row that
+              reads in a number for a part of speech or a sense of another lemma would pass the identity check unseen.
+            tests:
+              - Gold2_ValidateRowFields_ValidRows_HaveNoProblem
+              - Gold2_ValidateRowFields_InvalidFields_AreProblemsThatNameTheField
+              - Gold2_ReadVerifiedRows_InvalidLabeledField_Throws
+              - Gold2_CommittedRows_MatchTheManifestOneToOne
+
           - id: WordSense-WordSenseBuilder-Gold2Labeling-Answers
             title: >-
               The builder shall resolve the answer of a labeler (an analysis of the form, or another part of speech and
               lemma, with a sense or unsure and a confidence) to the analysis and the sense it names, list the analyses
               of a form in a fixed order without any frequency, accept none (no defensible sense) from the adjudicator
-              only and read its unsure as none, and name an analysis, a sense or a part of speech that does not exist.
+              only and read its unsure as none, and name an analysis, a sense or a part of speech that does not exist (a
+              part of speech is read by its name; a number is none).
             tags: [unit]
             justification: |
               The labelers must choose among the analyses that the lexicon has and see no frequency, and a mistaken
               answer must be named and never read as another one.
             tests:
               - Gold2Labeling_Resolve_Answers_ResolveToTheAnalysisAndItsSense
+              - Gold2_TryParsePartOfSpeech_OnlyNames_AreParts
 
           - id: WordSense-WordSenseBuilder-Gold2Labeling-Batches
             title: >-
@@ -2253,6 +2275,17 @@ sections:
               the two labelers answered.
             tests:
               - Gold2Labeling_WriteBatchesAndReadAnswers_RoundTrip
+
+          - id: WordSense-WordSenseBuilder-Gold2Labeling-Duplicates
+            title: >-
+              The builder shall reject with an InvalidDataException that names the token and the file of its first
+              answer a token that a labeler answers more than once, in one file or in two rounds, and never replace the
+              first answer.
+            tags: [unit]
+            justification: |
+              A second answer that silently replaced the first would make the gold depend on the order of the files.
+            tests:
+              - Gold2Labeling_ReadAnswers_DuplicateAnswer_Throws
 
           - id: WordSense-WordSenseBuilder-Gold2Labeling-Retry
             title: >-
@@ -2345,14 +2378,17 @@ sections:
               The builder shall compare every pair of models on the second all-words gold set by the number of tokens
               that only one of them gets right, the exact two-sided p value of those numbers and a 95% interval of the
               difference that resamples documents with a fixed seed, for each stratum of at least 20 tokens and each
-              measure, leaving out the tokens that a measure does not apply to.
+              measure, leaving out the tokens that a measure does not apply to and resampling only the documents that
+              contribute a token to the stratum and measure.
             tags: [unit]
             justification: |
               A difference between two models is evidence only when it is larger than the chance of the sample; the
               tokens of a document are alike, so the interval resamples documents, and a fixed seed makes it
-              reproducible.
+              reproducible. A document without a token is no cluster of the sample; resampling it would bias the
+              interval toward zero and could draw a sample with no token.
             tests:
               - Gold2Evaluator_Compare_TwoModels_CountsDiscordantTokensAndGivesAnInterval
+              - Gold2Evaluator_BootstrapInterval_DocumentsWithoutTokens_AreNotResampled
 
           - id: WordSense-WordSenseBuilder-Gold2Comparison-Outcomes
             title: >-

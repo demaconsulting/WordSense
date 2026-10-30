@@ -593,7 +593,17 @@ and weights.
   the id of the other split) and a manifest id that appears twice are each named; a row with another document, sentence,
   target, form or words says what differs; the reader of verified rows throws an `InvalidDataException` for a missing,
   a duplicate and a different row, returns an empty list for a split without rows and tokens, and accepts the complete
-  set.
+  set. The labeled fields are checked apart from the identity
+  (`Gold2_ValidateRowFields_ValidRows_HaveNoProblem`, `Gold2_ValidateRowFields_InvalidFields_AreProblemsThatNameTheField`,
+  `Gold2_ReadVerifiedRows_InvalidLabeledField_Throws`): a noun with a sense of `bank`, a verb with the tense of its
+  features, a token of `Other` and an adjudicated `none` are valid; a part of speech that is a number, in another case or
+  unknown, an empty lemma, a sense that is no sense of the lemma, on `Other` or on a lemma of one sense, a `none` of an
+  agreed row, a tense that is not allowed, on a noun or against the features, and a status or an agreement outside the
+  lists are each a problem that names the field, and the reader of verified rows throws for a part of speech `7`.
+- **Target index** (`Gold2_Readers_NegativeTargetIndex_Throws`): a manifest line and a row with the index `-1` are an
+  `InvalidDataException` that names the index, not an index out of range.
+- **Part of speech names** (`Gold2_TryParsePartOfSpeech_OnlyNames_AreParts`): `Noun` is a part of speech; `1`, `noun`,
+  `Other` and null are not, and the answer `other:1:reading` is invalid where `other:Noun:reading` is valid.
 - **Answers** (`Gold2Labeling_Resolve_Answers_ResolveToTheAnalysisAndItsSense`): the analyses of `read` come in the
   order of lemma, part of speech and features; an answer resolves to its analysis and a sense of it; an unsure answer
   of the adjudicator and a `none` of the adjudicator resolve to `none`, and a `none` of a labeler is a problem;
@@ -616,6 +626,9 @@ and weights.
   token in braces and the analyses with their senses and glosses; the answer table is read back (`a1` with `unsure`
   and a high confidence, `a2` with a low one) and a line that is no answer is reported; the adjudication batch shows
   the first labeler's answer, and its table is written.
+- **Duplicate answers** (`Gold2Labeling_ReadAnswers_DuplicateAnswer_Throws`): a token that two rounds of a labeler both
+  answer, and a token that one file answers twice, are an `InvalidDataException` that says the token is answered more
+  than once and names the file of its first answer.
 - **Retry round** (`Program_Gold2Batches_Missing_KeepsTheBatchIndexOfTheFirstRound`,
   `Gold2Labeling_WriteBatches_TableWithAnotherMapping_IsNotOverwritten`): of three tokens of which the first has an
   answer, `gold2-batches --missing` writes the other two as `sample-r1.tsv` and `g2-r1-t01.json`, leaves `sample.tsv`
@@ -640,6 +653,9 @@ and weights.
   that one model gets 40 right and the other 50, the comparison counts 10 tokens that only the second gets right and
   none for the first, gives the exact p value of that split, an interval that contains the difference of 16.67 points,
   one row for each stratum of at least 20 tokens, no row for the sense (no token applies), and the same result again.
+  The bootstrap resamples only the documents that contribute tokens
+  (`Gold2Evaluator_BootstrapInterval_DocumentsWithoutTokens_AreNotResampled`): two documents of 10 tokens that each
+  differ by 2, among 100 documents without a token, give the interval 0.2 to 0.2, and no document at all gives (0, 0).
 - **Outcomes** (`Gold2Evaluator_Outcomes_RoundTrip`): the outcomes of two tokens are written and read back the same, and
   a file with a value that is not a flag is an `InvalidDataException`.
 

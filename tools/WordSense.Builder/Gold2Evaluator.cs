@@ -188,7 +188,7 @@ internal static class Gold2Evaluator
         foreach (var row in rows)
         {
             var sense = -1;
-            if (row.Sense is not ("-" or "none") && Enum.TryParse<PartOfSpeech>(row.Pos, false, out var pos))
+            if (row.Sense is not ("-" or "none") && Gold2.TryParsePartOfSpeech(row.Pos, out var pos))
             {
                 var usage = WordLexicon.Current.UsageOf(row.Lemma, pos);
                 if (usage.Length > 0)
@@ -291,11 +291,22 @@ internal static class Gold2Evaluator
     /// <summary>
     ///     Finds the 95% interval of the difference of two models by resampling whole documents.
     /// </summary>
+    /// <remarks>
+    ///     Only the documents that contribute at least one token to the stratum and measure take part: a document without a
+    ///     token is no cluster of the sample, and resampling it would add empty draws that bias the interval (and give a
+    ///     resample with no token at all).
+    /// </remarks>
     /// <param name="sums">For each document, the tokens it contributes and the sum of the differences (second minus first) over them.</param>
     /// <param name="seed">The seed of the pseudo-random generator, so the interval is reproducible.</param>
-    /// <returns>The 2.5th and the 97.5th percentile of the resampled differences, as shares.</returns>
-    private static (double Low, double High) BootstrapInterval((int N, int Diff)[] sums, int seed)
+    /// <returns>The 2.5th and the 97.5th percentile of the resampled differences, as shares; (0, 0) when no document contributes.</returns>
+    internal static (double Low, double High) BootstrapInterval((int N, int Diff)[] sums, int seed)
     {
+        var clusters = sums.Where(s => s.N > 0).ToArray();
+        if (clusters.Length == 0)
+        {
+            return (0, 0);
+        }
+
 #pragma warning disable S2245 // a seeded pseudo-random generator makes the bootstrap reproducible; nothing here is a secret
         var random = new Random(seed + 20261029);
 #pragma warning restore S2245
@@ -303,14 +314,14 @@ internal static class Gold2Evaluator
         for (var r = 0; r < Resamples; r++)
         {
             long n = 0, diff = 0;
-            for (var k = 0; k < sums.Length; k++)
+            for (var k = 0; k < clusters.Length; k++)
             {
-                var (dn, dd) = sums[random.Next(sums.Length)];
+                var (dn, dd) = clusters[random.Next(clusters.Length)];
                 n += dn;
                 diff += dd;
             }
 
-            differences[r] = n == 0 ? 0 : (double)diff / n;
+            differences[r] = (double)diff / n;
         }
 
         Array.Sort(differences);
