@@ -223,11 +223,13 @@ internal static class RunningTextEvaluator
     /// </summary>
     /// <param name="scoresByModel">The scores of each model.</param>
     /// <param name="notes">The notes of the sets that were left out.</param>
+    /// <param name="split">The split of the open corpus that the open set was read from (<c>test</c>, <c>dev</c>).</param>
     /// <returns>The text with line feeds.</returns>
-    public static string Render(IReadOnlyList<(string Model, List<TaggerScore> Scores)> scoresByModel, IReadOnlyList<string> notes)
+    public static string Render(IReadOnlyList<(string Model, List<TaggerScore> Scores)> scoresByModel, IReadOnlyList<string> notes, string split = "test")
     {
         ArgumentNullException.ThrowIfNull(scoresByModel);
         ArgumentNullException.ThrowIfNull(notes);
+        ArgumentException.ThrowIfNullOrWhiteSpace(split);
         var inv = CultureInfo.InvariantCulture;
         var text = new StringBuilder();
         text.Append("### Part of speech on running text\n\n");
@@ -254,7 +256,7 @@ internal static class RunningTextEvaluator
             text.Append(note).Append("\n\n");
         }
 
-        text.Append("The open corpus test split is the headline; the treebank test file is mapped to the conventions of the lexicon\n");
+        text.Append("The open corpus ").Append(split).Append(" split is the headline; the treebank test file is mapped to the conventions of the lexicon\n");
         text.Append("(possessive determiners, the copula be, phrasal-verb particles, prepositions before gerunds) and the challenge set is\n");
         text.Append("small and chosen for its hard cases, so it is never merged into a headline figure. Excluded tokens are punctuation and\n");
         text.Append("the classes the lexicon has no part of speech for (numbers, symbols, foreign words, particles other than to).\n");

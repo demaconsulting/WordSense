@@ -154,6 +154,28 @@ public sealed class TrainingOverlapTests : IDisposable
     }
 
     /// <summary>
+    ///     The check-leakage command stops with exit code 1 and a message that names <c>--gold</c> when the given treebank
+    ///     test file does not exist, instead of checking without it; without the option the default file may be absent.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_Program_CheckLeakage_ExplicitGoldFileThatDoesNotExist_Fails()
+    {
+        // Arrange: the repository, and a gold file that does not exist
+        var root = FindRepositoryRoot();
+        using var output = new StringWriter();
+        using var error = new StringWriter();
+
+        // Act: run the command with the missing file
+        var code = await Program.RunAsync(["check-leakage", "--repository", root, "--gold", Path.Join(_dir.Root, "absent.tsv")], output, error, TestContext.Current.CancellationToken);
+
+        // Assert: it fails with a message that names the option and the file
+        Assert.Equal(1, code);
+        Assert.Contains("--gold", error.ToString(), StringComparison.Ordinal);
+        Assert.Contains("absent.tsv", error.ToString(), StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     The check-leakage command stops with exit code 1 and a message that names the option when a given gold
     ///     directory or read set does not exist, instead of checking fewer parts.
     /// </summary>

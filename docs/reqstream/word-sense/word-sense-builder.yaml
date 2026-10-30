@@ -2938,6 +2938,17 @@ sections:
               - WordSenseBuilder_LeakageCheck_HeldOutSets_ExplicitPathThatDoesNotExist_Throws
               - WordSenseBuilder_Program_CheckLeakage_ExplicitPathThatDoesNotExist_Fails
 
+          - id: WordSense-WordSenseBuilder-CheckLeakageGold
+            title: >-
+              The builder shall stop check-leakage with an error that names --gold when the treebank test file that the
+              caller gave does not exist.
+            tags: [unit]
+            justification: |
+              A check that quietly leaves out the treebank test file the caller named would pass on fewer parts than
+              the caller believes.
+            tests:
+              - WordSenseBuilder_Program_CheckLeakage_ExplicitGoldFileThatDoesNotExist_Fails
+
           - id: WordSense-WordSenseBuilder-TrainPosHeadTrainingFile
             title: >-
               The builder shall refuse to train a part-of-speech head on a training file other than the
@@ -3057,6 +3068,16 @@ sections:
               - WordSenseBuilder_RunningText_MeasureLatency_UsesASeededSample
               - WordSenseBuilder_RunningText_RenderLatency_NamesTheSplitThatWasRead
               - WordSenseBuilder_Program_EvaluateRunningAndCompareOutcomes_Basic_WriteAndCompare
+
+          - id: WordSense-WordSenseBuilder-RunningFooter
+            title: >-
+              The builder shall name in the footer of the running-text report the split of the open corpus that the run
+              read (test by default).
+            tags: [unit]
+            justification: |
+              A report of a development run that calls the test split the headline would mislabel its figures.
+            tests:
+              - WordSenseBuilder_RunningText_Render_FooterNamesTheSplitThatWasRead
 
           - id: WordSense-WordSenseBuilder-Usage
             title: >-

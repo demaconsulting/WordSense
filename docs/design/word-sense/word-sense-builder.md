@@ -311,7 +311,7 @@ instead of `--model`.
   `--outcomes` writes the outcome of every scored token of the part-of-speech sets (see "Outcome comparison" below); it
   applies to `--report all` and `--report running`, and a report without the option never looks for it.
   `--latency` times one sentence at a time on a seeded sample of the open corpus split that `--split` reads (default
-  `test`; the table names it) (`--latency-sentences`, default
+  `test`; the latency table and the footer of the report name it) (`--latency-sentences`, default
   1,000; `--seed`, default 20261029) and reports the median, the mean and the 95th percentile in milliseconds.
 - `compare-outcomes --base FILE --new FILE [--base-model NAME] [--new-model NAME] [--cluster sentence|document]
   [--reps N] [--seed N] [--output FILE]`: compares two outcome files of `evaluate-running --outcomes` (see "Outcome

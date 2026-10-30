@@ -641,6 +641,7 @@ sections:
           - WordSense-WordSenseBuilder-OutcomeFile
           - WordSense-WordSenseBuilder-OutcomeComparison
           - WordSense-WordSenseBuilder-RunningLatency
+          - WordSense-WordSenseBuilder-RunningFooter
           - WordSense-WordSenseBuilder-TenseEvaluation
           - WordSense-WordSenseBuilder-Suite
           - WordSense-WordSenseBuilder-SuiteDiff
@@ -730,6 +731,7 @@ sections:
           - WordSense-WordSenseBuilder-TrainPosHeadInvalidInput
           - WordSense-WordSenseBuilder-TrainPosHeadLeakage
           - WordSense-WordSenseBuilder-TrainPosHeadExplicitPaths
+          - WordSense-WordSenseBuilder-CheckLeakageGold
           - WordSense-WordSenseBuilder-TrainPosHeadTrainingFile
           - WordSense-WordSenseBuilder-TrainPosHeadDeterminism
           - WordSense-WordSenseBuilder-TrainPosHeadCache

@@ -123,6 +123,38 @@ public sealed class RunningTextOutcomesTests : IDisposable
     }
 
     /// <summary>
+    ///     The footer of the running-text report names the split of the open corpus that was read, in the renderer and in
+    ///     the command with <c>--split dev</c> and with the default.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_RunningText_Render_FooterNamesTheSplitThatWasRead()
+    {
+        // Arrange: no scores, the repository, and the arguments of the command for a split
+        var root = FindRepositoryRoot();
+        var gold = Path.Join(_dir.Root, "absent.tsv");
+        using var devOutput = new StringWriter();
+        using var defaultOutput = new StringWriter();
+        using var error = new StringWriter();
+
+        // Act: render for dev and for the default, and run the command with --split dev and without --split
+        var dev = RunningTextEvaluator.Render([], [], "dev");
+        var byDefault = RunningTextEvaluator.Render([], []);
+        var devRun = await Program.RunAsync(["evaluate-running", "--model", "basic", "--repository", root, "--gold", gold, "--report", "running", "--split", "dev"], devOutput, error, TestContext.Current.CancellationToken);
+        var defaultRun = await Program.RunAsync(["evaluate-running", "--model", "basic", "--repository", root, "--gold", gold, "--report", "running"], defaultOutput, error, TestContext.Current.CancellationToken);
+
+        // Assert: the footer names the split that was read, and a dev run never says that the test split is the headline
+        Assert.Contains("The open corpus dev split is the headline", dev, StringComparison.Ordinal);
+        Assert.Contains("The open corpus test split is the headline", byDefault, StringComparison.Ordinal);
+        Assert.Equal(0, devRun);
+        Assert.Equal(0, defaultRun);
+        Assert.Equal(string.Empty, error.ToString());
+        Assert.Contains("The open corpus dev split is the headline", devOutput.ToString(), StringComparison.Ordinal);
+        Assert.DoesNotContain("The open corpus test split is the headline", devOutput.ToString(), StringComparison.Ordinal);
+        Assert.Contains("The open corpus test split is the headline", defaultOutput.ToString(), StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     The latency table names the split of the open corpus that the sample was drawn from, in the renderer and in the
     ///     command with <c>--split dev</c> and with the default.
     /// </summary>

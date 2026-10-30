@@ -111,7 +111,7 @@ internal static partial class Program
             }
         }
 
-        var text = report is "tense" ? string.Empty : RunningTextEvaluator.Render(scoresByModel, notes);
+        var text = report is "tense" ? string.Empty : RunningTextEvaluator.Render(scoresByModel, notes, options.GetValueOrDefault("split", "test"));
         if (report is not "running")
         {
             text += (text.Length == 0 ? string.Empty : "\n") + TenseEvaluator.Render(tenseByModel, tenseNotes);
@@ -235,6 +235,11 @@ internal static partial class Program
         if (File.Exists(gold))
         {
             sets.Add(LeakageCheck.FromGold("UD-EWT test", gold));
+        }
+        else if (options.ContainsKey("gold"))
+        {
+            // An explicit path that cannot be used would otherwise leave the treebank test file out of the check
+            throw new FileNotFoundException($"The gold file '{gold}' given by --gold does not exist.", gold);
         }
 
         if (options.TryGetValue("gold-dir", out var goldDirectory))
