@@ -74,6 +74,18 @@ namespace DemaConsulting.WordSense;
 ///     primary model when it scored senses (only its tied variants are refined).
 ///     </para>
 ///     <para>
+///     A primary model that also provides tense evidence (the BertBaseCased model) gives, for a word that is a
+///     same-spelling verb (<c>read</c>, <c>put</c>, <c>found</c>: a verb with a past analysis and a non-past analysis),
+///     the probability that the verb is past. After the rules above, the composition sets the share of the past analyses
+///     among the verb analyses of the result to that probability combined with the share of the fallback result, in the
+///     odds: <c>head^w × fallback^(1−w)</c> with the tense weight <c>w</c>. The probability of the verb as a whole, the
+///     slots of the other parts of speech and the shares inside the past and the other analyses do not change. The
+///     selected analysis is the first analysis of the new order; the answer keeps its level when its slot is still the
+///     most probable one (the slot of a same-lemma verb keeps its probability) and steps down to
+///     <see cref="SenseLevel.PartOfSpeech"/> when another slot becomes the most probable one (the past <c>found</c> of
+///     <c>find</c> against the infinitive of <c>found</c>).
+///     </para>
+///     <para>
 ///     A word whose primary result did not score senses gets the fallback result, with one guard: the Basic model answers
 ///     at the <see cref="SenseLevel.Sense"/> level whenever its most probable analysis has exactly one sense, at any
 ///     confidence, but the encoder models promise sense answers calibrated to a precision of 0.97. So for a word with more
@@ -134,6 +146,7 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
     private readonly IWordSenseModel _primary;
     private readonly IWordSenseModel _fallback;
     private readonly double _primaryWeight;
+    private readonly double _tenseWeight;
     private int _disposed;
 
     /// <summary>
@@ -164,6 +177,21 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
     /// <exception cref="ArgumentNullException">Thrown when a model is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="primaryWeight"/> is not a number from 0 to 1.</exception>
     public FallbackWordSenseModel(IWordSenseModel primary, IWordSenseModel fallback, double primaryWeight)
+        : this(primary, fallback, primaryWeight, 1.0)
+    {
+    }
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="FallbackWordSenseModel"/> class with a primary weight and a tense
+    ///     weight.
+    /// </summary>
+    /// <param name="primary">The model whose result is used for a word when it scored the senses of the word; it is owned by this model.</param>
+    /// <param name="fallback">The model whose result is used for every other word; it is owned by this model.</param>
+    /// <param name="primaryWeight">The weight of the primary model in the combination of the slot probabilities, from 0 to 1.</param>
+    /// <param name="tenseWeight">The weight of the tense head of the primary model when the probability of past of a same-spelling verb is combined with the split of the fallback model, from 0 to 1: 1 takes the head alone, 0 the fallback model. It applies only to a primary model that provides tense evidence.</param>
+    /// <exception cref="ArgumentNullException">Thrown when a model is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when a weight is not a number from 0 to 1.</exception>
+    internal FallbackWordSenseModel(IWordSenseModel primary, IWordSenseModel fallback, double primaryWeight, double tenseWeight)
     {
         _primary = primary ?? throw new ArgumentNullException(nameof(primary));
         _fallback = fallback ?? throw new ArgumentNullException(nameof(fallback));
@@ -172,7 +200,13 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
             throw new ArgumentOutOfRangeException(nameof(primaryWeight), primaryWeight, "The primary weight must be a number from 0 to 1.");
         }
 
+        if (!(tenseWeight >= 0.0 && tenseWeight <= 1.0))
+        {
+            throw new ArgumentOutOfRangeException(nameof(tenseWeight), tenseWeight, "The tense weight must be a number from 0 to 1.");
+        }
+
         _primaryWeight = primaryWeight;
+        _tenseWeight = tenseWeight;
     }
 
     /// <summary>
@@ -180,6 +214,12 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
     ///     1 means that the primary slot probabilities are kept as they are.
     /// </summary>
     public double PrimaryWeight => _primaryWeight;
+
+    /// <summary>
+    ///     Gets the weight of the tense head of the primary model in the combination of its probability of past with the
+    ///     split of the fallback model (see <see cref="TenseFusion"/>); 1 takes the head alone.
+    /// </summary>
+    internal double TenseWeight => _tenseWeight;
 
     /// <summary>
     ///     Makes sure the members that can be prepared have what they need; members without the
@@ -232,10 +272,11 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
             throw new ArgumentException("A word must not be null.", nameof(words));
         }
 
-        var primaryTask = _primary.ClassifyAsync(list, cancellationToken);
+        var tense = _primary is IPartOfSpeechEvidenceModel { ProvidesPartOfSpeechEvidence: true, ProvidesTenseEvidence: true } tenseModel ? tenseModel : null;
+        var primaryTask = tense?.ClassifyWithTenseAsync(list, cancellationToken) ?? PlainAsync(_primary, list, cancellationToken);
         var fallbackTask = _fallback.ClassifyAsync(list, cancellationToken);
         await Task.WhenAll(primaryTask, fallbackTask).ConfigureAwait(false);
-        var primary = primaryTask.Result;
+        var (primary, pastProbability) = primaryTask.Result;
         var fallback = fallbackTask.Result;
         if (primary.Length != list.Count || fallback.Length != list.Count)
         {
@@ -249,10 +290,25 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
             results[i] = evidence && HasSeveralPartsOfSpeech(primary[i], fallback[i])
                 ? Reweigh(primary[i], fallback[i], _primaryWeight)
                 : Resolve(primary[i], fallback[i], evidence);
+            if (pastProbability.Length == results.Length && pastProbability[i] is { } past)
+            {
+                // The tense of a same-spelling verb: the head's probability of past, combined with the split of the fallback model
+                results[i] = TenseFusion.Apply(results[i], TenseFusion.Fuse(past, TenseFusion.PastShare(fallback[i].Analyses), _tenseWeight));
+            }
         }
 
         return results;
     }
+
+    /// <summary>
+    ///     Classifies the words with a model that offers no tense evidence.
+    /// </summary>
+    /// <param name="model">The model.</param>
+    /// <param name="words">The words.</param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <returns>The results, without a tense probability.</returns>
+    private static async Task<(ClassifyResult[] Results, double?[] PastProbability)> PlainAsync(IWordSenseModel model, List<string> words, CancellationToken cancellationToken) =>
+        (await model.ClassifyAsync(words, cancellationToken).ConfigureAwait(false), new double?[words.Count]);
 
     /// <summary>
     ///     Resolves a word for which the primary model has no part-of-speech evidence to reweigh: the primary result when

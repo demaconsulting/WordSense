@@ -137,12 +137,13 @@ public sealed class BertBaseCasedWordSenseModel : IDownloadableWordSenseModel
     /// <param name="modelDirectory">A directory that holds <c>model_int8.onnx</c> and <c>vocab.txt</c>, or null to use the per-user store.</param>
     /// <param name="maxSequenceLength">The maximum sequence length including special tokens; 8 to 512.</param>
     /// <param name="primaryWeight">The weight of the encoder's part-of-speech head in the combination of the slot probabilities, from 0 to 1; see <see cref="PartOfSpeechHeadWeight"/>.</param>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="maxSequenceLength"/> is outside 8 to 512 or <paramref name="primaryWeight"/> is outside 0 to 1.</exception>
-    internal BertBaseCasedWordSenseModel(string? modelDirectory, int maxSequenceLength, double primaryWeight)
+    /// <param name="tenseWeight">The weight of the encoder's tense head in the combination of its probability of past with the tense split of Basic, from 0 to 1; see <see cref="TenseHeadWeight"/>.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="maxSequenceLength"/> is outside 8 to 512 or a weight is outside 0 to 1.</exception>
+    internal BertBaseCasedWordSenseModel(string? modelDirectory, int maxSequenceLength, double primaryWeight, double tenseWeight = TenseHeadWeight)
     {
         Encoder = new BertBaseCasedEncoderModel(modelDirectory, maxSequenceLength);
         Fallback = new BasicWordSenseModel();
-        _model = new FallbackWordSenseModel(Encoder, Fallback, primaryWeight);
+        _model = new FallbackWordSenseModel(Encoder, Fallback, primaryWeight, tenseWeight);
     }
 
     /// <summary>
@@ -151,6 +152,13 @@ public sealed class BertBaseCasedWordSenseModel : IDownloadableWordSenseModel
     ///     0 takes the part of speech of Basic. Chosen on the development split of the open corpus.
     /// </summary>
     internal const double PartOfSpeechHeadWeight = 0.8;
+
+    /// <summary>
+    ///     The weight of the encoder's tense head when its probability that a same-spelling verb is past is combined with the
+    ///     past and non-past split of the Basic model (see <see cref="FallbackWordSenseModel"/>): 1 takes the head alone,
+    ///     0 takes the split of Basic. Chosen on the development split of the open corpus.
+    /// </summary>
+    internal const double TenseHeadWeight = 0.9;
 
     /// <summary>
     ///     Gets the identifier of the model, which names its folder in the repository, on a mirror and in the store.

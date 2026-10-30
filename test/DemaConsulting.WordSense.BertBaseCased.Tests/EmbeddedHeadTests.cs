@@ -42,6 +42,28 @@ public class EmbeddedHeadTests
     }
 
     /// <summary>
+    ///     The embedded head file has a tense head with the neighbor layout, which the model checks when it loads the head
+    ///     and which answers a probability for a vector without any model file.
+    /// </summary>
+    [Fact]
+    public void BertBaseCasedWordSenseModel_EmbeddedHead_HasATenseHead()
+    {
+        // Arrange: the encoder model of the package, which uses its tense head
+        using var model = new BertBaseCasedEncoderModel(null, 128);
+
+        // Act
+        var tense = model.GetHead()!.Tense;
+
+        // Assert: the layout and the shape of the head, and a probability for a vector
+        Assert.True(model.Spec.TenseHeadInUse);
+        Assert.NotNull(tense);
+        Assert.Equal(PosHeadBlob.TenseWordAndNeighbors, tense.Data.Layout);
+        Assert.Equal(3 * 768, tense.Data.Weights.Length);
+        var past = tense.PastProbability(null, new double[768], null);
+        Assert.InRange(past, 0.0, 1.0);
+    }
+
+    /// <summary>
     ///     The embedded head read against another encoder file, or another model id, is rejected, so a changed encoder
     ///     file fails loudly.
     /// </summary>
