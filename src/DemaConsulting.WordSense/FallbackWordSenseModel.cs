@@ -16,7 +16,7 @@ namespace DemaConsulting.WordSense;
 ///     primary model, or it only chose between analyses, or it only ranked the senses by usage) the result of the fallback
 ///     model is used. The result of a word is
 ///     the result of one of the two models, never a mixture of the probabilities of both (the two refinements below are the
-///     only exceptions): its analyses, selected analysis,
+///     only exceptions, together with the reweighing of the part-of-speech evidence below): its analyses, selected analysis,
 ///     level, confidence and ids belong together, and the probabilities of one result are not comparable with those of
 ///     the other model. The rules of the models hold unchanged inside
 ///     the result that is used: the senses belong to a lemma and part of speech (a slot), the feature variants of a slot
@@ -54,12 +54,31 @@ namespace DemaConsulting.WordSense;
 ///     <see cref="SenseLevel.Group"/> level is never touched by this refinement, and neither is a result of one slot.
 ///     </para>
 ///     <para>
+///     The encoder models of the WordSense packages estimate the part of speech themselves: their slot probabilities for a
+///     word of two or more parts of speech come from a part-of-speech classifier that reads the sentence, closed-class slots
+///     (auxiliary, determiner, pronoun, preposition, conjunction, interjection) included. A third-party model cannot claim
+///     this behavior, and the composition does not split the closed-class slots from the fallback result for such a primary
+///     model. For a word of two or more parts of speech the primary weight <c>w</c> is then the weight of the part-of-speech
+///     classifier against the fallback model, applied at every level of the answer and not only at the part-of-speech
+///     level: the probability of every slot over the union of the slots of both results is proportional to
+///     <c>p_primary^w × p_fallback^(1−w)</c> (floor 1e-6, as above). The base result keeps the senses, the level, the group
+///     and the ids: it is the primary result when the primary model scored senses (with its tied variants refined as
+///     above), otherwise the fallback result (for the Basic model the senses ranked by usage and the variants of its tense
+///     model); a slot that the base result does not list takes the analyses of the other result. When the most probable slot
+///     is the slot that the base result answered, the level, the group and the sense stay, and the confidence is the new
+///     probability of the slot times the probability of the sense (or the group) within it. When another slot has become
+///     the most probable one, the answer is at the <see cref="SenseLevel.PartOfSpeech"/> level on the best analysis of that
+///     slot, with the probability of the slot as its confidence. A word of one part of speech keeps the result of the
+///     primary model when it scored senses (only its tied variants are refined).
+///     </para>
+///     <para>
 ///     A word whose primary result did not score senses gets the fallback result, with one guard: the Basic model answers
 ///     at the <see cref="SenseLevel.Sense"/> level whenever its most probable analysis has exactly one sense, at any
 ///     confidence, but the encoder models promise sense answers calibrated to a precision of 0.97. So for a word with more
 ///     than one slot (lemma and part of speech) a fallback result at the sense level whose selected analysis lists exactly
 ///     one sense is kept only when its confidence is at least 0.97; below it the same analysis is answered at the
-///     <see cref="SenseLevel.PartOfSpeech"/> level with the same confidence and no group or sense. The Basic model alone
+///     <see cref="SenseLevel.PartOfSpeech"/> level with the same confidence and no group or sense. The guard applies to the
+///     reweighed result when the primary model provides the part-of-speech evidence. The Basic model alone
 ///     is not affected.
 ///     </para>
 ///     <para>
@@ -128,14 +147,16 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="FallbackWordSenseModel"/> class with a primary weight for the
-    ///     words that the primary model answers at the part-of-speech level.
+    ///     combination of the slot probabilities of the two models.
     /// </summary>
     /// <param name="primary">The model whose result is used for a word when it scored the senses of the word; it is owned by this model.</param>
     /// <param name="fallback">The model whose result is used for every other word; it is owned by this model.</param>
     /// <param name="primaryWeight">
     ///     The weight of the primary model when the probabilities of the slots (lemma and part of speech) of the two models
-    ///     are combined for a word that the primary model answers at the <see cref="SenseLevel.PartOfSpeech"/> level, from 0
-    ///     to 1: 1 keeps the primary result as it is, 0 takes the slot probabilities of the fallback model.
+    ///     are combined, from 0 to 1: for a word that the primary model answers at the <see cref="SenseLevel.PartOfSpeech"/>
+    ///     level, and for a word of two or more parts of speech at every level when the primary model estimates the part of
+    ///     speech itself (the encoder models of the WordSense packages). 1 keeps the primary slot probabilities as they
+    ///     are, 0 takes the slot probabilities of the fallback model.
     /// </param>
     /// <exception cref="ArgumentNullException">Thrown when a model is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="primaryWeight"/> is not a number from 0 to 1.</exception>
@@ -152,8 +173,8 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
     }
 
     /// <summary>
-    ///     Gets the weight of the primary model in the combination of the slot probabilities of a word that the primary
-    ///     model answers at the <see cref="SenseLevel.PartOfSpeech"/> level; 1 means that the primary result is kept as it is.
+    ///     Gets the weight of the primary model in the combination of the slot probabilities (see the constructor);
+    ///     1 means that the primary slot probabilities are kept as they are.
     /// </summary>
     public double PrimaryWeight => _primaryWeight;
 

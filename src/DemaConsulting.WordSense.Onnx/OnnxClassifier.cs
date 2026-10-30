@@ -30,34 +30,45 @@ internal delegate ValueTask<WordVectors> PooledViewEncode(IReadOnlyList<string> 
 ///     speech whose senses are several is at the <see cref="SenseLevel.PartOfSpeech"/> level with the probability of its
 ///     slot, 1, whenever no fine sense or group is answered (the slot has no alternative; the level, not the confidence,
 ///     tells that the sense is unresolved). A word whose lemma has trained weights
-///     and several scored senses is pending: the words are joined by single spaces into one text, the encoder runs once
-///     for the pending words, the pooled vector of each is centered on the global mean of the weights and scaled to unit
-///     length, and the classifier scores the fine senses of every analysis of the word that has an open-class part of speech
-///     (noun, verb, adjective, adverb) and no sense of another lemma; a closed-class analysis (auxiliary, determiner, pronoun,
-///     preposition, conjunction, interjection) is listed with probability 0 and without senses, and the fallback model of a
-///     composition gives it its probability.
-///     The softmax of the scores gives the probability of every sense. The senses belong to a lemma and part of speech
+///     and several scored senses is pending: the pooled vector of each pending word is centered on the global mean of the
+///     weights and scaled to unit length, and the classifier scores the fine senses of every analysis of the word that
+///     has an open-class part of speech (noun, verb, adjective, adverb) and no sense of another lemma; a closed-class
+///     analysis (auxiliary, determiner, pronoun, preposition, conjunction, interjection) lists no senses. The softmax of
+///     the scores gives the probability of every sense. The senses belong to a lemma and part of speech
 ///     (a <i>slot</i>), not to the analyses of a slot that differ only in features (<c>cut</c> as an infinitive and as a
-///     past tense, <c>deer</c> as a singular and a plural), so the probability of a slot is the mass of its senses and
-///     the probability of a sense given its slot is its mass renormalized in the slot; the analyses of a slot split the
-///     probability of the slot (by the chooser of the form when it has a label for each of them, otherwise equally), and
-///     that split never reaches the level or the confidence. The selected analysis is the best analysis of the most
-///     probable slot, and the level is decided for it with the thresholds of the lemma: the sense when
-///     the margin of the best fine sense reaches the fine threshold and the best sense lies in that slot, else the
-///     group of the best sense when it has one and the margin of the group reaches the group threshold, else the part of
-///     speech (the ranked senses of the analysis still show the likely senses and groups). The confidence is the
-///     probability of the answer at its level (the probability of the slot, times the probability of the sense, or
-///     of the group, within it).
+///     past tense, <c>deer</c> as a singular and a plural), so the probability of a sense given its slot is its mass
+///     renormalized in the slot, and the analyses of a slot split the probability of the slot (by the chooser of the
+///     form when it has a label for each of them, otherwise equally); that split never reaches the level or the
+///     confidence. The selected analysis is the best analysis of the most probable slot, and the level is decided for it
+///     with the thresholds of the lemma: the sense when the margin of the best fine sense reaches the fine threshold and
+///     the best sense lies in that slot, else the group of the best sense when it has one and the margin of the group
+///     reaches the group threshold, else the part of speech (the ranked senses of the analysis still show the likely
+///     senses and groups). The confidence is the probability of the answer at its level (the probability of the slot,
+///     times the probability of the sense, or of the group, within it).
+///     </para>
+///     <para>
+///     The part-of-speech head decides the probability of a slot. A known word of two or more parts of speech needs
+///     the encoder whatever its lemma: the text is encoded once (in sliding windows when it is longer than the encoder
+///     window, with a possessive written as one token split into its stem and its marker, see
+///     <see cref="PossessiveView"/>), and the head reads the vectors of the word and of its previous and next token.
+///     The head's posterior over the parts of speech that the lexicon lists for the word, renormalized, is the
+///     probability of each part of speech. The probability of a slot is that probability times the share of the slot
+///     among the slots of its part of speech: the share of its senses' mass (or of its chooser labels) when its lemma is
+///     scored, else equal. A closed-class slot therefore has a probability of its own and no senses. The scores of the
+///     senses, and so the sense and the group of an answer and the ranking inside a slot, do not depend on the head. When
+///     the best sense lies in a slot that the head does not rank first, the answer is at the
+///     <see cref="SenseLevel.PartOfSpeech"/> level.
 ///     </para>
 ///     <para>
 ///     A form whose analyses belong to several lemmas or tenses (<c>left</c>, <c>read</c>) is first resolved by the
 ///     chooser of the form, a small classifier over the lemmas or analyses of the form with its own threshold; a form of
-///     that kind without a chooser is answered from the lexicon. A word whose senses are not scored (no weights, fewer
-///     than two scored senses, no usable vector) is answered from the lexicon alone: every lemma and part of speech has
-///     the same probability 1/s for s of them, the analyses of one of them split it equally (the lexicon order is kept,
-///     so the first analysis is the selected one), at the <see cref="SenseLevel.PartOfSpeech"/> level, without scored
-///     senses. Such a word is left to
-///     the fallback model of a composition (see <see cref="FallbackWordSenseModel"/>). No fine sense is ever guessed.
+///     that kind without a chooser is answered from the lexicon. A word of several parts of speech whose senses are not
+///     scored (no weights, fewer than two scored senses, no usable vector) has the head's probability for each part of
+///     speech, shared equally by its lemmas, the analyses of a slot split it equally (the lexicon order is kept), at the
+///     <see cref="SenseLevel.PartOfSpeech"/> level, without scored senses. Such a word is left to the fallback model of a
+///     composition for its senses (see <see cref="FallbackWordSenseModel"/>). A word of one part of speech, a word without
+///     a usable vector, and a classifier without a head (tests and the build tool) are answered from the lexicon alone:
+///     every lemma and part of speech has the same probability 1/s for s of them. No fine sense is ever guessed.
 ///     </para>
 ///     <para>
 ///     The classifier holds no mutable state and is thread-safe.
@@ -466,8 +477,8 @@ internal sealed class OnnxClassifier
     /// <returns>The column indexes in ascending (inventory) order.</returns>
     /// <remarks>
     ///     The slots of a closed class (an auxiliary, determiner, pronoun, preposition, conjunction or interjection: no
-    ///     WordNet senses) are not scored: the encoder has no evidence of its own for the part of speech of a word, and the
-    ///     probability of such a slot comes from the fallback model (see <see cref="FallbackWordSenseModel"/>).
+    ///     WordNet senses) are not scored: they have no senses to rank, and the probability of such a slot is the
+    ///     part-of-speech probability of the head.
     /// </remarks>
     private static List<int> CandidateColumns(ResolvedLemma lemma, IEnumerable<Slot> slots) =>
         OpenClassColumns(lemma.ColumnOf, lemma.Weights.Lemma, slots.Select(s => s.PartOfSpeech));
@@ -947,7 +958,7 @@ internal sealed class OnnxClassifier
 
     /// <summary>
     ///     Gets the share of a slot when no slot has mass: equal among the open-class slots, none for a closed-class slot
-    ///     (it has no evidence of its own, and the fallback model takes its probability).
+    ///     (it has no senses to give it mass; with a head its part-of-speech probability is applied afterwards).
     /// </summary>
     /// <param name="slot">The slot.</param>
     /// <param name="openSlots">The number of open-class slots that share the probability.</param>
@@ -987,8 +998,8 @@ internal sealed class OnnxClassifier
 
     /// <summary>
     ///     Gets the mass of the senses of a slot: 0 for a slot of a closed class (its senses are never scored, so it has no
-    ///     evidence of its own, whether or not its lemma is scored: the fallback model takes it, see <see cref="FallbackWordSenseModel"/>),
-    ///     and 1 for an open-class slot whose senses are not scored (an untrained lemma).
+    ///     mass of its own, whether or not its lemma is scored; with a head its part-of-speech probability is applied
+    ///     afterwards), and 1 for an open-class slot whose senses are not scored (an untrained lemma).
     /// </summary>
     /// <param name="lemmaScores">The scored lemmas.</param>
     /// <param name="slot">The slot.</param>

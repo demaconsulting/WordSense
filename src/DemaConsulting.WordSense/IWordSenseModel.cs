@@ -17,8 +17,11 @@ namespace DemaConsulting.WordSense;
 ///     </para>
 ///     <para>
 ///     Lazy ensure: <see cref="ClassifyAsync"/> ensures the files the model needs itself on first use, when (and only
-///     when) a word needs them. A word list in which no word has several senses is answered from the lexicon alone and
-///     never touches model files or ONNX, so a model that is never needed is never downloaded. When the model is needed
+///     when) a word needs them. The Basic model never needs files. An encoder model needs its encoder files for every
+///     word list that contains a known word of two or more parts of speech (its part-of-speech classifier reads the
+///     sentence, so almost every sentence of running text needs it) or a word whose senses it scores, and there is no way
+///     to turn that off; a list of unknown words and words of one part of speech is answered from the lexicon alone and
+///     never touches model files or ONNX. When the model is needed
 ///     and was not ensured yet, the call ensures it with the defaults (no explicit download options; the
 ///     <c>WORDSENSE_MIRROR_*</c> environment variables apply). Concurrent callers share one ensure, and a failed ensure
 ///     is retried by the next call. The ensured state belongs to one model instance (a new instance verifies again).
@@ -67,7 +70,8 @@ namespace DemaConsulting.WordSense;
 ///     <see cref="ClassifyResult.Details"/> means unknown.
 ///     Disposal while calls run: <c>Dispose</c> must be safe while calls are running (it must not break or hang a
 ///     running classification). Lazy ensure: an implementation that needs files should ensure them lazily and only when
-///     a word needs them, never for a list that the lexicon alone answers; such an implementation should also implement
+///     a word needs them (the supplied encoder models: a known word of two or more parts of speech, or a word with scored
+///     senses), never for a list that it answers without them; such an implementation should also implement
 ///     <see cref="IDownloadableWordSenseModel"/>. Word list: enumerate the
 ///     <c>words</c> argument exactly once (copy it to a list first).
 ///     Result content: each element of the result has <see cref="ClassifyResult.Word"/> equal to the input element at the
@@ -100,7 +104,9 @@ namespace DemaConsulting.WordSense;
 ///     instance (about 30 ms for the 22 MiB MiniLM files and about 110 ms for the 104 MiB BertBaseCased files with a
 ///     warm file cache; more on a slow disk). Warm the model at startup (ensure and classify one short text with an
 ///     ambiguous word) if the first request must be fast. Concurrent classifications share one ONNX session and run in
-///     parallel; the encoder models run on the CPU only.
+///     parallel; the encoder models run on the CPU only. An encoder model runs the encoder once for every sentence that
+///     has a word of two or more parts of speech, so call <see cref="IDownloadableWordSenseModel.EnsureModelAsync"/> at
+///     startup to control when the download happens.
 ///     </para>
 /// </remarks>
 /// <example>
@@ -153,15 +159,17 @@ public interface IWordSenseModel : IDisposable
     ///     (<c>"re-read"</c>) as one token. A contraction is a stored word; a hyphenated token is found only when the whole word is in the lexicon, otherwise it is unknown (null, confidence 0),
     ///     but the surrounding words are still classified. Classify one sentence per call: the Basic model splits the
     ///     list at the tokens <c>"."</c>, <c>"!"</c> and <c>"?"</c>, while an encoder model reads the whole list as one
-    ///     text, of at most 128 word pieces by default (512 at most); a longer list is handled per word from a window
-    ///     of that size around the word, so very long lists lose distant context but are not rejected. The
+    ///     text, of at most 128 word pieces by default (512 at most); a longer list is encoded in overlapping windows of
+    ///     that size and each word is read from the window in which it is most central, so very long lists lose distant
+    ///     context but are not rejected. The
     ///     documentation of the <c>DemaConsulting.WordSense</c> namespace has a reference tokenizer, a table of edge
     ///     cases (numbers, abbreviations, quotes, dashes, possessives) and the rules for case: the lookup ignores case,
     ///     MiniLM is uncased and BertBaseCased is cased.
     ///     </para>
     ///     <para>
-    ///     The call ensures the model lazily, when a word needs it (see the remarks of the interface): a list without
-    ///     an ambiguous word never touches model files or ONNX. The lazy ensure uses the defaults (no explicit
+    ///     The call ensures the model lazily, when a word needs it (see the remarks of the interface): for an encoder
+    ///     model that is a known word of two or more parts of speech or a word with scored senses, and a list without such
+    ///     a word never touches model files or ONNX. The lazy ensure uses the defaults (no explicit
     ///     <see cref="DownloadOptions"/>; the <c>WORDSENSE_MIRROR_*</c> environment variables apply), is shared by
     ///     concurrent callers and is retried after a failure; for a model that implements
     ///     <see cref="IDownloadableWordSenseModel"/>, call <see cref="IDownloadableWordSenseModel.EnsureModelAsync"/>
@@ -190,7 +198,7 @@ public interface IWordSenseModel : IDisposable
     ///     Failures that concern the model itself are <see cref="WordSenseException"/>s that carry the original exception
     ///     as <see cref="Exception.InnerException"/>: a model file that no source could deliver, or that is missing from a
     ///     supplied model directory, is a <see cref="ModelUnavailableException"/>; a file that fails its pinned SHA-256,
-    ///     an embedded resource that is damaged (the word image, the statistics table, the weights) or an ONNX or
+    ///     an embedded resource that is damaged (the word image, the statistics table, the weights, the part-of-speech head) or an ONNX or
     ///     vocabulary file that cannot be used is a <see cref="ModelIntegrityException"/>; invalid download settings found by the lazy
     ///     ensure (the <c>WORDSENSE_MIRROR_*</c> variables) are a <see cref="DownloadConfigurationException"/>. Mistakes in
     ///     the call keep their usual exceptions.

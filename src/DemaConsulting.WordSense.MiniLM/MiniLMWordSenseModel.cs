@@ -142,7 +142,7 @@ public sealed class MiniLMWordSenseModel : IDownloadableWordSenseModel
     ///     are combined with those of the Basic model (see <see cref="FallbackWordSenseModel"/>): 1 takes the head alone,
     ///     0 takes the part of speech of Basic. Chosen on the development split of the open corpus.
     /// </summary>
-    internal const double PartOfSpeechHeadWeight = 0.4;
+    internal const double PartOfSpeechHeadWeight = 0.5;
 
     /// <summary>
     ///     Gets the identifier of the model, which names its folder in the repository, on a mirror and in the store.
