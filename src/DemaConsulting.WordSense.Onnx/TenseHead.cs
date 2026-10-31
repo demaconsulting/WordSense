@@ -59,7 +59,7 @@ internal sealed class TenseHead
     /// <param name="previous">The vector of the previous word, or null at the start of the sentence or for a word without word pieces; read only by the neighbor layout.</param>
     /// <param name="word">The vector of the word.</param>
     /// <param name="next">The vector of the next word, or null; read only by the neighbor layout.</param>
-    /// <returns>The probability of past, strictly between 0 and 1 for finite scores.</returns>
+    /// <returns>The probability of past, between 0 and 1 inclusive for finite scores (0 or 1 when the score is too extreme to be represented).</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="word"/> is null.</exception>
     /// <exception cref="ArgumentException">Thrown when a vector does not have the hidden size.</exception>
     public double PastProbability(double[]? previous, double[] word, double[]? next)

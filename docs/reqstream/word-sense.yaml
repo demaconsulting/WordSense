@@ -567,16 +567,44 @@ sections:
 
       - id: WordSense-Lib-TenseScope
         title: >-
-          The decision of the tense of a verb shall leave the part of speech and the senses of the answer unchanged.
+          The decision of the tense of a verb shall leave the probability of the verb as a whole and the analyses of
+          the other parts of speech of the word unchanged.
         tags: [system]
         justification: |
-          The tense decides between the past and the other analyses of the verb only; the part of speech and the
-          senses keep the evidence and the thresholds that were calibrated for them.
+          The tense decides between the past and the other analyses of the verb only; the other parts of speech keep
+          the evidence and the thresholds that were calibrated for them.
         children:
           - WordSense-Onnx-TenseResults
           - WordSense-Core-Fallback
         tests:
           - TenseFusion_Apply_SetsThePastShareOfTheVerb
+          - TenseFusion_Apply_DifferentLemmas_KeepsTheVerbMassAndTheOtherPartsOfSpeech
+
+      - id: WordSense-Lib-TenseSameLemma
+        title: >-
+          When the past and the non-past analyses of a verb belong to one lemma, the decision of its tense shall leave
+          the lemma, the part of speech, the senses, the level and the confidence of the answer unchanged.
+        tags: [system]
+        justification: |
+          The tense only splits the probability of one slot among its variants, so everything that belongs to the slot
+          stays.
+        children:
+          - WordSense-Core-Fallback
+        tests:
+          - TenseFusion_Apply_SenseLevelAnswerWithSameSlot_KeepsTheSense
+
+      - id: WordSense-Lib-TenseOtherLemma
+        title: >-
+          When the past and the non-past analyses of a verb belong to different lemmas and the decision of its tense
+          makes another lemma the most probable one, the answer shall be at the part-of-speech level on that lemma.
+        tags: [system]
+        justification: |
+          The past found belongs to find and the infinitive to found; the answer is never finer than the evidence for
+          its lemma.
+        children:
+          - WordSense-Core-Fallback
+        tests:
+          - TenseFusion_Apply_DifferentLemmas_OtherSlotWins_StepsDownToThePartOfSpeech
 
       - id: WordSense-Lib-TenseFiles
         title: >-

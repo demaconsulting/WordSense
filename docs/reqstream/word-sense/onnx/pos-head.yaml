@@ -311,7 +311,7 @@ sections:
               - id: WordSense-Onnx-PosHead-TensePastProbability
                 title: >-
                   The tense head shall give, from the encoder vectors of a verb and of its context, the probability that
-                  the verb is past, between 0 and 1 for finite scores.
+                  the verb is past, from 0 to 1 inclusive.
                 tags: [unit]
                 justification: |
                   The head predicts the tense of a same-spelling verb from its context.

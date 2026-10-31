@@ -217,14 +217,16 @@ auxiliary 0 or omits it, keeps the auxiliary at 0 with weight 0.6; an encoder re
   `TenseFusion_PastShare_IsThePastShareOfTheVerbAnalyses`, `TenseFusion_Fuse_IsAWeightedSumOfTheLogOdds`,
   `TenseFusion_Apply_SetsThePastShareOfTheVerb`, `TenseFusion_Apply_PastProbabilityHigh_SelectsThePastAnalysis`,
   `TenseFusion_Apply_SenseLevelAnswerWithSameSlot_KeepsTheSense`,
+  `TenseFusion_Apply_DifferentLemmas_KeepsTheVerbMassAndTheOtherPartsOfSpeech`,
   `TenseFusion_Apply_DifferentLemmas_OtherSlotWins_StepsDownToThePartOfSpeech`,
   `TenseFusion_Apply_NotApplicable_ReturnsTheResult`, in `TenseFusionTests.cs`): a word is a same-spelling verb only
   with a past and a non-past verb analysis, of any lemma; the past share counts verb analyses only; the combination is
   the weighted sum of the log odds (weight 1 the head, weight 0 the other share, no share even odds); applying a share
   keeps the probability of the verbs as a whole, of the other parts of speech and the shares inside the two groups; a
   high probability of past selects the past analysis; a sense-level answer keeps its level, group, sense and the
-  probability of the sense within its slot while its slot stays on top; with different lemmas for the past and the
-  non-past analysis (`found`) another slot can win and the answer steps down to the part-of-speech level; a result that
+  probability of the sense within its slot, and the lemma and part of speech, while its slot stays on top; with different
+  lemmas for the past and the non-past analysis (`found`) the verb mass and the other parts of speech stay, and another
+  slot can win, even one of another part of speech, and the answer steps down to the part-of-speech level; a result that
   is not a same-spelling verb, or a share outside 0 to 1, is returned as it is.
 - **Fallback ensures the capable members and disposes both models**
   (`FallbackWordSenseModel_IsDownloadable`, `FallbackWordSenseModel_EnsureModelAsync_EnsuresBoth`,

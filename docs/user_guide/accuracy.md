@@ -107,9 +107,13 @@ the slot from the context, and `MiniLM` inherits the split. `BertBaseCased` also
 on the encoder vectors of the verb and of its two neighbors, trained on the same-spelling verbs of the open corpus
 alone, which reads the tense from the sentence; the composition combines its probability of past with the split of the
 tense model (weights 0.9 and 0.1 in the log odds, chosen on the development split of the open corpus). "I will read that
-tomorrow" is a non-past `read` and "I have read that already" a past participle. It never changes the part of speech,
-level, confidence or sense of an
-answer. The builder (`evaluate-running`) measures the class of the selected analysis (past or non-past) on every gold
+tomorrow" is a non-past `read` and "I have read that already" a past participle. The tense only splits the probability
+among the verb analyses: the probability of the verb as a whole and of the other parts of speech of the word stay. When
+the past and the non-past analysis belong to one lemma (`read`, `put`), the lemma, the senses, the level and the
+confidence of the answer stay too. When they belong to different lemmas (`found`, the past of `find` or the infinitive
+of `found`), the tense can make the other lemma the most probable one, and the answer then steps down to the
+`PartOfSpeech` level on that lemma, which can also change the selected part of speech. The builder
+(`evaluate-running`) measures the class of the selected analysis (past or non-past) on every gold
 verb token whose form has both. The majority is the share of the more frequent gold class.
 
 <!-- markdownlint-disable MD013 -->

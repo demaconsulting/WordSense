@@ -149,11 +149,36 @@ public class TenseFusionTests
         // Act
         var applied = TenseFusion.Apply(result, 0.7);
 
-        // Assert: the slot of the lemma keeps its probability, so the confidence is the same
+        // Assert: the slot of the lemma keeps its probability, so the lemma, the part of speech and the confidence are the same
         Assert.Equal(SenseLevel.Sense, applied.Level);
         Assert.Equal("put#s", applied.SenseId);
         Assert.Equal("put#g", applied.GroupId);
+        Assert.Equal(result.Details!.Lemma, applied.Details!.Lemma);
+        Assert.Equal(result.Details.PartOfSpeech, applied.Details.PartOfSpeech);
         Assert.Equal(result.Confidence, applied.Confidence, Tolerance);
+    }
+
+    /// <summary>
+    ///     When the past and the non-past analyses belong to different lemmas, the probability of the verb as a whole and of
+    ///     the other parts of speech stay, and the tense can make a verb lemma overtake another part of speech.
+    /// </summary>
+    [Fact]
+    public void TenseFusion_Apply_DifferentLemmas_KeepsTheVerbMassAndTheOtherPartsOfSpeech()
+    {
+        // Arrange: "found" as the infinitive of found (0.3), the past of find (0.3) and a noun (0.4)
+        var foundNoun = new WordDetails("found", PartOfSpeech.Noun, "Number=Sing");
+        var result = new ClassifyResult("found", true, [new(foundNoun, 0.4, []), new(FoundFound, 0.3, []), new(FoundFind, 0.3, [])], foundNoun, SenseLevel.PartOfSpeech, 0.4, null, null);
+
+        // Act
+        var applied = TenseFusion.Apply(result, 0.9);
+
+        // Assert: the verb mass 0.6 and the noun 0.4 stay, the verb mass is split 0.54 to 0.06, and the past of find leads
+        Assert.Equal(0.4, Of(applied, foundNoun), Tolerance);
+        Assert.Equal(0.6, Of(applied, FoundFind) + Of(applied, FoundFound), Tolerance);
+        Assert.Equal(0.54, Of(applied, FoundFind), Tolerance);
+        Assert.Equal(FoundFind, applied.Details);
+        Assert.Equal(SenseLevel.PartOfSpeech, applied.Level);
+        Assert.Equal(0.54, applied.Confidence, Tolerance);
     }
 
     /// <summary>
