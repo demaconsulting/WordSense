@@ -830,33 +830,51 @@ sections:
               - id: WordSense-Core-WordSenseContracts-FallbackTense
                 title: >-
                   FallbackWordSenseModel shall, when its primary model provides part-of-speech evidence and tense
-                  evidence, set the tense of every same-spelling verb to the combination of the probability of past
-                  that the primary model gives with the past share of the fallback result, as the child requirements
-                  state. The child requirements use these terms: a same-spelling verb is a word whose analyses list a
-                  past verb analysis (a past tense or a participle) and a verb analysis that is not past, the past share
-                  of a result is the probability of its past verb analyses divided by that of all its verb analyses,
-                  the tense weight is the number v from 0 to 1 that the composition has, and the combination is the
-                  weighted sum of the log odds of the two probabilities with the weight v for the primary model.
+                  evidence, set the tense of every same-spelling verb from the probability of past that the primary
+                  model gives combined with the past share of the fallback result, as the child requirements state.
+                  The child requirements use these terms: a same-spelling verb is a word whose analyses list a past
+                  verb analysis (a past tense or a participle) and a verb analysis that is not past, the past share of a
+                  result is the probability of its past verb analyses divided by that of all its verb analyses, and the
+                  tense weight is the number v from 0 to 1 that the composition has.
                 tags: [unit]
                 justification: |
                   An encoder model with a tense head (BertBaseCased) reads the tense of a same-spelling verb (read, put,
-                  found) from its sentence, which the lexicon cannot decide; the Basic model has its own split, and a
-                  weighted sum of the log odds lets the head decide where it is confident. The weight is tuned on
-                  development text by the model package.
+                  found) from its sentence, which the lexicon cannot decide; the Basic model has its own split, and the
+                  combination lets the head decide where it is confident. The weight is tuned on development text by the
+                  model package.
                 children:
+                  - WordSense-Core-WordSenseContracts-FallbackTense-Detection
                   - WordSense-Core-WordSenseContracts-FallbackTense-Combination
                   - WordSense-Core-WordSenseContracts-FallbackTense-Scope
-                  - WordSense-Core-WordSenseContracts-FallbackTense-Weight
-                  - WordSense-Core-WordSenseContracts-FallbackTense-Apply
+                  - WordSense-Core-WordSenseContracts-FallbackTense-WeightDefault
+                  - WordSense-Core-WordSenseContracts-FallbackTense-WeightRange
+                  - WordSense-Core-WordSenseContracts-FallbackTense-Share
+                  - WordSense-Core-WordSenseContracts-FallbackTense-Selection
+                  - WordSense-Core-WordSenseContracts-FallbackTense-LevelKept
+                  - WordSense-Core-WordSenseContracts-FallbackTense-StepDown
+                  - WordSense-Core-WordSenseContracts-FallbackTense-NotApplicable
                 tests:
                   - FallbackWordSenseModel_TenseEvidence_SetsThePastShareFromTheHead
 
+              - id: WordSense-Core-WordSenseContracts-FallbackTense-Detection
+                title: >-
+                  FallbackWordSenseModel shall treat a word as a same-spelling verb only when its analyses list both a
+                  past and a non-past verb analysis, whatever their lemmas, and shall take the past share of a result
+                  from its verb analyses only.
+                tags: [unit]
+                justification: |
+                  Other parts of speech of the word, and words with one kind of verb analysis, have no tense to decide.
+                tests:
+                  - TenseFusion_IsSameSpellingVerb_NeedsAPastAndANonPastVerbAnalysis
+                  - TenseFusion_PastShare_IsThePastShareOfTheVerbAnalyses
+
               - id: WordSense-Core-WordSenseContracts-FallbackTense-Combination
                 title: >-
-                  FallbackWordSenseModel shall give the past analyses of a same-spelling verb the share of the verb
-                  that is the combination of the probability of past of the primary model and the past share of the
-                  fallback result (the head alone for v = 1, the fallback alone for v = 0), and shall take the
-                  probability of past of the primary model alone when the fallback result has no past share.
+                  FallbackWordSenseModel shall give the past analyses of a same-spelling verb a share of the verb that
+                  combines the probability of past of the primary model and the past share of the fallback result in
+                  the odds, with the weight v for the primary model (the primary model alone for v = 1, the fallback
+                  alone for v = 0), and shall take the probability of past of the primary model alone when the fallback
+                  result has no past share.
                 tags: [unit]
                 justification: |
                   The combination is the contract of the tense of a word that the head judged.
@@ -876,38 +894,77 @@ sections:
                 tests:
                   - FallbackWordSenseModel_TenseEvidence_NoProbabilityOrNoEvidence_KeepsTheFallbackShare
 
-              - id: WordSense-Core-WordSenseContracts-FallbackTense-Weight
+              - id: WordSense-Core-WordSenseContracts-FallbackTense-WeightDefault
                 title: >-
-                  FallbackWordSenseModel shall take the tense weight 1 (the head alone) when it is not given, and shall
-                  reject a tense weight below 0, above 1 or not a number with ArgumentOutOfRangeException.
+                  FallbackWordSenseModel shall take the tense weight 1 (the primary model alone) when no tense weight is
+                  given.
+                tags: [unit]
+                justification: |
+                  A composition without a tuned weight takes the evidence of the primary model as it is.
+                tests:
+                  - FallbackWordSenseModel_TenseEvidence_DefaultWeight_TakesTheHeadAlone
+
+              - id: WordSense-Core-WordSenseContracts-FallbackTense-WeightRange
+                title: >-
+                  FallbackWordSenseModel shall reject a tense weight below 0, above 1 or not a number with
+                  ArgumentOutOfRangeException.
                 tags: [unit]
                 justification: |
                   A weight outside 0 to 1 has no meaning as a share of the evidence.
                 tests:
-                  - FallbackWordSenseModel_TenseEvidence_DefaultWeight_TakesTheHeadAlone
                   - FallbackWordSenseModel_Constructor_TenseWeightOutOfRange_Throws
 
-              - id: WordSense-Core-WordSenseContracts-FallbackTense-Apply
+              - id: WordSense-Core-WordSenseContracts-FallbackTense-Share
                 title: >-
-                  FallbackWordSenseModel shall apply a past share to a result by scaling the past verb analyses to the
-                  probability of the verb times the share and the other verb analyses to the probability of the verb
-                  times one minus the share, keeping the probability of the verb as a whole, the shares inside the two
-                  groups and the analyses of other parts of speech, listing the slots again with the most probable
-                  first and selecting the first analysis; it shall keep the level, the group, the sense and the
-                  confidence rule of the answer while its slot stays the most probable one, and shall answer at the
-                  part-of-speech level on the best analysis of the new slot when another slot becomes the most probable,
-                  and shall leave a result that is not a same-spelling verb, or a share outside 0 to 1, unchanged.
+                  FallbackWordSenseModel shall set the past share of a same-spelling verb without changing the
+                  probability of the verb as a whole, the proportions among the past analyses and among the other verb
+                  analyses, or the analyses of other parts of speech.
                 tags: [unit]
                 justification: |
-                  The head decides the tense, not the part of speech or the sense; the answer is never finer than the
-                  evidence for its slot (the past found belongs to find, the infinitive to found).
+                  The head decides the tense, not the part of speech or the senses.
                 tests:
-                  - TenseFusion_IsSameSpellingVerb_NeedsAPastAndANonPastVerbAnalysis
-                  - TenseFusion_PastShare_IsThePastShareOfTheVerbAnalyses
                   - TenseFusion_Apply_SetsThePastShareOfTheVerb
+
+              - id: WordSense-Core-WordSenseContracts-FallbackTense-Selection
+                title: >-
+                  FallbackWordSenseModel shall list the analyses of a same-spelling verb again with the most probable
+                  slot first and the most probable analysis of a slot first, and select the first analysis.
+                tags: [unit]
+                justification: |
+                  The selected analysis must be the one the new probabilities favor.
+                tests:
                   - TenseFusion_Apply_PastProbabilityHigh_SelectsThePastAnalysis
+
+              - id: WordSense-Core-WordSenseContracts-FallbackTense-LevelKept
+                title: >-
+                  FallbackWordSenseModel shall keep the level, the group, the sense and the confidence rule of the
+                  answer for a same-spelling verb while the slot that the answer belongs to stays the most probable one.
+                tags: [unit]
+                justification: |
+                  The probability of the sense within its slot is evidence of the primary result and does not change.
+                tests:
                   - TenseFusion_Apply_SenseLevelAnswerWithSameSlot_KeepsTheSense
+
+              - id: WordSense-Core-WordSenseContracts-FallbackTense-StepDown
+                title: >-
+                  FallbackWordSenseModel shall answer at the part-of-speech level on the best analysis of the new slot,
+                  with the probability of the slot as the confidence, when the past and non-past analyses belong to
+                  different lemmas and another slot becomes the most probable one.
+                tags: [unit]
+                justification: |
+                  The past found belongs to find and the infinitive to found; the answer is never finer than the
+                  evidence for its slot.
+                tests:
                   - TenseFusion_Apply_DifferentLemmas_OtherSlotWins_StepsDownToThePartOfSpeech
+
+              - id: WordSense-Core-WordSenseContracts-FallbackTense-NotApplicable
+                title: >-
+                  FallbackWordSenseModel shall leave a result that is not a same-spelling verb, and a result for which
+                  the share is outside 0 to 1, unchanged.
+                tags: [unit]
+                justification: |
+                  A tense decision that does not apply must not alter an answer.
+                tests:
                   - TenseFusion_Apply_NotApplicable_ReturnsTheResult
 
               - id: WordSense-Core-WordSenseContracts-FallbackEnsure

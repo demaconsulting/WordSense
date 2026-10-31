@@ -171,6 +171,11 @@ internal static class TenseFusion
         return new ClassifyResult(result.Word, result.IsKnown, ordered, ordered[0].Details, SenseLevel.PartOfSpeech, slotProbability[top], null, null);
     }
 
+    /// <summary>
+    ///     Adds up the probability of the past and of the other verb analyses of a result.
+    /// </summary>
+    /// <param name="analyses">The analyses of the result.</param>
+    /// <returns>The summed probability of the past verb analyses and of the other verb analyses; analyses of other parts of speech do not count.</returns>
     private static (double Past, double Other) Masses(ImmutableArray<AnalysisCandidate> analyses)
     {
         double past = 0;
@@ -195,6 +200,11 @@ internal static class TenseFusion
         return (past, other);
     }
 
+    /// <summary>
+    ///     Gets the log odds of a probability, the scale on which two estimates of the tense are combined.
+    /// </summary>
+    /// <param name="probability">The probability, clamped to the floor so that the result is finite.</param>
+    /// <returns>The natural logarithm of the odds.</returns>
     private static double LogOdds(double probability)
     {
         var p = Math.Clamp(probability, Floor, 1.0 - Floor);

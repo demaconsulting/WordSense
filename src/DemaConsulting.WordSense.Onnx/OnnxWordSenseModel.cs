@@ -30,7 +30,8 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     </para>
 ///     <para>
 ///     Call <see cref="EnsureModelAsync"/> to make the model files available and verified. <see cref="ClassifyAsync"/>
-///     ensures them itself when a word needs the encoder, and answers every other text without them: a classification
+///     ensures them itself when a word needs the encoder (see <see cref="ClassifyAsync"/> for which words do), and answers
+///     every other text without them: a classification
 ///     of words that need no context never downloads a file, never opens an ONNX session and never fails because
 ///     a model file is missing. The model files come from the directory
 ///     given to the model's constructor (every file verified against its pinned SHA-256, with no network access) or,
@@ -300,13 +301,14 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
     ///     the <see cref="SenseLevel.PartOfSpeech"/> level without scored senses, which makes a composition use its
     ///     fallback model for the senses of the word (see <see cref="FallbackWordSenseModel"/>).
     ///     <para>
-    ///     A model that uses its head needs the encoder, and so the model files, for every list that has a known word of
-    ///     two or more parts of speech or a word with scored senses; any other model needs them only for a word with
-    ///     scored senses. There is no way to turn that off: the first such list ensures the
+    ///     A word needs the encoder, and so the model files, when its lemma has scored senses (a trained lemma with
+    ///     several senses, or a form that has a chooser); for a model that uses its head also when it is a known word of
+    ///     two or more parts of speech; and for a model that uses its tense head also when it is a same-spelling verb (a
+    ///     verb with a past and a non-past analysis). Any other model needs them only for a word with scored senses.
+    ///     There is no way to turn that off: the first list with such a word ensures the
     ///     model lazily (with the default and environment mirror settings; call <see cref="EnsureModelAsync"/> yourself
     ///     first to pass <see cref="DownloadOptions"/>), shared with concurrent callers; a failed ensure can be retried
-    ///     by the next call. A list that needs no encoder (for a model that uses its head: every word unknown or of one
-    ///     part of speech and none needs scoring) is answered
+    ///     by the next call. A list in which no word needs the encoder is answered
     ///     without any model file: nothing is ensured, downloaded or verified, so it works before
     ///     <see cref="EnsureModelAsync"/> and when the model directory does not exist.
     ///     </para>

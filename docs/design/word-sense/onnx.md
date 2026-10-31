@@ -75,20 +75,29 @@ The units collaborate as follows:
    Unit Design_), and likewise reports a damaged embedded weights resource, a damaged, missing or mismatched embedded
    head, or an ONNX file from `ClassifyAsync` as a `ModelIntegrityException`.
 2. `OnnxWordSenseModel.ClassifyAsync` loads the embedded weights
-   once through `LemmaWeights` (blob reader and all-or-nothing match to the word image) and the embedded part-of-speech
-   head once through `PosHead` (blob reader and binding to the pinned encoder file, the hidden size and the parts of
-   speech). It then decides from the lexicon whether any word needs the encoder (a word with scored senses or, for a
-   model that uses its head, a known word of two or more distinct parts of speech); only then does it ensure the files
+   once through `LemmaWeights` (blob reader and all-or-nothing match to the word image) and the embedded head file
+   once through `PosHead` (blob reader, binding to the pinned encoder file, the hidden size and the parts of
+   speech, and, for a model that uses its tense head, the check that the file holds a tense head). It then decides
+   from the lexicon whether any word needs the encoder (`OnnxClassifier.NeedsEncoder`: a word with scored senses, that
+   is a trained lemma with several senses or a form chooser; for a model that uses its head, a known word of two or more
+   distinct parts of speech; for a model that uses its tense head, a same-spelling verb, a verb with a past and a
+   non-past analysis); only then does it ensure the files
    lazily, open one `OnnxEncoder` once
    (which builds a `WordPieceTokenizer` and the ONNX session) and run an `OnnxClassifier` over the shared encoder, the
-   weights and, for a model that uses its head, the head.
-3. `OnnxClassifier.ClassifyAsync` resolves every word from the lexicon, asks `OnnxEncoder` for the pooled vector of
-   the words that need context (with a head, for the pooled vector of every word of the text in the possessive view),
+   weights and, for a model that uses its head, the head and, for a model that uses its tense head, the tense head
+   of the head file. It runs `OnnxClassifier.ClassifyWithTenseAsync`, whose results are those of `ClassifyAsync`, and
+   returns them with the probability of past of each same-spelling verb.
+3. `OnnxClassifier.ClassifyWithTenseAsync` resolves every word from the lexicon, asks `OnnxEncoder` for the pooled
+   vector of the words that need context (with a head, for the pooled vector of every word of the text in the
+   possessive view),
    turns each vector of a pending word into a feature with the global mean of the weights, scores the
    fine senses of the word's analyses with `LemmaWeights`, lets `LemmaWeights` decide the level of the answer, lets
-   `PosHead` give the probability of the parts of speech of a word of several parts of speech and
+   `PosHead` give the probability of the parts of speech of a word of several parts of speech, lets `TenseHead` (of the
+   same head file, on the vectors of the same view) give the probability that a same-spelling verb is past, and
    builds the result (the analyses with their probabilities and the senses inside them, the selected analysis, the
-   level, the confidence and the ids). A word without scored senses is answered from the lexicon.
+   level, the confidence and the ids). A word without scored senses is answered from the lexicon. The probability of
+   past does not change the results: the composite model (`FallbackWordSenseModel`) combines it with the tense split
+   of the Basic model.
 
 Training and inference share the feature computation, so the builder and the classifier cannot diverge. The encoder
 and the weights are shared by all callers of one model and are released when the model is disposed.

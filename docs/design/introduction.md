@@ -180,10 +180,12 @@ tool references all four packages and is never shipped. Further rules of the spl
 
 The data flows from the contracts upward: a caller obtains an `IWordSenseModel` from a model package, optionally
 calls `EnsureModelAsync` once when the model is an `IDownloadableWordSenseModel` (`ClassifyAsync` ensures lazily when
-a word needs the encoder: a word with scored senses or, for BertBaseCased, a known word of several parts of speech; the
+a word needs the encoder: a word with scored senses or, for BertBaseCased, a known word of several parts of speech or a
+same-spelling verb such as `read` or `put` (its tense head reads the encoder); the
 explicit call only controls when the download happens) and classifies
 tokenized text, receiving one `ClassifyResult` per word in input order. Every model looks each word up in
-`WordLexicon` first; only a word with several senses (or, for BertBaseCased, several parts of speech) needs the model's
+`WordLexicon` first; only a word with several senses (or, for BertBaseCased, several parts of speech, or a past and a
+non-past verb analysis whose tense the tense head judges) needs the model's
 context decision, and each answer states the
 level (part of speech, group or sense) at which it was made. The result is built from its `Analyses` (the probability
 of every analysis of the word and, where the model scored them, of the senses inside each analysis); the selected

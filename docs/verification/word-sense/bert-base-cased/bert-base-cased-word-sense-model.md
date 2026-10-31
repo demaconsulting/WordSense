@@ -88,10 +88,14 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Weight** (`BertBaseCasedWordSenseModel_PrimaryWeight_DefaultIsTunedAndAnExplicitWeightReachesTheComposition`):
   the weight is 0.8 by default (`PartOfSpeechHeadWeight`, internal) and reaches the composition (`PrimaryWeight`), the
   internal constructor sets another one (0.25) and rejects a weight below 0; it needs no model file.
+- **Tense weight** (`FallbackWordSenseModel_Constructor_TenseWeightOutOfRange_Throws`, in the core test project): a
+  tense weight below 0, above 1 or NaN throws `ArgumentOutOfRangeException` from the composition that the model builds.
 - **Lexicon-only text needs no ensure** (`BertBaseCasedWordSenseModel_ClassifyAsync_LexiconOnly_NeedsNoEnsure`): a text
-  of unknown words and of known words of one part of speech with no scored senses is answered on a model that was never
+  of unknown words and of known words of one part of speech with no scored senses (and no same-spelling verb) is
+  answered on a model that was never
   ensured, without any model
-  file; a text with a word of several parts of speech or a word with scored senses ensures the files lazily (verified
+  file; a text with a word of several parts of speech, a same-spelling verb or a word with scored senses ensures the
+  files lazily (verified
   for the shared base class in
   `OnnxWordSenseModel_ClassifyAsync_WordOfSeveralPartsOfSpeech_NeedsTheEncoder`).
 - **Disposal** (`Dispose_DisposesEncoderAndFallback`): disposing disposes the encoder model and the Basic model, and

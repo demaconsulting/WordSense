@@ -73,8 +73,9 @@ namespace DemaConsulting.WordSense;
 ///     <see cref="ClassifyResult.Details"/> means unknown.
 ///     Disposal while calls run: <c>Dispose</c> must be safe while calls are running (it must not break or hang a
 ///     running classification). Lazy ensure: an implementation that needs files should ensure them lazily and only when
-///     a word needs them (the supplied BertBaseCased model: a known word of two or more parts of speech, or a word with
-///     scored senses; the supplied MiniLM model: a word with scored senses), never for a list that it answers without
+///     a word needs them (the supplied BertBaseCased model: a word with scored senses, a known word of two or more parts
+///     of speech, or a same-spelling verb such as <c>read</c> or <c>put</c>; the supplied MiniLM model: a word with scored
+///     senses), never for a list that it answers without
 ///     them; such an implementation should also implement
 ///     <see cref="IDownloadableWordSenseModel"/>. Word list: enumerate the
 ///     <c>words</c> argument exactly once (copy it to a list first).
@@ -172,7 +173,8 @@ public interface IWordSenseModel : IDisposable
     ///     </para>
     ///     <para>
     ///     The call ensures the model lazily, when a word needs it (see the remarks of the interface): for BertBaseCased
-    ///     that is a known word of two or more parts of speech or a word with scored senses, for MiniLM a word with scored
+    ///     that is a word with scored senses, a known word of two or more parts of speech or a same-spelling verb (such as
+    ///     <c>read</c> or <c>put</c>), for MiniLM a word with scored
     ///     senses, and a list without such a word never touches model files or ONNX. The lazy ensure uses the defaults (no explicit
     ///     <see cref="DownloadOptions"/>; the <c>WORDSENSE_MIRROR_*</c> environment variables apply), is shared by
     ///     concurrent callers and is retried after a failure; for a model that implements

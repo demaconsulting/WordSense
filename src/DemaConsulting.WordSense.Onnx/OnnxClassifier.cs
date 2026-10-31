@@ -74,6 +74,15 @@ internal delegate ValueTask<WordVectors> PooledViewEncode(IReadOnlyList<string> 
 ///     every lemma and part of speech has the same probability 1/s for s of them. No fine sense is ever guessed.
 ///     </para>
 ///     <para>
+///     With a tense head (<see cref="ClassifyWithTenseAsync"/>; the classifier of BertBaseCased) a same-spelling verb (a
+///     verb with a past and a non-past analysis, see <see cref="TenseFusion"/>) needs the encoder too, whatever its
+///     lemma, number of parts of speech or scored senses: the head reads the vectors of the word and of its neighbors
+///     in the same encoded text and gives the probability that the verb is past. That probability is reported beside
+///     the results and does not change them. A same-spelling verb without a usable vector has none. So the classifier
+///     needs the encoder for a word with scored senses, for a known word of two or more parts of speech (with a head)
+///     and for a same-spelling verb (with a tense head), and for no other word.
+///     </para>
+///     <para>
 ///     The classifier holds no mutable state and is thread-safe.
 ///     </para>
 /// </remarks>
@@ -83,6 +92,9 @@ internal sealed class OnnxClassifier
     private readonly PooledEncode? _encode;
     private readonly PosHead? _head;
     private readonly PooledViewEncode? _encodeView;
+    /// <summary>
+    ///     The classifier of the tense head, or null when the classifier does not judge tense.
+    /// </summary>
     private readonly TenseHead? _tense;
 
     /// <summary>

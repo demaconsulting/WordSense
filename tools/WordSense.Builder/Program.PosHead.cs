@@ -79,8 +79,21 @@ internal static partial class Program
         return Path.Join(root, info.Name);
     }
 
+    /// <summary>
+    ///     Reads the grid of regularization strengths of a head training command, with the default grid of the
+    ///     part-of-speech head.
+    /// </summary>
+    /// <param name="options">The options (<c>--c-grid</c>).</param>
+    /// <returns>The strengths to try.</returns>
     private static List<double> CGridOf(Dictionary<string, string> options) => CGridOf(options, PosHeadTrainer.DefaultCGrid);
 
+    /// <summary>
+    ///     Reads the grid of regularization strengths of a head training command.
+    /// </summary>
+    /// <param name="options">The options (<c>--c-grid</c>, a comma-separated list of positive numbers).</param>
+    /// <param name="defaults">The grid that applies when the option is not given.</param>
+    /// <returns>The strengths to try.</returns>
+    /// <exception cref="ArgumentException">Thrown when the option is not a list of positive numbers.</exception>
     private static List<double> CGridOf(Dictionary<string, string> options, IReadOnlyList<double> defaults)
     {
         if (!options.TryGetValue("c-grid", out var text))

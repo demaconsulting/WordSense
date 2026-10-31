@@ -124,10 +124,10 @@ verb token whose form has both. The majority is the share of the more frequent g
 
 On the 68 other same-spelling verbs (753 treebank tokens never trained on) Basic and `MiniLM` reach 82.6 to 83.7%,
 against 74.5% for always answering the non-past, and `BertBaseCased` 94.3%. On the second all-words gold set, the
-tense of `BertBaseCased` on the test half is right for 98.0% of 347 same-spelling verbs, against 90.2% before the
-tense head (+7.8 points, 95% interval +4.8 to +10.4). The sets are small, so read the pooled column. The treebank
+tense of `BertBaseCased` on the test half is right for 98.0% of 347 same-spelling verbs. The sets are small, so read
+the pooled column. The treebank
 and the read set are never used to train or to choose anything. The tense head of `BertBaseCased` can still be wrong
-where the tense depends on a habit that the sentence does not show (`We usually set the table`, answered as past), and
+where the tense depends on a habit that the sentence does not show, and
 the models without a tense head are a bag of context words with a few positional features, so a time adverb far from
 the verb, or a plural present against a past after a bare subject (`I let everyone know`), can be wrong.
 

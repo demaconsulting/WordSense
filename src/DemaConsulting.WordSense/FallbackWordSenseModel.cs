@@ -146,6 +146,10 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
     private readonly IWordSenseModel _primary;
     private readonly IWordSenseModel _fallback;
     private readonly double _primaryWeight;
+    /// <summary>
+    ///     The weight of the tense head of the primary model in the combination with the past share of the fallback
+    ///     result, from 0 to 1.
+    /// </summary>
     private readonly double _tenseWeight;
     private int _disposed;
 

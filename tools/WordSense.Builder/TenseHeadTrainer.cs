@@ -108,7 +108,16 @@ internal static class TenseHeadTrainer
     /// </summary>
     public static readonly IReadOnlyList<double> FusionGrid = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
 
+    /// <summary>
+    ///     The largest gradient component at which the fit counts as converged; the same scale as the other fits of the
+    ///     builder, on the standardized features.
+    /// </summary>
     private const double GradientTolerance = 1e-5;
+
+    /// <summary>
+    ///     The number of iterations after which the fit stops without having converged, so that a run always ends; the
+    ///     report says when the cap was reached.
+    /// </summary>
     private const int MaxIterations = 500;
 
     /// <summary>
@@ -380,6 +389,12 @@ internal static class TenseHeadTrainer
     /// <summary>
     ///     Reports the dev accuracy and log loss of the tense head combined with the Basic model at each weight.
     /// </summary>
+    /// <param name="head">The head, as the library reads it.</param>
+    /// <param name="table">The tokens of the development split.</param>
+    /// <param name="rows">The development rows.</param>
+    /// <param name="dev">The sentences of the development split, in the order of the table.</param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <returns>The Markdown table of the report.</returns>
     private static async Task<string> FusionReportAsync(TenseHead head, PosTokenTable table, TenseRows rows, List<PosSentence> dev, CancellationToken cancellationToken)
     {
         // The share of the past analyses among the verb analyses of the Basic result, for every row (null: Basic has none)
@@ -425,11 +440,32 @@ internal static class TenseHeadTrainer
         return text.ToString();
     }
 
+    /// <summary>
+    ///     Makes the head as the library reads it, for scoring the development rows with the arithmetic of inference.
+    /// </summary>
+    /// <param name="layout">The feature layout.</param>
+    /// <param name="c">The regularization strength that the head was fitted with.</param>
+    /// <param name="weights">The weights, in the order of the layout.</param>
+    /// <param name="bias">The bias.</param>
+    /// <param name="hiddenSize">The hidden size of the encoder.</param>
+    /// <returns>The head.</returns>
     private static TenseHead Make(int layout, double c, float[] weights, float bias, int hiddenSize) =>
         new(new TenseHeadData(layout, (float)c, weights, bias), hiddenSize);
 
+    /// <summary>
+    ///     Gets the name of a layout for the report and the progress lines.
+    /// </summary>
+    /// <param name="layout">The feature layout.</param>
+    /// <returns><c>word</c> for the vector of the word, <c>word+-1</c> for the word and its neighbors.</returns>
     private static string LayoutName(int layout) => layout == PosHeadBlob.TenseWord ? "word" : "word+-1";
 
+    /// <summary>
+    ///     Gets the number of features of a layout, which is the length of the weights of a head of that layout.
+    /// </summary>
+    /// <param name="layout">The feature layout.</param>
+    /// <param name="dimension">The hidden size of the encoder.</param>
+    /// <returns>One vector for the word layout, three for the layout with neighbors.</returns>
+    /// <exception cref="ArgumentException">Thrown when the layout is unknown.</exception>
     private static int FeatureCount(int layout, int dimension) => layout switch
     {
         PosHeadBlob.TenseWord => dimension,
@@ -465,6 +501,14 @@ internal static class TenseHeadTrainer
         return features;
     }
 
+    /// <summary>
+    ///     Copies the vector of a token into a feature array, where the features of one layout are placed one vector
+    ///     after the other.
+    /// </summary>
+    /// <param name="table">The tokens.</param>
+    /// <param name="token">The index of the token whose vector is copied.</param>
+    /// <param name="target">The feature array.</param>
+    /// <param name="offset">The index in <paramref name="target"/> of the first value of the vector.</param>
     private static void Copy(PosTokenTable table, int token, double[] target, int offset)
     {
         var d = table.Dimension;
@@ -474,6 +518,12 @@ internal static class TenseHeadTrainer
         }
     }
 
+    /// <summary>
+    ///     Gets the vector of a token as doubles.
+    /// </summary>
+    /// <param name="table">The tokens.</param>
+    /// <param name="token">The index of the token.</param>
+    /// <returns>The vector, or null when the token has no word pieces and so no vector.</returns>
     private static double[]? Vector(PosTokenTable table, int token)
     {
         if (!table.HasVector[token])

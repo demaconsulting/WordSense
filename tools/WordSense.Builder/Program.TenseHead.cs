@@ -9,6 +9,17 @@ namespace WordSense.Builder;
 /// </summary>
 internal static partial class Program
 {
+    /// <summary>
+    ///     Runs <c>train-tense-head</c>: adds the tense head to the head file of an encoder model and prints the report.
+    /// </summary>
+    /// <param name="options">The options of the command.</param>
+    /// <param name="repository">The repository root.</param>
+    /// <param name="corpus">The corpus directory.</param>
+    /// <param name="output">The writer of the report.</param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <returns>The exit code, 0 when the head file was written.</returns>
+    /// <exception cref="ArgumentException">Thrown when the model has no encoder.</exception>
+    /// <exception cref="FileNotFoundException">Thrown when the head file to extend does not exist.</exception>
     private static async Task<int> RunTrainTenseHeadAsync(Dictionary<string, string> options, string repository, string corpus, TextWriter output, CancellationToken cancellationToken)
     {
         var info = ModelCatalog.Find(Require(options, "model"));

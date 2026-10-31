@@ -2992,16 +2992,23 @@ sections:
 
           - id: WordSense-WordSenseBuilder-TrainTenseHeadSelection
             title: >-
-              The builder shall choose the feature layout (the word, or the word and its neighbors) and the
-              regularization strength of a tense head on the development split of the open corpus by the mean log loss,
-              keeping the simpler layout and the smaller strength on a tie, and shall stop when the accuracy of the head
-              rounded to half precision differs by more than 0.02 points from that of the unrounded head.
+              The builder shall choose the feature layout and the regularization strength of a tense head on the
+              development split of the open corpus by the mean log loss, keeping the simpler layout and the smaller
+              strength on a tie.
             tags: [unit]
             justification: |
-              The selection must use held-out development data, and the head that ships (half precision) must be the
-              head that was measured.
+              The selection must use held-out development data, and a tie must resolve the same way on every run.
             tests:
               - WordSenseBuilder_TenseHeadTrainer_TrainAsync_ProducesALoadableDeterministicHead
+
+          - id: WordSense-WordSenseBuilder-TrainTenseHeadPrecision
+            title: >-
+              The builder shall stop training a tense head when the head rounded to half precision predicts the
+              development rows with an accuracy that differs by more than 0.02 points from that of the unrounded head.
+            tags: [unit]
+            justification: |
+              The file stores half-precision weights; the head that ships must be the head that was measured.
+            tests:
               - WordSenseBuilder_PosHeadTrainer_CheckHalfPrecision_StopsBeyondTheGate
 
           - id: WordSense-WordSenseBuilder-TrainTenseHeadInvalidInput

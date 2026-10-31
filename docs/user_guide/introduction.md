@@ -392,8 +392,10 @@ The SHA-256 values are in `SHA256SUMS` of each model folder (`model/<model-id>/`
 
 `EnsureModelAsync` is optional: `ClassifyAsync` ensures the files lazily. `MiniLM` does it on the first word that has a
 trained lemma with several senses. `BertBaseCased` does it on the first text that has a known word of two or more parts
-of speech in the dictionary (most English text does) or a word whose lemma has scored senses, and there is no option to
-avoid it; a text of unknown words and of known words of one part of speech whose senses are not scored never touches the
+of speech in the dictionary (most English text does), a verb whose past and non-past share a spelling (`read`, `put`) or
+a word whose lemma has scored senses, and there is no option to
+avoid it; a text of unknown words and of known words of one part of speech whose senses are not scored, with no such
+verb, never touches the
 files. Call `EnsureModelAsync` to control when the
 download happens and to handle failures up front. Concurrent callers share one ensure, and a failed ensure can be
 retried.

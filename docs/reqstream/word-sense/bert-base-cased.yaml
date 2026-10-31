@@ -53,19 +53,27 @@ sections:
               - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-PartOfSpeechReweighed
               - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Lazy
 
+          - id: WordSense-BertBaseCased-TenseHead
+            title: >-
+              The BertBaseCased package shall embed a trained tense head for its bert-base-cased encoder, and its
+              encoder model shall load it and answer with it.
+            tags: [subsystem]
+            justification: |
+              The head ships in the package with the weights and the part-of-speech head.
+            children:
+              - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-TenseHead
+
           - id: WordSense-BertBaseCased-Tense
             title: >-
-              The BertBaseCased package shall embed a trained tense head in its head file, shall load it bound to the
-              pinned encoder file with the part-of-speech head, and shall set the tense of every same-spelling verb
-              from the probability of past of that head combined with the tense split of the Basic model with the
-              weight 0.9.
+              The BertBaseCased package shall set the tense of every verb whose past and non-past share a spelling
+              from the probability of past of its tense head combined with the tense split of the Basic model.
             tags: [subsystem]
             justification: |
               The tense of read, put and found is decided by the sentence; the head reads it from the encoder and the
               Basic model corrects it where the head has little evidence.
             children:
-              - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-TenseHead
               - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-TenseReweighed
+              - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-TenseWeight
 
           - id: WordSense-BertBaseCased-Composition
             title: >-

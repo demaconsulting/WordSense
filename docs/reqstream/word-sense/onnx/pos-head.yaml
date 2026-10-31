@@ -241,43 +241,101 @@ sections:
 
               - id: WordSense-Onnx-PosHead-TenseSection
                 title: >-
-                  The part-of-speech head reader shall read from the optional tense section of a blob the feature
-                  layout (the word, or the previous word, the word and the next word), the regularization strength, the
-                  weights and the bias, and shall report a blob without the section as having no tense head.
+                  The head reader shall provide the tense head of a head file that contains one, and shall report a
+                  head file without one as having no tense head.
                 tags: [unit]
                 justification: |
-                  The tense head ships in the same file as the part-of-speech head; the reader must reproduce what the
-                  build tool wrote, and a file without it must still load.
+                  The tense head ships in the same file as the part-of-speech head; a file without it must still load.
                 tests:
                   - PosHeadBlob_Read_TenseSection_ReturnsTheTenseHead
                   - WordSenseBuilder_PosHeadBlobWriter_Write_TenseSection_RoundTripsThroughTheReader
 
-              - id: WordSense-Onnx-PosHead-TenseStructure
+              - id: WordSense-Onnx-PosHead-TenseLayout
                 title: >-
-                  The part-of-speech head reader shall reject a tense section with an unknown feature layout, a
-                  regularization strength that is not a finite positive number, a weight or bias that is not finite, a
-                  weight count that does not fit the
-                  layout and the hidden size, or a payload of another length than its contents, as invalid data.
+                  The head reader shall reject a tense head that has an unknown feature layout, as invalid data.
                 tags: [unit]
                 justification: |
-                  A blob that passes its checksum can still have been written by a faulty tool; a tense head of the
-                  wrong size must not reach the arithmetic.
+                  A layout the arithmetic does not know would read the wrong vectors.
+                tests:
+                  - PosHeadBlob_Read_InvalidTenseSection_Throws
+
+              - id: WordSense-Onnx-PosHead-TenseStrength
+                title: >-
+                  The head reader shall reject a tense head whose regularization strength is not a finite positive
+                  number, as invalid data.
+                tags: [unit]
+                justification: |
+                  The strength is part of the provenance of the head and must be a valid number.
+                tests:
+                  - PosHeadBlob_Read_InvalidTenseSection_Throws
+
+              - id: WordSense-Onnx-PosHead-TenseSize
+                title: >-
+                  The head reader shall reject a tense head whose number of weights does not fit its layout and the
+                  hidden size of the encoder, as invalid data.
+                tags: [unit]
+                justification: |
+                  A tense head of the wrong size must not reach the arithmetic.
                 tests:
                   - PosHeadBlob_Read_InvalidTenseSection_Throws
                   - WordSenseBuilder_PosHeadBlobWriter_Write_InvalidTenseHead_Throws
 
-              - id: WordSense-Onnx-PosHead-TensePastProbability
+              - id: WordSense-Onnx-PosHead-TenseValues
                 title: >-
-                  The tense head shall compute from the pooled vectors of a verb (and, for the neighbor layout, of its
-                  previous and next word) the probability that the verb is past as the logistic function of the bias
-                  plus the weighted sum of the vector values, treat a missing vector as zeros, give 0 or 1 without an
-                  error for an extreme score, and reject a vector that does not have the hidden size.
+                  The head reader shall reject a tense head with a weight or a bias that is not a finite number, as
+                  invalid data.
                 tags: [unit]
                 justification: |
-                  The head predicts the tense of a same-spelling verb from its context, and the arithmetic is the fixed
-                  order scalar arithmetic of the part-of-speech head, so that its result is a function of its input
-                  only.
+                  A NaN or an infinity would turn every probability into garbage.
+                tests:
+                  - PosHeadBlob_Read_InvalidTenseSection_Throws
+
+              - id: WordSense-Onnx-PosHead-TenseFraming
+                title: >-
+                  The head reader shall reject a head file with a tense head that has data after its last value or
+                  that appears twice, as invalid data.
+                tags: [unit]
+                justification: |
+                  A head file that passes its checksum can still have been written by a faulty tool.
+                tests:
+                  - PosHeadBlob_Read_InvalidTenseSection_Throws
+
+              - id: WordSense-Onnx-PosHead-TensePastProbability
+                title: >-
+                  The tense head shall compute from the pooled vectors of a verb and of its previous and next word the
+                  probability that the verb is past, strictly between 0 and 1 for finite scores.
+                tags: [unit]
+                justification: |
+                  The head predicts the tense of a same-spelling verb from its context.
                 tests:
                   - TenseHead_PastProbability_WordLayout_IsTheLogisticOfTheDotProduct
                   - TenseHead_PastProbability_NeighborLayout_ReadsPreviousWordAndNext
+
+              - id: WordSense-Onnx-PosHead-TensePastMissing
+                title: >-
+                  The tense head shall treat a missing vector of a neighbor as zeros.
+                tags: [unit]
+                justification: |
+                  A word at the edge of a sentence has no neighbor, which is how the head was trained.
+                tests:
+                  - TenseHead_PastProbability_NeighborLayout_ReadsPreviousWordAndNext
+
+              - id: WordSense-Onnx-PosHead-TensePastExtreme
+                title: >-
+                  The tense head shall give 0 or 1, without an error, for a score that is too large or too small to be
+                  represented as a probability.
+                tags: [unit]
+                justification: |
+                  A confident head must not fail on a word it is sure about.
+                tests:
+                  - TenseHead_PastProbability_ExtremeScoresAndBadVectors_AreHandled
+
+              - id: WordSense-Onnx-PosHead-TensePastLength
+                title: >-
+                  The tense head shall reject a vector that does not have the hidden size, and a missing vector of the
+                  word itself.
+                tags: [unit]
+                justification: |
+                  A vector of another size comes from another encoder and would give meaningless probabilities.
+                tests:
                   - TenseHead_PastProbability_ExtremeScoresAndBadVectors_AreHandled

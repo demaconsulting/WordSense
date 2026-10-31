@@ -72,9 +72,7 @@ The labels follow these rules:
 - The `T` rows are analysis-only, with a context that says the tense without doubt (a modal, do-support, a form of
   `have`, an imperative, a past-time adverb). They are easy by construction: a regression guard for the tense, not a
   measure of accuracy (see "Tense of Same-Spelling Verbs" of `docs/user_guide/accuracy.md`). The expected grade is
-  `fine` for all three models, except `T-set-1` (`We usually {set} the table before dinner .`) for
-  `bert-base-cased`, whose tense head answers it as a past tense (a habit that the sentence does not show), recorded as
-  `miss` in `expectations.tsv`.
+  `fine` for all three models.
 
 ## Grading
 

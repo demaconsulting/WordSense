@@ -112,7 +112,8 @@ namespace DemaConsulting.WordSense;
 ///     session on the first classification that needs it (about 0.4 s for MiniLM, about 0.5 s for BertBaseCased), after
 ///     the files are ensured: <c>ClassifyAsync</c> does that itself when a word needs the model (with the default
 ///     download settings), or call <c>EnsureModelAsync</c> of the model first. A word list without an ambiguous word never touches
-///     model files (BertBaseCased needs them for any word of two or more parts of speech; MiniLM only for a trained
+///     model files (BertBaseCased needs them for any word of two or more parts of speech and for a same-spelling verb
+///     such as <c>read</c>; MiniLM only for a trained
 ///     lemma with several senses). The built-in model has no files, so it needs no
 ///     preparation; for the encoder models the explicit <c>EnsureModelAsync</c> is optional too (call it to fail early or to pass
 ///     <see cref="DownloadOptions"/>). Hashing the model files takes about 30 ms (MiniLM) and about 110 ms (BertBaseCased)

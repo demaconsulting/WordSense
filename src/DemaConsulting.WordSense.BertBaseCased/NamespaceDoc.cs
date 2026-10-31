@@ -26,10 +26,14 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     fallback (see <c>FallbackWordSenseModel</c>). The encoder model scores the fine senses of the lemmas that this
 ///     version has weights for and answers them at the sense, group or part-of-speech level, whichever its per-lemma
 ///     thresholds support; the part of speech of every word of several parts of speech comes from the embedded
-///     part-of-speech head, combined with that of the Basic model, and every other ambiguous word is answered by the
+///     part-of-speech head, combined with that of the Basic model, the tense of every verb whose past and non-past
+///     share a spelling (<c>read</c>, <c>put</c>) comes from the embedded tense head, combined with that of the Basic
+///     model, and every other ambiguous word is answered by the
 ///     Basic model, at the part-of-speech level (or at the sense level when its selected analysis has exactly one
-///     sense). A text of unknown words and of known words of one part of speech whose senses are not scored is
-///     classified without reading the model files, and a text that has a known word of several parts of speech or a word
+///     sense). A text of unknown words and of known words of one part of speech whose senses are not scored, and that
+///     has no such verb, is
+///     classified without reading the model files, and a text that has a known word of several parts of speech, a
+///     same-spelling verb or a word
 ///     whose lemma has scored senses ensures them on first use (no opt-out). The files are described
 ///     in the repository at
 ///     https://github.com/demaconsulting/WordSense/tree/main/model/bert-base-cased-int8. The model identifier

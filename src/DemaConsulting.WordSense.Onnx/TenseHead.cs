@@ -18,8 +18,20 @@ namespace DemaConsulting.WordSense.Onnx;
 /// </remarks>
 internal sealed class TenseHead
 {
+    /// <summary>
+    ///     The weights as doubles, so that the sum runs in 64 bits; one vector's worth for the word layout, three for the
+    ///     layout with neighbors.
+    /// </summary>
     private readonly double[] _weights;
+
+    /// <summary>
+    ///     The bias, the score of a verb whose vectors are all zero.
+    /// </summary>
     private readonly double _bias;
+
+    /// <summary>
+    ///     The hidden size of the encoder, the length that every vector must have and the size of one block of weights.
+    /// </summary>
     private readonly int _hiddenSize;
 
     /// <summary>
@@ -71,6 +83,13 @@ internal sealed class TenseHead
         return 1.0 / (1.0 + Math.Exp(-sum));
     }
 
+    /// <summary>
+    ///     Adds the weighted part of a vector to a running score.
+    /// </summary>
+    /// <param name="sum">The score so far.</param>
+    /// <param name="vector">The vector, or null for a missing one, which adds nothing (as zeros do).</param>
+    /// <param name="offset">The index in the weights of the first weight of this vector's block.</param>
+    /// <returns>The score with the vector added, summed in the order of the features so that the result does not depend on the hardware.</returns>
     private double Add(double sum, double[]? vector, int offset)
     {
         if (vector is null)
@@ -87,6 +106,11 @@ internal sealed class TenseHead
         return sum;
     }
 
+    /// <summary>
+    ///     Checks that a vector has the hidden size of the encoder.
+    /// </summary>
+    /// <param name="vector">The vector, or null for a missing one.</param>
+    /// <exception cref="ArgumentException">Thrown when the vector has another length than the hidden size.</exception>
     private void Check(double[]? vector)
     {
         if (vector is not null && vector.Length != _hiddenSize)

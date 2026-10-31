@@ -222,7 +222,8 @@ it judges tense, and is
 true when a word is pending, that is, has several senses together with usable weights (or a chooser), or, with a head,
 when a known word has two or more distinct parts of speech in the lexicon, whatever its lemma, or, with a tense head,
 when a known word is a same-spelling verb. There is no opt-out.
-Words that are unknown, have one analysis or one sense, have one part of speech and are not pending, or (without a
+Words that are unknown, have one analysis or one sense, have one part of speech and are not pending (and, with a tense
+head, are not same-spelling verbs), or (without a
 head) get the lexicon-only
 answer are answered without the encoder and without model files.
 
