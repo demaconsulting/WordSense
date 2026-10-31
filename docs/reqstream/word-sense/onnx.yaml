@@ -299,6 +299,7 @@ sections:
               The tense head ships in the same file as the part-of-speech head, and a file without it must still load.
             children:
               - WordSense-Onnx-PosHead-TenseSection
+              - WordSense-Onnx-PosHead-TenseAbsent
 
           - id: WordSense-Onnx-Head-TenseIntegrity
             title: >-
@@ -315,8 +316,8 @@ sections:
 
           - id: WordSense-Onnx-Head-TenseProbability
             title: >-
-              The Onnx subsystem shall compute from a tense head and the pooled vectors of a verb and of its
-              neighbors the probability that the verb is past.
+              The Onnx subsystem shall give the probability that a verb is past from a tense head and the encoder
+              vectors of the verb and of its context.
             tags: [subsystem]
             justification: |
               The head predicts the tense of a same-spelling verb from its context.
@@ -338,6 +339,7 @@ sections:
               - WordSense-Onnx-OnnxWordSenseModel-Head
               - WordSense-Onnx-OnnxWordSenseModel-HeadNone
               - WordSense-Onnx-OnnxWordSenseModel-HeadIntegrity
+              - WordSense-Onnx-OnnxWordSenseModel-TenseHeadIntegrity
 
           - id: WordSense-Onnx-Encoder
             title: >-

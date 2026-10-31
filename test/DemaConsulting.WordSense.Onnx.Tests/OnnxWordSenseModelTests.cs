@@ -692,6 +692,27 @@ public class OnnxWordSenseModelTests
     }
 
     /// <summary>
+    ///     A model that uses its tense head and whose head file has none is reported as
+    ///     <see cref="ModelIntegrityException"/> with the original exception as the inner exception, on every call.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxWordSenseModel_ClassifyAsync_TenseHeadInUseWithoutTenseHead_ThrowsModelIntegrity()
+    {
+        // Arrange: the embedded head of the fixture has no tense section
+        using var model = new FixtureEncoderModel(MissingDirectory(), spec => spec with { TenseHeadInUse = true });
+
+        // Act
+        var first = await Assert.ThrowsAsync<ModelIntegrityException>(() => model.ClassifyAsync(["the"], TestContext.Current.CancellationToken));
+        var second = await Assert.ThrowsAsync<ModelIntegrityException>(() => model.ClassifyAsync(["the"], TestContext.Current.CancellationToken));
+
+        // Assert
+        Assert.IsType<InvalidDataException>(first.InnerException);
+        Assert.Contains("no tense head", first.InnerException.Message, StringComparison.Ordinal);
+        Assert.IsType<InvalidDataException>(second.InnerException);
+    }
+
+    /// <summary>
     ///     The encoder model has the downloadable capability, so the explicit ensure is available through the interface.
     /// </summary>
     [Fact]

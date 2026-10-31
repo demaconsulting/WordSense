@@ -71,19 +71,29 @@ sections:
               - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-TenseHead
                 title: >-
                   The encoder model of BertBaseCasedWordSenseModel shall load the tense head embedded in its assembly
-                  without any model file, and shall use it.
+                  without needing any model file.
                 tags: [unit]
                 justification: |
-                  The tense head was trained on the vectors of this exact encoder file; a head file without it must not
-                  load silently as a model that gives no tense.
+                  The tense head ships in the package; it must be available before the model files are.
                 tests:
                   - BertBaseCasedWordSenseModel_EmbeddedHead_HasATenseHead
+
+              - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-TenseHeadRejected
+                title: >-
+                  The encoder model of BertBaseCasedWordSenseModel shall report a damaged tense head, or a head file
+                  that has no tense head, as a ModelIntegrityException.
+                tags: [unit]
+                justification: |
+                  A package with a defective head must fail loudly instead of answering with the wrong tense.
+                tests:
+                  - OnnxWordSenseModel_ClassifyAsync_TenseHeadInUseWithoutTenseHead_ThrowsModelIntegrity
+                  - OnnxWordSenseModel_ClassifyAsync_DamagedOrMismatchedHead_ThrowsModelIntegrity
 
               - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-TenseReweighed
                 title: >-
                   BertBaseCasedWordSenseModel shall give the past analyses of a same-spelling verb the share of the verb
-                  that combines the probability of past of the tense head of its encoder with the past share of the
-                  Basic model, with the weight of 0.9 for the head.
+                  that combines the probability of past of its tense head with the past share of the Basic model, with
+                  the weight of 0.9 for the head.
                 tags: [unit]
                 justification: |
                   The head reads the sentence, which the lexicon cannot, and the Basic model corrects it where the head
@@ -93,15 +103,15 @@ sections:
                   - BertBaseCased_Classifier_EndToEnd_SameSpellingVerb_TenseFollowsTheContext
                   - FallbackWordSenseModel_TenseEvidence_SetsThePastShareFromTheHead
 
-              - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-TenseWeight
+              - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-TenseFiles
                 title: >-
-                  BertBaseCasedWordSenseModel shall allow an explicit tense weight from 0 to 1 and shall reject any
-                  other (through the composition that it builds).
+                  BertBaseCasedWordSenseModel shall ensure its encoder files lazily on the first text that has a
+                  same-spelling verb.
                 tags: [unit]
                 justification: |
-                  A weight outside 0 to 1 has no meaning as a share of the evidence.
+                  The tense of read and put is decided from the sentence, which needs the encoder.
                 tests:
-                  - FallbackWordSenseModel_Constructor_TenseWeightOutOfRange_Throws
+                  - BertBaseCasedWordSenseModel_ClassifyAsync_SameSpellingVerb_NeedsTheEncoder
 
               - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Composition
                 title: >-

@@ -477,6 +477,10 @@ internal static class TenseHeadTrainer
     ///     Builds the features of a token: its vector, or the vectors of the previous word, the word and the next word with
     ///     zeros beyond the sentence edge and for a word without word pieces.
     /// </summary>
+    /// <param name="table">The tokens with their vectors.</param>
+    /// <param name="token">The index of the token in the table.</param>
+    /// <param name="layout">The feature layout: the vector of the word alone, or the vectors of the previous word, the word and the next word in that order.</param>
+    /// <returns>The features: one vector for the word layout, three for the layout with neighbors, where a neighbor beyond the edge of the sentence or without a vector stays zero.</returns>
     private static double[] Features(PosTokenTable table, int token, int layout)
     {
         var d = table.Dimension;

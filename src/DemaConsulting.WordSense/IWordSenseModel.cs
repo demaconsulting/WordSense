@@ -19,11 +19,13 @@ namespace DemaConsulting.WordSense;
 ///     Lazy ensure: <see cref="ClassifyAsync"/> ensures the files the model needs itself on first use, when (and only
 ///     when) a word needs them. The Basic model never needs files. The BertBaseCased model needs its encoder files for
 ///     every word list that contains a known word of two or more parts of speech (its part-of-speech classifier reads
-///     the sentence, so almost every sentence of running text needs it) or a word whose senses it scores. The MiniLM
+///     the sentence, so almost every sentence of running text needs it), a same-spelling verb such as <c>read</c> or
+///     <c>put</c> (a verb with a past and a non-past analysis, whose tense its tense classifier reads from the
+///     sentence) or a word whose senses it scores. The MiniLM
 ///     model needs them only for a word whose senses it scores (a trained lemma with several senses): its part of
 ///     speech comes from the mass of those senses and from the Basic model. There is no way to turn either rule off. A
 ///     list that needs no encoder (for BertBaseCased: unknown words and known words of one part of speech whose senses
-///     it does not score) is answered from
+///     it does not score, and that are not same-spelling verbs) is answered from
 ///     the lexicon and the Basic model alone and never touches model files or ONNX. When the model is needed
 ///     and was not ensured yet, the call ensures it with the defaults (no explicit download options; the
 ///     <c>WORDSENSE_MIRROR_*</c> environment variables apply). Concurrent callers share one ensure, and a failed ensure
@@ -110,7 +112,7 @@ namespace DemaConsulting.WordSense;
 ///     warm file cache; more on a slow disk). Warm the model at startup (ensure and classify one short text with an
 ///     ambiguous word) if the first request must be fast. Concurrent classifications share one ONNX session and run in
 ///     parallel; the encoder models run on the CPU only. The BertBaseCased model runs the encoder once for every sentence
-///     that has a word of two or more parts of speech, so call <see cref="IDownloadableWordSenseModel.EnsureModelAsync"/> at
+///     that has a word of two or more parts of speech or a same-spelling verb, so call <see cref="IDownloadableWordSenseModel.EnsureModelAsync"/> at
 ///     startup to control when the download happens.
 ///     </para>
 /// </remarks>
