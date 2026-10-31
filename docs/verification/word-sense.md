@@ -88,14 +88,30 @@ results of the encoder model and of the Basic model; `BertBaseCasedWordSenseMode
 `BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersAtThePartOfSpeechLevel`;
 system requirement `WordSense-Lib-PartOfSpeech`). Its model files are needed, and ensured lazily, only for a text that
 has such a
-word or a word with scored senses, so a text of unknown words and of known words of one part of speech with no scored
-senses never touches a model file
+word, a same-spelling verb or a word with scored senses, so a text of unknown words and of known words of one part of
+speech with no scored senses
+never touches a model file
 (`BertBaseCasedWordSenseModel_ClassifyAsync_LexiconOnly_NeedsNoEnsure`,
 `OnnxWordSenseModel_ClassifyAsync_WordOfSeveralPartsOfSpeech_NeedsTheEncoder`). The MiniLM model carries a head that it
 validates and does not use, so it keeps its behavior: it answers an untrained ambiguous word from the Basic model without
 any model file (`MiniLMWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback`) and combines the slot
 probabilities with the weight 0.6 at the part-of-speech level. The units are verified in the core and Onnx test projects
 (see the `OnnxClassifier`, `OnnxWordSenseModel` and `WordSenseContracts` verification documents).
+
+### Tense of Same-Spelling Verbs from the Head
+
+The BertBaseCased model decides the tense of every verb whose past and non-past share a spelling (`read`, `put`,
+`found`) from the sentence: the share of its past analyses is the probability of past of its tense head combined with
+the past share of the Basic model (the weighted sum of the log odds, the weight 0.9 for the head), while the
+probability of the verb as a whole, its senses and the analyses of other parts of speech stay
+(`BertBaseCased_Classifier_EndToEnd_SameSpellingVerb_TenseFollowsTheContext`,
+`FallbackWordSenseModel_TenseEvidence_SetsThePastShareFromTheHead`,
+`FallbackWordSenseModel_TenseEvidence_NoProbabilityOrNoEvidence_KeepsTheFallbackShare`;
+system requirement `WordSense-Lib-Tense`). Its model files are needed, and ensured lazily, also for a text that has
+such a verb. The MiniLM model has no tense head and keeps the tense of the Basic model. The units are verified in the
+core, Onnx
+and builder test projects (see the `WordSenseContracts`, `OnnxClassifier`, `PosHead` and `WordSenseBuilder` verification
+documents).
 
 ### Analyses Are Ranked and Sum to One
 

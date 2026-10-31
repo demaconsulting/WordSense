@@ -28,8 +28,9 @@ quota report, the two independent evaluations, the suite reader and its grading,
 shape rows of the corpus, the leakage check, the second all-words gold set (power, draw, labeling, measurement and
 paired comparison) and the model table file with small synthetic corpora, a stub model and
 cached-file fixtures; `EvaluatorTests.cs` covers the per-level evaluation with a stub model. `LbfgsTests.cs`,
-`MultinomialLogisticTrainerTests.cs`, `PosHeadBlobWriterTests.cs`, `PosVectorCacheTests.cs` and `PosHeadTrainerTests.cs`
-cover the part-of-speech head: the minimizer on known functions, the fit on synthetic vectors against an independent
+`MultinomialLogisticTrainerTests.cs`, `PosHeadBlobWriterTests.cs`, `PosVectorCacheTests.cs`, `PosHeadTrainerTests.cs` and
+`TenseHeadTrainerTests.cs`
+cover the part-of-speech and tense heads: the minimizer on known functions, the fit on synthetic vectors against an independent
 dense implementation of its objective, the writer against the reader of the Onnx package, the vector cache, and the
 trainer end to end on a synthetic corpus with an encoder stub that gives every word a vector, without a model file.
 `TrainingOverlapTests.cs` covers the overlap check of the training sentences, `OutcomeComparerTests.cs` the outcome file
@@ -38,7 +39,7 @@ and the paired comparison, `SuiteDiffTests.cs` the recording and the diff of the
 `PosHeadProvenanceTests.cs` reads the heads embedded in the model packages and the committed training file. Commands
 that need a real
 encoder (`weights`, `evaluate`, `evaluate-senses`, `evaluate-running`, `evaluate-suite` and `evaluate-shapes` for the
-encoder models, and `train-pos-head`) are
+encoder models, and `train-pos-head` and `train-tense-head`) are
 verified through the data they produce: the weights embedded in the model packages are loaded and matched in the
 MiniLM and BertBaseCased tests, the heads embedded in them are loaded and bound to their encoders by `EmbeddedHeadTests`
 of the same two test projects, the expectations of the suite are checked by the suite tests of the three model test
@@ -786,6 +787,37 @@ The trainer is tested with a synthetic corpus whose sentences are the combinatio
 - **Gate and read-back**: the report of a run states the half-precision comparison with the 0.02-point gate, and the
   trainer reads the file back and compares its predictions. The failing path of the gate needs weights that half
   precision changes by more than the tolerance and is verified by inspection, not by a test.
+
+#### train-tense-head
+
+The trainer is tested like `train-pos-head`: a synthetic corpus in which the tense of a same-spelling verb is given by
+the adverb after it, and an encoder stub that returns a fixed vector for each word; no model file is needed
+(`TenseHeadTrainerTests.cs`).
+
+- **Loadable, deterministic head** (`WordSenseBuilder_TenseHeadTrainer_TrainAsync_ProducesALoadableDeterministicHead`):
+  two runs write the same bytes; the file reads with the reader of the Onnx package, the part-of-speech section, the
+  model id and the training-file digest are those of the existing head, the selected layout is the one with the
+  neighbors (the word alone cannot tell the tense in this corpus), the head predicts past for `put` before `yesterday`
+  and non-past for `cut` before `today`, and the report names the selection, the half-precision check and, when
+  asked, the combination with the Basic model.
+- **Rows** (`WordSenseBuilder_TenseHeadTrainer_Rows_AreTheSameSpellingVerbsWithTheirGoldTense`): the rows are the gold
+  verbs whose form has a past and a non-past verb analysis, with their gold class.
+- **Foreign head file** (`WordSenseBuilder_TenseHeadTrainer_TrainAsync_ForeignHeadFile_Refused`): a head file with
+  another training-file digest, or for another model, is refused with `InvalidDataException`.
+- **No development rows** (`WordSenseBuilder_TenseHeadTrainer_TrainAsync_NoDevelopmentRows_Refused`): a corpus without
+  a tense row on the development split is refused and the message names the development rows.
+- **Settings** (`WordSenseBuilder_TenseHeadTrainer_Fit_InvalidSettings_Throw`): a `C` of zero or NaN, an unknown layout
+  and no row each throw `ArgumentException`.
+- **Head file** (`WordSenseBuilder_PosHeadBlobWriter_Write_TenseSection_RoundTripsThroughTheReader`,
+  `WordSenseBuilder_PosHeadBlobWriter_Write_InvalidTenseHead_Throws`): a written tense head of either layout reads back
+  with its layout, `C`, half-precision weights and bias, and the part-of-speech section is unchanged; a weight count
+  that does not fit the layout, a `C` that is not positive and a non-finite weight or bias are refused.
+- **Leakage** (`WordSenseBuilder_TenseHeadTrainer_TrainAsync_TrainingSentenceInAHeldOutPart_Aborts`): a training sentence
+  that is also a development sentence stops the run before it fits anything, and the message names the part. The
+  checks are those of `train-pos-head`.
+- **Gate**: the half-precision gate is that of `train-pos-head`
+  (`WordSenseBuilder_PosHeadTrainer_CheckHalfPrecision_StopsBeyondTheGate`); its failing path in a run is verified by
+  inspection, as there.
 
 #### train-pos-head leakage assertion
 

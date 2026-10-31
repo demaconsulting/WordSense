@@ -22,23 +22,9 @@ internal static partial class Program
         using var model = ModelCatalog.Open(info, repository);
         await ModelCatalog.EnsureAsync(model, cancellationToken).ConfigureAwait(false);
         var encoderModel = ModelCatalog.EncoderOf(model);
-        var spec = encoderModel.Spec;
         using var encoder = encoderModel.OpenEncoder();
-        var runtime = typeof(Microsoft.ML.OnnxRuntime.InferenceSession).Assembly.GetName().Version?.ToString() ?? "unknown";
-        var identity = new PosEncoderInfo(
-            spec.ModelId,
-            spec.HiddenSize,
-            spec.Files.First(f => string.Equals(f.Name, spec.OnnxFileName, StringComparison.Ordinal)).Sha256,
-            spec.Files.First(f => string.Equals(f.Name, spec.VocabularyFileName, StringComparison.Ordinal)).Sha256,
-            spec.LowerCase,
-            runtime);
-
-        string? cacheDirectory = null;
-        if (!IsOn(options, "no-cache"))
-        {
-            var root = options.TryGetValue("cache", out var cache) ? Path.GetFullPath(cache) : Path.Join(repository, ".cache", "pos-vectors");
-            cacheDirectory = Path.Join(root, info.Name);
-        }
+        var identity = EncoderIdentityOf(encoderModel.Spec);
+        var cacheDirectory = VectorCacheOf(options, repository, info);
 
         var request = new PosHeadRequest(
             corpus,
@@ -58,11 +44,61 @@ internal static partial class Program
         return 0;
     }
 
-    private static List<double> CGridOf(Dictionary<string, string> options)
+    /// <summary>
+    ///     Identifies the encoder of a model to the head trainers.
+    /// </summary>
+    /// <param name="spec">The description of the model.</param>
+    /// <returns>The identity: the model id, the hidden size, the digests of the ONNX file and the vocabulary, the casing and the runtime.</returns>
+    private static PosEncoderInfo EncoderIdentityOf(DemaConsulting.WordSense.Onnx.ModelSpec spec)
+    {
+        var runtime = typeof(Microsoft.ML.OnnxRuntime.InferenceSession).Assembly.GetName().Version?.ToString() ?? "unknown";
+        return new PosEncoderInfo(
+            spec.ModelId,
+            spec.HiddenSize,
+            spec.Files.First(f => string.Equals(f.Name, spec.OnnxFileName, StringComparison.Ordinal)).Sha256,
+            spec.Files.First(f => string.Equals(f.Name, spec.VocabularyFileName, StringComparison.Ordinal)).Sha256,
+            spec.LowerCase,
+            runtime);
+    }
+
+    /// <summary>
+    ///     Finds the directory of the vector cache of a model.
+    /// </summary>
+    /// <param name="options">The options (<c>--no-cache</c>, <c>--cache</c>).</param>
+    /// <param name="repository">The repository directory.</param>
+    /// <param name="info">The model.</param>
+    /// <returns>The directory, or null for no cache.</returns>
+    private static string? VectorCacheOf(Dictionary<string, string> options, string repository, ModelInfo info)
+    {
+        if (IsOn(options, "no-cache"))
+        {
+            return null;
+        }
+
+        var root = options.TryGetValue("cache", out var cache) ? Path.GetFullPath(cache) : Path.Join(repository, ".cache", "pos-vectors");
+        return Path.Join(root, info.Name);
+    }
+
+    /// <summary>
+    ///     Reads the grid of regularization strengths of a head training command, with the default grid of the
+    ///     part-of-speech head.
+    /// </summary>
+    /// <param name="options">The options (<c>--c-grid</c>).</param>
+    /// <returns>The strengths to try.</returns>
+    private static List<double> CGridOf(Dictionary<string, string> options) => CGridOf(options, PosHeadTrainer.DefaultCGrid);
+
+    /// <summary>
+    ///     Reads the grid of regularization strengths of a head training command.
+    /// </summary>
+    /// <param name="options">The options (<c>--c-grid</c>, a comma-separated list of positive numbers).</param>
+    /// <param name="defaults">The grid that applies when the option is not given.</param>
+    /// <returns>The strengths to try.</returns>
+    /// <exception cref="ArgumentException">Thrown when the option is not a list of positive numbers.</exception>
+    private static List<double> CGridOf(Dictionary<string, string> options, IReadOnlyList<double> defaults)
     {
         if (!options.TryGetValue("c-grid", out var text))
         {
-            return [.. PosHeadTrainer.DefaultCGrid];
+            return [.. defaults];
         }
 
         var grid = new List<double>();

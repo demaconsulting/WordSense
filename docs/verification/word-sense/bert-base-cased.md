@@ -79,13 +79,18 @@ of the Basic model (the weight 0.8), and disposing the model disposes the encode
 `BertBaseCasedWordSenseModel_PartOfSpeechAnswer_ReweighsTheHeadAgainstBasic`,
 `BertBaseCasedWordSenseModel_Dispose_DisposesEncoderAndFallback`). The assembly references the core and Onnx
 packages (`BertBaseCasedWordSenseModel_Assembly_ReferencesCoreAndOnnx`). A text of unknown words and of known words of
-one part of speech with no scored senses needs no model file (`BertBaseCasedWordSenseModel_ClassifyAsync_LexiconOnly_NeedsNoEnsure`).
+one part of speech with no scored senses, and with no same-spelling verb, needs no model file
+(`BertBaseCasedWordSenseModel_ClassifyAsync_LexiconOnly_NeedsNoEnsure`).
 
 #### The Embedded Head Is Used
 
 The head embedded for `bert-base-cased-int8` is bound to the pinned ONNX file, loads without any model file
 (`BertBaseCasedWordSenseModel_EmbeddedHead_MatchesEncoderAndClasses`, `..._AgainstAnotherEncoderFile_IsRejected`) and the
-model answers with it, as the reweighing scenario above shows.
+model answers with it, as the reweighing scenario above shows. The same file holds the tense head with the neighbor
+layout (`BertBaseCasedWordSenseModel_EmbeddedHead_HasATenseHead`), which the model checks at load and uses to set the tense
+of every same-spelling verb: the share of the past analyses is the head's probability of past combined with the tense
+split of the Basic model with the weight 0.9, and the selected analysis of `read` and `put` has the tense of the context
+(`BertBaseCased_Classifier_EndToEnd_SameSpellingVerb_TenseFollowsTheContext`).
 
 #### Embedded Weights Match the Word Image
 

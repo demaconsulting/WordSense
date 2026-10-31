@@ -7,7 +7,8 @@ The unit groups the public contract types `IWordSenseModel`, `IDownloadableWordS
 `DownloadConfigurationException`, `ClassifyResult`, `AnalysisCandidate`, `SenseCandidate`, `SenseLevel`, `WordDetails`,
 `PartOfSpeech`, `SenseInfo` and `SenseGroup`. Tests in `test/DemaConsulting.WordSense.Tests` (`ContractsTests.cs`,
 `WordSenseExceptionTests.cs` and the composite tests of `FallbackWordSenseModel`, among them
-`FallbackWordSenseModelEvidenceTests.cs` for a primary model that provides part-of-speech evidence) exercise the
+`FallbackWordSenseModelEvidenceTests.cs` for a primary model that provides part-of-speech evidence and
+`FallbackWordSenseModelTenseTests.cs` and `TenseFusionTests.cs` for one that provides tense evidence) exercise the
 records, the enums and
 the exceptions directly and implement the interfaces with small test doubles to show they are usable without a model
 package and to drive the composite: a double returns prepared `ClassifyResult` arrays, counts its ensure and dispose
@@ -203,6 +204,30 @@ auxiliary 0 or omits it, keeps the auxiliary at 0 with weight 0.6; an encoder re
   (`..._PrimaryWeight_OutsideZeroToOne_Throws`, `..._PrimaryWeight_IsReported`): a weight
   below 0, above 1, NaN or infinite throws `ArgumentOutOfRangeException`; 0, 0.6 and 1 are accepted and reported, and
   1 is reported when no weight is given.
+- **Tense of same-spelling verbs** (`FallbackWordSenseModel_TenseEvidence_SetsThePastShareFromTheHead`,
+  `FallbackWordSenseModel_TenseEvidence_DefaultWeight_TakesTheHeadAlone`,
+  `FallbackWordSenseModel_TenseEvidence_NoProbabilityOrNoEvidence_KeepsTheFallbackShare`,
+  `FallbackWordSenseModel_Constructor_TenseWeightOutOfRange_Throws`, in `FallbackWordSenseModelTenseTests.cs`): a double
+  that provides tense evidence gives a probability of past of 0.9 for `put`, the fallback result has a past share of 0.2;
+  with the tense weight 1 the past share of the composed result is 0.9 and the past analysis is selected, with 0.6 it
+  is the weighted sum of the log odds, with 0 it is 0.2, and the probabilities still sum to one; without a tense weight
+  the head is taken alone; a word without a probability of past, and a double that provides no tense evidence, keep the
+  past share 0.2; a tense weight of -0.1, 1.1 or NaN throws `ArgumentOutOfRangeException`.
+- **TenseFusion** (`TenseFusion_IsSameSpellingVerb_NeedsAPastAndANonPastVerbAnalysis`,
+  `TenseFusion_PastShare_IsThePastShareOfTheVerbAnalyses`, `TenseFusion_Fuse_IsAWeightedSumOfTheLogOdds`,
+  `TenseFusion_Apply_SetsThePastShareOfTheVerb`, `TenseFusion_Apply_PastProbabilityHigh_SelectsThePastAnalysis`,
+  `TenseFusion_Apply_SenseLevelAnswerWithSameSlot_KeepsTheSense`,
+  `TenseFusion_Apply_DifferentLemmas_KeepsTheVerbMassAndTheOtherPartsOfSpeech`,
+  `TenseFusion_Apply_DifferentLemmas_OtherSlotWins_StepsDownToThePartOfSpeech`,
+  `TenseFusion_Apply_NotApplicable_ReturnsTheResult`, in `TenseFusionTests.cs`): a word is a same-spelling verb only
+  with a past and a non-past verb analysis, of any lemma; the past share counts verb analyses only; the combination is
+  the weighted sum of the log odds (weight 1 the head, weight 0 the other share, no share even odds); applying a share
+  keeps the probability of the verbs as a whole, of the other parts of speech and the shares inside the two groups; a
+  high probability of past selects the past analysis; a sense-level answer keeps its level, group, sense and the
+  probability of the sense within its slot, and the lemma and part of speech, while its slot stays on top; with different
+  lemmas for the past and the non-past analysis (`found`) the verb mass and the other parts of speech stay, and another
+  slot can win, even one of another part of speech, and the answer steps down to the part-of-speech level; a result that
+  is not a same-spelling verb, or a share outside 0 to 1, is returned as it is.
 - **Fallback ensures the capable members and disposes both models**
   (`FallbackWordSenseModel_IsDownloadable`, `FallbackWordSenseModel_EnsureModelAsync_EnsuresBoth`,
   `FallbackWordSenseModel_EnsureModelAsync_OnlyCapableMemberEnsured`,

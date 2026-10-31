@@ -41,6 +41,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   restriction to the noun class gives that class probability one.
 - **Embedded head is bound** (`BertBaseCasedWordSenseModel_EmbeddedHead_AgainstAnotherEncoderFile_IsRejected`): the head
   read against the digest of another file, or against another model id, throws `InvalidDataException`.
+- **Embedded tense head** (`BertBaseCasedWordSenseModel_EmbeddedHead_HasATenseHead`, in `EmbeddedHeadTests.cs`; no model
+  file): the description declares the tense head in use, the embedded head file has a tense head with the neighbor layout
+  and `3 × 768` weights, and its probability of past for a zero vector is a probability.
 - **Classification** (`Classify_AmbiguousWord_ReturnsBestSense`, `Classify_TrainedLemma_AnswersAtASenseOrGroupLevel`):
   the committed model
   classifies the words of "They will record the record." with the verb analysis for the first `record` and the noun
@@ -63,7 +66,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **End to end** (`BertBaseCased_Classifier_EndToEnd_UntrainedWord_RanksItsSensesByUsage`, in `EndToEndTests.cs`, with the
   committed model files): the same three properties for the second `garden` of "They will garden the garden." (a lemma
   without trained weights) through the composite model of the public package; this is the system-level evidence.
-- **Same-spelling verbs take their tense from Basic**
+- **Same-spelling verbs take their tense from the tense head**
   (`BertBaseCased_Classifier_EndToEnd_SameSpellingVerb_TenseFollowsTheContext`, in `EndToEndTests.cs`, theory): for
   `I will read that tomorrow`, `I have read that already`, `Please put the books on the shelf` and `She had put the keys
   in her bag before she left` the composite selects a non-past analysis in the first
@@ -72,8 +75,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
   encoder model on its own (`Encoder.ClassifyAsync`): where the encoder scored senses for the verb (`read`) and the level
   is kept, the group id and the sense id are equal and the probability of the answer within its slot (the confidence
   divided by the probability of the slot) is equal to within 1e-9, so only the probability of the slot and the split
-  inside it moved; where it did not (`put`) the variants of the slot of the verb have the proportions of Basic. The
-  re-split itself is verified in the `FallbackWordSenseModel` scenarios of the
+  inside it moved. The combination itself is verified in the `FallbackWordSenseModel` scenarios of the
   `WordSenseContracts` unit document.
 - **Composition references** (`Assembly_ReferencesCoreAndOnnx`): the assembly references the core and Onnx
   assemblies (the Basic model is in the core).
@@ -86,10 +88,21 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Weight** (`BertBaseCasedWordSenseModel_PrimaryWeight_DefaultIsTunedAndAnExplicitWeightReachesTheComposition`):
   the weight is 0.8 by default (`PartOfSpeechHeadWeight`, internal) and reaches the composition (`PrimaryWeight`), the
   internal constructor sets another one (0.25) and rejects a weight below 0; it needs no model file.
+- **Tense head is rejected when damaged or missing**
+  (`OnnxWordSenseModel_ClassifyAsync_TenseHeadInUseWithoutTenseHead_ThrowsModelIntegrity` and
+  `OnnxWordSenseModel_ClassifyAsync_DamagedOrMismatchedHead_ThrowsModelIntegrity`, in the Onnx test project, over the
+  encoder base class that the model uses): a head file that has no tense head for a model that uses it, a head resource
+  that does not exist and a head for another encoder file each throw `ModelIntegrityException` with an
+  `InvalidDataException` as inner exception.
+- **A same-spelling verb needs the files** (`BertBaseCasedWordSenseModel_ClassifyAsync_SameSpellingVerb_NeedsTheEncoder`):
+  on a model whose directory does not exist, a text with `become` (a verb of one part of speech with no scored senses
+  whose past and non-past share a spelling) throws `ModelUnavailableException` from the lazy ensure.
 - **Lexicon-only text needs no ensure** (`BertBaseCasedWordSenseModel_ClassifyAsync_LexiconOnly_NeedsNoEnsure`): a text
-  of unknown words and of known words of one part of speech with no scored senses is answered on a model that was never
+  of unknown words and of known words of one part of speech with no scored senses (and no same-spelling verb) is
+  answered on a model that was never
   ensured, without any model
-  file; a text with a word of several parts of speech or a word with scored senses ensures the files lazily (verified
+  file; a text with a word of several parts of speech, a same-spelling verb or a word with scored senses ensures the
+  files lazily (verified
   for the shared base class in
   `OnnxWordSenseModel_ClassifyAsync_WordOfSeveralPartsOfSpeech_NeedsTheEncoder`).
 - **Disposal** (`Dispose_DisposesEncoderAndFallback`): disposing disposes the encoder model and the Basic model, and

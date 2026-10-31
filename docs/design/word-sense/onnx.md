@@ -13,13 +13,16 @@ abstract `OnnxWordSenseModel`; the model packages derive from it and supply the 
 usable on its own. The classifier scores the fine senses of the lemmas that have trained weights (the lemmas of the
 relabeled corpus in this version) with the encoder and decides the level of the answer. A model that uses its
 part-of-speech head (BertBaseCased) also gives every known word of two or more parts of speech, whatever its lemma, the
-probabilities of its parts of speech from the head. Every word whose lemma has no trained weights is answered from
+probabilities of its parts of speech from the head, and, for a verb whose past and non-past share a spelling (`read`,
+`put`, `found`), the probability that it is past from the tense head of the same head file. Every word whose lemma has no
+trained weights is answered from
 the lexicon (with all its lemmas and parts of speech equally likely, or with the probabilities of the head, and no
 scored senses). The
 statistical choice among the analyses of such a word is not made in this package: the MiniLM and BertBaseCased
 packages compose the encoder model with the Basic model through the core `FallbackWordSenseModel`, which uses the Basic
 result for every word the encoder did not score and, for a model that uses its head, reweighs the part-of-speech
-probabilities of the head against those of Basic.
+probabilities of the head against those of Basic and, for a model that uses its tense head, combines the probability of
+past with the tense split of Basic.
 
 The subsystem contains eight units:
 
@@ -32,12 +35,14 @@ The subsystem contains eight units:
 - **DownloadMirror**: validated download source configuration (the mirror settings of `DownloadOptions`).
 - **LemmaWeights**: the weights blob reader, the matching to the word image, the feature computation, the scoring, the
   group scores and the levels.
-- **PosHead**: the part-of-speech head blob reader, its binding to the encoder and to the parts of speech, the
-  probabilities of the parts of speech of a word and their restriction.
+- **PosHead**: the head blob reader (the part-of-speech head and the optional tense head), its binding to the encoder
+  and to the parts of speech, the probabilities of the parts of speech of a word and their restriction, and the
+  probability that a verb is past.
 
-The embedded part-of-speech head of a model is loaded and validated together with its embedded weights, whenever the
+The embedded head of a model is loaded and validated together with its embedded weights, whenever the
 model description names one and whether or not a word needs the encoder. Only a model whose description declares the
-head in use answers with it: BertBaseCased does; MiniLM carries a head that it validates and does not use, and
+head in use answers with it: BertBaseCased does (and also with its tense head, which its description declares in use and
+its head file must then hold); MiniLM carries a head that it validates and does not use, and
 behaves as a model without a head.
 
 ### Interfaces
@@ -54,8 +59,9 @@ builder and the test projects.
 The model description passed by a derived class is an internal `ModelSpec`: the model id, the files with their
 SHA-256 digests, the ONNX file name, the vocabulary file name, whether the tokenizer lower-cases, the assembly and
 resource name of the weights, the hidden size, `HeadResourceName`, the resource name of the part-of-speech head in
-the same assembly (null for a model without a head; a named head is loaded and validated), and `HeadInUse`, whether the
-model answers with the head (false for a model that carries a head it does not use).
+the same assembly (null for a model without a head; a named head is loaded and validated), `HeadInUse`, whether the
+model answers with the head (false for a model that carries a head it does not use), and `TenseHeadInUse`, whether it
+also answers with the tense head of the head file (needs `HeadInUse`; the head file must then hold a tense head).
 
 ### Design
 
@@ -69,20 +75,29 @@ The units collaborate as follows:
    Unit Design_), and likewise reports a damaged embedded weights resource, a damaged, missing or mismatched embedded
    head, or an ONNX file from `ClassifyAsync` as a `ModelIntegrityException`.
 2. `OnnxWordSenseModel.ClassifyAsync` loads the embedded weights
-   once through `LemmaWeights` (blob reader and all-or-nothing match to the word image) and the embedded part-of-speech
-   head once through `PosHead` (blob reader and binding to the pinned encoder file, the hidden size and the parts of
-   speech). It then decides from the lexicon whether any word needs the encoder (a word with scored senses or, for a
-   model that uses its head, a known word of two or more distinct parts of speech); only then does it ensure the files
+   once through `LemmaWeights` (blob reader and all-or-nothing match to the word image) and the embedded head file
+   once through `PosHead` (blob reader, binding to the pinned encoder file, the hidden size and the parts of
+   speech, and, for a model that uses its tense head, the check that the file holds a tense head). It then decides
+   from the lexicon whether any word needs the encoder (`OnnxClassifier.NeedsEncoder`: a word with scored senses, that
+   is a trained lemma with several senses or a form chooser; for a model that uses its head, a known word of two or more
+   distinct parts of speech; for a model that uses its tense head, a same-spelling verb, a verb with a past and a
+   non-past analysis); only then does it ensure the files
    lazily, open one `OnnxEncoder` once
    (which builds a `WordPieceTokenizer` and the ONNX session) and run an `OnnxClassifier` over the shared encoder, the
-   weights and, for a model that uses its head, the head.
-3. `OnnxClassifier.ClassifyAsync` resolves every word from the lexicon, asks `OnnxEncoder` for the pooled vector of
-   the words that need context (with a head, for the pooled vector of every word of the text in the possessive view),
+   weights and, for a model that uses its head, the head and, for a model that uses its tense head, the tense head
+   of the head file. It runs `OnnxClassifier.ClassifyWithTenseAsync`, whose results are those of `ClassifyAsync`, and
+   returns them with the probability of past of each same-spelling verb.
+3. `OnnxClassifier.ClassifyWithTenseAsync` resolves every word from the lexicon, asks `OnnxEncoder` for the pooled
+   vector of the words that need context (with a head, for the pooled vector of every word of the text in the
+   possessive view),
    turns each vector of a pending word into a feature with the global mean of the weights, scores the
    fine senses of the word's analyses with `LemmaWeights`, lets `LemmaWeights` decide the level of the answer, lets
-   `PosHead` give the probability of the parts of speech of a word of several parts of speech and
+   `PosHead` give the probability of the parts of speech of a word of several parts of speech, lets `TenseHead` (of the
+   same head file, on the vectors of the same view) give the probability that a same-spelling verb is past, and
    builds the result (the analyses with their probabilities and the senses inside them, the selected analysis, the
-   level, the confidence and the ids). A word without scored senses is answered from the lexicon.
+   level, the confidence and the ids). A word without scored senses is answered from the lexicon. The probability of
+   past does not change the results: the composite model (`FallbackWordSenseModel`) combines it with the tense split
+   of the Basic model.
 
 Training and inference share the feature computation, so the builder and the classifier cannot diverge. The encoder
 and the weights are shared by all callers of one model and are released when the model is disposed.
@@ -292,11 +307,18 @@ senses of its lemma and part of speech. It then decides:
    steps down to the `PartOfSpeech` level with the probability of the slot as the confidence. A word with a single part
    of speech, a word without a usable vector and a classifier without a head are answered as in cases 1 to 4. The
    MiniLM model has a head that it does not use and does not take this path.
+6. **Tense evidence (a model that uses its tense head).** A known word that is a same-spelling verb (a verb analysis that
+   is past, a past tense or a participle, and one that is not: `read`, `put`, `found`) needs the encoder whatever its
+   lemma and part of speech. The tense head reads the pooled vectors from the same view as case 5 (the word and its
+   previous and next token) and gives the probability that the verb is past. It does not change the result of the
+   classifier: the probability is reported beside the results, and the composite model combines it with the tense
+   split of Basic and sets the share of the past analyses of the word. A word without a usable vector has no
+   probability and keeps the tense of Basic.
 
 The shipped weights of this version cover the lemmas of the relabeled corpus (see `corpus/README.md` for their number)
 and the form choosers of the forms whose chooser rows cover every analysis; the lexicon answers every other word and
-every form of several lemmas without a chooser (the cases 1, 2 and 4), and case 3 holds for the trained lemmas. Case 5
-applies on top of them to a model that uses its head.
+every form of several lemmas without a chooser (the cases 1, 2 and 4), and case 3 holds for the trained lemmas. Cases 5
+and 6 apply on top of them to a model that uses its head and its tense head.
 
 #### Evaluation Scope
 
@@ -340,13 +362,15 @@ not a public extension point. A contributor adds a model as follows:
    `OnnxWordSenseModel` and
    passes a `ModelSpec` (model id, each `ModelFile` with its SHA-256 and
    exact length, ONNX and vocabulary file names, whether the tokenizer lower-cases, the weights assembly and resource
-   name, the hidden size, the resource name of the part-of-speech head and whether the model uses it) and a default
+   name, the hidden size, the resource name of the part-of-speech head and whether the model uses it, and whether it
+   uses the tense head) and a default
    maximum sequence length of 128,
    and a public sealed model class that wraps a
    `FallbackWordSenseModel` of the encoder class (primary) and a `BasicWordSenseModel` (fallback).
 3. Register the model in the builder's `ModelCatalog`, run `weights <modelId>` to train the weights and the per-lemma
    thresholds for that encoder and embed the resulting `weights.bin` as the manifest resource named in the spec, run
-   `train-pos-head <modelId>` and embed the resulting `head.bin` the same way, and run
+   `train-pos-head <modelId>` and embed the resulting `head.bin` the same way (and, for a model that is to judge tense,
+   `train-tense-head <modelId>`, which adds the tense head to that file), and run
    `evaluate <modelId>` to record the per-level accuracy in the model comparison table (`docs/user_guide/model-table.md`).
 4. Add the test project, the requirements, the design and verification documents, the SysML2 model entries and the
    review-set entries that the other model packages have.

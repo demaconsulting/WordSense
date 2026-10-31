@@ -91,6 +91,7 @@
     <InternalsVisibleTo Include="DemaConsulting.WordSense.Onnx" />
     <InternalsVisibleTo Include="DemaConsulting.WordSense.Onnx.Tests" />
     <InternalsVisibleTo Include="DemaConsulting.WordSense.MiniLM.Tests" />
+    <InternalsVisibleTo Include="DemaConsulting.WordSense.BertBaseCased" />
     <InternalsVisibleTo Include="DemaConsulting.WordSense.BertBaseCased.Tests" />
   </ItemGroup>
 

@@ -320,6 +320,11 @@ public class FallbackWordSenseModelEvidenceTests
     {
         public bool ProvidesPartOfSpeechEvidence => evidence;
 
+        public bool ProvidesTenseEvidence => false;
+
+        public async Task<(ClassifyResult[] Results, double?[] PastProbability)> ClassifyWithTenseAsync(IEnumerable<string> words, CancellationToken cancellationToken) =>
+            (await ClassifyAsync(words, cancellationToken), new double?[results.Length]);
+
         public Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default) =>
             Task.FromResult(results);
 

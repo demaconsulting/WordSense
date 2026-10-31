@@ -26,7 +26,7 @@ user guide and the model comparison table. It also validates the data and the co
 **When.** After a change to `data/`, `corpus/` or the models:
 
 - regenerate the word data: `rebuild-forms`, `label-senses`, `compile-image`;
-- retrain: `train-basic`, `weights`;
+- retrain: `train-basic`, `weights`, `train-pos-head`, `train-tense-head`;
 - re-measure: `evaluate`, `evaluate-senses`, `evaluate-allwords`, `evaluate-gold2`, `evaluate-running`,
   `evaluate-suite`, `evaluate-shapes`;
 - check the inputs: `validate-data`, `check-leakage`, `tiers`.
@@ -40,6 +40,7 @@ and `pip install lemminflect`. The evaluations on SemCor and the treebank need t
 
 **Commands.** `dotnet run --project tools/WordSense.Builder -c Release -- <command> [--name value ...]`. The commands
 are `compile-image`, `rebuild-forms`, `audit-forms`, `generate-facts`, `import-moby`, `weights <modelId>`,
+`train-pos-head <modelId>`, `train-tense-head <modelId>`,
 `evaluate <modelId>`, `evaluate-senses`, `evaluate-allwords`, `allwords-sample`, `allwords-merge`, `gold2-power`,
 `gold2-sample`, `gold2-batches`, `gold2-merge`, `evaluate-gold2`, `compare-gold2`, `evaluate-running`,
 `evaluate-suite`, `evaluate-shapes`, `check-leakage`, `tiers`, `open-counts`, `evaluate-tagger`, `coverage`,

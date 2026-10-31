@@ -235,7 +235,8 @@ three seconds. The builder writes them as a file: `dotnet run --project tools/Wo
 **Heteronyms** are spellings that stand for different words, so the key, not the spelling, tells them apart. The
 appendix lists them at three levels. At the *entry* level the analyses belong to entries that sound different (`record`,
 `August` and `august`). At the *tense* level the past and the present are spelled alike (`read`); the key tells them
-apart through the features, but the encoder models do not score features, so decide the tense yourself from the
+apart through the features. The `BertBaseCased` model decides the tense of `read`, `put` and the other verbs whose past
+and non-past share a spelling from the sentence; for the other models, decide the tense yourself from the
 analyses when it matters. At the *sense* level the senses of one analysis sound different (`bass`, `bow`, `lead`); only
 the label decides. `dotnet run --project tools/WordSense.Builder -c Release -- heteronyms --output heteronyms.tsv`
 writes the table as a TSV.
@@ -252,8 +253,9 @@ candidate to check.
   also the fallback of the encoder models.
 - Use **`MiniLM`** (uncased, 22 MiB) for a small download and fast answers. It answers mostly at the part-of-speech and
   group levels.
-- Use **`BertBaseCased`** (cased, 104 MiB) for the best part of speech and for fine senses. It reads every sentence that
-  has a word of several parts of speech, so it needs its files for such text (see "Preparing a Model"). It commits to a
+- Use **`BertBaseCased`** (cased, 104 MiB) for the best part of speech and tense and for fine senses. It reads every
+  sentence that has a word of several parts of speech or a verb whose past and non-past share a spelling, so it needs
+  its files for such text (see "Preparing a Model"). It commits to a
   sense most often and ranks senses best.
 
 The sentence of the README, answered by the encoder models. The confidences differ slightly between CPUs, and a word
@@ -335,8 +337,10 @@ a lemma are still the encoder's. A word with several parts of speech therefore m
 (encoder run and, on first use, a file download), even when no trained lemma is in it. The model needs its files when
 the text has a known word of two or more parts of speech, or a word whose lemma has scored senses (a trained lemma with
 several senses, even of one part of speech); a text of unknown words and of known words of one part of speech whose
-senses are not scored does not. There is no option to turn this off. `MiniLM` does not use the classifier: it scores a
-part of speech
+senses are not scored does not. A tense classifier of the same file reads the vectors of a verb whose past and non-past
+share a spelling (`put`, `read`, `found`) and its neighbors and gives the probability that it is past (see below), so
+such a verb needs the model files too. There is no option to turn this off. `MiniLM` does not use the classifier: it
+scores a part of speech
 by the mass of its senses, as described next.
 
 **Fallback.** `FallbackWordSenseModel(primary, fallback)` combines two models. A word gets the complete result of the
@@ -357,7 +361,11 @@ confidence of 0.97 or more; below that it is the same analysis at the `PartOfSpe
 speech, with the weight 0.8, whether or not the word has trained senses. When the combined top part of speech is the
 one the encoder answered, the answer keeps its level; when it changes, the answer steps down to the `PartOfSpeech`
 level of the new one. The classifier scores closed-class uses too, so they need no special rule; the 0.97 rule for
-a one-sense answer of `Basic` and the tense split of `Basic` stay.
+a one-sense answer of `Basic` stays. For a verb whose past and non-past share a spelling, `BertBaseCased` sets the
+share of the past analyses to the combination of the probability of past of its tense classifier and the past share of
+`Basic` (the weighted sum of the log odds, weight 0.9 for the classifier); the probability of the verb as a whole, its
+senses and the other parts of speech of the word do not change, and the answer steps down to the `PartOfSpeech` level
+only when another lemma becomes the most probable one (`found`, as the past of `find` or the infinitive of `found`).
 
 **Your own model.** Implement `IWordSenseModel` (`ClassifyAsync` and `Dispose`) to wrap another engine. Return a non-null
 array parallel to the input, `ClassifyResult.Unknown(word)` for an unknown word, and for a known word all analyses
@@ -384,8 +392,10 @@ The SHA-256 values are in `SHA256SUMS` of each model folder (`model/<model-id>/`
 
 `EnsureModelAsync` is optional: `ClassifyAsync` ensures the files lazily. `MiniLM` does it on the first word that has a
 trained lemma with several senses. `BertBaseCased` does it on the first text that has a known word of two or more parts
-of speech in the dictionary (most English text does) or a word whose lemma has scored senses, and there is no option to
-avoid it; a text of unknown words and of known words of one part of speech whose senses are not scored never touches the
+of speech in the dictionary (most English text does), a verb whose past and non-past share a spelling (`read`, `put`) or
+a word whose lemma has scored senses, and there is no option to
+avoid it; a text of unknown words and of known words of one part of speech whose senses are not scored, with no such
+verb, never touches the
 files. Call `EnsureModelAsync` to control when the
 download happens and to handle failures up front. Concurrent callers share one ensure, and a failed ensure can be
 retried.
@@ -533,8 +543,9 @@ it that do not contain its sentences. This is the project's reading and not lega
 - **Project-authored data**: the inflected forms, written sentences and the annotations and selection of the open
   part-of-speech corpus `corpus/open` are CC0 1.0. The sense labels, groups and project senses are MIT. The README
   section "Credits and Licenses" gives the owner's position on the content that language models wrote or labeled.
-- **Part-of-speech heads**: the MiniLM and BertBaseCased packages each embed a numeric part-of-speech classifier for
-  their encoder; only `BertBaseCased` uses it. It is trained only on the training split of `corpus/open`, holds no text
+- **Part-of-speech and tense heads**: the MiniLM and BertBaseCased packages each embed a numeric part-of-speech
+  classifier for their encoder, and BertBaseCased a tense classifier; MiniLM's is not used. They are trained only on the
+  training split of `corpus/open`, hold no text
   and is described in the `NOTICE.md` of the package. Language models produced the tags it learns from; see the README
   section "Credits and Licenses".
 - **Real sentences**: Tatoeba sentences of the official CC0 export, Project Gutenberg books published 1930 or earlier,

@@ -90,6 +90,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
   and a head whose encoder digest differs from the pinned digest of the model, throw `ModelIntegrityException` from
   `ClassifyAsync` with an `InvalidDataException` as inner exception; the message of the first names the head and the
   inner message of the second names the other encoder file.
+- **A missing tense head is an integrity failure**
+  (`OnnxWordSenseModel_ClassifyAsync_TenseHeadInUseWithoutTenseHead_ThrowsModelIntegrity`): a model description that
+  uses its tense head over a head file without one throws `ModelIntegrityException` from `ClassifyAsync`, on every
+  call, with an `InvalidDataException` that says the file has no tense head.
 - **Damaged model is an integrity failure**
   (`OnnxWordSenseModel_ClassifyAsync_WeightsOfAnotherImage_ThrowsModelIntegrity`,
   `OnnxWordSenseModel_ClassifyAsync_UnreadableOnnxFile_ThrowsModelIntegrity`,

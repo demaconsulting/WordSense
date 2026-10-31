@@ -74,6 +74,15 @@ internal delegate ValueTask<WordVectors> PooledViewEncode(IReadOnlyList<string> 
 ///     every lemma and part of speech has the same probability 1/s for s of them. No fine sense is ever guessed.
 ///     </para>
 ///     <para>
+///     With a tense head (<see cref="ClassifyWithTenseAsync"/>; the classifier of BertBaseCased) a same-spelling verb (a
+///     verb with a past and a non-past analysis, see <see cref="TenseFusion"/>) needs the encoder too, whatever its
+///     lemma, number of parts of speech or scored senses: the head reads the vectors of the word and of its neighbors
+///     in the same encoded text and gives the probability that the verb is past. That probability is reported beside
+///     the results and does not change them. A same-spelling verb without a usable vector has none. So the classifier
+///     needs the encoder for a word with scored senses, for a known word of two or more parts of speech (with a head)
+///     and for a same-spelling verb (with a tense head), and for no other word.
+///     </para>
+///     <para>
 ///     The classifier holds no mutable state and is thread-safe.
 ///     </para>
 /// </remarks>
@@ -83,6 +92,10 @@ internal sealed class OnnxClassifier
     private readonly PooledEncode? _encode;
     private readonly PosHead? _head;
     private readonly PooledViewEncode? _encodeView;
+    /// <summary>
+    ///     The classifier of the tense head, or null when the classifier does not judge tense.
+    /// </summary>
+    private readonly TenseHead? _tense;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="OnnxClassifier"/> class that answers from the lexicon alone.
@@ -112,31 +125,39 @@ internal sealed class OnnxClassifier
     /// <param name="encode">The encoder of target words, which gives the vector of a possessive that is written as one token; its owner is the caller.</param>
     /// <param name="head">The part-of-speech head of the encoder.</param>
     /// <param name="encodeView">The encoder of every word of a text in the possessive view; its owner is the caller.</param>
+    /// <param name="useTense">Whether to judge the tense of every same-spelling verb with the tense head of <paramref name="head"/> (see <see cref="ClassifyWithTenseAsync"/>).</param>
     /// <exception cref="ArgumentNullException">Thrown when an argument is null.</exception>
-    public OnnxClassifier(WeightedLemmaTable table, PooledEncode encode, PosHead head, PooledViewEncode encodeView)
+    /// <exception cref="ArgumentException">Thrown when <paramref name="useTense"/> is true and the head has no tense head.</exception>
+    public OnnxClassifier(WeightedLemmaTable table, PooledEncode encode, PosHead head, PooledViewEncode encodeView, bool useTense = false)
         : this(table, encode ?? throw new ArgumentNullException(nameof(encode)))
     {
         _head = head ?? throw new ArgumentNullException(nameof(head));
         _encodeView = encodeView ?? throw new ArgumentNullException(nameof(encodeView));
+        _tense = useTense ? head.Tense ?? throw new ArgumentException("The head has no tense head.", nameof(useTense)) : null;
     }
 
     /// <summary>
     ///     Tells whether any word of a list needs the encoder, and therefore the model files: a word whose senses are
-    ///     pending (a trained lemma with several scored senses, or a form chooser) or, for a classifier with a
-    ///     part-of-speech head, a known word of two or more parts of speech.
+    ///     pending (a trained lemma with several scored senses, or a form chooser), for a classifier with a
+    ///     part-of-speech head a known word of two or more parts of speech, and for a classifier with a tense head a
+    ///     same-spelling verb.
     /// </summary>
     /// <param name="words">The words.</param>
     /// <param name="table">The trained weights.</param>
     /// <param name="hasHead">Whether the classifier has a part-of-speech head.</param>
+    /// <param name="hasTense">Whether the classifier judges the tense of same-spelling verbs.</param>
     /// <returns>True when the model files, the encoder, the weights and the head are needed to classify the list.</returns>
-    internal static bool NeedsEncoder(IReadOnlyList<string> words, WeightedLemmaTable table, bool hasHead)
+    internal static bool NeedsEncoder(IReadOnlyList<string> words, WeightedLemmaTable table, bool hasHead, bool hasTense = false)
     {
         ArgumentNullException.ThrowIfNull(words);
         ArgumentNullException.ThrowIfNull(table);
         return words.Any(w =>
         {
             var plan = Plan(w, table);
-            return plan.Pending is not null || (hasHead && plan.Result is { } result && HasSeveralPartsOfSpeech(result.Analyses.Select(a => a.Details.PartOfSpeech)));
+            return plan.Pending is not null
+                || (plan.Result is { } result
+                    && ((hasHead && HasSeveralPartsOfSpeech(result.Analyses.Select(a => a.Details.PartOfSpeech)))
+                        || (hasHead && hasTense && TenseFusion.IsSameSpellingVerb(result.Analyses.Select(a => a.Details)))));
         });
     }
 
@@ -181,7 +202,24 @@ internal sealed class OnnxClassifier
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="words"/> is null.</exception>
     /// <exception cref="ArgumentException">Thrown when an element is null.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
-    public async Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default)
+    public async Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default) =>
+        (await ClassifyWithTenseAsync(words, cancellationToken).ConfigureAwait(false)).Results;
+
+    /// <summary>
+    ///     Classifies every word of a tokenized sentence or text and judges the tense of the same-spelling verbs.
+    /// </summary>
+    /// <param name="words">The words in order, including punctuation tokens.</param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <returns>
+    ///     The results, parallel to <paramref name="words"/> as for <see cref="ClassifyAsync"/>, and the probability of past
+    ///     of every word that is a same-spelling verb (a verb with a past and a non-past analysis) when the classifier has a
+    ///     tense head and the word has a usable vector; null for every other word and for every word of a classifier without
+    ///     a tense head. The results do not depend on the tense head: the probability is reported beside them.
+    /// </returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="words"/> is null.</exception>
+    /// <exception cref="ArgumentException">Thrown when an element is null.</exception>
+    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
+    public async Task<(ClassifyResult[] Results, double?[] PastProbability)> ClassifyWithTenseAsync(IEnumerable<string> words, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(words);
         var list = words.ToList();
@@ -192,8 +230,10 @@ internal sealed class OnnxClassifier
 
         cancellationToken.ThrowIfCancellationRequested();
         var results = new ClassifyResult[list.Count];
+        var past = new double?[list.Count];
         var pending = new List<(int Index, Pending Plan)>();
         var headWords = new List<int>();
+        var tenseWords = new List<int>();
         for (var i = 0; i < list.Count; i++)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -207,22 +247,31 @@ internal sealed class OnnxClassifier
                 {
                     headWords.Add(i);
                 }
+
+                if (_tense is not null && TenseFusion.IsSameSpellingVerb(result.Analyses.Select(a => a.Details)))
+                {
+                    tenseWords.Add(i);
+                }
             }
             else
             {
                 pending.Add((i, plan.Pending!));
+                if (_tense is not null && TenseFusion.IsSameSpellingVerb(plan.Pending!.Details))
+                {
+                    tenseWords.Add(i);
+                }
             }
         }
 
-        if (pending.Count == 0 && headWords.Count == 0)
+        if (pending.Count == 0 && headWords.Count == 0 && tenseWords.Count == 0)
         {
-            return results;
+            return (results, past);
         }
 
         if (_head is not null)
         {
-            await ResolveWithHeadAsync(list, results, pending, headWords, cancellationToken).ConfigureAwait(false);
-            return results;
+            await ResolveWithHeadAsync(list, results, past, pending, headWords, tenseWords, cancellationToken).ConfigureAwait(false);
+            return (results, past);
         }
 
         var pooled = await _encode!(list, pending.Select(p => p.Index).ToList(), cancellationToken).ConfigureAwait(false);
@@ -234,19 +283,21 @@ internal sealed class OnnxClassifier
             results[index] = feature is not null ? Decide(list[index], plan, feature, null) : LexiconOnly(list[index], plan.Details, null);
         }
 
-        return results;
+        return (results, past);
     }
 
     /// <summary>
     ///     Encodes a text once in the possessive view and answers the pending words and the words of several parts of
-    ///     speech with the head's evidence.
+    ///     speech with the head's evidence, and judges the tense of the same-spelling verbs.
     /// </summary>
     /// <param name="list">The words.</param>
     /// <param name="results">The results; filled in here for the words that are answered with the head.</param>
+    /// <param name="past">The probability of past of every word; filled in here for the same-spelling verbs.</param>
     /// <param name="pending">The words whose senses are scored.</param>
     /// <param name="headWords">The other words of several parts of speech.</param>
+    /// <param name="tenseWords">The words that are same-spelling verbs.</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
-    private async Task ResolveWithHeadAsync(List<string> list, ClassifyResult[] results, List<(int Index, Pending Plan)> pending, List<int> headWords, CancellationToken cancellationToken)
+    private async Task ResolveWithHeadAsync(List<string> list, ClassifyResult[] results, double?[] past, List<(int Index, Pending Plan)> pending, List<int> headWords, List<int> tenseWords, CancellationToken cancellationToken)
     {
         var head = _head!;
         var view = await _encodeView!(list, cancellationToken).ConfigureAwait(false);
@@ -273,6 +324,34 @@ internal sealed class OnnxClassifier
                 results[index] = LexiconOnly(list[index], details, posterior);
             }
         }
+
+        foreach (var index in tenseWords)
+        {
+            past[index] = PastProbabilityOf(_tense!, head.HiddenSize, view, index);
+        }
+    }
+
+    /// <summary>
+    ///     Computes the probability that a same-spelling verb is past.
+    /// </summary>
+    /// <param name="tense">The tense head.</param>
+    /// <param name="hiddenSize">The hidden size of the encoder.</param>
+    /// <param name="view">The text in the possessive view.</param>
+    /// <param name="index">The index of the word.</param>
+    /// <returns>The probability of past, or null when the word has no usable vector (the neighbors count only for the neighbor layout).</returns>
+    private static double? PastProbabilityOf(TenseHead tense, int hiddenSize, WordVectors view, int index)
+    {
+        var at = view.Start[index];
+        var word = view.Vectors[at];
+        var previous = at > 0 ? view.Vectors[at - 1] : null;
+        var next = at + 1 < view.Vectors.Length ? view.Vectors[at + 1] : null;
+        if (word is null || word.Length != hiddenSize || (previous is not null && previous.Length != hiddenSize) || (next is not null && next.Length != hiddenSize))
+        {
+            return null;
+        }
+
+        var probability = tense.PastProbability(previous, word, next);
+        return double.IsFinite(probability) ? probability : null;
     }
 
     /// <summary>

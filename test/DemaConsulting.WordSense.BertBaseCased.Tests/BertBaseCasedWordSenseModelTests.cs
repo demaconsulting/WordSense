@@ -341,6 +341,21 @@ public class BertBaseCasedWordSenseModelTests
     }
 
     /// <summary>
+    ///     A word list with a verb whose past and non-past share a spelling needs the model files, for the tense head reads
+    ///     the sentence: without them the lazy ensure fails.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BertBaseCasedWordSenseModel_ClassifyAsync_SameSpellingVerb_NeedsTheEncoder()
+    {
+        // Arrange: a model directory that does not exist; "become" is a verb of one part of speech with no scored senses
+        using var model = new BertBaseCasedWordSenseModel(Path.Join(Path.GetTempPath(), "wordsense-missing-" + Guid.NewGuid().ToString("N")));
+
+        // Act / Assert
+        await Assert.ThrowsAsync<ModelUnavailableException>(() => model.ClassifyAsync(["become"], TestContext.Current.CancellationToken));
+    }
+
+    /// <summary>
     ///     A disposed model rejects <c>ClassifyAsync</c> and disposing again is harmless.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>

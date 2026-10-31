@@ -57,8 +57,9 @@ software items, specifically:
   - **DownloadMirror (Unit)** — validated download source configuration (the mirror settings of `DownloadOptions`)
   - **LemmaWeights (Unit)** — per-lemma weights and thresholds, their blob reader, matching to the lexicon and the
     feature computation
-  - **PosHead (Unit)** — the part-of-speech head: its blob reader, its binding to the encoder and to the parts of
-    speech, the probabilities of the parts of speech of a word and their restriction
+  - **PosHead (Unit)** — the part-of-speech head and the tense head: their blob reader, its binding to the encoder and
+    to the parts of speech, the probabilities of the parts of speech of a word and their restriction, and the
+    probability that a verb is past
 - **MiniLM (Subsystem)** — the package `DemaConsulting.WordSense.MiniLM`; it references the core and Onnx packages
   - **MiniLMWordSenseModel (Unit)** — the all-MiniLM-L6-v2 int8 model, its encoder model composed with the core Basic
     model
@@ -67,7 +68,7 @@ software items, specifically:
   - **BertBaseCasedWordSenseModel (Unit)** — the bert-base-cased int8 model, its encoder model composed with the core
     Basic model
 - **WordSenseBuilder (Unit)** — the non-shipped build-time tool that creates the lexicon blob, the weights blobs and the
-  part-of-speech head blobs, chooses the thresholds and measures the models
+  part-of-speech and tense head blobs, chooses the thresholds and measures the models
 - **WordData (Subsystem)** — the TSV word data under `data/` (imported from Open English WordNet, CC BY 4.0, with the
   WordNet 3.0 sense counts for the usage prior) and the non-shipped builder code that imports, labels and validates it
   - **DataSchema**, **DataLayout**, **OewnImporter**, **FormGenerator**, **FormAuditor**, **DataValidator** and
@@ -159,7 +160,8 @@ tool references all four packages and is never shipped. Further rules of the spl
 - The core knows nothing of encoder models: it has no vectors, encoder weights, ONNX or tokenizer, and names no model
   package in code. A model is anything that implements `IWordSenseModel`.
 - Weights belong to a model package: each encoder package embeds one `weights.bin` trained for its exact model files and
-  checked against their SHA-256 digests, and one `head.bin`, the part-of-speech head, bound to the SHA-256 of its ONNX
+  checked against their SHA-256 digests, and one `head.bin`, the part-of-speech head (and, for BertBaseCased, the tense
+  head), bound to the SHA-256 of its ONNX
   file. Model files live in `model/<model-id>/`, which also names the mirror folder, the
   per-user store folder and the GitHub LFS path.
 - The word table is shared: `WordLexicon` serves the analyses of all known spellings, including the inflections that the
@@ -178,10 +180,12 @@ tool references all four packages and is never shipped. Further rules of the spl
 
 The data flows from the contracts upward: a caller obtains an `IWordSenseModel` from a model package, optionally
 calls `EnsureModelAsync` once when the model is an `IDownloadableWordSenseModel` (`ClassifyAsync` ensures lazily when
-a word needs the encoder: a word with scored senses or, for BertBaseCased, a known word of several parts of speech; the
+a word needs the encoder: a word with scored senses or, for BertBaseCased, a known word of several parts of speech or a
+same-spelling verb such as `read` or `put` (its tense head reads the encoder); the
 explicit call only controls when the download happens) and classifies
 tokenized text, receiving one `ClassifyResult` per word in input order. Every model looks each word up in
-`WordLexicon` first; only a word with several senses (or, for BertBaseCased, several parts of speech) needs the model's
+`WordLexicon` first; only a word with several senses (or, for BertBaseCased, several parts of speech, or a past and a
+non-past verb analysis whose tense the tense head judges) needs the model's
 context decision, and each answer states the
 level (part of speech, group or sense) at which it was made. The result is built from its `Analyses` (the probability
 of every analysis of the word and, where the model scored them, of the senses inside each analysis); the selected
@@ -233,7 +237,7 @@ src/DemaConsulting.WordSense.BertBaseCased/        — bert-base-cased subsystem
 ├── BertBaseCasedWordSenseModel.cs, BertBaseCasedEncoderModel.cs — bert-base-cased-word-sense-model unit
 ├── NamespaceDoc.cs
 ├── Resources/weights.bin                           — embedded weights of the bert-base-cased model
-└── Resources/head.bin                              — embedded part-of-speech head of the bert-base-cased model
+└── Resources/head.bin                              — embedded part-of-speech and tense head of the bert-base-cased model
 
 model/<model-id>/                                  — model files (ONNX file, vocabulary, tokenizer and config files,
                                                       SHA256SUMS, the Apache License 2.0 LICENSE) of each encoder

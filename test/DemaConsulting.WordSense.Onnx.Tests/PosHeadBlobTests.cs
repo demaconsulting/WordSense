@@ -208,12 +208,66 @@ public class PosHeadBlobTests
         byte[] payload = [1, 2, 3, 4, 5];
 
         // Act: read the blob with the unknown section marked optional, then required
-        var optional = PosHeadBlob.Read(HeadBlobWriter.Write(spec with { Sections = [(2, false, payload)] }));
-        var required = Assert.Throws<InvalidDataException>(() => PosHeadBlob.Read(HeadBlobWriter.Write(spec with { Sections = [(2, true, payload)] })));
+        var optional = PosHeadBlob.Read(HeadBlobWriter.Write(spec with { Sections = [(9, false, payload)] }));
+        var required = Assert.Throws<InvalidDataException>(() => PosHeadBlob.Read(HeadBlobWriter.Write(spec with { Sections = [(9, true, payload)] })));
 
         // Assert: the optional section is skipped and the required one is named in the error
         Assert.Equal(spec.Weights, optional.Weights);
-        Assert.Contains("required section 2", required.Message, StringComparison.Ordinal);
+        Assert.Null(optional.Tense);
+        Assert.Contains("required section 9", required.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A tense section of either layout reads back with its layout, C, weights and bias, and the part-of-speech head is
+    ///     unchanged.
+    /// </summary>
+    [Theory]
+    [InlineData(PosHeadBlob.TenseWord, 4)]
+    [InlineData(PosHeadBlob.TenseWordAndNeighbors, 12)]
+    public void PosHeadBlob_Read_TenseSection_ReturnsTheTenseHead(int layout, int count)
+    {
+        // Arrange: weights that survive half precision exactly
+        var spec = HeadSpec.Create();
+        var weights = Enumerable.Range(0, count).Select(i => ((i % 5) - 2) / 4f).ToArray();
+        var payload = HeadBlobWriter.TensePayload(layout, 0.03f, weights, -0.5f);
+
+        // Act
+        var data = PosHeadBlob.Read(HeadBlobWriter.Write(spec with { Sections = [(PosHeadBlob.TenseSection, false, payload)] }));
+
+        // Assert
+        Assert.NotNull(data.Tense);
+        Assert.Equal(layout, data.Tense.Layout);
+        Assert.Equal(0.03f, data.Tense.C);
+        Assert.Equal(weights, data.Tense.Weights);
+        Assert.Equal(-0.5f, data.Tense.Bias);
+        Assert.Equal(spec.Weights, data.Weights);
+        Assert.NotNull(new PosHead(data).Tense);
+    }
+
+    /// <summary>
+    ///     A tense section with an unknown layout, a weight count that does not fit the layout, an invalid C, a non-finite
+    ///     value, trailing bytes or a second copy is rejected.
+    /// </summary>
+    [Fact]
+    public void PosHeadBlob_Read_InvalidTenseSection_Throws()
+    {
+        // Arrange
+        var spec = HeadSpec.Create();
+        float[] one = [0.25f, -0.25f, 0.5f, 0f];
+        void Reject(params (int Id, bool Required, byte[] Payload)[] sections) =>
+            Assert.Throws<InvalidDataException>(() => PosHeadBlob.Read(HeadBlobWriter.Write(spec with { Sections = sections })));
+
+        // Act / Assert
+        Reject((PosHeadBlob.TenseSection, false, HeadBlobWriter.TensePayload(3, 0.03f, one, 0f)));
+        Reject((PosHeadBlob.TenseSection, false, HeadBlobWriter.TensePayload(PosHeadBlob.TenseWord, 0.03f, one[1..], 0f)));
+        Reject((PosHeadBlob.TenseSection, false, HeadBlobWriter.TensePayload(PosHeadBlob.TenseWordAndNeighbors, 0.03f, one, 0f)));
+        Reject((PosHeadBlob.TenseSection, false, HeadBlobWriter.TensePayload(PosHeadBlob.TenseWord, 0f, one, 0f)));
+        Reject((PosHeadBlob.TenseSection, false, HeadBlobWriter.TensePayload(PosHeadBlob.TenseWord, float.NaN, one, 0f)));
+        Reject((PosHeadBlob.TenseSection, false, HeadBlobWriter.TensePayload(PosHeadBlob.TenseWord, 0.03f, one, float.NaN)));
+        Reject((PosHeadBlob.TenseSection, false, HeadBlobWriter.TensePayload(PosHeadBlob.TenseWord, 0.03f, [.. one.Select((w, i) => i == 1 ? float.PositiveInfinity : w)], 0f)));
+        Reject((PosHeadBlob.TenseSection, false, [.. HeadBlobWriter.TensePayload(PosHeadBlob.TenseWord, 0.03f, one, 0f), 0]));
+        Reject((PosHeadBlob.TenseSection, false, HeadBlobWriter.TensePayload(PosHeadBlob.TenseWord, 0.03f, one, 0f)), (PosHeadBlob.TenseSection, false, HeadBlobWriter.TensePayload(PosHeadBlob.TenseWord, 0.03f, one, 0f)));
+        Reject((PosHeadBlob.TenseSection, false, []));
     }
 
     /// <summary>

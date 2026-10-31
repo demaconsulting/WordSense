@@ -76,7 +76,7 @@ internal static class PosHeadBlobWriter
         WriteFloat(body, head.C);
         WriteString(body, head.Variant);
 
-        // One required section, the part-of-speech head; section 2 is reserved for a tense head
+        // The part-of-speech head is the one required section; the tense head, when there is one, is optional (section 2)
         using var section = new MemoryStream();
         var half = new byte[2];
         foreach (var w in Round(head.Weights))
@@ -95,14 +95,56 @@ internal static class PosHeadBlobWriter
             WriteFloat(section, b);
         }
 
-        VarintWriter.WriteVarint(body, 1);
+        VarintWriter.WriteVarint(body, head.Tense is null ? 1 : 2);
         VarintWriter.WriteVarint(body, PosHeadBlob.PosSection);
         body.WriteByte(1);
         VarintWriter.WriteVarint(body, checked((int)section.Length));
         body.Write(section.GetBuffer().AsSpan(0, (int)section.Length));
+        if (head.Tense is { } tense)
+        {
+            WriteTense(body, tense, head.HiddenSize);
+        }
 
         var bytes = body.ToArray();
         return [.. bytes, .. SHA256.HashData(bytes)];
+    }
+
+    /// <summary>
+    ///     Writes the tense section.
+    /// </summary>
+    /// <param name="body">The stream of the blob.</param>
+    /// <param name="tense">The tense head.</param>
+    /// <param name="hiddenSize">The hidden size.</param>
+    private static void WriteTense(MemoryStream body, TenseHeadData tense, int hiddenSize)
+    {
+        var vectors = tense.Layout switch
+        {
+            PosHeadBlob.TenseWord => 1,
+            PosHeadBlob.TenseWordAndNeighbors => 3,
+            _ => throw new ArgumentException($"The tense layout {tense.Layout} is unknown.", nameof(tense)),
+        };
+
+        if (tense.Weights.Length != checked(vectors * hiddenSize) || !float.IsFinite(tense.C) || tense.C <= 0 || !float.IsFinite(tense.Bias))
+        {
+            throw new ArgumentException("The tense head does not fit its layout and the hidden size.", nameof(tense));
+        }
+
+        using var payload = new MemoryStream();
+        VarintWriter.WriteVarint(payload, tense.Layout);
+        WriteFloat(payload, tense.C);
+        VarintWriter.WriteVarint(payload, tense.Weights.Length);
+        var half = new byte[2];
+        foreach (var w in Round(tense.Weights))
+        {
+            BinaryPrimitives.WriteHalfLittleEndian(half, (Half)w);
+            payload.Write(half);
+        }
+
+        WriteFloat(payload, tense.Bias);
+        VarintWriter.WriteVarint(body, PosHeadBlob.TenseSection);
+        body.WriteByte(0);
+        VarintWriter.WriteVarint(body, checked((int)payload.Length));
+        body.Write(payload.GetBuffer().AsSpan(0, (int)payload.Length));
     }
 
     private static void WriteFloat(Stream stream, float value)

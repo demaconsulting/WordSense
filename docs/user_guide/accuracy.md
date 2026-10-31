@@ -45,14 +45,14 @@ models. RAM is the growth of the process from before the model was created to af
 
 Part of speech is the dependable part of an answer, and `BertBaseCased` decides it best (the model table; the section
 "Part of Speech of BertBaseCased" explains how). It also commits to a sense most often, and its most probable sense is
-right for 60.1% of the SemCor words of the trained lemmas, MiniLM's for 54.7%. Both are below the most-used-sense
+right for 60.3% of the SemCor words of the trained lemmas, MiniLM's for 54.7%. Both are below the most-used-sense
 baseline of 66.1%, which has seen the answers (see "Caveats"). The levels of the encoder answers on the real test
 sentences:
 
 | Model | Sense (share, precision) | Group (share, precision) | Part of speech (share, precision) | Fine top-1 |
 | --- | ---: | ---: | ---: | ---: |
 | MiniLM | 15.7%, 95.8% | 0.6%, 93.8% | 83.7%, 95.6% | 65.4% |
-| BERT base cased | 42.4%, 96.0% | 0.6%, 94.3% | 56.9%, 96.7% | 74.9% |
+| BERT base cased | 42.4%, 96.0% | 0.6%, 94.3% | 56.9%, 96.7% | 75.0% |
 
 ## Part of Speech
 
@@ -103,9 +103,17 @@ spots with their figures and a rule for when to trust the part of speech of Basi
 
 For a verb whose past and non-past share a spelling (`put`, `cut`, `set`, `read`), the lexicon lists both analyses and an
 encoder gives them the same probability. A tense model trained on the verbs of the open corpus splits the probability of
-the slot from the context, and the encoder models inherit the split. "I will read that tomorrow" is a non-past `read`
-and "I have read that already" a past participle. It never changes the part of speech, level, confidence or sense of an
-answer. The builder (`evaluate-running`) measures the class of the selected analysis (past or non-past) on every gold
+the slot from the context, and `MiniLM` inherits the split. `BertBaseCased` also has a tense head, a logistic regression
+on the encoder vectors of the verb and of its two neighbors, trained on the same-spelling verbs of the open corpus
+alone, which reads the tense from the sentence; the composition combines its probability of past with the split of the
+tense model (weights 0.9 and 0.1 in the log odds, chosen on the development split of the open corpus). "I will read that
+tomorrow" is a non-past `read` and "I have read that already" a past participle. The tense only splits the probability
+among the verb analyses: the probability of the verb as a whole and of the other parts of speech of the word stay. When
+the past and the non-past analysis belong to one lemma (`read`, `put`), the lemma, the senses, the level and the
+confidence of the answer stay too. When they belong to different lemmas (`found`, the past of `find` or the infinitive
+of `found`), the tense can make the other lemma the most probable one, and the answer then steps down to the
+`PartOfSpeech` level on that lemma, which can also change the selected part of speech. The builder
+(`evaluate-running`) measures the class of the selected analysis (past or non-past) on every gold
 verb token whose form has both. The majority is the share of the more frequent gold class.
 
 <!-- markdownlint-disable MD013 -->
@@ -114,14 +122,18 @@ verb token whose form has both. The majority is the share of the more frequent g
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Basic | 81.8% | 86.3% | 86.2% | 77.8% | 83.3% |
 | MiniLM | 82.7% | 85.3% | 85.4% | 77.8% | 83.3% |
-| BertBaseCased | 83.6% | 85.3% | 85.8% | 77.8% | 84.8% |
+| BertBaseCased | 99.1% | 93.7% | 95.4% | 93.1% | 92.9% |
 
 <!-- markdownlint-enable MD013 -->
 
-On the 68 other same-spelling verbs (753 treebank tokens never trained on) the models reach 82.6 to 83.7%, against 74.5%
-for always answering the non-past. The sets are small, so read the pooled column. The model is a bag of context words
-with a few positional features, so a time adverb far from the verb, or a plural present against a past after a bare
-subject (`I let everyone know`), can be wrong.
+On the 68 other same-spelling verbs (753 treebank tokens never trained on) Basic and `MiniLM` reach 82.6 to 83.7%,
+against 74.5% for always answering the non-past, and `BertBaseCased` 94.3%. On the second all-words gold set, the
+tense of `BertBaseCased` on the test half is right for 98.0% of 347 same-spelling verbs. The sets are small, so read
+the pooled column. The treebank
+and the read set are never used to train or to choose anything. The tense head of `BertBaseCased` can still be wrong
+where the tense depends on a habit that the sentence does not show, and
+the models without a tense head are a bag of context words with a few positional features, so a time adverb far from
+the verb, or a plural present against a past after a bare subject (`I let everyone know`), can be wrong.
 
 ## Part of Speech of the Encoder Models
 

@@ -159,6 +159,16 @@ sections:
                 tests:
                   - OnnxWordSenseModel_ClassifyAsync_DamagedOrMismatchedHead_ThrowsModelIntegrity
 
+              - id: WordSense-Onnx-OnnxWordSenseModel-TenseHeadIntegrity
+                title: >-
+                  OnnxWordSenseModel shall report a head file that has no tense head, for a model that uses its tense
+                  head, as ModelIntegrityException with the original exception as inner exception.
+                tags: [unit]
+                justification: |
+                  A package without the tense head it needs must fail at load, not answer without the tense.
+                tests:
+                  - OnnxWordSenseModel_ClassifyAsync_TenseHeadInUseWithoutTenseHead_ThrowsModelIntegrity
+
               - id: WordSense-Onnx-OnnxWordSenseModel-Dispose
                 title: >-
                   OnnxWordSenseModel shall release its encoder session on disposal, tolerate repeated and concurrent

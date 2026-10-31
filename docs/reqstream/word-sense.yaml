@@ -319,11 +319,13 @@ sections:
           senses for the word and otherwise by the second, with the result of one model and never a mixture of their
           probabilities (the variants of a slot that the first model cannot tell apart take the proportions of the
           second, and the probability of the slot does not change; the part-of-speech probabilities of a first model
-          that estimates the part of speech are reweighed against those of the second),
+          that estimates the part of speech are reweighed against those of the second, and the past share of a
+          same-spelling verb is combined with that of the second when the first model estimates the tense),
           and the encoder model packages shall answer, by default, with their encoder model composed with the Basic
           model of the core package, so that every ambiguous word that the encoder does not score is answered at the
           part of speech level by the Basic model, and the tense of a verb whose past and non-past share a spelling
-          is the one that the context of the Basic model says.
+          is the one that the context of the Basic model says for MiniLM and the one that the tense head of the
+          encoder says, combined with the Basic model, for BertBaseCased.
         tags: [system]
         justification: |
           An encoder scores fine senses only for the lemmas it was trained for, while the Basic model chooses the part
@@ -516,8 +518,8 @@ sections:
           the Basic model (weight 0.8), leaving the sense and the group of an answer to the sense weights (an answer
           whose best sense lies in a part of speech that the composition does not rank first being given at the part
           of speech level), and shall require the encoder, and so the model files, only for a text that has such a
-          word or a word with scored senses; the MiniLM model carries a head that it does not use and keeps its
-          behavior.
+          word, a same-spelling verb or a word with scored senses; the MiniLM model carries a head that it does not use
+          and keeps its behavior.
         tags: [system]
         justification: |
           The part of speech of a word is decided by its sentence; the head reads it from the encoder and the Basic
@@ -533,6 +535,115 @@ sections:
           - BertBaseCasedWordSenseModel_PartOfSpeechAnswer_ReweighsTheHeadAgainstBasic
           - BertBaseCasedWordSenseModel_ClassifyAsync_LexiconOnly_NeedsNoEnsure
           - WordSenseContracts_FallbackWordSenseModel_EvidenceScoredPrimary_TopSlotChanges_StepsDownToThePartOfSpeech
+
+      - id: WordSense-Lib-Tense
+        title: >-
+          The BertBaseCased model shall decide the tense of a verb whose past and non-past share a spelling (read, put,
+          found) from the sentence in which it is used.
+        tags: [system]
+        justification: |
+          The tense of such a verb is decided by its sentence, which the lexicon and the context-free statistics of the
+          Basic model see only in part.
+        children:
+          - WordSense-Onnx-Tense
+          - WordSense-Onnx-Head-TenseRead
+          - WordSense-Onnx-Head-TenseProbability
+          - WordSense-Core-Fallback
+          - WordSense-BertBaseCased-Tense
+        tests:
+          - BertBaseCased_Classifier_EndToEnd_SameSpellingVerb_TenseFollowsTheContext
+
+      - id: WordSense-Lib-TenseBasic
+        title: >-
+          The MiniLM model shall take the tense of a verb whose past and non-past share a spelling from the Basic
+          model.
+        tags: [system]
+        justification: |
+          MiniLM has no tense classifier of its own and keeps the behavior it had.
+        children:
+          - WordSense-MiniLM-Composition
+        tests:
+          - MiniLM_Classifier_EndToEnd_SameSpellingVerb_TenseFollowsTheContext
+
+      - id: WordSense-Lib-TenseScope
+        title: >-
+          The decision of the tense of a verb shall leave the probability of the verb as a whole and the analyses of
+          the other parts of speech of the word unchanged.
+        tags: [system]
+        justification: |
+          The tense decides between the past and the other analyses of the verb only; the other parts of speech keep
+          the evidence and the thresholds that were calibrated for them.
+        children:
+          - WordSense-Onnx-TenseResults
+          - WordSense-Core-Fallback
+        tests:
+          - TenseFusion_Apply_SetsThePastShareOfTheVerb
+          - TenseFusion_Apply_DifferentLemmas_KeepsTheVerbMassAndTheOtherPartsOfSpeech
+
+      - id: WordSense-Lib-TenseSameLemma
+        title: >-
+          When the past and the non-past analyses of a verb belong to one lemma, the decision of its tense shall leave
+          the lemma, the part of speech, the senses, the level and the confidence of the answer unchanged.
+        tags: [system]
+        justification: |
+          The tense only splits the probability of one slot among its variants, so everything that belongs to the slot
+          stays.
+        children:
+          - WordSense-Core-Fallback
+        tests:
+          - TenseFusion_Apply_SenseLevelAnswerWithSameSlot_KeepsTheSense
+
+      - id: WordSense-Lib-TenseOtherLemma
+        title: >-
+          When the past and the non-past analyses of a verb belong to different lemmas and the decision of its tense
+          makes another lemma the most probable one, the answer shall be at the part-of-speech level on that lemma.
+        tags: [system]
+        justification: |
+          The past found belongs to find and the infinitive to found; the answer is never finer than the evidence for
+          its lemma.
+        children:
+          - WordSense-Core-Fallback
+        tests:
+          - TenseFusion_Apply_DifferentLemmas_OtherSlotWins_StepsDownToThePartOfSpeech
+
+      - id: WordSense-Lib-TenseFiles
+        title: >-
+          The BertBaseCased model shall need its model files for a text that has a verb whose past and non-past share
+          a spelling.
+        tags: [system]
+        justification: |
+          The tense of read and put is decided from the sentence, which needs the encoder.
+        children:
+          - WordSense-BertBaseCased-TenseFiles
+        tests:
+          - BertBaseCasedWordSenseModel_ClassifyAsync_SameSpellingVerb_NeedsTheEncoder
+
+      - id: WordSense-Lib-TenseNoFiles
+        title: >-
+          The BertBaseCased model shall classify a text without such a verb, a word of several parts of speech or a
+          word with scored senses without touching a model file.
+        tags: [system]
+        justification: |
+          A text of words that need no context must cost no download and no inference.
+        children:
+          - WordSense-Onnx-LazyEncoding
+          - WordSense-BertBaseCased-PartOfSpeech
+        tests:
+          - BertBaseCasedWordSenseModel_ClassifyAsync_LexiconOnly_NeedsNoEnsure
+
+      - id: WordSense-Lib-TenseIntegrity
+        title: >-
+          The BertBaseCased model shall report a damaged tense head, or a tense head that its head file does not
+          contain, as a ModelIntegrityException.
+        tags: [system]
+        justification: |
+          A package with a defective head must fail loudly instead of answering with the wrong tense.
+        children:
+          - WordSense-BertBaseCased-TenseHead
+          - WordSense-BertBaseCased-TenseHeadRejected
+          - WordSense-Onnx-Head-TenseIntegrity
+        tests:
+          - OnnxWordSenseModel_ClassifyAsync_TenseHeadInUseWithoutTenseHead_ThrowsModelIntegrity
 
       - id: WordSense-Lib-PosHeadPosterior
         title: >-
@@ -762,6 +873,18 @@ sections:
           - WordSense-WordSenseBuilder-TrainPosHeadTrainingFile
           - WordSense-WordSenseBuilder-TrainPosHeadDeterminism
           - WordSense-WordSenseBuilder-TrainPosHeadCache
+          - WordSense-WordSenseBuilder-TrainTenseHead
+          - WordSense-WordSenseBuilder-TrainTenseHeadRows
+          - WordSense-WordSenseBuilder-TrainTenseHeadPosUnchanged
+          - WordSense-WordSenseBuilder-TrainTenseHeadSelection
+          - WordSense-WordSenseBuilder-TrainTenseHeadPrecision
+          - WordSense-WordSenseBuilder-TrainTenseHeadForeign
+          - WordSense-WordSenseBuilder-TrainTenseHeadNoRows
+          - WordSense-WordSenseBuilder-TrainTenseHeadSettings
+          - WordSense-WordSenseBuilder-TrainTenseHeadLeakage
+          - WordSense-WordSenseBuilder-TrainTenseHeadFile
+          - WordSense-WordSenseBuilder-TrainTenseHeadInvalidFile
+          - WordSense-WordSenseBuilder-TrainTenseHeadDeterminism
           - WordSense-WordSenseBuilder-HeadProvenance
           - WordSense-WordSenseBuilder-FormChoosers
           - WordSense-WordSenseBuilder-Thresholds

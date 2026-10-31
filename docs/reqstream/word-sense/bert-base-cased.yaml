@@ -42,7 +42,7 @@ sections:
             title: >-
               The BertBaseCased package shall decide the part of speech of every word of two or more parts of speech
               from the sentence, with the probabilities of its part-of-speech head reweighed against those of the Basic
-              model with the weight 0.8, and shall need the encoder files, and ensure them lazily, only for a text with
+              model with the weight 0.8, and shall need the encoder files, and ensure them lazily, for a text with
               such a word or with a word of scored senses.
             tags: [subsystem]
             justification: |
@@ -52,6 +52,48 @@ sections:
             children:
               - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-PartOfSpeechReweighed
               - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Lazy
+
+          - id: WordSense-BertBaseCased-TenseHead
+            title: >-
+              The BertBaseCased package shall judge the tense of a verb whose past and non-past share a spelling with a
+              tense head that belongs to its encoder.
+            tags: [subsystem]
+            justification: |
+              The head was trained on the vectors of this exact encoder file; a head that does not belong to it must
+              never be used.
+            children:
+              - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-TenseHead
+
+          - id: WordSense-BertBaseCased-TenseHeadRejected
+            title: >-
+              The BertBaseCased package shall report a damaged tense head, or a head file that has no tense head, as a
+              ModelIntegrityException.
+            tags: [subsystem]
+            justification: |
+              A package with a defective head must fail loudly instead of answering with the wrong tense.
+            children:
+              - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-TenseHeadRejected
+
+          - id: WordSense-BertBaseCased-Tense
+            title: >-
+              The BertBaseCased package shall set the tense of a verb whose past and non-past share a spelling from the
+              probability of past of its tense head combined with the tense split of the Basic model.
+            tags: [subsystem]
+            justification: |
+              The tense of read, put and found is decided by the sentence; the head reads it from the encoder and the
+              Basic model corrects it where the head has little evidence.
+            children:
+              - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-TenseReweighed
+
+          - id: WordSense-BertBaseCased-TenseFiles
+            title: >-
+              The BertBaseCased package shall need its encoder files for a text that has a verb whose past and non-past
+              share a spelling.
+            tags: [subsystem]
+            justification: |
+              The tense of read and put is decided from the sentence, which needs the encoder.
+            children:
+              - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-TenseFiles
 
           - id: WordSense-BertBaseCased-Composition
             title: >-

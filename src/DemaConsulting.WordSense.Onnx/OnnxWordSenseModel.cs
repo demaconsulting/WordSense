@@ -30,7 +30,8 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     </para>
 ///     <para>
 ///     Call <see cref="EnsureModelAsync"/> to make the model files available and verified. <see cref="ClassifyAsync"/>
-///     ensures them itself when a word needs the encoder, and answers every other text without them: a classification
+///     ensures them itself when a word needs the encoder (see <see cref="ClassifyAsync"/> for which words do), and answers
+///     every other text without them: a classification
 ///     of words that need no context never downloads a file, never opens an ONNX session and never fails because
 ///     a model file is missing. The model files come from the directory
 ///     given to the model's constructor (every file verified against its pinned SHA-256, with no network access) or,
@@ -300,13 +301,14 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
     ///     the <see cref="SenseLevel.PartOfSpeech"/> level without scored senses, which makes a composition use its
     ///     fallback model for the senses of the word (see <see cref="FallbackWordSenseModel"/>).
     ///     <para>
-    ///     A model that uses its head needs the encoder, and so the model files, for every list that has a known word of
-    ///     two or more parts of speech or a word with scored senses; any other model needs them only for a word with
-    ///     scored senses. There is no way to turn that off: the first such list ensures the
+    ///     A word needs the encoder, and so the model files, when its lemma has scored senses (a trained lemma with
+    ///     several senses, or a form that has a chooser); for a model that uses its head also when it is a known word of
+    ///     two or more parts of speech; and for a model that uses its tense head also when it is a same-spelling verb (a
+    ///     verb with a past and a non-past analysis). Any other model needs them only for a word with scored senses.
+    ///     There is no way to turn that off: the first list with such a word ensures the
     ///     model lazily (with the default and environment mirror settings; call <see cref="EnsureModelAsync"/> yourself
     ///     first to pass <see cref="DownloadOptions"/>), shared with concurrent callers; a failed ensure can be retried
-    ///     by the next call. A list that needs no encoder (for a model that uses its head: every word unknown or of one
-    ///     part of speech and none needs scoring) is answered
+    ///     by the next call. A list in which no word needs the encoder is answered
     ///     without any model file: nothing is ensured, downloaded or verified, so it works before
     ///     <see cref="EnsureModelAsync"/> and when the model directory does not exist.
     ///     </para>
@@ -328,7 +330,18 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
     /// <exception cref="ModelUnavailableException">Thrown by the lazy ensure when a file could not be obtained and verified, or a supplied model directory does not exist or lacks a model file.</exception>
     /// <exception cref="DownloadConfigurationException">Thrown by the lazy ensure when the settings of the <c>WORDSENSE_MIRROR_*</c> environment variables are invalid.</exception>
     /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed, whatever the words.</exception>
-    public async Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default)
+    public async Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default) =>
+        (await ClassifyWithTenseAsync(words, cancellationToken).ConfigureAwait(false)).Results;
+
+    /// <summary>
+    ///     Classifies every word like <see cref="ClassifyAsync"/> and gives, for a model that uses its tense head, the
+    ///     probability that each same-spelling verb is past.
+    /// </summary>
+    /// <param name="words">The words of one tokenized text.</param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <returns>The results and the probabilities of past (null for a word that is not a same-spelling verb the head could judge, and for every word of a model that does not use a tense head).</returns>
+    /// <remarks>The exceptions are those of <see cref="ClassifyAsync"/>, which this method implements.</remarks>
+    internal async Task<(ClassifyResult[] Results, double?[] PastProbability)> ClassifyWithTenseAsync(IEnumerable<string> words, CancellationToken cancellationToken)
     {
         ThrowIfDisposed();
         ArgumentNullException.ThrowIfNull(words);
@@ -343,12 +356,14 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
 
         try
         {
-            // A word needs the encoder when it has scored senses or two or more parts of speech; the weights and the head
-            // are embedded in the assembly, so deciding this needs no model file, download or ONNX session
+            // A word needs the encoder when it has scored senses, two or more parts of speech or (with a tense head) is a
+            // same-spelling verb; the weights and the heads are embedded in the assembly, so deciding this needs no model
+            // file, download or ONNX session
             var table = GetTable();
-            if (!OnnxClassifier.NeedsEncoder(list, table, _spec.HeadInUse && GetHead() is not null))
+            var hasHead = _spec.HeadInUse && GetHead() is not null;
+            if (!OnnxClassifier.NeedsEncoder(list, table, hasHead, hasHead && _spec.TenseHeadInUse))
             {
-                return OnnxClassifier.ResolveWithoutModel(list, cancellationToken);
+                return (OnnxClassifier.ResolveWithoutModel(list, cancellationToken), new double?[list.Count]);
             }
 
             // Such words need the model: ensure it lazily (shared with concurrent callers), then open the resources
@@ -356,7 +371,7 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
             var classifier = AcquireClassifier();
             try
             {
-                return await classifier.ClassifyAsync(list, cancellationToken).ConfigureAwait(false);
+                return await classifier.ClassifyWithTenseAsync(list, cancellationToken).ConfigureAwait(false);
             }
             finally
             {
@@ -484,6 +499,10 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
             try
             {
                 _head = PosHead.LoadEmbedded(_spec.WeightsAssembly, name, _spec.ModelId, _spec.HiddenSize, onnx.Sha256);
+                if (_spec.TenseHeadInUse && _head.Tense is null)
+                {
+                    throw new InvalidDataException("The head file has no tense head.");
+                }
             }
             catch (InvalidDataException ex)
             {
@@ -512,7 +531,7 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
                 LoadHeadOnce();
                 _encoder ??= OpenEncoderChecked(directory);
                 _classifier = _spec.HeadInUse && _head is { } head
-                    ? new OnnxClassifier(_table, _encoder.EncodeAsync, head, (words, token) => _encoder.EncodeAllAsync(words, PossessiveView.IsLexiconPossessive, token))
+                    ? new OnnxClassifier(_table, _encoder.EncodeAsync, head, (words, token) => _encoder.EncodeAllAsync(words, PossessiveView.IsLexiconPossessive, token), _spec.TenseHeadInUse)
                     : new OnnxClassifier(_table, _encoder.EncodeAsync);
             }
 
@@ -673,6 +692,15 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
     ///     Gets a value that tells whether the model answers with a part-of-speech head: the model description names one and uses it.
     /// </summary>
     bool IPartOfSpeechEvidenceModel.ProvidesPartOfSpeechEvidence => _spec.HeadResourceName is not null && _spec.HeadInUse;
+
+    /// <summary>
+    ///     Gets a value that tells whether the model judges the tense of same-spelling verbs with the tense head of its head file.
+    /// </summary>
+    bool IPartOfSpeechEvidenceModel.ProvidesTenseEvidence => _spec.HeadResourceName is not null && _spec.HeadInUse && _spec.TenseHeadInUse;
+
+    /// <inheritdoc/>
+    Task<(ClassifyResult[] Results, double?[] PastProbability)> IPartOfSpeechEvidenceModel.ClassifyWithTenseAsync(IEnumerable<string> words, CancellationToken cancellationToken) =>
+        ClassifyWithTenseAsync(words, cancellationToken);
 
     /// <summary>
     ///     Makes the model files available and verified; failures are reported with the typed exceptions.
