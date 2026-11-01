@@ -91,7 +91,7 @@ internal static class ModelTrainer
         }
         else
         {
-            frozenMean = ReadFrozenMean(path, model.Spec.WeightsId, output, info.Name);
+            frozenMean = ReadFrozenMean(path, model.Spec.WeightsId, EncoderShaOf(model.Spec), model.Spec.SenseLayout, output, info.Name);
         }
 
         EmbeddingCache? cache = null;
@@ -105,10 +105,17 @@ internal static class ModelTrainer
         }
 
         using var encoder = model.OpenEncoder();
+        await CpuPreflight.RunAsync(encoder, model.Spec, repository, output, cancellationToken).ConfigureAwait(false);
         var caching = new CachingEncoder(encoder.EncodeAsync, cache);
         var data = await TrainDataAsync(
             info.Name, model.Spec.WeightsId, WordLexicon.Current.InventoryHash.ToArray(), anchors, options, caching, frozenMean, fitCache, output, clock, cancellationToken, holdout, chooserAnchors, chooserHoldout,
             RealSplit.Classify(corpus, holdout).Calibration, new CalibrationOptions(settings.CalibrationTarget, Stratum: Corpus.StagesOf(anchors)), usage).ConfigureAwait(false);
+
+        // A model with sense layers records its encoder and layout (WSX4); a model without them keeps the WSX3 layout of its weights
+        if (model.Spec.SenseLayers is not null)
+        {
+            data = data with { EncoderSha256 = Convert.FromHexString(EncoderShaOf(model.Spec)), Layout = model.Spec.SenseLayout };
+        }
 
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
         File.WriteAllBytes(path, WeightsBlobWriter.Write(data));
@@ -164,12 +171,19 @@ internal static class ModelTrainer
     /// <summary>
     ///     Reads the global mean of the existing weights of a model.
     /// </summary>
+    /// <remarks>
+    ///     The mean is reused only when the weights were trained for the same model identity, the same feature layout
+    ///     and, when they record it (<c>WSX4</c>), the same encoder file; a mean of another layout or encoder has the same
+    ///     width and would be reused silently otherwise.
+    /// </remarks>
     /// <param name="weightsPath">The path of the weights file.</param>
     /// <param name="modelId">The model identifier the weights shall name.</param>
+    /// <param name="encoderSha256">The SHA-256 of the encoder file of the model, as hexadecimal text.</param>
+    /// <param name="layout">The feature layout of the model (<c>last</c> or <c>mean:9-12</c>).</param>
     /// <param name="output">Receives the reason when the mean cannot be reused.</param>
     /// <param name="name">The model name used in messages.</param>
     /// <returns>The mean, or null when it shall be computed from the anchors.</returns>
-    internal static float[]? ReadFrozenMean(string weightsPath, string modelId, TextWriter output, string name)
+    internal static float[]? ReadFrozenMean(string weightsPath, string modelId, string encoderSha256, string layout, TextWriter output, string name)
     {
         if (!File.Exists(weightsPath))
         {
@@ -186,6 +200,18 @@ internal static class ModelTrainer
                 return null;
             }
 
+            if (!string.Equals(existing.Layout, layout, StringComparison.Ordinal))
+            {
+                output.WriteLine($"{name}: global mean: computed from the anchors (the existing weights use the feature layout '{existing.Layout}', not '{layout}').");
+                return null;
+            }
+
+            if (existing.EncoderSha256 is { } trained && !Convert.ToHexString(trained).Equals(encoderSha256, StringComparison.OrdinalIgnoreCase))
+            {
+                output.WriteLine($"{name}: global mean: computed from the anchors (the existing weights were trained on another encoder file).");
+                return null;
+            }
+
             output.WriteLine($"{name}: global mean: reused from the existing weights ({existing.Dimension.ToString(CultureInfo.InvariantCulture)} numbers); use --recompute-mean to compute it again.");
             return existing.Mean;
         }
@@ -195,6 +221,14 @@ internal static class ModelTrainer
             return null;
         }
     }
+
+    /// <summary>
+    ///     Gets the pinned SHA-256 of the ONNX encoder file of a model.
+    /// </summary>
+    /// <param name="spec">The description of the model.</param>
+    /// <returns>The digest as hexadecimal text.</returns>
+    internal static string EncoderShaOf(ModelSpec spec) =>
+        spec.Files.First(f => string.Equals(f.Name, spec.OnnxFileName, StringComparison.Ordinal)).Sha256;
 
     /// <summary>
     ///     Encodes the anchors through a caching encoder, trains the weights and, when held-out rows are given, checks
@@ -560,7 +594,7 @@ internal static class ModelTrainer
         var onnx = spec.Files.First(f => string.Equals(f.Name, spec.OnnxFileName, StringComparison.Ordinal)).Sha256;
         var vocabulary = spec.Files.First(f => string.Equals(f.Name, spec.VocabularyFileName, StringComparison.Ordinal)).Sha256;
         var runtime = typeof(Microsoft.ML.OnnxRuntime.InferenceSession).Assembly.GetName().Version?.ToString() ?? "unknown";
-        var cache = EmbeddingCache.Open(directory, EmbeddingCache.ComputeDigest(onnx, vocabulary, spec.LowerCase, runtime));
+        var cache = EmbeddingCache.Open(directory, EmbeddingCache.ComputeDigest(onnx, vocabulary, spec.LowerCase, runtime, spec.SenseLayout));
         var state = cache.Invalidated
             ? "the existing file is unreadable or was written for other model files and is replaced"
             : $"{cache.Loaded} entries loaded, {cache.Discarded} damaged entries dropped";

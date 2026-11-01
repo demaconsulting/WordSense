@@ -241,7 +241,9 @@ src/DemaConsulting.WordSense.BertBaseCased/        — bert-base-cased subsystem
 └── Resources/head.bin                              — embedded part-of-speech and tense head of the bert-base-cased model
 
 model/<base-model>/                                — provenance of the model files (SHA256SUMS, the Apache License 2.0
-                                                      LICENSE, README); the files themselves are the assets of the
+                                                      LICENSE, README, and per version v<n>/README.md and
+                                                      v<n>/model-<quantization>.md, which are also assets of the
+                                                      release); the model files themselves are the assets of the
                                                       release models/<base-model>/v<n>
 tools/WordSense.Builder/                           — word-sense-builder unit (not shipped)
 tools/                                             — the other maintainer tools (not shipped): forms-audit, model-prep,

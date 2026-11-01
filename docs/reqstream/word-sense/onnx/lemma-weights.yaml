@@ -156,3 +156,22 @@ sections:
                 tests:
                   - EmbeddedWeights_MiniLM_MatchesWordImage
                   - EmbeddedWeights_BertBaseCased_MatchesWordImage
+
+              - id: WordSense-Onnx-LemmaWeights-Encoder
+                title: >-
+                  The weights reader shall read the WSX4 blob, which records the SHA-256 of the encoder file and the
+                  layout of the sense feature (last, or the mean of layers such as mean:9-12), and a WSX3 blob as the
+                  layout last without an encoder pin; the weighted lemma table shall refuse weights of another
+                  feature layout, whether the blob is WSX4 or WSX3, and WSX4 weights of another encoder file.
+                tags: [unit]
+                justification: |
+                  Weights of the last layer and weights of a layer mean have the same dimension, so a mismatch of the
+                  encoder or of its layout would answer plausibly and wrongly; it must fail at load.
+                tests:
+                  - WeightsBlob_Read_Wsx3_HasLastLayoutAndNoEncoderPin
+                  - WeightsBlob_Read_Wsx4_ReturnsEncoderShaAndLayout
+                  - WeightsBlob_Read_Wsx4TruncatedOrEmptyLayout_Throws
+                  - WeightedLemmaTable_LoadEmbedded_Wsx4MatchingEncoderAndLayout_LoadsTheTable
+                  - WeightedLemmaTable_LoadEmbedded_OtherLayout_Throws
+                  - WeightedLemmaTable_LoadEmbedded_OtherEncoderSha_Throws
+                  - OnnxWordSenseModel_ClassifyAsync_WeightsOfOtherLayoutOrEncoder_ThrowsModelIntegrity

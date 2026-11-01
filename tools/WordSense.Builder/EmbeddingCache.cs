@@ -11,7 +11,8 @@ namespace WordSense.Builder;
 /// <remarks>
 ///     <para>
 ///     The encoder is deterministic for a given set of model files and inference runtime, so an entry is valid for exactly
-///     the digest the cache was opened with (the model file, the vocabulary, the casing and the version of ONNX Runtime,
+///     the digest the cache was opened with (the model file, the vocabulary, the casing, the layout of the sense feature
+///     and the version of ONNX Runtime,
 ///     whose kernels change the low digits of the output). The key of an entry is the SHA-256 of the exact word sequence
 ///     and the target word index. The vectors are stored as the exact 64-bit floating-point numbers the encoder returned,
 ///     so a hit is bit-identical to a fresh encode.
@@ -99,9 +100,10 @@ internal sealed class EmbeddingCache
     /// <param name="vocabularySha256">The SHA-256 of the vocabulary file, as hexadecimal text.</param>
     /// <param name="lowerCase">True when the model lower-cases its input.</param>
     /// <param name="runtime">The version of the inference runtime; its kernels decide the exact numbers of the output.</param>
+    /// <param name="layout">The layout of the sense feature the encoder returns (<see cref="DemaConsulting.WordSense.Onnx.ModelSpec.SenseLayout"/>): <c>last</c> or the mean of layers.</param>
     /// <returns>The 32-byte digest.</returns>
-    public static byte[] ComputeDigest(string onnxSha256, string vocabularySha256, bool lowerCase, string runtime) =>
-        SHA256.HashData(Encoding.UTF8.GetBytes($"onnx={onnxSha256.ToLowerInvariant()}\nvocabulary={vocabularySha256.ToLowerInvariant()}\nlowercase={lowerCase}\nruntime={runtime}\n"));
+    public static byte[] ComputeDigest(string onnxSha256, string vocabularySha256, bool lowerCase, string runtime, string layout) =>
+        SHA256.HashData(Encoding.UTF8.GetBytes($"onnx={onnxSha256.ToLowerInvariant()}\nvocabulary={vocabularySha256.ToLowerInvariant()}\nlowercase={lowerCase}\nruntime={runtime}\nlayout={layout}\n"));
 
     /// <summary>
     ///     Computes the key of a word sequence and a target word.
@@ -142,7 +144,8 @@ internal sealed class EmbeddingCache
         {
             if (File.Exists(cache.Path))
             {
-                cache.Load(File.ReadAllBytes(cache.Path));
+                using var stream = new FileStream(cache.Path, FileMode.Open, FileAccess.Read, FileShare.Read, 1 << 20);
+                cache.Load(stream);
             }
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
@@ -151,6 +154,21 @@ internal sealed class EmbeddingCache
             cache.Invalidated = true;
         }
 
+        return cache;
+    }
+
+    /// <summary>
+    ///     Reads a cache from a stream, record by record, so that a cache file larger than 2 GiB loads without a buffer
+    ///     of the size of the file; the stream is read from its start to the end of the entries.
+    /// </summary>
+    /// <param name="directory">The cache directory of one model.</param>
+    /// <param name="digest">The digest of the model files.</param>
+    /// <param name="stream">The stream of a cache file.</param>
+    /// <returns>The cache; a stream that is cut off, damaged or written for another digest gives an empty or a smaller cache and never throws for its content.</returns>
+    internal static EmbeddingCache OpenStream(string directory, byte[] digest, Stream stream)
+    {
+        var cache = new EmbeddingCache(directory, digest);
+        cache.Load(stream);
         return cache;
     }
 
@@ -250,11 +268,17 @@ internal sealed class EmbeddingCache
         Discarded = 0;
     }
 
-    private void Load(byte[] file)
+    private void Load(Stream stream)
     {
-        var span = file.AsSpan();
-        if (span.Length < HeaderSize
-            || !span[..Magic.Length].SequenceEqual(Magic)
+        var head = new byte[HeaderSize];
+        if (stream.ReadAtLeast(head, HeaderSize, throwOnEndOfStream: false) < HeaderSize)
+        {
+            Invalidated = true;
+            return;
+        }
+
+        var span = head.AsSpan();
+        if (!span[..Magic.Length].SequenceEqual(Magic)
             || span[Magic.Length] != Version
             || !Checksum(span[..(HeaderSize - ChecksumSize)]).AsSpan().SequenceEqual(span.Slice(HeaderSize - ChecksumSize, ChecksumSize))
             || !span.Slice(Magic.Length + 1, DigestSize).SequenceEqual(_digest))
@@ -273,12 +297,12 @@ internal sealed class EmbeddingCache
 
         _dimension = dimension;
         var recordSize = KeySize + (dimension * sizeof(double)) + ChecksumSize;
-        var position = HeaderSize;
+        var record = new byte[recordSize];
         var read = 0;
-        while (read < count && position + recordSize <= span.Length)
+        while (read < count && stream.ReadAtLeast(record, recordSize, throwOnEndOfStream: false) == recordSize)
         {
-            var body = span.Slice(position, recordSize - ChecksumSize);
-            if (Checksum(body).AsSpan().SequenceEqual(span.Slice(position + recordSize - ChecksumSize, ChecksumSize)))
+            var body = record.AsSpan(0, recordSize - ChecksumSize);
+            if (Checksum(body).AsSpan().SequenceEqual(record.AsSpan(recordSize - ChecksumSize, ChecksumSize)))
             {
                 var vector = new double[dimension];
                 for (var d = 0; d < dimension; d++)
@@ -293,12 +317,18 @@ internal sealed class EmbeddingCache
                 Discarded++;
             }
 
-            position += recordSize;
             read++;
         }
 
         // Entries the header promises but the file lacks (a cut-off file) are lost as well
         Discarded += count - read;
         Loaded = _entries.Count;
+
+        // Bytes after the declared records mean that the file is not what its header says: reject it as a whole
+        if (read == count && stream.ReadByte() >= 0)
+        {
+            Reset();
+            Invalidated = true;
+        }
     }
 }

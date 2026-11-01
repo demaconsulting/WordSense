@@ -55,6 +55,16 @@ All scenarios below pass on every platform and target framework of the CI matrix
   dimension, mean vector and every lemma with its sense ids in column order, biases, rows, both thresholds and its form
   choosers; a blob without lemmas gives empty weights (`WeightsBlob_Read_NoLemmas_ReturnsEmptyWeights`,
   `WordSenseBuilder_WeightsBlobWriter_Write_NoLemmas_RoundTrips`).
+- **Encoder and layout are recorded** (`WeightsBlob_Read_Wsx3_HasLastLayoutAndNoEncoderPin`,
+  `WeightsBlob_Read_Wsx4_ReturnsEncoderShaAndLayout`, `WeightsBlob_Read_Wsx4TruncatedOrEmptyLayout_Throws`): a WSX3 blob
+  reads as the layout `last` without an encoder pin; a WSX4 blob gives the encoder SHA-256, the layout and the rest of
+  the content as WSX3 does; one that is cut inside the pin or has an empty layout is rejected.
+- **Weights of another layout or encoder are refused** (`WeightedLemmaTable_LoadEmbedded_Wsx4MatchingEncoderAndLayout_LoadsTheTable`,
+  `WeightedLemmaTable_LoadEmbedded_OtherLayout_Throws`, `WeightedLemmaTable_LoadEmbedded_OtherEncoderSha_Throws`,
+  `OnnxWordSenseModel_ClassifyAsync_WeightsOfOtherLayoutOrEncoder_ThrowsModelIntegrity`): WSX4 weights of the encoder and
+  layout of the model load; a layout mean blob for the layout `last` and a WSX3 blob for a layer mean are rejected with
+  both layouts named, a WSX4 blob of another encoder file is rejected with both digests, and a model reports each as
+  `ModelIntegrityException`.
 - **Reduced precision stays within the gate** (`WordSenseBuilder_WeightsBlobWriter_ReducedPrecision_StaysWithinTheAccuracyGate`):
   the weights stored as float16 change the measured fine accuracy of a model by no more than 0.2 percentage point
   against full precision.

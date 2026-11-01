@@ -160,6 +160,11 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
         ArgumentNullException.ThrowIfNull(spec);
         ArgumentOutOfRangeException.ThrowIfLessThan(maxSequenceLength, 8);
         ArgumentOutOfRangeException.ThrowIfGreaterThan(maxSequenceLength, 512);
+        if (spec.SenseLayers is not null)
+        {
+            FeatureLayout.Validate(spec.SenseLayers);
+        }
+
         _spec = spec;
         _modelDirectory = modelDirectory is null ? null : Path.GetFullPath(modelDirectory);
         _maxSequenceLength = maxSequenceLength;
@@ -555,7 +560,8 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
     {
         try
         {
-            return WeightedLemmaTable.LoadEmbedded(_spec.WeightsAssembly, _spec.WeightsResourceName, _spec.WeightsId, _spec.HiddenSize);
+            var onnx = _spec.Files.First(f => f.Name == _spec.OnnxFileName);
+            return WeightedLemmaTable.LoadEmbedded(_spec.WeightsAssembly, _spec.WeightsResourceName, _spec.WeightsId, _spec.HiddenSize, onnx.Sha256, _spec.SenseLayout);
         }
         catch (InvalidDataException ex)
         {
@@ -793,7 +799,8 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
             Path.Join(directory, _spec.VocabularyFileName),
             _spec.LowerCase,
             _maxSequenceLength,
-            IntraOpThreads);
+            IntraOpThreads,
+            _spec.SenseLayers);
 
         // The weights are trained and checked for the hidden size of the description; an ONNX file of another size
         // would make every feature unusable, so it is rejected here rather than silently answered from the lexicon

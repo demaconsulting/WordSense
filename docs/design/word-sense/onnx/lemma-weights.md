@@ -10,10 +10,13 @@ and decides the level of an answer from the lemma's own thresholds.
 
 #### Data Model
 
-- `WeightsData(ModelId, InventoryHash, Dimension, Mean, Lemmas)`: the decoded blob; `InventoryHash` is the 32-byte hash
+- `WeightsData(ModelId, InventoryHash, Dimension, Mean, Lemmas, EncoderSha256, Layout)`: the decoded blob;
+  `InventoryHash` is the 32-byte hash
   of the spelling, analysis, feature, entry, sense, group and lemma-block sections of the word image the weights were
   trained for, `Mean` is the
-  global (frozen) mean of the training vectors.
+  global (frozen) mean of the training vectors, `EncoderSha256` is the SHA-256 of the encoder file the weights were
+  trained on (null for a `WSX3` blob) and `Layout` is the layout of the sense feature (`last` or `mean:9-12`, see
+  `FeatureLayout`; `last` for a `WSX3` blob).
 - `WeightedLemma(Lemma, SenseIds, FineThreshold, GroupThreshold, Biases, Weights, Choosers)`: one lemma. `SenseIds` are
   the fine sense ids (`lemma#slug`, the sense ids of the public API) in column order, so row `i` of the weights scores
   sense `i`. There is one one-versus-rest row and one bias per sense, and at least two senses. The thresholds are
@@ -29,7 +32,8 @@ and decides the level of an answer from the lemma's own thresholds.
   ordinal order, that has weights, and is found through the form.
 - `WeightedLemmaTable`: the lemmas of the weights, found by lemma name, each with the indexes of its senses in the word
   image and the group of each sense (taken from the image, not stored in the blob); the choosers found by form.
-- Blob format `WSX3` (Brotli): the magic `WSX3`, the model id, the 32-byte inventory hash of the word image, the
+- Blob formats `WSX3` and `WSX4` (Brotli): the magic, the model id, for `WSX4` only the 32-byte SHA-256 of the encoder
+  file and the layout text (length-prefixed UTF-8), the 32-byte inventory hash of the word image, the
   dimension, a flag byte (0 for dense; sparse weights are not supported), the mean (little-endian float32), the lemma
   count, then per lemma in ordinal order: the lemma, `t_fine`, `t_group` (float32), the sense count `n`, the `n` sense
   ids, the `n` biases (float32), the `n` rows of the weights as float16 (IEEE half, little endian, row major), the
@@ -45,10 +49,12 @@ and decides the level of an answer from the lemma's own thresholds.
 
 #### Key Methods
 
-- `WeightsBlob.Read`: decodes and validates the blob. It does not check the inventory hash against an image; it returns
-  it, and `WeightedLemmaTable` checks it.
-- `WeightedLemmaTable.LoadEmbedded(assembly, resource, modelId, hiddenSize)`: reads the blob and resolves every sense
-  id against the word image; a different inventory hash, an unknown or duplicate sense or lemma, a sense count that
+- `WeightsBlob.Read`: decodes and validates the blob (`WSX3` or `WSX4`). It does not check the inventory hash, the encoder
+  or the layout against anything; it returns them, and `WeightedLemmaTable` checks them.
+- `WeightedLemmaTable.LoadEmbedded(assembly, resource, modelId, hiddenSize, encoderSha256, layout)`: reads the blob and
+  resolves every sense
+  id against the word image; a different inventory hash, a feature layout other than `layout` (a `WSX3` blob has the
+  layout `last`), a `WSX4` blob that names another encoder file, an unknown or duplicate sense or lemma, a sense count that
   differs from the weights, or a group threshold for a lemma none of whose senses is in a group is a load failure
   (`InvalidDataException`). Nothing is dropped. `ReadResource` reads a resource stream that can seek, which is what the
   runtime returns for an embedded resource, directly into an array of exactly its length (a growing buffer would hold

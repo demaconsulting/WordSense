@@ -382,7 +382,7 @@ internal sealed class OnnxClassifier
             }
             else
             {
-                vectors[p] = view.Vectors[view.Start[index]];
+                vectors[p] = (view.SenseVectors ?? view.Vectors)[view.Start[index]];
             }
         }
 

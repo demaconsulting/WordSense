@@ -24,6 +24,7 @@ internal static partial class Program
         var encoderModel = ModelCatalog.EncoderOf(model);
         using var encoder = encoderModel.OpenEncoder();
         var identity = EncoderIdentityOf(encoderModel.Spec);
+        await CpuPreflight.RunAsync(encoder, encoderModel.Spec, repository, output, cancellationToken).ConfigureAwait(false);
         var cacheDirectory = VectorCacheOf(options, repository, info);
 
         var request = new PosHeadRequest(
@@ -35,7 +36,7 @@ internal static partial class Program
             cacheDirectory,
             grid,
             IsOn(options, "report-fusion"));
-        var outcome = await PosHeadTrainer.TrainAsync(request, identity, (words, token) => encoder.EncodeAllAsync(words, token), output, cancellationToken).ConfigureAwait(false);
+        var outcome = await PosHeadTrainer.TrainAsync(request, identity, (words, token) => encoder.EncodeHeadAllAsync(words, token), output, cancellationToken).ConfigureAwait(false);
         var file = options.TryGetValue("output", out var target) ? Path.GetFullPath(target) : info.HeadPath(repository);
         Directory.CreateDirectory(Path.GetDirectoryName(file)!);
         File.WriteAllBytes(file, outcome.Blob);

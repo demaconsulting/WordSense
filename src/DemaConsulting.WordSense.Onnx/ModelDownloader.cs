@@ -53,6 +53,7 @@ internal sealed record DownloadSource(string Name, Uri Uri, DownloadMirror? Auth
 /// <param name="HeadInUse">True when the model answers with its head: the encoder runs for every word of several parts of speech, the head gives the probability of the parts of speech and the model counts as a source of part-of-speech evidence for a composition. False for a model that carries a head it does not use.</param>
 /// <param name="TenseHeadInUse">True when the model also answers with the tense head of its head file: the encoder runs for every word that is a same-spelling verb (a verb with a past and a non-past analysis) and the model offers the probability of past to a composition. The head file must then hold a tense head. Needs <paramref name="HeadInUse"/>.</param>
 /// <param name="BlobModelId">The identity recorded inside the embedded weights and head files, or null to use <see cref="WeightsId"/>.</param>
+/// <param name="SenseLayers">The layers, in increasing order, whose mean is the sense feature of a word, or null for the last layer. The last layer is the last one of the list and the graph exposes it as <c>last_hidden_state</c>; every other layer <c>n</c> is the graph output <c>hidden_n</c>. The part-of-speech and tense heads always read the last layer.</param>
 internal sealed record ModelSpec(
     string BaseModel,
     int Version,
@@ -66,10 +67,17 @@ internal sealed record ModelSpec(
     string? HeadResourceName = null,
     bool HeadInUse = false,
     bool TenseHeadInUse = false,
-    string? BlobModelId = null)
+    string? BlobModelId = null,
+    IReadOnlyList<int>? SenseLayers = null)
 {
     private const string OnnxPrefix = "model-";
     private const string OnnxSuffix = ".onnx";
+
+    /// <summary>
+    ///     Gets the layout of the sense feature (<c>last</c> or <c>mean:9-12</c>) that the embedded weights must record.
+    /// </summary>
+    /// <exception cref="ArgumentException">Thrown when <see cref="SenseLayers"/> is not a valid list of layers.</exception>
+    public string SenseLayout => FeatureLayout.Describe(SenseLayers);
 
     /// <summary>
     ///     Gets the public model identifier, which is the base model.

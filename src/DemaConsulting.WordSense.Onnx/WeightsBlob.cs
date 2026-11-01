@@ -12,15 +12,20 @@ namespace DemaConsulting.WordSense.Onnx;
 /// <param name="Dimension">The dense feature dimension, which is the hidden size of the encoder.</param>
 /// <param name="Mean">The global mean vector subtracted from a pooled vector before scoring; length <paramref name="Dimension"/>.</param>
 /// <param name="Lemmas">The classifiers, one per trained lemma.</param>
-internal sealed record WeightsData(string ModelId, byte[] InventoryHash, int Dimension, float[] Mean, IReadOnlyList<WeightedLemma> Lemmas);
+/// <param name="EncoderSha256">The 32-byte SHA-256 of the encoder file the weights were trained on, or null for a <c>WSX3</c> blob, which records none.</param>
+/// <param name="Layout">The layout of the sense feature the weights were trained on (see <see cref="FeatureLayout"/>); <c>last</c> for a <c>WSX3</c> blob.</param>
+internal sealed record WeightsData(string ModelId, byte[] InventoryHash, int Dimension, float[] Mean, IReadOnlyList<WeightedLemma> Lemmas, byte[]? EncoderSha256 = null, string Layout = FeatureLayout.Last);
 
 /// <summary>
-///     Reads the binary weights of an encoder model (<c>WSX3</c>, Brotli-compressed). The writer lives in the
+///     Reads the binary weights of an encoder model (<c>WSX3</c> or <c>WSX4</c>, Brotli-compressed). The writer lives in the
 ///     repository's build tool.
 /// </summary>
 /// <remarks>
 ///     <para>
-///     Content after the Brotli layer: the magic <c>WSX3</c>; the model id as a length-prefixed UTF-8 string; the
+///     Content after the Brotli layer: the magic <c>WSX3</c> or <c>WSX4</c>; the model id as a length-prefixed UTF-8
+///     string; for <c>WSX4</c> only, the 32-byte SHA-256 of the encoder file the weights were trained on and the layout
+///     of the sense feature as a length-prefixed UTF-8 string (<c>last</c> or <c>mean:9-12</c>, see
+///     <see cref="FeatureLayout"/>); the
 ///     32-byte inventory hash (SHA-256 of the sense inventory of the word image the weights were trained for); the
 ///     dimension as a varint; a flag byte that is always 0 (dense weights); the mean as little-endian 32-bit floats;
 ///     the lemma count as a varint; then per lemma, in ordinal order of the lemma: the lemma, the fine threshold and the
@@ -28,23 +33,25 @@ internal sealed record WeightsData(string ModelId, byte[] InventoryHash, int Dim
 ///     <c>n</c> biases (floats), the <c>n × dimension</c> weights as little-endian half-precision floats (row-major),
 ///     the chooser count (varint) and per chooser: the form, its threshold (float), its label count <c>k</c> (varint, at
 ///     least two), the labels, the <c>k</c> biases (floats) and the <c>k × dimension</c> weights (halves). The reader
-///     widens every half to a float.
+///     widens every half to a float. A <c>WSX3</c> blob has the layout <c>last</c> and no encoder pin.
 ///     </para>
 ///     <para>
 ///     The reader checks the structure only: every sense id must be non-empty and used once in the whole blob, a
-///     threshold must be finite and not negative, and every value must be finite. The hash is returned as read;
-///     <see cref="WeightedLemmaTable"/> checks the blob against the word image. Varints are 7-bit little-endian groups;
+///     threshold must be finite and not negative, and every value must be finite. The hash, the encoder SHA-256 and the
+///     layout are returned as read; <see cref="WeightedLemmaTable"/> checks the blob against the word image and the
+///     model. Varints are 7-bit little-endian groups;
 ///     strings are a varint byte length followed by UTF-8 bytes.
 ///     </para>
 /// </remarks>
 internal static class WeightsBlob
 {
     /// <summary>
-    ///     The size of the inventory hash.
+    ///     The size of the inventory hash and of the encoder SHA-256.
     /// </summary>
     public const int HashSize = 32;
 
-    private static readonly byte[] Magic = "WSX3"u8.ToArray();
+    private static readonly byte[] MagicV3 = "WSX3"u8.ToArray();
+    private static readonly byte[] MagicV4 = "WSX4"u8.ToArray();
 
     /// <summary>
     ///     UTF-8 decoding that throws on malformed bytes instead of substituting replacement characters.
@@ -61,13 +68,28 @@ internal static class WeightsBlob
     {
         var data = Decompress(blob);
         var span = data.AsSpan();
-        if (span.Length < Magic.Length || !span[..Magic.Length].SequenceEqual(Magic))
+        var isV4 = span.Length >= MagicV4.Length && span[..MagicV4.Length].SequenceEqual(MagicV4);
+        if (!isV4 && (span.Length < MagicV3.Length || !span[..MagicV3.Length].SequenceEqual(MagicV3)))
         {
             throw new InvalidDataException("The weights have an unknown format.");
         }
 
-        var p = Magic.Length;
+        var p = MagicV3.Length;
         var modelId = ReadString(span, ref p);
+        byte[]? encoderSha256 = null;
+        var layout = FeatureLayout.Last;
+        if (isV4)
+        {
+            Need(span, p, HashSize);
+            encoderSha256 = span.Slice(p, HashSize).ToArray();
+            p += HashSize;
+            layout = ReadString(span, ref p);
+            if (layout.Length == 0)
+            {
+                throw new InvalidDataException("The weights have an empty feature layout.");
+            }
+        }
+
         Need(span, p, HashSize);
         var inventoryHash = span.Slice(p, HashSize).ToArray();
         p += HashSize;
@@ -101,7 +123,7 @@ internal static class WeightsBlob
         }
 
         return p == span.Length
-            ? new WeightsData(modelId, inventoryHash, dimension, mean, lemmas)
+            ? new WeightsData(modelId, inventoryHash, dimension, mean, lemmas, encoderSha256, layout)
             : throw new InvalidDataException("The weights have trailing data.");
     }
 

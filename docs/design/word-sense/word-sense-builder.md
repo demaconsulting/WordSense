@@ -90,7 +90,16 @@ implementation of the feature computation.
   the reader. Equal data always gives equal decompressed sections.
 - `WeightsTrainer`, `LogisticTrainer`, `ModelTrainer` and `WeightsBlobWriter`: train the per-lemma classifiers and the
   form choosers from pooled encoder vectors and serialize the weights blob (`WSX3`: float16 weights, the sense ids of
-  each lemma, the thresholds, and the form choosers).
+  each lemma, the thresholds, and the form choosers; `WSX4` for weights that name their encoder: the same content after
+  the SHA-256 of the encoder file and the layout of the sense feature). The writer writes `WSX3` for every model that has
+  no sense layers, so the committed weights of such a model are rewritten byte for byte.
+- `Canary`, `CpuPreflight`: the CPU canary (see the command `canary`) and the preflight of `weights`,
+  `train-pos-head` and `train-tense-head`. The preflight encodes a fixed list of sentences, hashes the bits of their sense
+  and last-layer vectors and compares the hash with the reference fingerprint of the encoder in
+  `tools/WordSense.Builder/cpu-fingerprints.tsv` (model identity, encoder SHA-256, fingerprint). It prints that the CPU
+  reproduces the reference, or a warning that weights built here are not byte-reproducible (the float kernels of the CPU
+  decide the last bits of an int8 encoder), or, when the file has no line for the encoder, the line to record; it never
+  stops a run.
 - `Lbfgs`, `MultinomialLogisticTrainer`, `PosTokenTable`, `PosFitOptions`, `PosFit`: the fit of the part-of-speech head.
   `Lbfgs` is a limited-memory BFGS minimizer in double precision with a strong-Wolfe line search, without a random
   choice. `PosTokenTable` holds the pooled vectors of the tokens of a set of sentences (one row per token, with the
@@ -350,6 +359,17 @@ instead of `--model`.
   `--gold-dir` or `--read-set` that does not exist (or a directory without a gold file) is an error, and without the
   options the default treebank test file is used when it exists and the other parts are left out; it exits with 1 when
   a sentence is shared.
+- `canary --write FILE --sentences FILE [--model bert-base-cased] [--arm-tolerance 40]` and `canary --check FILE
+  [--arm-tolerance N]`: the CPU canary (`Canary`, `Program.Canary.cs`). `--write` answers the sentences of a TSV file
+  (the first column is the id, the last the words joined by spaces) with the public model on this machine and writes
+  the canary file: the header (`model`, `encoder-sha256`, `arm-tolerance`, `written-on`) and per sentence the answer to
+  every word, the level and the key (`Sense:bank#financial-institution`); the confidence is not part of the answer.
+  `--check` answers the same sentences on this machine and lists every word whose answer differs. It exits with 1 when
+  more words differ than the architecture allows: none on x86 and x86-64, at most the tolerance on ARM (the option,
+  else the header, else 40; a negative option or a header that is not a number that is not negative is an error);
+  another architecture is not judged. A file without the header `encoder-sha256` (`--write` always writes it) is
+  invalid when it is read, and a file written for another encoder file is refused, so a
+  retrained model needs a new file.
 - `open-counts [--corpus DIR] [--output DIR]`: counts the tag statistics of the training split of the representative
   open corpus (every token, whatever its consensus status) and writes the count files of `corpus/open/counts`
   (`word-tags.tsv`, `tag-ngrams.tsv` and the clause counts `tag-clause-ngrams.tsv`).
@@ -445,11 +465,14 @@ for at least two of its senses to get weights; a lemma with fewer is not an erro
 2. Open the model on the verified files of `model/<base-model>/v<version>/` (put there by `fetch-models`), and open the
    embedding cache (see below) unless
    `--no-cache` is given. Take the global mean from the existing weights blob of the model when it exists, reads, names
-   the same weights identity (`WeightsId`) and is not overridden by `--recompute-mean` (the *frozen mean*); the reason
+   the same weights identity (`WeightsId`), the same feature layout (`last` or `mean:9-12`) and, for a `WSX4` blob, the
+   same encoder file, and is not overridden by `--recompute-mean` (the *frozen mean*); the reason
    is printed whenever the
-   mean is computed instead.
-3. Get the pooled vector of every anchor sentence (the hidden states of the target word, mean over its word pieces):
-   from the cache when present, otherwise from the encoder. Progress lines report the cache hits, the sentences
+   mean is computed instead. Before the work starts the CPU preflight (see below) says whether this CPU reproduces the
+   reference vectors of the encoder.
+3. Get the pooled vector of every anchor sentence (the sense vector of the target word: the hidden states mean-pooled
+   over its word pieces, and with sense layers the mean of the layers): from the cache when present, otherwise from the
+   encoder. Progress lines report the cache hits, the sentences
    encoded, the elapsed time and, at the end, the time spent in the encoder.
 4. Without a frozen mean, compute the global mean of the pooled vectors. Center every vector on the mean and scale it
    to unit length with the same feature computation the classifier uses.
@@ -489,7 +512,8 @@ for at least two of its senses to get weights; a lemma with fewer is not an erro
    at the part-of-speech level),
    print both fine top-1 accuracies, and fail without writing when they differ by more than 0.2 percentage point.
    Then write the weights blob
-   (`WSX3`, float16 weights) to the package's `Resources/weights.bin`. The summary of the run counts the lemmas that
+   (`WSX3`, float16 weights; for a model with sense layers `WSX4`, which also records the SHA-256 of the encoder file and
+   the layout of the sense feature) to the package's `Resources/weights.bin`. The summary of the run counts the lemmas that
    have a finite fine threshold and a finite group threshold and names the lemmas that got no weights.
 
 **Kernel solver (`KernelBasis`, `LemmaFitter`, `LogisticTrainer`).** The weight vector of an L2-regularized logistic
@@ -648,16 +672,20 @@ the anchors have changed so much that the old mean no longer centers them; the w
 so its output is cached per model in `<cache>/<weights-id>/embeddings.bin` (default cache folder
 `<repository>/.cache/embeddings`, ignored by git). An entry is keyed by the SHA-256 of the exact word sequence and the
 target word index, and the file is valid only for the digest of the model's ONNX file and vocabulary (their SHA-256 as
-pinned in the model specification and verified when the model is opened), the casing and the version of ONNX Runtime
+pinned in the model specification and verified when the model is opened), the casing, the layout of the sense feature
+(`last`, or the mean of layers such as `mean:9-12`) and the version of ONNX Runtime
 (a new runtime version changes the low digits of the int8 encoder output, and with them the weights): a changed model
-file or runtime drops the whole cache. The vectors are stored as the exact 64-bit numbers the encoder returned, so a
+file, layout or runtime drops the whole cache. The vectors are stored as the exact 64-bit numbers the encoder returned,
+so a
 cached vector is bit-identical to a fresh encode. Every entry carries a checksum; an entry that fails it, a cut-off
-file,
-a damaged header or an unreadable file is ignored and the sentences are encoded again, never failing the run. The file
-is rewritten
-atomically (a temporary file in the same folder, then renamed) at the end of the run and after every 4000 newly
+file, a damaged header, bytes after the declared records or an unreadable file is ignored and the sentences are
+encoded again, never failing the run. The file is read as a stream, one record at a time (a cache of more than 2 GiB
+cannot be read into one array), and is rewritten atomically (a temporary file in the same folder, then renamed) at the
+end of the run and after every 4000 newly
 encoded sentences, so an interrupted run keeps its work. The cache does not know the encoder code: after a change of
-the pooling or tokenization that keeps the model files, delete the cache folder or run once with `--no-cache`.
+the pooling or tokenization that keeps the model files, delete the cache folder or run once with `--no-cache`. The
+vector cache of the head trainers (`PosVectorCache`) holds the last-layer vectors of whole sentences (the source
+`last_hidden_state` is part of its digest) and does not depend on the sense layout.
 
 **Fit cache (`FitCache`).** Fitting the classifiers is the longest step once the encoding is cached (about 1.5 minutes
 for the 775 lemmas of MiniLM and 2 minutes for BertBaseCased with the kernel solver; the feature-space solver needed 77
@@ -698,7 +726,8 @@ is trained and selected on the representative part of the open corpus alone, rea
    overlap, and, for an external part (the treebank files and the read set), so is a run of 8 words in common. The run
    prints the number of overlaps and stops with an `InvalidDataException` that names up to five of them when there is
    one.
-3. **Vectors.** Each sentence is encoded with `OnnxEncoder.EncodeAllAsync`, the pooling of the library, and the vector
+3. **Vectors.** Each sentence is encoded with `OnnxEncoder.EncodeHeadAllAsync`, the last-layer pooling of the library,
+   and the vector
    of every token is stored as a 32-bit float in a `PosTokenTable`. With a cache directory the vectors of a set come
    from `PosVectorCache` when its digest and its word hash match, and are written to it after encoding.
 4. **Fit and selection.** For each `C` of the grid, in increasing order, `MultinomialLogisticTrainer.Fit` fits the head

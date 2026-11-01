@@ -7,7 +7,9 @@ through `ModelAssets` (skipped when the files have not been fetched), because th
 determinism of the vectors of a real ONNX session. Constructor validation scenarios that need no real model run without
 it. ONNX Runtime is limited to two intra-op threads in the tests. The windows are checked with small maximum sequence
 lengths (16 and 20) so that a short text needs several windows. `PossessiveViewTests.cs` tests the possessive view
-without a model, against the lexicon of the core package.
+without a model, against the lexicon of the core package. `OnnxEncoderLayerTests.cs` tests the sense layers with a tiny
+tapped graph that `TappedGraph` writes as ONNX bytes: the hidden state of layer `n` at a token is the token id times a
+constant vector of the layer, so every expected vector is computed without a model file.
 
 #### Test Environment
 
@@ -19,6 +21,23 @@ All scenarios below pass on every platform and target framework of the CI matrix
 
 #### Test Scenarios
 
+- **Sense layers** (`OnnxEncoder_EncodeAsync_SenseLayers_ReturnsMeanOfLayers`,
+  `OnnxEncoder_EncodeAllAsync_SenseLayers_EqualsEncodeAsyncAndWindows`): with the layers 9 to 12 the sense vector of a
+  word of one piece and of a word of two pieces equals the mean of the four per-layer means, and the vector of a text
+  in windows of 8 tokens equals the vector of the same word asked alone.
+- **Head vector is the last layer** (`OnnxEncoder_EncodeHeadAllAsync_SenseLayers_ReturnsLastLayerUnchanged`,
+  `OnnxEncoder_EncodeAsync_NoSenseLayers_ReturnsLastLayer`): the head vectors of the layered encoder are bit-identical
+  to the vectors of an encoder without sense layers on the same file, the view of the layered encoder has the last layer
+  as `Vectors` and the layer mean as `SenseVectors`, and an encoder without sense layers has no sense vectors in the
+  view.
+- **Missing tap** (`OnnxEncoder_Constructor_MissingTapOutput_ThrowsInvalidData`,
+  `OnnxWordSenseModel_ClassifyAsync_MissingTapOutput_ThrowsModelIntegrity`): a graph without `hidden_10`, and a graph
+  without taps, are rejected with the name of the missing output; a model whose description has sense layers reports it
+  as
+  `ModelIntegrityException` and releases the encoder, and the same description over a graph with every tap answers.
+- **Invalid sense layers** (`OnnxEncoder_Constructor_InvalidSenseLayers_ThrowsArgument`,
+  `FeatureLayout_Describe_Layers_ReturnsLayout`): one layer, no layer, layers that do not increase and a layer below 1
+  are rejected; the layout of the layers is `last`, a range for consecutive layers and a list otherwise.
 - **Deterministic vectors**: encoding the same words and targets twice gives identical vectors, one per target, each of
   the model's hidden size (384 for MiniLM).
 - **No targets or no tokens**: no targets give an empty result and a target without word pieces gives a null entry.
@@ -48,7 +67,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **A word that cannot fit** (`OnnxEncoder_PlanWindows_WordLongerThanWindow_StartsItsOwnWindow`,
   `OnnxEncoder_EncodeAllAsync_WordLongerThanWindow_IsPooledOverItsFirstPieces`): a word of 20 pieces with a window of 14
   gets a window that starts at the word, a word without pieces gets none, and the vector of the word equals, bit for
-  bit, that of its first 14 pieces encoded alone.
+  bit, that of its first 14 pieces encoded alone. At the end of the text (`..._WordLongerThanWindowAtTextEnd_*`, and
+  `OnnxEncoder_PlanWindows_EveryPositionAndLengthOfOneWord_GetsWindow` over every position and length of one word) the
+  word also has its window and its vector.
 - **A straddling word is pooled over all its pieces** (`OnnxEncoder_EncodeAllAsync_WordStraddlingWindowBorder_IsPooledOverAllItsPieces`):
   the vector of a word of 9 pieces at the pieces 6 to 14 equals, bit for bit, that of the window that starts at the
   word, encoded on its own.

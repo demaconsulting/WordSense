@@ -6,12 +6,13 @@ using DemaConsulting.WordSense.Onnx;
 namespace WordSense.Builder;
 
 /// <summary>
-///     Writes the binary weights of an encoder model (<c>WSX3</c>, Brotli-compressed) that the Onnx package reads.
+///     Writes the binary weights of an encoder model (<c>WSX3</c> or <c>WSX4</c>, Brotli-compressed) that the Onnx package reads.
 /// </summary>
 /// <remarks>
 ///     <para>
 ///     The layout is described by the reader, <c>WeightsBlob</c> in the Onnx package, and the reader is the only
-///     definition of it: after the Brotli layer come the magic, the model id, the inventory hash, the dimension, the
+///     definition of it: after the Brotli layer come the magic, the model id, for <c>WSX4</c> the encoder SHA-256 and the
+///     feature layout, the inventory hash, the dimension, the
 ///     dense flag and the mean, then per lemma in ordinal order the lemma, the fine and the group threshold (32-bit
 ///     floats), the sense ids, the biases (32-bit floats), the weights as half-precision floats and the form choosers.
 ///     Half precision halves the blob; the loss in accuracy is measured by <see cref="PrecisionGate"/> and must stay
@@ -25,15 +26,16 @@ namespace WordSense.Builder;
 /// </remarks>
 internal static class WeightsBlobWriter
 {
-    private static readonly byte[] Magic = "WSX3"u8.ToArray();
+    private static readonly byte[] MagicV3 = "WSX3"u8.ToArray();
+    private static readonly byte[] MagicV4 = "WSX4"u8.ToArray();
 
     /// <summary>
     ///     Serializes weights.
     /// </summary>
-    /// <param name="data">The weights.</param>
+    /// <param name="data">The weights; a blob that names its encoder (<see cref="WeightsData.EncoderSha256"/>) is written as <c>WSX4</c> with that encoder and its layout, any other as <c>WSX3</c>.</param>
     /// <returns>The compressed blob.</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="data"/> is null.</exception>
-    /// <exception cref="ArgumentException">Thrown when the mean or the hash has the wrong size, a sense id count differs from the number of rows, or a weight does not fit half precision.</exception>
+    /// <exception cref="ArgumentException">Thrown when the mean, the inventory hash or the encoder hash has the wrong size, a feature layout other than <c>last</c> has no encoder hash, a sense id count differs from the number of rows, or a weight does not fit half precision.</exception>
     public static byte[] Write(WeightsData data)
     {
         ArgumentNullException.ThrowIfNull(data);
@@ -47,9 +49,30 @@ internal static class WeightsBlobWriter
             throw new ArgumentException("The inventory hash needs 32 bytes.", nameof(data));
         }
 
+        if (data.EncoderSha256 is { } encoder && encoder.Length != WeightsBlob.HashSize)
+        {
+            throw new ArgumentException("The encoder hash needs 32 bytes.", nameof(data));
+        }
+
+        if (string.IsNullOrEmpty(data.Layout) || (data.EncoderSha256 is null && !string.Equals(data.Layout, FeatureLayout.Last, StringComparison.Ordinal)))
+        {
+            throw new ArgumentException("A feature layout other than 'last' needs the hash of its encoder (WSX4).", nameof(data));
+        }
+
         using var raw = new MemoryStream();
-        raw.Write(Magic);
-        WriteString(raw, data.ModelId);
+        if (data.EncoderSha256 is { } sha)
+        {
+            raw.Write(MagicV4);
+            WriteString(raw, data.ModelId);
+            raw.Write(sha);
+            WriteString(raw, data.Layout);
+        }
+        else
+        {
+            raw.Write(MagicV3);
+            WriteString(raw, data.ModelId);
+        }
+
         raw.Write(data.InventoryHash);
         VarintWriter.WriteVarint(raw, data.Dimension);
         raw.WriteByte(0);

@@ -35,8 +35,10 @@ public class EmbeddedWeightsTests
     public void EmbeddedWeights_MiniLM_MatchesWordImage()
     {
         // Arrange / Act: load the embedded weights
+        using var model = new MiniLMEncoderModel(null, 128);
+        var spec = model.Spec;
         var table = WeightedLemmaTable.LoadEmbedded(
-            typeof(MiniLMWordSenseModel).Assembly, "DemaConsulting.WordSense.MiniLM.weights.bin", "all-MiniLM-L6-v2-int8", 384);
+            typeof(MiniLMWordSenseModel).Assembly, "DemaConsulting.WordSense.MiniLM.weights.bin", "all-MiniLM-L6-v2-int8", 384, spec.Files.First(f => f.Name == spec.OnnxFileName).Sha256, spec.SenseLayout);
 
         // Assert
         AssertMatchesWordImage(table, "all-MiniLM-L6-v2-int8", 384);
@@ -50,8 +52,10 @@ public class EmbeddedWeightsTests
     public void EmbeddedWeights_BertBaseCased_MatchesWordImage()
     {
         // Arrange / Act: load the embedded weights
+        using var model = new BertBaseCasedEncoderModel(null, 128);
+        var spec = model.Spec;
         var table = WeightedLemmaTable.LoadEmbedded(
-            typeof(BertBaseCasedWordSenseModel).Assembly, "DemaConsulting.WordSense.BertBaseCased.weights.bin", "bert-base-cased-int8", 768);
+            typeof(BertBaseCasedWordSenseModel).Assembly, "DemaConsulting.WordSense.BertBaseCased.weights.bin", "bert-base-cased-int8", 768, spec.Files.First(f => f.Name == spec.OnnxFileName).Sha256, spec.SenseLayout);
 
         // Assert
         AssertMatchesWordImage(table, "bert-base-cased-int8", 768);

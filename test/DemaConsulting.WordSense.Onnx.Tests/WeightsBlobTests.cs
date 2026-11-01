@@ -4,7 +4,7 @@ namespace DemaConsulting.WordSense.Onnx.Tests;
 
 /// <summary>
 ///     Tests for the weights reader <see cref="WeightsBlob"/>. The blobs are written by the test helper
-///     <see cref="BlobWriter"/>, which follows the WSX3 layout; round trips with the real writer are tested in the
+///     <see cref="BlobWriter"/>, which follows the WSX3 and WSX4 layouts; round trips with the real writer are tested in the
 ///     build tool's tests.
 /// </summary>
 public class WeightsBlobTests
@@ -256,13 +256,64 @@ public class WeightsBlobTests
     {
         // Arrange: another version digit, and the flag byte that follows the dimension
         var version = TwoLemmasRaw();
-        version[3] = (byte)'4';
+        version[3] = (byte)'5';
         var sparse = TwoLemmasRaw();
         sparse[BlobWriter.Header(BlobWriter.ModelId, Hash, 1).Length - 1 - 4] = 1;
 
         // Act / Assert
-        Assert.True(Throws(() => WeightsBlob.Read(BlobWriter.Compress(version))), "Version WSX4.");
+        Assert.True(Throws(() => WeightsBlob.Read(BlobWriter.Compress(version))), "Version WSX5.");
         Assert.True(Throws(() => WeightsBlob.Read(BlobWriter.Compress(sparse))), "Sparse flag.");
+    }
+
+    /// <summary>
+    ///     A WSX3 blob reads as the last-layer layout with no encoder pin.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_Wsx3_HasLastLayoutAndNoEncoderPin()
+    {
+        // Arrange / Act
+        var data = WeightsBlob.Read(BlobWriter.Compress(TwoLemmasRaw()));
+
+        // Assert
+        Assert.Null(data.EncoderSha256);
+        Assert.Equal(FeatureLayout.Last, data.Layout);
+    }
+
+    /// <summary>
+    ///     A WSX4 blob reads back its encoder SHA-256 and its feature layout, and the rest of the content as WSX3 does.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_Wsx4_ReturnsEncoderShaAndLayout()
+    {
+        // Arrange: the same lemmas as in the WSX3 blob, with the encoder pin and the layout of the mean of layers 9 to 12
+        var sha = Enumerable.Range(100, WeightsBlob.HashSize).Select(i => (byte)i).ToArray();
+        var lemmas = new[] { LemmaSpec.Of("a", 1, "a#x", "a#y"), LemmaSpec.Of("b", 1, "b#x", "b#y", "b#z") };
+        var raw = BlobWriter.RawWith(BlobWriter.Header(BlobWriter.ModelId, Hash, 1, null, sha, "mean:9-12"), lemmas);
+
+        // Act
+        var data = WeightsBlob.Read(BlobWriter.Compress(raw));
+
+        // Assert
+        Assert.Equal(sha, data.EncoderSha256);
+        Assert.Equal("mean:9-12", data.Layout);
+        Assert.Equal(Hash, data.InventoryHash);
+        Assert.Equal(1, data.Dimension);
+        Assert.Equal(["a", "b"], data.Lemmas.Select(l => l.Lemma));
+    }
+
+    /// <summary>
+    ///     A WSX4 blob that is cut inside its encoder pin, or that has an empty layout, is rejected.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_Wsx4TruncatedOrEmptyLayout_Throws()
+    {
+        // Arrange: the header ends after 5 bytes of the pin; another blob has a zero-length layout
+        var truncated = BlobWriter.Compress([.. "WSX4"u8.ToArray(), 1, (byte)'m', 1, 2, 3, 4, 5]);
+        var empty = BlobWriter.Compress(BlobWriter.RawWith(BlobWriter.Header(BlobWriter.ModelId, Hash, 1, null, Hash, string.Empty), []));
+
+        // Act / Assert
+        Assert.True(Throws(() => WeightsBlob.Read(truncated)), "Truncated pin.");
+        Assert.True(Throws(() => WeightsBlob.Read(empty)), "Empty layout.");
     }
 
     /// <summary>

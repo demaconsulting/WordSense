@@ -73,8 +73,10 @@ sections:
                   - OnnxEncoder_PlanWindows_WordNearTextEnd_AddedWindowStaysInsideText
                   - OnnxEncoder_PlanWindows_WordLongerThanWindow_StartsItsOwnWindow
                   - OnnxEncoder_PlanWindows_RandomWordLengths_EveryFittingWordIsContained
+                  - OnnxEncoder_PlanWindows_EveryPositionAndLengthOfOneWord_GetsWindow
                   - OnnxEncoder_EncodeAllAsync_WordStraddlingWindowBorder_IsPooledOverAllItsPieces
                   - OnnxEncoder_EncodeAllAsync_WordLongerThanWindow_IsPooledOverItsFirstPieces
+                  - OnnxEncoder_EncodeAllAsync_WordLongerThanWindowAtTextEnd_IsPooledOverItsFirstPieces
 
               - id: WordSense-Onnx-OnnxEncoder-PossessiveView
                 title: >-
@@ -116,3 +118,37 @@ sections:
                   - OnnxEncoder_EncodeAllAsync_InvalidUse_Throws
                   - OnnxEncoder_Constructor_InvalidArguments_Throws
                   - OnnxEncoder_Constructor_InvalidModelFile_Throws
+
+              - id: WordSense-Onnx-OnnxEncoder-SenseLayers
+                title: >-
+                  For a model with sense layers, OnnxEncoder shall return as the sense vector of a word the mean, over
+                  the layers in increasing order, of the per-layer means of the word pieces of the word, the same
+                  vector for a word asked alone, in a text and in a window, and shall return for the part-of-speech and
+                  tense heads the last layer exactly as an encoder without sense layers returns it; an encoder without
+                  sense layers shall return the last layer as its sense vector.
+                tags: [unit]
+                justification: |
+                  The sense features of a model with taps are the mean of its last layers while its heads keep reading
+                  the last layer; training and running must see the same vectors, and a model without taps must not
+                  change.
+                tests:
+                  - OnnxEncoder_EncodeAsync_SenseLayers_ReturnsMeanOfLayers
+                  - OnnxEncoder_EncodeAllAsync_SenseLayers_EqualsEncodeAsyncAndWindows
+                  - OnnxEncoder_EncodeHeadAllAsync_SenseLayers_ReturnsLastLayerUnchanged
+                  - OnnxEncoder_EncodeAsync_NoSenseLayers_ReturnsLastLayer
+                  - FeatureLayout_Describe_Layers_ReturnsLayout
+                  - OnnxClassifier_ClassifyAsync_ViewWithSenseVectors_ScoresSensesFromThemAndPartOfSpeechFromTheHeadVectors
+
+              - id: WordSense-Onnx-OnnxEncoder-Taps
+                title: >-
+                  OnnxEncoder shall reject sense layers that are not at least two increasing layers, and a model file
+                  that lacks the output of a sense layer (the tap hidden_n of a layer n, or last_hidden_state), and a
+                  model description with sense layers shall report such a file as a damaged model.
+                tags: [unit]
+                justification: |
+                  A graph without the taps, run with weights trained on their mean, would answer plausibly and wrongly;
+                  the failure must name the missing output.
+                tests:
+                  - OnnxEncoder_Constructor_MissingTapOutput_ThrowsInvalidData
+                  - OnnxEncoder_Constructor_InvalidSenseLayers_ThrowsArgument
+                  - OnnxWordSenseModel_ClassifyAsync_MissingTapOutput_ThrowsModelIntegrity

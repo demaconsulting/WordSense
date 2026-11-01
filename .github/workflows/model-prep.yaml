@@ -1,0 +1,144 @@
+---
+name: Model Prep
+
+# Rebuilds the encoder file of bert-base-cased v2 (model-int8-static.onnx) from the upstream fp32 export and checks that
+# every step is byte-identical to the pinned result (tools/model-prep/make-bert-static-encoder.py).
+#
+# Run it by hand after a change of tools/model-prep or of the pinned Python packages. The upstream revision and the
+# SHA-256 of the upstream file are pinned in the script. While they are still placeholders (UPSTREAM_REVISION and
+# UPSTREAM_SHA256), the workflow and the script fail. A run with the input `bootstrap` resolves the revision, prints it
+# with the SHA-256 of the upstream file and states that its output is unpinned; copy both values from the summary of
+# that run into the script, then run the workflow again without `bootstrap`.
+
+on:
+  workflow_dispatch:
+    inputs:
+      bootstrap:
+        description: >-
+          Bootstrap the upstream pin: resolve and print the revision and the SHA-256 (the output is unpinned)
+        type: boolean
+        required: false
+        default: false
+      upstream-revision:
+        description: >-
+          Bootstrap only: Hugging Face revision (commit SHA) of Xenova/bert-base-cased; empty resolves the current main
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  rebuild:
+    name: Rebuild bert-base-cased v2
+    runs-on: ubuntu-latest
+    env:
+      BOOTSTRAP: ${{ inputs.bootstrap }}
+      REQUESTED_REVISION: ${{ inputs.upstream-revision }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      - name: Install the pinned packages
+        run: python -m pip install -r tools/model-prep/requirements.txt
+
+      - name: Resolve the upstream revision
+        id: revision
+        run: |
+          set -euo pipefail
+          script=tools/model-prep/make-bert-static-encoder.py
+          if [ "${BOOTSTRAP}" = "true" ]; then
+            revision="${REQUESTED_REVISION}"
+            if [ -z "${revision}" ]; then
+              revision=$(curl -sSL --fail https://huggingface.co/api/models/Xenova/bert-base-cased \
+                | python -c "import json, sys; print(json.load(sys.stdin)['sha'])")
+            fi
+            echo "### Bootstrap: the output of this run is unpinned" >> "${GITHUB_STEP_SUMMARY}"
+            echo "Upstream revision: \`${revision}\`" >> "${GITHUB_STEP_SUMMARY}"
+          else
+            if [ -n "${REQUESTED_REVISION}" ]; then
+              echo "The input upstream-revision is only for a bootstrap run." >&2
+              exit 1
+            fi
+            revision=$(sed -n 's/^UPSTREAM_REVISION = "\(.*\)"$/\1/p' "${script}")
+            sha=$(sed -n 's/^UPSTREAM_SHA256 = "\(.*\)"$/\1/p' "${script}")
+            case "${revision}${sha}" in
+              *TODO-PIN*)
+                echo "The upstream revision or its SHA-256 is still a placeholder in ${script}." >&2
+                echo "Run the workflow once with the input bootstrap, pin the printed values and run it again." >&2
+                exit 1
+                ;;
+            esac
+            echo "Upstream revision: \`${revision}\` (pinned)" >> "${GITHUB_STEP_SUMMARY}"
+          fi
+          if ! printf '%s' "${revision}" | grep -Eq '^[0-9a-f]{40}$'; then
+            echo "The revision '${revision}' is not a 40-digit commit SHA." >&2
+            exit 1
+          fi
+          echo "revision=${revision}" >> "${GITHUB_OUTPUT}"
+
+      - name: Fetch the tokenizer of bert-base-cased v1
+        run: |
+          set -euo pipefail
+          mkdir -p model/bert-base-cased/v1
+          curl -sSL --fail -o model/bert-base-cased/v1/tokenizer.json \
+            https://github.com/demaconsulting/WordSense/releases/download/models/bert-base-cased/v1/tokenizer.json
+
+      - name: Check that the calibration set is reproducible
+        run: |
+          set -euo pipefail
+          python tools/model-prep/make-calib.py "${RUNNER_TEMP}/calib.tsv"
+          cmp "${RUNNER_TEMP}/calib.tsv" tools/model-prep/calib.tsv
+
+      - name: Rebuild the encoder file
+        env:
+          REVISION: ${{ steps.revision.outputs.revision }}
+        run: |
+          set -euo pipefail
+          mkdir -p out work
+          flags=()
+          if [ "${BOOTSTRAP}" = "true" ]; then
+            flags+=(--accept-unpinned-upstream)
+          fi
+          python tools/model-prep/make-bert-static-encoder.py out/model-int8-static.onnx \
+            --upstream-revision "${REVISION}" "${flags[@]}" --work work 2>&1 | tee out/rebuild.log
+          {
+            echo "### Rebuild of model-int8-static.onnx"
+            echo
+            if [ "${BOOTSTRAP}" = "true" ]; then
+              echo "**Bootstrap: the upstream revision and the SHA-256 of the upstream file are not pinned," \
+                "so this output is unpinned.**"
+              echo "Pin both values below in \`tools/model-prep/make-bert-static-encoder.py\`" \
+                "and run the workflow again without bootstrap."
+              echo
+            fi
+            echo '```text'
+            grep -E '^(upstream|cut graph|fp32 graph|static int8|output|parity|structure|BOOTSTRAP)' out/rebuild.log
+            echo '```'
+          } >> "${GITHUB_STEP_SUMMARY}"
+
+      - name: Compare with the pinned checksum of the model folder
+        run: |
+          set -euo pipefail
+          expected=$(grep ' model-int8-static.onnx$' model/bert-base-cased/SHA256SUMS | cut -d ' ' -f 1 || true)
+          actual=$(sha256sum out/model-int8-static.onnx | cut -d ' ' -f 1)
+          echo "model/bert-base-cased/SHA256SUMS: ${expected:-<no entry>}"
+          echo "rebuilt:                          ${actual}"
+          if [ -n "${expected}" ] && [ "${expected}" != "${actual}" ]; then
+            echo "The rebuilt file differs from the pinned one." >&2
+            exit 1
+          fi
+
+      - name: Upload the rebuilt file
+        uses: actions/upload-artifact@v7
+        with:
+          name: model-int8-static
+          path: |
+            out/model-int8-static.onnx
+            out/rebuild.log
+          retention-days: 7

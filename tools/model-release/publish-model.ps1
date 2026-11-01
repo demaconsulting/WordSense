@@ -4,14 +4,24 @@
 
 .DESCRIPTION
     Creates (or extends) the release `models/<BaseModel>/v<Version>` of the repository. The release holds the files of one
-    model export: the shared tokenizer files, one `model-<quantization>.onnx` per quantization, the license text, and a
+    model export: the shared tokenizer files, one `model-<quantization>.onnx` per quantization, the license text, the
+    documentation (`README.md` of the export and one `model-<quantization>.md` per quantization file), and a
     `<file>.sha256` sidecar for every one of them.
+
+    The release must hold `README.md`, and every `model-<quantization>.onnx` of the release must come with its
+    `model-<quantization>.md`. This is checked over the assets that the release already has together with the files of
+    the run, before anything is written to GitHub (so a release without documents is completed by adding `README.md`
+    and the missing `model-<quantization>.md` in one run). The body (description) of a new release is a short
+    summary that links to the README and to the quantization documents.
 
     Releases are append only. The script
       * uploads an asset that the release does not have yet,
       * skips an asset whose published SHA-256 equals the local one,
       * stops before it uploads anything when a published asset of the same name has another SHA-256,
       * never replaces or removes an asset, and never removes a release.
+    The body of an existing release is not an asset: with -UpdateBody the script writes the summary again from the
+    published assets (or from -NotesFile) and changes nothing else: a draft stays a draft, and a published release stays
+    published. A draft is published only by a run that created the release or uploaded assets, or that has no -UpdateBody.
     A new release is created as a draft, filled, verified and published without becoming the latest release. The latest
     release is recorded first, watched after the publish and restored if it moved.
 
@@ -27,16 +37,23 @@
 
 .PARAMETER File
     The files to publish, each as `<asset-name>=<path>`. Allowed asset names: model-int8-dynamic.onnx, model-int8-static.onnx,
-    model-fp16.onnx, model-fp32.onnx, vocab.txt, tokenizer.json, config.json and LICENSE.
+    model-fp16.onnx, model-fp32.onnx, the documents README.md and model-<quantization>.md of the same quantizations,
+    vocab.txt, tokenizer.json, config.json and LICENSE. Optional with -UpdateBody.
+
+.PARAMETER UpdateBody
+    Writes the body of the release again: a short summary that links to the README and to the quantization documents,
+    built from the assets that the release has after this run (or -NotesFile). The release must exist. Without -File
+    nothing but the body changes.
 
 .PARAMETER Target
     The full commit SHA the tag is created at when the release is created (default: the default branch).
 
 .PARAMETER VerifyAgainst
     A SHA256SUMS file (`<sha256>  <asset-name>` per line); the SHA-256 of every file to publish must equal its line.
+    Documents are not listed there and are not checked.
 
 .PARAMETER NotesFile
-    The release notes (default: generated from the files).
+    The body of the release (default: generated from the assets).
 
 .PARAMETER StageDir
     The folder the assets and their sidecars are staged in (default: a temporary folder).
@@ -58,7 +75,8 @@
 param(
     [Parameter(Mandatory)][ValidatePattern('^[a-z0-9][a-z0-9._-]*$')][string]$BaseModel,
     [Parameter(Mandatory)][ValidateRange(1, 2147483647)][int]$Version,
-    [Parameter(Mandatory)][string[]]$File,
+    [string[]]$File,
+    [switch]$UpdateBody,
     [ValidatePattern('^[0-9a-f]{40}$')][string]$Target,
     [string]$VerifyAgainst,
     [string]$NotesFile,
@@ -72,10 +90,42 @@ param(
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
-$AllowedAssets = '^(model-(int8-dynamic|int8-static|fp16|fp32)\.onnx|vocab\.txt|tokenizer\.json|config\.json|LICENSE)$'
+$AllowedAssets = '^(model-(int8-dynamic|int8-static|fp16|fp32)\.(onnx|md)|README\.md|vocab\.txt|tokenizer\.json|config\.json|LICENSE)$'
 $Tag = "models/$BaseModel/v$Version"
 
 function Write-Step([string]$Text) { Write-Host "==> $Text" }
+
+# True for the documents of a release (README.md and model-<quantization>.md); their digests are not listed in SHA256SUMS.
+function Test-Document([string]$Name) { return $Name -match '\.md$' }
+
+# Builds the body of the release: a short summary that links to the README and to the quantization documents, then the
+# files of the release. $Items holds Name, Size and Sha256 of every asset; sidecars and documents are not listed again.
+function New-ReleaseBody([object[]]$Items) {
+    $base = "https://github.com/$Repo/releases/download/$Tag"
+    $names = @($Items | ForEach-Object { $_.Name })
+    $lines = [System.Collections.Generic.List[string]]::new()
+    $lines.Add("Files of the model ``$BaseModel``, version $Version, for the WordSense packages.")
+    $lines.Add('')
+    if ($names -contains 'README.md') {
+        $lines.Add("- [README.md]($base/README.md): the export: the upstream checkpoint, what was changed in the graph and why, the shared files, the license.")
+    }
+
+    foreach ($doc in @($names | Where-Object { $_ -match '^model-.+\.md$' } | Sort-Object)) {
+        $quantization = $doc -replace '^model-|\.md$', ''
+        $lines.Add("- [$doc]($base/$doc): how ``model-$quantization.onnx`` was made and why this quantization.")
+    }
+
+    $lines.Add('')
+    $lines.Add('| File | Size (bytes) | SHA-256 |')
+    $lines.Add('| ---- | ------------ | ------- |')
+    foreach ($item in @($Items | Where-Object { $_.Name -notmatch '\.sha256$' -and -not (Test-Document $_.Name) } | Sort-Object Name)) {
+        $lines.Add("| ``$($item.Name)`` | $($item.Size) | ``$($item.Sha256)`` |")
+    }
+
+    $lines.Add('')
+    $lines.Add('Assets are only ever added, never replaced. The SHA-256 digests pinned in the NuGet packages are authoritative; the `.sha256` files are for humans and scripts.')
+    return ($lines -join "`n") + "`n"
+}
 
 # Runs a command that changes GitHub. In a dry run it only prints the command.
 function Invoke-Write([string[]]$Arguments) {
@@ -136,7 +186,8 @@ if ($Tag -notmatch '^models/[a-z0-9][a-z0-9._-]*/v[0-9]+$') { throw "The tag '$T
 if ($LASTEXITCODE -ne 0) { throw "The tag '$Tag' is not a valid git reference name." }
 
 $sources = [ordered]@{}
-foreach ($entry in $File) {
+if (-not $File -and -not $UpdateBody) { throw 'Give -File <asset-name>=<path> ... to publish, or -UpdateBody to write the body of the release again.' }
+foreach ($entry in @($File | Where-Object { $null -ne $_ })) {
     $split = $entry.IndexOf('=')
     if ($split -lt 1) { throw "'$entry' is not <asset-name>=<path>." }
     $asset = $entry.Substring(0, $split)
@@ -167,7 +218,7 @@ foreach ($asset in $sources.Keys) {
     $staged = Join-Path $StageDir $asset
     if ($sources[$asset] -ne $staged) { Copy-Item -LiteralPath $sources[$asset] -Destination $staged -Force }
     $hash = (Get-FileHash -LiteralPath $staged -Algorithm SHA256).Hash.ToLowerInvariant()
-    if ($VerifyAgainst) {
+    if ($VerifyAgainst -and -not (Test-Document $asset)) {
         if (-not $pins.ContainsKey($asset)) { throw "$VerifyAgainst has no line for '$asset'." }
         if ($pins[$asset] -ne $hash) { throw "The SHA-256 of '$asset' ($hash) differs from $VerifyAgainst ($($pins[$asset]))." }
     }
@@ -207,6 +258,23 @@ $toUpload = [System.Collections.Generic.List[string]]::new()
 $publishedAssets = @{}
 if ($remote) { foreach ($a in $remote.assets) { $publishedAssets[$a.name] = $a } }
 
+# The documentation is required before anything is written: README.md, and a model-<quantization>.md for every
+# model-<quantization>.onnx, counted over the assets that the release already has and the files of this run together
+if ($UpdateBody -and -not $remote) { throw "-UpdateBody needs an existing release; $Tag was not found." }
+$present = @($publishedAssets.Keys) + @($sources.Keys)
+if ($present -notcontains 'README.md') {
+    throw "The release $Tag needs README.md (the release has none and the run adds none): add -File 'README.md=<path>'. Nothing was written."
+}
+
+foreach ($asset in @($present | Sort-Object -Unique)) {
+    if ($asset -match '^model-(.+)\.onnx$') {
+        $document = "model-$($Matches[1]).md"
+        if ($present -notcontains $document) {
+            throw "'$asset' needs its document '$document' (the release has none and the run adds none): add -File '$document=<path>'. Nothing was written."
+        }
+    }
+}
+
 foreach ($asset in $local.Keys) {
     foreach ($name in @($asset, "$asset.sha256")) {
         $expected = if ($name -eq $asset) { $local[$asset].Sha256 } else { $sidecarHash[$asset] }
@@ -227,15 +295,7 @@ if (-not $remote) {
     $notes = $NotesFile
     if (-not $notes) {
         $notes = Join-Path $StageDir 'release-notes.md'
-        $lines = [System.Collections.Generic.List[string]]::new()
-        $lines.Add("Files of the model ``$BaseModel``, version $Version, for the WordSense packages.")
-        $lines.Add('')
-        $lines.Add('| File | Size (bytes) | SHA-256 |')
-        $lines.Add('| ---- | ------------ | ------- |')
-        foreach ($asset in $local.Keys) { $lines.Add("| ``$asset`` | $($local[$asset].Size) | ``$($local[$asset].Sha256)`` |") }
-        $lines.Add('')
-        $lines.Add('Assets are only ever added, never replaced. The SHA-256 digests pinned in the NuGet packages are authoritative; the `.sha256` files are for humans and scripts.')
-        [IO.File]::WriteAllText($notes, ($lines -join "`n") + "`n", $utf8)
+        [IO.File]::WriteAllText($notes, (New-ReleaseBody @($local.Values)), $utf8)
     }
 
     $create = @('release', 'create', $Tag, '--repo', $Repo, '--draft', '--latest=false', '--title', "Model: $BaseModel v$Version", '--notes-file', $notes)
@@ -253,7 +313,17 @@ else { Write-Step 'Nothing to upload' }
 
 # 7. Verify the release against the local files
 Write-Step 'Verifying the published assets'
-if ($DryRun) { Write-Host '[dry-run] gh release view: compare size, digest and state of every asset' }
+if ($DryRun) {
+    Write-Host '[dry-run] gh release view: compare size, digest and state of every asset'
+    if ($UpdateBody) {
+        Write-Step 'Updating the body of the release'
+        $items = @($publishedAssets.Values | ForEach-Object { [pscustomobject]@{ Name = $_.name; Size = $_.size; Sha256 = ([string]$_.digest) -replace '^sha256:', '' } }) + @($local.Values)
+        $notes = Join-Path $StageDir 'release-notes.md'
+        [IO.File]::WriteAllText($notes, $(if ($NotesFile) { Get-Content -LiteralPath $NotesFile -Raw } else { New-ReleaseBody $items }), $utf8)
+        Invoke-Write @('release', 'edit', $Tag, '--repo', $Repo, '--notes-file', $notes, '--latest=false')
+        Write-Host (Get-Content -LiteralPath $notes -Raw)
+    }
+}
 else {
     $after = (& gh release view $Tag --repo $Repo --json isDraft,assets) -join "`n" | ConvertFrom-Json
     $byName = @{}
@@ -270,10 +340,25 @@ else {
         }
     }
 
-    # 8. Publish a draft, without making it the latest release
-    if ($after.isDraft) {
+    # 8. Publish a draft, without making it the latest release; a run that changes only the body (-UpdateBody with
+    # nothing uploaded and no release created) leaves the draft or published state as it is
+    $changedAssets = (-not $remote) -or $toUpload.Count -gt 0 -or -not $UpdateBody
+    if ($after.isDraft -and $changedAssets) {
         Write-Step 'Publishing the release (not the latest)'
         Invoke-Write @('release', 'edit', $Tag, '--repo', $Repo, '--draft=false', '--latest=false')
+    }
+
+    # 8b. Write the body again from the assets the release has now (the body is not an asset)
+    if ($UpdateBody) {
+        Write-Step 'Updating the body of the release'
+        $items = @($after.assets | ForEach-Object { [pscustomobject]@{ Name = $_.name; Size = $_.size; Sha256 = ([string]$_.digest) -replace '^sha256:', '' } })
+        $notes = $NotesFile
+        if (-not $notes) {
+            $notes = Join-Path $StageDir 'release-notes.md'
+            [IO.File]::WriteAllText($notes, (New-ReleaseBody $items), $utf8)
+        }
+
+        Invoke-Write @('release', 'edit', $Tag, '--repo', $Repo, '--notes-file', $notes, '--latest=false')
     }
 
     # 9. GitHub moves the latest pointer lazily, so one early look proves nothing: watch it for a while and put it back

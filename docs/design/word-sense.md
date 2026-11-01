@@ -331,8 +331,9 @@ senses appendix, which explains the keys and lists the heteronyms.
   given (the cased model keeps case, the uncased model lower-cases it). A word that an encoder model scores itself (a
   trained lemma, or a form with a chooser) is not subject to that case rule: a form with capitalized and lower-case
   lemmas and no chooser is answered through the Basic model.
-- The weights format `WSX3` supports dense weights only, stored at reduced precision (16-bit floats); there is no
-  sparse variant. Weights are keyed by sense id (`lemma#label`) and pinned to the word image by its inventory hash.
+- The weights formats `WSX3` and `WSX4` support dense weights only, stored at reduced precision (16-bit floats); there
+  is no sparse variant. Weights are keyed by sense id (`lemma#label`) and pinned to the word image by its inventory
+  hash; a `WSX4` blob is also pinned to its encoder file and feature layout.
 - Only the lemmas that have enough anchor sentences are trained; every other ambiguous word is answered at the part
   of speech level by the Basic model of a composition, and Basic itself never answers at the group level.
 - Group ids are not frozen: they are versioned per data release (sense ids are frozen). A consumer that stores a group

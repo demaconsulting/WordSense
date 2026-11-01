@@ -5,14 +5,15 @@ evaluation figures. **None of them is shipped**: the NuGet packages contain only
 produced. Library users do not need them.
 
 All commands run from the repository root. The C# builder needs the .NET 10 SDK. The Python scripts need Python 3
-(`tools/open-corpus` needs 3.13), and most use only the standard library. Raw downloads and scratch files go to the
-git-ignored folders `cache/` and `work/`.
+(`tools/open-corpus` needs 3.13), and most use only the standard library. `lint.ps1` needs a real Python virtual
+environment in `.venv`; an empty `.venv` folder makes it fail without a message, so delete it first. Raw downloads and
+scratch files go to the git-ignored folders `cache/` and `work/`.
 
 | Folder | Language | Use |
 | --- | --- | --- |
 | `WordSense.Builder` | C# (.NET 10) | The regular tool |
 | `forms-audit` | Python | Verdicts for `audit-forms` after the form table changes |
-| `model-prep` | Python | Derives the BERT encoder file |
+| `model-prep` | Python | Derives the BERT encoder files |
 | `model-release` | PowerShell | Publishes model files as GitHub release assets (append only) |
 | `open-corpus` | Python | Builds the open corpus; two scripts feed the builder's evaluation |
 | `quota-fill` | Python | Fills the per-sense quotas of the corpus |
@@ -79,34 +80,51 @@ or the environment variable `FORMS_AUDIT_HOME` (default `artifacts/forms-audit`,
 
 ## model-prep
 
-**What.** `make-bert-encoder.py` derives the encoder-only ONNX file of the model `bert-base-cased` from the upstream
-masked-language-model export. It cuts the graph at the output of the last encoder layer, exposes it as
-`last_hidden_state` and drops the language-model head. The weights are unchanged.
+**What.** `make-bert-encoder.py` derives the encoder-only ONNX file of `bert-base-cased` v1 from the upstream int8
+masked-language-model export: it cuts the graph at the output of the last encoder layer, exposes it as
+`last_hidden_state` and drops the language-model head. The weights are unchanged. `make-bert-static-encoder.py` derives
+`bert-base-cased` v2: it cuts the upstream fp32 export the same way, converts it to operator set 13, quantizes it
+statically (per-channel int8 weights, the pinned ranges of `calib-ranges.json` measured over the calibration set
+`calib.tsv`), finalizes the graph and adds the taps `hidden_9` to `hidden_11`. It checks the SHA-256 of every step and of
+the result. `make-calib.py` draws `calib.tsv` from the train split of the open corpus and checks the result.
 
-**When.** Only to derive the BERT encoder file anew. The weights of the package are valid only for the exact pinned
-file.
+**When.** Only to derive an encoder file anew. The weights of the package are valid only for the exact pinned file.
+`.github/workflows/model-prep.yaml` (run by hand) rebuilds the v2 file on a hosted runner from the pinned upstream
+revision and fails while the revision or the SHA-256 of the upstream file is still a placeholder. A run with the input
+`bootstrap` resolves the revision, prints it with the SHA-256 of the upstream file and states that its output is
+unpinned; pin both values in `make-bert-static-encoder.py` (`--accept-unpinned-upstream` is only for that run) and run
+the workflow again without `bootstrap`.
 
-**Why.** The upstream file exposes only the language-model output, and WordSense needs the final hidden states.
+**Why.** The upstream files expose only the language-model output, and WordSense needs the hidden states; the static
+quantization gives the same answers on every x86 CPU (see `model/bert-base-cased/v2/model-int8-static.md`).
 
-**Prerequisites.** Python with the `onnx` package and the upstream file (Xenova/bert-base-cased, `onnx/model_int8.onnx`).
+**Prerequisites.** v1: Python with the `onnx` package and the upstream file (Xenova/bert-base-cased,
+`onnx/model_int8.onnx`). v2: the packages pinned in `tools/model-prep/requirements.txt`
+(`python -m pip install -r tools/model-prep/requirements.txt`), the upstream revision and the tokenizer of
+`model/bert-base-cased/v1/` (`fetch-models`).
 
-**Command.** `python tools/model-prep/make-bert-encoder.py <upstream-model_int8.onnx> <model-int8-dynamic.onnx>`
+**Command.** v1: `python tools/model-prep/make-bert-encoder.py <upstream-model_int8.onnx> <model-int8-dynamic.onnx>`.
+v2: `python tools/model-prep/make-bert-static-encoder.py <model-int8-static.onnx> --upstream-revision <revision>`, or
+`--fp32 <cut graph at opset 13>` to start after the download.
 
-**More.** The provenance and the SHA-256 values are in `model/bert-base-cased/README.md`. The result is published with
-`tools/model-release`.
+**More.** The provenance, the steps and the SHA-256 values are in `model/bert-base-cased/README.md` and the documents of
+each version. The result is published with `tools/model-release`.
 
 ## model-release
 
 **What.** `publish-model.ps1` publishes the files of a model as the assets of the GitHub release
-`models/<base-model>/v<n>`, with a `.sha256` sidecar per asset. Releases are append only.
+`models/<base-model>/v<n>`, with a `.sha256` sidecar per asset, the documents of the release (`README.md` and
+`model-<quantization>.md`) and a body that links to them. Releases are append only.
 
-**When.** For a new model, a new version of a model or a new quantization.
+**When.** For a new model, a new version of a model or a new quantization, and to add documents or rewrite the body of an
+existing release (`-UpdateBody`).
 
 **Why.** The library downloads the model files from these assets, and the pins in the packages are checked against them.
 
 **Prerequisites.** PowerShell and an authenticated `gh` with write access to the repository.
 
-**Command.** `& tools/model-release/publish-model.ps1 -BaseModel <id> -Version <n> -File '<asset>=<path>', ... [-DryRun]`
+**Command.** `& tools/model-release/publish-model.ps1 -BaseModel <id> -Version <n> -File '<asset>=<path>', ...
+[-UpdateBody] [-DryRun]`
 
 **More.** `tools/model-release/README.md`.
 

@@ -1,0 +1,3 @@
+# Reference fingerprints of the CPU preflight (see CpuPreflight.cs).
+# One line per encoder: the model identity of the weights, the SHA-256 of the encoder file and the fingerprint, separated by tabs.
+# Record a line on the CPU class that builds the committed weights (x86-64 with AVX2 and AVX-VNNI); the preflight prints the line of the machine it runs on.

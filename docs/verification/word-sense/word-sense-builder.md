@@ -214,9 +214,17 @@ All scenarios below pass on every platform and target framework of the CI matrix
   a lemma that has two anchored senses (`WeightsTrainer_SenseWithOneAnchor_StaysInTraining`).
 - **Weights match the lexicon**: weights trained for the committed corpus are loaded by each model package with zero
   dropped lemmas (verified in the MiniLM and BertBaseCased tests).
-- **Embedding cache** (`EmbeddingCacheTests.cs`, `ModelTrainerTests.cs`; a stub encoder, no model files): vectors read
+- **Embedding cache** (`EmbeddingCacheTests.cs`, `EmbeddingCacheStreamTests.cs`, `ModelTrainerTests.cs`; a stub
+  encoder, no model files): vectors read
   back bit-identical (`EmbeddingCache_SaveAndOpen_RoundTripsBitIdentical`); the key depends on every word and the
-  target index (`KeyOf_DependsOnWordsAndTarget`, `ComputeDigest_DependsOnEveryInput`); a second run over unchanged
+  target index (`KeyOf_DependsOnWordsAndTarget`); the digest depends on every input, the layout of the sense feature
+  included (`ComputeDigest_DependsOnEveryInput`, `Open_OtherLayout_IsInvalidated`); a stream of more than 2 GiB (4,100
+  records of 65,536 numbers produced on demand, of which the first and the last are valid) loads record by record with
+  no read larger than a record (`OpenStream_FileLargerThanTwoGiB_LoadsRecordByRecord`), a cut-off stream keeps its
+  complete records and a stream of another digest is dropped (`OpenStream_CutOffStream_*`,
+  `OpenStream_OtherDigest_*`), and so is a file or stream with a byte after its declared records
+  (`Open_TrailingBytes_*`, `OpenStream_TrailingBytes_*`); a
+  second run over unchanged
   anchors encodes nothing and gives byte-identical weights
   (`ModelTrainer_TrainDataAsync_SecondRun_EncodesNothingAndReproducesBytes`); added sentences are the only ones encoded
   (`..._AddedSentences_AreTheOnlyOnesEncoded`); a changed model digest drops the cache
@@ -800,6 +808,43 @@ The trainer is tested with a synthetic corpus whose sentences are the combinatio
   (`WordSenseBuilder_FetchModels_ReleaseWithoutTheFile_Fails`).
 - **Folders**: the model directory of each catalog entry equals the store folder of its spec
   (`WordSenseBuilder_ModelCatalog_ModelDirectories_AreTheStoreFoldersOfTheSpecs`).
+
+#### weights format and CPU checks
+
+`WeightsBlobWsx4Tests.cs`, `CanaryTests.cs` and `ModelTrainerTests.cs`. The canary and preflight scenarios that need an
+encoder use the real MiniLM files (skipped when they are not fetched, failed under `WORDSENSE_REQUIRE_MODELS`); the others
+use no model file.
+
+- **WSX4 writer** (`WordSenseBuilder_WeightsBlobWriter_Write_WithEncoder_WritesWsx4AndRoundTrips`,
+  `..._WithoutEncoder_WritesWsx3`, `..._InvalidEncoderOrLayout_Throws`): weights that name their encoder are written as
+  WSX4 and read back with the encoder and the layout; weights without one are written as WSX3; a layout other than `last`
+  without an encoder hash, an empty layout and an encoder hash of another size are refused.
+- **Committed weights are reproduced** (`..._CommittedWsx3Weights_AreReproducedUnchanged`): the embedded weights of the
+  MiniLM and the BertBaseCased package are read and written again, and the content before the compression is identical.
+- **Frozen mean** (`WordSenseBuilder_ModelTrainer_ReadFrozenMean_OtherLayoutOrEncoder_ReturnsNull`): the mean of
+  weights of
+  another layout or of another encoder file is not reused, and the mean of the same layout and encoder is.
+- **Canary file** (`WordSenseBuilder_Canary_ReadSentences_*`, `..._RenderAndRead_RoundTrips`, `..._Read_*`,
+  `..._Compare_*`): the sentence list takes the first column as the id and the last as the words, a malformed line, a
+  repeated id and an empty file are refused, the canary file reads back what was rendered (a key with a colon survives),
+  and the comparison lists every differing word with both answers and refuses sentences that do not correspond.
+- **Verdict** (`WordSenseBuilder_Canary_Judge_ByArchitecture`): x86 and x86-64 allow no difference, ARM allows the
+  tolerance and another architecture is not judged.
+- **Tolerance header** (`WordSenseBuilder_Canary_ResolveArmTolerance_*`): the option wins over the header and the header
+  over the default of 40; a header that is negative, empty or not a number is an `InvalidDataException`, also when the
+  option overrides it, and a negative option is refused.
+- **Encoder identity** (`WordSenseBuilder_Canary_MissingEncoderIdentity_IsInvalid`): a file without the header
+  `encoder-sha256`, or with an empty one, is an `InvalidDataException` when it is read and an error of `--check`;
+  `--write` always writes the header (`..._WriteThenCheck_*`).
+- **Command** (`WordSenseBuilder_Program_Canary_WriteThenCheck_PassesOnTheSameMachine`,
+  `..._InvalidOptions_ReturnsUsageError`, `WordSenseBuilder_Canary_AnswerAsync_BasicModel_*`): with the MiniLM model a
+  write followed by a check on the same machine passes; a changed answer fails the check and is listed; a file of
+  another encoder file is refused; the options `--write` and `--check` are exclusive and the tolerance must be a number
+  that is not negative.
+- **CPU preflight** (`WordSenseBuilder_CpuPreflight_Hash_DependsOnEveryBit`, `..._Compare_*`, `..._RunAsync_*`): the
+  fingerprint depends on every bit of every vector; the reference line of an encoder is found by the model identity and
+  the encoder SHA-256; a match, a difference and a missing reference give the three messages, and only a difference
+  warns.
 
 #### train-tense-head
 
