@@ -442,9 +442,11 @@ for at least two of its senses to get weights; a lemma with fewer is not an erro
    that exists, belongs to the lemma of the row and has the part of speech of the row (an error), and its braced target
    word is analyzed by the lexicon as that lemma and part of speech (a warning that is reported and still trains); the
    anchors and the holdout shall be disjoint (by normalized sentence).
-2. Open the model on the verified files of `model/<base-model>/v<version>/` (put there by `fetch-models`), and open the embedding cache (see below) unless
+2. Open the model on the verified files of `model/<base-model>/v<version>/` (put there by `fetch-models`), and open the
+   embedding cache (see below) unless
    `--no-cache` is given. Take the global mean from the existing weights blob of the model when it exists, reads, names
-   the same weights identity (`WeightsId`) and is not overridden by `--recompute-mean` (the *frozen mean*); the reason is printed whenever the
+   the same weights identity (`WeightsId`) and is not overridden by `--recompute-mean` (the *frozen mean*); the reason
+   is printed whenever the
    mean is computed instead.
 3. Get the pooled vector of every anchor sentence (the hidden states of the target word, mean over its word pieces):
    from the cache when present, otherwise from the encoder. Progress lines report the cache hits, the sentences

@@ -9,10 +9,13 @@ sections:
           - title: ModelDownloader Requirements
             requirements:
               - id: WordSense-Onnx-ModelDownloader-Order
-                title: The downloader shall try the mirror first, when there is one, and then the GitHub release asset of the model.
+                title: >-
+                  The downloader shall try the mirror first, when there is one, and then the GitHub release asset of
+                  the model.
                 tags: [unit]
                 justification: |
-                  A user-provided mirror must take precedence, and the release assets of the repository are the fallback.
+                  A user-provided mirror must take precedence, and the release assets of the repository are the
+                  fallback.
                 tests:
                   - ModelDownloader_EnsureAsync_MirrorServes_UsesOnlyMirror
                   - ModelDownloader_EnsureAsync_MirrorFails_FallsBackToRelease

@@ -7,7 +7,7 @@ not in the repository: they are the assets of the GitHub release `models/all-Min
 | ----- | ------- |
 | `model-int8-dynamic.onnx` | ONNX encoder, int8 dynamically quantized (output `last_hidden_state`, 384 dimensions) |
 | `vocab.txt` | BERT uncased WordPiece vocabulary (30,522 entries) |
-| `tokenizer.json` | Reference tokenizer definition (used only to generate the tokenizer parity fixture; not downloaded by the library) |
+| `tokenizer.json` | Reference tokenizer definition (only for the tokenizer parity fixture; not downloaded) |
 | `LICENSE` | The Apache License 2.0 that covers the model files |
 | `<asset>.sha256` | The SHA-256 of each asset above, for humans and scripts |
 
@@ -18,9 +18,9 @@ the digests pinned in the package, never the release.
 
 | Version | Quantization | Export |
 | ------- | ------------ | ------ |
-| `v1` | `int8-dynamic` | `sentence-transformers/all-MiniLM-L6-v2`, `last_hidden_state` output, ONNX Runtime dynamic int8 quantization |
+| `v1` | `int8-dynamic` | `sentence-transformers/all-MiniLM-L6-v2`, `last_hidden_state`, dynamic int8 quantization |
 
-A version is a model export: the upstream checkpoint, the graph cut, the opset and the output taps. A change of the
+A version is a model export: the upstream checkpoint, the graph cut, the operator set and the output taps. A change of the
 full-precision graph is a new version. A release is append only; see `tools/model-release/README.md`.
 
 ## Where the files go

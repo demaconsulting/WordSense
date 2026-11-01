@@ -344,7 +344,7 @@ public sealed class ModelDownloaderTests : IDisposable
 
         await Ensure(Spec, Mirror(server, "tok-123"), server);
 
-        Assert.All(server.Requests.Where(r => r.Path.StartsWith("/mirror/", StringComparison.Ordinal)),         r => Assert.Equal("Bearer tok-123", r.Authorization));
+        Assert.All(server.Requests.Where(r => r.Path.StartsWith("/mirror/", StringComparison.Ordinal)), r => Assert.Equal("Bearer tok-123", r.Authorization));
         Assert.All(server.Requests.Where(r => r.Path.StartsWith("/release/", StringComparison.Ordinal)), r => Assert.Null(r.Authorization));
     }
 
@@ -667,7 +667,7 @@ public sealed class ModelDownloaderTests : IDisposable
             if (uri.Host == "github.com")
             {
                 var redirect = new HttpResponseMessage(HttpStatusCode.Found);
-                redirect.Headers.Location = new Uri("https://release-assets.githubusercontent.com/github-production-release-asset/1/" + file + "?sp=r&sig=SECRETSIG&jwt=SECRETJWT");
+                redirect.Headers.Location = new Uri("https://release-assets.githubusercontent.com/github-production-release-asset/1/" + file + "?sp=r&sig=secret&jwt=token");
                 return redirect;
             }
 
@@ -683,7 +683,7 @@ public sealed class ModelDownloaderTests : IDisposable
         ModelDownloader.Verify(Spec, directory);
         Assert.All(seen.Where(r => r.Uri.Host == "mirror.test"), r => Assert.Equal("Bearer", r.Authorization));
         Assert.All(seen.Where(r => r.Uri.Host != "mirror.test"), r => Assert.Null(r.Authorization));
-        Assert.Contains(seen, r => r.Uri.Host == "github.com" && r.Uri.AbsolutePath == "/demaconsulting/WordSense/releases/download/models/test-model/v1/model.onnx");
+        Assert.Contains(seen, r => r.Uri.Host == "github.com" && r.Uri.AbsolutePath == PublicSources.Default.ReleaseBaseUri.AbsolutePath + "models/test-model/v1/model.onnx");
         Assert.Contains(seen, r => r.Uri.Host == "release-assets.githubusercontent.com");
     }
 
@@ -701,7 +701,7 @@ public sealed class ModelDownloaderTests : IDisposable
             if (uri.Host == "github.com")
             {
                 var redirect = new HttpResponseMessage(HttpStatusCode.Found);
-                redirect.Headers.Location = new Uri("https://release-assets.githubusercontent.com/github-production-release-asset/1/x?sp=r&sig=SECRETSIG&jwt=SECRETJWT");
+                redirect.Headers.Location = new Uri("https://release-assets.githubusercontent.com/github-production-release-asset/1/x?sp=r&sig=secret&jwt=token");
                 return redirect;
             }
 
@@ -714,8 +714,8 @@ public sealed class ModelDownloaderTests : IDisposable
 
         // Assert
         Assert.Contains("github-release (https://github.com/demaconsulting/WordSense/releases/download/models/", ex.Message, StringComparison.Ordinal);
-        Assert.DoesNotContain("SECRETSIG", ex.Message, StringComparison.Ordinal);
-        Assert.DoesNotContain("SECRETJWT", ex.Message, StringComparison.Ordinal);
+        Assert.DoesNotContain("secret", ex.Message, StringComparison.Ordinal);
+        Assert.DoesNotContain("token", ex.Message, StringComparison.Ordinal);
         Assert.DoesNotContain("sig=", ex.Message, StringComparison.Ordinal);
         Assert.DoesNotContain("?", ex.Message, StringComparison.Ordinal);
     }

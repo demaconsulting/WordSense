@@ -18,7 +18,8 @@ the Onnx subsystem.
 
 ### Test Environment
 
-Standard xUnit v3 runner on net8.0, net9.0 and net10.0. The files `model-int8-dynamic.onnx`, `vocab.txt`, `config.json` and
+Standard xUnit v3 runner on net8.0, net9.0 and net10.0. The files `model-int8-dynamic.onnx`, `vocab.txt`,
+`config.json` and
 `tokenizer.json` under `model/bert-base-cased/v1/` (put there by `fetch-models`) are needed; tests that need them are
 skipped when the files are not fetched
 (failed when `WORDSENSE_REQUIRE_MODELS` is set, as in CI). No network access. The ONNX Runtime
@@ -85,7 +86,8 @@ one part of speech with no scored senses, and with no same-spelling verb, needs 
 
 #### The Embedded Head Is Used
 
-The head embedded for `bert-base-cased` (recorded as `bert-base-cased-int8`) is bound to the pinned ONNX file, loads without any model file
+The head embedded for `bert-base-cased` (recorded as `bert-base-cased-int8`) is bound to the pinned ONNX file, loads
+without any model file
 (`BertBaseCasedWordSenseModel_EmbeddedHead_MatchesEncoderAndClasses`, `..._AgainstAnotherEncoderFile_IsRejected`) and the
 model answers with it, as the reweighing scenario above shows. The same file holds the tense head with the neighbor
 layout (`BertBaseCasedWordSenseModel_EmbeddedHead_HasATenseHead`), which the model checks at load and uses to set the tense
@@ -95,7 +97,8 @@ split of the Basic model with the weight 0.9, and the selected analysis of `read
 
 #### Embedded Weights Match the Word Image
 
-The weights embedded for `bert-base-cased` (recorded as `bert-base-cased-int8`) load for that identity and hidden size 768 and match the embedded word
+The weights embedded for `bert-base-cased` (recorded as `bert-base-cased-int8`) load for that identity and hidden size
+768 and match the embedded word
 image: the inventory hash is the one of the shipped image and every sense of every lemma resolves, with nothing
 dropped (`EmbeddedWeights_BertBaseCased_MatchesWordImage`).
 

@@ -114,7 +114,7 @@ $sidecarHash = @{}
 $utf8 = [Text.UTF8Encoding]::new($false)
 foreach ($asset in $sources.Keys) {
     $staged = Join-Path $StageDir $asset
-    Copy-Item -LiteralPath $sources[$asset] -Destination $staged -Force
+    if ($sources[$asset] -ne $staged) { Copy-Item -LiteralPath $sources[$asset] -Destination $staged -Force }
     $hash = (Get-FileHash -LiteralPath $staged -Algorithm SHA256).Hash.ToLowerInvariant()
     if ($VerifyAgainst) {
         if (-not $pins.ContainsKey($asset)) { throw "$VerifyAgainst has no line for '$asset'." }

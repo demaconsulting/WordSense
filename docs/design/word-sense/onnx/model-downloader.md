@@ -10,7 +10,8 @@ SHA-256 digests, from a configured mirror or from the release assets of the repo
 #### Data Model
 
 - `ModelSpec` describes a model: the base model (`bert-base-cased`), the version (`1`, the model export: checkpoint,
-  graph cut, opset and output taps), its files, the ONNX file name `model-<quantization>.onnx`, and the resources of
+  graph cut, operator set and output taps), its files, the ONNX file name `model-<quantization>.onnx`, and the resources
+  of
   its embedded weights and head. `ModelFile(Name, Sha256, Length)` pins each file. The derived members are
   `ModelId` (the base model), `Quantization` (taken from the ONNX file name, `int8-dynamic`), `ReleaseTag`
   (`models/<base-model>/v<version>`), `StoreFolder` (`<base-model>/v<version>`) and `WeightsId` (the identity recorded

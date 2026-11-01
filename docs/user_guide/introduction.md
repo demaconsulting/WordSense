@@ -385,7 +385,7 @@ source. The SHA-256 values are pinned in the package: a release never overrides 
 5xx, a broken connection) is retried once per source.
 
 A model is named by three properties: `ModelId` is the base model, `ModelVersion` the model export (checkpoint, graph
-cut, opset and output taps) and `Quantization` the ONNX variant.
+cut, operator set and output taps) and `Quantization` the ONNX variant.
 
 - **MiniLM** (`ModelId` `all-MiniLM-L6-v2`, version 1, `int8-dynamic`): `model-int8-dynamic.onnx` (22,972,370 bytes) and
   `vocab.txt` (231,508).
@@ -569,7 +569,8 @@ it that do not contain its sentences. This is the project's reading and not lega
 - **Evaluation only**: SemCor 3.0 (the WordNet license applies) and the Universal Dependencies English-EWT treebank (CC
   BY-SA 4.0) are downloaded to a cache to measure the models, and never committed, redistributed or trained on.
 - **Models**: `all-MiniLM-L6-v2` and `bert-base-cased` are under the Apache License 2.0, and the int8 ONNX exports are
-  redistributed under it (`model/<base-model>/LICENSE`, also an asset of each model release). ONNX Runtime (MIT) is a separate NuGet dependency.
+  redistributed under it (`model/<base-model>/LICENSE`, also an asset of each model release). ONNX Runtime (MIT) is a
+  separate NuGet dependency.
 
 # Troubleshooting
 

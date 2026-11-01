@@ -41,7 +41,7 @@ internal sealed record DownloadSource(string Name, Uri Uri, DownloadMirror? Auth
 ///     Everything the shared ONNX implementation needs to know about one model.
 /// </summary>
 /// <param name="BaseModel">The base model: the first folder of the store, of a mirror and of the release tag (<c>bert-base-cased</c>).</param>
-/// <param name="Version">The model export: the upstream checkpoint with the graph cut, opset and output taps. A change of the full-precision graph is a new version.</param>
+/// <param name="Version">The model export: the upstream checkpoint with the graph cut, operator set and output taps. A change of the full-precision graph is a new version.</param>
 /// <param name="Files">The files that make up the model, each with its pinned digest.</param>
 /// <param name="OnnxFileName">The name of the ONNX encoder among <paramref name="Files"/>; it is <c>model-{quantization}.onnx</c>.</param>
 /// <param name="VocabularyFileName">The name of the vocabulary among <paramref name="Files"/>.</param>

@@ -152,8 +152,10 @@ against another encoder file is rejected (`MiniLMWordSenseModel_EmbeddedHead_Aga
 
 #### Model Files Come From a Verified Source
 
-Model files are obtained from the mirror and then the GitHub release assets, verified against their SHA-256 digest, stored atomically
-under `<store>/<base-model>/v<version>/`, and downloaded once even when requested concurrently (see the `ModelDownloader` and
+Model files are obtained from the mirror and then the GitHub release assets, verified against their SHA-256 digest,
+stored atomically
+under `<store>/<base-model>/v<version>/`, and downloaded once even when requested concurrently (see the
+`ModelDownloader` and
 `DownloadMirror` unit documents). The model is an `IDownloadableWordSenseModel`
 (`OnnxWordSenseModel_IsDownloadable`), so a caller that holds only an `IWordSenseModel` can prepare the files up front
 with a type check; options are `DownloadOptions`.

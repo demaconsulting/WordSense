@@ -33,7 +33,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `ModelUnavailableException` through the composition, carrying the original exception as inner exception
   (`MiniLMWordSenseModel_EnsureModelAsync_MissingDirectory_ThrowsModelUnavailable`).
 - **Embedded weights resolve against the word image** (`EmbeddedWeights_MiniLM_MatchesWordImage`, in the Onnx test
-  project): the weights embedded in the assembly load for the identity recorded in them (`all-MiniLM-L6-v2-int8`) and the hidden size, carry the inventory hash of the
+  project): the weights embedded in the assembly load for the identity recorded in them (`all-MiniLM-L6-v2-int8`) and
+  the hidden size, carry the inventory hash of the
   shipped word image and every sense of every lemma resolves.
 - **Embedded head** (`MiniLMWordSenseModel_EmbeddedHead_MatchesEncoderAndClasses`, in `EmbeddedHeadTests.cs` of the MiniLM
   test project; no model file): the encoder model loads and checks the head embedded in the assembly, which carries the

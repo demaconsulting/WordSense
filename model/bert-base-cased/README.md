@@ -19,9 +19,9 @@ the digests pinned in the package, never the release.
 
 | Version | Quantization | Export |
 | ------- | ------------ | ------ |
-| `v1` | `int8-dynamic` | `Xenova/bert-base-cased` int8 export, cut at the output of the last encoder layer (`tools/model-prep/make-bert-encoder.py`) |
+| `v1` | `int8-dynamic` | `Xenova/bert-base-cased` int8, cut at the last encoder layer (`tools/model-prep`) |
 
-A version is a model export: the upstream checkpoint, the graph cut, the opset and the output taps. A change of the
+A version is a model export: the upstream checkpoint, the graph cut, the operator set and the output taps. A change of the
 full-precision graph is a new version. A release is append only; see `tools/model-release/README.md`.
 
 ## Where the files go

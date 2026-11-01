@@ -369,15 +369,18 @@ sections:
           - id: WordSense-Onnx-ModelFiles
             title: >-
               The Onnx subsystem shall make the files of a model available by using verified files already present,
-              or otherwise downloading them from the mirror and then the public repository copy, verifying every
-              file against its pinned SHA-256 digest and storing it atomically in the model's folder of the store.
+              or otherwise downloading them from the mirror and then the GitHub release assets of the model,
+              verifying every file against its pinned SHA-256 digest and storing it atomically in the model's
+              version folder of the store.
             tags: [subsystem]
             justification: |
               Users in restricted networks need to supply their own mirror, while everyone else gets the files from
               public hosting; verification and atomic storage guarantee that only intact files are ever used.
             children:
               - WordSense-Onnx-ModelDownloader-Order
+              - WordSense-Onnx-ModelDownloader-ReleaseSource
               - WordSense-Onnx-ModelDownloader-Fallthrough
+              - WordSense-Onnx-ModelDownloader-Retry
               - WordSense-Onnx-ModelDownloader-Integrity
               - WordSense-Onnx-ModelDownloader-Atomic
               - WordSense-Onnx-ModelDownloader-Location
@@ -390,7 +393,7 @@ sections:
               - WordSense-Onnx-OnnxWordSenseModel-Concurrent
               - WordSense-Onnx-OnnxWordSenseModel-Downloadable
             tests:
-              - ModelDownloader_EnsureAsync_MirrorFails_FallsBackToGitHub
+              - ModelDownloader_EnsureAsync_MirrorFails_FallsBackToRelease
               - ModelDownloader_EnsureAsync_HashMismatch_FallsThroughAndKeepsNothingBad
 
           - id: WordSense-Onnx-Failures

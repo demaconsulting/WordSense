@@ -1,7 +1,8 @@
 # Tokenizer Parity Fixture
 
 `generate_fixture.py` records the WordPiece ids and UTF-16 offsets that the Hugging Face `tokenizers` library produces
-with `model/all-MiniLM-L6-v2/v1/tokenizer.json` (the `tokenizer.json` asset of the release `models/all-MiniLM-L6-v2/v1`, which
+with `model/all-MiniLM-L6-v2/v1/tokenizer.json` (the `tokenizer.json` asset of the release
+`models/all-MiniLM-L6-v2/v1`, which
 the library does not download; save it there) for the sentences in `sentences.txt` (plus every tenth seed corpus
 sentence). The unit tests
 compare the C# `WordPieceTokenizer` with this fixture, so a tokenizer regression cannot go unnoticed.

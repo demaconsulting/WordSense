@@ -50,7 +50,8 @@ file it was trained on, the order of the part-of-speech classes and the digest o
 
 ## The encoder model files are not in this package
 
-The package does not contain the encoder model. The files `model-int8-dynamic.onnx` and `vocab.txt` are downloaded at first use
+The package does not contain the encoder model. The files `model-int8-dynamic.onnx` and `vocab.txt` are downloaded at
+first use
 (or taken from a model directory that the caller gives), verified by SHA-256, from the assets of the GitHub release
 `models/all-MiniLM-L6-v2/v1` of this repository, <https://github.com/demaconsulting/WordSense>. They are licensed
 under the Apache License 2.0 (<https://www.apache.org/licenses/LICENSE-2.0>); the license text is the release asset

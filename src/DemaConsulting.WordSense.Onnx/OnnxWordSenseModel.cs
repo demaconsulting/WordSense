@@ -620,7 +620,7 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
     public string ModelId => _spec.ModelId;
 
     /// <summary>
-    ///     Gets the version of the model export (checkpoint, graph cut, opset and output taps); it is the <c>v{n}</c>
+    ///     Gets the version of the model export (checkpoint, graph cut, operator set and output taps); it is the <c>v{n}</c>
     ///     folder of the model in the store and on a mirror, and the release the files come from.
     /// </summary>
     public int ModelVersion => _spec.Version;

@@ -6,7 +6,8 @@ downloads the files from its assets.
 ## Release layout
 
 - Tag and release name: `models/<base-model>/v<n>`, for example `models/bert-base-cased/v1`. `v<n>` is the model export:
-  the upstream checkpoint, the graph cut, the opset and the output taps. A change of the full-precision graph is a new
+  the upstream checkpoint, the graph cut, the operator set and the output taps. A change of the full-precision graph is
+  a new
   version. The tag is always an integer version, never `v1.0.0` (BuildMark would read such a tag as a library version).
 - Assets:
   - the shared tokenizer files (`vocab.txt`, `tokenizer.json`, `config.json`, where the model has them),

@@ -85,7 +85,8 @@ the Basic model
 
 #### Embedded Weights Match the Word Image
 
-The weights embedded for `all-MiniLM-L6-v2` (recorded as `all-MiniLM-L6-v2-int8`) load for that identity and hidden size 384 and match the embedded word
+The weights embedded for `all-MiniLM-L6-v2` (recorded as `all-MiniLM-L6-v2-int8`) load for that identity and hidden
+size 384 and match the embedded word
 image: the inventory hash is the one of the shipped image and every sense of every lemma resolves, with nothing
 dropped (`EmbeddedWeights_MiniLM_MatchesWordImage`).
 

@@ -22,7 +22,8 @@ sections:
 
               - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Files
                 title: >-
-                  BertBaseCasedWordSenseModel shall require the files model-int8-dynamic.onnx, vocab.txt, config.json and
+                  BertBaseCasedWordSenseModel shall require the files model-int8-dynamic.onnx, vocab.txt,
+                  config.json and
                   tokenizer.json, each pinned by its SHA-256 digest, and the pins shall equal the digests documented in
                   model/bert-base-cased/SHA256SUMS.
                 tags: [unit]
