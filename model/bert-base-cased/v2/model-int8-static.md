@@ -20,7 +20,8 @@ round differently and the activations are rounded to 8 bits after them. The meas
 
 ## How it was made
 
-Script: [`tools/model-prep/make-bert-static-encoder.py`](https://github.com/demaconsulting/WordSense/blob/main/tools/model-prep/make-bert-static-encoder.py).
+Script:
+[`tools/model-prep/make-bert-static-encoder.py`](https://github.com/demaconsulting/WordSense/blob/main/tools/model-prep/make-bert-static-encoder.py).
 Python packages (pinned in `tools/model-prep/requirements.txt`; the bytes depend on them): onnx 1.22.0, onnxruntime
 1.29.0, numpy 2.2.6, tokenizers 0.22.2, protobuf 7.35.1, ml_dtypes 0.5.4.
 
@@ -28,13 +29,23 @@ Python packages (pinned in `tools/model-prep/requirements.txt`; the bytes depend
 python tools/model-prep/make-bert-static-encoder.py model-int8-static.onnx --upstream-revision <revision>
 ```
 
-| Step | Result | Bytes | SHA-256 |
-| ---- | ------ | ----: | ------- |
-| 1. Download `onnx/model.onnx` (fp32) at the pinned revision | upstream file | placeholder | `TODO-PIN-UPSTREAM-SHA256` |
-| 2. Cut at the last layer, expose `last_hidden_state`, drop the language-model head | cut graph | 431,231,249 | `638efba75102c18871c83414e9e89e023cd82b6ae9a5a57d691750af6e63dfa1` |
-| 3. Convert to operator set 13 | fp32 input of the quantizer | 431,239,021 | `2d6bd1161d23bb4ea3d2ec9951dcc6fbe92d267cf60672fef10d7a57befe8f00` |
-| 4. Quantize statically with the pinned ranges, 5. finalize | encoder without taps | 108,949,981 | `750ae69a6898f7edb7bf35e8f98fc67eb5152fb94b8cd591bff05fba90ad4d65` |
-| 6. Add the taps of layers 9 to 11 | `model-int8-static.onnx` | 108,950,399 | `137f128c6b7b300ef89a0c421b913270c700aa2297ee053f01b97b9fe901f18a` |
+Every output is 768 dimensions: `last_hidden_state` is layer 12 and `hidden_9` to `hidden_11` are the taps.
+
+| Step | Result | Bytes |
+| ---- | ------ | ----: |
+| 1. Download `onnx/model.onnx` (fp32) at the pinned revision | upstream file | placeholder |
+| 2. Cut at the last layer, expose `last_hidden_state`, drop the language-model head | cut graph | 431,231,249 |
+| 3. Convert to operator set 13 | fp32 input of the quantizer | 431,239,021 |
+| 4. Quantize statically with the pinned ranges, 5. finalize | encoder without taps | 108,949,981 |
+| 6. Add the taps of layers 9 to 11 | `model-int8-static.onnx` | 108,950,399 |
+
+SHA-256 of the results of the steps:
+
+1. upstream file: `TODO-PIN-UPSTREAM-SHA256` (a placeholder until the script pins it)
+2. cut graph: `638efba75102c18871c83414e9e89e023cd82b6ae9a5a57d691750af6e63dfa1`
+3. fp32 input of the quantizer: `2d6bd1161d23bb4ea3d2ec9951dcc6fbe92d267cf60672fef10d7a57befe8f00`
+4. encoder without taps: `750ae69a6898f7edb7bf35e8f98fc67eb5152fb94b8cd591bff05fba90ad4d65`
+5. `model-int8-static.onnx`: `137f128c6b7b300ef89a0c421b913270c700aa2297ee053f01b97b9fe901f18a`
 
 The script checks the SHA-256 of every result and stops on a difference. `--fp32` starts from the result of step 3.
 

@@ -58,14 +58,21 @@ The package does not contain the encoder model. The files `model-int8-dynamic.on
 `tokenizer.json` are downloaded at first use (or taken from a model directory that the caller gives), verified by
 SHA-256, from the assets of the GitHub release `models/bert-base-cased/v1` of this repository,
 <https://github.com/demaconsulting/WordSense>. They are licensed under the Apache License 2.0
-(<https://www.apache.org/licenses/LICENSE-2.0>); the license text is the release asset `LICENSE` and the provenance is
-in `model/bert-base-cased/LICENSE` and `model/bert-base-cased/README.md` of the repository.
+(<https://www.apache.org/licenses/LICENSE-2.0>); the license text is the release asset `LICENSE`. Each version of the
+model is documented in the repository (`model/bert-base-cased/v<n>/README.md` and `model-<quantization>.md`, also assets
+of the release): the provenance is in `model/bert-base-cased/LICENSE` and `model/bert-base-cased/README.md`.
 
-- Base model: `bert-base-cased` by Google (<https://huggingface.co/google-bert/bert-base-cased>), Apache License 2.0.
-- Changes: the int8 ONNX export of the model (`Xenova/bert-base-cased`) was cut at the output of the last encoder layer,
-  which is exposed as `last_hidden_state`, and the language-model head was dropped; no weight was changed. The files
-  were changed, and they are not the original model. Google and the authors of the base model do not endorse this
-  package.
+- Base model: `bert-base-cased` by Google (<https://huggingface.co/google-bert/bert-base-cased>), Apache License 2.0,
+  and its ONNX export `Xenova/bert-base-cased` (<https://huggingface.co/Xenova/bert-base-cased>), Apache License 2.0.
+- Changes, version 1: the int8 ONNX export of the model was cut at the output of the last encoder layer, which is
+  exposed as `last_hidden_state`, and the language-model head was dropped; no weight was changed.
+- Changes, version 2 (the files of the release `models/bert-base-cased/v2`): the fp32 ONNX export was cut the same way,
+  converted to operator set 13 and quantized to int8 with ONNX Runtime static quantization (the weights are therefore
+  changed; the activation ranges were measured on public-domain and CC0 sentences of the open corpus of this
+  repository), and the outputs of layers 9, 10 and 11 were exposed as `hidden_9`, `hidden_10` and `hidden_11`.
+- The files were changed, and they are not the original model. Google and the authors of the base model do not endorse
+  this package. The attribution of the project is in the section Credits and Licenses of the
+  [README](https://github.com/demaconsulting/WordSense#credits-and-licenses).
 
 ## WordNet 3.0
 

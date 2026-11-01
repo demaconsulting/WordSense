@@ -61,7 +61,10 @@ SHA-256 digests, the ONNX file name, the vocabulary file name, whether the token
 resource name of the weights, the hidden size, `HeadResourceName`, the resource name of the part-of-speech head in
 the same assembly (null for a model without a head; a named head is loaded and validated), `HeadInUse`, whether the
 model answers with the head (false for a model that carries a head it does not use), and `TenseHeadInUse`, whether it
-also answers with the tense head of the head file (needs `HeadInUse`; the head file must then hold a tense head).
+also answers with the tense head of the head file (needs `HeadInUse`; the head file must then hold a tense head), and
+`SenseLayers`, the layers whose mean is the sense vector of a word (null for the last layer; a graph with taps and the
+last of the layers as its last layer). The layout text of the layers (`SenseLayout`: `last` or `mean:9-12`) and the
+SHA-256 of the ONNX file are what the embedded weights must record.
 
 ### Design
 
@@ -186,12 +189,14 @@ and the word data:
 
 The training runs as follows:
 
-1. Every anchor sentence is encoded once. The hidden states of the target word are mean-pooled over its word pieces
-   (`FeatureExtractor` and the encoder). The builder keeps the pooled vectors in a persistent cache, so a retraining
+1. Every anchor sentence is encoded once. The sense vector of the target word (the hidden states mean-pooled over its
+   word pieces, and with sense layers the mean of the layers) is computed by the encoder and `FeatureExtractor`. The
+   builder keeps the pooled vectors in a persistent cache, so a retraining
    encodes only sentences it has not encoded before (see the `WordSenseBuilder` design).
 2. Every vector is centered on the global mean and scaled to unit length. The mean is the one stored in the existing
    weights blob of the model (frozen) and is computed from all pooled anchor vectors only when there is no such blob,
-   when it names another model or has another dimension, or when `--recompute-mean` is given. Freezing it makes the
+   when it names another model, feature layout or encoder file or has another dimension, or when `--recompute-mean` is
+   given. Freezing it makes the
    features of a lemma depend on that lemma's anchors alone, so editing the anchors of one lemma changes only the
    weights of that lemma. The mean is stored in the blob, and the run time applies the same feature computation.
 3. Per lemma, a one-versus-rest L2-regularized logistic regression is fitted over the fine senses that have anchors:
@@ -356,9 +361,12 @@ not a public extension point. A contributor adds a model as follows:
 
 1. Publish the encoder files as the assets of the GitHub release `models/<base-model>/v<version>` with
    `tools/model-release/publish-model.ps1` (append only: a quantization is added to the release, never replaced; the
-   version changes when the full-precision graph changes). Keep `model/<base-model>/` in the repository: `SHA256SUMS`, a
-   `LICENSE` (the text of the license of the model) and a README that records the source, license, the changes and the
-   preparation steps (for example `tools/model-prep/make-bert-encoder.py`).
+   version changes when the full-precision graph changes). The release holds the documents `README.md` (the export:
+   upstream, changes, shared files, license) and one `model-<quantization>.md` per quantization file (how it was made and
+   why); the script requires them. Keep `model/<base-model>/` in the repository: `SHA256SUMS`, a
+   `LICENSE` (the text of the license of the model), a README of the model and, per version, the two kinds of document in
+   `v<n>/`, which record the source, license, the changes and the
+   preparation steps (for example `tools/model-prep/make-bert-static-encoder.py`).
 2. Create a package `DemaConsulting.WordSense.<Name>` that references `DemaConsulting.WordSense.Onnx` and
    `DemaConsulting.WordSense` (for the Basic model), with an internal sealed encoder class that derives from
    `OnnxWordSenseModel` and

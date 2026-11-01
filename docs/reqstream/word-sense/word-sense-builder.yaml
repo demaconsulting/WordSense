@@ -532,6 +532,89 @@ sections:
               - WordSenseBuilder_Program_Weights_CacheAndNoCache_AreRejected
               - WordSenseBuilder_Program_TrainSettingsOf_ResolvesCacheAndMean
 
+          - id: WordSense-WordSenseBuilder-EmbeddingCacheLayout
+            title: >-
+              The cache of pooled vectors shall be valid only for the layout of the sense feature (the last layer or
+              the mean of layers such as mean:9-12) that the vectors were computed with, and the vector cache of the
+              head trainers shall hold last-layer vectors whatever the layout of the model is.
+            tags: [unit]
+            justification: |
+              Vectors of two layouts have the same dimension; a cache of one layout read for the other would train the
+              weights on the wrong features without any error.
+            tests:
+              - WordSenseBuilder_EmbeddingCache_ComputeDigest_DependsOnEveryInput
+              - WordSenseBuilder_EmbeddingCache_Open_OtherLayout_IsInvalidated
+
+          - id: WordSense-WordSenseBuilder-EmbeddingCacheStream
+            title: >-
+              The builder shall read the cache of pooled vectors from a stream, one record at a time, so that a cache
+              file of more than 2 GiB loads without an array of the size of the file, and a cut-off stream shall keep
+              its complete records and a stream written for another digest shall be dropped.
+            tags: [unit]
+            justification: |
+              A cache of several layers or of many sentences can exceed the 2 GiB limit of one array; the load of such
+              a file failed with an exception instead of reusing the work.
+            tests:
+              - WordSenseBuilder_EmbeddingCache_OpenStream_FileLargerThanTwoGiB_LoadsRecordByRecord
+              - WordSenseBuilder_EmbeddingCache_OpenStream_CutOffStream_KeepsCompleteRecords
+              - WordSenseBuilder_EmbeddingCache_OpenStream_OtherDigest_IsInvalidated
+
+          - id: WordSense-WordSenseBuilder-WeightsEncoder
+            title: >-
+              The weights writer shall write the format WSX4, which records the SHA-256 of the encoder file and the
+              layout of the sense feature, for weights that name their encoder, and WSX3 for every other weights,
+              reproducing the committed weights of the MiniLM and BertBaseCased packages unchanged; it shall refuse a
+              layout other than last without an encoder hash. The builder shall reuse the global mean of existing
+              weights only when their model identity, feature layout and encoder file equal those of the model.
+            tags: [unit]
+            justification: |
+              Weights of another layout or encoder have the same dimension and would be reused or loaded silently;
+              the models without sense layers must keep their shipped bytes.
+            tests:
+              - WordSenseBuilder_WeightsBlobWriter_Write_WithEncoder_WritesWsx4AndRoundTrips
+              - WordSenseBuilder_WeightsBlobWriter_Write_WithoutEncoder_WritesWsx3
+              - WordSenseBuilder_WeightsBlobWriter_Write_InvalidEncoderOrLayout_Throws
+              - WordSenseBuilder_WeightsBlobWriter_Write_CommittedWsx3Weights_AreReproducedUnchanged
+              - WordSenseBuilder_ModelTrainer_ReadFrozenMean_OtherLayoutOrEncoder_ReturnsNull
+
+          - id: WordSense-WordSenseBuilder-Canary
+            title: >-
+              The builder shall provide the command canary, which writes the answers (level and key) of the public
+              model to a fixed list of sentences with the SHA-256 of its encoder file (--write), and checks the answers
+              of the machine it runs on against such a file (--check): it shall list every differing word and fail when
+              more words differ than the architecture allows (none on x86-64, at most the tolerance on ARM, no verdict
+              on another architecture), and shall refuse a file written for another encoder file.
+            tags: [unit]
+            justification: |
+              An int8 encoder does not give the same vectors on every CPU; the canary bounds the difference between CPU
+              types so that a change of the model, the runtime or the pool of CI machines is seen.
+            tests:
+              - WordSenseBuilder_Canary_ReadSentences_FirstColumnIdLastColumnWords
+              - WordSenseBuilder_Canary_ReadSentences_Malformed_Throws
+              - WordSenseBuilder_Canary_RenderAndRead_RoundTrips
+              - WordSenseBuilder_Canary_Read_AnswerCountDiffersFromWordCount_Throws
+              - WordSenseBuilder_Canary_Compare_ListsDifferingWords
+              - WordSenseBuilder_Canary_Compare_OtherSentences_Throws
+              - WordSenseBuilder_Canary_Judge_ByArchitecture
+              - WordSenseBuilder_Canary_AnswerAsync_BasicModel_AnswersEveryWordWithLevelAndKey
+              - WordSenseBuilder_Program_Canary_WriteThenCheck_PassesOnTheSameMachine
+              - WordSenseBuilder_Program_Canary_InvalidOptions_ReturnsUsageError
+
+          - id: WordSense-WordSenseBuilder-CpuPreflight
+            title: >-
+              The commands that write weights and heads shall compare the vectors of the CPU they run on, for a fixed
+              list of sentences, with the recorded reference fingerprint of the encoder, and shall warn, without
+              stopping, that their result is not byte-reproducible when the fingerprint differs, and print the line to
+              record when the encoder has no reference.
+            tags: [unit]
+            justification: |
+              Committed weights depend on the last bits of the vectors, which depend on the float kernels of the CPU;
+              whoever rebuilds them elsewhere must be told before the long run.
+            tests:
+              - WordSenseBuilder_CpuPreflight_Hash_DependsOnEveryBit
+              - WordSenseBuilder_CpuPreflight_Compare_FindsTheReferenceOfTheEncoder
+              - WordSenseBuilder_CpuPreflight_RunAsync_ReportsMatchDifferenceAndNoReference
+
           - id: WordSense-WordSenseBuilder-FitCache
             title: >-
               When retraining the weights of an encoder model, the builder shall fit again only the lemmas whose

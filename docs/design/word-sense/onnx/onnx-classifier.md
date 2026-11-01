@@ -22,7 +22,8 @@ An internal sealed class that holds no mutable state; it holds the weights table
 encoder as a delegate (`PooledEncode`; the model supplies its shared `OnnxEncoder`, tests supply a fake, and a classifier
 without an encoder answers every word from the lexicon). A classifier built for a model that uses its head also holds
 the `PosHead` and a second delegate (`PooledViewEncode`) that encodes every word of the text in the possessive view
-(`OnnxEncoder.EncodeAllAsync`) and returns the tokens of the view with the pooled vector of each (`WordVectors`); a
+(`OnnxEncoder.EncodeAllAsync`) and returns the tokens of the view with the last-layer vector of each and, when the
+model has sense layers, the sense vector of each (`WordVectors`); a
 classifier built to judge tense also uses the tense head of the `PosHead`; the classifier of the build tool has no head
 and no view encoder, and sees the sense masses alone. It uses no other model:
 it never uses the Basic model. Per call it builds one result per word and work lists: words answered at once, words
@@ -177,7 +178,10 @@ The probabilities are computed per slot, never per variant:
    speech, whatever its lemma and including the closed classes, needs the head. The classifier asks the view encoder
    once for the pooled vector of every word of the text in the possessive view: a possessive that the lexicon lists as
    one token (`dog's`; `PossessiveView.IsLexiconPossessive`) is split into its stem and its marker, each with a vector
-   of its own, as in the open corpus on which the head was trained. `OnnxEncoder.EncodeAllAsync` runs a text that
+   of its own, as in the open corpus on which the head was trained. The head and the tense head read the last-layer
+   vectors of the view (`WordVectors.Vectors`); the senses of a word that the weights score are scored from its sense
+   vector (`WordVectors.SenseVectors` when the encoder has sense layers, otherwise the same last-layer vector).
+   `OnnxEncoder.EncodeAllAsync` runs a text that
    exceeds the maximum sequence length of the model (128 word pieces by default, special tokens included) in
    overlapping windows that start half a window apart, one pass per window, so the cost grows linearly with the
    length of the text. For a word

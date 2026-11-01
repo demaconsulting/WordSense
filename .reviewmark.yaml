@@ -500,8 +500,11 @@ reviews:
       - "docs/design/word-sense/onnx/onnx-encoder.md"
       - "docs/verification/word-sense/onnx/onnx-encoder.md"
       - "src/DemaConsulting.WordSense.Onnx/OnnxEncoder.cs"
+      - "src/DemaConsulting.WordSense.Onnx/FeatureLayout.cs"
       - "src/DemaConsulting.WordSense.Onnx/PossessiveView.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/OnnxEncoderTests*.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/OnnxEncoderLayerTests.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/TappedGraph.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/PossessiveViewTests.cs"
 
   # WordSense-Onnx-WordPieceTokenizer Review (one per unit)

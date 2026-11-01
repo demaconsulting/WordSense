@@ -218,6 +218,7 @@ sections:
               - WordSense-Onnx-LemmaWeights-Scoring
               - WordSense-Onnx-LemmaWeights-Thresholds
               - WordSense-Onnx-LemmaWeights-Embedded
+              - WordSense-Onnx-LemmaWeights-Encoder
             tests:
               - EmbeddedWeights_MiniLM_MatchesWordImage
               - EmbeddedWeights_BertBaseCased_MatchesWordImage
@@ -358,6 +359,8 @@ sections:
               - WordSense-Onnx-OnnxEncoder-LongText
               - WordSense-Onnx-OnnxEncoder-Threads
               - WordSense-Onnx-OnnxEncoder-Validation
+              - WordSense-Onnx-OnnxEncoder-SenseLayers
+              - WordSense-Onnx-OnnxEncoder-Taps
               - WordSense-Onnx-WordPieceTokenizer-Parity
               - WordSense-Onnx-WordPieceTokenizer-Cased
               - WordSense-Onnx-WordPieceTokenizer-Spans

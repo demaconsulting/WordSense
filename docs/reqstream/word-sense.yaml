@@ -905,6 +905,11 @@ sections:
           - WordSense-WordSenseBuilder-PrecisionGate
           - WordSense-WordSenseBuilder-Tiers
           - WordSense-WordSenseBuilder-EmbeddingCache
+          - WordSense-WordSenseBuilder-EmbeddingCacheLayout
+          - WordSense-WordSenseBuilder-EmbeddingCacheStream
+          - WordSense-WordSenseBuilder-WeightsEncoder
+          - WordSense-WordSenseBuilder-Canary
+          - WordSense-WordSenseBuilder-CpuPreflight
           - WordSense-WordSenseBuilder-FitCache
           - WordSense-WordSenseBuilder-FrozenMean
           - WordSense-WordSenseBuilder-Evaluate

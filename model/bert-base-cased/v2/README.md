@@ -6,7 +6,7 @@ The encoder files of the release `models/bert-base-cased/v2`. The release is app
 | Asset | Purpose |
 | ----- | ------- |
 | `README.md` | This document: the export |
-| `model-int8-static.onnx` | ONNX encoder, int8 statically quantized. Outputs `last_hidden_state` (layer 12) and the taps `hidden_9`, `hidden_10` and `hidden_11`, 768 dimensions each |
+| `model-int8-static.onnx` | ONNX encoder, int8 static: `last_hidden_state` and the taps `hidden_9` to `hidden_11` |
 | `model-int8-static.md` | How `model-int8-static.onnx` was made and why this quantization |
 | `vocab.txt` | BERT cased WordPiece vocabulary (28,996 entries); the same file as in v1 |
 | `config.json` | Model configuration published with the upstream export (hidden size 768); the same file as in v1 |
