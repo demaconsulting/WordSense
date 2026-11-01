@@ -13,7 +13,7 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     Basic model) and ONNX Runtime. Install it with
 ///     <c>dotnet add package DemaConsulting.WordSense.BertBaseCased</c>. Two kinds of data are involved: the per-lemma
 ///     classifier weights trained for this model are embedded in the assembly (nothing to download), while the encoder
-///     files (<c>model_int8.onnx</c> of 103.5 MiB, plus <c>vocab.txt</c>, <c>config.json</c> and
+///     files (<c>model-int8-dynamic.onnx</c> of 103.5 MiB, plus <c>vocab.txt</c>, <c>config.json</c> and
 ///     <c>tokenizer.json</c>; 104 MiB in total, exact sizes below) are downloaded
 ///     once by <c>EnsureModelAsync</c>, verified against pinned SHA-256 digests and cached per user, or read from a directory you
 ///     supply, in which case no network access happens at all.
@@ -34,10 +34,13 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     has no such verb, is
 ///     classified without reading the model files, and a text that has a known word of several parts of speech, a
 ///     same-spelling verb or a word
-///     whose lemma has scored senses ensures them on first use (no opt-out). The files are described
+///     whose lemma has scored senses ensures them on first use (no opt-out). The files are published as the assets of the
+///     GitHub release <c>models/bert-base-cased/v1</c> and described
 ///     in the repository at
-///     https://github.com/demaconsulting/WordSense/tree/main/model/bert-base-cased-int8. The model identifier
-///     (<c>ModelId</c>) is <c>bert-base-cased-int8</c>; it names the store folder and the folder on a mirror. The encoder is
+///     https://github.com/demaconsulting/WordSense/tree/main/model/bert-base-cased. The model identifier
+///     (<c>ModelId</c>) is <c>bert-base-cased</c>, its version (<c>ModelVersion</c>) 1 and its quantization
+///     (<c>Quantization</c>) <c>int8-dynamic</c>; they name the store folder <c>bert-base-cased/v1</c> and the folder on
+///     a mirror. The encoder is
 ///     the base model without its masked-language head, cut and quantized with
 ///     https://github.com/demaconsulting/WordSense/blob/main/tools/model-prep/make-bert-encoder.py.
 ///     </para>
@@ -90,25 +93,26 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     </para>
 ///     <para>
 ///     Mirrors: a <see cref="DownloadOptions"/> passed to <c>EnsureModelAsync</c> takes precedence over the
-///     <c>WORDSENSE_MIRROR_*</c> variables; the mirror is tried before the public source for each file that is missing
+///     <c>WORDSENSE_MIRROR_*</c> variables; the mirror is tried before the release assets for each file that is missing
 ///     or invalid and is not contacted when every file is already present. The mirror holds the files at
-///     <c>{mirror}/{model-id}/{file}</c>, where the model id is the <c>ModelId</c> of the model, for example
-///     <c>https://models.example.com/wordsense/bert-base-cased-int8/model_int8.onnx</c>. Downloaded files are kept in
-///     <c>{StoreRoot}/bert-base-cased-int8/</c>; the default store root is
+///     <c>{mirror}/{base-model}/v{version}/{file}</c>, where the base model is the <c>ModelId</c> of the model, for example
+///     <c>https://models.example.com/wordsense/bert-base-cased/v1/model-int8-dynamic.onnx</c>. Downloaded files are kept in
+///     <c>{StoreRoot}/bert-base-cased/v1/</c>; the default store root is
 ///     <c>%LOCALAPPDATA%\DemaConsulting\WordSense\models</c> on Windows and
 ///     <c>~/.local/share/DemaConsulting/WordSense/models</c> on Linux and macOS (beneath <c>$XDG_DATA_HOME</c> when that
 ///     variable is set); only <see cref="DownloadOptions.StoreRoot"/> relocates the store (no
 ///     environment variable does, and <see cref="DownloadOptions"/> need a mirror base URI; a relative store root is
 ///     resolved against the current directory of the process). Offline route through the store: copy all four files
-///     into <c>{StoreRoot}/bert-base-cased-int8/</c> (or the default store); files that match their pinned SHA-256 are
+///     into <c>{StoreRoot}/bert-base-cased/v1/</c> (or the default store); files that match their pinned SHA-256 are
 ///     kept and never requested, so nothing is downloaded when all are valid. Network notes: downloads use the default
 ///     .NET proxy behavior (system proxy; the <c>HTTP_PROXY</c>, <c>HTTPS_PROXY</c> and <c>NO_PROXY</c> variables on
 ///     Linux and macOS), with no proxy credentials of its own; allow-list your mirror host and
-///     <c>media.githubusercontent.com</c> (the public source, which may redirect to further hosts).
+///     <c>github.com</c> (the release assets, which redirect to <c>release-assets.githubusercontent.com</c>; where a
+///     wildcard is allowed use <c>*.githubusercontent.com</c>).
 ///     </para>
 ///     <para>
 ///     Pinned files: all four files are verified by <c>EnsureModelAsync</c>, whether they come from the store, a mirror,
-///     GitHub or a supplied directory. SHA-256 digests: <c>model_int8.onnx</c>:
+///     GitHub or a supplied directory. SHA-256 digests: <c>model-int8-dynamic.onnx</c>:
 ///     <c>dcc10a647f1520c00e07fd2ee2b3ad383db94657bc97cba3e1915d27e98a962d</c> (108,477,896 bytes), <c>vocab.txt</c>:
 ///     <c>eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02</c> (213,450 bytes), <c>config.json</c>:
 ///     <c>19aa23b85dfc4ce3e199a4ab06d51acd4b7bfc9ae9bae62b78823dd5dfb0c286</c> (639 bytes) and <c>tokenizer.json</c>:
@@ -117,15 +121,15 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     </para>
 ///     <para>
 ///     Offline and air-gapped use: fetch the four files from
-///     <c>https://media.githubusercontent.com/media/demaconsulting/WordSense/main/model/bert-base-cased-int8/{file}</c>,
-///     put them directly in one directory (no <c>{model-id}</c> subfolder) and pass it to the constructor. Calling
+///     <c>https://github.com/demaconsulting/WordSense/releases/download/models/bert-base-cased/v1/{file}</c>,
+///     put them directly in one directory (no <c>{base-model}/v{version}</c> subfolder) and pass it to the constructor. Calling
 ///     <c>EnsureModelAsync</c> is optional but recommended: it verifies the digests above up front without network
 ///     access; a missing file or directory is a <see cref="ModelUnavailableException"/> and a wrong digest a
 ///     <see cref="ModelIntegrityException"/>. For a corporate
 ///     mirror pass a
 ///     <see cref="DownloadOptions"/> to <c>EnsureModelAsync</c> or set <c>WORDSENSE_MIRROR_URL</c> (with the optional
 ///     <c>WORDSENSE_MIRROR_USER</c>, <c>WORDSENSE_MIRROR_PASSWORD</c> or <c>WORDSENSE_MIRROR_BEARER_TOKEN</c>); files are
-///     requested at <c>{mirror}/bert-base-cased-int8/{file}</c>. A file that fails verification is never used. Variable
+///     requested at <c>{mirror}/bert-base-cased/v1/{file}</c>. A file that fails verification is never used. Variable
 ///     details: a blank variable counts as unset; a user without a password (or the reverse), or a user, password or
 ///     token without <c>WORDSENSE_MIRROR_URL</c>, is a <see cref="DownloadConfigurationException"/>; none of this applies, and
 ///     the variables are never read, when a model directory was supplied or a <see cref="DownloadOptions"/> is passed;

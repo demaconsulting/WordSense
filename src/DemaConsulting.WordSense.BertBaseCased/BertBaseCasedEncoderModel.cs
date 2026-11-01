@@ -13,14 +13,15 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 internal sealed class BertBaseCasedEncoderModel : OnnxWordSenseModel
 {
     private static readonly ModelSpec Definition = new(
-        "bert-base-cased-int8",
+        "bert-base-cased",
+        1,
         [
-            new ModelFile("model_int8.onnx", "dcc10a647f1520c00e07fd2ee2b3ad383db94657bc97cba3e1915d27e98a962d", 108477896),
+            new ModelFile("model-int8-dynamic.onnx", "dcc10a647f1520c00e07fd2ee2b3ad383db94657bc97cba3e1915d27e98a962d", 108477896),
             new ModelFile("vocab.txt", "eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02", 213450),
             new ModelFile("config.json", "19aa23b85dfc4ce3e199a4ab06d51acd4b7bfc9ae9bae62b78823dd5dfb0c286", 639),
             new ModelFile("tokenizer.json", "343989712a36cd8b253efeaf8baf6a08b9d2583f78e395e83832e8ee9f8d8ee1", 668923),
         ],
-        "model_int8.onnx",
+        "model-int8-dynamic.onnx",
         "vocab.txt",
         false,
         typeof(BertBaseCasedEncoderModel).Assembly,
@@ -28,7 +29,8 @@ internal sealed class BertBaseCasedEncoderModel : OnnxWordSenseModel
         768,
         "DemaConsulting.WordSense.BertBaseCased.head.bin",
         HeadInUse: true,
-        TenseHeadInUse: true);
+        TenseHeadInUse: true,
+        BlobModelId: "bert-base-cased-int8");
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="BertBaseCasedEncoderModel"/> class.

@@ -8,7 +8,7 @@ Requirements document.
 
 ### Required Functionality
 
-ONNX Runtime must load the pinned quantized models (all-MiniLM-L6-v2-int8 and bert-base-cased-int8) and return
+ONNX Runtime must load the pinned quantized models (all-MiniLM-L6-v2 and bert-base-cased, version 1, int8-dynamic) and return
 deterministic hidden states of the expected shape on every supported platform. The int8 arithmetic is deterministic on
 one machine but may differ between CPUs and operating systems (probabilities by up to about 0.02, and a word whose
 margin lies close to its threshold can be answered one level more or less precisely), so the end-to-end scenarios assert
@@ -19,8 +19,8 @@ the answered part of speech and not exact probabilities.
 ONNX Runtime is verified by running the real models in the test suite, on every platform and target framework of the CI
 matrix: the encoder tests in `test/DemaConsulting.WordSense.Onnx.Tests` and the end-to-end tests in
 `test/DemaConsulting.WordSense.MiniLM.Tests` and `test/DemaConsulting.WordSense.BertBaseCased.Tests`. The tests are
-skipped locally only when the Git LFS model files have not been fetched; the CI checkout fetches them, verifies that
-they are real content and runs the tests with `WORDSENSE_REQUIRE_MODELS=true`, so that a missing model fails the run.
+skipped locally only when the model files have not been fetched (`fetch-models`); the CI build job fetches and verifies
+them and runs the tests with `WORDSENSE_REQUIRE_MODELS=true`, so that a missing model fails the run.
 
 ### Test Scenarios
 

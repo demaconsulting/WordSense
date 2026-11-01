@@ -1,8 +1,8 @@
 namespace DemaConsulting.WordSense.BertBaseCased.Tests;
 
 /// <summary>
-///     End-to-end test of the BertBaseCased model. It runs on the committed model files and is skipped when they are
-///     absent (for example a checkout without Git LFS content).
+///     End-to-end test of the BertBaseCased model. It runs on the fetched model files and is skipped when they are
+///     absent (for example a checkout where <c>fetch-models</c> has not run).
 /// </summary>
 public class EndToEndTests
 {

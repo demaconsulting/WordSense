@@ -162,8 +162,9 @@ tool references all four packages and is never shipped. Further rules of the spl
 - Weights belong to a model package: each encoder package embeds one `weights.bin` trained for its exact model files and
   checked against their SHA-256 digests, and one `head.bin`, the part-of-speech head (and, for BertBaseCased, the tense
   head), bound to the SHA-256 of its ONNX
-  file. Model files live in `model/<model-id>/`, which also names the mirror folder, the
-  per-user store folder and the GitHub LFS path.
+  file. The model files are assets of the GitHub release `models/<base-model>/v<version>` (see
+  `tools/model-release/README.md`); `model/<base-model>/` holds their provenance. The base model also names the mirror
+  folder and the per-user store folder.
 - The word table is shared: `WordLexicon` serves the analyses of all known spellings, including the inflections that the
   builder materializes at build time, so no model needs morphology at run time.
 - `IWordSenseModel` is the classification contract only (`ClassifyAsync`) and is `IDisposable`: the model owns the
@@ -239,9 +240,9 @@ src/DemaConsulting.WordSense.BertBaseCased/        — bert-base-cased subsystem
 ├── Resources/weights.bin                           — embedded weights of the bert-base-cased model
 └── Resources/head.bin                              — embedded part-of-speech and tense head of the bert-base-cased model
 
-model/<model-id>/                                  — model files (ONNX file, vocabulary, tokenizer and config files,
-                                                      SHA256SUMS, the Apache License 2.0 LICENSE) of each encoder
-                                                      model
+model/<base-model>/                                — provenance of the model files (SHA256SUMS, the Apache License 2.0
+                                                      LICENSE, README); the files themselves are the assets of the
+                                                      release models/<base-model>/v<n>
 tools/WordSense.Builder/                           — word-sense-builder unit (not shipped)
 tools/                                             — the other maintainer tools (not shipped): forms-audit, model-prep,
                                                       quota-fill and tokenizer-fixture;
@@ -270,8 +271,9 @@ corpus/allwords/v2/                                — the second all-words gold
 
 The `generated/` folders of the packages hold the generated API reference and are not committed. The corpus files
 are data inputs of the builder unit; the word-lexicon unit holds the compiled result, so no separate unit exists for
-the dictionary. The model files under `model/<model-id>/` are the same files that a mirror serves as
-`<mirror>/<model-id>/<file>` and that the per-user store keeps as `<store>/<model-id>/`.
+the dictionary. The release assets `models/<base-model>/v<n>` are the files that a mirror serves as
+`<mirror>/<base-model>/v<n>/<file>` and that the per-user store keeps as `<store>/<base-model>/v<n>/<file>`; the
+provenance is in `model/<base-model>/`.
 
 ## Document Conventions
 

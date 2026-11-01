@@ -12,7 +12,7 @@ namespace WordSense.Builder.Tests;
 /// <remarks>
 ///     The floor is the accuracy measured when the file was written, truncated to one decimal. It is raised in a reviewed
 ///     commit when a model improves and is never lowered to hide a regression (see <c>corpus/suite/README.md</c>). The
-///     encoder tests are skipped when the model files are not available (a checkout without Git LFS content).
+///     encoder tests are skipped when the model files are not available (<c>fetch-models</c> has not run).
 /// </remarks>
 public sealed class ChallengeSetFloorTests
 {

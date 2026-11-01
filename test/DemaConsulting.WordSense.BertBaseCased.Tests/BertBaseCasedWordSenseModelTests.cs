@@ -2,8 +2,8 @@ namespace DemaConsulting.WordSense.BertBaseCased.Tests;
 
 /// <summary>
 ///     Tests for <see cref="BertBaseCasedWordSenseModel"/>. Most need no model files and no network access; those that
-///     classify a word of several parts of speech use the real model files and are skipped when the Git LFS files are
-///     absent.
+///     classify a word of several parts of speech use the real model files and are skipped when the files have not been
+///     fetched.
 /// </summary>
 public class BertBaseCasedWordSenseModelTests
 {
@@ -24,7 +24,11 @@ public class BertBaseCasedWordSenseModelTests
     {
         using var model = new BertBaseCasedWordSenseModel();
 
-        Assert.Equal("bert-base-cased-int8", model.ModelId);
+        Assert.Equal("bert-base-cased", model.ModelId);
+        Assert.Equal(1, model.ModelVersion);
+        Assert.Equal("int8-dynamic", model.Quantization);
+        Assert.Equal("models/bert-base-cased/v1", model.Encoder.Spec.ReleaseTag);
+        Assert.Equal("bert-base-cased-int8", model.Encoder.Spec.WeightsId);
         Assert.Equal(768, model.HiddenSize);
     }
 
@@ -210,8 +214,38 @@ public class BertBaseCasedWordSenseModelTests
     {
         using var model = new BertBaseCasedWordSenseModel();
 
-        Assert.Equal(["config.json", "model_int8.onnx", "tokenizer.json", "vocab.txt"], model.Encoder.Spec.Files.Select(f => f.Name).Order().ToArray());
+        Assert.Equal(["config.json", "model-int8-dynamic.onnx", "tokenizer.json", "vocab.txt"], model.Encoder.Spec.Files.Select(f => f.Name).Order().ToArray());
         Assert.All(model.Encoder.Spec.Files, f => Assert.Matches("^[0-9a-f]{64}$", f.Sha256.ToLowerInvariant()));
+    }
+
+    /// <summary>
+    ///     The pinned digests equal the documented ones in <c>model/bert-base-cased/SHA256SUMS</c>, which are the digests of the release assets.
+    /// </summary>
+    [Fact]
+    public void BertBaseCasedWordSenseModel_Pins_MatchTheDocumentedSha256Sums()
+    {
+        var sums = SumsOf("bert-base-cased");
+        using var model = new BertBaseCasedWordSenseModel();
+
+        Assert.All(model.Encoder.Spec.Files, f => Assert.Equal(sums[f.Name], f.Sha256));
+        Assert.Contains("LICENSE", sums.Keys);
+    }
+
+    private static Dictionary<string, string> SumsOf(string baseModel)
+    {
+        for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir is not null; dir = dir.Parent)
+        {
+            var path = Path.Join(dir.FullName, "model", baseModel, "SHA256SUMS");
+            if (File.Exists(path))
+            {
+                return File.ReadAllLines(path)
+                    .Where(line => line.Length > 0)
+                    .Select(line => line.Split("  ", 2))
+                    .ToDictionary(parts => parts[1].Trim(), parts => parts[0], StringComparer.Ordinal);
+            }
+        }
+
+        throw new FileNotFoundException($"model/{baseModel}/SHA256SUMS was not found.");
     }
 
     /// <summary>

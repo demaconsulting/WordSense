@@ -26,22 +26,6 @@ public sealed class ModelFileCheckTests : IDisposable
     }
 
     /// <summary>
-    ///     A Git LFS pointer in place of a real file is reported, whatever the other files are.
-    /// </summary>
-    [Fact]
-    public void ModelFileCheck_FindMissing_LfsPointer_IsReported()
-    {
-        File.WriteAllBytes(Path.Join(_folder.FullName, "model.bin"), new byte[4]);
-        File.WriteAllText(Path.Join(_folder.FullName, "vocab.txt"), "version https://git-lfs.github.com/spec/v1\noid sha256:00\nsize 4\n");
-
-        var reason = ModelFileCheck.FindMissing(Spec(length: 0), _folder.FullName);
-
-        Assert.NotNull(reason);
-        Assert.Contains("vocab.txt", reason, StringComparison.Ordinal);
-        Assert.Contains("LFS", reason, StringComparison.Ordinal);
-    }
-
-    /// <summary>
     ///     A file of another size than the pinned one is reported.
     /// </summary>
     [Fact]
@@ -66,21 +50,6 @@ public sealed class ModelFileCheckTests : IDisposable
         File.WriteAllBytes(Path.Join(_folder.FullName, "vocab.txt"), new byte[4]);
 
         Assert.Null(ModelFileCheck.FindMissing(Spec(length: 4), _folder.FullName));
-    }
-
-    /// <summary>
-    ///     A file that starts with the pointer text is a pointer; a binary file is not.
-    /// </summary>
-    [Fact]
-    public void ModelFileCheck_IsLfsPointer_DetectsThePrefix()
-    {
-        var pointer = Path.Join(_folder.FullName, "pointer");
-        var real = Path.Join(_folder.FullName, "real");
-        File.WriteAllText(pointer, "version https://git-lfs.github.com/spec/v1\n");
-        File.WriteAllBytes(real, [1, 2, 3]);
-
-        Assert.True(ModelFileCheck.IsLfsPointer(pointer));
-        Assert.False(ModelFileCheck.IsLfsPointer(real));
     }
 
     /// <summary>
@@ -181,29 +150,11 @@ public sealed class ModelFileCheckTests : IDisposable
         Assert.Contains("model.bin", error.Message, StringComparison.Ordinal);
     }
 
-    /// <summary>
-    ///     A folder that holds a Git LFS pointer is reported with the pointer reason when the files are required.
-    /// </summary>
-    [Fact]
-    public void ModelFileCheck_Unavailable_LfsPointerRequired_FailsNamingThePointer()
-    {
-        // Arrange: a pointer in place of the vocabulary
-        File.WriteAllBytes(Path.Join(_folder.FullName, "model.bin"), new byte[4]);
-        File.WriteAllText(Path.Join(_folder.FullName, "vocab.txt"), "version https://git-lfs.github.com/spec/v1\noid sha256:00\nsize 4\n");
-        var reason = ModelFileCheck.FindMissing(Spec(length: 0), _folder.FullName);
-
-        // Act
-        var error = Record.Exception(() => ModelFileCheck.Unavailable(reason!, true));
-
-        // Assert
-        Assert.IsType<FailException>(error);
-        Assert.Contains("Git LFS pointer", error.Message, StringComparison.Ordinal);
-    }
-
     private string HashOf(string name) => ModelDownloader.HashFile(Path.Join(_folder.FullName, name));
 
     private static ModelSpec Spec(long length = 0, string? model = null, string? vocab = null) => new(
         "test",
+        1,
         [new ModelFile("model.bin", model ?? new string('0', 64), length), new ModelFile("vocab.txt", vocab ?? new string('0', 64), length)],
         "model.bin",
         "vocab.txt",

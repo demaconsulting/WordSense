@@ -110,9 +110,9 @@ internal sealed class ReadmeSample
         {
             "basic" => new DemaConsulting.WordSense.BasicWordSenseModel(),
             "minilm" => new DemaConsulting.WordSense.MiniLM.MiniLMWordSenseModel(
-                DocSampleText.RequireModelDirectory("all-MiniLM-L6-v2-int8")),
+                DocSampleText.RequireModelDirectory("all-MiniLM-L6-v2")),
             "bertbasecased" => new DemaConsulting.WordSense.BertBaseCased.BertBaseCasedWordSenseModel(
-                DocSampleText.RequireModelDirectory("bert-base-cased-int8")),
+                DocSampleText.RequireModelDirectory("bert-base-cased")),
             _ => throw new InvalidOperationException("Unknown model for the README sample."),
         };
 

@@ -10,8 +10,9 @@ namespace DemaConsulting.WordSense.Onnx;
 /// <remarks>
 ///     <para>
 ///     Some environments block public download hosts. A mirror lets such an environment serve the model
-///     files from an internal location. Files are requested at <c>{BaseUri}/{model-id}/{file-name}</c> where the
-///     model id is the literal folder name of the model (for example <c>all-MiniLM-L6-v2-int8</c>). Each file must
+///     files from an internal location. Files are requested at <c>{BaseUri}/{base-model}/v{version}/{file-name}</c> where
+///     the base model is the <c>ModelId</c> of the model (for example <c>all-MiniLM-L6-v2</c>) and the version is its
+///     <c>ModelVersion</c>. Each file must
 ///     match its pinned SHA-256; a mirror copy that does not match is discarded and the next source is tried. The
 ///     mirror comes from a <c>DownloadOptions</c> value or, when none is given, from the environment variables named by
 ///     <see cref="UrlEnvironmentVariable"/>, <see cref="UserEnvironmentVariable"/>,

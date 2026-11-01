@@ -2,16 +2,17 @@
 
 #### Verification Approach
 
-Tests in `test/DemaConsulting.WordSense.MiniLM.Tests/MiniLMWordSenseModelTests.cs` use the public type with the committed
-`all-MiniLM-L6-v2-int8` files, the embedded weights and the embedded lexicon. The model is a composition
+Tests in `test/DemaConsulting.WordSense.MiniLM.Tests/MiniLMWordSenseModelTests.cs` use the public type with the fetched
+`all-MiniLM-L6-v2` files, the embedded weights and the embedded lexicon. The model is a composition
 (`FallbackWordSenseModel`) of a thin subclass of `OnnxWordSenseModel` and the Basic model; the shared behavior is
 verified in the Onnx and Basic unit documents, so these tests check the pinned identity, the composition and one real
 classification path.
 
 #### Test Environment
 
-Standard xUnit v3 runner. `model/all-MiniLM-L6-v2-int8/` with `model_int8.onnx` and `vocab.txt` (Git LFS); the tests are
-skipped when the LFS content is absent. No network access.
+Standard xUnit v3 runner. `model/all-MiniLM-L6-v2/v1/` (put there by `fetch-models`) with `model-int8-dynamic.onnx` and
+`vocab.txt`; the tests are
+skipped when the files are not fetched. No network access.
 
 #### Acceptance Criteria
 
@@ -19,22 +20,25 @@ All scenarios below pass on every platform and target framework of the CI matrix
 
 #### Test Scenarios
 
-- **Pinned identity**: `ModelId` is `all-MiniLM-L6-v2-int8`, `HiddenSize` is 384 and the vocabulary is uncased before any
-  setup; the two files are pinned by SHA-256 digests.
+- **Pinned identity**: `ModelId` is `all-MiniLM-L6-v2`, `ModelVersion` is 1, `Quantization` is `int8-dynamic`, the release
+  tag is `models/all-MiniLM-L6-v2/v1`, `HiddenSize` is 384 and the vocabulary is uncased before any
+  setup; the two files are pinned by SHA-256 digests, which equal the digests documented in
+  `model/all-MiniLM-L6-v2/SHA256SUMS` (`MiniLMWordSenseModel_Pins_MatchTheDocumentedSha256Sums`).
 - **Model is downloadable** (`MiniLMWordSenseModel_IsDownloadable`): the model, held as `IWordSenseModel`, is also an
   `IDownloadableWordSenseModel`, so the optional `EnsureModelAsync` is available through the capability interface (the
   composition forwards it to the encoder model only, the Basic model needs none).
-- **Model directory is verified**: a directory with `model_int8.onnx` and `vocab.txt` passes `EnsureModelAsync`
+- **Model directory is verified**: a directory with `model-int8-dynamic.onnx` and `vocab.txt` passes `EnsureModelAsync`
   (`MiniLMWordSenseModel_EnsureModelAsync_ModelDirectory_VerifiesPinnedFiles`); a missing or altered file is refused,
   verified for every model through this class in `OnnxWordSenseModelTests`, and a directory that does not exist throws
   `ModelUnavailableException` through the composition, carrying the original exception as inner exception
   (`MiniLMWordSenseModel_EnsureModelAsync_MissingDirectory_ThrowsModelUnavailable`).
 - **Embedded weights resolve against the word image** (`EmbeddedWeights_MiniLM_MatchesWordImage`, in the Onnx test
-  project): the weights embedded in the assembly load for the model id and hidden size, carry the inventory hash of the
+  project): the weights embedded in the assembly load for the identity recorded in them (`all-MiniLM-L6-v2-int8`) and
+  the hidden size, carry the inventory hash of the
   shipped word image and every sense of every lemma resolves.
 - **Embedded head** (`MiniLMWordSenseModel_EmbeddedHead_MatchesEncoderAndClasses`, in `EmbeddedHeadTests.cs` of the MiniLM
   test project; no model file): the encoder model loads and checks the head embedded in the assembly, which carries the
-  model id
+  identity
   `all-MiniLM-L6-v2-int8`, hidden size 384, the feature layout 1, the variant `word+-1`, the classes of `PartOfSpeech`
   in order and the SHA-256 of the pinned ONNX file; its posterior for a zero vector sums to one and its restriction to
   the noun class gives that class probability one. The model does not use the head: the scenario below for an untrained

@@ -13,7 +13,7 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     <c>DemaConsulting.WordSense</c> (which holds the built-in Basic model) and ONNX Runtime. Install it with
 ///     <c>dotnet add package DemaConsulting.WordSense.MiniLM</c>; no native or other setup is needed. Two kinds of
 ///     data are involved: the per-lemma classifier weights trained for the model are embedded in the assembly (nothing
-///     to download), while the encoder files (<c>model_int8.onnx</c>, 21.9 MiB or 22,972,370
+///     to download), while the encoder files (<c>model-int8-dynamic.onnx</c>, 21.9 MiB or 22,972,370
 ///     bytes, plus <c>vocab.txt</c>, 0.2 MiB or 231,508 bytes; 22 MiB in total) are downloaded once by
 ///     <c>EnsureModelAsync</c>,
 ///     verified against pinned SHA-256 digests and cached per user, or read from a directory you supply, in which
@@ -29,9 +29,12 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     support; every other ambiguous word is answered by the Basic model, at the part-of-speech level (or at the sense
 ///     level when its selected analysis has exactly one sense). A text that has no
 ///     trained lemma with several senses is classified without reading the model files, and a text that has one ensures
-///     them on first use. The files are described in the repository at
-///     https://github.com/demaconsulting/WordSense/tree/main/model/all-MiniLM-L6-v2-int8. The model identifier
-///     (<c>ModelId</c>) is <c>all-MiniLM-L6-v2-int8</c>; it names the store folder and the folder on a mirror. The
+///     them on first use. The files are published as the assets of the GitHub release <c>models/all-MiniLM-L6-v2/v1</c>
+///     and described in the repository at
+///     https://github.com/demaconsulting/WordSense/tree/main/model/all-MiniLM-L6-v2. The model identifier
+///     (<c>ModelId</c>) is <c>all-MiniLM-L6-v2</c>, its version (<c>ModelVersion</c>) 1 and its quantization
+///     (<c>Quantization</c>) <c>int8-dynamic</c>; they name the store folder <c>all-MiniLM-L6-v2/v1</c> and the folder on
+///     a mirror. The
 ///     model is uncased: its tokenizer lower-cases the text, so the case of your words never changes its answer.
 ///     </para>
 ///     <para>
@@ -82,35 +85,36 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     </para>
 ///     <para>
 ///     Mirrors: a <see cref="DownloadOptions"/> passed to <c>EnsureModelAsync</c> takes precedence over the
-///     <c>WORDSENSE_MIRROR_*</c> variables; the mirror is tried before the public source for each file that is missing
+///     <c>WORDSENSE_MIRROR_*</c> variables; the mirror is tried before the release assets for each file that is missing
 ///     or invalid and is not contacted when every file is already present. The mirror holds the files at
-///     <c>{mirror}/{model-id}/{file}</c>, where the model id is the <c>ModelId</c> of the model, for example
-///     <c>https://models.example.com/wordsense/all-MiniLM-L6-v2-int8/model_int8.onnx</c>. Downloaded files are kept in
-///     <c>{StoreRoot}/all-MiniLM-L6-v2-int8/</c>; the default store root is
+///     <c>{mirror}/{base-model}/v{version}/{file}</c>, where the base model is the <c>ModelId</c> of the model, for example
+///     <c>https://models.example.com/wordsense/all-MiniLM-L6-v2/v1/model-int8-dynamic.onnx</c>. Downloaded files are kept in
+///     <c>{StoreRoot}/all-MiniLM-L6-v2/v1/</c>; the default store root is
 ///     <c>%LOCALAPPDATA%\DemaConsulting\WordSense\models</c> on Windows and
 ///     <c>~/.local/share/DemaConsulting/WordSense/models</c> on Linux and macOS (beneath <c>$XDG_DATA_HOME</c> when that
 ///     variable is set); only <see cref="DownloadOptions.StoreRoot"/> relocates the store (no
 ///     environment variable does, and <see cref="DownloadOptions"/> need a mirror base URI; a relative store root is
 ///     resolved against the current directory of the process). Offline route through the store: copy both files into
-///     <c>{StoreRoot}/all-MiniLM-L6-v2-int8/</c> (or the default store); files that match their pinned SHA-256 are kept
+///     <c>{StoreRoot}/all-MiniLM-L6-v2/v1/</c> (or the default store); files that match their pinned SHA-256 are kept
 ///     and never requested, so nothing is downloaded when both are valid. Network notes: downloads use the default
 ///     .NET proxy behavior (system proxy; the <c>HTTP_PROXY</c>, <c>HTTPS_PROXY</c> and <c>NO_PROXY</c> variables on
 ///     Linux and macOS), with no proxy credentials of its own; allow-list your mirror host and
-///     <c>media.githubusercontent.com</c> (the public source, which may redirect to further hosts).
+///     <c>github.com</c> (the release assets, which redirect to <c>release-assets.githubusercontent.com</c>; where a
+///     wildcard is allowed use <c>*.githubusercontent.com</c>).
 ///     </para>
 ///     <para>
-///     Offline and air-gapped use: fetch <c>model_int8.onnx</c> (SHA-256
+///     Offline and air-gapped use: fetch <c>model-int8-dynamic.onnx</c> (SHA-256
 ///     <c>afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1</c>) and <c>vocab.txt</c> (SHA-256
 ///     <c>07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3</c>) from
-///     <c>https://media.githubusercontent.com/media/demaconsulting/WordSense/main/model/all-MiniLM-L6-v2-int8/{file}</c>,
-///     put both directly in one directory (no <c>{model-id}</c> subfolder) and pass it to the constructor. Calling
+///     <c>https://github.com/demaconsulting/WordSense/releases/download/models/all-MiniLM-L6-v2/v1/{file}</c>,
+///     put both directly in one directory (no <c>{base-model}/v{version}</c> subfolder) and pass it to the constructor. Calling
 ///     <c>EnsureModelAsync</c> is optional but recommended: it verifies both files against these digests up front (no
 ///     network access happens); a
 ///     missing file or directory is a <see cref="ModelUnavailableException"/> and a wrong digest a
 ///     <see cref="ModelIntegrityException"/>. For a corporate mirror pass a
 ///     <see cref="DownloadOptions"/> to <c>EnsureModelAsync</c> or set <c>WORDSENSE_MIRROR_URL</c> (with the optional
 ///     <c>WORDSENSE_MIRROR_USER</c>, <c>WORDSENSE_MIRROR_PASSWORD</c> or <c>WORDSENSE_MIRROR_BEARER_TOKEN</c>); files are
-///     requested at <c>{mirror}/all-MiniLM-L6-v2-int8/{file}</c>. A file that fails verification is never used. Variable
+///     requested at <c>{mirror}/all-MiniLM-L6-v2/v1/{file}</c>. A file that fails verification is never used. Variable
 ///     details: a blank variable counts as unset; a user without a password (or the reverse), or a user, password or
 ///     token without <c>WORDSENSE_MIRROR_URL</c>, is a <see cref="DownloadConfigurationException"/>; none of this applies, and
 ///     the variables are never read, when a model directory was supplied or a <see cref="DownloadOptions"/> is passed;

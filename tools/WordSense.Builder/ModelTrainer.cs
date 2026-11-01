@@ -80,7 +80,7 @@ internal static class ModelTrainer
         var usage = UsageOf(repository, settings, info.Name, output);
         var clock = Stopwatch.StartNew();
 
-        using var composed = info.Create(Path.Join(repository, "model", info.ModelDirectory!));
+        using var composed = info.Create(info.ModelPath(repository));
         var model = ModelCatalog.EncoderOf(composed);
         await model.EnsureModelAsync(null, cancellationToken).ConfigureAwait(false);
         var path = info.WeightsPath(repository);
@@ -91,14 +91,14 @@ internal static class ModelTrainer
         }
         else
         {
-            frozenMean = ReadFrozenMean(path, model.ModelId, output, info.Name);
+            frozenMean = ReadFrozenMean(path, model.Spec.WeightsId, output, info.Name);
         }
 
         EmbeddingCache? cache = null;
         FitCache? fitCache = null;
         if (settings.CacheRoot is not null)
         {
-            var directory = Path.Join(settings.CacheRoot, model.ModelId);
+            var directory = Path.Join(settings.CacheRoot, model.Spec.WeightsId);
             cache = OpenCache(directory, model, output, info.Name);
             fitCache = FitCache.Open(directory);
             output.WriteLine($"{info.Name}: fit cache {fitCache.Path}: {fitCache.Loaded} lemma fits loaded, {fitCache.Discarded} dropped.");
@@ -107,7 +107,7 @@ internal static class ModelTrainer
         using var encoder = model.OpenEncoder();
         var caching = new CachingEncoder(encoder.EncodeAsync, cache);
         var data = await TrainDataAsync(
-            info.Name, model.ModelId, WordLexicon.Current.InventoryHash.ToArray(), anchors, options, caching, frozenMean, fitCache, output, clock, cancellationToken, holdout, chooserAnchors, chooserHoldout,
+            info.Name, model.Spec.WeightsId, WordLexicon.Current.InventoryHash.ToArray(), anchors, options, caching, frozenMean, fitCache, output, clock, cancellationToken, holdout, chooserAnchors, chooserHoldout,
             RealSplit.Classify(corpus, holdout).Calibration, new CalibrationOptions(settings.CalibrationTarget, Stratum: Corpus.StagesOf(anchors)), usage).ConfigureAwait(false);
 
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);

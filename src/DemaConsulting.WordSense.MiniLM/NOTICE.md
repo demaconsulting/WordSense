@@ -50,11 +50,12 @@ file it was trained on, the order of the part-of-speech classes and the digest o
 
 ## The encoder model files are not in this package
 
-The package does not contain the encoder model. The files `model_int8.onnx` and `vocab.txt` are downloaded at first use
-(or taken from a model directory that the caller gives), verified by SHA-256, from the Git LFS storage of this
-repository, <https://github.com/demaconsulting/WordSense>, folder `model/all-MiniLM-L6-v2-int8/`. They are licensed
-under the Apache License 2.0 (<https://www.apache.org/licenses/LICENSE-2.0>); the license text and the provenance are
-in `model/all-MiniLM-L6-v2-int8/LICENSE` and `model/all-MiniLM-L6-v2-int8/README.md` of the repository.
+The package does not contain the encoder model. The files `model-int8-dynamic.onnx` and `vocab.txt` are downloaded at
+first use
+(or taken from a model directory that the caller gives), verified by SHA-256, from the assets of the GitHub release
+`models/all-MiniLM-L6-v2/v1` of this repository, <https://github.com/demaconsulting/WordSense>. They are licensed
+under the Apache License 2.0 (<https://www.apache.org/licenses/LICENSE-2.0>); the license text is the release asset
+`LICENSE` and the provenance is in `model/all-MiniLM-L6-v2/LICENSE` and `model/all-MiniLM-L6-v2/README.md` of the repository.
 
 - Base model: `sentence-transformers/all-MiniLM-L6-v2` (<https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2>),
   Apache License 2.0.

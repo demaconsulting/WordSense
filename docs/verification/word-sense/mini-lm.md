@@ -1,7 +1,7 @@
 ## MiniLM Subsystem Verification Design
 
 This document describes the verification of the MiniLM subsystem, the package `DemaConsulting.WordSense.MiniLM`: the
-`all-MiniLM-L6-v2-int8` encoder (uncased, hidden size 384) with the weights trained for it embedded in the assembly,
+`all-MiniLM-L6-v2` encoder (uncased, hidden size 384) with the weights trained for it embedded in the assembly,
 composed with the Basic model of the core package.
 
 ### Verification Approach
@@ -9,7 +9,7 @@ composed with the Basic model of the core package.
 The subsystem is a thin layer on the Onnx package and the core Basic model, so verification concentrates on what the
 layer adds: the
 pinned model identity, the embedded weights and the composition with the Basic model. Tests in
-`test/DemaConsulting.WordSense.MiniLM.Tests` run the real int8 model (Git LFS) from `model/all-MiniLM-L6-v2-int8/`
+`test/DemaConsulting.WordSense.MiniLM.Tests` run the real int8 model (fetched into `model/all-MiniLM-L6-v2/v1/`)
 against the embedded lexicon and weights through the public API
 (`MiniLMWordSenseModelTests`), compile and run the README sample (`ReadmeSampleTests`) and
 compile the XML documentation examples (`XmlDocExampleTests`). Download behavior is not repeated here; it is verified
@@ -17,9 +17,10 @@ once for all models in the Onnx subsystem.
 
 ### Test Environment
 
-Standard xUnit v3 runner on net8.0, net9.0 and net10.0. The files `model_int8.onnx` and `vocab.txt` under
-`model/all-MiniLM-L6-v2-int8/` (Git LFS) are needed, and for the README sample also `model_int8.onnx` and `vocab.txt`
-under `model/bert-base-cased-int8/`; tests that need them are skipped when the LFS content is absent (failed when
+Standard xUnit v3 runner on net8.0, net9.0 and net10.0. The files `model-int8-dynamic.onnx` and `vocab.txt` under
+`model/all-MiniLM-L6-v2/v1/` (put there by `fetch-models`) are needed, and for the README sample also
+`model-int8-dynamic.onnx` and `vocab.txt`
+under `model/bert-base-cased/v1/`; tests that need them are skipped when the files are not fetched (failed when
 `WORDSENSE_REQUIRE_MODELS` is set, as in CI).
 No network access. The ONNX Runtime session of the tests is limited to two intra-op threads.
 
@@ -62,7 +63,7 @@ committed directory with two intra-op threads, classifies the words of every row
 **Inputs**: the words of those sentences; the answers of the real model (the encoder for the trained lemmas, the Basic
 model for the others).
 
-**Environment**: the real int8 model (Git LFS) and the embedded lexicon; the test is skipped without the model files and
+**Environment**: the real int8 model (fetched) and the embedded lexicon; the test is skipped without the model files and
 failed instead when `WORDSENSE_REQUIRE_MODELS` is set.
 
 **Acceptance**: a word has a key exactly when it is known; every key is a member of `WordLexicon.Keys()` (one pass over
@@ -84,7 +85,8 @@ the Basic model
 
 #### Embedded Weights Match the Word Image
 
-The weights embedded for `all-MiniLM-L6-v2-int8` load for the model id and hidden size 384 and match the embedded word
+The weights embedded for `all-MiniLM-L6-v2` (recorded as `all-MiniLM-L6-v2-int8`) load for that identity and hidden
+size 384 and match the embedded word
 image: the inventory hash is the one of the shipped image and every sense of every lemma resolves, with nothing
 dropped (`EmbeddedWeights_MiniLM_MatchesWordImage`).
 

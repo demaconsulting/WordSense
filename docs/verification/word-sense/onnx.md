@@ -13,8 +13,8 @@ against a loopback
 substituted for the test files, so no test reaches a public host. The model-level units (`OnnxWordSenseModel`,
 `OnnxClassifier`, `OnnxEncoder`) are verified with fake weights (with chosen thresholds, so that each answer level is
 reached), a test double standing in for a fallback model where a scenario needs one, and either a fake encoder input or
-the committed int8 model through the
-helper `ModelAssets`, which skips a test when the Git LFS content is absent (and fails it instead when
+the fetched model files through the
+helper `ModelAssets`, which skips a test when the files have not been fetched (and fails it instead when
 `WORDSENSE_REQUIRE_MODELS` is set, through `ModelFileCheck`). Tests live in
 `test/DemaConsulting.WordSense.Onnx.Tests`; the concrete model packages are verified in their own subsystem documents.
 
@@ -22,7 +22,7 @@ helper `ModelAssets`, which skips a test when the Git LFS content is absent (and
 
 Standard xUnit v3 runner on net8.0, net9.0 and net10.0. The
 downloader tests open a loopback HTTP listener on an ephemeral port and a temporary store directory. The real-model
-tests need `model/all-MiniLM-L6-v2-int8/` (Git LFS) and are skipped when it is absent (failed when
+tests need `model/all-MiniLM-L6-v2/v1/` (put there by `fetch-models`) and are skipped when it is absent (failed when
 `WORDSENSE_REQUIRE_MODELS` is set, as in CI; `ModelFileCheckTests` verify this rule with temporary folders). Environment
 variables are never modified by a test: the mirror environment is read through an injected getter.
 
@@ -152,8 +152,10 @@ against another encoder file is rejected (`MiniLMWordSenseModel_EmbeddedHead_Aga
 
 #### Model Files Come From a Verified Source
 
-Model files are obtained from the mirror and then GitHub LFS, verified against their SHA-256 digest, stored atomically
-under `<store>/<model-id>/`, and downloaded once even when requested concurrently (see the `ModelDownloader` and
+Model files are obtained from the mirror and then the GitHub release assets, verified against their SHA-256 digest,
+stored atomically
+under `<store>/<base-model>/v<version>/`, and downloaded once even when requested concurrently (see the
+`ModelDownloader` and
 `DownloadMirror` unit documents). The model is an `IDownloadableWordSenseModel`
 (`OnnxWordSenseModel_IsDownloadable`), so a caller that holds only an `IWordSenseModel` can prepare the files up front
 with a type check; options are `DownloadOptions`.

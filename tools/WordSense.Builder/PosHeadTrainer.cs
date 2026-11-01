@@ -21,13 +21,13 @@ internal sealed record PosSentence(string Id, string Text, string[] Words, int[]
 /// <summary>
 ///     What identifies an encoder to the head trainer.
 /// </summary>
-/// <param name="ModelId">The model identifier.</param>
+/// <param name="WeightsId">The identity recorded inside the embedded weights and head files of the model (<c>ModelSpec.WeightsId</c>), not the public model identifier.</param>
 /// <param name="HiddenSize">The hidden size of the encoder.</param>
 /// <param name="OnnxSha256">The SHA-256 of the pinned ONNX file, as lower-case hexadecimal.</param>
 /// <param name="VocabularySha256">The SHA-256 of the pinned vocabulary, as lower-case hexadecimal.</param>
 /// <param name="LowerCase">True when the encoder lower-cases its input.</param>
 /// <param name="Runtime">The version of the inference runtime.</param>
-internal sealed record PosEncoderInfo(string ModelId, int HiddenSize, string OnnxSha256, string VocabularySha256, bool LowerCase, string Runtime);
+internal sealed record PosEncoderInfo(string WeightsId, int HiddenSize, string OnnxSha256, string VocabularySha256, bool LowerCase, string Runtime);
 
 /// <summary>
 ///     The settings of a head training run.
@@ -193,7 +193,7 @@ internal static class PosHeadTrainer
 
         // Fit every C, score the development split and keep the best: the restricted all-token accuracy, then the smaller C
         var report = new StringBuilder();
-        report.Append(CultureInfo.InvariantCulture, $"### Part-of-speech head of {encoder.ModelId}\n\n");
+        report.Append(CultureInfo.InvariantCulture, $"### Part-of-speech head of {encoder.WeightsId}\n\n");
         report.Append(CultureInfo.InvariantCulture, $"Training: {train.Count:N0} sentences, {trainTable.TrainingRows().Length:N0} word-class tokens of the representative training split; development: {dev.Count:N0} sentences, {devTable.TrainingRows().Length:N0} tokens (selection only).\n\n");
         report.Append("| C | Iterations | Converged | Dev accuracy (restricted) | Dev ambiguous (restricted) | Dev accuracy (unrestricted) | Dev log loss |\n| ---: | ---: | --- | ---: | ---: | ---: | ---: |\n");
         PosFit? best = null;
@@ -206,7 +206,7 @@ internal static class PosHeadTrainer
             var fit = MultinomialLogisticTrainer.Fit(trainTable, new PosFitOptions(c, Parallelism: request.Parallelism));
             var head = MakeHead(encoder, onnx, trainSha, c, fit.Weights, fit.Biases);
             var score = Score(head, devVectors, devTable, masks);
-            progress.WriteLine(string.Create(CultureInfo.InvariantCulture, $"{encoder.ModelId}: C={c}: {fit.Iterations} iterations ({(fit.Converged ? "converged" : "iteration cap")}), dev {score.Accuracy:0.00}% restricted, {(DateTime.UtcNow - started).TotalSeconds:0} s."));
+            progress.WriteLine(string.Create(CultureInfo.InvariantCulture, $"{encoder.WeightsId}: C={c}: {fit.Iterations} iterations ({(fit.Converged ? "converged" : "iteration cap")}), dev {score.Accuracy:0.00}% restricted, {(DateTime.UtcNow - started).TotalSeconds:0} s."));
             report.Append(CultureInfo.InvariantCulture, $"| {c} | {fit.Iterations} | {(fit.Converged ? "yes" : "no")} | {score.Accuracy:0.00}% | {score.AmbiguousAccuracy:0.00}% | {score.UnrestrictedAccuracy:0.00}% | {score.LogLoss:0.0000} |\n");
             if (bestScore is null || Math.Round(score.Accuracy, 6) > Math.Round(bestScore.Accuracy, 6))
             {
@@ -394,7 +394,7 @@ internal static class PosHeadTrainer
     };
 
     private static PosHead MakeHead(PosEncoderInfo encoder, byte[] onnx, byte[] trainSha, double c, float[] weights, float[] biases) =>
-        new(new PosHeadData(encoder.ModelId, encoder.HiddenSize, onnx, PosHeadBlob.WordAndNeighbors, PosHeadBlob.ExpectedClassNames(), trainSha, (float)c, Variant, weights, biases));
+        new(new PosHeadData(encoder.WeightsId, encoder.HiddenSize, onnx, PosHeadBlob.WordAndNeighbors, PosHeadBlob.ExpectedClassNames(), trainSha, (float)c, Variant, weights, biases));
 
     /// <summary>
     ///     Aborts when a training sentence overlaps a held-out part.
@@ -435,7 +435,7 @@ internal static class PosHeadTrainer
         var path = cacheDirectory is null ? null : Path.Join(cacheDirectory, name + ".bin");
         if (path is not null && PosVectorCache.TryRead(path, digest, wordHash, d, count) is { } cached)
         {
-            progress.WriteLine($"{encoder.ModelId}: {name}: {count:N0} token vectors from the cache.");
+            progress.WriteLine($"{encoder.WeightsId}: {name}: {count:N0} token vectors from the cache.");
             return new PosTokenTable(d, cached.Vectors, sentence, gold, cached.HasVector);
         }
 
@@ -463,7 +463,7 @@ internal static class PosHeadTrainer
 
             if ((i + 1) % 2000 == 0)
             {
-                progress.WriteLine($"{encoder.ModelId}: {name}: {i + 1:N0}/{sentences.Count:N0} sentences encoded ({(DateTime.UtcNow - started).TotalSeconds:0} s).");
+                progress.WriteLine($"{encoder.WeightsId}: {name}: {i + 1:N0}/{sentences.Count:N0} sentences encoded ({(DateTime.UtcNow - started).TotalSeconds:0} s).");
             }
         }
 
@@ -473,7 +473,7 @@ internal static class PosHeadTrainer
             PosVectorCache.Write(path, digest, wordHash, table);
         }
 
-        progress.WriteLine($"{encoder.ModelId}: {name}: {count:N0} tokens of {sentences.Count:N0} sentences encoded in {(DateTime.UtcNow - started).TotalSeconds:0} s.");
+        progress.WriteLine($"{encoder.WeightsId}: {name}: {count:N0} tokens of {sentences.Count:N0} sentences encoded in {(DateTime.UtcNow - started).TotalSeconds:0} s.");
         return table;
     }
 

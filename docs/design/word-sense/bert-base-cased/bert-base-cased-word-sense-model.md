@@ -13,8 +13,8 @@ A sealed public class that implements `IDownloadableWordSenseModel` and holds on
 the constructor from two models it creates and
 owns: an internal `BertBaseCasedEncoderModel` (the primary model, a sealed class deriving from `OnnxWordSenseModel`) and
 a `BasicWordSenseModel` (the fallback model). The two are also kept in the internal properties `Encoder` and `Fallback`
-for the tests. The encoder model's description: model id
-`bert-base-cased-int8`; files `model_int8.onnx` (about 103.5 MiB; 104 MiB for all four files), `vocab.txt`,
+for the tests. The encoder model's description: base model
+`bert-base-cased`, version 1; files `model-int8-dynamic.onnx` (about 103.5 MiB; 104 MiB for all four files), `vocab.txt`,
 `config.json` and `tokenizer.json`, each
 with a pinned SHA-256; case-preserving tokenizer; hidden size 768; embedded weights `weights.bin` (fine-sense
 classifiers, form choosers and per-lemma fine and group thresholds calibrated for this encoder) trained at sequence
@@ -22,9 +22,10 @@ length 128; embedded part-of-speech head `head.bin` (the format `WSH1`, bound to
 checked with the weights, and used: the description declares the head in use) with the tense head (section 2: the
 neighbor layout, which the description declares in use, so the head file must have it). The encoder model loads the head
 through `OnnxWordSenseModel` and
-`PosHead` (see their unit documents): it must belong to the pinned ONNX file, the hidden size 768, the model id and the
-parts of speech of the library, and a head read against another encoder file or model id is rejected as invalid data.
-The `model_int8.onnx` file is the derived encoder export, not the upstream masked language model export.
+`PosHead` (see their unit documents): it must belong to the pinned ONNX file, the hidden size 768, the identity of the
+description (`WeightsId`: `bert-base-cased-int8`, the identity the head file records) and the
+parts of speech of the library, and a head read against another encoder file or identity is rejected as invalid data.
+The `model-int8-dynamic.onnx` file is the derived encoder export, not the upstream masked language model export.
 
 #### Key Methods
 

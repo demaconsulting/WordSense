@@ -76,7 +76,7 @@ public class EmbeddedHeadTests
         var assembly = typeof(BertBaseCasedWordSenseModel).Assembly;
 
         // Act / Assert: another encoder digest and another model id both fail the binding
-        Assert.Throws<InvalidDataException>(() => PosHead.LoadEmbedded(assembly, model.Spec.HeadResourceName!, model.Spec.ModelId, model.HiddenSize, other));
+        Assert.Throws<InvalidDataException>(() => PosHead.LoadEmbedded(assembly, model.Spec.HeadResourceName!, model.Spec.WeightsId, model.HiddenSize, other));
         Assert.Throws<InvalidDataException>(() => PosHead.LoadEmbedded(assembly, model.Spec.HeadResourceName!, "other-model", model.HiddenSize, model.Spec.Files.First(f => f.Name == model.Spec.OnnxFileName).Sha256));
     }
 }

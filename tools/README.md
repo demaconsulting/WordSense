@@ -13,6 +13,7 @@ git-ignored folders `cache/` and `work/`.
 | `WordSense.Builder` | C# (.NET 10) | The regular tool |
 | `forms-audit` | Python | Verdicts for `audit-forms` after the form table changes |
 | `model-prep` | Python | Derives the BERT encoder file |
+| `model-release` | PowerShell | Publishes model files as GitHub release assets (append only) |
 | `open-corpus` | Python | Builds the open corpus; two scripts feed the builder's evaluation |
 | `quota-fill` | Python | Fills the per-sense quotas of the corpus |
 | `tokenizer-fixture` | Python | Regenerates the tokenizer parity fixture |
@@ -35,12 +36,13 @@ user guide and the model comparison table. It also validates the data and the co
 the tests compare the committed outputs with a regeneration.
 
 **Prerequisites.** The .NET SDK. `rebuild-forms` needs the pinned Open English WordNet file in `artifacts/inputs`.
-`weights` and `evaluate` for the encoder models need the model files of `model/` (Git LFS). `audit-forms` needs Python
+`weights` and `evaluate` for the encoder models need the model files: run `fetch-models` (it downloads the release assets
+into the git-ignored `model/<base-model>/v<n>/`). `audit-forms` needs Python
 and `pip install lemminflect`. The evaluations on SemCor and the treebank need their git-ignored downloads.
 
 **Commands.** `dotnet run --project tools/WordSense.Builder -c Release -- <command> [--name value ...]`. The commands
 are `compile-image`, `rebuild-forms`, `audit-forms`, `generate-facts`, `import-moby`, `weights <modelId>`,
-`train-pos-head <modelId>`, `train-tense-head <modelId>`,
+`train-pos-head <modelId>`, `train-tense-head <modelId>`, `fetch-models`,
 `evaluate <modelId>`, `evaluate-senses`, `evaluate-allwords`, `allwords-sample`, `allwords-merge`, `gold2-power`,
 `gold2-sample`, `gold2-batches`, `gold2-merge`, `evaluate-gold2`, `compare-gold2`, `evaluate-running`,
 `evaluate-suite`, `evaluate-shapes`, `check-leakage`, `tiers`, `open-counts`, `evaluate-tagger`, `coverage`,
@@ -77,7 +79,7 @@ or the environment variable `FORMS_AUDIT_HOME` (default `artifacts/forms-audit`,
 
 ## model-prep
 
-**What.** `make-bert-encoder.py` derives the encoder-only ONNX file of `bert-base-cased-int8` from the upstream
+**What.** `make-bert-encoder.py` derives the encoder-only ONNX file of the model `bert-base-cased` from the upstream
 masked-language-model export. It cuts the graph at the output of the last encoder layer, exposes it as
 `last_hidden_state` and drops the language-model head. The weights are unchanged.
 
@@ -88,9 +90,25 @@ file.
 
 **Prerequisites.** Python with the `onnx` package and the upstream file (Xenova/bert-base-cased, `onnx/model_int8.onnx`).
 
-**Command.** `python tools/model-prep/make-bert-encoder.py <upstream-model_int8.onnx> <encoder_int8.onnx>`
+**Command.** `python tools/model-prep/make-bert-encoder.py <upstream-model_int8.onnx> <model-int8-dynamic.onnx>`
 
-**More.** The provenance and the SHA-256 values are in `model/bert-base-cased-int8/README.md`.
+**More.** The provenance and the SHA-256 values are in `model/bert-base-cased/README.md`. The result is published with
+`tools/model-release`.
+
+## model-release
+
+**What.** `publish-model.ps1` publishes the files of a model as the assets of the GitHub release
+`models/<base-model>/v<n>`, with a `.sha256` sidecar per asset. Releases are append only.
+
+**When.** For a new model, a new version of a model or a new quantization.
+
+**Why.** The library downloads the model files from these assets, and the pins in the packages are checked against them.
+
+**Prerequisites.** PowerShell and an authenticated `gh` with write access to the repository.
+
+**Command.** `& tools/model-release/publish-model.ps1 -BaseModel <id> -Version <n> -File '<asset>=<path>', ... [-DryRun]`
+
+**More.** `tools/model-release/README.md`.
 
 ## open-corpus
 
@@ -142,7 +160,8 @@ Tatoeba CC0 export live in the git-ignored `tools/quota-fill/cache/` (`cc0.tar.b
 ## tokenizer-fixture
 
 **What.** `generate_fixture.py` records the WordPiece ids and UTF-16 offsets that the Hugging Face `tokenizers` library
-produces with `model/all-MiniLM-L6-v2-int8/tokenizer.json` for the sentences of `sentences.txt`.
+produces with `model/all-MiniLM-L6-v2/v1/tokenizer.json` (the `tokenizer.json` asset of the release
+`models/all-MiniLM-L6-v2/v1`; the library does not download it) for the sentences of `sentences.txt`.
 
 **When.** When `sentences.txt` or the tokenizer changes.
 

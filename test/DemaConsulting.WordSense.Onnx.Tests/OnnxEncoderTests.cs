@@ -2,7 +2,7 @@ namespace DemaConsulting.WordSense.Onnx.Tests;
 
 /// <summary>
 ///     Tests for <see cref="OnnxEncoder"/> with the real MiniLM model files of the repository. They are skipped when
-///     the files are not available (for example without Git LFS content).
+///     the files are not available (for example without the fetched model files).
 /// </summary>
 public class OnnxEncoderTests
 {
@@ -12,7 +12,7 @@ public class OnnxEncoderTests
     {
         var directory = ModelAssets.RequireModelDirectory();
         return new OnnxEncoder(
-            Path.Join(directory, "model_int8.onnx"),
+            Path.Join(directory, "model-int8-dynamic.onnx"),
             Path.Join(directory, "vocab.txt"),
             true,
             maxSequenceLength,
@@ -531,7 +531,7 @@ public class OnnxEncoderTests
     public void OnnxEncoder_Constructor_InvalidArguments_Throws()
     {
         var directory = ModelAssets.RequireModelDirectory();
-        var model = Path.Join(directory, "model_int8.onnx");
+        var model = Path.Join(directory, "model-int8-dynamic.onnx");
         var vocabulary = Path.Join(directory, "vocab.txt");
 
         Assert.Throws<ArgumentNullException>(() => new OnnxEncoder(null!, vocabulary, true, 128, 2));

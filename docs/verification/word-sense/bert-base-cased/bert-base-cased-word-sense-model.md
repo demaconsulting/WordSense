@@ -3,7 +3,7 @@
 #### Verification Approach
 
 Tests in `test/DemaConsulting.WordSense.BertBaseCased.Tests/BertBaseCasedWordSenseModelTests.cs` use the public type with
-the committed `bert-base-cased-int8` files, the embedded weights and head and the embedded lexicon. The model is a
+the fetched `bert-base-cased` files, the embedded weights and head and the embedded lexicon. The model is a
 composition
 (`FallbackWordSenseModel`) of a thin subclass of `OnnxWordSenseModel` and the Basic model; the shared behavior is
 verified in the Onnx and Basic unit documents, so these tests check the pinned identity, the composition, the
@@ -12,8 +12,9 @@ parts of speech needs the model files, because the head reads the encoder.
 
 #### Test Environment
 
-Standard xUnit v3 runner. `model/bert-base-cased-int8/` with `model_int8.onnx`, `vocab.txt`, `config.json` and
-`tokenizer.json` (Git LFS); the tests are skipped when the LFS content is absent. No network access.
+Standard xUnit v3 runner. `model/bert-base-cased/v1/` (put there by `fetch-models`) with `model-int8-dynamic.onnx`,
+`vocab.txt`, `config.json` and
+`tokenizer.json`; the tests are skipped when the files are not fetched. No network access.
 
 #### Acceptance Criteria
 
@@ -21,8 +22,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
 
 #### Test Scenarios
 
-- **Pinned identity**: `ModelId` is `bert-base-cased-int8`, `HiddenSize` is 768 and the vocabulary is cased before any
-  setup; the four files are pinned by SHA-256 digests.
+- **Pinned identity**: `ModelId` is `bert-base-cased`, `ModelVersion` is 1, `Quantization` is `int8-dynamic`, the release
+  tag is `models/bert-base-cased/v1`, `HiddenSize` is 768 and the vocabulary is cased before any
+  setup; the four files are pinned by SHA-256 digests, which equal the digests documented in
+  `model/bert-base-cased/SHA256SUMS` (`BertBaseCasedWordSenseModel_Pins_MatchTheDocumentedSha256Sums`).
 - **Model is downloadable** (`BertBaseCasedWordSenseModel_IsDownloadable`): the model, held as `IWordSenseModel`, is
   also an `IDownloadableWordSenseModel`, so the optional `EnsureModelAsync` is available through the capability
   interface (the composition forwards it to the encoder model only, the Basic model needs none).
@@ -32,11 +35,12 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `ModelUnavailableException` through the composition, carrying the original exception as inner exception
   (`BertBaseCasedWordSenseModel_EnsureModelAsync_MissingDirectory_ThrowsModelUnavailable`).
 - **Embedded weights resolve against the word image** (`EmbeddedWeights_BertBaseCased_MatchesWordImage`, in the Onnx test
-  project): the weights embedded in the assembly load for the model id and hidden size, carry the inventory hash of the
+  project): the weights embedded in the assembly load for the identity recorded in them (`bert-base-cased-int8`) and
+  the hidden size, carry the inventory hash of the
   shipped word image and every sense of every lemma resolves.
 - **Embedded head** (`BertBaseCasedWordSenseModel_EmbeddedHead_MatchesEncoderAndClasses`, in `EmbeddedHeadTests.cs` of
   the BertBaseCased test project; no model file): the encoder model loads the head embedded in the assembly, which
-  carries the model id `bert-base-cased-int8`, hidden size 768, the feature layout 1, the variant `word+-1`, the classes
+  carries the identity `bert-base-cased-int8`, hidden size 768, the feature layout 1, the variant `word+-1`, the classes
   of `PartOfSpeech` in order and the SHA-256 of the pinned ONNX file; its posterior for a zero vector sums to one and its
   restriction to the noun class gives that class probability one.
 - **Embedded head is bound** (`BertBaseCasedWordSenseModel_EmbeddedHead_AgainstAnotherEncoderFile_IsRejected`): the head

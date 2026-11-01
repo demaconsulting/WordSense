@@ -10,24 +10,26 @@ sections:
             requirements:
               - id: WordSense-MiniLM-MiniLMWordSenseModel-Identity
                 title: >-
-                  MiniLMWordSenseModel shall identify itself as all-MiniLM-L6-v2-int8 with hidden size 384 and use an
-                  uncased vocabulary.
+                  MiniLMWordSenseModel shall identify itself by the base model all-MiniLM-L6-v2, the model version 1 and
+                  the quantization int8-dynamic, with hidden size 384 and an uncased vocabulary.
                 tags: [unit]
                 justification: |
-                  The identifier names the model's folder in the repository, on a mirror and in the store, and the
+                  The base model and version name the model's release, its folder on a mirror and in the store, and the
                   weights were trained for exactly this encoder.
                 tests:
                   - MiniLMWordSenseModel_Identity_IsPinned
 
               - id: WordSense-MiniLM-MiniLMWordSenseModel-Files
                 title: >-
-                  MiniLMWordSenseModel shall require the files model_int8.onnx and vocab.txt, each pinned by its SHA-256
-                  digest.
+                  MiniLMWordSenseModel shall require the files model-int8-dynamic.onnx and vocab.txt, each pinned by its
+                  SHA-256 digest, and the pins shall equal the digests documented in model/all-MiniLM-L6-v2/SHA256SUMS.
                 tags: [unit]
                 justification: |
-                  A model file that does not match the pinned digest could silently change results.
+                  A model file that does not match the pinned digest could silently change results, and the published
+                  assets are the files that were pinned.
                 tests:
                   - MiniLMWordSenseModel_Files_ArePinnedBySha256
+                  - MiniLMWordSenseModel_Pins_MatchTheDocumentedSha256Sums
                   - MiniLMWordSenseModel_EnsureModelAsync_ModelDirectory_VerifiesPinnedFiles
                   - OnnxWordSenseModel_EnsureModelAsync_MissingFile_ThrowsModelUnavailable
                   - OnnxWordSenseModel_EnsureModelAsync_AlteredFile_ThrowsModelIntegrity

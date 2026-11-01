@@ -1,6 +1,5 @@
 using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;
-using System.Text;
 
 namespace DemaConsulting.WordSense.Onnx.Tests;
 
@@ -9,9 +8,9 @@ namespace DemaConsulting.WordSense.Onnx.Tests;
 /// </summary>
 /// <remarks>
 ///     This file is compiled into the test projects of the Onnx package, of both encoder models and of the builder, so
-///     the <c>ModelFolder</c> helpers apply one rule. A folder that is missing, holds a Git LFS pointer or a file of the
-///     wrong size is a checkout without the model content: the test is skipped, which keeps a local run without Git LFS
-///     convenient. When the environment variable <c>WORDSENSE_REQUIRE_MODELS</c> is <c>true</c> or <c>1</c> (the CI
+///     the <c>ModelFolder</c> helpers apply one rule. A folder that is missing or holds a file of the
+///     wrong size is a checkout without the model files: the test is skipped, which keeps a local run without the
+///     fetched files convenient. When the environment variable <c>WORDSENSE_REQUIRE_MODELS</c> is <c>true</c> or <c>1</c> (the CI
 ///     acceptance run sets it) the same condition fails the test instead, so that a model test can never be skipped
 ///     silently where the model is expected. A file of the right size with the wrong SHA-256
 ///     is corrupt: the test fails, because a damaged model must not be skipped silently. The SHA-256 of a folder is checked once per process.
@@ -22,8 +21,6 @@ internal static class ModelFileCheck
     ///     The name of the environment variable that turns the skip of a model test into a failure.
     /// </summary>
     public const string RequireModelsVariable = "WORDSENSE_REQUIRE_MODELS";
-
-    private const string PointerPrefix = "version https://git-lfs";
 
     private static readonly ConcurrentDictionary<string, string> Verified = new(StringComparer.OrdinalIgnoreCase);
 
@@ -60,7 +57,7 @@ internal static class ModelFileCheck
     {
         if (required)
         {
-            Assert.Fail($"{reason} The model files are required because {RequireModelsVariable} is set; fetch them with 'git lfs pull'.");
+            Assert.Fail($"{reason} The model files are required because {RequireModelsVariable} is set; fetch them with 'dotnet run --project tools/WordSense.Builder -- fetch-models'.");
         }
 
         Assert.Skip(reason);
@@ -80,12 +77,7 @@ internal static class ModelFileCheck
             var path = Path.Join(directory, file.Name);
             if (!File.Exists(path))
             {
-                return $"The model file '{file.Name}' is missing.";
-            }
-
-            if (IsLfsPointer(path))
-            {
-                return $"The model file '{file.Name}' is a Git LFS pointer; run 'git lfs pull'.";
+                return $"The model file '{file.Name}' is missing; run 'dotnet run --project tools/WordSense.Builder -- fetch-models'.";
             }
 
             if (file.Length > 0 && new FileInfo(path).Length != file.Length)
@@ -119,19 +111,6 @@ internal static class ModelFileCheck
         }
 
         return directory;
-    }
-
-    /// <summary>
-    ///     Determines whether a file is a Git LFS pointer rather than real content.
-    /// </summary>
-    /// <param name="path">The file path.</param>
-    /// <returns>True for a pointer file.</returns>
-    public static bool IsLfsPointer(string path)
-    {
-        using var stream = File.OpenRead(path);
-        var buffer = new byte[64];
-        var read = stream.Read(buffer, 0, buffer.Length);
-        return Encoding.ASCII.GetString(buffer, 0, read).StartsWith(PointerPrefix, StringComparison.Ordinal);
     }
 
     private static string? FindCorrupt(ModelSpec spec, string directory)

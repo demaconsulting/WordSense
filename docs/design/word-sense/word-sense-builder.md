@@ -277,6 +277,13 @@ instead of `--model`.
   the report. The existing head file must belong to the encoder and have been trained on the representative training
   split. `--report-fusion` adds the development accuracy and log loss of the head combined with the Basic model at
   each weight.
+- `fetch-models [--output DIR]`: puts the verified files of every encoder model into `DIR/{base-model}/v{version}/`
+  (default `model` of the repository; the folders that the evaluation commands and the encoder tests read). Each model
+  goes through `ModelDownloader.EnsureAsync` with that store root and no download options, so a valid file is kept
+  without a request and a missing or invalid one is downloaded from the mirror of `WORDSENSE_MIRROR_URL` (when set) and
+  then from the release assets, verified against the pins of the package. The command exits with 1 when a file cannot be
+  obtained and verified. `ModelInfo.ModelDirectory` is the store folder of the spec (`all-MiniLM-L6-v2/v1`); the vector
+  caches and the weights blobs keep the identity recorded in the embedded files (`ModelSpec.WeightsId`).
 - `evaluate <modelId> [--corpus DIR] [--repository DIR] [--output FILE] [--table FILE] [--outcomes FILE]`: measures a
   model (`minilm`, `bert-base-cased`, `basic`) on the holdout sentences and prints a Markdown table; `--table` writes
   the real-text sense cell and the cost cells of the model into the model comparison table file.
@@ -435,9 +442,11 @@ for at least two of its senses to get weights; a lemma with fewer is not an erro
    that exists, belongs to the lemma of the row and has the part of speech of the row (an error), and its braced target
    word is analyzed by the lexicon as that lemma and part of speech (a warning that is reported and still trains); the
    anchors and the holdout shall be disjoint (by normalized sentence).
-2. Open the model on the verified files of `model/<model-id>/`, and open the embedding cache (see below) unless
+2. Open the model on the verified files of `model/<base-model>/v<version>/` (put there by `fetch-models`), and open the
+   embedding cache (see below) unless
    `--no-cache` is given. Take the global mean from the existing weights blob of the model when it exists, reads, names
-   the same model id and is not overridden by `--recompute-mean` (the *frozen mean*); the reason is printed whenever the
+   the same weights identity (`WeightsId`) and is not overridden by `--recompute-mean` (the *frozen mean*); the reason
+   is printed whenever the
    mean is computed instead.
 3. Get the pooled vector of every anchor sentence (the hidden states of the target word, mean over its word pieces):
    from the cache when present, otherwise from the encoder. Progress lines report the cache hits, the sentences
@@ -636,7 +645,7 @@ changes only the weights of that lemma. Use `--recompute-mean` after an encoder 
 the anchors have changed so much that the old mean no longer centers them; the whole blob then changes.
 
 **Embedding cache (`EmbeddingCache`, `CachingEncoder`).** The encoder is deterministic for a given set of model files,
-so its output is cached per model in `<cache>/<model-id>/embeddings.bin` (default cache folder
+so its output is cached per model in `<cache>/<weights-id>/embeddings.bin` (default cache folder
 `<repository>/.cache/embeddings`, ignored by git). An entry is keyed by the SHA-256 of the exact word sequence and the
 target word index, and the file is valid only for the digest of the model's ONNX file and vocabulary (their SHA-256 as
 pinned in the model specification and verified when the model is opened), the casing and the version of ONNX Runtime
@@ -653,7 +662,7 @@ the pooling or tokenization that keeps the model files, delete the cache folder 
 **Fit cache (`FitCache`).** Fitting the classifiers is the longest step once the encoding is cached (about 1.5 minutes
 for the 775 lemmas of MiniLM and 2 minutes for BertBaseCased with the kernel solver; the feature-space solver needed 77
 seconds for MiniLM and 11.5 minutes for the 768-dimensional BertBaseCased on a measurement of only 20 lemmas), and the
-fit of a lemma depends on that lemma alone. `<cache>/<model-id>/fits.bin`
+fit of a lemma depends on that lemma alone. `<cache>/<weights-id>/fits.bin`
 therefore stores the fitted weights, biases and thresholds of each lemma, keyed by the SHA-256 of the training settings
 (the threshold settings, the precision target, the solver and the seed included), the lemma, its sense ids, the label of
 each
@@ -1038,7 +1047,7 @@ lemma and part of speech. `SuiteFile.Grade` judges the answer of a model at the 
 when, besides, the most probable ranked sense is acceptable. `SuiteFile` has no other dependency of the builder, so the
 test projects of the three models compile it (`Suite.cs` is linked into them): `BasicSuite_ExpectedPasses_StillPass`,
 `MiniLMSuite_ExpectedPasses_StillPass` and `BertBaseCasedSuite_ExpectedPasses_StillPass` fail when a row falls below its
-expectation; the encoder tests skip when the model files are not present (Git LFS). The expectations are raised in a
+expectation; the encoder tests skip when the model files are not fetched. The expectations are raised in a
 reviewed commit and never lowered to hide a regression. `evaluate-suite` reports the pass rates and writes the
 expectations of a new suite or model. The challenge set has a floor test of the same kind
 (`ChallengeSetFloorTests`, `corpus/suite/ste-floors.tsv`).

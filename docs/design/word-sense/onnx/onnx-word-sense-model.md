@@ -31,14 +31,16 @@ model files, also for a classification that contains a same-spelling verb (a ver
 
 - The private protected constructor takes the model description (`ModelSpec`), an optional model directory (converted
   to a full path) and the maximum sequence length, which shall be from 8 to 512.
-- Public properties: `HiddenSize` and `ModelId`. They are public on purpose: callers and the model packages read them
+- Public properties: `HiddenSize`, `ModelId` (the base model), `ModelVersion` and `Quantization`. They are public on
+  purpose: callers and the model packages read them
   (for example to show which model and encoder size is in use) before an explicit ensure has run.
 - State: the in-flight (or finished) ensure task, the shared classifier, the encoder, the weights table and the
   part-of-speech head (opened and
   loaded on first need), the disposed flag and an in-flight tracker that counts running classifications, all
   guarded by a lock, plus a cancellation source that disposal cancels and then disposes (the download holds a copy of
   its token, which stays cancelled).
-- Internal test and builder hooks: the ONNX intra-op thread count, the HTTP client, the GitHub base URI, the
+- Internal test and builder hooks: the ONNX intra-op thread count, the HTTP client, the public release location
+  (`PublicSources`), the retry wait, the
   environment variable reader, `OpenEncoder()` (builder training), `GetHead()` and the description.
 
 #### Key Methods

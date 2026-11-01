@@ -818,18 +818,18 @@ sections:
       - id: WordSense-Lib-ModelFiles
         title: >-
           The system shall obtain the files of an encoder model on first use (or when the caller ensures the model
-          up front with DownloadOptions) from a user-supplied mirror or the
-          public repository copy, verify each against its pinned SHA-256 digest, store them in a per-user location
+          up front with DownloadOptions) from a user-supplied mirror or the GitHub release assets of the model,
+          verify each against its pinned SHA-256 digest, store them in a per-user location
           and use them offline afterwards.
         tags: [system]
         justification: |
           Encoder model files are too large to embed; users in restricted networks need their own mirror, everyone
-          else gets the public copy, and no file is used unless it is verified.
+          else gets the release assets, and no file is used unless it is verified.
         children:
           - WordSense-Onnx-ModelFiles
           - WordSense-Onnx-Mirror
         tests:
-          - ModelDownloader_EnsureAsync_MirrorFails_FallsBackToGitHub
+          - ModelDownloader_EnsureAsync_MirrorFails_FallsBackToRelease
           - ModelDownloader_EnsureAsync_HashMismatch_FallsThroughAndKeepsNothingBad
 
       - id: WordSense-Lib-Failures
@@ -919,6 +919,7 @@ sections:
           - WordSense-WordSenseBuilder-Corpus
           - WordSense-WordSenseBuilder-CorpusLicenses
           - WordSense-WordSenseBuilder-Usage
+          - WordSense-WordSenseBuilder-FetchModels
           - WordSense-WordData-FormGenerator-Reproducible
           - WordSense-WordData-SenseLabelGenerator-Reproducible
         tests:

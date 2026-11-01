@@ -44,7 +44,7 @@ verified through the data they produce: the weights embedded in the model packag
 MiniLM and BertBaseCased tests, the heads embedded in them are loaded and bound to their encoders by `EmbeddedHeadTests`
 of the same two test projects, the expectations of the suite are checked by the suite tests of the three model test
 projects (`BasicSuiteTests`, `MiniLMSuiteTests`, `BertBaseCasedSuiteTests`) and the floors of the challenge set by
-`ChallengeSetFloorTests` (both skip when the model files are not present, and fail when `WORDSENSE_REQUIRE_MODELS` is
+`ChallengeSetFloorTests` (both skip when the model files are not fetched, and fail when `WORDSENSE_REQUIRE_MODELS` is
 set), and the accuracy figures are recorded in
 the model comparison table and the accuracy chapter of the user guide, not asserted here. The download of SemCor (an
 evaluation source only) is verified with a stub HTTP
@@ -788,6 +788,19 @@ The trainer is tested with a synthetic corpus whose sentences are the combinatio
   trainer reads the file back and compares its predictions. The failing path of the gate needs weights that half
   precision changes by more than the tolerance and is verified by inspection, not by a test.
 
+#### fetch-models
+
+`FetchModelsTests.cs` runs the command with a stub transport and a temporary folder; no network is used.
+
+- **Present files**: files that match their pins cause no request and the command reports them verified
+  (`WordSenseBuilder_FetchModels_FilesPresent_MakesNoRequest`).
+- **Missing file**: a missing file is requested at `models/{base-model}/v{version}/{file}` of the release location and
+  stored in `{base-model}/v{version}` (`WordSenseBuilder_FetchModels_MissingFile_IsFetchedFromTheRelease`).
+- **Release without the file**: the command fails and asks no other source
+  (`WordSenseBuilder_FetchModels_ReleaseWithoutTheFile_Fails`).
+- **Folders**: the model directory of each catalog entry equals the store folder of its spec
+  (`WordSenseBuilder_ModelCatalog_ModelDirectories_AreTheStoreFoldersOfTheSpecs`).
+
 #### train-tense-head
 
 The trainer is tested like `train-pos-head`: a synthetic corpus in which the tense of a same-spelling verb is given by
@@ -804,6 +817,10 @@ the adverb after it, and an encoder stub that returns a fixed vector for each wo
   verbs whose form has a past and a non-past verb analysis, with their gold class.
 - **Foreign head file** (`WordSenseBuilder_TenseHeadTrainer_TrainAsync_ForeignHeadFile_Refused`): a head file with
   another training-file digest, or for another model, is refused with `InvalidDataException`.
+- **Embedded heads of the real identity**
+  (`WordSenseBuilder_TenseHeadTrainer_CheckExisting_AcceptsTheEmbeddedHeadOfTheRealIdentity`): the head embedded in each
+  package passes the check against the identity derived from its real version 1 spec (`ModelSpec.WeightsId`, the
+  identity the head file records) and the committed training file; the same head is refused for the public `ModelId`.
 - **No development rows** (`WordSenseBuilder_TenseHeadTrainer_TrainAsync_NoDevelopmentRows_Refused`): a corpus without
   a tense row on the development split is refused and the message names the development rows.
 - **Settings** (`WordSenseBuilder_TenseHeadTrainer_Fit_InvalidSettings_Throw`): a `C` of zero or NaN, an unknown layout

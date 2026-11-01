@@ -10,7 +10,7 @@ namespace WordSense.Builder;
 /// </summary>
 /// <param name="Name">The name used on the command line.</param>
 /// <param name="Package">The directory name of the package that ships the model's weights, below <c>src</c>.</param>
-/// <param name="ModelDirectory">The directory below <c>model</c> that holds the model files, or null for a model without files.</param>
+/// <param name="ModelDirectory">The directory below <c>model</c> that holds the downloaded model files (<c>{base-model}/v{version}</c>, the store layout), or null for a model without files.</param>
 /// <param name="Create">Creates the model, with the given model directory.</param>
 internal sealed record ModelInfo(string Name, string Package, string? ModelDirectory, Func<string?, IWordSenseModel> Create)
 {
@@ -18,6 +18,13 @@ internal sealed record ModelInfo(string Name, string Package, string? ModelDirec
     ///     Gets a value indicating whether the model uses an ONNX encoder.
     /// </summary>
     public bool IsEncoder => ModelDirectory is not null;
+
+    /// <summary>
+    ///     Gets the directory that holds the downloaded model files.
+    /// </summary>
+    /// <param name="repository">The repository root.</param>
+    /// <returns>The directory, or null for a model without files.</returns>
+    public string? ModelPath(string repository) => ModelDirectory is null ? null : Path.Join(repository, "model", ModelDirectory);
 
     /// <summary>
     ///     Gets the path of the weights file of the model.
@@ -49,8 +56,8 @@ internal static class ModelCatalog
     /// </summary>
     public static readonly IReadOnlyList<ModelInfo> All =
     [
-        new("minilm", "DemaConsulting.WordSense.MiniLM", "all-MiniLM-L6-v2-int8", dir => Throttle(new MiniLMWordSenseModel(dir), m => m.Encoder)),
-        new("bert-base-cased", "DemaConsulting.WordSense.BertBaseCased", "bert-base-cased-int8", dir => Throttle(new BertBaseCasedWordSenseModel(dir), m => m.Encoder)),
+        new("minilm", "DemaConsulting.WordSense.MiniLM", "all-MiniLM-L6-v2/v1", dir => Throttle(new MiniLMWordSenseModel(dir), m => m.Encoder)),
+        new("bert-base-cased", "DemaConsulting.WordSense.BertBaseCased", "bert-base-cased/v1", dir => Throttle(new BertBaseCasedWordSenseModel(dir), m => m.Encoder)),
         new("basic", "DemaConsulting.WordSense", null, _ => new BasicWordSenseModel()),
     ];
 
@@ -82,7 +89,7 @@ internal static class ModelCatalog
     public static IWordSenseModel Open(ModelInfo info, string repository)
     {
         ArgumentNullException.ThrowIfNull(info);
-        return info.Create(info.ModelDirectory is null ? null : Path.Join(repository, "model", info.ModelDirectory));
+        return info.Create(info.ModelPath(repository));
     }
 
     /// <summary>

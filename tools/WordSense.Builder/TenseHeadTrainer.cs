@@ -290,6 +290,30 @@ internal static class TenseHeadTrainer
     }
 
     /// <summary>
+    ///     Checks that an existing head file may be extended with a tense head: it belongs to the encoder and was trained
+    ///     on the representative training split.
+    /// </summary>
+    /// <param name="existing">The head file as it is.</param>
+    /// <param name="encoder">The identity of the encoder; its <see cref="PosEncoderInfo.WeightsId"/> is the identity that the head file records (not the public <c>ModelId</c>).</param>
+    /// <param name="trainSha">The SHA-256 of the representative training file.</param>
+    /// <exception cref="InvalidDataException">Thrown when the head file does not belong to the encoder or was trained on another file.</exception>
+    internal static void CheckExisting(PosHeadData existing, PosEncoderInfo encoder, byte[] trainSha)
+    {
+        ArgumentNullException.ThrowIfNull(existing);
+        ArgumentNullException.ThrowIfNull(encoder);
+        ArgumentNullException.ThrowIfNull(trainSha);
+        if (existing.ModelId != encoder.WeightsId || existing.HiddenSize != encoder.HiddenSize || !existing.EncoderSha256.AsSpan().SequenceEqual(Convert.FromHexString(encoder.OnnxSha256)))
+        {
+            throw new InvalidDataException("The existing head file does not belong to this encoder.");
+        }
+
+        if (!existing.TrainSha256.AsSpan().SequenceEqual(trainSha))
+        {
+            throw new InvalidDataException("The existing head file was not trained on the representative training split of this corpus, so a tense head is not added to it.");
+        }
+    }
+
+    /// <summary>
     ///     Trains the tense head and adds it to a head file.
     /// </summary>
     /// <param name="request">The settings.</param>
@@ -309,15 +333,7 @@ internal static class TenseHeadTrainer
         ArgumentNullException.ThrowIfNull(progress);
         var trainFile = OpenCorpus.DataFile(request.Corpus, OpenCorpus.Representative, "train");
         var trainSha = System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(trainFile));
-        if (existing.ModelId != encoder.ModelId || existing.HiddenSize != encoder.HiddenSize || !existing.EncoderSha256.AsSpan().SequenceEqual(Convert.FromHexString(encoder.OnnxSha256)))
-        {
-            throw new InvalidDataException("The existing head file does not belong to this encoder.");
-        }
-
-        if (!existing.TrainSha256.AsSpan().SequenceEqual(trainSha))
-        {
-            throw new InvalidDataException("The existing head file was not trained on the representative training split of this corpus, so a tense head is not added to it.");
-        }
+        CheckExisting(existing, encoder, trainSha);
 
         var train = PosHeadTrainer.ReadSentences(request.Corpus, "train");
         var dev = PosHeadTrainer.ReadSentences(request.Corpus, "dev");
@@ -333,7 +349,7 @@ internal static class TenseHeadTrainer
         }
 
         var report = new StringBuilder();
-        report.Append(CultureInfo.InvariantCulture, $"### Tense head of {encoder.ModelId}\n\n");
+        report.Append(CultureInfo.InvariantCulture, $"### Tense head of {encoder.WeightsId}\n\n");
         report.Append(CultureInfo.InvariantCulture, $"Training: {trainRows.Count:N0} same-spelling verb tokens ({trainRows.PastCount:N0} past, {trainRows.Forms.Distinct().Count():N0} forms) of the representative training split; development: {devRows.Count:N0} tokens ({devRows.PastCount:N0} past, {devRows.Forms.Distinct().Count():N0} forms, selection only). Majority class on development: {100.0 * Math.Max(devRows.PastCount, devRows.Count - devRows.PastCount) / devRows.Count:0.0}%.\n\n");
         report.Append("| Layout | C | Iterations | Converged | Dev accuracy | Dev log loss |\n| --- | ---: | ---: | --- | ---: | ---: |\n");
         TenseFit? best = null;
@@ -346,7 +362,7 @@ internal static class TenseHeadTrainer
                 cancellationToken.ThrowIfCancellationRequested();
                 var fit = Fit(trainTable, trainRows, layout, c);
                 var score = Score(Make(layout, c, fit.Weights, fit.Bias, existing.HiddenSize), devTable, devRows);
-                progress.WriteLine(string.Create(CultureInfo.InvariantCulture, $"{encoder.ModelId}: tense layout {layout} C={c}: {fit.Iterations} iterations ({(fit.Converged ? "converged" : "iteration cap")}), dev {score.Accuracy:0.00}%, log loss {score.LogLoss:0.0000}."));
+                progress.WriteLine(string.Create(CultureInfo.InvariantCulture, $"{encoder.WeightsId}: tense layout {layout} C={c}: {fit.Iterations} iterations ({(fit.Converged ? "converged" : "iteration cap")}), dev {score.Accuracy:0.00}%, log loss {score.LogLoss:0.0000}."));
                 report.Append(CultureInfo.InvariantCulture, $"| {LayoutName(layout)} | {c} | {fit.Iterations} | {(fit.Converged ? "yes" : "no")} | {score.Accuracy:0.00}% ({score.Correct}/{score.Rows}) | {score.LogLoss:0.0000} |\n");
 
                 // The smallest log loss; a tie keeps the simpler layout and the smaller C (the first one tried)

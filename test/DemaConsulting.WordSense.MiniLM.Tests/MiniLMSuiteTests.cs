@@ -6,7 +6,7 @@ namespace DemaConsulting.WordSense.MiniLM.Tests;
 ///     Runs the reviewed suite (<c>corpus/suite</c>) against the MiniLM model: every row that the model is expected to keep
 ///     must still pass, so a regression fails the build while the known misses stay documented in
 ///     <c>corpus/suite/expectations.tsv</c>. The test is skipped when the model files are not available (for example a
-///     checkout without Git LFS content).
+///     checkout where <c>fetch-models</c> has not run).
 /// </summary>
 public class MiniLMSuiteTests
 {

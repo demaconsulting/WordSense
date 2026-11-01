@@ -31,25 +31,25 @@ internal static partial class DocSampleText
     }
 
     /// <summary>
-    ///     Gets the committed MiniLM model directory or skips the calling test when the files are unavailable (for
-    ///     example in a checkout without Git LFS content).
+    ///     Gets the fetched MiniLM model directory or skips the calling test when the files are unavailable (for
+    ///     example in a checkout where <c>fetch-models</c> has not run).
     /// </summary>
-    /// <returns>The directory that holds the real model files.</returns>
-    public static string RequireMiniLMDirectory() => RequireModelDirectory("all-MiniLM-L6-v2-int8");
+    /// <returns>The directory that holds the model files.</returns>
+    public static string RequireMiniLMDirectory() => RequireModelDirectory("all-MiniLM-L6-v2");
 
     /// <summary>
-    ///     Gets the committed directory of a model or skips the calling test when the files are unavailable (for
-    ///     example in a checkout without Git LFS content).
+    ///     Gets the fetched directory of a model or skips the calling test when the files are unavailable (for
+    ///     example in a checkout where <c>fetch-models</c> has not run).
     /// </summary>
-    /// <param name="modelId">The model id, which is the name of the folder under <c>model</c>.</param>
-    /// <returns>The directory that holds the real model files.</returns>
+    /// <param name="modelId">The model id, which is the name of the folder under <c>model</c>; the files are in its <c>v1</c> folder.</param>
+    /// <returns>The directory that holds the model files.</returns>
     public static string RequireModelDirectory(string modelId)
     {
-        var directory = Path.Join(FindRepositoryRoot(), "model", modelId);
+        var directory = Path.Join(FindRepositoryRoot(), "model", modelId, "v1");
         IWordSenseModel model = modelId switch
         {
-            "all-MiniLM-L6-v2-int8" => new MiniLMWordSenseModel(directory),
-            "bert-base-cased-int8" => new BertBaseCasedWordSenseModel(directory),
+            "all-MiniLM-L6-v2" => new MiniLMWordSenseModel(directory),
+            "bert-base-cased" => new BertBaseCasedWordSenseModel(directory),
             _ => throw new ArgumentException($"Unknown model '{modelId}'.", nameof(modelId)),
         };
         using (model)

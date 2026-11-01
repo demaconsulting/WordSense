@@ -39,8 +39,8 @@ dotnet add package DemaConsulting.WordSense.BertBaseCased  # larger, case-sensit
 ```
 
 The encoder packages bring the core package and `DemaConsulting.WordSense.Onnx`. They need ONNX Runtime and download
-their model files on first use, or from a mirror. Requirements: .NET 8, 9 or 10. Contributors who clone this repository
-also need [Git LFS](https://git-lfs.com).
+their model files on first use, or from a mirror. Requirements: .NET 8, 9 or 10. Contributors fetch the model files for
+the tests with `dotnet run --project tools/WordSense.Builder -- fetch-models`.
 
 ## Quick Start
 
