@@ -817,6 +817,10 @@ the adverb after it, and an encoder stub that returns a fixed vector for each wo
   verbs whose form has a past and a non-past verb analysis, with their gold class.
 - **Foreign head file** (`WordSenseBuilder_TenseHeadTrainer_TrainAsync_ForeignHeadFile_Refused`): a head file with
   another training-file digest, or for another model, is refused with `InvalidDataException`.
+- **Embedded heads of the real identity**
+  (`WordSenseBuilder_TenseHeadTrainer_CheckExisting_AcceptsTheEmbeddedHeadOfTheRealIdentity`): the head embedded in each
+  package passes the check against the identity derived from its real version 1 spec (`ModelSpec.WeightsId`, the
+  identity the head file records) and the committed training file; the same head is refused for the public `ModelId`.
 - **No development rows** (`WordSenseBuilder_TenseHeadTrainer_TrainAsync_NoDevelopmentRows_Refused`): a corpus without
   a tense row on the development split is refused and the message names the development rows.
 - **Settings** (`WordSenseBuilder_TenseHeadTrainer_Fit_InvalidSettings_Throw`): a `C` of zero or NaN, an unknown layout

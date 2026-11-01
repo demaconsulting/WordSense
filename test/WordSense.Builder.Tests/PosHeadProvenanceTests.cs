@@ -47,4 +47,32 @@ public sealed class PosHeadProvenanceTests
         Assert.Equal(modelId, head.ModelId);
         Assert.Equal(PosHeadTrainer.Variant, head.Variant);
     }
+
+    /// <summary>
+    ///     The embedded head of each package passes the check of <c>train-tense-head</c> against the identity that
+    ///     <c>EncoderIdentityOf</c> derives from the real version 1 spec (the identity recorded in the head file, not the
+    ///     public <c>ModelId</c>, which a head never records), and a head is refused for the public identifier.
+    /// </summary>
+    /// <param name="model">The command-line name of the model.</param>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Theory]
+    [InlineData("minilm")]
+    [InlineData("bert-base-cased")]
+    public async Task WordSenseBuilder_TenseHeadTrainer_CheckExisting_AcceptsTheEmbeddedHeadOfTheRealIdentity(string model)
+    {
+        // Arrange
+        var root = FindRepositoryRoot();
+        var info = ModelCatalog.Find(model);
+        var head = PosHeadBlob.Read(await File.ReadAllBytesAsync(info.HeadPath(root), TestContext.Current.CancellationToken));
+        var trainSha = SHA256.HashData(await File.ReadAllBytesAsync(OpenCorpus.DataFile(Path.Join(root, "corpus"), OpenCorpus.Representative, "train"), TestContext.Current.CancellationToken));
+        using var composed = info.Create(null);
+        var spec = ModelCatalog.EncoderOf(composed).Spec;
+        var identity = Program.EncoderIdentityOf(spec);
+
+        // Act and Assert: the recorded identity is accepted, the public one is not
+        TenseHeadTrainer.CheckExisting(head, identity, trainSha);
+        Assert.NotEqual(spec.ModelId, identity.WeightsId);
+        Assert.Equal(head.ModelId, identity.WeightsId);
+        Assert.Throws<InvalidDataException>(() => TenseHeadTrainer.CheckExisting(head, identity with { WeightsId = spec.ModelId }, trainSha));
+    }
 }

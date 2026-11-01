@@ -3029,12 +3029,14 @@ sections:
           - id: WordSense-WordSenseBuilder-TrainTenseHeadForeign
             title: >-
               The builder shall refuse to add a tense head to a head file that belongs to another encoder or was not
-              trained on the representative training split.
+              trained on the representative training split, and shall accept the head embedded in each package, which
+              records the identity of its embedded files (not the public model identifier).
             tags: [unit]
             justification: |
               A tense head must only ever be attached to the part-of-speech head of the same training data.
             tests:
               - WordSenseBuilder_TenseHeadTrainer_TrainAsync_ForeignHeadFile_Refused
+              - WordSenseBuilder_TenseHeadTrainer_CheckExisting_AcceptsTheEmbeddedHeadOfTheRealIdentity
 
           - id: WordSense-WordSenseBuilder-TrainTenseHeadNoRows
             title: >-

@@ -49,7 +49,7 @@ internal static partial class Program
     /// </summary>
     /// <param name="spec">The description of the model.</param>
     /// <returns>The identity: the identity recorded inside the head file, the hidden size, the digests of the ONNX file and the vocabulary, the casing and the runtime.</returns>
-    private static PosEncoderInfo EncoderIdentityOf(DemaConsulting.WordSense.Onnx.ModelSpec spec)
+    internal static PosEncoderInfo EncoderIdentityOf(DemaConsulting.WordSense.Onnx.ModelSpec spec)
     {
         var runtime = typeof(Microsoft.ML.OnnxRuntime.InferenceSession).Assembly.GetName().Version?.ToString() ?? "unknown";
         return new PosEncoderInfo(

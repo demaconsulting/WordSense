@@ -146,7 +146,7 @@ the curated table `corpus/curation/heteronyms.tsv`. An unknown word has no key.
 - Mirror and GitHub release source (in): HTTP(S) `GET <base>/<base-model>/v<version>/<file>` on a mirror and
   `GET https://github.com/demaconsulting/WordSense/releases/download/models/<base-model>/v<version>/<file>` (a
   redirect to a signed CDN address); SHA-256 verified, credentials sent to the mirror's own origin only.
-- Builder command line (in/out): `compile-image`, `import-moby`, `weights`, `evaluate`, `evaluate-senses`,
+- Builder command line (in/out): `compile-image`, `import-moby`, `weights`, `fetch-models`, `evaluate`, `evaluate-senses`,
   `evaluate-running`, `open-counts`, `evaluate-tagger`, `coverage`, `train-basic`, `tune-basic`, `label-senses`,
   `import-wn30-counts`, `tiers`, `appendix`, `keys` and `heteronyms`; build time only, never shipped. The evaluation
   commands that use an
