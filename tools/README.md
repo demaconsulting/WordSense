@@ -90,10 +90,11 @@ the result. `make-calib.py` draws `calib.tsv` from the train split of the open c
 
 **When.** Only to derive an encoder file anew. The weights of the package are valid only for the exact pinned file.
 `.github/workflows/model-prep.yaml` (run by hand) rebuilds the v2 file on a hosted runner from the pinned upstream
-revision and fails while the revision or the SHA-256 of the upstream file is still a placeholder. A run with the input
-`bootstrap` resolves the revision, prints it with the SHA-256 of the upstream file and states that its output is
-unpinned; pin both values in `make-bert-static-encoder.py` (`--accept-unpinned-upstream` is only for that run) and run
-the workflow again without `bootstrap`.
+revision and fails on any difference. To pin another revision, set the two
+upstream values in `make-bert-static-encoder.py` back to the placeholder `TODO-PIN-...` and run the workflow with the
+input `bootstrap`: it resolves the revision, prints it with the SHA-256 of the upstream file and states that its output
+is unpinned; pin both values (`--accept-unpinned-upstream` is only for that run) and run the workflow again without
+`bootstrap`.
 
 **Why.** The upstream files expose only the language-model output, and WordSense needs the hidden states; the static
 quantization gives the same answers on every x86 CPU (see `model/bert-base-cased/v2/model-int8-static.md`).

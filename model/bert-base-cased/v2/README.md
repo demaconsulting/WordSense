@@ -20,8 +20,8 @@ The encoder files of the release `models/bert-base-cased/v2`. The release is app
   hidden size 768, cased vocabulary), Apache License 2.0.
 - ONNX export: [`Xenova/bert-base-cased`](https://huggingface.co/Xenova/bert-base-cased), file `onnx/model.onnx` (fp32),
   Apache License 2.0. The export is a masked-language-model graph: it exposes only `logits`.
-- Pinned revision: `TODO-PIN-UPSTREAM-REVISION` (a placeholder until a bootstrap run of the workflow `model-prep` prints
-  the revision and the script pins it, see `model-int8-static.md`).
+- Pinned revision: `03e3692101dc59a77505d8227956eae254d23ed1`; `onnx/model.onnx` there is 433,633,812 bytes, SHA-256
+  `b8d9bfb5975103e93dd25fbc5318bdbfdbb65b7baa6f7a03697d66232380a516`.
 
 ## Changes to the graph
 

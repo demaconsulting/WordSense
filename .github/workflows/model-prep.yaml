@@ -5,10 +5,10 @@ name: Model Prep
 # every step is byte-identical to the pinned result (tools/model-prep/make-bert-static-encoder.py).
 #
 # Run it by hand after a change of tools/model-prep or of the pinned Python packages. The upstream revision and the
-# SHA-256 of the upstream file are pinned in the script. While they are still placeholders (UPSTREAM_REVISION and
-# UPSTREAM_SHA256), the workflow and the script fail. A run with the input `bootstrap` resolves the revision, prints it
-# with the SHA-256 of the upstream file and states that its output is unpinned; copy both values from the summary of
-# that run into the script, then run the workflow again without `bootstrap`.
+# SHA-256 of the upstream file are pinned in the script (UPSTREAM_REVISION and UPSTREAM_SHA256). To pin another
+# revision, set both values back to the placeholder `TODO-PIN-...` and run the workflow with the input `bootstrap`: it
+# resolves the revision, prints it with the SHA-256 of the upstream file and states that its output is unpinned; copy
+# both values from the summary of that run into the script, then run the workflow again without `bootstrap`.
 
 on:
   workflow_dispatch:

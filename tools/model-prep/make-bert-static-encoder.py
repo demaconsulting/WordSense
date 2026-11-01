@@ -25,10 +25,10 @@ Usage:
   python make-bert-static-encoder.py --mode measure-ranges RANGES.json --fp32 CUT_OP13.onnx
 
 `--fp32` names the result of step 3 (the cut graph at opset 13) and skips steps 1 to 3.
-The upstream revision and the SHA-256 of the upstream file (steps 1) are placeholders until they are pinned; the script then
-stops. Only a bootstrap run continues: `--upstream-revision <revision> --accept-unpinned-upstream` prints the SHA-256 of
-the upstream file and states that the output is unpinned. Every later step is still checked against its pin. Pin the two
-printed values and never use the flag for a regular build.
+The upstream revision and the SHA-256 of the upstream file (step 1) are pinned below. When they are the placeholders
+(`TODO-PIN-...`), the script stops; only a bootstrap run continues: `--upstream-revision <revision>
+--accept-unpinned-upstream` prints the SHA-256 of the upstream file and states that the output is unpinned. Every later step
+is still checked against its pin. Never use the flag for a regular build.
 `--mode measure-ranges` measures the calibration ranges again. The result is CPU dependent in the last bit, so a new
 ranges file is a reviewed change and never a step of the build.
 
@@ -56,12 +56,13 @@ PLACEHOLDER = "TODO-PIN"
 # --- Pins -----------------------------------------------------------------------------------------------------------------
 UPSTREAM_REPO = "Xenova/bert-base-cased"
 UPSTREAM_FILE = "onnx/model.onnx"
-# PLACEHOLDER: the Hugging Face revision (commit SHA) of the upstream repository and the SHA-256 of onnx/model.onnx at that revision.
-# Hugging Face could not be reached when the recipe was written. The workflow .github/workflows/model-prep.yaml resolves and prints
-# both in bootstrap mode (workflow input `bootstrap`); replace the two values with what it prints. Without them the script and the
-# workflow fail: only the bootstrap run passes --upstream-revision and --accept-unpinned-upstream.
-UPSTREAM_REVISION = "TODO-PIN-UPSTREAM-REVISION"
-UPSTREAM_SHA256 = "TODO-PIN-UPSTREAM-SHA256"
+# The Hugging Face revision (commit SHA) of the upstream repository and the SHA-256 and size of onnx/model.onnx at that revision,
+# resolved by a bootstrap run of the workflow .github/workflows/model-prep.yaml. To pin another revision, set the two values back to
+# TODO-PIN-UPSTREAM-REVISION and TODO-PIN-UPSTREAM-SHA256 and bootstrap again: only a bootstrap run passes --upstream-revision and
+# --accept-unpinned-upstream.
+UPSTREAM_REVISION = "03e3692101dc59a77505d8227956eae254d23ed1"
+UPSTREAM_SHA256 = "b8d9bfb5975103e93dd25fbc5318bdbfdbb65b7baa6f7a03697d66232380a516"
+UPSTREAM_SIZE = 433633812
 CUT_SHA256 = "638efba75102c18871c83414e9e89e023cd82b6ae9a5a57d691750af6e63dfa1"
 CUT_SIZE = 431231249
 OP13_SHA256 = "2d6bd1161d23bb4ea3d2ec9951dcc6fbe92d267cf60672fef10d7a57befe8f00"
@@ -485,7 +486,7 @@ def main():
                  "with --accept-unpinned-upstream; nothing was downloaded")
         upstream = os.path.join(work, "upstream-fp32.onnx")
         download_upstream(revision, upstream)
-        check("upstream", upstream, UPSTREAM_SHA256, allow_unpinned=args.accept_unpinned_upstream)
+        check("upstream", upstream, UPSTREAM_SHA256, UPSTREAM_SIZE, allow_unpinned=args.accept_unpinned_upstream)
         if is_placeholder(UPSTREAM_SHA256):
             print(f"BOOTSTRAP: the upstream revision {revision} and the SHA-256 of {UPSTREAM_FILE} printed above are NOT pinned;")
             print("BOOTSTRAP: this output is unpinned. Pin both in make-bert-static-encoder.py; the later steps are verified against their pins.")

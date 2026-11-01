@@ -33,7 +33,7 @@ Every output is 768 dimensions: `last_hidden_state` is layer 12 and `hidden_9` t
 
 | Step | Result | Bytes |
 | ---- | ------ | ----: |
-| 1. Download `onnx/model.onnx` (fp32) at the pinned revision | upstream file | placeholder |
+| 1. Download `onnx/model.onnx` (fp32) at the pinned revision | upstream file | 433,633,812 |
 | 2. Cut at the last layer, expose `last_hidden_state`, drop the language-model head | cut graph | 431,231,249 |
 | 3. Convert to operator set 13 | fp32 input of the quantizer | 431,239,021 |
 | 4. Quantize statically with the pinned ranges, 5. finalize | encoder without taps | 108,949,981 |
@@ -41,7 +41,7 @@ Every output is 768 dimensions: `last_hidden_state` is layer 12 and `hidden_9` t
 
 SHA-256 of the results of the steps:
 
-1. upstream file: `TODO-PIN-UPSTREAM-SHA256` (a placeholder until the script pins it)
+1. upstream file: `b8d9bfb5975103e93dd25fbc5318bdbfdbb65b7baa6f7a03697d66232380a516`
 2. cut graph: `638efba75102c18871c83414e9e89e023cd82b6ae9a5a57d691750af6e63dfa1`
 3. fp32 input of the quantizer: `2d6bd1161d23bb4ea3d2ec9951dcc6fbe92d267cf60672fef10d7a57befe8f00`
 4. encoder without taps: `750ae69a6898f7edb7bf35e8f98fc67eb5152fb94b8cd591bff05fba90ad4d65`
@@ -75,6 +75,5 @@ The script checks the SHA-256 of every result and stops on a difference. `--fp32
 ### Reproduction
 
 The workflow `.github/workflows/model-prep.yaml` rebuilds the file from the upstream export on a hosted runner and
-checks every SHA-256 above. The upstream revision and the SHA-256 of the upstream file are pinned in the script; while
-they are placeholders the workflow and the script fail. A run with the input `bootstrap` prints them and states that its
-output is unpinned.
+checks every SHA-256 above. The upstream revision and the SHA-256 of the upstream file are pinned in the script (the
+revision is also in `README.md` of the release).
