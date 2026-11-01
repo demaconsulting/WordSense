@@ -364,7 +364,7 @@ internal static class Evaluator
             using var resource = typeof(BasicWordSenseModel).Assembly.GetManifestResourceStream(BasicTables.ResourceName);
             tableBytes = resource?.Length ?? 0;
         }
-        var modelDirectory = info.ModelDirectory is null ? null : Path.Join(repository, "model", info.ModelDirectory);
+        var modelDirectory = info.ModelPath(repository);
         var firstUse = Stopwatch.StartNew();
         using var model = info.Create(modelDirectory);
         await ModelCatalog.EnsureAsync(model, cancellationToken).ConfigureAwait(false);

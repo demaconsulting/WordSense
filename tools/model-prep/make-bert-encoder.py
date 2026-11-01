@@ -1,11 +1,11 @@
-"""Derives the encoder-only ONNX file for bert-base-cased-int8.
+"""Derives the encoder-only ONNX file of the model bert-base-cased (release asset model-int8-dynamic.onnx).
 
 The upstream int8 file (Xenova/bert-base-cased, onnx/model_int8.onnx) is a masked-language-model export that
 only exposes `logits`. WordSense needs the final hidden states, so this script cuts the graph at the output of the
 last encoder layer (`/bert/encoder/layer.11/output/LayerNorm/Add_1_output_0`), exposes it as `last_hidden_state`
 and drops the language-model head. No weights are changed.
 
-Usage: python make-bert-encoder.py <upstream-model_int8.onnx> <encoder_int8.onnx>
+Usage: python make-bert-encoder.py <upstream-model_int8.onnx> <model-int8-dynamic.onnx>
 Requires the `onnx` Python package.
 """
 

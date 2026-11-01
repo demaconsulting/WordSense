@@ -35,7 +35,7 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     of words that need no context never downloads a file, never opens an ONNX session and never fails because
 ///     a model file is missing. The model files come from the directory
 ///     given to the model's constructor (every file verified against its pinned SHA-256, with no network access) or,
-///     when none was given, from the per-user store, which a mirror or the GitHub copy of the repository fills on first
+///     when none was given, from the per-user store, which a mirror or the GitHub release assets of the repository fill on first
 ///     use. Concurrent <see cref="EnsureModelAsync"/> calls share one in-flight ensure (the options of a later call are
 ///     ignored while one is running), and a failed call can be repeated. Cancelling a token only stops that caller from
 ///     waiting: its returned task is cancelled, but the shared ensure is not cancelled, it keeps running even when no
@@ -178,9 +178,9 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
     internal HttpClient? HttpClient { get; set; }
 
     /// <summary>
-    ///     Gets or sets the GitHub LFS base location used for downloads, or null for the default; set by tests.
+    ///     Gets or sets the public release location used for downloads, or null for the default; set by tests.
     /// </summary>
-    internal Uri? GitHubBaseUri { get; set; }
+    internal PublicSources? PublicSources { get; set; }
 
     /// <summary>
     ///     Gets or sets the environment reader used to find a mirror, or null for the process environment; set by tests.
@@ -206,11 +206,11 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
     ///     must exist directly in that directory (a flat layout; there is no <c>{model-id}</c> subfolder) and match its
     ///     pinned SHA-256, and all files of the model are verified (for BertBaseCased that includes
     ///     <c>config.json</c> and <c>tokenizer.json</c>, although the runtime reads only the ONNX file and
-    ///     <c>vocab.txt</c>). Otherwise valid files in the store (<c>{StoreRoot}/{ModelId}/</c>, by default under the
+    ///     <c>vocab.txt</c>). Otherwise valid files in the store (<c>{StoreRoot}/{ModelId}/v{ModelVersion}/</c>, by default under the
     ///     per-user local application data folder: <c>%LOCALAPPDATA%\DemaConsulting\WordSense\models</c> on Windows,
     ///     <c>~/.local/share/DemaConsulting/WordSense/models</c> on Linux and macOS, or beneath <c>$XDG_DATA_HOME</c>
     ///     when that variable is set) are reused and only missing or invalid files are
-    ///     downloaded (mirror first, then the public source); a file that is already valid never contacts the mirror.
+    ///     downloaded (mirror first, then the release assets); a file that is already valid never contacts the mirror.
     ///     Every existing file is hashed once per model instance (the first ensure; later calls on that instance
     ///     return the remembered result), so the call costs time proportional to the file sizes.
     ///     Calling the method again after it completed is cheap and harmless. Cancelling a token stops only that caller
@@ -226,7 +226,7 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
     ///     <c>WORDSENSE_MIRROR_*</c> mirror variables; none of them sets the store location, which only
     ///     <see cref="DownloadOptions.StoreRoot"/> changes (and <see cref="DownloadOptions"/> need a mirror base URI;
     ///     a relative <see cref="DownloadOptions.StoreRoot"/> is resolved against the current directory of the process).
-    ///     Offline route through the store: copy the model files into <c>{StoreRoot}/{ModelId}/</c> (or the default
+    ///     Offline route through the store: copy the model files into <c>{StoreRoot}/{ModelId}/v{ModelVersion}/</c> (or the default
     ///     store); files that match their pinned SHA-256 are kept and never requested, so nothing is downloaded when all
     ///     are valid.
     ///     Environment details: a blank variable counts as unset; user without password (or the reverse), or a user,
@@ -242,11 +242,13 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
     ///     file the task fails with <see cref="ModelUnavailableException"/> (its inner exception is the <see cref="HttpRequestException"/> that lists every source tried).
     ///     Network notes: downloads use <c>HttpClient</c> with the default proxy behavior of .NET (the system proxy
     ///     settings, and the <c>HTTP_PROXY</c>, <c>HTTPS_PROXY</c> and <c>NO_PROXY</c> variables on Linux and macOS),
-    ///     with no proxy credentials of its own. Allow-list the host of your mirror, if any, and for the public source
-    ///     <c>media.githubusercontent.com</c> (files at
-    ///     https://media.githubusercontent.com/media/demaconsulting/WordSense/main/model/{model-id}/{file});
-    ///     the library follows HTTP redirects itself (up to a fixed limit, http or https only), so a host that the public
-    ///     source redirects to must be reachable too, and mirror credentials are sent only to the mirror's own origin.
+    ///     with no proxy credentials of its own. A transient failure (HTTP 429, a 5xx status or a broken connection) is
+    ///     retried once per source. Allow-list the host of your mirror, if any, and for the public source
+    ///     <c>github.com</c> (files at
+    ///     https://github.com/demaconsulting/WordSense/releases/download/models/{model-id}/v{version}/{file}) and the host it
+    ///     redirects to (<c>release-assets.githubusercontent.com</c>, or <c>*.githubusercontent.com</c>);
+    ///     the library follows HTTP redirects itself (up to a fixed limit, http or https only), and mirror credentials are
+    ///     sent only to the mirror's own origin.
     ///     Several processes (or instances) may share one store: each download goes to its own uniquely named temporary
     ///     file, is verified, and then moved into place, so a reader never sees a partial file and the processes at
     ///     worst download the same file twice. A file in the store that is missing or fails its SHA-256 check (corrupt,
@@ -498,7 +500,7 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
             var onnx = _spec.Files.First(f => f.Name == _spec.OnnxFileName);
             try
             {
-                _head = PosHead.LoadEmbedded(_spec.WeightsAssembly, name, _spec.ModelId, _spec.HiddenSize, onnx.Sha256);
+                _head = PosHead.LoadEmbedded(_spec.WeightsAssembly, name, _spec.WeightsId, _spec.HiddenSize, onnx.Sha256);
                 if (_spec.TenseHeadInUse && _head.Tense is null)
                 {
                     throw new InvalidDataException("The head file has no tense head.");
@@ -548,7 +550,7 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
     {
         try
         {
-            return WeightedLemmaTable.LoadEmbedded(_spec.WeightsAssembly, _spec.WeightsResourceName, _spec.ModelId, _spec.HiddenSize);
+            return WeightedLemmaTable.LoadEmbedded(_spec.WeightsAssembly, _spec.WeightsResourceName, _spec.WeightsId, _spec.HiddenSize);
         }
         catch (InvalidDataException ex)
         {
@@ -607,9 +609,21 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
     public int HiddenSize => _spec.HiddenSize;
 
     /// <summary>
-    ///     Gets the identifier of the model, which names its folder in the repository, on a mirror and in the store.
+    ///     Gets the identifier of the model: its base model, such as <c>bert-base-cased</c>. It is the first folder of
+    ///     the model in the store and on a mirror.
     /// </summary>
     public string ModelId => _spec.ModelId;
+
+    /// <summary>
+    ///     Gets the version of the model export (checkpoint, graph cut, opset and output taps); it is the <c>v{n}</c>
+    ///     folder of the model in the store and on a mirror, and the release the files come from.
+    /// </summary>
+    public int ModelVersion => _spec.Version;
+
+    /// <summary>
+    ///     Gets the quantization of the ONNX encoder, such as <c>int8-dynamic</c>; the file is <c>model-{quantization}.onnx</c>.
+    /// </summary>
+    public string Quantization => _spec.Quantization;
 
     /// <summary>
     ///     Cancels a download that <see cref="EnsureModelAsync"/> has in flight and releases the resources of the model.
@@ -743,7 +757,7 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
         {
             try
             {
-                directory = await ModelDownloader.EnsureAsync(_spec, options, _disposeToken, HttpClient, GitHubBaseUri, GetEnvironmentVariable).ConfigureAwait(false);
+                directory = await ModelDownloader.EnsureAsync(_spec, options, _disposeToken, HttpClient, PublicSources, GetEnvironmentVariable).ConfigureAwait(false);
             }
             catch (Exception ex) when (_disposeToken.IsCancellationRequested && ex is not OperationCanceledException)
             {

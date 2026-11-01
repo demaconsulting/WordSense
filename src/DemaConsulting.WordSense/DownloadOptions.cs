@@ -3,27 +3,27 @@ using System.Net;
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     Describes how model files are downloaded: a user-supplied HTTP(S) mirror that is tried before the public
-///     download source, optional credentials, where downloaded files are stored, and the timeout of one download.
+///     Describes how model files are downloaded: a user-supplied HTTP(S) mirror that is tried before the release assets
+///     of the repository, optional credentials, where downloaded files are stored, and the timeout of one download.
 /// </summary>
 /// <remarks>
 ///     <para>
 ///     Some environments block public download hosts. A mirror serves the model files from an internal location. A
-///     file is requested at <c>{BaseUri}/{model-id}/{file-name}</c>, where the model id is the <c>ModelId</c> of the
-///     model (the folder name of the model, for example <c>all-MiniLM-L6-v2-int8</c> or <c>bert-base-cased-int8</c>).
-///     A mirror therefore holds one folder per model that is used, for example:
+///     file is requested at <c>{BaseUri}/{base-model}/v{version}/{file-name}</c>, where the base model is the
+///     <c>ModelId</c> of the model (for example <c>all-MiniLM-L6-v2</c> or <c>bert-base-cased</c>) and the version is its
+///     <c>ModelVersion</c>. A mirror is a copy of the store folders of the models that are used, for example:
 ///     </para>
 ///     <code>
 ///     https://models.example.com/wordsense/               (the BaseUri)
-///         all-MiniLM-L6-v2-int8/model_int8.onnx
-///         all-MiniLM-L6-v2-int8/vocab.txt
-///         bert-base-cased-int8/model_int8.onnx
-///         bert-base-cased-int8/vocab.txt
-///         bert-base-cased-int8/config.json
-///         bert-base-cased-int8/tokenizer.json
+///         all-MiniLM-L6-v2/v1/model-int8-dynamic.onnx
+///         all-MiniLM-L6-v2/v1/vocab.txt
+///         bert-base-cased/v1/model-int8-dynamic.onnx
+///         bert-base-cased/v1/vocab.txt
+///         bert-base-cased/v1/config.json
+///         bert-base-cased/v1/tokenizer.json
 ///     </code>
 ///     <para>
-///     For each file, the mirror is tried first and the public source (the GitHub copy of the repository) second; a
+///     For each file, the mirror is tried first and the release assets of the repository on GitHub second; a
 ///     source that fails, is blocked, times out or serves bytes that do not match the pinned SHA-256 is discarded and
 ///     the next source is tried. A file that is already present and valid in the store is never requested again, so the
 ///     mirror is not contacted at all when every file is present. The files are always verified, whichever source
@@ -45,7 +45,7 @@ namespace DemaConsulting.WordSense;
 ///     always wins; the environment is not consulted then. Only when no options are passed do the variables
 ///     <c>WORDSENSE_MIRROR_URL</c>, <c>WORDSENSE_MIRROR_USER</c>, <c>WORDSENSE_MIRROR_PASSWORD</c> and
 ///     <c>WORDSENSE_MIRROR_BEARER_TOKEN</c> configure a mirror (the URL variable is required, the others are optional, and
-///     user and password go together). Without either, only the public source is used. Details of the variables: a
+///     user and password go together). Without either, only the release assets are used. Details of the variables: a
 ///     blank value counts as unset; <c>WORDSENSE_MIRROR_USER</c>
 ///     without <c>WORDSENSE_MIRROR_PASSWORD</c> (or the reverse) is an error; any of user, password or token without
 ///     <c>WORDSENSE_MIRROR_URL</c> is an error too (it is almost always a misspelled URL variable), and so is a token
@@ -89,9 +89,9 @@ namespace DemaConsulting.WordSense;
 ///     created when it does not exist). A <c>null</c> store root selects the default store; an empty or whitespace-only
 ///     store root, or a path that the platform rejects, is a <see cref="DownloadConfigurationException"/> (inner
 ///     exception: <see cref="ArgumentException"/> with the parameter name <c>StoreRoot</c>). Offline route through the store: files that you copy into
-///     <c>{StoreRoot}/{model-id}/</c> (or into the default store, then no <see cref="DownloadOptions"/> are needed) are
+///     <c>{StoreRoot}/{model-id}/v{version}/</c> (or into the default store, then no <see cref="DownloadOptions"/> are needed) are
 ///     hashed by <c>EnsureModelAsync</c>; a file that matches its pinned SHA-256 is kept and never requested, so when
-///     every file is present and valid nothing is downloaded and the mirror (and the public source) is not contacted,
+///     every file is present and valid nothing is downloaded and the mirror (and the release assets) is not contacted,
 ///     and a file that is missing or does not match is downloaded again (and replaced). Because
 ///     <see cref="DownloadOptions"/> need a <see cref="BaseUri"/>, use any valid URI there when you only want a
 ///     custom <see cref="StoreRoot"/> offline; on a machine without network access a missing or damaged file then
@@ -101,11 +101,12 @@ namespace DemaConsulting.WordSense;
 ///     <para>
 ///     Network notes: downloads use <c>HttpClient</c> with the default proxy behavior of .NET (the system proxy
 ///     settings, and the <c>HTTP_PROXY</c>, <c>HTTPS_PROXY</c> and <c>NO_PROXY</c> variables on Linux and macOS), with
-///     no proxy credentials of its own. Allow-list the host of your mirror, if any, and for the public source
-///     <c>media.githubusercontent.com</c> (files at
-///     https://media.githubusercontent.com/media/demaconsulting/WordSense/main/model/{model-id}/{file}); the
-///     library follows HTTP redirects itself (http or https only, up to a fixed limit), so a host that the public
-///     source redirects to must be reachable too, and mirror credentials are sent only to the mirror's own origin.
+///     no proxy credentials of its own. A transient failure (HTTP 429, a 5xx status or a broken connection) is retried
+///     once per source. Allow-list the host of your mirror, if any, and for the release assets <c>github.com</c> (files at
+///     https://github.com/demaconsulting/WordSense/releases/download/models/{model-id}/v{version}/{file}) and the host it
+///     redirects to (<c>release-assets.githubusercontent.com</c>; where a wildcard is allowed use
+///     <c>*.githubusercontent.com</c>). The library follows HTTP redirects itself (http or https only, up to a fixed
+///     limit), and mirror credentials are sent only to the mirror's own origin.
 ///     </para>
 /// </remarks>
 /// <example>
@@ -121,7 +122,7 @@ namespace DemaConsulting.WordSense;
 ///     // Pass it to EnsureModelAsync of any downloadable model (MiniLMWordSenseModel or BertBaseCasedWordSenseModel)
 ///     async Task PrepareAsync(IDownloadableWordSenseModel model)
 ///     {
-///         await model.EnsureModelAsync(options);   // mirror first, then the public source; files verified
+///         await model.EnsureModelAsync(options);   // mirror first, then the release assets; files verified
 ///         ClassifyResult[] results = await model.ClassifyAsync(["to", "record", "the", "record"]);
 ///     }
 ///     </code>

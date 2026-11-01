@@ -13,18 +13,20 @@ namespace DemaConsulting.WordSense.MiniLM;
 internal sealed class MiniLMEncoderModel : OnnxWordSenseModel
 {
     private static readonly ModelSpec Definition = new(
-        "all-MiniLM-L6-v2-int8",
+        "all-MiniLM-L6-v2",
+        1,
         [
-            new ModelFile("model_int8.onnx", "afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1", 22972370),
+            new ModelFile("model-int8-dynamic.onnx", "afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1", 22972370),
             new ModelFile("vocab.txt", "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3", 231508),
         ],
-        "model_int8.onnx",
+        "model-int8-dynamic.onnx",
         "vocab.txt",
         true,
         typeof(MiniLMEncoderModel).Assembly,
         "DemaConsulting.WordSense.MiniLM.weights.bin",
         384,
-        "DemaConsulting.WordSense.MiniLM.head.bin");
+        "DemaConsulting.WordSense.MiniLM.head.bin",
+        BlobModelId: "all-MiniLM-L6-v2-int8");
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="MiniLMEncoderModel"/> class.

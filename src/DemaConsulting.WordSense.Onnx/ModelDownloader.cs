@@ -10,18 +10,40 @@ namespace DemaConsulting.WordSense.Onnx;
 /// <summary>
 ///     One model file, with the SHA-256 digest every copy must match.
 /// </summary>
-/// <param name="Name">The file name, which is also its name beneath every source's model folder.</param>
+/// <param name="Name">The file name: the release asset name, the name in the store and the name beneath a mirror's model folder.</param>
 /// <param name="Sha256">The pinned lower-case hexadecimal SHA-256 digest.</param>
 /// <param name="Length">The exact size in bytes, or 0 when unknown; a download is aborted as soon as it exceeds the size
 /// (or <see cref="ModelDownloader.MaxUnpinnedLength"/> when unknown).</param>
 internal sealed record ModelFile(string Name, string Sha256, long Length = 0);
 
 /// <summary>
+///     The public location the release assets of the models are downloaded from.
+/// </summary>
+/// <param name="ReleaseBaseUri">The base location of the release downloads of the repository; a file is requested at
+/// <c>{ReleaseBaseUri}models/{base-model}/v{version}/{file}</c>.</param>
+internal sealed record PublicSources(Uri ReleaseBaseUri)
+{
+    /// <summary>
+    ///     Gets the release downloads of the WordSense repository.
+    /// </summary>
+    public static readonly PublicSources Default = new(ModelDownloader.GitHubReleaseBaseUri);
+}
+
+/// <summary>
+///     One place a file can be requested from.
+/// </summary>
+/// <param name="Name">The source name used in error messages.</param>
+/// <param name="Uri">The request URI.</param>
+/// <param name="Auth">The mirror whose credentials apply to requests to its own origin, or null for an anonymous source.</param>
+internal sealed record DownloadSource(string Name, Uri Uri, DownloadMirror? Auth);
+
+/// <summary>
 ///     Everything the shared ONNX implementation needs to know about one model.
 /// </summary>
-/// <param name="ModelId">The model identifier: the folder name beneath <c>model/</c>, a mirror base and the store root.</param>
+/// <param name="BaseModel">The base model: the first folder of the store, of a mirror and of the release tag (<c>bert-base-cased</c>).</param>
+/// <param name="Version">The model export: the upstream checkpoint with the graph cut, opset and output taps. A change of the full-precision graph is a new version.</param>
 /// <param name="Files">The files that make up the model, each with its pinned digest.</param>
-/// <param name="OnnxFileName">The name of the ONNX encoder among <paramref name="Files"/>.</param>
+/// <param name="OnnxFileName">The name of the ONNX encoder among <paramref name="Files"/>; it is <c>model-{quantization}.onnx</c>.</param>
 /// <param name="VocabularyFileName">The name of the vocabulary among <paramref name="Files"/>.</param>
 /// <param name="LowerCase">True when the model is uncased.</param>
 /// <param name="WeightsAssembly">The assembly that embeds the trained weights.</param>
@@ -30,8 +52,10 @@ internal sealed record ModelFile(string Name, string Sha256, long Length = 0);
 /// <param name="HeadResourceName">The manifest resource name, in <paramref name="WeightsAssembly"/>, of the part-of-speech head, or null for a model without one. A head is loaded and validated whenever it is named.</param>
 /// <param name="HeadInUse">True when the model answers with its head: the encoder runs for every word of several parts of speech, the head gives the probability of the parts of speech and the model counts as a source of part-of-speech evidence for a composition. False for a model that carries a head it does not use.</param>
 /// <param name="TenseHeadInUse">True when the model also answers with the tense head of its head file: the encoder runs for every word that is a same-spelling verb (a verb with a past and a non-past analysis) and the model offers the probability of past to a composition. The head file must then hold a tense head. Needs <paramref name="HeadInUse"/>.</param>
+/// <param name="BlobModelId">The identity recorded inside the embedded weights and head files, or null to use <see cref="WeightsId"/>.</param>
 internal sealed record ModelSpec(
-    string ModelId,
+    string BaseModel,
+    int Version,
     IReadOnlyList<ModelFile> Files,
     string OnnxFileName,
     string VocabularyFileName,
@@ -41,22 +65,58 @@ internal sealed record ModelSpec(
     int HiddenSize,
     string? HeadResourceName = null,
     bool HeadInUse = false,
-    bool TenseHeadInUse = false);
+    bool TenseHeadInUse = false,
+    string? BlobModelId = null)
+{
+    private const string OnnxPrefix = "model-";
+    private const string OnnxSuffix = ".onnx";
+
+    /// <summary>
+    ///     Gets the public model identifier, which is the base model.
+    /// </summary>
+    public string ModelId => BaseModel;
+
+    /// <summary>
+    ///     Gets the quantization of the encoder, taken from its file name (<c>int8-dynamic</c>).
+    /// </summary>
+    public string Quantization => OnnxFileName[OnnxPrefix.Length..^OnnxSuffix.Length];
+
+    /// <summary>
+    ///     Gets the name of the release of the model: <c>models/{base-model}/v{version}</c>.
+    /// </summary>
+    public string ReleaseTag => $"models/{BaseModel}/v{Version}";
+
+    /// <summary>
+    ///     Gets the folder of the model beneath the store root and beneath a mirror base: <c>{base-model}/v{version}</c>.
+    /// </summary>
+    public string StoreFolder => $"{BaseModel}/v{Version}";
+
+    /// <summary>
+    ///     Gets the identity recorded inside the embedded weights and head files of the model.
+    /// </summary>
+    public string WeightsId => BlobModelId ?? $"{BaseModel}/v{Version}/{Quantization}";
+}
 
 /// <summary>
-///     Obtains and verifies the files of a model: from the per-user store, a mirror or the GitHub LFS copy.
+///     Obtains and verifies the files of a model: from the per-user store, a mirror or the GitHub release assets.
 /// </summary>
 /// <remarks>
 ///     A valid file in the store is reused without network access. Otherwise each missing file is requested from the
-///     mirror (when there is one) and then from GitHub, downloaded to a uniquely named temporary file, verified against
-///     its pinned SHA-256 and moved into place, so a partial or corrupt download is never visible under the final name.
+///     mirror (when there is one) and then from the release assets of the repository, downloaded to a uniquely named
+///     temporary file, verified against its pinned SHA-256 and moved into place, so a partial or corrupt download is
+///     never visible under the final name.
 /// </remarks>
 internal static class ModelDownloader
 {
     /// <summary>
-    ///     The branch the GitHub copy is read from.
+    ///     The longest wait before the one retry of a transient failure.
     /// </summary>
-    public const string GitHubRef = "main";
+    public static readonly TimeSpan MaxRetryDelay = TimeSpan.FromSeconds(10);
+
+    /// <summary>
+    ///     The wait before the one retry of a transient failure when the server names none.
+    /// </summary>
+    public static readonly TimeSpan DefaultRetryDelay = TimeSpan.FromSeconds(2);
 
     /// <summary>
     ///     The largest download accepted for a file whose size is not pinned (1 GiB).
@@ -69,9 +129,9 @@ internal static class ModelDownloader
     public static readonly TimeSpan DefaultTimeout = TimeSpan.FromMinutes(5);
 
     /// <summary>
-    ///     The base location of the GitHub LFS copy of the repository.
+    ///     The base location of the release downloads of the repository.
     /// </summary>
-    public static readonly Uri GitHubBaseUri = new("https://media.githubusercontent.com/media/demaconsulting/WordSense/");
+    public static readonly Uri GitHubReleaseBaseUri = new("https://github.com/demaconsulting/WordSense/releases/download/");
 
     /// <summary>
     ///     Gets the default directory beneath which model folders are stored for the current user.
@@ -167,8 +227,10 @@ internal static class ModelDownloader
     /// <param name="options">The download options (mirror, store root, timeout), or null to use the environment's mirror (if any).</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
     /// <param name="client">The HTTP client to use, or null to create one that follows redirects manually.</param>
-    /// <param name="gitHubBaseUri">The GitHub LFS base location, or null for the default.</param>
+    /// <param name="publicSources">The public release location, or null for the default.</param>
     /// <param name="getEnvironmentVariable">Reads an environment variable, or null for the process environment.</param>
+    /// <param name="storeRoot">The store root used when <paramref name="options"/> is null, or null for the per-user store.</param>
+    /// <param name="retryDelay">The wait before the one retry of a transient failure when the server names none, or null for the default.</param>
     /// <returns>The directory that holds the verified files.</returns>
     /// <exception cref="HttpRequestException">Thrown when a file could not be obtained from any source.</exception>
     /// <exception cref="ArgumentException">Thrown when the mirror configuration or the store root is invalid.</exception>
@@ -177,8 +239,10 @@ internal static class ModelDownloader
         DownloadOptions? options,
         CancellationToken cancellationToken,
         HttpClient? client = null,
-        Uri? gitHubBaseUri = null,
-        Func<string, string?>? getEnvironmentVariable = null)
+        PublicSources? publicSources = null,
+        Func<string, string?>? getEnvironmentVariable = null,
+        string? storeRoot = null,
+        TimeSpan? retryDelay = null)
     {
         ArgumentNullException.ThrowIfNull(spec);
         var timeout = options?.Timeout ?? DefaultTimeout;
@@ -192,7 +256,7 @@ internal static class ModelDownloader
             ? DownloadMirror.FromOptions(options)
             : DownloadMirror.FromEnvironment(getEnvironmentVariable ?? Environment.GetEnvironmentVariable);
 
-        var directory = Path.Join(ResolveStoreRoot(options?.StoreRoot), spec.ModelId);
+        var directory = Path.Join(ResolveStoreRoot(options is not null ? options.StoreRoot : storeRoot), spec.BaseModel, "v" + spec.Version.ToString(System.Globalization.CultureInfo.InvariantCulture));
         Directory.CreateDirectory(directory);
 
         // The private client never follows redirects itself, so credentials are attached per hop
@@ -200,6 +264,7 @@ internal static class ModelDownloader
         client ??= new HttpClient(new SocketsHttpHandler { AllowAutoRedirect = false });
         try
         {
+            var context = new DownloadContext(client, spec, effective, publicSources ?? PublicSources.Default, timeout, retryDelay ?? DefaultRetryDelay);
             foreach (var file in spec.Files)
             {
                 var path = Path.Join(directory, file.Name);
@@ -208,7 +273,7 @@ internal static class ModelDownloader
                     continue;
                 }
 
-                await DownloadFileAsync(new DownloadContext(client, spec, effective, gitHubBaseUri ?? GitHubBaseUri, timeout), file, path, cancellationToken).ConfigureAwait(false);
+                await DownloadFileAsync(context, file, path, cancellationToken).ConfigureAwait(false);
             }
         }
         finally
@@ -223,24 +288,26 @@ internal static class ModelDownloader
     }
 
     /// <summary>
-    ///     Builds the ordered list of candidate sources for one file.
+    ///     Builds the ordered list of candidate sources for one file: the mirror (when there is one), then the release asset.
     /// </summary>
     /// <param name="spec">The model.</param>
     /// <param name="mirror">The effective mirror, or null.</param>
-    /// <param name="gitHubBaseUri">The GitHub LFS base location.</param>
+    /// <param name="publicSources">The public release location.</param>
     /// <param name="file">The file being requested.</param>
-    /// <returns>Source names with their request URIs, in the order they must be tried.</returns>
-    internal static IReadOnlyList<(string Name, Uri Uri, DownloadMirror? Auth)> BuildSources(ModelSpec spec, DownloadMirror? mirror, Uri gitHubBaseUri, ModelFile file)
+    /// <returns>Sources with their request URIs, in the order they must be tried.</returns>
+    internal static IReadOnlyList<DownloadSource> BuildSources(ModelSpec spec, DownloadMirror? mirror, PublicSources publicSources, ModelFile file)
     {
-        var sources = new List<(string, Uri, DownloadMirror?)>();
-        var id = Uri.EscapeDataString(spec.ModelId);
+        var sources = new List<DownloadSource>();
+        var baseModel = Uri.EscapeDataString(spec.BaseModel);
+        var version = Uri.EscapeDataString("v" + spec.Version.ToString(System.Globalization.CultureInfo.InvariantCulture));
         var name = Uri.EscapeDataString(file.Name);
         if (mirror is not null)
         {
-            sources.Add(("mirror", Combine(mirror.BaseUri, id, name), mirror));
+            sources.Add(new DownloadSource("mirror", Combine(mirror.BaseUri, baseModel, version, name), mirror));
         }
 
-        sources.Add(("github-lfs", Combine(gitHubBaseUri, Uri.EscapeDataString(GitHubRef), "model", id, name), null));
+        // The tag is models/{base-model}/v{version}: its slashes stay literal, each segment is escaped
+        sources.Add(new DownloadSource("github-release", Combine(publicSources.ReleaseBaseUri, "models", baseModel, version, name), null));
         return sources;
     }
 
@@ -263,9 +330,32 @@ internal static class ModelDownloader
     /// <param name="Client">The HTTP client.</param>
     /// <param name="Spec">The model.</param>
     /// <param name="Mirror">The effective mirror, or null.</param>
-    /// <param name="LfsBaseUri">The GitHub LFS base location.</param>
+    /// <param name="Public">The public release location.</param>
     /// <param name="AttemptTimeout">The time limit of one attempt.</param>
-    private readonly record struct DownloadContext(HttpClient Client, ModelSpec Spec, DownloadMirror? Mirror, Uri LfsBaseUri, TimeSpan AttemptTimeout);
+    /// <param name="RetryDelay">The wait before the retry of a transient failure when the server names none.</param>
+    private readonly record struct DownloadContext(HttpClient Client, ModelSpec Spec, DownloadMirror? Mirror, PublicSources Public, TimeSpan AttemptTimeout, TimeSpan RetryDelay);
+
+    /// <summary>
+    ///     A response whose status code is not a success.
+    /// </summary>
+    private sealed class StatusException : HttpRequestException
+    {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="StatusException"/> class.
+        /// </summary>
+        /// <param name="statusCode">The status code of the response.</param>
+        /// <param name="retryAfter">The wait the server asked for, or null.</param>
+        public StatusException(HttpStatusCode statusCode, TimeSpan? retryAfter)
+            : base($"The server returned {(int)statusCode} ({statusCode}).", null, statusCode)
+        {
+            RetryAfter = retryAfter;
+        }
+
+        /// <summary>
+        ///     Gets the wait the server asked for, or null.
+        /// </summary>
+        public TimeSpan? RetryAfter { get; }
+    }
 
     /// <summary>
     ///     Downloads one file, trying each source until a verified copy is stored.
@@ -281,43 +371,70 @@ internal static class ModelDownloader
         string destination,
         CancellationToken cancellationToken)
     {
-        var (client, spec, mirror, gitHubBaseUri, timeout) = context;
         var failures = new List<string>();
-        foreach (var (name, uri, auth) in BuildSources(spec, mirror, gitHubBaseUri, file))
+        foreach (var source in BuildSources(context.Spec, context.Mirror, context.Public, file))
         {
-            var temp = destination + "." + Guid.NewGuid().ToString("N") + ".part";
-            try
+            // The failure text names the source and the request path only: never a query, which a signed redirect carries
+            var label = $"{source.Name} ({source.Uri.GetLeftPart(UriPartial.Path)})";
+            for (var attempt = 1; attempt <= 2; attempt++)
             {
-                using var limit = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
-                limit.CancelAfter(timeout);
-
-                var actual = await FetchAsync(client, uri, auth, temp, file.Length > 0 ? file.Length : MaxUnpinnedLength, limit.Token).ConfigureAwait(false);
-                if (!string.Equals(actual, file.Sha256, StringComparison.Ordinal))
+                var temp = destination + "." + Guid.NewGuid().ToString("N") + ".part";
+                try
                 {
-                    failures.Add($"{name}: SHA-256 mismatch for '{file.Name}'.");
-                    continue;
-                }
+                    using var limit = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+                    limit.CancelAfter(context.AttemptTimeout);
 
-                File.Move(temp, destination, true);
-                return;
-            }
-            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
-            {
-                throw;
-            }
-            catch (Exception ex) when (ex is HttpRequestException or OperationCanceledException or IOException or UnauthorizedAccessException)
-            {
-                // Request failure, block, timeout or local IO problem: fall through to the next source
-                failures.Add($"{name}: {ex.GetType().Name}: {ex.Message}");
-            }
-            finally
-            {
-                TryDelete(temp);
+                    var actual = await FetchAsync(context.Client, source.Uri, source.Auth, temp, file.Length > 0 ? file.Length : MaxUnpinnedLength, limit.Token).ConfigureAwait(false);
+                    if (!string.Equals(actual, file.Sha256, StringComparison.Ordinal))
+                    {
+                        failures.Add($"{label}: SHA-256 mismatch.");
+                        break;
+                    }
+
+                    File.Move(temp, destination, true);
+                    return;
+                }
+                catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+                {
+                    throw;
+                }
+                catch (Exception ex) when (ex is HttpRequestException or OperationCanceledException or IOException or UnauthorizedAccessException)
+                {
+                    // Request failure, block, timeout or local IO problem: retry a transient one once, else go to the next source
+                    if (attempt == 1 && IsTransient(ex))
+                    {
+                        var delay = ex is StatusException { RetryAfter: { } asked } ? asked : context.RetryDelay;
+                        await Task.Delay(delay > MaxRetryDelay ? MaxRetryDelay : delay, cancellationToken).ConfigureAwait(false);
+                        continue;
+                    }
+
+                    failures.Add($"{label}: {ex.GetType().Name}: {ex.Message}");
+                    break;
+                }
+                finally
+                {
+                    TryDelete(temp);
+                }
             }
         }
 
-        throw new HttpRequestException($"Could not obtain '{file.Name}' of model '{spec.ModelId}' from any source. " + string.Join(" | ", failures));
+        var reason = failures.Count == 0 ? "no download source is configured" : string.Join(" | ", failures);
+        throw new HttpRequestException($"Could not obtain '{file.Name}' of model '{context.Spec.BaseModel}' version {context.Spec.Version} from any source. {reason}");
     }
+
+    /// <summary>
+    ///     Decides whether a failure is worth one retry: a throttled or failing server, or a connection that broke during the transfer.
+    /// </summary>
+    /// <param name="ex">The failure.</param>
+    /// <returns>True for a transient failure; false for a missing file, another client error, a timeout or a refused connection.</returns>
+    private static bool IsTransient(Exception ex) => ex switch
+    {
+        HttpRequestException { StatusCode: { } status } => status is HttpStatusCode.TooManyRequests or HttpStatusCode.RequestTimeout || (int)status >= 500,
+        HttpRequestException { InnerException: IOException } => true,
+        OperationCanceledException => false,
+        IOException => true,
+        _ => false,
+    };
 
     /// <summary>
     ///     Requests one URI and streams it to a temporary file, returning the digest of what was written.
@@ -332,7 +449,12 @@ internal static class ModelDownloader
     private static async Task<string> FetchAsync(HttpClient client, Uri uri, DownloadMirror? auth, string temp, long maxLength, CancellationToken cancellationToken)
     {
         using var response = await SendFollowingRedirectsAsync(client, uri, auth, cancellationToken).ConfigureAwait(false);
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            // The message carries the status only, never a URL: a redirect target holds a signed query
+            var retryAfter = response.Headers.RetryAfter is { } header ? header.Delta ?? (header.Date - DateTimeOffset.UtcNow) : null;
+            throw new StatusException(response.StatusCode, retryAfter is { } wait && wait < TimeSpan.Zero ? TimeSpan.Zero : retryAfter);
+        }
         if (response.Content.Headers.ContentLength > maxLength)
         {
             throw new HttpRequestException("The response is larger than the pinned size of the file.");

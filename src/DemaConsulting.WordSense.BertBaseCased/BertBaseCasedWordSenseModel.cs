@@ -48,16 +48,18 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     </para>
 ///     <para>
 ///     Two kinds of data are involved: the per-lemma classifier weights trained for this encoder are embedded in the
-///     assembly (nothing to download), while the encoder files (<c>model_int8.onnx</c>,
+///     assembly (nothing to download), while the encoder files (<c>model-int8-dynamic.onnx</c>,
 ///     103.5 MiB or 108,477,896 bytes; <c>vocab.txt</c>, 0.2 MiB or 213,450 bytes; <c>config.json</c>, 639 bytes; and
 ///     <c>tokenizer.json</c>, 0.6 MiB or 668,923 bytes; 104 MiB in total) are downloaded once by
 ///     <see cref="EnsureModelAsync"/>,
 ///     verified against pinned SHA-256 digests and cached per user; pass a model directory to the constructor to use
 ///     files you supply, in which case no network access happens at all. The first classification that needs the
-///     encoder opens the ONNX session and checks the embedded weights against the word image. The files are described in the repository at
-///     https://github.com/demaconsulting/WordSense/tree/main/model/bert-base-cased-int8. The identifier of this model
-///     (<see cref="ModelId"/>) is <c>bert-base-cased-int8</c>; it names the store folder and the
-///     folder on a mirror.
+///     encoder opens the ONNX session and checks the embedded weights against the word image. The files are published as
+///     the assets of the GitHub release <c>models/bert-base-cased/v1</c> and described in the repository at
+///     https://github.com/demaconsulting/WordSense/tree/main/model/bert-base-cased. The identifier of this model
+///     (<see cref="ModelId"/>) is <c>bert-base-cased</c>, its version (<see cref="ModelVersion"/>) is 1 and its
+///     quantization (<see cref="Quantization"/>) is <c>int8-dynamic</c>; they name the store folder
+///     <c>bert-base-cased/v1</c> and the folder on a mirror.
 ///     </para>
 ///     <para>
 ///     A supplied model directory must hold all four files directly (no <c>{model-id}</c> subfolder).
@@ -91,7 +93,7 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///         Console.WriteLine($"{words[i]}: {results[i].Details?.PartOfSpeech.ToString() ?? "-"} {results[i].Level} ({results[i].Confidence:0.00})");
 ///     }
 ///     </code>
-///     Download through a mirror (files at <c>{mirror}/bert-base-cased-int8/{file}</c>) instead of the public source.
+///     Download through a mirror (files at <c>{mirror}/bert-base-cased/v1/{file}</c>) before the release assets.
 ///     <code>
 ///     using DemaConsulting.WordSense;
 ///     using DemaConsulting.WordSense.BertBaseCased;
@@ -118,7 +120,7 @@ public sealed class BertBaseCasedWordSenseModel : IDownloadableWordSenseModel
     ///     Initializes a new instance of the <see cref="BertBaseCasedWordSenseModel"/> class.
     /// </summary>
     /// <param name="modelDirectory">
-    ///     A directory that holds <c>model_int8.onnx</c>, <c>vocab.txt</c>, <c>config.json</c> and <c>tokenizer.json</c>, or null to use the per-user store that
+    ///     A directory that holds <c>model-int8-dynamic.onnx</c>, <c>vocab.txt</c>, <c>config.json</c> and <c>tokenizer.json</c>, or null to use the per-user store that
     ///     <see cref="EnsureModelAsync"/> fills.
     /// </param>
     /// <param name="maxSequenceLength">The maximum sequence length including special tokens; 8 to 512.</param>
@@ -136,7 +138,7 @@ public sealed class BertBaseCasedWordSenseModel : IDownloadableWordSenseModel
     ///     Initializes a new instance of the <see cref="BertBaseCasedWordSenseModel"/> class with an explicit primary weight
     ///     (the builder tunes it; tests pin it).
     /// </summary>
-    /// <param name="modelDirectory">A directory that holds <c>model_int8.onnx</c> and <c>vocab.txt</c>, or null to use the per-user store.</param>
+    /// <param name="modelDirectory">A directory that holds <c>model-int8-dynamic.onnx</c> and <c>vocab.txt</c>, or null to use the per-user store.</param>
     /// <param name="maxSequenceLength">The maximum sequence length including special tokens; 8 to 512.</param>
     /// <param name="primaryWeight">The weight of the encoder's part-of-speech head in the combination of the slot probabilities, from 0 to 1; see <see cref="PartOfSpeechHeadWeight"/>.</param>
     /// <param name="tenseWeight">The weight of the encoder's tense head in the combination of its probability of past with the tense split of Basic, from 0 to 1; see <see cref="TenseHeadWeight"/>.</param>
@@ -163,9 +165,19 @@ public sealed class BertBaseCasedWordSenseModel : IDownloadableWordSenseModel
     internal const double TenseHeadWeight = 0.9;
 
     /// <summary>
-    ///     Gets the identifier of the model, which names its folder in the repository, on a mirror and in the store.
+    ///     Gets the identifier of the model: its base model, <c>bert-base-cased</c>.
     /// </summary>
     public string ModelId => Encoder.ModelId;
+
+    /// <summary>
+    ///     Gets the version of the model export (1); it names the <c>v1</c> folder of the model in the store and on a mirror.
+    /// </summary>
+    public int ModelVersion => Encoder.ModelVersion;
+
+    /// <summary>
+    ///     Gets the quantization of the ONNX encoder (<c>int8-dynamic</c>).
+    /// </summary>
+    public string Quantization => Encoder.Quantization;
 
     /// <summary>
     ///     Gets the hidden size (feature dimension) of the encoder; known before <see cref="EnsureModelAsync"/>.
@@ -192,7 +204,7 @@ public sealed class BertBaseCasedWordSenseModel : IDownloadableWordSenseModel
     ///     Makes sure every file of the encoder is available and verified: from the directory given to the constructor,
     ///     or from the per-user store, downloading what is missing.
     /// </summary>
-    /// <param name="options">The download options (a mirror to try before the public source, the store location, the timeout); see <see cref="OnnxWordSenseModel.EnsureModelAsync"/>.</param>
+    /// <param name="options">The download options (a mirror to try before the release assets, the store location, the timeout); see <see cref="OnnxWordSenseModel.EnsureModelAsync"/>.</param>
     /// <param name="cancellationToken">A token that cancels the wait of this call.</param>
     /// <returns>A task that completes when the model files are ready.</returns>
     /// <remarks>

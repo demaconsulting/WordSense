@@ -48,12 +48,12 @@ internal static partial class Program
     ///     Identifies the encoder of a model to the head trainers.
     /// </summary>
     /// <param name="spec">The description of the model.</param>
-    /// <returns>The identity: the model id, the hidden size, the digests of the ONNX file and the vocabulary, the casing and the runtime.</returns>
+    /// <returns>The identity: the identity recorded inside the head file, the hidden size, the digests of the ONNX file and the vocabulary, the casing and the runtime.</returns>
     private static PosEncoderInfo EncoderIdentityOf(DemaConsulting.WordSense.Onnx.ModelSpec spec)
     {
         var runtime = typeof(Microsoft.ML.OnnxRuntime.InferenceSession).Assembly.GetName().Version?.ToString() ?? "unknown";
         return new PosEncoderInfo(
-            spec.ModelId,
+            spec.WeightsId,
             spec.HiddenSize,
             spec.Files.First(f => string.Equals(f.Name, spec.OnnxFileName, StringComparison.Ordinal)).Sha256,
             spec.Files.First(f => string.Equals(f.Name, spec.VocabularyFileName, StringComparison.Ordinal)).Sha256,

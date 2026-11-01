@@ -53,7 +53,7 @@ public interface IDownloadableWordSenseModel : IWordSenseModel
     ///     Makes sure every file the model needs is present locally and verified, downloading what is missing.
     /// </summary>
     /// <param name="options">
-    ///     The download options (a mirror to try before the public source, the store location and the timeout), or
+    ///     The download options (a mirror to try before the release assets, the store location and the timeout), or
     ///     <see langword="null"/> to use the mirror configured by the <c>WORDSENSE_MIRROR_URL</c> environment variable
     ///     (and its credential variables), if any. Ignored by a model that was given a model directory.
     /// </param>

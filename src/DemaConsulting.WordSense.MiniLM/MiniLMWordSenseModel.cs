@@ -34,15 +34,17 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     </para>
 ///     <para>
 ///     Two kinds of data are involved: the per-lemma classifier weights trained for this encoder are embedded in the
-///     assembly (nothing to download), while the encoder files (<c>model_int8.onnx</c>,
+///     assembly (nothing to download), while the encoder files (<c>model-int8-dynamic.onnx</c>,
 ///     21.9 MiB or 22,972,370 bytes, and <c>vocab.txt</c>, 0.2 MiB or 231,508 bytes; 22 MiB in total) are downloaded
 ///     once by <see cref="EnsureModelAsync"/>, verified
 ///     against pinned SHA-256 digests and cached per user; pass a model directory to the constructor to use files you
 ///     supply, in which case no network access happens at all. The first classification that needs the encoder opens
-///     the ONNX session and checks the embedded weights against the word image. The files are described in the repository at
-///     https://github.com/demaconsulting/WordSense/tree/main/model/all-MiniLM-L6-v2-int8. The identifier of this model
-///     (<see cref="ModelId"/>) is <c>all-MiniLM-L6-v2-int8</c>; it names the store folder and the
-///     folder on a mirror.
+///     the ONNX session and checks the embedded weights against the word image. The files are published as the assets of
+///     the GitHub release <c>models/all-MiniLM-L6-v2/v1</c> and described in the repository at
+///     https://github.com/demaconsulting/WordSense/tree/main/model/all-MiniLM-L6-v2. The identifier of this model
+///     (<see cref="ModelId"/>) is <c>all-MiniLM-L6-v2</c>, its version (<see cref="ModelVersion"/>) is 1 and its
+///     quantization (<see cref="Quantization"/>) is <c>int8-dynamic</c>; they name the store folder
+///     <c>all-MiniLM-L6-v2/v1</c> and the folder on a mirror.
 ///     </para>
 ///     <para>
 ///     Choose MiniLM when download size and speed matter, the default recommendation: 22 MiB. The alternative
@@ -55,7 +57,7 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     weights were trained with the default length of 128; a different length is possible but unvalidated.
 ///     </para>
 ///     <para>
-///     When you supply a model directory, it must hold <c>model_int8.onnx</c> and <c>vocab.txt</c> directly (no
+///     When you supply a model directory, it must hold <c>model-int8-dynamic.onnx</c> and <c>vocab.txt</c> directly (no
 ///     <c>{model-id}</c> subfolder). <c>EnsureModelAsync</c> is optional but recommended: it verifies both files against
 ///     their pinned SHA-256 digests without any network access and fails early with a
 ///     <see cref="ModelUnavailableException"/> (a missing file or directory) or a <see cref="ModelIntegrityException"/>
@@ -81,7 +83,7 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///         Console.WriteLine($"{words[i]}: {results[i].Details?.PartOfSpeech.ToString() ?? "-"} {results[i].Level} ({results[i].Confidence:0.00})");
 ///     }
 ///     </code>
-///     Download through a mirror (files at <c>{mirror}/all-MiniLM-L6-v2-int8/{file}</c>) instead of the public source.
+///     Download through a mirror (files at <c>{mirror}/all-MiniLM-L6-v2/v1/{file}</c>) before the release assets.
 ///     <code>
 ///     using DemaConsulting.WordSense;
 ///     using DemaConsulting.WordSense.MiniLM;
@@ -108,7 +110,7 @@ public sealed class MiniLMWordSenseModel : IDownloadableWordSenseModel
     ///     Initializes a new instance of the <see cref="MiniLMWordSenseModel"/> class.
     /// </summary>
     /// <param name="modelDirectory">
-    ///     A directory that holds <c>model_int8.onnx</c> and <c>vocab.txt</c>, or null to use the per-user store that
+    ///     A directory that holds <c>model-int8-dynamic.onnx</c> and <c>vocab.txt</c>, or null to use the per-user store that
     ///     <see cref="EnsureModelAsync"/> fills.
     /// </param>
     /// <param name="maxSequenceLength">The maximum sequence length including special tokens; 8 to 512.</param>
@@ -126,7 +128,7 @@ public sealed class MiniLMWordSenseModel : IDownloadableWordSenseModel
     ///     Initializes a new instance of the <see cref="MiniLMWordSenseModel"/> class with an explicit primary weight (the
     ///     builder tunes it; tests pin it).
     /// </summary>
-    /// <param name="modelDirectory">A directory that holds <c>model_int8.onnx</c> and <c>vocab.txt</c>, or null to use the per-user store.</param>
+    /// <param name="modelDirectory">A directory that holds <c>model-int8-dynamic.onnx</c> and <c>vocab.txt</c>, or null to use the per-user store.</param>
     /// <param name="maxSequenceLength">The maximum sequence length including special tokens; 8 to 512.</param>
     /// <param name="primaryWeight">The weight of the encoder in the combination of the slot probabilities, from 0 to 1; see <see cref="PartOfSpeechPrimaryWeight"/>.</param>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="maxSequenceLength"/> is outside 8 to 512 or <paramref name="primaryWeight"/> is outside 0 to 1.</exception>
@@ -145,9 +147,19 @@ public sealed class MiniLMWordSenseModel : IDownloadableWordSenseModel
     internal const double PartOfSpeechPrimaryWeight = 0.6;
 
     /// <summary>
-    ///     Gets the identifier of the model, which names its folder in the repository, on a mirror and in the store.
+    ///     Gets the identifier of the model: its base model, <c>all-MiniLM-L6-v2</c>.
     /// </summary>
     public string ModelId => Encoder.ModelId;
+
+    /// <summary>
+    ///     Gets the version of the model export (1); it names the <c>v1</c> folder of the model in the store and on a mirror.
+    /// </summary>
+    public int ModelVersion => Encoder.ModelVersion;
+
+    /// <summary>
+    ///     Gets the quantization of the ONNX encoder (<c>int8-dynamic</c>).
+    /// </summary>
+    public string Quantization => Encoder.Quantization;
 
     /// <summary>
     ///     Gets the hidden size (feature dimension) of the encoder; known before <see cref="EnsureModelAsync"/>.
@@ -174,7 +186,7 @@ public sealed class MiniLMWordSenseModel : IDownloadableWordSenseModel
     ///     Makes sure every file of the encoder is available and verified: from the directory given to the constructor,
     ///     or from the per-user store, downloading what is missing.
     /// </summary>
-    /// <param name="options">The download options (a mirror to try before the public source, the store location, the timeout); see <see cref="OnnxWordSenseModel.EnsureModelAsync"/>.</param>
+    /// <param name="options">The download options (a mirror to try before the release assets, the store location, the timeout); see <see cref="OnnxWordSenseModel.EnsureModelAsync"/>.</param>
     /// <param name="cancellationToken">A token that cancels the wait of this call.</param>
     /// <returns>A task that completes when the model files are ready.</returns>
     /// <remarks>
