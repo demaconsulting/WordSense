@@ -13,12 +13,19 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     is encoded per target from a window centered on the target by <see cref="EncodeAsync"/>, and in sliding windows,
 ///     one pass per window, by <see cref="EncodeAllAsync(IReadOnlyList{string}, CancellationToken)"/>. Dispose the encoder once, after every call has
 ///     finished; calls made after disposal throw <see cref="ObjectDisposedException"/>.
+///     <para>
+///     Without sense layers the sense vector of a word is the mean of its word pieces in the last layer. With sense
+///     layers (see <see cref="FeatureLayout"/>) it is the mean, over the layers in increasing order, of the per-layer
+///     means of the word pieces; the heads still read the last layer (<see cref="EncodeHeadAllAsync"/>).
+///     </para>
 /// </remarks>
 internal sealed class OnnxEncoder : IDisposable
 {
     private readonly InferenceSession _session;
     private readonly WordPieceTokenizer _tokenizer;
-    private readonly string _outputName;
+    private readonly string[] _senseOutputs;
+    private readonly string[] _headOutputs;
+    private readonly bool _layered;
     private readonly int _maxLength;
     private int _disposed;
     private long _passes;
@@ -31,15 +38,23 @@ internal sealed class OnnxEncoder : IDisposable
     /// <param name="lowerCase">True when the model is uncased.</param>
     /// <param name="maxSequenceLength">The maximum sequence length including special tokens; 8 to 512.</param>
     /// <param name="intraOpThreads">Threads ONNX Runtime may use within one inference; 0 lets it decide.</param>
+    /// <param name="senseLayers">The layers, in increasing order, whose mean is the sense vector (see <see cref="ModelSpec.SenseLayers"/>), or null for the last layer.</param>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when a number is outside its range.</exception>
+    /// <exception cref="ArgumentException">Thrown when <paramref name="senseLayers"/> is not a valid list of layers.</exception>
     /// <exception cref="FileNotFoundException">Thrown when the model or vocabulary file does not exist.</exception>
-    public OnnxEncoder(string modelPath, string vocabularyPath, bool lowerCase, int maxSequenceLength, int intraOpThreads)
+    /// <exception cref="InvalidDataException">Thrown when the model lacks an output of a sense layer or has no fixed hidden size.</exception>
+    public OnnxEncoder(string modelPath, string vocabularyPath, bool lowerCase, int maxSequenceLength, int intraOpThreads, IReadOnlyList<int>? senseLayers = null)
     {
         ArgumentNullException.ThrowIfNull(modelPath);
         ArgumentNullException.ThrowIfNull(vocabularyPath);
         ArgumentOutOfRangeException.ThrowIfLessThan(maxSequenceLength, 8);
         ArgumentOutOfRangeException.ThrowIfGreaterThan(maxSequenceLength, 512);
         ArgumentOutOfRangeException.ThrowIfNegative(intraOpThreads);
+        if (senseLayers is not null)
+        {
+            FeatureLayout.Validate(senseLayers);
+        }
+
         if (!File.Exists(modelPath))
         {
             throw new FileNotFoundException("The ONNX model file was not found.", modelPath);
@@ -58,12 +73,18 @@ internal sealed class OnnxEncoder : IDisposable
         _session = new InferenceSession(modelPath, options);
         try
         {
-            _outputName = _session.OutputMetadata.Keys.First();
-            HiddenSize = _session.OutputMetadata[_outputName].Dimensions[^1];
+            // The last layer is the output of that name; a model that does not name it has the one output of the graph
+            var outputs = _session.OutputMetadata;
+            var lastName = outputs.ContainsKey(FeatureLayout.LastOutputName) ? FeatureLayout.LastOutputName : outputs.Keys.First();
+            _headOutputs = [lastName];
+            HiddenSize = outputs[lastName].Dimensions[^1];
             if (HiddenSize <= 0)
             {
                 throw new InvalidDataException("The ONNX model does not have a fixed hidden size.");
             }
+
+            _layered = senseLayers is not null;
+            _senseOutputs = senseLayers is null ? _headOutputs : CheckTaps(outputs, FeatureLayout.OutputNames(senseLayers), FeatureLayout.Describe(senseLayers), HiddenSize);
         }
         catch
         {
@@ -79,12 +100,12 @@ internal sealed class OnnxEncoder : IDisposable
     public int HiddenSize { get; }
 
     /// <summary>
-    ///     Encodes a sentence and pools the hidden states of each target word.
+    ///     Encodes a sentence and pools the hidden states of each target word into its sense vector.
     /// </summary>
     /// <param name="words">The words of the sentence.</param>
     /// <param name="targets">The indexes into <paramref name="words"/> to pool.</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
-    /// <returns>One mean-pooled vector per target, or null for a target without tokens.</returns>
+    /// <returns>One sense vector per target (the mean-pooled last layer, or the mean of the pooled sense layers), or null for a target without tokens.</returns>
     public ValueTask<double[]?[]> EncodeAsync(IReadOnlyList<string> words, IReadOnlyList<int> targets, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(words);
@@ -105,7 +126,7 @@ internal sealed class OnnxEncoder : IDisposable
 
         // A text that fits one window is encoded once; a longer one is encoded per target from a centered window
         var tokens = _tokenizer.TokenizeWords(words);
-        var whole = tokens.Count + 2 <= _maxLength ? Run(tokens.BuildWindow(_tokenizer.ClsId, _tokenizer.SepId, _maxLength, 0, 0).InputIds) : null;
+        var whole = tokens.Count + 2 <= _maxLength ? Run(tokens.BuildWindow(_tokenizer.ClsId, _tokenizer.SepId, _maxLength, 0, 0).InputIds, true) : null;
         for (var t = 0; t < targets.Count; t++)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -118,12 +139,12 @@ internal sealed class OnnxEncoder : IDisposable
 
             if (whole is not null)
             {
-                result[t] = Pool(whole, first + 1, last + 1);
+                result[t] = PoolSense(whole, first + 1, last + 1);
             }
             else
             {
                 var window = tokens.BuildWindow(_tokenizer.ClsId, _tokenizer.SepId, _maxLength, first, last);
-                result[t] = Pool(Run(window.InputIds), window.TargetFirst, window.TargetEnd);
+                result[t] = PoolSense(Run(window.InputIds, true), window.TargetFirst, window.TargetEnd);
             }
         }
 
@@ -146,18 +167,67 @@ internal sealed class OnnxEncoder : IDisposable
     /// </remarks>
     /// <param name="words">The words of the text.</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
-    /// <returns>One mean-pooled vector per word, or null for a word without tokens.</returns>
+    /// <returns>One sense vector per word (see <see cref="EncodeAsync"/>), or null for a word without tokens.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the list or a word is null.</exception>
     /// <exception cref="ObjectDisposedException">Thrown when the encoder has been disposed.</exception>
-    public ValueTask<double[]?[]> EncodeAllAsync(IReadOnlyList<string> words, CancellationToken cancellationToken)
+    public ValueTask<double[]?[]> EncodeAllAsync(IReadOnlyList<string> words, CancellationToken cancellationToken) =>
+        ValueTask.FromResult(EncodeAllCore(words, cancellationToken, true, false).Sense!);
+
+    /// <summary>
+    ///     Encodes every word of a text in its possessive view (see <see cref="PossessiveView"/>).
+    /// </summary>
+    /// <param name="words">The words of the text.</param>
+    /// <param name="isPossessive">Tells whether a word is a possessive written as one token; it is split into its stem and its marker.</param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <returns>The tokens of the view, the first token of every word, the last-layer vector of every token and, with sense layers, the sense vector of every token.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when an argument or a word is null.</exception>
+    /// <exception cref="ObjectDisposedException">Thrown when the encoder has been disposed.</exception>
+    public ValueTask<WordVectors> EncodeAllAsync(IReadOnlyList<string> words, Func<string, bool> isPossessive, CancellationToken cancellationToken)
+    {
+        var (tokens, start) = PossessiveView.Expand(words, isPossessive);
+        var (sense, head) = EncodeAllCore(tokens, cancellationToken, _layered, true);
+        return ValueTask.FromResult(new WordVectors(tokens, start, head!, _layered ? sense : null));
+    }
+
+    /// <summary>
+    ///     Encodes every word of a text like <see cref="EncodeAllAsync(IReadOnlyList{string}, CancellationToken)"/> but
+    ///     pools the last layer only, which is the vector the part-of-speech and tense heads read.
+    /// </summary>
+    /// <remarks>
+    ///     Without sense layers the result equals the one of <see cref="EncodeAllAsync(IReadOnlyList{string}, CancellationToken)"/>.
+    ///     With sense layers the encoder reads only the last-layer output.
+    /// </remarks>
+    /// <param name="words">The words of the text.</param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <returns>One last-layer vector per word, or null for a word without tokens.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when the list or a word is null.</exception>
+    /// <exception cref="ObjectDisposedException">Thrown when the encoder has been disposed.</exception>
+    public ValueTask<double[]?[]> EncodeHeadAllAsync(IReadOnlyList<string> words, CancellationToken cancellationToken) =>
+        ValueTask.FromResult(EncodeAllCore(words, cancellationToken, false, true).Head!);
+
+    /// <summary>
+    ///     Encodes every word of a text in the windows of <see cref="EncodeAllAsync(IReadOnlyList{string}, CancellationToken)"/>
+    ///     and pools the vectors that the callers ask for.
+    /// </summary>
+    /// <param name="words">The words of the text.</param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <param name="wantSense">True to pool the sense vectors.</param>
+    /// <param name="wantHead">True to pool the last-layer vectors. Without sense layers they are the sense vectors, the same array.</param>
+    /// <returns>The requested vectors per word; null for the vectors that were not requested.</returns>
+    private (double[]?[]? Sense, double[]?[]? Head) EncodeAllCore(IReadOnlyList<string> words, CancellationToken cancellationToken, bool wantSense, bool wantHead)
     {
         ArgumentNullException.ThrowIfNull(words);
         ObjectDisposedException.ThrowIf(Volatile.Read(ref _disposed) != 0, this);
         cancellationToken.ThrowIfCancellationRequested();
-        var result = new double[]?[words.Count];
+        var sense = wantSense || !_layered ? new double[]?[words.Count] : null;
+        double[]?[]? head = sense;
+        if (_layered)
+        {
+            head = wantHead ? new double[]?[words.Count] : null;
+        }
         if (words.Count == 0)
         {
-            return ValueTask.FromResult(result);
+            return (sense, head);
         }
 
         var tokens = _tokenizer.TokenizeWords(words);
@@ -165,13 +235,16 @@ internal sealed class OnnxEncoder : IDisposable
         if (tokens.Count <= capacity)
         {
             // One window: the same pass and the same pooling as EncodeAsync
-            var whole = Run(tokens.BuildWindow(_tokenizer.ClsId, _tokenizer.SepId, _maxLength, 0, 0).InputIds);
+            var whole = Run(tokens.BuildWindow(_tokenizer.ClsId, _tokenizer.SepId, _maxLength, 0, 0).InputIds, wantSense);
             for (var w = 0; w < words.Count; w++)
             {
-                result[w] = tokens.WordEnd[w] > tokens.WordFirst[w] ? Pool(whole, tokens.WordFirst[w] + 1, tokens.WordEnd[w] + 1) : null;
+                if (tokens.WordEnd[w] > tokens.WordFirst[w])
+                {
+                    PoolWord(whole, tokens.WordFirst[w] + 1, tokens.WordEnd[w] + 1, sense, head, w);
+                }
             }
 
-            return ValueTask.FromResult(result);
+            return (sense, head);
         }
 
         // Several windows: plan the windows, assign every word to its best window, then encode each window once and pool its words
@@ -197,32 +270,16 @@ internal sealed class OnnxEncoder : IDisposable
             ids[0] = _tokenizer.ClsId;
             Array.Copy(tokens.Ids, starts[i], ids, 1, capacity);
             ids[capacity + 1] = _tokenizer.SepId;
-            var hidden = Run(ids);
+            var hidden = Run(ids, wantSense);
             foreach (var w in members)
             {
                 var first = Math.Max(tokens.WordFirst[w] - starts[i], 0) + 1;
                 var end = Math.Min(tokens.WordEnd[w] - starts[i], capacity) + 1;
-                result[w] = Pool(hidden, first, end);
+                PoolWord(hidden, first, end, sense, head, w);
             }
         }
 
-        return ValueTask.FromResult(result);
-    }
-
-    /// <summary>
-    ///     Encodes every word of a text in its possessive view (see <see cref="PossessiveView"/>).
-    /// </summary>
-    /// <param name="words">The words of the text.</param>
-    /// <param name="isPossessive">Tells whether a word is a possessive written as one token; it is split into its stem and its marker.</param>
-    /// <param name="cancellationToken">A token that cancels the operation.</param>
-    /// <returns>The tokens of the view, the first token of every word and the pooled vector of every token.</returns>
-    /// <exception cref="ArgumentNullException">Thrown when an argument or a word is null.</exception>
-    /// <exception cref="ObjectDisposedException">Thrown when the encoder has been disposed.</exception>
-    public async ValueTask<WordVectors> EncodeAllAsync(IReadOnlyList<string> words, Func<string, bool> isPossessive, CancellationToken cancellationToken)
-    {
-        var (tokens, start) = PossessiveView.Expand(words, isPossessive);
-        var vectors = await EncodeAllAsync(tokens, cancellationToken).ConfigureAwait(false);
-        return new WordVectors(tokens, start, vectors);
+        return (sense, head);
     }
 
     /// <summary>
@@ -400,11 +457,122 @@ internal sealed class OnnxEncoder : IDisposable
     }
 
     /// <summary>
+    ///     Pools one word for the requested vectors.
+    /// </summary>
+    /// <param name="hidden">The outputs of one pass (see <see cref="Run"/>).</param>
+    /// <param name="first">First target row.</param>
+    /// <param name="end">Exclusive end target row.</param>
+    /// <param name="sense">Receives the sense vector, or null when it was not requested.</param>
+    /// <param name="head">Receives the last-layer vector, or null when it was not requested.</param>
+    /// <param name="word">The index of the word in <paramref name="sense"/> and <paramref name="head"/>.</param>
+    private void PoolWord(float[][] hidden, int first, int end, double[]?[]? sense, double[]?[]? head, int word)
+    {
+        if (!_layered)
+        {
+            // One output: the sense vector and the last-layer vector are the same
+            var pooled = Pool(hidden[0], first, end);
+            if (sense is not null)
+            {
+                sense[word] = pooled;
+            }
+
+            if (head is not null)
+            {
+                head[word] = pooled;
+            }
+
+            return;
+        }
+
+        if (sense is not null)
+        {
+            sense[word] = PoolSense(hidden, first, end);
+        }
+
+        if (head is not null)
+        {
+            head[word] = Pool(hidden[^1], first, end);
+        }
+    }
+
+    /// <summary>
+    ///     Pools the sense vector: the mean of the pooled vectors of the layers, in increasing order of the layers.
+    /// </summary>
+    /// <param name="hidden">The outputs of one pass, one per layer.</param>
+    /// <param name="first">First target row.</param>
+    /// <param name="end">Exclusive end target row.</param>
+    /// <returns>The sense vector, or null when the range is empty or outside the sequence.</returns>
+    private double[]? PoolSense(float[][] hidden, int first, int end)
+    {
+        if (hidden.Length == 1)
+        {
+            return Pool(hidden[0], first, end);
+        }
+
+        // Pooling is linear; each layer is pooled in double and the layers are averaged in double
+        double[]? mean = null;
+        foreach (var layer in hidden)
+        {
+            var pooled = Pool(layer, first, end);
+            if (pooled is null)
+            {
+                return null;
+            }
+
+            if (mean is null)
+            {
+                mean = pooled;
+                continue;
+            }
+
+            for (var d = 0; d < mean.Length; d++)
+            {
+                mean[d] += pooled[d];
+            }
+        }
+
+        for (var d = 0; d < mean!.Length; d++)
+        {
+            mean[d] /= hidden.Length;
+        }
+
+        return mean;
+    }
+
+    /// <summary>
+    ///     Checks that the graph has the output of every sense layer, with the hidden size.
+    /// </summary>
+    /// <param name="outputs">The outputs of the graph.</param>
+    /// <param name="names">The output names of the sense layers.</param>
+    /// <param name="layout">The layout of the sense feature, for the message.</param>
+    /// <param name="hiddenSize">The hidden size of the last layer.</param>
+    /// <returns>The names.</returns>
+    /// <exception cref="InvalidDataException">Thrown when an output is missing or has another hidden size.</exception>
+    private static string[] CheckTaps(IReadOnlyDictionary<string, NodeMetadata> outputs, string[] names, string layout, int hiddenSize)
+    {
+        foreach (var name in names)
+        {
+            if (!outputs.TryGetValue(name, out var output))
+            {
+                throw new InvalidDataException($"The ONNX model has no output '{name}', which the sense feature '{layout}' needs.");
+            }
+
+            if (output.Dimensions[^1] != hiddenSize)
+            {
+                throw new InvalidDataException($"The output '{name}' of the ONNX model does not have the hidden size {hiddenSize}.");
+            }
+        }
+
+        return names;
+    }
+
+    /// <summary>
     ///     Encodes one sequence of WordPiece ids.
     /// </summary>
     /// <param name="inputIds">The WordPiece ids, including the special tokens; at least one.</param>
-    /// <returns>The hidden states, row-major, <c>inputIds.Length × HiddenSize</c> values.</returns>
-    private float[] Run(int[] inputIds)
+    /// <param name="senseOutputs">True to read the outputs of every sense layer; false to read only the last layer.</param>
+    /// <returns>The hidden states of every output read, in the order of the layers; each is row-major, <c>inputIds.Length × HiddenSize</c> values.</returns>
+    private float[][] Run(int[] inputIds, bool senseOutputs)
     {
         // Build the three int64 inputs of a BERT-style model for a single unpadded sequence
         Interlocked.Increment(ref _passes);
@@ -425,7 +593,13 @@ internal sealed class OnnxEncoder : IDisposable
             NamedOnnxValue.CreateFromTensor("token_type_ids", types),
         };
 
-        using var results = _session.Run(inputs, [_outputName]);
-        return results[0].AsTensor<float>().ToArray();
+        using var results = _session.Run(inputs, senseOutputs ? _senseOutputs : _headOutputs);
+        var layers = new float[results.Count][];
+        for (var i = 0; i < layers.Length; i++)
+        {
+            layers[i] = results[i].AsTensor<float>().ToArray();
+        }
+
+        return layers;
     }
 }

@@ -60,7 +60,7 @@ internal sealed record LemmaSpec(
 }
 
 /// <summary>
-///     Writes weights blobs in the WSX3 layout of <see cref="WeightsBlob"/> for the tests (the real writer lives in
+///     Writes weights blobs in the WSX3 and WSX4 layouts of <see cref="WeightsBlob"/> for the tests (the real writer lives in
 ///     the build tool, which this project does not reference).
 /// </summary>
 internal static class BlobWriter
@@ -99,11 +99,20 @@ internal static class BlobWriter
     /// <param name="hash">The inventory hash.</param>
     /// <param name="dimension">The dense dimension.</param>
     /// <param name="mean">The mean, or null for zeros.</param>
+    /// <param name="encoderSha256">The 32-byte encoder SHA-256 of a WSX4 blob, or null for a WSX3 blob.</param>
+    /// <param name="layout">The feature layout of a WSX4 blob.</param>
     /// <returns>The header bytes.</returns>
-    public static byte[] Header(string modelId, byte[] hash, int dimension, float[]? mean = null)
+    public static byte[] Header(string modelId, byte[] hash, int dimension, float[]? mean = null, byte[]? encoderSha256 = null, string layout = FeatureLayout.Last)
     {
-        List<byte> bytes = [.. "WSX3"u8.ToArray()];
+        // WSX4 holds the encoder SHA-256 and the feature layout after the model id; WSX3 holds neither
+        List<byte> bytes = [.. (encoderSha256 is null ? "WSX3"u8 : "WSX4"u8).ToArray()];
         Text(bytes, modelId);
+        if (encoderSha256 is not null)
+        {
+            bytes.AddRange(encoderSha256);
+            Text(bytes, layout);
+        }
+
         bytes.AddRange(hash);
         Varint(bytes, dimension);
         bytes.Add(0);
@@ -119,9 +128,18 @@ internal static class BlobWriter
     /// <param name="dimension">The dense dimension.</param>
     /// <param name="lemmas">The lemmas.</param>
     /// <returns>The raw bytes.</returns>
-    public static byte[] Raw(string modelId, byte[] hash, int dimension, params LemmaSpec[] lemmas)
+    public static byte[] Raw(string modelId, byte[] hash, int dimension, params LemmaSpec[] lemmas) =>
+        RawWith(Header(modelId, hash, dimension), lemmas);
+
+    /// <summary>
+    ///     Writes the raw (uncompressed) bytes of a blob with a given header.
+    /// </summary>
+    /// <param name="header">The header bytes (see <see cref="Header"/>).</param>
+    /// <param name="lemmas">The lemmas.</param>
+    /// <returns>The raw bytes.</returns>
+    public static byte[] RawWith(byte[] header, LemmaSpec[] lemmas)
     {
-        List<byte> bytes = [.. Header(modelId, hash, dimension)];
+        List<byte> bytes = [.. header];
         Varint(bytes, lemmas.Length);
         foreach (var lemma in lemmas)
         {
@@ -161,7 +179,9 @@ internal static class BlobWriter
     /// <param name="data">The weights.</param>
     /// <returns>The compressed blob.</returns>
     public static byte[] Write(WeightsData data) =>
-        Compress(Raw(data.ModelId, data.InventoryHash, data.Dimension, [.. data.Lemmas.Select(LemmaSpec.From)]));
+        Compress(RawWith(
+            Header(data.ModelId, data.InventoryHash, data.Dimension, null, data.EncoderSha256, data.Layout),
+            [.. data.Lemmas.Select(LemmaSpec.From)]));
 
     /// <summary>
     ///     Appends an unsigned varint.

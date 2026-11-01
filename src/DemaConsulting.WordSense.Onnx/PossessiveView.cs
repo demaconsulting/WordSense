@@ -12,8 +12,9 @@ namespace DemaConsulting.WordSense.Onnx;
 /// </remarks>
 /// <param name="Tokens">The tokens of the view: the words of the text with every possessive split.</param>
 /// <param name="Start">For every word of the text, the index of its first token in <paramref name="Tokens"/>.</param>
-/// <param name="Vectors">The pooled vector of every token of the view, or null for a token without word pieces.</param>
-internal sealed record WordVectors(IReadOnlyList<string> Tokens, int[] Start, double[]?[] Vectors);
+/// <param name="Vectors">The last-layer pooled vector of every token of the view, or null for a token without word pieces; the part-of-speech and tense heads read it.</param>
+/// <param name="SenseVectors">The sense vector of every token of the view when the encoder has sense layers, else null (the sense feature is then <paramref name="Vectors"/>).</param>
+internal sealed record WordVectors(IReadOnlyList<string> Tokens, int[] Start, double[]?[] Vectors, double[]?[]? SenseVectors = null);
 
 /// <summary>
 ///     The possessive view of a text: a possessive written as one token is split into its stem and its marker.

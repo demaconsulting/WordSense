@@ -245,15 +245,30 @@ internal sealed class WeightedLemmaTable
     /// <param name="resourceName">The manifest resource name.</param>
     /// <param name="modelId">The model identifier the weights must have been trained for.</param>
     /// <param name="hiddenSize">The hidden size of the encoder the weights must match.</param>
+    /// <param name="encoderSha256">The pinned lower-case hexadecimal SHA-256 of the encoder file; a <c>WSX4</c> blob must name this encoder.</param>
+    /// <param name="layout">The layout of the sense feature of the model (see <see cref="ModelSpec.SenseLayout"/>); the blob must have been trained on it. A <c>WSX3</c> blob has the layout <c>last</c> and records no encoder, so it fits a model with that layout only.</param>
     /// <returns>The checked table.</returns>
-    /// <exception cref="InvalidDataException">Thrown when the resource is missing, corrupt, for another model, dimension or inventory.</exception>
-    public static WeightedLemmaTable LoadEmbedded(Assembly assembly, string resourceName, string modelId, int hiddenSize)
+    /// <exception cref="InvalidDataException">Thrown when the resource is missing, corrupt, for another model, dimension, feature layout, encoder file or inventory.</exception>
+    public static WeightedLemmaTable LoadEmbedded(Assembly assembly, string resourceName, string modelId, int hiddenSize, string encoderSha256, string layout)
     {
         ArgumentNullException.ThrowIfNull(assembly);
+        ArgumentNullException.ThrowIfNull(encoderSha256);
+        ArgumentNullException.ThrowIfNull(layout);
         var data = WeightsBlob.Read(ReadResource(assembly, resourceName));
         if (data.ModelId != modelId)
         {
             throw new InvalidDataException($"The embedded weights were trained for '{data.ModelId}', not '{modelId}'.");
+        }
+
+        if (data.Layout != layout)
+        {
+            throw new InvalidDataException($"The embedded weights were trained on the feature layout '{data.Layout}', not '{layout}'.");
+        }
+
+        // A WSX3 blob records no encoder file; every other blob must name the encoder of the model
+        if (data.EncoderSha256 is { } trained && !Convert.ToHexString(trained).Equals(encoderSha256, StringComparison.OrdinalIgnoreCase))
+        {
+            throw new InvalidDataException($"The embedded weights were trained on the encoder file {Convert.ToHexString(trained).ToLowerInvariant()}, not {encoderSha256}.");
         }
 
         return data.Dimension == hiddenSize

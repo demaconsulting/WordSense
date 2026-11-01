@@ -6,8 +6,9 @@ namespace DemaConsulting.WordSense.Onnx.Tests;
 ///     A fake of the view encoder delegate: it splits the possessives of a text like the real one and returns designed
 ///     vectors, and it records what it was asked.
 /// </summary>
-/// <param name="vectorOf">Gives the vector of a token of the view, or null for a token without word pieces.</param>
-internal sealed class FakeViewEncoder(Func<string, double[]?> vectorOf)
+/// <param name="vectorOf">Gives the vector of a token of the view that the head reads, or null for a token without word pieces.</param>
+/// <param name="senseOf">Gives the sense vector of a token of the view, or null to leave the sense vectors out like an encoder without sense layers.</param>
+internal sealed class FakeViewEncoder(Func<string, double[]?> vectorOf, Func<string, double[]?>? senseOf = null)
 {
     /// <summary>
     ///     Gets the words of every call.
@@ -29,7 +30,7 @@ internal sealed class FakeViewEncoder(Func<string, double[]?> vectorOf)
     {
         Texts.Add([.. words]);
         var (tokens, start) = PossessiveView.Expand(words, PossessiveView.IsLexiconPossessive);
-        return ValueTask.FromResult(new WordVectors(tokens, start, [.. tokens.Select(vectorOf)]));
+        return ValueTask.FromResult(new WordVectors(tokens, start, [.. tokens.Select(vectorOf)], senseOf is null ? null : [.. tokens.Select(senseOf)]));
     }
 }
 
@@ -263,6 +264,30 @@ public class OnnxClassifierPosTests
                 Assert.Equal(expected[k] / slotsOfPart[allowed[k]], slot, Tolerance);
             }
         }
+    }
+
+    /// <summary>
+    ///     When the view has sense vectors (an encoder with sense layers), the senses are scored from them and the head
+    ///     reads the last-layer vectors of the view.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxClassifier_ClassifyAsync_ViewWithSenseVectors_ScoresSensesFromThemAndPartOfSpeechFromTheHeadVectors()
+    {
+        // Arrange: the head vector says adjective and carries no sense score; the sense vector favors an adverb sense and carries no part-of-speech logit
+        var adverb = WordLexicon.SensesOf("just", PartOfSpeech.Adverb)[0].SenseId;
+        var table = Fixtures.Table(Fixtures.Lemma("just", fine: 0.5f));
+        var headVector = Vector((PartOfSpeech.Adverb, 0.0), (PartOfSpeech.Adjective, 2.0));
+        var senseVector = Fixtures.Feature((Fixtures.Column("just", adverb), 6.0));
+        var classifier = Classifier(table, new FakeViewEncoder(_ => headVector, _ => senseVector), new FakeEncoder(senseVector));
+
+        // Act
+        var result = (await RunAsync(classifier, "just"))[0];
+
+        // Assert: the head decides the part of speech from its vector; the adverb senses are ranked from the sense vector
+        var adverbSenses = result.Analyses.Single(a => a.Details.PartOfSpeech == PartOfSpeech.Adverb).Senses;
+        Assert.Equal(PartOfSpeech.Adjective, result.Details!.PartOfSpeech);
+        Assert.Equal(adverb, adverbSenses[0].SenseId);
     }
 
     /// <summary>

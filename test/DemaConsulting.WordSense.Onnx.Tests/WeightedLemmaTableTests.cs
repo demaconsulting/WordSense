@@ -8,6 +8,11 @@ public class WeightedLemmaTableTests
 {
     private const string Resource = "table.weights.bin";
 
+    /// <summary>
+    ///     An encoder digest for the fixtures; a WSX3 blob records none, so it is never compared with one.
+    /// </summary>
+    private static readonly string AnySha = new('0', 64);
+
     private static WeightsData Data(params WeightedLemma[] lemmas) => Fixtures.Data(Fixtures.Dimension, lemmas);
 
     private static WeightedLemma Subset(string lemma, int skip, int take)
@@ -304,8 +309,8 @@ public class WeightedLemmaTableTests
     {
         // Arrange / Act / Assert
         Assert.Throws<InvalidDataException>(() =>
-            WeightedLemmaTable.LoadEmbedded(typeof(WeightedLemmaTableTests).Assembly, "no.such.resource", "x", 2));
-        Assert.Throws<ArgumentNullException>(() => WeightedLemmaTable.LoadEmbedded(null!, "x", "x", 2));
+            WeightedLemmaTable.LoadEmbedded(typeof(WeightedLemmaTableTests).Assembly, "no.such.resource", "x", 2, AnySha, FeatureLayout.Last));
+        Assert.Throws<ArgumentNullException>(() => WeightedLemmaTable.LoadEmbedded(null!, "x", "x", 2, AnySha, FeatureLayout.Last));
     }
 
     /// <summary>
@@ -318,11 +323,70 @@ public class WeightedLemmaTableTests
         var assembly = new FixtureAssembly(Resource, BlobWriter.Write(Data(Fixtures.Lemma("just"))));
 
         // Act
-        var table = WeightedLemmaTable.LoadEmbedded(assembly, Resource, "fixture-model", Fixtures.Dimension);
+        var table = WeightedLemmaTable.LoadEmbedded(assembly, Resource, "fixture-model", Fixtures.Dimension, AnySha, FeatureLayout.Last);
 
         // Assert
         Assert.NotNull(table.Find("just"));
         Assert.Equal("fixture-model", table.Data.ModelId);
+        Assert.Null(table.Data.EncoderSha256);
+        Assert.Equal(FeatureLayout.Last, table.Data.Layout);
+    }
+
+    /// <summary>
+    ///     A WSX4 blob that names the encoder file and the feature layout of the model loads.
+    /// </summary>
+    [Fact]
+    public void WeightedLemmaTable_LoadEmbedded_Wsx4MatchingEncoderAndLayout_LoadsTheTable()
+    {
+        // Arrange: weights trained on the mean of layers 9 to 12 of the encoder file AnySha
+        var data = Data(Fixtures.Lemma("just")) with { EncoderSha256 = Convert.FromHexString(AnySha), Layout = "mean:9-12" };
+        var assembly = new FixtureAssembly(Resource, BlobWriter.Write(data));
+
+        // Act
+        var table = WeightedLemmaTable.LoadEmbedded(assembly, Resource, "fixture-model", Fixtures.Dimension, AnySha, "mean:9-12");
+
+        // Assert: the encoder and the layout are kept
+        Assert.Equal(Convert.FromHexString(AnySha), table.Data.EncoderSha256);
+        Assert.Equal("mean:9-12", table.Data.Layout);
+    }
+
+    /// <summary>
+    ///     Weights trained on another feature layout are rejected, whether the blob is WSX4 or WSX3 (which is the last layer).
+    /// </summary>
+    [Fact]
+    public void WeightedLemmaTable_LoadEmbedded_OtherLayout_Throws()
+    {
+        // Arrange: a WSX4 blob of the layout mean:9-12 and a WSX3 blob (layout last)
+        var mean = Data(Fixtures.Lemma("just")) with { EncoderSha256 = Convert.FromHexString(AnySha), Layout = "mean:9-12" };
+        var meanAssembly = new FixtureAssembly(Resource, BlobWriter.Write(mean));
+        var lastAssembly = new FixtureAssembly(Resource, BlobWriter.Write(Data(Fixtures.Lemma("just"))));
+
+        // Act
+        var meanForLast = Assert.Throws<InvalidDataException>(() => WeightedLemmaTable.LoadEmbedded(meanAssembly, Resource, "fixture-model", Fixtures.Dimension, AnySha, FeatureLayout.Last));
+        var lastForMean = Assert.Throws<InvalidDataException>(() => WeightedLemmaTable.LoadEmbedded(lastAssembly, Resource, "fixture-model", Fixtures.Dimension, AnySha, "mean:9-12"));
+
+        // Assert: the errors name both layouts
+        Assert.Contains("'mean:9-12', not 'last'", meanForLast.Message, StringComparison.Ordinal);
+        Assert.Contains("'last', not 'mean:9-12'", lastForMean.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A WSX4 blob that was trained on another encoder file is rejected.
+    /// </summary>
+    [Fact]
+    public void WeightedLemmaTable_LoadEmbedded_OtherEncoderSha_Throws()
+    {
+        // Arrange: weights trained on the encoder file with the digest of 0xAB bytes
+        var trained = Enumerable.Repeat((byte)0xAB, 32).ToArray();
+        var data = Data(Fixtures.Lemma("just")) with { EncoderSha256 = trained };
+        var assembly = new FixtureAssembly(Resource, BlobWriter.Write(data));
+
+        // Act
+        var failure = Assert.Throws<InvalidDataException>(() => WeightedLemmaTable.LoadEmbedded(assembly, Resource, "fixture-model", Fixtures.Dimension, AnySha, FeatureLayout.Last));
+
+        // Assert: the error names both digests
+        Assert.Contains(string.Concat(Enumerable.Repeat("ab", 32)), failure.Message, StringComparison.Ordinal);
+        Assert.Contains(AnySha, failure.Message, StringComparison.Ordinal);
     }
 
     /// <summary>
@@ -335,8 +399,8 @@ public class WeightedLemmaTableTests
         var assembly = new FixtureAssembly(Resource, BlobWriter.Write(Data(Fixtures.Lemma("just"))));
 
         // Act
-        var model = Assert.Throws<InvalidDataException>(() => WeightedLemmaTable.LoadEmbedded(assembly, Resource, "another-model", Fixtures.Dimension));
-        var dimension = Assert.Throws<InvalidDataException>(() => WeightedLemmaTable.LoadEmbedded(assembly, Resource, "fixture-model", Fixtures.Dimension + 1));
+        var model = Assert.Throws<InvalidDataException>(() => WeightedLemmaTable.LoadEmbedded(assembly, Resource, "another-model", Fixtures.Dimension, AnySha, FeatureLayout.Last));
+        var dimension = Assert.Throws<InvalidDataException>(() => WeightedLemmaTable.LoadEmbedded(assembly, Resource, "fixture-model", Fixtures.Dimension + 1, AnySha, FeatureLayout.Last));
 
         // Assert: the errors name what is wrong
         Assert.Contains("'fixture-model', not 'another-model'", model.Message, StringComparison.Ordinal);
@@ -354,7 +418,7 @@ public class WeightedLemmaTableTests
         var assembly = new FixtureAssembly(Resource, BlobWriter.Write(data));
 
         // Act / Assert
-        Assert.Throws<InvalidDataException>(() => WeightedLemmaTable.LoadEmbedded(assembly, Resource, "fixture-model", Fixtures.Dimension));
+        Assert.Throws<InvalidDataException>(() => WeightedLemmaTable.LoadEmbedded(assembly, Resource, "fixture-model", Fixtures.Dimension, AnySha, FeatureLayout.Last));
     }
 
     /// <summary>
@@ -388,6 +452,6 @@ public class WeightedLemmaTableTests
         var assembly = new FixtureAssembly(Resource, [1, 2, 3, 4]);
 
         // Act / Assert
-        Assert.Throws<InvalidDataException>(() => WeightedLemmaTable.LoadEmbedded(assembly, Resource, "fixture-model", Fixtures.Dimension));
+        Assert.Throws<InvalidDataException>(() => WeightedLemmaTable.LoadEmbedded(assembly, Resource, "fixture-model", Fixtures.Dimension, AnySha, FeatureLayout.Last));
     }
 }
