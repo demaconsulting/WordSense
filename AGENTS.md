@@ -19,7 +19,7 @@
   BY-SA material is shipped; the training corpus is project-authored CC0 text and US public domain sources.
 - **languages**: C#, Python (one-off tokenizer fixture generator, the quota-fill scripts `tools/quota-fill`, the model
   preparation scripts `tools/model-prep` and the open-corpus scripts `tools/open-corpus`)
-- **technologies**: .NET, ONNX Runtime, Git LFS
+- **technologies**: .NET, ONNX Runtime, GitHub release assets (model files)
 
 # Project Structure
 
@@ -31,10 +31,12 @@
 │                                all-words gold set of the usage prior and corpus/allwords/v2 the second,
 │                                document-disjoint all-words gold set for part of speech, tense, lemma and sense)
 ├── data/                       (word data TSV tables from Open English WordNet, schema.yaml)
-├── model/                      (one folder per model: model/<model-id>/ with ONNX encoder, vocabulary, tokenizer,
-│                                SHA256SUMS and README; stored in Git LFS)
+├── model/                      (one folder per base model: model/<base-model>/ with README, LICENSE and SHA256SUMS, the
+│                                provenance of the release assets models/<base-model>/v<n>; fetch-models puts the
+│                                files into the git-ignored model/<base-model>/v<n>/)
 ├── tools/
-│   ├── WordSense.Builder/      (non-shipped builder: compile-image, weights, train-pos-head, evaluate, evaluate-senses,
+│   ├── WordSense.Builder/      (non-shipped builder: compile-image, weights, train-pos-head, fetch-models, evaluate,
+│   │                            evaluate-senses,
 │   │                            evaluate-allwords, allwords-sample, allwords-merge, gold2-power, gold2-sample,
 │   │                            gold2-batches, gold2-merge, evaluate-gold2, compare-gold2,
 │   │                            evaluate-running, compare-outcomes, evaluate-suite, evaluate-shapes, check-leakage,
@@ -44,6 +46,7 @@
 │   ├── quota-fill/             (Python scripts that fill the per-sense quotas of the corpus, and the usage-weighted
 │   │                            evaluation diagnostic)
 │   ├── model-prep/             (prepares the pinned encoder model files)
+│   ├── model-release/          (publishes the model files as GitHub release assets, append only)
 │   └── tokenizer-fixture/      (one-off Python tokenizer parity fixture generator)
 ├── docs/
 │   ├── build_notes/

@@ -17,7 +17,7 @@ subsystem documents.
 
 #### Test Environment
 
-Standard xUnit v3 runner. No network access. The real-model scenarios need `model/all-MiniLM-L6-v2-int8/` (Git LFS) and
+Standard xUnit v3 runner. No network access. The real-model scenarios need `model/all-MiniLM-L6-v2/v1/` (fetched) and
 are skipped when it is absent; the others need no model files.
 
 #### Acceptance Criteria

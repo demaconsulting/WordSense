@@ -10,7 +10,7 @@ with a small hand-built cased vocabulary, and test other small hand-built vocabu
 #### Test Environment
 
 Standard xUnit v3 runner. The fixture file is committed test data; the parity scenario reads the MiniLM vocabulary
-through `ModelAssets` (skipped when the Git LFS content is absent). No network access.
+through `ModelAssets` (skipped when the files have not been fetched). No network access.
 
 #### Acceptance Criteria
 

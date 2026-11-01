@@ -44,7 +44,7 @@ verified through the data they produce: the weights embedded in the model packag
 MiniLM and BertBaseCased tests, the heads embedded in them are loaded and bound to their encoders by `EmbeddedHeadTests`
 of the same two test projects, the expectations of the suite are checked by the suite tests of the three model test
 projects (`BasicSuiteTests`, `MiniLMSuiteTests`, `BertBaseCasedSuiteTests`) and the floors of the challenge set by
-`ChallengeSetFloorTests` (both skip when the model files are not present, and fail when `WORDSENSE_REQUIRE_MODELS` is
+`ChallengeSetFloorTests` (both skip when the model files are not fetched, and fail when `WORDSENSE_REQUIRE_MODELS` is
 set), and the accuracy figures are recorded in
 the model comparison table and the accuracy chapter of the user guide, not asserted here. The download of SemCor (an
 evaluation source only) is verified with a stub HTTP
@@ -787,6 +787,19 @@ The trainer is tested with a synthetic corpus whose sentences are the combinatio
 - **Gate and read-back**: the report of a run states the half-precision comparison with the 0.02-point gate, and the
   trainer reads the file back and compares its predictions. The failing path of the gate needs weights that half
   precision changes by more than the tolerance and is verified by inspection, not by a test.
+
+#### fetch-models
+
+`FetchModelsTests.cs` runs the command with a stub transport and a temporary folder; no network is used.
+
+- **Present files**: files that match their pins cause no request and the command reports them verified
+  (`WordSenseBuilder_FetchModels_FilesPresent_MakesNoRequest`).
+- **Missing file**: a missing file is requested at `models/{base-model}/v{version}/{file}` of the release location and
+  stored in `{base-model}/v{version}` (`WordSenseBuilder_FetchModels_MissingFile_IsFetchedFromTheRelease`).
+- **Release without the file**: the command fails and asks no other source
+  (`WordSenseBuilder_FetchModels_ReleaseWithoutTheFile_Fails`).
+- **Folders**: the model directory of each catalog entry equals the store folder of its spec
+  (`WordSenseBuilder_ModelCatalog_ModelDirectories_AreTheStoreFoldersOfTheSpecs`).
 
 #### train-tense-head
 

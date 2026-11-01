@@ -6,8 +6,8 @@ Tests in `test/DemaConsulting.WordSense.Onnx.Tests/OnnxWordSenseModelTests.cs` e
 internal encoder model of the MiniLM package (the constructor of the class is `private protected`, so only the WordSense
 assemblies can derive from it). Files
 come from a temporary model directory or the loopback `LocalServer`; the pinned digests are those of the test files.
-Where a session is needed the committed MiniLM int8 model is used through `ModelAssets` (skipped when the Git LFS
-content is absent). `InFlightTrackerTests.cs` tests the deferred-release counter with fake release actions and needs
+Where a session is needed the fetched MiniLM int8 model is used through `ModelAssets` (skipped when the files have not
+been fetched). `InFlightTrackerTests.cs` tests the deferred-release counter with fake release actions and needs
 no model files.
 
 #### Test Environment
@@ -21,7 +21,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
 
 #### Test Scenarios
 
-- **Identity is known before setup**: `ModelId` and `HiddenSize` return the values of the spec before `EnsureModelAsync`
+- **Identity is known before setup**: `ModelId`, `ModelVersion`, `Quantization` and `HiddenSize` return the values of the
+  spec before `EnsureModelAsync`
   is called.
 - **Model is downloadable** (`OnnxWordSenseModel_IsDownloadable`): the model, held as `IWordSenseModel`, is also an
   `IDownloadableWordSenseModel`, so its `EnsureModelAsync` is reached through the capability interface.

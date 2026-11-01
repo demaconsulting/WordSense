@@ -31,8 +31,7 @@ dotnet add package DemaConsulting.WordSense.MiniLM
 | `DemaConsulting.WordSense.Onnx` | Shared ONNX code, brought in by the encoder packages | ONNX Runtime |
 
 A model package brings the core package. Requirements: .NET 8, 9 or 10 on Windows, Linux or macOS. An encoder model
-downloads its model files on first use (see "Configuration and Model Download"). Contributors who clone the repository
-also need [Git LFS](https://git-lfs.com) (`git lfs install`, then `git lfs pull`), because `model/` is stored in it.
+downloads its model files on first use (see "Configuration and Model Download").
 
 # Quick Start
 
@@ -375,18 +374,27 @@ senses from `WordLexicon.SensesOf`, with the word lower-cased and U+2019 replace
 
 # Configuration and Model Download
 
-`Basic` and the core package have no model files. The encoder files are downloaded once to `<store>/<model-id>/`. The
+`Basic` and the core package have no model files. The encoder files are downloaded once to
+`<store>/<base-model>/v<version>/`. The
 default store is `%LOCALAPPDATA%\DemaConsulting\WordSense\models` on Windows and
 `~/.local/share/DemaConsulting/WordSense/models` on Linux and macOS (`$XDG_DATA_HOME` is honored). Each file is
 verified against its pinned SHA-256 and moved into place atomically, so a partial download is never used, and valid files
 are reused without network access. Each file is requested from a mirror first, when one is configured, and then from the
-GitHub LFS copy of this repository (`media.githubusercontent.com`). There is no other source.
+assets of the GitHub release of the model, `models/<base-model>/v<version>` of this repository. There is no other
+source. The SHA-256 values are pinned in the package: a release never overrides them. A transient failure (HTTP 429 or
+5xx, a broken connection) is retried once per source.
 
-- **MiniLM** (`all-MiniLM-L6-v2-int8`): `model_int8.onnx` (22,972,370 bytes) and `vocab.txt` (231,508).
-- **BertBaseCased** (`bert-base-cased-int8`): `model_int8.onnx` (108,477,896 bytes), `vocab.txt` (213,450),
-  `config.json` (639) and `tokenizer.json` (668,923).
+A model is named by three properties: `ModelId` is the base model, `ModelVersion` the model export (checkpoint, graph
+cut, opset and output taps) and `Quantization` the ONNX variant.
 
-The SHA-256 values are in `SHA256SUMS` of each model folder (`model/<model-id>/`).
+- **MiniLM** (`ModelId` `all-MiniLM-L6-v2`, version 1, `int8-dynamic`): `model-int8-dynamic.onnx` (22,972,370 bytes) and
+  `vocab.txt` (231,508).
+- **BertBaseCased** (`ModelId` `bert-base-cased`, version 1, `int8-dynamic`): `model-int8-dynamic.onnx` (108,477,896
+  bytes), `vocab.txt` (213,450), `config.json` (639) and `tokenizer.json` (668,923).
+
+The SHA-256 values are in `SHA256SUMS` of each model folder (`model/<base-model>/`). Only `<store>/<base-model>/v<version>/`
+folders are used. A folder directly under the store that holds model files (for example `all-MiniLM-L6-v2-int8`) is not
+read and can be deleted, and so can the folder of a version that no application needs.
 
 ## Preparing a Model
 
@@ -433,15 +441,17 @@ if (model is IDownloadableWordSenseModel downloadable)
 
 ## Offline Use
 
-Copy the model files into one flat folder (from `model/<model-id>/`, or from a machine that has run `EnsureModelAsync`)
-and pass it to the constructor: `new MiniLMWordSenseModel(modelDirectory: @"C:\models\all-MiniLM-L6-v2-int8")`. The
+Download the assets of the release `models/<base-model>/v<version>` (the model files, not the `.sha256` files) into one
+flat folder, or copy them from a machine that has run `EnsureModelAsync` (the folder `<store>/<base-model>/v<version>/`),
+and pass the folder to the constructor: `new MiniLMWordSenseModel(modelDirectory: @"C:\models\all-MiniLM-L6-v2")`. The
 files are verified against their SHA-256 without the network, and options and environment variables are ignored. You can
-also pre-populate the store: files copied to `<StoreRoot>/<model-id>/` that match their SHA-256 are kept and never
-requested.
+also pre-populate the store: files copied to `<StoreRoot>/<base-model>/v<version>/` that match their SHA-256 are kept
+and never requested.
 
 ## Mirrors and Options
 
-A mirror serves `{BaseUri}/{model-id}/{file-name}` for every file of the model. It is tried before GitHub. A file that
+A mirror serves `{BaseUri}/{base-model}/v{version}/{file-name}` for every file of the model: it is a copy of the store
+folders. It is tried before GitHub. A file that
 fails its SHA-256 is discarded and the next source is tried. Pass a `DownloadOptions` to `EnsureModelAsync`:
 
 ```csharp
@@ -459,12 +469,14 @@ used only when it is set), `WORDSENSE_MIRROR_USER` and `WORDSENSE_MIRROR_PASSWOR
 `WORDSENSE_MIRROR_BEARER_TOKEN` (exclusive with user and password).
 
 - The base URI must be absolute `http` or `https`, without query, fragment or user-info.
-- A bearer token or credential is sent only to the mirror host, never to a redirect target on another host, and is
-  rejected for plain `http` unless the host is a loopback address.
+- A bearer token or credential is sent only to the mirror host, never to GitHub or to a redirect target on another host,
+  and is rejected for plain `http` unless the host is a loopback address.
 - A timeout of zero, negative or longer than about 49 days is rejected. `Timeout.InfiniteTimeSpan` means no limit.
 - Only `DownloadOptions.StoreRoot` sets the store; prefer an absolute path. A `DownloadOptions` always needs a `BaseUri`.
-- Downloads use `HttpClient` with the default .NET proxy behavior. Allow-list your mirror host and
-  `media.githubusercontent.com`. Redirects are followed (at most 10 hops), so their targets must be reachable too.
+- Downloads use `HttpClient` with the default .NET proxy behavior. Allow-list your mirror host and `github.com`, which
+  redirects each asset to `release-assets.githubusercontent.com` (where a wildcard is allowed, use
+  `*.githubusercontent.com`). Redirects are followed (at most 10 hops, `http` and `https` only).
+- A failed download names every source tried with its path. A signed redirect address is never part of the message.
 
 ## Lifetime, Threads and Cancellation
 
@@ -557,19 +569,19 @@ it that do not contain its sentences. This is the project's reading and not lega
 - **Evaluation only**: SemCor 3.0 (the WordNet license applies) and the Universal Dependencies English-EWT treebank (CC
   BY-SA 4.0) are downloaded to a cache to measure the models, and never committed, redistributed or trained on.
 - **Models**: `all-MiniLM-L6-v2` and `bert-base-cased` are under the Apache License 2.0, and the int8 ONNX exports are
-  redistributed under it (`model/<model-id>/LICENSE`). ONNX Runtime (MIT) is a separate NuGet dependency.
+  redistributed under it (`model/<base-model>/LICENSE`, also an asset of each model release). ONNX Runtime (MIT) is a separate NuGet dependency.
 
 # Troubleshooting
 
 **The model cannot be downloaded, or is slow.** Offline or behind a firewall, configure a mirror or pass a model
 directory. For timeouts, raise `DownloadOptions.Timeout` or use a mirror close to the host.
 
-**A model file does not match its SHA-256.** The file is stale, truncated, modified or a Git LFS pointer: replace it. A
+**A model file does not match its SHA-256.** The file is stale, truncated or modified: replace it. A
 mirror must serve the exact pinned files; the upstream `onnx/model_int8.onnx` of bert-base-cased is a different file.
 
-**The model files are Git LFS pointers.** In a clone made without Git LFS, the files in `model/` are short text files
-that start with `version https://git-lfs`, and the tests that need the models skip (they fail when
-`WORDSENSE_REQUIRE_MODELS` is `true`, as in CI). Run `git lfs install` and `git lfs pull`.
+**The tests skip the model tests.** Run `dotnet run --project tools/WordSense.Builder -- fetch-models`: it puts the
+verified files into `model/<base-model>/v<version>/`. The tests fail instead of skipping when `WORDSENSE_REQUIRE_MODELS`
+is `true`, as in CI.
 
 **A word returns nothing.** `IsKnown` is false for a word that is not in the table. Check
 `WordLexicon.Contains(word.ToLowerInvariant())`.

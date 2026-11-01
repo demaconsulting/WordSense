@@ -24,8 +24,6 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v7
-        with:
-          lfs: true
 
       - name: Setup dotnet
         uses: actions/setup-dotnet@v6
@@ -132,7 +130,6 @@ jobs:
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
-          lfs: true
 
       - name: Setup dotnet
         uses: actions/setup-dotnet@v6
@@ -208,22 +205,21 @@ jobs:
           --results artifacts/fileassert-api-docs-${{ matrix.os }}.trx
           api-docs
 
-      # The model tests skip when the Git LFS content is missing; this check and the WORDSENSE_REQUIRE_MODELS
-      # variable of the Test step make the acceptance run fail instead of passing without them.
-      - name: Verify Git LFS model files
+      # The model files are release assets, not repository content. fetch-models checks every file against the pins of
+      # the packages and downloads only what the cache lacks; WORDSENSE_REQUIRE_MODELS of the Test step makes the
+      # acceptance run fail instead of skipping a model test. The cache key changes with the pinned digests.
+      - name: Cache model files
+        uses: actions/cache@v6
+        with:
+          path: model/*/v*
+          key: models-${{ hashFiles('src/**/*EncoderModel.cs') }}
+          enableCrossOsArchive: true
+
+      - name: Fetch model files
         shell: pwsh
         run: |
-          $files = @(git lfs ls-files)
-          if ($LASTEXITCODE -ne 0 -or $files.Count -eq 0) {
-            throw 'No Git LFS model files are tracked or git lfs failed.'
-          }
-          # 'git lfs ls-files' marks a file whose content is present with '*' and a bare pointer with '-'
-          $pointers = @($files | Where-Object { $_ -match '^\S+ - ' })
-          if ($pointers.Count -gt 0) {
-            $pointers
-            throw 'Git LFS content is missing: the files above are pointers.'
-          }
-          Write-Host "All $($files.Count) Git LFS model files hold their real content."
+          dotnet run --no-build --configuration Release --project tools/WordSense.Builder -- fetch-models
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
       - name: Test
         env:
@@ -302,7 +298,6 @@ jobs:
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
-          lfs: true
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v4.39.1
@@ -372,8 +367,6 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v7
-        with:
-          lfs: true
 
       - name: Download all job artifacts
         uses: actions/download-artifact@v8

@@ -3201,7 +3201,7 @@ sections:
           - id: WordSense-WordSenseBuilder-Usage
             title: >-
               The builder shall provide the commands compile-image, import-moby, weights, train-pos-head,
-              train-tense-head, evaluate,
+              train-tense-head, fetch-models, evaluate,
               evaluate-senses, evaluate-allwords, allwords-sample, allwords-merge, gold2-power, gold2-sample,
               gold2-batches, gold2-merge, evaluate-gold2, compare-gold2,
               evaluate-running, compare-outcomes, evaluate-suite, evaluate-shapes, check-leakage, tiers, open-counts,
@@ -3224,3 +3224,19 @@ sections:
               - WordSenseBuilder_Program_UnknownCommand_ReportsCommandAndUsage
               - WordSenseBuilder_Program_Usage_ListsTheSenseCommands
               - WordSenseBuilder_Program_Usage_ListsThePosHeadCommands
+
+          - id: WordSense-WordSenseBuilder-FetchModels
+            title: >-
+              The builder shall provide the command fetch-models, which puts the files of every encoder model, verified
+              against their pinned SHA-256 digests, into the folder model/{base-model}/v{version}/ from the mirror and
+              the release assets of the model (never from another source), keeps a file that is already valid without
+              any request, and fails when a file cannot be obtained and verified.
+            tags: [unit]
+            justification: |
+              CI and contributors fetch the models through the library downloader, so the pins stay in one place and
+              the tests and the evaluation commands read the same folders that the library writes.
+            tests:
+              - WordSenseBuilder_FetchModels_FilesPresent_MakesNoRequest
+              - WordSenseBuilder_FetchModels_MissingFile_IsFetchedFromTheRelease
+              - WordSenseBuilder_FetchModels_ReleaseWithoutTheFile_Fails
+              - WordSenseBuilder_ModelCatalog_ModelDirectories_AreTheStoreFoldersOfTheSpecs

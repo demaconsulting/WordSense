@@ -3,7 +3,7 @@
 #### Verification Approach
 
 Tests in `test/DemaConsulting.WordSense.Onnx.Tests/OnnxEncoderTests.cs` run the real MiniLM int8 model and vocabulary
-through `ModelAssets` (skipped when the Git LFS content is absent), because the encoder's contract is the shape and
+through `ModelAssets` (skipped when the files have not been fetched), because the encoder's contract is the shape and
 determinism of the vectors of a real ONNX session. Constructor validation scenarios that need no real model run without
 it. ONNX Runtime is limited to two intra-op threads in the tests. The windows are checked with small maximum sequence
 lengths (16 and 20) so that a short text needs several windows. `PossessiveViewTests.cs` tests the possessive view
@@ -11,7 +11,7 @@ without a model, against the lexicon of the core package.
 
 #### Test Environment
 
-Standard xUnit v3 runner. `model/all-MiniLM-L6-v2-int8/` (Git LFS) for the session scenarios. No network access.
+Standard xUnit v3 runner. `model/all-MiniLM-L6-v2/v1/` (fetched) for the session scenarios. No network access.
 
 #### Acceptance Criteria
 

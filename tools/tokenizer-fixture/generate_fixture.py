@@ -1,7 +1,7 @@
 """Generates the tokenizer parity fixture from the Hugging Face tokenizers library.
 
 The fixture records, for each sentence, the WordPiece ids and the UTF-16 offsets that the reference
-implementation produces with ``model/all-MiniLM-L6-v2-int8/tokenizer.json``. The C# ``WordPieceTokenizer`` must reproduce
+implementation produces with ``model/all-MiniLM-L6-v2/v1/tokenizer.json``. The C# ``WordPieceTokenizer`` must reproduce
 them exactly. Run from the repository root:
 
     python tools/tokenizer-fixture/generate_fixture.py
@@ -36,7 +36,7 @@ def corpus_sentences():
 
 
 def main():
-    tokenizer = Tokenizer.from_file(str(ROOT / "model" / "all-MiniLM-L6-v2-int8" / "tokenizer.json"))
+    tokenizer = Tokenizer.from_file(str(ROOT / "model" / "all-MiniLM-L6-v2" / "v1" / "tokenizer.json"))
     # The shipped configuration pads and truncates to 128 tokens; the fixture wants the raw tokens
     tokenizer.no_padding()
     tokenizer.no_truncation()

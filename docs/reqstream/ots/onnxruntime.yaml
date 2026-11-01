@@ -11,7 +11,7 @@ sections:
           - id: WordSense-OTS-OnnxRuntime-Inference
             title: >-
               ONNX Runtime shall execute the pinned quantized transformer models of the MiniLM
-              (all-MiniLM-L6-v2-int8) and BertBaseCased (bert-base-cased-int8) packages and return their hidden states.
+              (all-MiniLM-L6-v2) and BertBaseCased (bert-base-cased) packages and return their hidden states.
             justification: |
               Microsoft.ML.OnnxRuntime is the only third-party runtime dependency of the Onnx package, and through
               it of the MiniLM and BertBaseCased packages (the core package, which holds the Basic model, has none). It

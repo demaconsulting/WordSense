@@ -31,17 +31,18 @@ subsystem documents, with substitutes where a real model is not needed.
 ## Test Environment
 
 - **Framework**: xUnit v3 running under the .NET SDK on net8.0, net9.0 and net10.0
-- **Execution**: `dotnet test` invoked by `build.ps1` and the CI pipeline (Git LFS content is fetched)
+- **Execution**: `dotnet test` invoked by `build.ps1` and the CI pipeline (the CI build job fetches the models first)
 - **Platforms**: Windows, Linux and macOS in the CI matrix
-- **Dependencies**: the core (including Basic) and tokenizer tests have none. The real-model tests need the Git LFS
-  files under
-  `model/all-MiniLM-L6-v2-int8/` (`model_int8.onnx`, `vocab.txt`) and `model/bert-base-cased-int8/`
-  (`model_int8.onnx`, `vocab.txt`, `config.json`, `tokenizer.json`); no network access. Tests that need a model are
-  skipped, not failed, when the LFS content is absent, so a local run without Git LFS stays convenient.
-- **CI skip gate**: the CI acceptance run must not skip a model test. The build job first checks with
-  `git lfs ls-files` that every tracked model file holds real content (not a pointer), and runs the tests with the
+- **Dependencies**: the core (including Basic) and tokenizer tests have none. The real-model tests need the files that
+  `fetch-models` puts under
+  `model/all-MiniLM-L6-v2/v1/` (`model-int8-dynamic.onnx`, `vocab.txt`) and `model/bert-base-cased/v1/`
+  (`model-int8-dynamic.onnx`, `vocab.txt`, `config.json`, `tokenizer.json`); the tests use no network. Tests that need a
+  model are skipped, not failed, when the files have not been fetched, so a local run stays convenient.
+- **CI skip gate**: the CI acceptance run must not skip a model test. The build job runs `fetch-models` (an
+  `actions/cache` entry keyed by the pinned digests holds the files, and the command downloads only what is missing from
+  the release assets and verifies every file against its pin; the checkouts use no Git LFS), and runs the tests with the
   environment variable `WORDSENSE_REQUIRE_MODELS=true`, which makes the shared helper `ModelFileCheck` fail a model
-  test instead of skipping it (a missing, pointer, wrong-size or missing-folder condition all fail, with the reason
+  test instead of skipping it (a missing, wrong-size or missing-folder condition all fail, with the reason
   and the name of the variable). The helper rules are tested in `ModelFileCheckTests` (the variable values, the failure
   with the variable and the skip without it, with temporary folders instead of the real model files).
 - **Isolation**: each test creates its own model, classifier and store directory; no shared state.

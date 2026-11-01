@@ -277,6 +277,13 @@ instead of `--model`.
   the report. The existing head file must belong to the encoder and have been trained on the representative training
   split. `--report-fusion` adds the development accuracy and log loss of the head combined with the Basic model at
   each weight.
+- `fetch-models [--output DIR]`: puts the verified files of every encoder model into `DIR/{base-model}/v{version}/`
+  (default `model` of the repository; the folders that the evaluation commands and the encoder tests read). Each model
+  goes through `ModelDownloader.EnsureAsync` with that store root and no download options, so a valid file is kept
+  without a request and a missing or invalid one is downloaded from the mirror of `WORDSENSE_MIRROR_URL` (when set) and
+  then from the release assets, verified against the pins of the package. The command exits with 1 when a file cannot be
+  obtained and verified. `ModelInfo.ModelDirectory` is the store folder of the spec (`all-MiniLM-L6-v2/v1`); the vector
+  caches and the weights blobs keep the identity recorded in the embedded files (`ModelSpec.WeightsId`).
 - `evaluate <modelId> [--corpus DIR] [--repository DIR] [--output FILE] [--table FILE] [--outcomes FILE]`: measures a
   model (`minilm`, `bert-base-cased`, `basic`) on the holdout sentences and prints a Markdown table; `--table` writes
   the real-text sense cell and the cost cells of the model into the model comparison table file.
@@ -1038,7 +1045,7 @@ lemma and part of speech. `SuiteFile.Grade` judges the answer of a model at the 
 when, besides, the most probable ranked sense is acceptable. `SuiteFile` has no other dependency of the builder, so the
 test projects of the three models compile it (`Suite.cs` is linked into them): `BasicSuite_ExpectedPasses_StillPass`,
 `MiniLMSuite_ExpectedPasses_StillPass` and `BertBaseCasedSuite_ExpectedPasses_StillPass` fail when a row falls below its
-expectation; the encoder tests skip when the model files are not present (Git LFS). The expectations are raised in a
+expectation; the encoder tests skip when the model files are not fetched. The expectations are raised in a
 reviewed commit and never lowered to hide a regression. `evaluate-suite` reports the pass rates and writes the
 expectations of a new suite or model. The challenge set has a floor test of the same kind
 (`ChallengeSetFloorTests`, `corpus/suite/ste-floors.tsv`).
