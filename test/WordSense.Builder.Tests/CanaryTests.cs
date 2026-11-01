@@ -138,12 +138,59 @@ public sealed class CanaryTests : IDisposable
         Assert.True(Canary.Judge(0, Architecture.X64, 40).Passed);
         Assert.False(Canary.Judge(1, Architecture.X64, 40).Passed);
         Assert.Equal(0, Canary.Judge(1, Architecture.X64, 40).Limit);
+        Assert.True(Canary.Judge(0, Architecture.X86, 40).Passed);
+        Assert.False(Canary.Judge(1, Architecture.X86, 40).Passed);
+        Assert.Equal(0, Canary.Judge(1, Architecture.X86, 40).Limit);
         Assert.True(Canary.Judge(40, Architecture.Arm64, 40).Passed);
         Assert.False(Canary.Judge(41, Architecture.Arm64, 40).Passed);
         Assert.Equal(40, Canary.Judge(41, Architecture.Arm64, 40).Limit);
         var other = Canary.Judge(500, Architecture.Wasm, 40);
         Assert.False(other.Applicable);
         Assert.True(other.Passed);
+    }
+
+    /// <summary>
+    ///     The tolerance is the option, else the header, else the default; a header that is not a number of words is
+    ///     refused, and so is a negative one, even when the option would override it.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Canary_ResolveArmTolerance_OptionHeaderDefault_AndMalformedHeader_Throws()
+    {
+        // Arrange
+        var none = new Dictionary<string, string>();
+        var header = new Dictionary<string, string> { ["arm-tolerance"] = "12" };
+
+        // Act / Assert: option, header, default
+        Assert.Equal(7, Canary.ResolveArmTolerance(header, 7));
+        Assert.Equal(12, Canary.ResolveArmTolerance(header, null));
+        Assert.Equal(Canary.DefaultArmTolerance, Canary.ResolveArmTolerance(none, null));
+        Assert.Equal(0, Canary.ResolveArmTolerance(new Dictionary<string, string> { ["arm-tolerance"] = "0" }, null));
+
+        // Malformed headers do not fall back to the default
+        foreach (var bad in new[] { "-1", "forty", string.Empty, "1.5", "99999999999" })
+        {
+            var malformed = new Dictionary<string, string> { ["arm-tolerance"] = bad };
+            Assert.Contains("arm-tolerance", Assert.Throws<InvalidDataException>(() => Canary.ResolveArmTolerance(malformed, null)).Message, StringComparison.Ordinal);
+            Assert.Throws<InvalidDataException>(() => Canary.ResolveArmTolerance(malformed, 5));
+        }
+    }
+
+    /// <summary>
+    ///     A check of a file whose tolerance header is not a number fails with the message instead of using 40.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_Program_Canary_MalformedToleranceHeader_ReturnsError()
+    {
+        // Arrange: a file with a negative tolerance; the model is not opened before the header is read
+        var file = _dir.Write("canary.tsv", "# model: minilm\n# arm-tolerance: -3\ns1\ta\tSense:x\n");
+
+        // Act
+        var result = await RunAsync("canary", "--check", file, "--repository", _dir.Root);
+
+        // Assert
+        Assert.Equal(1, result.Code);
+        Assert.Contains("arm-tolerance", result.Error, StringComparison.Ordinal);
     }
 
     /// <summary>

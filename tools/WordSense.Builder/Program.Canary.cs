@@ -78,11 +78,7 @@ internal static partial class Program
             throw new ArgumentException($"The model '{info.Name}' has no encoder, so it has no CPU canary.");
         }
 
-        var armTolerance = armToleranceOption ?? Canary.DefaultArmTolerance;
-        if (armToleranceOption is null && canary.Header.TryGetValue("arm-tolerance", out var fromFile) && int.TryParse(fromFile, NumberStyles.None, CultureInfo.InvariantCulture, out var parsed))
-        {
-            armTolerance = parsed;
-        }
+        var armTolerance = Canary.ResolveArmTolerance(canary.Header, armToleranceOption);
         using var model = ModelCatalog.Open(info, repository);
         await ModelCatalog.EnsureAsync(model, cancellationToken).ConfigureAwait(false);
         var sha = ModelTrainer.EncoderShaOf(ModelCatalog.EncoderOf(model).Spec);

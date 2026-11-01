@@ -52,7 +52,7 @@ internal sealed record CanaryVerdict(bool Applicable, int Limit, bool Passed);
 /// <remarks>
 ///     <para>
 ///     An int8 model that rounds its activations does not give bit-identical vectors on every CPU. The canary makes the
-///     difference visible and bounds it: on x86-64 every answer must equal the one of the file; on ARM at most a
+///     difference visible and bounds it: on x86 and x86-64 every answer must equal the one of the file; on ARM at most a
 ///     given number of words (<see cref="DefaultArmTolerance"/> unless the file or the command line says otherwise) may
 ///     differ. A processor of another architecture is not judged.
 ///     </para>
@@ -254,13 +254,34 @@ internal static class Canary
     /// <param name="flips">The number of words whose answer differs.</param>
     /// <param name="architecture">The architecture of the process.</param>
     /// <param name="armTolerance">The most words that may differ on ARM.</param>
-    /// <returns>The verdict: x86-64 allows none, ARM allows <paramref name="armTolerance"/>, every other architecture is not judged.</returns>
+    /// <returns>The verdict: x86 and x86-64 allow none, ARM allows <paramref name="armTolerance"/>, every other architecture is not judged.</returns>
     public static CanaryVerdict Judge(int flips, Architecture architecture, int armTolerance) => architecture switch
     {
-        Architecture.X64 => new CanaryVerdict(true, 0, flips == 0),
+        Architecture.X64 or Architecture.X86 => new CanaryVerdict(true, 0, flips == 0),
         Architecture.Arm64 => new CanaryVerdict(true, armTolerance, flips <= armTolerance),
         _ => new CanaryVerdict(false, 0, true),
     };
+
+    /// <summary>
+    ///     Chooses the number of words that may differ on ARM: the option, else the header of the file, else the default.
+    /// </summary>
+    /// <param name="header">The header lines of the canary file.</param>
+    /// <param name="option">The value of <c>--arm-tolerance</c>, or null when it is not given.</param>
+    /// <returns>The tolerance.</returns>
+    /// <exception cref="InvalidDataException">Thrown when the header has an <c>arm-tolerance</c> that is not a number of words that is not negative; the header is checked even when the option overrides it.</exception>
+    public static int ResolveArmTolerance(IReadOnlyDictionary<string, string> header, int? option)
+    {
+        ArgumentNullException.ThrowIfNull(header);
+        int? fromFile = null;
+        if (header.TryGetValue("arm-tolerance", out var text))
+        {
+            fromFile = int.TryParse(text, NumberStyles.None, CultureInfo.InvariantCulture, out var parsed)
+                ? parsed
+                : throw new InvalidDataException($"The header 'arm-tolerance' of the canary file must be a number of words that is not negative, not '{text}'.");
+        }
+
+        return option ?? fromFile ?? DefaultArmTolerance;
+    }
 
     /// <summary>
     ///     Describes the machine a canary file is written on.

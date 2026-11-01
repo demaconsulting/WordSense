@@ -5,8 +5,9 @@ evaluation figures. **None of them is shipped**: the NuGet packages contain only
 produced. Library users do not need them.
 
 All commands run from the repository root. The C# builder needs the .NET 10 SDK. The Python scripts need Python 3
-(`tools/open-corpus` needs 3.13), and most use only the standard library. Raw downloads and scratch files go to the
-git-ignored folders `cache/` and `work/`.
+(`tools/open-corpus` needs 3.13), and most use only the standard library. `lint.ps1` needs a real Python virtual
+environment in `.venv`; an empty `.venv` folder makes it fail without a message, so delete it first. Raw downloads and
+scratch files go to the git-ignored folders `cache/` and `work/`.
 
 | Folder | Language | Use |
 | --- | --- | --- |
@@ -88,8 +89,11 @@ statically (per-channel int8 weights, the pinned ranges of `calib-ranges.json` m
 the result. `make-calib.py` draws `calib.tsv` from the train split of the open corpus and checks the result.
 
 **When.** Only to derive an encoder file anew. The weights of the package are valid only for the exact pinned file.
-`.github/workflows/model-prep.yaml` (run by hand) rebuilds the v2 file on a hosted runner and resolves the revision of the
-upstream repository.
+`.github/workflows/model-prep.yaml` (run by hand) rebuilds the v2 file on a hosted runner from the pinned upstream
+revision and fails while the revision or the SHA-256 of the upstream file is still a placeholder. A run with the input
+`bootstrap` resolves the revision, prints it with the SHA-256 of the upstream file and states that its output is
+unpinned; pin both values in `make-bert-static-encoder.py` (`--accept-unpinned-upstream` is only for that run) and run
+the workflow again without `bootstrap`.
 
 **Why.** The upstream files expose only the language-model output, and WordSense needs the hidden states; the static
 quantization gives the same answers on every x86 CPU (see `model/bert-base-cased/v2/model-int8-static.md`).

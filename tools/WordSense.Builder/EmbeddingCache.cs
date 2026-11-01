@@ -323,5 +323,12 @@ internal sealed class EmbeddingCache
         // Entries the header promises but the file lacks (a cut-off file) are lost as well
         Discarded += count - read;
         Loaded = _entries.Count;
+
+        // Bytes after the declared records mean that the file is not what its header says: reject it as a whole
+        if (read == count && stream.ReadByte() >= 0)
+        {
+            Reset();
+            Invalidated = true;
+        }
     }
 }

@@ -8,8 +8,10 @@
     documentation (`README.md` of the export and one `model-<quantization>.md` per quantization file), and a
     `<file>.sha256` sidecar for every one of them.
 
-    A new release must include `README.md`, and every `model-<quantization>.onnx` that is published must come with its
-    `model-<quantization>.md` (in the same run or already published). The body (description) of a new release is a short
+    The release must hold `README.md`, and every `model-<quantization>.onnx` of the release must come with its
+    `model-<quantization>.md`. This is checked over the assets that the release already has together with the files of
+    the run, before anything is written to GitHub (so a release without documents is completed by adding `README.md`
+    and the missing `model-<quantization>.md` in one run). The body (description) of a new release is a short
     summary that links to the README and to the quantization documents.
 
     Releases are append only. The script
@@ -184,7 +186,7 @@ if ($LASTEXITCODE -ne 0) { throw "The tag '$Tag' is not a valid git reference na
 
 $sources = [ordered]@{}
 if (-not $File -and -not $UpdateBody) { throw 'Give -File <asset-name>=<path> ... to publish, or -UpdateBody to write the body of the release again.' }
-foreach ($entry in @($File)) {
+foreach ($entry in @($File | Where-Object { $null -ne $_ })) {
     $split = $entry.IndexOf('=')
     if ($split -lt 1) { throw "'$entry' is not <asset-name>=<path>." }
     $asset = $entry.Substring(0, $split)
@@ -255,14 +257,19 @@ $toUpload = [System.Collections.Generic.List[string]]::new()
 $publishedAssets = @{}
 if ($remote) { foreach ($a in $remote.assets) { $publishedAssets[$a.name] = $a } }
 
-# The documentation is required: a new release has its README.md, and every quantization file comes with its document
+# The documentation is required before anything is written: README.md, and a model-<quantization>.md for every
+# model-<quantization>.onnx, counted over the assets that the release already has and the files of this run together
 if ($UpdateBody -and -not $remote) { throw "-UpdateBody needs an existing release; $Tag was not found." }
-if (-not $remote -and -not $sources.Contains('README.md')) { throw "A new release needs README.md: add -File 'README.md=<path>'. Nothing was uploaded." }
-foreach ($asset in $sources.Keys) {
+$present = @($publishedAssets.Keys) + @($sources.Keys)
+if ($present -notcontains 'README.md') {
+    throw "The release $Tag needs README.md (the release has none and the run adds none): add -File 'README.md=<path>'. Nothing was written."
+}
+
+foreach ($asset in @($present | Sort-Object -Unique)) {
     if ($asset -match '^model-(.+)\.onnx$') {
         $document = "model-$($Matches[1]).md"
-        if (-not $sources.Contains($document) -and -not $publishedAssets.ContainsKey($document)) {
-            throw "'$asset' needs its document '$document': add -File '$document=<path>'. Nothing was uploaded."
+        if ($present -notcontains $document) {
+            throw "'$asset' needs its document '$document' (the release has none and the run adds none): add -File '$document=<path>'. Nothing was written."
         }
     }
 }

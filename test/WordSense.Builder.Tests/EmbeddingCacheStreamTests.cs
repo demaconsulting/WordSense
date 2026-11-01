@@ -64,6 +64,31 @@ public sealed class EmbeddingCacheStreamTests
     }
 
     /// <summary>
+    ///     A stream with bytes after its records is refused as a whole, and the same stream without them loads.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_EmbeddingCache_OpenStream_TrailingBytes_IsInvalidated()
+    {
+        // Arrange: the whole synthetic stream of three records, without and with a trailing byte
+        var digest = SHA256.HashData("digest"u8);
+        using var whole = new SyntheticCacheStream(digest, 3, 4);
+        var bytes = new byte[whole.Length];
+        whole.ReadExactly(bytes);
+        using var exact = new MemoryStream(bytes);
+        using var padded = new MemoryStream([.. bytes, 0]);
+
+        // Act
+        var good = EmbeddingCache.OpenStream("unused", digest, exact);
+        var bad = EmbeddingCache.OpenStream("unused", digest, padded);
+
+        // Assert
+        Assert.False(good.Invalidated);
+        Assert.Equal(2, good.Loaded);
+        Assert.True(bad.Invalidated);
+        Assert.Equal(0, bad.Count);
+    }
+
+    /// <summary>
     ///     A stream of another digest is refused as a whole.
     /// </summary>
     [Fact]

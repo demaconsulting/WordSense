@@ -24,8 +24,9 @@ The encoder files of the release `models/all-MiniLM-L6-v2/v1`. The release is ap
 
 ## Changes to the graph
 
-- **Hidden states, no head.** The base model is a sentence-embedding encoder without a language-model head. The export
-  keeps the encoder and exposes the hidden states of the last layer as `last_hidden_state`; WordSense pools them itself.
+- **Exported.** The base model was exported to ONNX with the output `last_hidden_state`, the hidden states of the last
+  layer; WordSense pools them itself. The exact export command was not recorded, and no other edit of the graph is
+  known.
 - No taps: the sense features are the last layer.
 - **Quantized.** The weights are not the upstream values: see `model-int8-dynamic.md`.
 

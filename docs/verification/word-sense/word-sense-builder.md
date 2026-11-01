@@ -222,7 +222,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   records of 65,536 numbers produced on demand, of which the first and the last are valid) loads record by record with
   no read larger than a record (`OpenStream_FileLargerThanTwoGiB_LoadsRecordByRecord`), a cut-off stream keeps its
   complete records and a stream of another digest is dropped (`OpenStream_CutOffStream_*`,
-  `OpenStream_OtherDigest_*`); a
+  `OpenStream_OtherDigest_*`), and so is a file or stream with a byte after its declared records
+  (`Open_TrailingBytes_*`, `OpenStream_TrailingBytes_*`); a
   second run over unchanged
   anchors encodes nothing and gives byte-identical weights
   (`ModelTrainer_TrainDataAsync_SecondRun_EncodesNothingAndReproducesBytes`); added sentences are the only ones encoded
@@ -827,8 +828,11 @@ use no model file.
   `..._Compare_*`): the sentence list takes the first column as the id and the last as the words, a malformed line, a
   repeated id and an empty file are refused, the canary file reads back what was rendered (a key with a colon survives),
   and the comparison lists every differing word with both answers and refuses sentences that do not correspond.
-- **Verdict** (`WordSenseBuilder_Canary_Judge_ByArchitecture`): x86-64 allows no difference, ARM allows the tolerance
-  and another architecture is not judged.
+- **Verdict** (`WordSenseBuilder_Canary_Judge_ByArchitecture`): x86 and x86-64 allow no difference, ARM allows the
+  tolerance and another architecture is not judged.
+- **Tolerance header** (`WordSenseBuilder_Canary_ResolveArmTolerance_*`): the option wins over the header and the header
+  over the default of 40; a header that is negative, empty or not a number is an `InvalidDataException`, also when the
+  option overrides it.
 - **Command** (`WordSenseBuilder_Program_Canary_WriteThenCheck_PassesOnTheSameMachine`,
   `..._InvalidOptions_ReturnsUsageError`, `WordSenseBuilder_Canary_AnswerAsync_BasicModel_*`): with the MiniLM model a
   write followed by a check on the same machine passes; a changed answer fails the check and is listed; a file of

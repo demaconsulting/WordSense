@@ -365,8 +365,9 @@ instead of `--model`.
   the canary file: the header (`model`, `encoder-sha256`, `arm-tolerance`, `written-on`) and per sentence the answer to
   every word, the level and the key (`Sense:bank#financial-institution`); the confidence is not part of the answer.
   `--check` answers the same sentences on this machine and lists every word whose answer differs. It exits with 1 when
-  more words differ than the architecture allows: none on x86-64, at most the tolerance on ARM (the option, else the
-  header, else 40); another architecture is not judged. A file written for another encoder file is refused, so a
+  more words differ than the architecture allows: none on x86 and x86-64, at most the tolerance on ARM (the option,
+  else the header, else 40; a header that is not a number is an error); another architecture is not judged. A file
+  written for another encoder file is refused, so a
   retrained model needs a new file.
 - `open-counts [--corpus DIR] [--output DIR]`: counts the tag statistics of the training split of the representative
   open corpus (every token, whatever its consensus status) and writes the count files of `corpus/open/counts`
@@ -676,11 +677,10 @@ pinned in the model specification and verified when the model is opened), the ca
 file, layout or runtime drops the whole cache. The vectors are stored as the exact 64-bit numbers the encoder returned,
 so a
 cached vector is bit-identical to a fresh encode. Every entry carries a checksum; an entry that fails it, a cut-off
-file,
-a damaged header or an unreadable file is ignored and the sentences are encoded again, never failing the run. The file
-is read as a stream, one record at a time (a cache of more than 2 GiB cannot be read into one array), and
-is rewritten
-atomically (a temporary file in the same folder, then renamed) at the end of the run and after every 4000 newly
+file, a damaged header, bytes after the declared records or an unreadable file is ignored and the sentences are
+encoded again, never failing the run. The file is read as a stream, one record at a time (a cache of more than 2 GiB
+cannot be read into one array), and is rewritten atomically (a temporary file in the same folder, then renamed) at the
+end of the run and after every 4000 newly
 encoded sentences, so an interrupted run keeps its work. The cache does not know the encoder code: after a change of
 the pooling or tokenization that keeps the model files, delete the cache folder or run once with `--no-cache`. The
 vector cache of the head trainers (`PosVectorCache`) holds the last-layer vectors of whole sentences (the source

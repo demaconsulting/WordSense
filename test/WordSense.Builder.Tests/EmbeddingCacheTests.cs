@@ -179,6 +179,25 @@ public sealed class EmbeddingCacheTests : IDisposable
     }
 
     /// <summary>
+    ///     A file with bytes after its declared records is not what its header says and is dropped as a whole.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_EmbeddingCache_Open_TrailingBytes_IsInvalidated()
+    {
+        // Arrange: three valid records followed by one stray byte
+        var cache = Filled(3);
+        File.AppendAllText(cache.Path, "x");
+
+        // Act
+        var reopened = EmbeddingCache.Open(_dir.Root, Digest);
+
+        // Assert
+        Assert.True(reopened.Invalidated);
+        Assert.Equal(0, reopened.Count);
+        Assert.Equal(0, reopened.Loaded);
+    }
+
+    /// <summary>
     ///     A cut-off file keeps the complete entries and counts the missing ones as discarded.
     /// </summary>
     [Fact]

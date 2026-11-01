@@ -19,8 +19,9 @@ downloads the files from its assets.
   - `LICENSE`, the Apache License 2.0 text,
   - a `<asset>.sha256` sidecar per asset: `<sha256>  <asset>` and a line feed.
 - The sources of the documents are `model/<base-model>/v<n>/README.md` and `model/<base-model>/v<n>/model-<quantization>.md`
-  in the repository, reviewed like the other documents. A new release must include `README.md`, and every
-  `model-<quantization>.onnx` ships with its `model-<quantization>.md` (the script enforces both).
+  in the repository, reviewed like the other documents. A release must hold `README.md`, and every
+  `model-<quantization>.onnx` ships with its `model-<quantization>.md`. The script checks both over the assets the
+  release already has together with the files of the run, before it writes anything.
 - The body of the release is a short summary that links to `README.md` and to each `model-<quantization>.md`, then
   lists the files with their size and SHA-256. The script writes it; it is not an asset and can be written again with
   `-UpdateBody`.
@@ -75,8 +76,8 @@ Review the printed plan and the SHA-256 of every file, then run the same command
    `-VerifyAgainst`;
 2. stages the files with their `.sha256` sidecars in `-StageDir` (default: a temporary folder);
 3. looks the release up (read only), decides per asset: upload, skip (identical) or stop (changed), and stops before any
-   write when a new release has no `README.md` or a quantization file has no `model-<quantization>.md` (in the run or
-   already published);
+   write when `README.md`, or the `model-<quantization>.md` of a `model-<quantization>.onnx`, is in neither the
+   published assets nor the files of the run;
 4. creates the release as a draft without making it the latest, with the body described above, uploads the new assets
    and checks size, digest and state of every asset;
 5. publishes the draft (not as the latest release) and then watches the latest release for 30 seconds
@@ -96,7 +97,8 @@ Adding a quantization to a published release is the same command with only the n
 `-UpdateBody` writes the body of the release again from the assets it has after the run; without `-File` it changes
 nothing but the body. The same switch adds the documents to a release that was published without them: `-File
 'README.md=...', 'model-int8-dynamic.md=...' -UpdateBody`. The body is the only thing of a release that is not
-append only. `-NotesFile` gives a body of your own.
+append only. `-NotesFile` gives a body of your own. `tools/model-release/test-publish-model.ps1` tests the documentation
+rule against a fake `gh` (`pwsh tools/model-release/test-publish-model.ps1`; nothing is written to GitHub).
 
 After the release exists, run `dotnet run --project tools/WordSense.Builder -c Release -- fetch-models` once: the library
 downloader checks the real URLs against the pins in the code. A new file also needs its digest in the pins of the package

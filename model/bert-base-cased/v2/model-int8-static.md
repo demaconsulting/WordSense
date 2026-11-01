@@ -75,4 +75,6 @@ The script checks the SHA-256 of every result and stops on a difference. `--fp32
 ### Reproduction
 
 The workflow `.github/workflows/model-prep.yaml` rebuilds the file from the upstream export on a hosted runner and
-checks every SHA-256 above.
+checks every SHA-256 above. The upstream revision and the SHA-256 of the upstream file are pinned in the script; while
+they are placeholders the workflow and the script fail. A run with the input `bootstrap` prints them and states that its
+output is unpinned.
