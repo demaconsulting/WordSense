@@ -1,0 +1,10 @@
+# Pinned packages of tools/model-prep. The bytes of the encoder file depend on these exact versions
+# (the ONNX serializer, the converter and the quantizer, the kernels of ONNX Runtime, numpy and the tokenizer of the
+# calibration set); a change of a version is a change of the recipe and is checked by the workflow model-prep.
+# The linters of the repository are in the pip-requirements.txt of the root; do not mix the two.
+onnx==1.22.0
+onnxruntime==1.29.0
+numpy==2.2.6
+tokenizers==0.22.2
+protobuf==7.35.1
+ml_dtypes==0.5.4

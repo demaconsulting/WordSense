@@ -1,0 +1,782 @@
+{
+"/bert/embeddings/LayerNorm/Add_1_output_0": [
+-11.82641315460205,
+5.320257186889648
+],
+"/bert/embeddings/position_embeddings/Gather_output_0": [
+-0.9435223340988159,
+0.19208408892154694
+],
+"/bert/embeddings/token_type_embeddings/Gather_output_0": [
+-0.6341045498847961,
+0.03644179180264473
+],
+"/bert/embeddings/word_embeddings/Gather_output_0": [
+-0.9723292589187622,
+0.3341240882873535
+],
+"/bert/encoder/layer.0/attention/output/LayerNorm/Add_1_output_0": [
+-51.13644027709961,
+12.339884757995605
+],
+"/bert/encoder/layer.0/attention/output/dense/MatMul_output_0": [
+-7.570852279663086,
+4.320738792419434
+],
+"/bert/encoder/layer.0/attention/self/MatMul_1_output_0": [
+-3.356309175491333,
+3.034449338912964
+],
+"/bert/encoder/layer.0/attention/self/MatMul_output_0": [
+-76.43258666992188,
+108.16487884521484
+],
+"/bert/encoder/layer.0/attention/self/Reshape_3_output_0": [
+-3.356309175491333,
+3.034449338912964
+],
+"/bert/encoder/layer.0/attention/self/Softmax_output_0": [
+8.439272392024577e-09,
+0.9999761581420898
+],
+"/bert/encoder/layer.0/attention/self/Transpose_1_output_0": [
+-5.544833660125732,
+6.1455583572387695
+],
+"/bert/encoder/layer.0/attention/self/Transpose_2_output_0": [
+-6.0128068923950195,
+7.017704010009766
+],
+"/bert/encoder/layer.0/attention/self/Transpose_output_0": [
+-4.405324459075928,
+3.5390679836273193
+],
+"/bert/encoder/layer.0/attention/self/key/MatMul_output_0": [
+-6.013660430908203,
+7.020648956298828
+],
+"/bert/encoder/layer.0/attention/self/query/MatMul_output_0": [
+-5.594362258911133,
+6.215251922607422
+],
+"/bert/encoder/layer.0/attention/self/value/MatMul_output_0": [
+-4.482789516448975,
+3.5594775676727295
+],
+"/bert/encoder/layer.0/intermediate/dense/MatMul_output_0": [
+-13.414709091186523,
+10.954734802246094
+],
+"/bert/encoder/layer.0/intermediate/intermediate_act_fn/Mul_1_output_0": [
+-0.16997122764587402,
+10.819862365722656
+],
+"/bert/encoder/layer.0/output/LayerNorm/Add_1_output_0": [
+-14.180892944335938,
+4.12945032119751
+],
+"/bert/encoder/layer.0/output/dense/MatMul_output_0": [
+-28.978242874145508,
+15.691160202026367
+],
+"/bert/encoder/layer.1/attention/output/LayerNorm/Add_1_output_0": [
+-64.99517059326172,
+7.486019611358643
+],
+"/bert/encoder/layer.1/attention/output/dense/MatMul_output_0": [
+-8.132558822631836,
+3.4133801460266113
+],
+"/bert/encoder/layer.1/attention/self/MatMul_1_output_0": [
+-4.028824329376221,
+3.813373565673828
+],
+"/bert/encoder/layer.1/attention/self/MatMul_output_0": [
+-222.32716369628906,
+192.64175415039062
+],
+"/bert/encoder/layer.1/attention/self/Reshape_3_output_0": [
+-4.028824329376221,
+3.813373565673828
+],
+"/bert/encoder/layer.1/attention/self/Softmax_output_0": [
+3.3578277793846703e-23,
+0.9999986886978149
+],
+"/bert/encoder/layer.1/attention/self/Transpose_1_output_0": [
+-8.693689346313477,
+8.407176971435547
+],
+"/bert/encoder/layer.1/attention/self/Transpose_2_output_0": [
+-7.917661666870117,
+8.381278991699219
+],
+"/bert/encoder/layer.1/attention/self/Transpose_output_0": [
+-5.571779727935791,
+5.099030494689941
+],
+"/bert/encoder/layer.1/attention/self/key/MatMul_output_0": [
+-7.918545246124268,
+8.384130477905273
+],
+"/bert/encoder/layer.1/attention/self/query/MatMul_output_0": [
+-8.501949310302734,
+8.042495727539062
+],
+"/bert/encoder/layer.1/attention/self/value/MatMul_output_0": [
+-5.561731815338135,
+5.102458953857422
+],
+"/bert/encoder/layer.1/intermediate/dense/MatMul_output_0": [
+-12.794898986816406,
+31.29410171508789
+],
+"/bert/encoder/layer.1/intermediate/intermediate_act_fn/Mul_1_output_0": [
+-0.16997122764587402,
+31.151350021362305
+],
+"/bert/encoder/layer.1/output/LayerNorm/Add_1_output_0": [
+-14.689424514770508,
+10.91209602355957
+],
+"/bert/encoder/layer.1/output/dense/MatMul_output_0": [
+-49.162567138671875,
+103.37129211425781
+],
+"/bert/encoder/layer.10/attention/output/LayerNorm/Add_1_output_0": [
+-70.27737426757812,
+9.400259017944336
+],
+"/bert/encoder/layer.10/attention/output/dense/MatMul_output_0": [
+-3.7677359580993652,
+2.8849878311157227
+],
+"/bert/encoder/layer.10/attention/self/MatMul_1_output_0": [
+-4.369064807891846,
+3.370774745941162
+],
+"/bert/encoder/layer.10/attention/self/MatMul_output_0": [
+-109.48245239257812,
+112.37659454345703
+],
+"/bert/encoder/layer.10/attention/self/Reshape_3_output_0": [
+-4.369064807891846,
+3.370774745941162
+],
+"/bert/encoder/layer.10/attention/self/Softmax_output_0": [
+5.087456012020652e-10,
+0.9991463422775269
+],
+"/bert/encoder/layer.10/attention/self/Transpose_1_output_0": [
+-8.242440223693848,
+7.203202724456787
+],
+"/bert/encoder/layer.10/attention/self/Transpose_2_output_0": [
+-6.405131816864014,
+7.096045017242432
+],
+"/bert/encoder/layer.10/attention/self/Transpose_output_0": [
+-6.022557258605957,
+5.11954402923584
+],
+"/bert/encoder/layer.10/attention/self/key/MatMul_output_0": [
+-6.399956703186035,
+7.0991926193237305
+],
+"/bert/encoder/layer.10/attention/self/query/MatMul_output_0": [
+-7.9095587730407715,
+6.910165786743164
+],
+"/bert/encoder/layer.10/attention/self/value/MatMul_output_0": [
+-5.995384216308594,
+5.125432014465332
+],
+"/bert/encoder/layer.10/intermediate/dense/MatMul_output_0": [
+-11.67727279663086,
+34.254737854003906
+],
+"/bert/encoder/layer.10/intermediate/intermediate_act_fn/Mul_1_output_0": [
+-0.16997122764587402,
+34.14012145996094
+],
+"/bert/encoder/layer.10/output/LayerNorm/Add_1_output_0": [
+-31.27480125427246,
+4.636229515075684
+],
+"/bert/encoder/layer.10/output/dense/MatMul_output_0": [
+-374.09234619140625,
+124.93498229980469
+],
+"/bert/encoder/layer.11/attention/output/LayerNorm/Add_1_output_0": [
+-40.50497817993164,
+9.375920295715332
+],
+"/bert/encoder/layer.11/attention/output/dense/MatMul_output_0": [
+-3.4795515537261963,
+2.78922438621521
+],
+"/bert/encoder/layer.11/attention/self/MatMul_1_output_0": [
+-4.738650321960449,
+3.9294514656066895
+],
+"/bert/encoder/layer.11/attention/self/MatMul_output_0": [
+-135.8993377685547,
+109.95909118652344
+],
+"/bert/encoder/layer.11/attention/self/Reshape_3_output_0": [
+-4.738650321960449,
+3.9294514656066895
+],
+"/bert/encoder/layer.11/attention/self/Softmax_output_0": [
+1.3741754956164698e-10,
+0.9997380375862122
+],
+"/bert/encoder/layer.11/attention/self/Transpose_1_output_0": [
+-7.2203521728515625,
+10.359623908996582
+],
+"/bert/encoder/layer.11/attention/self/Transpose_2_output_0": [
+-8.562176704406738,
+8.322309494018555
+],
+"/bert/encoder/layer.11/attention/self/Transpose_output_0": [
+-6.695013046264648,
+5.144720554351807
+],
+"/bert/encoder/layer.11/attention/self/key/MatMul_output_0": [
+-8.563165664672852,
+8.330597877502441
+],
+"/bert/encoder/layer.11/attention/self/query/MatMul_output_0": [
+-7.030749797821045,
+9.937336921691895
+],
+"/bert/encoder/layer.11/attention/self/value/MatMul_output_0": [
+-6.717990398406982,
+5.113651275634766
+],
+"/bert/encoder/layer.11/intermediate/dense/MatMul_output_0": [
+-9.0628662109375,
+11.537012100219727
+],
+"/bert/encoder/layer.11/intermediate/intermediate_act_fn/Mul_1_output_0": [
+-0.16997122764587402,
+11.37975788116455
+],
+"/bert/encoder/layer.11/output/dense/MatMul_output_0": [
+-14.463855743408203,
+35.60664749145508
+],
+"/bert/encoder/layer.2/attention/output/LayerNorm/Add_1_output_0": [
+-51.3778076171875,
+30.115337371826172
+],
+"/bert/encoder/layer.2/attention/output/dense/MatMul_output_0": [
+-2.3862245082855225,
+2.8772571086883545
+],
+"/bert/encoder/layer.2/attention/self/MatMul_1_output_0": [
+-3.8413023948669434,
+3.602677345275879
+],
+"/bert/encoder/layer.2/attention/self/MatMul_output_0": [
+-269.5606994628906,
+292.375732421875
+],
+"/bert/encoder/layer.2/attention/self/Reshape_3_output_0": [
+-3.8413023948669434,
+3.602677345275879
+],
+"/bert/encoder/layer.2/attention/self/Softmax_output_0": [
+4.567727146323546e-29,
+1.0
+],
+"/bert/encoder/layer.2/attention/self/Transpose_1_output_0": [
+-9.50082015991211,
+8.400633811950684
+],
+"/bert/encoder/layer.2/attention/self/Transpose_2_output_0": [
+-8.307991027832031,
+8.324446678161621
+],
+"/bert/encoder/layer.2/attention/self/Transpose_output_0": [
+-4.851889610290527,
+5.542738914489746
+],
+"/bert/encoder/layer.2/attention/self/key/MatMul_output_0": [
+-8.309809684753418,
+8.322267532348633
+],
+"/bert/encoder/layer.2/attention/self/query/MatMul_output_0": [
+-9.278047561645508,
+8.305922508239746
+],
+"/bert/encoder/layer.2/attention/self/value/MatMul_output_0": [
+-4.851418495178223,
+5.519027233123779
+],
+"/bert/encoder/layer.2/intermediate/dense/MatMul_output_0": [
+-13.70016860961914,
+21.405010223388672
+],
+"/bert/encoder/layer.2/intermediate/intermediate_act_fn/Mul_1_output_0": [
+-0.16997122764587402,
+21.26826286315918
+],
+"/bert/encoder/layer.2/output/LayerNorm/Add_1_output_0": [
+-14.356033325195312,
+12.987099647521973
+],
+"/bert/encoder/layer.2/output/dense/MatMul_output_0": [
+-41.336463928222656,
+104.94398498535156
+],
+"/bert/encoder/layer.3/attention/output/LayerNorm/Add_1_output_0": [
+-42.795692443847656,
+55.29475402832031
+],
+"/bert/encoder/layer.3/attention/output/dense/MatMul_output_0": [
+-2.134030818939209,
+2.1311562061309814
+],
+"/bert/encoder/layer.3/attention/self/MatMul_1_output_0": [
+-3.8130850791931152,
+3.5729000568389893
+],
+"/bert/encoder/layer.3/attention/self/MatMul_output_0": [
+-152.4308624267578,
+208.6909942626953
+],
+"/bert/encoder/layer.3/attention/self/Reshape_3_output_0": [
+-3.8130850791931152,
+3.5729000568389893
+],
+"/bert/encoder/layer.3/attention/self/Softmax_output_0": [
+3.7102084571490136e-17,
+0.9999998807907104
+],
+"/bert/encoder/layer.3/attention/self/Transpose_1_output_0": [
+-8.244287490844727,
+8.851590156555176
+],
+"/bert/encoder/layer.3/attention/self/Transpose_2_output_0": [
+-7.609246253967285,
+6.912812232971191
+],
+"/bert/encoder/layer.3/attention/self/Transpose_output_0": [
+-6.063826560974121,
+5.442480087280273
+],
+"/bert/encoder/layer.3/attention/self/key/MatMul_output_0": [
+-7.610542297363281,
+6.913097858428955
+],
+"/bert/encoder/layer.3/attention/self/query/MatMul_output_0": [
+-7.913882732391357,
+8.741344451904297
+],
+"/bert/encoder/layer.3/attention/self/value/MatMul_output_0": [
+-6.055997848510742,
+5.434866428375244
+],
+"/bert/encoder/layer.3/intermediate/dense/MatMul_output_0": [
+-24.9212646484375,
+10.802138328552246
+],
+"/bert/encoder/layer.3/intermediate/intermediate_act_fn/Mul_1_output_0": [
+-0.16997122764587402,
+10.56967544555664
+],
+"/bert/encoder/layer.3/output/LayerNorm/Add_1_output_0": [
+-16.45170021057129,
+14.20279312133789
+],
+"/bert/encoder/layer.3/output/dense/MatMul_output_0": [
+-7.154046058654785,
+60.8957633972168
+],
+"/bert/encoder/layer.4/attention/output/LayerNorm/Add_1_output_0": [
+-41.988067626953125,
+68.026611328125
+],
+"/bert/encoder/layer.4/attention/output/dense/MatMul_output_0": [
+-4.112469673156738,
+2.6724023818969727
+],
+"/bert/encoder/layer.4/attention/self/MatMul_1_output_0": [
+-3.804398536682129,
+3.7679615020751953
+],
+"/bert/encoder/layer.4/attention/self/MatMul_output_0": [
+-84.40559387207031,
+132.6531524658203
+],
+"/bert/encoder/layer.4/attention/self/Reshape_3_output_0": [
+-3.804398536682129,
+3.7679615020751953
+],
+"/bert/encoder/layer.4/attention/self/Softmax_output_0": [
+7.169190935352177e-11,
+0.9990155696868896
+],
+"/bert/encoder/layer.4/attention/self/Transpose_1_output_0": [
+-7.953110218048096,
+8.135787963867188
+],
+"/bert/encoder/layer.4/attention/self/Transpose_2_output_0": [
+-6.968157768249512,
+6.288933753967285
+],
+"/bert/encoder/layer.4/attention/self/Transpose_output_0": [
+-5.64163064956665,
+6.203841209411621
+],
+"/bert/encoder/layer.4/attention/self/key/MatMul_output_0": [
+-6.966832160949707,
+6.284958839416504
+],
+"/bert/encoder/layer.4/attention/self/query/MatMul_output_0": [
+-7.55771017074585,
+7.679542541503906
+],
+"/bert/encoder/layer.4/attention/self/value/MatMul_output_0": [
+-5.593714714050293,
+6.152379989624023
+],
+"/bert/encoder/layer.4/intermediate/dense/MatMul_output_0": [
+-26.554805755615234,
+15.75471305847168
+],
+"/bert/encoder/layer.4/intermediate/intermediate_act_fn/Mul_1_output_0": [
+-0.16997122764587402,
+15.604254722595215
+],
+"/bert/encoder/layer.4/output/LayerNorm/Add_1_output_0": [
+-18.296363830566406,
+13.279491424560547
+],
+"/bert/encoder/layer.4/output/dense/MatMul_output_0": [
+-7.846128463745117,
+66.72309112548828
+],
+"/bert/encoder/layer.5/attention/output/LayerNorm/Add_1_output_0": [
+-36.86286926269531,
+66.31417083740234
+],
+"/bert/encoder/layer.5/attention/output/dense/MatMul_output_0": [
+-3.207746982574463,
+2.9977593421936035
+],
+"/bert/encoder/layer.5/attention/self/MatMul_1_output_0": [
+-4.252867698669434,
+4.004119873046875
+],
+"/bert/encoder/layer.5/attention/self/MatMul_output_0": [
+-244.3307342529297,
+208.19357299804688
+],
+"/bert/encoder/layer.5/attention/self/Reshape_3_output_0": [
+-4.252867698669434,
+4.004119873046875
+],
+"/bert/encoder/layer.5/attention/self/Softmax_output_0": [
+4.4787823513654395e-20,
+0.9999998807907104
+],
+"/bert/encoder/layer.5/attention/self/Transpose_1_output_0": [
+-9.513437271118164,
+8.533559799194336
+],
+"/bert/encoder/layer.5/attention/self/Transpose_2_output_0": [
+-8.316254615783691,
+7.6504902839660645
+],
+"/bert/encoder/layer.5/attention/self/Transpose_output_0": [
+-5.055775165557861,
+5.5186848640441895
+],
+"/bert/encoder/layer.5/attention/self/key/MatMul_output_0": [
+-8.315199851989746,
+7.64885950088501
+],
+"/bert/encoder/layer.5/attention/self/query/MatMul_output_0": [
+-9.295392036437988,
+8.42065715789795
+],
+"/bert/encoder/layer.5/attention/self/value/MatMul_output_0": [
+-5.0649919509887695,
+5.508895397186279
+],
+"/bert/encoder/layer.5/intermediate/dense/MatMul_output_0": [
+-29.514400482177734,
+9.66197395324707
+],
+"/bert/encoder/layer.5/intermediate/intermediate_act_fn/Mul_1_output_0": [
+-0.16997122764587402,
+9.48822021484375
+],
+"/bert/encoder/layer.5/output/LayerNorm/Add_1_output_0": [
+-19.92185401916504,
+12.208696365356445
+],
+"/bert/encoder/layer.5/output/dense/MatMul_output_0": [
+-22.13907241821289,
+70.39268493652344
+],
+"/bert/encoder/layer.6/attention/output/LayerNorm/Add_1_output_0": [
+-31.580507278442383,
+71.17337799072266
+],
+"/bert/encoder/layer.6/attention/output/dense/MatMul_output_0": [
+-3.8829994201660156,
+2.7028591632843018
+],
+"/bert/encoder/layer.6/attention/self/MatMul_1_output_0": [
+-4.797303199768066,
+4.612216949462891
+],
+"/bert/encoder/layer.6/attention/self/MatMul_output_0": [
+-211.2873992919922,
+199.82711791992188
+],
+"/bert/encoder/layer.6/attention/self/Reshape_3_output_0": [
+-4.797303199768066,
+4.612216949462891
+],
+"/bert/encoder/layer.6/attention/self/Softmax_output_0": [
+1.443167228867818e-18,
+0.9999997615814209
+],
+"/bert/encoder/layer.6/attention/self/Transpose_1_output_0": [
+-8.345895767211914,
+8.602910041809082
+],
+"/bert/encoder/layer.6/attention/self/Transpose_2_output_0": [
+-8.86867618560791,
+8.23911190032959
+],
+"/bert/encoder/layer.6/attention/self/Transpose_output_0": [
+-5.811387538909912,
+5.315151691436768
+],
+"/bert/encoder/layer.6/attention/self/key/MatMul_output_0": [
+-8.869743347167969,
+8.237993240356445
+],
+"/bert/encoder/layer.6/attention/self/query/MatMul_output_0": [
+-8.257519721984863,
+8.49032974243164
+],
+"/bert/encoder/layer.6/attention/self/value/MatMul_output_0": [
+-5.808095932006836,
+5.292459011077881
+],
+"/bert/encoder/layer.6/intermediate/dense/MatMul_output_0": [
+-19.82284927368164,
+9.976940155029297
+],
+"/bert/encoder/layer.6/intermediate/intermediate_act_fn/Mul_1_output_0": [
+-0.16997122764587402,
+9.803091049194336
+],
+"/bert/encoder/layer.6/output/LayerNorm/Add_1_output_0": [
+-18.866804122924805,
+12.117839813232422
+],
+"/bert/encoder/layer.6/output/dense/MatMul_output_0": [
+-24.101762771606445,
+60.07988357543945
+],
+"/bert/encoder/layer.7/attention/output/LayerNorm/Add_1_output_0": [
+-28.67172622680664,
+66.37214660644531
+],
+"/bert/encoder/layer.7/attention/output/dense/MatMul_output_0": [
+-3.769547939300537,
+2.0355606079101562
+],
+"/bert/encoder/layer.7/attention/self/MatMul_1_output_0": [
+-3.6683194637298584,
+3.6559884548187256
+],
+"/bert/encoder/layer.7/attention/self/MatMul_output_0": [
+-103.45004272460938,
+132.6433563232422
+],
+"/bert/encoder/layer.7/attention/self/Reshape_3_output_0": [
+-3.6683194637298584,
+3.6559884548187256
+],
+"/bert/encoder/layer.7/attention/self/Softmax_output_0": [
+1.5981421741528834e-10,
+0.9984592199325562
+],
+"/bert/encoder/layer.7/attention/self/Transpose_1_output_0": [
+-7.963006496429443,
+8.307210922241211
+],
+"/bert/encoder/layer.7/attention/self/Transpose_2_output_0": [
+-7.106046199798584,
+6.930823802947998
+],
+"/bert/encoder/layer.7/attention/self/Transpose_output_0": [
+-5.2796149253845215,
+5.095167636871338
+],
+"/bert/encoder/layer.7/attention/self/key/MatMul_output_0": [
+-7.1050496101379395,
+6.934082984924316
+],
+"/bert/encoder/layer.7/attention/self/query/MatMul_output_0": [
+-7.661615371704102,
+7.883675575256348
+],
+"/bert/encoder/layer.7/attention/self/value/MatMul_output_0": [
+-5.253970146179199,
+5.077966690063477
+],
+"/bert/encoder/layer.7/intermediate/dense/MatMul_output_0": [
+-19.804800033569336,
+32.71672821044922
+],
+"/bert/encoder/layer.7/intermediate/intermediate_act_fn/Mul_1_output_0": [
+-0.16997122764587402,
+32.541080474853516
+],
+"/bert/encoder/layer.7/output/LayerNorm/Add_1_output_0": [
+-19.185829162597656,
+5.086427688598633
+],
+"/bert/encoder/layer.7/output/dense/MatMul_output_0": [
+-151.7213134765625,
+9.325918197631836
+],
+"/bert/encoder/layer.8/attention/output/LayerNorm/Add_1_output_0": [
+-65.76720428466797,
+19.12723159790039
+],
+"/bert/encoder/layer.8/attention/output/dense/MatMul_output_0": [
+-4.796267509460449,
+2.0147860050201416
+],
+"/bert/encoder/layer.8/attention/self/MatMul_1_output_0": [
+-3.7457339763641357,
+4.223556995391846
+],
+"/bert/encoder/layer.8/attention/self/MatMul_output_0": [
+-90.68153381347656,
+105.75634765625
+],
+"/bert/encoder/layer.8/attention/self/Reshape_3_output_0": [
+-3.7457339763641357,
+4.223556995391846
+],
+"/bert/encoder/layer.8/attention/self/Softmax_output_0": [
+7.111230493350718e-10,
+0.9957701563835144
+],
+"/bert/encoder/layer.8/attention/self/Transpose_1_output_0": [
+-7.479823589324951,
+8.232107162475586
+],
+"/bert/encoder/layer.8/attention/self/Transpose_2_output_0": [
+-7.118441581726074,
+7.628541946411133
+],
+"/bert/encoder/layer.8/attention/self/Transpose_output_0": [
+-5.174734592437744,
+5.2378668785095215
+],
+"/bert/encoder/layer.8/attention/self/key/MatMul_output_0": [
+-7.117586612701416,
+7.635772705078125
+],
+"/bert/encoder/layer.8/attention/self/query/MatMul_output_0": [
+-7.173442840576172,
+7.935703277587891
+],
+"/bert/encoder/layer.8/attention/self/value/MatMul_output_0": [
+-5.160341262817383,
+5.225987911224365
+],
+"/bert/encoder/layer.8/intermediate/dense/MatMul_output_0": [
+-23.502979278564453,
+40.475955963134766
+],
+"/bert/encoder/layer.8/intermediate/intermediate_act_fn/Mul_1_output_0": [
+-0.16997122764587402,
+40.33026885986328
+],
+"/bert/encoder/layer.8/output/LayerNorm/Add_1_output_0": [
+-22.327056884765625,
+5.195547580718994
+],
+"/bert/encoder/layer.8/output/dense/MatMul_output_0": [
+-331.9423828125,
+4.559294700622559
+],
+"/bert/encoder/layer.9/attention/output/LayerNorm/Add_1_output_0": [
+-46.435428619384766,
+5.513439655303955
+],
+"/bert/encoder/layer.9/attention/output/dense/MatMul_output_0": [
+-4.6858601570129395,
+3.4097766876220703
+],
+"/bert/encoder/layer.9/attention/self/MatMul_1_output_0": [
+-3.9461028575897217,
+3.7424569129943848
+],
+"/bert/encoder/layer.9/attention/self/MatMul_output_0": [
+-120.48838806152344,
+119.69023132324219
+],
+"/bert/encoder/layer.9/attention/self/Reshape_3_output_0": [
+-3.9461028575897217,
+3.7424569129943848
+],
+"/bert/encoder/layer.9/attention/self/Softmax_output_0": [
+5.0427741843384055e-11,
+0.9994394183158875
+],
+"/bert/encoder/layer.9/attention/self/Transpose_1_output_0": [
+-8.332996368408203,
+8.254424095153809
+],
+"/bert/encoder/layer.9/attention/self/Transpose_2_output_0": [
+-7.391292095184326,
+6.7952470779418945
+],
+"/bert/encoder/layer.9/attention/self/Transpose_output_0": [
+-4.957027912139893,
+5.163817405700684
+],
+"/bert/encoder/layer.9/attention/self/key/MatMul_output_0": [
+-7.408097267150879,
+6.7777838706970215
+],
+"/bert/encoder/layer.9/attention/self/query/MatMul_output_0": [
+-8.150944709777832,
+8.155721664428711
+],
+"/bert/encoder/layer.9/attention/self/value/MatMul_output_0": [
+-4.946958065032959,
+5.138100624084473
+],
+"/bert/encoder/layer.9/intermediate/dense/MatMul_output_0": [
+-25.273595809936523,
+34.065589904785156
+],
+"/bert/encoder/layer.9/intermediate/intermediate_act_fn/Mul_1_output_0": [
+-0.16997122764587402,
+33.95403289794922
+],
+"/bert/encoder/layer.9/output/LayerNorm/Add_1_output_0": [
+-24.702945709228516,
+5.003772735595703
+],
+"/bert/encoder/layer.9/output/dense/MatMul_output_0": [
+-363.9515686035156,
+62.90026092529297
+]
+}
