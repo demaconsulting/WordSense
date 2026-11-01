@@ -166,6 +166,11 @@ public sealed class CanaryTests : IDisposable
         Assert.Equal(Canary.DefaultArmTolerance, Canary.ResolveArmTolerance(none, null));
         Assert.Equal(0, Canary.ResolveArmTolerance(new Dictionary<string, string> { ["arm-tolerance"] = "0" }, null));
 
+        // Option: a value that is not a non-negative number is refused, a negative one too
+        Assert.Throws<ArgumentOutOfRangeException>(() => Canary.ResolveArmTolerance(header, -1));
+        Assert.Throws<ArgumentOutOfRangeException>(() => Canary.ResolveArmTolerance(none, int.MinValue));
+        Assert.Equal(0, Canary.ResolveArmTolerance(header, 0));
+
         // Malformed headers do not fall back to the default
         foreach (var bad in new[] { "-1", "forty", string.Empty, "1.5", "99999999999" })
         {
@@ -344,12 +349,16 @@ public sealed class CanaryTests : IDisposable
         var neither = await RunAsync("canary");
         var both = await RunAsync("canary", "--write", "a", "--check", "b");
         var number = await RunAsync("canary", "--check", "a", "--arm-tolerance", "many");
+        var negative = await RunAsync("canary", "--check", "a", "--arm-tolerance", "-1");
+        var negativeWrite = await RunAsync("canary", "--write", "a", "--sentences", "b", "--arm-tolerance", "-5");
 
         // Assert
-        Assert.All([neither, both, number], r => Assert.Equal(1, r.Code));
+        Assert.All([neither, both, number, negative, negativeWrite], r => Assert.Equal(1, r.Code));
         Assert.Contains("exactly one of --write FILE and --check FILE", neither.Error, StringComparison.Ordinal);
         Assert.Contains("exactly one of --write FILE and --check FILE", both.Error, StringComparison.Ordinal);
         Assert.Contains("--arm-tolerance", number.Error, StringComparison.Ordinal);
+        Assert.Contains("--arm-tolerance", negative.Error, StringComparison.Ordinal);
+        Assert.Contains("--arm-tolerance", negativeWrite.Error, StringComparison.Ordinal);
     }
 
     private static async Task<(int Code, string Output, string Error)> RunAsync(params string[] args)

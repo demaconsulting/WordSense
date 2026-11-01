@@ -547,14 +547,14 @@ sections:
 
           - id: WordSense-WordSenseBuilder-EmbeddingCacheStream
             title: >-
-              The builder shall read the cache of pooled vectors from a stream, one record at a time, so that a cache
-              file of more than 2 GiB loads without an array of the size of the file, and a cut-off stream shall keep
-              its complete records, a stream written for another digest shall be dropped, and a file with bytes after
-              its declared records shall be dropped.
+              The builder shall reuse a saved cache of pooled vectors of any size, including one larger than 2 GiB,
+              within bounded memory, and shall keep the complete records of a cache that is cut off, and shall ignore
+              a cache that was written for another digest or that has data after its declared records, encoding the
+              sentences again instead of failing.
             tags: [unit]
             justification: |
-              A cache of several layers or of many sentences can exceed the 2 GiB limit of one array; the load of such
-              a file failed with an exception instead of reusing the work.
+              A cache of several layers or of many sentences can be larger than 2 GiB; loading such a file failed
+              instead of reusing the work, and a cache that does not match its header must not be trusted.
             tests:
               - WordSenseBuilder_EmbeddingCache_OpenStream_FileLargerThanTwoGiB_LoadsRecordByRecord
               - WordSenseBuilder_EmbeddingCache_OpenStream_CutOffStream_KeepsCompleteRecords
@@ -586,8 +586,8 @@ sections:
               model to a fixed list of sentences with the SHA-256 of its encoder file (--write), and checks the answers
               of the machine it runs on against such a file (--check): it shall list every differing word and fail when
               more words differ than the architecture allows (none on x86 and x86-64, at most the tolerance on ARM, no
-              verdict on another architecture), and shall refuse a file written for another encoder file and a file
-              whose arm-tolerance header is not a number of words.
+              verdict on another architecture), and shall refuse a file written for another encoder file, a file
+              whose arm-tolerance header is not a number of words, and a negative tolerance given as an option.
             tags: [unit]
             justification: |
               An int8 encoder does not give the same vectors on every CPU; the canary bounds the difference between CPU

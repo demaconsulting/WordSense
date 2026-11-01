@@ -73,8 +73,10 @@ sections:
                   - OnnxEncoder_PlanWindows_WordNearTextEnd_AddedWindowStaysInsideText
                   - OnnxEncoder_PlanWindows_WordLongerThanWindow_StartsItsOwnWindow
                   - OnnxEncoder_PlanWindows_RandomWordLengths_EveryFittingWordIsContained
+                  - OnnxEncoder_PlanWindows_EveryPositionAndLengthOfOneWord_GetsWindow
                   - OnnxEncoder_EncodeAllAsync_WordStraddlingWindowBorder_IsPooledOverAllItsPieces
                   - OnnxEncoder_EncodeAllAsync_WordLongerThanWindow_IsPooledOverItsFirstPieces
+                  - OnnxEncoder_EncodeAllAsync_WordLongerThanWindowAtTextEnd_IsPooledOverItsFirstPieces
 
               - id: WordSense-Onnx-OnnxEncoder-PossessiveView
                 title: >-

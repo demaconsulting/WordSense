@@ -832,11 +832,12 @@ use no model file.
   tolerance and another architecture is not judged.
 - **Tolerance header** (`WordSenseBuilder_Canary_ResolveArmTolerance_*`): the option wins over the header and the header
   over the default of 40; a header that is negative, empty or not a number is an `InvalidDataException`, also when the
-  option overrides it.
+  option overrides it, and a negative option is refused.
 - **Command** (`WordSenseBuilder_Program_Canary_WriteThenCheck_PassesOnTheSameMachine`,
   `..._InvalidOptions_ReturnsUsageError`, `WordSenseBuilder_Canary_AnswerAsync_BasicModel_*`): with the MiniLM model a
   write followed by a check on the same machine passes; a changed answer fails the check and is listed; a file of
-  another encoder file is refused; the options `--write` and `--check` are exclusive and the tolerance must be a number.
+  another encoder file is refused; the options `--write` and `--check` are exclusive and the tolerance must be a number
+  that is not negative.
 - **CPU preflight** (`WordSenseBuilder_CpuPreflight_Hash_DependsOnEveryBit`, `..._Compare_*`, `..._RunAsync_*`): the
   fingerprint depends on every bit of every vector; the reference line of an encoder is found by the model identity and
   the encoder SHA-256; a match, a difference and a missing reference give the three messages, and only a difference

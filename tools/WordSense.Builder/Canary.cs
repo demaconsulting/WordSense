@@ -269,9 +269,15 @@ internal static class Canary
     /// <param name="option">The value of <c>--arm-tolerance</c>, or null when it is not given.</param>
     /// <returns>The tolerance.</returns>
     /// <exception cref="InvalidDataException">Thrown when the header has an <c>arm-tolerance</c> that is not a number of words that is not negative; the header is checked even when the option overrides it.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="option"/> is negative.</exception>
     public static int ResolveArmTolerance(IReadOnlyDictionary<string, string> header, int? option)
     {
         ArgumentNullException.ThrowIfNull(header);
+        if (option < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(option), option, "The ARM tolerance must be a number of words that is not negative.");
+        }
+
         int? fromFile = null;
         if (header.TryGetValue("arm-tolerance", out var text))
         {

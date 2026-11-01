@@ -67,7 +67,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **A word that cannot fit** (`OnnxEncoder_PlanWindows_WordLongerThanWindow_StartsItsOwnWindow`,
   `OnnxEncoder_EncodeAllAsync_WordLongerThanWindow_IsPooledOverItsFirstPieces`): a word of 20 pieces with a window of 14
   gets a window that starts at the word, a word without pieces gets none, and the vector of the word equals, bit for
-  bit, that of its first 14 pieces encoded alone.
+  bit, that of its first 14 pieces encoded alone. At the end of the text (`..._WordLongerThanWindowAtTextEnd_*`, and
+  `OnnxEncoder_PlanWindows_EveryPositionAndLengthOfOneWord_GetsWindow` over every position and length of one word) the
+  word also has its window and its vector.
 - **A straddling word is pooled over all its pieces** (`OnnxEncoder_EncodeAllAsync_WordStraddlingWindowBorder_IsPooledOverAllItsPieces`):
   the vector of a word of 9 pieces at the pieces 6 to 14 equals, bit for bit, that of the window that starts at the
   word, encoded on its own.

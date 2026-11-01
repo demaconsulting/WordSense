@@ -350,7 +350,7 @@ internal sealed class OnnxEncoder : IDisposable
             }
             else if (wordEnd[w] - wordFirst[w] > capacity)
             {
-                windowOf[w] = starts.BinarySearch(wordFirst[w]);
+                windowOf[w] = starts.BinarySearch(Math.Min(wordFirst[w], count - capacity));
             }
             else
             {

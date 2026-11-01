@@ -33,7 +33,8 @@ internal static partial class Program
         int? armTolerance = null;
         if (options.TryGetValue("arm-tolerance", out var toleranceText))
         {
-            armTolerance = int.TryParse(toleranceText, NumberStyles.None, CultureInfo.InvariantCulture, out var parsed)
+            // NumberStyles.None refuses a sign, so a negative number is refused with the other malformed values
+            armTolerance = int.TryParse(toleranceText, NumberStyles.None, CultureInfo.InvariantCulture, out var parsed) && parsed >= 0
                 ? parsed
                 : throw new ArgumentException($"The option --arm-tolerance must be a number of words that is not negative, not '{toleranceText}'. {Usage}");
         }

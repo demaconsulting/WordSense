@@ -302,6 +302,40 @@ public class OnnxEncoderTests
     }
 
     /// <summary>
+    ///     Every word gets a window wherever it sits: for a window of 14 pieces and every position and length of one word
+    ///     (shorter, equal and longer than the window; ending before, exactly at and after the last window border, and
+    ///     at the end of the text), the word has a window, a word that fits is inside it, and a longer word starts it.
+    /// </summary>
+    [Fact]
+    public void OnnxEncoder_PlanWindows_EveryPositionAndLengthOfOneWord_GetsWindow()
+    {
+        // Arrange and act: a prefix and a suffix of one-piece words around one word
+        const int capacity = 14;
+        for (var before = 0; before <= 45; before++)
+        {
+            for (var length = 1; length <= 32; length++)
+            {
+                for (var after = 0; after <= 30; after++)
+                {
+                    var count = before + length + after;
+                    if (count <= capacity)
+                    {
+                        continue;
+                    }
+
+                    var (first, end) = Spans([.. Enumerable.Repeat(1, before), length, .. Enumerable.Repeat(1, after)]);
+                    var (starts, windowOf) = OnnxEncoder.PlanWindows(count, capacity, first, end);
+
+                    // Assert: no word is left without a window (a negative index would fail here)
+                    Assert.All(windowOf, index => Assert.InRange(index, 0, starts.Length - 1));
+                    AssertEveryWordInsideItsWindow(starts, windowOf, first, end, capacity);
+                    Assert.All(starts, s => Assert.InRange(s, 0, count - capacity));
+                }
+            }
+        }
+    }
+
+    /// <summary>
     ///     For every mix of word lengths, each word that fits a window is inside its window and the windows cover the
     ///     whole text, in increasing order without repeats.
     /// </summary>
@@ -387,6 +421,35 @@ public class OnnxEncoderTests
         // Assert: the window of 14 pieces that starts at the word is the whole text of the shorter word
         var alone = await encoder.EncodeAsync([long14], [0], TestContext.Current.CancellationToken);
         Assert.Equal(alone[0], vectors[3]);
+    }
+
+    /// <summary>
+    ///     A word of more pieces than a window holds at the very end of the text, and one just before the last word, still
+    ///     gets its vector, pooled from its first pieces.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxEncoder_EncodeAllAsync_WordLongerThanWindowAtTextEnd_IsPooledOverItsFirstPieces()
+    {
+        // Arrange: 10 one-piece words, then a word of 20 pieces that ends the text; windows of 14 pieces
+        using var encoder = Open(maxSequenceLength: 16);
+        var tokenizer = WordPieceTokenizer.FromFile(Path.Join(ModelAssets.RequireModelDirectory(), "vocab.txt"), true);
+        var long14 = LongWord(tokenizer, 14);
+        var long20 = LongWord(tokenizer, 20);
+        string[] atEnd = [.. Enumerable.Repeat("in", 10), long20];
+        string[] beforeLast = [.. Enumerable.Repeat("in", 10), long20, "the"];
+        Assert.Equal(30, tokenizer.TokenizeWords(atEnd).Count);
+
+        // Act
+        var end = await encoder.EncodeAllAsync(atEnd, TestContext.Current.CancellationToken);
+        var next = await encoder.EncodeAllAsync(beforeLast, TestContext.Current.CancellationToken);
+
+        // Assert: the window of 14 pieces that starts at the word is the whole text of the shorter word
+        var alone = await encoder.EncodeAsync([long14], [0], TestContext.Current.CancellationToken);
+        Assert.Equal(alone[0], end[10]);
+        Assert.Equal(alone[0], next[10]);
+        Assert.Equal(12, next.Length);
+        Assert.All(next, Assert.NotNull);
     }
 
     private static (int[] First, int[] End) Spans(IEnumerable<int> lengths)
