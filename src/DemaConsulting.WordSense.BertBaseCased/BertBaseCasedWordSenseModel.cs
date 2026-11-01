@@ -62,7 +62,7 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     <c>bert-base-cased/v1</c> and the folder on a mirror.
 ///     </para>
 ///     <para>
-///     A supplied model directory must hold all four files directly (no <c>{model-id}</c> subfolder).
+///     A supplied model directory must hold all four files directly (no <c>{base-model}/v{version}</c> subfolder).
 ///     <c>EnsureModelAsync</c> is optional but recommended: it verifies every one of them, not only the ONNX file,
 ///     against the pinned SHA-256 digests listed in the namespace documentation, with no network access, and fails
 ///     early with a <see cref="ModelUnavailableException"/> (a missing file or directory) or a

@@ -240,9 +240,9 @@ src/DemaConsulting.WordSense.BertBaseCased/        — bert-base-cased subsystem
 ├── Resources/weights.bin                           — embedded weights of the bert-base-cased model
 └── Resources/head.bin                              — embedded part-of-speech and tense head of the bert-base-cased model
 
-model/<model-id>/                                  — model files (ONNX file, vocabulary, tokenizer and config files,
-                                                      SHA256SUMS, the Apache License 2.0 LICENSE) of each encoder
-                                                      model
+model/<base-model>/                                — provenance of the model files (SHA256SUMS, the Apache License 2.0
+                                                      LICENSE, README); the files themselves are the assets of the
+                                                      release models/<base-model>/v<n>
 tools/WordSense.Builder/                           — word-sense-builder unit (not shipped)
 tools/                                             — the other maintainer tools (not shipped): forms-audit, model-prep,
                                                       quota-fill and tokenizer-fixture;
@@ -271,8 +271,9 @@ corpus/allwords/v2/                                — the second all-words gold
 
 The `generated/` folders of the packages hold the generated API reference and are not committed. The corpus files
 are data inputs of the builder unit; the word-lexicon unit holds the compiled result, so no separate unit exists for
-the dictionary. The model files under `model/<model-id>/` are the same files that a mirror serves as
-`<mirror>/<model-id>/<file>` and that the per-user store keeps as `<store>/<model-id>/`.
+the dictionary. The release assets `models/<base-model>/v<n>` are the files that a mirror serves as
+`<mirror>/<base-model>/v<n>/<file>` and that the per-user store keeps as `<store>/<base-model>/v<n>/<file>`; the
+provenance is in `model/<base-model>/`.
 
 ## Document Conventions
 

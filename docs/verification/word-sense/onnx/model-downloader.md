@@ -61,8 +61,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   altered file (`InvalidDataException`); the downloader keeps these raw exceptions, and `OnnxWordSenseModel` reports
   them as `ModelUnavailableException` and `ModelIntegrityException` with the originals as inner exceptions.
 - **Default store root**: the default store is beneath the user's local application data, in
-  `DemaConsulting/WordSense/models`; a model's folder is `<base-model>/v<version>`, and a folder of an older layout
-  (`<store>/<base-model>/<file>`) is ignored.
+  `DemaConsulting/WordSense/models`; a model's folder is `<base-model>/v<version>`, and files that lie directly in
+  `<store>/<base-model>/` are not read (`ModelDownloader_EnsureAsync_OldStoreLayout_IsIgnored`).
 - **Failed sources are reported**: every source failing throws `HttpRequestException` whose message names each source
   with its request path and no query, token or signed value (`OnnxWordSenseModel` reports it as
   `ModelUnavailableException` with this exception as inner exception).

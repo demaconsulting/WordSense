@@ -68,7 +68,7 @@ namespace DemaConsulting.WordSense;
 ///     credentials or the timeout), because the options are not read at all.
 ///     </para>
 ///     <para>
-///     Store location: downloaded files are kept in <c>{StoreRoot}/{model-id}/{file}</c>; without a store root, the
+///     Store location: downloaded files are kept in <c>{StoreRoot}/{base-model}/v{version}/{file}</c>; without a store root, the
 ///     root is <c>{LocalApplicationData}/DemaConsulting/WordSense/models</c> (the application base directory when the
 ///     platform has no local application data folder). Concretely, as .NET reports the local application data folder:
 ///     on Windows <c>%LOCALAPPDATA%\DemaConsulting\WordSense\models</c> (for example
@@ -80,7 +80,7 @@ namespace DemaConsulting.WordSense;
 ///     variables configure only the mirror. <see cref="BaseUri"/> is a required constructor argument, so a
 ///     <see cref="DownloadOptions"/> always describes a mirror; there is no way to set only a store root. To use files
 ///     that you copied yourself, pass the directory to the constructor of the model instead (see the model packages);
-///     that directory is flat (the model files directly in it, no <c>{model-id}</c> subfolder), and a mirror is never
+///     that directory is flat (the model files directly in it, no <c>{base-model}/v{version}</c> subfolder), and a mirror is never
 ///     used with it.
 ///     </para>
 ///     <para>
@@ -89,7 +89,7 @@ namespace DemaConsulting.WordSense;
 ///     created when it does not exist). A <c>null</c> store root selects the default store; an empty or whitespace-only
 ///     store root, or a path that the platform rejects, is a <see cref="DownloadConfigurationException"/> (inner
 ///     exception: <see cref="ArgumentException"/> with the parameter name <c>StoreRoot</c>). Offline route through the store: files that you copy into
-///     <c>{StoreRoot}/{model-id}/v{version}/</c> (or into the default store, then no <see cref="DownloadOptions"/> are needed) are
+///     <c>{StoreRoot}/{base-model}/v{version}/</c> (or into the default store, then no <see cref="DownloadOptions"/> are needed) are
 ///     hashed by <c>EnsureModelAsync</c>; a file that matches its pinned SHA-256 is kept and never requested, so when
 ///     every file is present and valid nothing is downloaded and the mirror (and the release assets) is not contacted,
 ///     and a file that is missing or does not match is downloaded again (and replaced). Because
@@ -103,7 +103,7 @@ namespace DemaConsulting.WordSense;
 ///     settings, and the <c>HTTP_PROXY</c>, <c>HTTPS_PROXY</c> and <c>NO_PROXY</c> variables on Linux and macOS), with
 ///     no proxy credentials of its own. A transient failure (HTTP 429, a 5xx status or a broken connection) is retried
 ///     once per source. Allow-list the host of your mirror, if any, and for the release assets <c>github.com</c> (files at
-///     https://github.com/demaconsulting/WordSense/releases/download/models/{model-id}/v{version}/{file}) and the host it
+///     https://github.com/demaconsulting/WordSense/releases/download/models/{base-model}/v{version}/{file}) and the host it
 ///     redirects to (<c>release-assets.githubusercontent.com</c>; where a wildcard is allowed use
 ///     <c>*.githubusercontent.com</c>). The library follows HTTP redirects itself (http or https only, up to a fixed
 ///     limit), and mirror credentials are sent only to the mirror's own origin.

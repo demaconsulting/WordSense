@@ -214,9 +214,11 @@ The core test project composes two test-double models with `FallbackWordSenseMod
 model scored is answered by the primary result and every other word by the complete fallback result
 (`WordSenseContracts_FallbackWordSenseModel_PrimaryScoredSenses_UsesPrimary`,
 `WordSenseContracts_FallbackWordSenseModel_PrimaryChoseOnlyAnalysis_UsesFallback`). The MiniLM and BertBaseCased test
-projects classify an ambiguous word that the encoder does not score and find the result of the Basic model
-(`MiniLMWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback`,
-`BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback`). The composition is itself an
+projects classify an ambiguous word that the encoder does not score: MiniLM finds the result of the Basic model
+(`MiniLMWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback`), and BertBaseCased answers at the part
+of speech level with its head combined with the Basic model
+(`BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersAtThePartOfSpeechLevel`). The composition is
+itself an
 `IDownloadableWordSenseModel` and forwards the optional ensure only to the members that have the capability (the encoder
 model, not the Basic model), starting every capable member before any failure is reported and reporting the first
 failure unchanged

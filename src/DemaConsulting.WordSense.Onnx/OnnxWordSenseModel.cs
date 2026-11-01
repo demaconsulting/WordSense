@@ -208,7 +208,7 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
     ///     When a model directory was supplied, this call is optional but useful: it verifies the files up front, and no
     ///     network access happens (it throws <see cref="ModelUnavailableException"/> or <see cref="ModelIntegrityException"/>
     ///     through the task when a file is missing or altered). Every file
-    ///     must exist directly in that directory (a flat layout; there is no <c>{model-id}</c> subfolder) and match its
+    ///     must exist directly in that directory (a flat layout; there is no <c>{base-model}/v{version}</c> subfolder) and match its
     ///     pinned SHA-256, and all files of the model are verified (for BertBaseCased that includes
     ///     <c>config.json</c> and <c>tokenizer.json</c>, although the runtime reads only the ONNX file and
     ///     <c>vocab.txt</c>). Otherwise valid files in the store (<c>{StoreRoot}/{ModelId}/v{ModelVersion}/</c>, by default under the
@@ -250,7 +250,7 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
     ///     with no proxy credentials of its own. A transient failure (HTTP 429, a 5xx status or a broken connection) is
     ///     retried once per source. Allow-list the host of your mirror, if any, and for the public source
     ///     <c>github.com</c> (files at
-    ///     https://github.com/demaconsulting/WordSense/releases/download/models/{model-id}/v{version}/{file}) and the host it
+    ///     https://github.com/demaconsulting/WordSense/releases/download/models/{base-model}/v{version}/{file}) and the host it
     ///     redirects to (<c>release-assets.githubusercontent.com</c>, or <c>*.githubusercontent.com</c>);
     ///     the library follows HTTP redirects itself (up to a fixed limit, http or https only), and mirror credentials are
     ///     sent only to the mirror's own origin.

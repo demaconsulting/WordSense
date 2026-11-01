@@ -33,7 +33,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `ModelUnavailableException` with the original `FileNotFoundException` as inner exception, and an altered file throws
   `ModelIntegrityException` with the original `InvalidDataException` as inner exception.
 - **Store is used without a directory**: without a model directory the files are obtained through the downloader into
-  `<store>/<model-id>/`.
+  `<store>/<base-model>/v<version>/`.
 - **Lexicon-only words never touch model files** (`LexiconOnlyWords_NeverTouchesModelFiles`): `ClassifyAsync` on words
   with at most one sense, or one part of speech and no scored senses, on a model whose directory does not exist,
   returns the lexicon answers

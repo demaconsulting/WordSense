@@ -95,7 +95,7 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     Mirrors: a <see cref="DownloadOptions"/> passed to <c>EnsureModelAsync</c> takes precedence over the
 ///     <c>WORDSENSE_MIRROR_*</c> variables; the mirror is tried before the release assets for each file that is missing
 ///     or invalid and is not contacted when every file is already present. The mirror holds the files at
-///     <c>{mirror}/{model-id}/v{version}/{file}</c>, where the model id is the <c>ModelId</c> of the model, for example
+///     <c>{mirror}/{base-model}/v{version}/{file}</c>, where the base model is the <c>ModelId</c> of the model, for example
 ///     <c>https://models.example.com/wordsense/bert-base-cased/v1/model-int8-dynamic.onnx</c>. Downloaded files are kept in
 ///     <c>{StoreRoot}/bert-base-cased/v1/</c>; the default store root is
 ///     <c>%LOCALAPPDATA%\DemaConsulting\WordSense\models</c> on Windows and
@@ -122,7 +122,7 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     <para>
 ///     Offline and air-gapped use: fetch the four files from
 ///     <c>https://github.com/demaconsulting/WordSense/releases/download/models/bert-base-cased/v1/{file}</c>,
-///     put them directly in one directory (no <c>{model-id}</c> subfolder) and pass it to the constructor. Calling
+///     put them directly in one directory (no <c>{base-model}/v{version}</c> subfolder) and pass it to the constructor. Calling
 ///     <c>EnsureModelAsync</c> is optional but recommended: it verifies the digests above up front without network
 ///     access; a missing file or directory is a <see cref="ModelUnavailableException"/> and a wrong digest a
 ///     <see cref="ModelIntegrityException"/>. For a corporate

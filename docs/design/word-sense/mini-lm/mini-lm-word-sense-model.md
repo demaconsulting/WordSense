@@ -23,8 +23,9 @@ part-of-speech head `head.bin` (the format `WSH1`, bound to the pinned ONNX file
 the description declares it not in use, so the model answers as a model without a head: it needs the encoder only for a
 word with scored senses, and its slot probability is the mass of its senses). The encoder model loads the head through
 `OnnxWordSenseModel` and `PosHead` (see their unit
-documents): it must belong to the pinned ONNX file, the hidden size 384, the model id and the parts of speech of the
-library, and a head read against another encoder file or model id is rejected as invalid data.
+documents): it must belong to the pinned ONNX file, the hidden size 384, the identity of the description (`WeightsId`:
+`all-MiniLM-L6-v2-int8`, the identity the head file records) and the parts of speech of the
+library, and a head read against another encoder file or identity is rejected as invalid data.
 
 #### Key Methods
 

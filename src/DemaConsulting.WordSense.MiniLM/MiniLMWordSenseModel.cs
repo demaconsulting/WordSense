@@ -58,7 +58,7 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     </para>
 ///     <para>
 ///     When you supply a model directory, it must hold <c>model-int8-dynamic.onnx</c> and <c>vocab.txt</c> directly (no
-///     <c>{model-id}</c> subfolder). <c>EnsureModelAsync</c> is optional but recommended: it verifies both files against
+///     <c>{base-model}/v{version}</c> subfolder). <c>EnsureModelAsync</c> is optional but recommended: it verifies both files against
 ///     their pinned SHA-256 digests without any network access and fails early with a
 ///     <see cref="ModelUnavailableException"/> (a missing file or directory) or a <see cref="ModelIntegrityException"/>
 ///     (a wrong digest); both are <see cref="WordSenseException"/>s that carry the original exception as inner exception. Dispose the model when you no longer need it; disposing while calls are running is safe.

@@ -19,16 +19,16 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     </para>
 ///     <para>
 ///     Offline and air-gapped use: fetch the model files of a model package (the assets of its release,
-///     https://github.com/demaconsulting/WordSense/releases, tag <c>models/{model-id}/v{version}</c>) on a machine with network access, copy them to the
+///     https://github.com/demaconsulting/WordSense/releases, tag <c>models/{base-model}/v{version}</c>) on a machine with network access, copy them to the
 ///     target machine and pass their directory to the model's constructor. The directory is flat: the files sit
-///     directly in it (no <c>{model-id}</c> subfolder). Calling the model's <c>EnsureModelAsync</c> (the
+///     directly in it (no <c>{base-model}/v{version}</c> subfolder). Calling the model's <c>EnsureModelAsync</c> (the
 ///     <see cref="IDownloadableWordSenseModel"/> capability that <see cref="OnnxWordSenseModel"/> implements) is optional but
 ///     recommended: it verifies every file against its pinned SHA-256 up front (no network access). Missing files are reported
 ///     as <see cref="ModelUnavailableException"/> and wrong digests as <see cref="ModelIntegrityException"/> (both
 ///     <see cref="WordSenseException"/>s that keep the original exception as inner exception). For a corporate mirror pass a
 ///     <see cref="DownloadOptions"/> to <see cref="OnnxWordSenseModel.EnsureModelAsync"/>, or set the environment variables
 ///     <c>WORDSENSE_MIRROR_URL</c>, <c>WORDSENSE_MIRROR_USER</c>, <c>WORDSENSE_MIRROR_PASSWORD</c> and
-///     <c>WORDSENSE_MIRROR_BEARER_TOKEN</c>; files are requested at <c>{mirror}/{model-id}/v{version}/{file}</c>. A blank variable
+///     <c>WORDSENSE_MIRROR_BEARER_TOKEN</c>; files are requested at <c>{mirror}/{base-model}/v{version}/{file}</c>. A blank variable
 ///     counts as unset; a user without a password (or the reverse), or a user, password or token without
 ///     <c>WORDSENSE_MIRROR_URL</c>, throws <see cref="DownloadConfigurationException"/>; the variables are never read when a model
 ///     directory was supplied (an invalid setting is then ignored without an exception) or when a
@@ -36,7 +36,7 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     than about 49 days throws <see cref="DownloadConfigurationException"/> (<c>Timeout.InfiniteTimeSpan</c> means no
 ///     limit). A <c>WORDSENSE_MIRROR_URL</c> or <see cref="DownloadOptions.BaseUri"/> that is relative, not http or https,
 ///     or has a query, a fragment or user-info throws <see cref="DownloadConfigurationException"/> as well. No environment
-///     variable sets the store location (the downloaded copies live in <c>{StoreRoot}/{model-id}/v{version}/</c>, by default beneath
+///     variable sets the store location (the downloaded copies live in <c>{StoreRoot}/{base-model}/v{version}/</c>, by default beneath
 ///     the per-user local application data folder: <c>%LOCALAPPDATA%\DemaConsulting\WordSense\models</c> on Windows and
 ///     <c>~/.local/share/DemaConsulting/WordSense/models</c> on Linux and macOS); only <see cref="DownloadOptions.StoreRoot"/> changes it, and that type
 ///     requires a mirror base URI. Network notes: downloads use the default .NET proxy behavior (system proxy; the

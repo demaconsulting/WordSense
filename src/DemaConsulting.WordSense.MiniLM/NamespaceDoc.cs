@@ -87,7 +87,7 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     Mirrors: a <see cref="DownloadOptions"/> passed to <c>EnsureModelAsync</c> takes precedence over the
 ///     <c>WORDSENSE_MIRROR_*</c> variables; the mirror is tried before the release assets for each file that is missing
 ///     or invalid and is not contacted when every file is already present. The mirror holds the files at
-///     <c>{mirror}/{model-id}/v{version}/{file}</c>, where the model id is the <c>ModelId</c> of the model, for example
+///     <c>{mirror}/{base-model}/v{version}/{file}</c>, where the base model is the <c>ModelId</c> of the model, for example
 ///     <c>https://models.example.com/wordsense/all-MiniLM-L6-v2/v1/model-int8-dynamic.onnx</c>. Downloaded files are kept in
 ///     <c>{StoreRoot}/all-MiniLM-L6-v2/v1/</c>; the default store root is
 ///     <c>%LOCALAPPDATA%\DemaConsulting\WordSense\models</c> on Windows and
@@ -107,7 +107,7 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     <c>afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1</c>) and <c>vocab.txt</c> (SHA-256
 ///     <c>07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3</c>) from
 ///     <c>https://github.com/demaconsulting/WordSense/releases/download/models/all-MiniLM-L6-v2/v1/{file}</c>,
-///     put both directly in one directory (no <c>{model-id}</c> subfolder) and pass it to the constructor. Calling
+///     put both directly in one directory (no <c>{base-model}/v{version}</c> subfolder) and pass it to the constructor. Calling
 ///     <c>EnsureModelAsync</c> is optional but recommended: it verifies both files against these digests up front (no
 ///     network access happens); a
 ///     missing file or directory is a <see cref="ModelUnavailableException"/> and a wrong digest a

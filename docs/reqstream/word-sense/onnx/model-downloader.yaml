@@ -111,8 +111,8 @@ sections:
                 tags: [unit]
                 justification: |
                   A shared or application-relative store would let one user's download affect another and may not be
-                  writable; per-model and per-version folders keep models and exports apart, and a store of an older
-                  layout is never read.
+                  writable; per-model and per-version folders keep models and exports apart, and a file that lies
+                  directly in the folder of the base model is never read.
                 tests:
                   - ModelDownloader_DefaultStoreRoot_IsPerUser
                   - ModelDownloader_EnsureAsync_MirrorServes_UsesOnlyMirror
