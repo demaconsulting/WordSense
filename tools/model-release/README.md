@@ -30,14 +30,16 @@ Assets are added, never replaced or removed. The publish script enforces this:
 The setting "immutable releases" of the repository stays off: it would block adding a quantization to a published
 release.
 
-### Tag ruleset (set up by the repository owner)
+### Tag rulesets (set up by the repository owner)
 
-A tag ruleset on `models/**` stops anyone from moving or removing a model tag:
+Two tag rulesets cover `models/**`. Both target tags with the pattern `models/**`:
 
-- Target: tags, pattern `models/**`.
-- Rules: restrict updates, restrict deletions, restrict creation to the maintainers who publish models.
+- **Model tags: create**: restricts creation of a model tag. The repository admin role can bypass it, so the maintainers
+  who publish models can create the tag of a new release.
+- **Model tags: no move or delete**: restricts updates and deletions of a model tag. Nobody can bypass it, so a
+  published model tag can neither be moved to another commit nor removed.
 
-The ruleset is a repository setting, not a file of the pull request.
+The rulesets are repository settings, not files of the pull request.
 
 ## Publish a model
 
@@ -54,12 +56,17 @@ repository root. Call the script with `&` so that the file list is an array.
 
 Review the printed plan and the SHA-256 of every file, then run the same command without `-DryRun`. The script:
 
+0. records the latest release of the repository before anything is written;
 1. validates the tag, the asset names and the files, and checks every SHA-256 against `-VerifyAgainst`;
 2. stages the files with their `.sha256` sidecars in `-StageDir` (default: a temporary folder);
 3. looks the release up (read only) and decides per asset: upload, skip (identical) or stop (changed);
 4. creates the release as a draft without making it the latest, uploads the new assets and checks size, digest and state
    of every asset;
-5. publishes the draft (not as the latest release) and checks that the latest release is unchanged.
+5. publishes the draft (not as the latest release) and then watches the latest release for 30 seconds
+   (`-LatestWaitSeconds`). GitHub moves that pointer lazily, so a publish can make the new release the latest one even
+   with `--latest=false`, and a look right after the publish can still show the old value. When the pointer differs
+   from the recorded one, the script restores it with `gh release edit <recorded> --latest` and watches again; it fails
+   when it cannot restore it (after 3 attempts), or when the new release became the latest and there was none before.
 
 Adding a quantization to a published release is the same command with only the new files (here without `-VerifyAgainst`
 when the digest list does not hold the file yet):

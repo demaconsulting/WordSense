@@ -12,7 +12,8 @@
       * skips an asset whose published SHA-256 equals the local one,
       * stops before it uploads anything when a published asset of the same name has another SHA-256,
       * never replaces or removes an asset, and never removes a release.
-    A new release is created as a draft, filled, verified and published without becoming the latest release.
+    A new release is created as a draft, filled, verified and published without becoming the latest release. The latest
+    release is recorded first, watched after the publish and restored if it moved.
 
     Run it on a maintainer machine with an authenticated `gh` (write access to the repository). With -DryRun nothing is
     written to GitHub: every step is printed, the files are staged and hashed locally, and the read-only lookup of the
@@ -43,6 +44,13 @@
 .PARAMETER Repo
     The repository (default demaconsulting/WordSense).
 
+.PARAMETER LatestWaitSeconds
+    How long the latest-release pointer is watched after the publish (default 30). GitHub moves it lazily; whenever it
+    differs from the value recorded before the publish, it is restored with `gh release edit <recorded> --latest`.
+
+.PARAMETER LatestIntervalSeconds
+    The time between two looks at the pointer (default 3).
+
 .PARAMETER DryRun
     Prints the steps and stages the files, but writes nothing to GitHub.
 #>
@@ -56,6 +64,8 @@ param(
     [string]$NotesFile,
     [string]$StageDir,
     [string]$Repo = 'demaconsulting/WordSense',
+    [ValidateRange(0, 600)][int]$LatestWaitSeconds = 30,
+    [ValidateRange(0, 60)][int]$LatestIntervalSeconds = 3,
     [switch]$DryRun
 )
 
@@ -76,6 +86,47 @@ function Invoke-Write([string[]]$Arguments) {
 
     & gh @Arguments
     if ($LASTEXITCODE -ne 0) { throw "gh $($Arguments[0]) $($Arguments[1]) failed with exit code $LASTEXITCODE." }
+}
+
+# Reads the tag of the latest release of the repository (read only); null when there is none or gh cannot tell.
+function Get-LatestTag {
+    if ($null -eq (Get-Command gh -ErrorAction SilentlyContinue)) { return $null }
+    $answer = & gh api "repos/$Repo/releases/latest" --jq .tag_name 2>&1
+    if ($LASTEXITCODE -eq 0) { return ([string]($answer -join '')).Trim() }
+    if (($answer -join ' ') -match 'Not Found|404') { return $null }
+    if ($DryRun) { Write-Warning "The latest release could not be read: $($answer -join ' ')"; return $null }
+    throw "Reading the latest release failed: $($answer -join ' ')"
+}
+
+# Makes sure that the latest release is the one that was recorded before the publish. GitHub moves the pointer lazily
+# (a look right after the publish can still show the old value), so the pointer is watched for $LatestWaitSeconds and put
+# back with `gh release edit <recorded> --latest` as soon as it differs; the watch then starts again. A pointer that
+# cannot be put back is an error.
+function Confirm-Latest([string]$Recorded) {
+    if (-not $Recorded) { Write-Host 'There was no latest release before this publish; nothing to restore.' }
+    $restores = 0
+    $deadline = [DateTime]::UtcNow.AddSeconds($LatestWaitSeconds)
+    while ($true) {
+        $now = [string](Get-LatestTag)
+        if ($now -ne $Recorded) {
+            if (-not $Recorded) {
+                throw "The release $now became the latest release, and there was no latest release before: nothing to restore. Fix it by hand."
+            }
+
+            if ($restores -ge 3) { throw "The latest release is '$now', not '$Recorded', and it could not be restored after $restores attempts. Fix it by hand." }
+            Write-Warning "The latest release is '$now', not '$Recorded'. Restoring it."
+            $restores++
+            & gh release edit $Recorded --repo $Repo --latest
+            if ($LASTEXITCODE -ne 0) { throw "gh release edit $Recorded --latest failed with exit code $LASTEXITCODE; the latest release is '$now'. Fix it by hand." }
+            $deadline = [DateTime]::UtcNow.AddSeconds($LatestWaitSeconds)
+        }
+
+        if ([DateTime]::UtcNow -ge $deadline) { break }
+        Start-Sleep -Seconds $LatestIntervalSeconds
+    }
+
+    if ($Recorded) { Write-Host "The latest release is still $Recorded." }
+    elseif (-not (Get-LatestTag)) { Write-Host 'The repository still has no latest release.' }
 }
 
 # 1. Validate the tag, the asset names and the source files
@@ -143,6 +194,13 @@ if ($ghAvailable) {
 }
 elseif (-not $DryRun) { throw 'gh is not installed.' }
 else { Write-Warning 'gh is not installed; the release counts as absent.' }
+
+# The latest release as it is before anything is written; it is put back if this publish moves it
+$latestBefore = Get-LatestTag
+if ($ghAvailable) {
+    if ($latestBefore) { Write-Host "The latest release is $latestBefore." }
+    else { Write-Host 'The repository has no latest release.' }
+}
 
 # 4. Decide what to upload; a changed published asset stops everything before any write
 $toUpload = [System.Collections.Generic.List[string]]::new()
@@ -218,9 +276,8 @@ else {
         Invoke-Write @('release', 'edit', $Tag, '--repo', $Repo, '--draft=false', '--latest=false')
     }
 
-    $latest = & gh api "repos/$Repo/releases/latest" --jq .tag_name
-    if ($latest -eq $Tag) { throw "The release $Tag became the latest release." }
-    Write-Host "The latest release is still $latest."
+    # 9. GitHub moves the latest pointer lazily, so one early look proves nothing: watch it for a while and put it back
+    Confirm-Latest -Recorded $latestBefore
 }
 
 if ($DryRun) { Write-Host '[dry-run] nothing was written to GitHub.' }
