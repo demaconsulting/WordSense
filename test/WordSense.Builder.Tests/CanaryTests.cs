@@ -91,7 +91,7 @@ public sealed class CanaryTests : IDisposable
     public void WordSenseBuilder_Canary_Read_AnswerCountDiffersFromWordCount_Throws()
     {
         // Arrange
-        var path = _dir.Write("canary.tsv", "s1\ta b\tSense:x\n");
+        var path = _dir.Write("canary.tsv", "# encoder-sha256: ab12\ns1\ta b\tSense:x\n");
 
         // Act / Assert
         Assert.Throws<InvalidDataException>(() => Canary.Read(path));
@@ -188,7 +188,7 @@ public sealed class CanaryTests : IDisposable
     public async Task WordSenseBuilder_Program_Canary_MalformedToleranceHeader_ReturnsError()
     {
         // Arrange: a file with a negative tolerance; the model is not opened before the header is read
-        var file = _dir.Write("canary.tsv", "# model: minilm\n# arm-tolerance: -3\ns1\ta\tSense:x\n");
+        var file = _dir.Write("canary.tsv", "# model: minilm\n# encoder-sha256: ab12\n# arm-tolerance: -3\ns1\ta\tSense:x\n");
 
         // Act
         var result = await RunAsync("canary", "--check", file, "--repository", _dir.Root);
@@ -196,6 +196,31 @@ public sealed class CanaryTests : IDisposable
         // Assert
         Assert.Equal(1, result.Code);
         Assert.Contains("arm-tolerance", result.Error, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A canary file without the identity of its encoder file is invalid, whether it is read or checked: it would
+    ///     otherwise be accepted for any encoder.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_Canary_MissingEncoderIdentity_IsInvalid()
+    {
+        // Arrange: no header, and an empty one
+        var missing = _dir.Write("missing.tsv", "# model: minilm\ns1\ta\tSense:x\n");
+        var empty = _dir.Write("empty.tsv", "# model: minilm\n# encoder-sha256:\ns1\ta\tSense:x\n");
+
+        // Act / Assert: reading
+        Assert.Contains("encoder-sha256", Assert.Throws<InvalidDataException>(() => Canary.Read(missing)).Message, StringComparison.Ordinal);
+        Assert.Contains("encoder-sha256", Assert.Throws<InvalidDataException>(() => Canary.Read(empty)).Message, StringComparison.Ordinal);
+
+        // Act / Assert: the check fails before any model is opened
+        foreach (var file in new[] { missing, empty })
+        {
+            var result = await RunAsync("canary", "--check", file, "--repository", _dir.Root);
+            Assert.Equal(1, result.Code);
+            Assert.Contains("encoder-sha256", result.Error, StringComparison.Ordinal);
+        }
     }
 
     /// <summary>

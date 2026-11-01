@@ -174,7 +174,7 @@ internal static class Canary
     /// </summary>
     /// <param name="path">The file.</param>
     /// <returns>The header and the answered sentences.</returns>
-    /// <exception cref="InvalidDataException">Thrown when a line is malformed or the file has no sentence.</exception>
+    /// <exception cref="InvalidDataException">Thrown when a line is malformed, the file has no sentence or the header <c>encoder-sha256</c> is missing or empty.</exception>
     public static CanaryFile Read(string path)
     {
         ArgumentNullException.ThrowIfNull(path);
@@ -209,7 +209,15 @@ internal static class Canary
             entries.Add(new CanaryEntry(columns[0], words, columns[2..]));
         }
 
-        return entries.Count > 0 ? new CanaryFile(header, entries) : throw new InvalidDataException($"{name}: the file has no sentence.");
+        if (entries.Count == 0)
+        {
+            throw new InvalidDataException($"{name}: the file has no sentence.");
+        }
+
+        // The file is valid for one encoder file only; without its identity it would be accepted for any encoder
+        return header.TryGetValue("encoder-sha256", out var sha) && sha.Length > 0
+            ? new CanaryFile(header, entries)
+            : throw new InvalidDataException($"{name}: the header 'encoder-sha256' is missing or empty, so the file does not say which encoder file it is for; write it again with 'canary --write'.");
     }
 
     /// <summary>

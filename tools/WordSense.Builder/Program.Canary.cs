@@ -83,7 +83,8 @@ internal static partial class Program
         using var model = ModelCatalog.Open(info, repository);
         await ModelCatalog.EnsureAsync(model, cancellationToken).ConfigureAwait(false);
         var sha = ModelTrainer.EncoderShaOf(ModelCatalog.EncoderOf(model).Spec);
-        if (canary.Header.TryGetValue("encoder-sha256", out var written) && !string.Equals(written, sha, StringComparison.OrdinalIgnoreCase))
+        var written = canary.Header["encoder-sha256"];
+        if (!string.Equals(written, sha, StringComparison.OrdinalIgnoreCase))
         {
             throw new InvalidDataException($"The canary file was written for the encoder file {written}, not for {sha}; write it again with 'canary --write'.");
         }

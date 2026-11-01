@@ -95,10 +95,12 @@ Adding a quantization to a published release is the same command with only the n
 ```
 
 `-UpdateBody` writes the body of the release again from the assets it has after the run; without `-File` it changes
-nothing but the body. The same switch adds the documents to a release that was published without them: `-File
+nothing but the body, and a draft stays a draft (a draft is published only by a run that creates the release or uploads
+assets). The same switch adds the documents to a release that was published without them: `-File
 'README.md=...', 'model-int8-dynamic.md=...' -UpdateBody`. The body is the only thing of a release that is not
 append only. `-NotesFile` gives a body of your own. `tools/model-release/test-publish-model.ps1` tests the documentation
-rule against a fake `gh` (`pwsh tools/model-release/test-publish-model.ps1`; nothing is written to GitHub).
+rule and the draft rule against a fake `gh` (`pwsh tools/model-release/test-publish-model.ps1`; nothing is written to
+GitHub).
 
 After the release exists, run `dotnet run --project tools/WordSense.Builder -c Release -- fetch-models` once: the library
 downloader checks the real URLs against the pins in the code. A new file also needs its digest in the pins of the package

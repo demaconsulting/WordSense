@@ -586,7 +586,8 @@ sections:
               model to a fixed list of sentences with the SHA-256 of its encoder file (--write), and checks the answers
               of the machine it runs on against such a file (--check): it shall list every differing word and fail when
               more words differ than the architecture allows (none on x86 and x86-64, at most the tolerance on ARM, no
-              verdict on another architecture), and shall refuse a file written for another encoder file, a file
+              verdict on another architecture), and shall refuse a file without the identity of its encoder file, a
+              file written for another encoder file, a file
               whose arm-tolerance header is not a number of words, and a negative tolerance given as an option.
             tags: [unit]
             justification: |
@@ -602,6 +603,7 @@ sections:
               - WordSenseBuilder_Canary_Judge_ByArchitecture
               - WordSenseBuilder_Canary_ResolveArmTolerance_OptionHeaderDefault_AndMalformedHeader_Throws
               - WordSenseBuilder_Program_Canary_MalformedToleranceHeader_ReturnsError
+              - WordSenseBuilder_Canary_MissingEncoderIdentity_IsInvalid
               - WordSenseBuilder_Canary_AnswerAsync_BasicModel_AnswersEveryWordWithLevelAndKey
               - WordSenseBuilder_Program_Canary_WriteThenCheck_PassesOnTheSameMachine
               - WordSenseBuilder_Program_Canary_InvalidOptions_ReturnsUsageError

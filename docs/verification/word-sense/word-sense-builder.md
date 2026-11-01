@@ -833,6 +833,9 @@ use no model file.
 - **Tolerance header** (`WordSenseBuilder_Canary_ResolveArmTolerance_*`): the option wins over the header and the header
   over the default of 40; a header that is negative, empty or not a number is an `InvalidDataException`, also when the
   option overrides it, and a negative option is refused.
+- **Encoder identity** (`WordSenseBuilder_Canary_MissingEncoderIdentity_IsInvalid`): a file without the header
+  `encoder-sha256`, or with an empty one, is an `InvalidDataException` when it is read and an error of `--check`;
+  `--write` always writes the header (`..._WriteThenCheck_*`).
 - **Command** (`WordSenseBuilder_Program_Canary_WriteThenCheck_PassesOnTheSameMachine`,
   `..._InvalidOptions_ReturnsUsageError`, `WordSenseBuilder_Canary_AnswerAsync_BasicModel_*`): with the MiniLM model a
   write followed by a check on the same machine passes; a changed answer fails the check and is listed; a file of

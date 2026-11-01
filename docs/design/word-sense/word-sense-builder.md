@@ -367,8 +367,8 @@ instead of `--model`.
   `--check` answers the same sentences on this machine and lists every word whose answer differs. It exits with 1 when
   more words differ than the architecture allows: none on x86 and x86-64, at most the tolerance on ARM (the option,
   else the header, else 40; a negative option or a header that is not a number that is not negative is an error);
-  another architecture is not judged. A file
-  written for another encoder file is refused, so a
+  another architecture is not judged. A file without the header `encoder-sha256` (`--write` always writes it) is
+  invalid when it is read, and a file written for another encoder file is refused, so a
   retrained model needs a new file.
 - `open-counts [--corpus DIR] [--output DIR]`: counts the tag statistics of the training split of the representative
   open corpus (every token, whatever its consensus status) and writes the count files of `corpus/open/counts`

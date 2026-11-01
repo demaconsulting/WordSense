@@ -20,7 +20,8 @@
       * stops before it uploads anything when a published asset of the same name has another SHA-256,
       * never replaces or removes an asset, and never removes a release.
     The body of an existing release is not an asset: with -UpdateBody the script writes the summary again from the
-    published assets (or from -NotesFile) and changes nothing else.
+    published assets (or from -NotesFile) and changes nothing else: a draft stays a draft, and a published release stays
+    published. A draft is published only by a run that created the release or uploaded assets, or that has no -UpdateBody.
     A new release is created as a draft, filled, verified and published without becoming the latest release. The latest
     release is recorded first, watched after the publish and restored if it moved.
 
@@ -339,8 +340,10 @@ else {
         }
     }
 
-    # 8. Publish a draft, without making it the latest release
-    if ($after.isDraft) {
+    # 8. Publish a draft, without making it the latest release; a run that changes only the body (-UpdateBody with
+    # nothing uploaded and no release created) leaves the draft or published state as it is
+    $changedAssets = (-not $remote) -or $toUpload.Count -gt 0 -or -not $UpdateBody
+    if ($after.isDraft -and $changedAssets) {
         Write-Step 'Publishing the release (not the latest)'
         Invoke-Write @('release', 'edit', $Tag, '--repo', $Repo, '--draft=false', '--latest=false')
     }
