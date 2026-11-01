@@ -168,8 +168,8 @@ public class ReadmeSampleTests
         // The alternatives compile as written: both classes have a parameterless constructor
         using var miniLM = new MiniLMWordSenseModel();
         using var bertBaseCased = new DemaConsulting.WordSense.BertBaseCased.BertBaseCasedWordSenseModel();
-        Assert.Equal("all-MiniLM-L6-v2-int8", miniLM.ModelId);
-        Assert.Equal("bert-base-cased-int8", bertBaseCased.ModelId);
+        Assert.Equal("all-MiniLM-L6-v2", miniLM.ModelId);
+        Assert.Equal("bert-base-cased", bertBaseCased.ModelId);
     }
 
     /// <summary>
@@ -185,7 +185,7 @@ public class ReadmeSampleTests
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public Task WordSense_Readme_MiniLMOutput_MatchesReadme() => CheckOutputAsync("minilm", "minilm", "all-MiniLM-L6-v2-int8", EncoderConfidenceTolerance, true);
+    public Task WordSense_Readme_MiniLMOutput_MatchesReadme() => CheckOutputAsync("minilm", "minilm", "all-MiniLM-L6-v2", EncoderConfidenceTolerance, true);
 
     /// <summary>
     ///     The documented BertBaseCased output of the user guide equals the output of the sample run against the real
@@ -193,7 +193,7 @@ public class ReadmeSampleTests
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public Task WordSense_Readme_BertBaseCasedOutput_MatchesReadme() => CheckOutputAsync("bertbasecased", "bertbasecased", "bert-base-cased-int8", EncoderConfidenceTolerance, true);
+    public Task WordSense_Readme_BertBaseCasedOutput_MatchesReadme() => CheckOutputAsync("bertbasecased", "bertbasecased", "bert-base-cased", EncoderConfidenceTolerance, true);
 
     /// <summary>
     ///     Compares the documented output block of a sample with the output of the sample run.

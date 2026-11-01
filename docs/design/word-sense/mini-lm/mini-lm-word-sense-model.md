@@ -13,8 +13,8 @@ A sealed public class that implements `IDownloadableWordSenseModel` and holds on
 the constructor from two models it creates and
 owns: an internal `MiniLMEncoderModel` (the primary model, a sealed class deriving from `OnnxWordSenseModel`) and a
 `BasicWordSenseModel` (the fallback model). The two are also kept in the internal properties `Encoder` and `Fallback`
-for the tests. The encoder model's description: model id
-`all-MiniLM-L6-v2-int8`; files `model_int8.onnx` (about 21.9 MiB; 22 MiB with `vocab.txt`) and `vocab.txt`, each with a
+for the tests. The encoder model's description: base model
+`all-MiniLM-L6-v2`, version 1; files `model-int8-dynamic.onnx` (about 21.9 MiB; 22 MiB with `vocab.txt`) and `vocab.txt`, each with a
 pinned SHA-256;
 lower-casing (uncased) tokenizer; hidden size 384; embedded weights `weights.bin` (fine-sense classifiers, form
 choosers and per-lemma fine and group thresholds calibrated for this encoder) trained at sequence length 128; embedded

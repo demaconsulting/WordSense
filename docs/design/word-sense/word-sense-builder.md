@@ -435,9 +435,9 @@ for at least two of its senses to get weights; a lemma with fewer is not an erro
    that exists, belongs to the lemma of the row and has the part of speech of the row (an error), and its braced target
    word is analyzed by the lexicon as that lemma and part of speech (a warning that is reported and still trains); the
    anchors and the holdout shall be disjoint (by normalized sentence).
-2. Open the model on the verified files of `model/<model-id>/`, and open the embedding cache (see below) unless
+2. Open the model on the verified files of `model/<base-model>/v<version>/` (put there by `fetch-models`), and open the embedding cache (see below) unless
    `--no-cache` is given. Take the global mean from the existing weights blob of the model when it exists, reads, names
-   the same model id and is not overridden by `--recompute-mean` (the *frozen mean*); the reason is printed whenever the
+   the same weights identity (`WeightsId`) and is not overridden by `--recompute-mean` (the *frozen mean*); the reason is printed whenever the
    mean is computed instead.
 3. Get the pooled vector of every anchor sentence (the hidden states of the target word, mean over its word pieces):
    from the cache when present, otherwise from the encoder. Progress lines report the cache hits, the sentences
@@ -636,7 +636,7 @@ changes only the weights of that lemma. Use `--recompute-mean` after an encoder 
 the anchors have changed so much that the old mean no longer centers them; the whole blob then changes.
 
 **Embedding cache (`EmbeddingCache`, `CachingEncoder`).** The encoder is deterministic for a given set of model files,
-so its output is cached per model in `<cache>/<model-id>/embeddings.bin` (default cache folder
+so its output is cached per model in `<cache>/<weights-id>/embeddings.bin` (default cache folder
 `<repository>/.cache/embeddings`, ignored by git). An entry is keyed by the SHA-256 of the exact word sequence and the
 target word index, and the file is valid only for the digest of the model's ONNX file and vocabulary (their SHA-256 as
 pinned in the model specification and verified when the model is opened), the casing and the version of ONNX Runtime
@@ -653,7 +653,7 @@ the pooling or tokenization that keeps the model files, delete the cache folder 
 **Fit cache (`FitCache`).** Fitting the classifiers is the longest step once the encoding is cached (about 1.5 minutes
 for the 775 lemmas of MiniLM and 2 minutes for BertBaseCased with the kernel solver; the feature-space solver needed 77
 seconds for MiniLM and 11.5 minutes for the 768-dimensional BertBaseCased on a measurement of only 20 lemmas), and the
-fit of a lemma depends on that lemma alone. `<cache>/<model-id>/fits.bin`
+fit of a lemma depends on that lemma alone. `<cache>/<weights-id>/fits.bin`
 therefore stores the fitted weights, biases and thresholds of each lemma, keyed by the SHA-256 of the training settings
 (the threshold settings, the precision target, the solver and the seed included), the lemma, its sense ids, the label of
 each

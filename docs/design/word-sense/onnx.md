@@ -354,14 +354,17 @@ because it keeps the two levels consistent without a second set of rows.
 internal types (`ModelSpec`, `ModelFile`) are visible only to the in-repo packages, the builder and the tests. It is
 not a public extension point. A contributor adds a model as follows:
 
-1. Put the encoder files in `model/<model-id>/` (Git LFS) with `SHA256SUMS`, a `LICENSE` (the text of the license of the
-   model, a plain Git file) and a README that records the source, license, the changes and the preparation steps (for
-   example `tools/model-prep/make-bert-encoder.py`).
+1. Publish the encoder files as the assets of the GitHub release `models/<base-model>/v<version>` with
+   `tools/model-release/publish-model.ps1` (append only: a quantization is added to the release, never replaced; the
+   version changes when the full-precision graph changes). Keep `model/<base-model>/` in the repository: `SHA256SUMS`, a
+   `LICENSE` (the text of the license of the model) and a README that records the source, license, the changes and the
+   preparation steps (for example `tools/model-prep/make-bert-encoder.py`).
 2. Create a package `DemaConsulting.WordSense.<Name>` that references `DemaConsulting.WordSense.Onnx` and
    `DemaConsulting.WordSense` (for the Basic model), with an internal sealed encoder class that derives from
    `OnnxWordSenseModel` and
-   passes a `ModelSpec` (model id, each `ModelFile` with its SHA-256 and
-   exact length, ONNX and vocabulary file names, whether the tokenizer lower-cases, the weights assembly and resource
+   passes a `ModelSpec` (base model, version, each `ModelFile` with its SHA-256 and
+   exact length, ONNX file name `model-<quantization>.onnx` and vocabulary file name, whether the tokenizer lower-cases,
+   the weights assembly and resource
    name, the hidden size, the resource name of the part-of-speech head and whether the model uses it, and whether it
    uses the tense head) and a default
    maximum sequence length of 128,

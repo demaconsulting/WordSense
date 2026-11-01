@@ -9,14 +9,30 @@ sections:
           - title: ModelDownloader Requirements
             requirements:
               - id: WordSense-Onnx-ModelDownloader-Order
-                title: The downloader shall try the mirror first, when there is one, and then the GitHub LFS copy.
+                title: The downloader shall try the mirror first, when there is one, and then the GitHub release asset of the model.
                 tags: [unit]
                 justification: |
-                  A user-provided mirror must take precedence, and the public repository copy is the fallback.
+                  A user-provided mirror must take precedence, and the release assets of the repository are the fallback.
                 tests:
                   - ModelDownloader_EnsureAsync_MirrorServes_UsesOnlyMirror
-                  - ModelDownloader_EnsureAsync_MirrorFails_FallsBackToGitHub
-                  - ModelDownloader_EnsureModel_NoMirror_UsesGitHubLfs
+                  - ModelDownloader_EnsureAsync_MirrorFails_FallsBackToRelease
+                  - ModelDownloader_EnsureModel_NoMirror_UsesRelease
+
+              - id: WordSense-Onnx-ModelDownloader-ReleaseSource
+                title: >-
+                  The downloader shall request a release asset at the release location followed by `models`, the base
+                  model, `v` and the version, and the file name, with each segment escaped and the slashes of the tag
+                  kept.
+                tags: [unit]
+                justification: |
+                  The release tag models/{base-model}/v{version} and the asset names are the published contract of the
+                  model files; a wrong URL would never find them.
+                tests:
+                  - ModelDownloader_BuildSources_MirrorThenRelease_UsesDocumentedLayout
+                  - ModelDownloader_BuildSources_NoMirror_OnlyRelease
+                  - ModelDownloader_BuildSources_Release_KeepsSlashesAndEscapesSegments
+                  - ModelDownloader_ModelSpec_DerivesQuantizationTagAndFolder
+                  - ModelDownloader_EnsureModel_ReleaseRedirectsToCdn_SendsNoAuthorization
 
               - id: WordSense-Onnx-ModelDownloader-Fallthrough
                 title: >-
@@ -26,13 +42,27 @@ sections:
                 justification: |
                   A blocked or tampered source must not stop the download when another source works.
                 tests:
-                  - ModelDownloader_EnsureAsync_MirrorFails_FallsBackToGitHub
+                  - ModelDownloader_EnsureAsync_MirrorFails_FallsBackToRelease
                   - ModelDownloader_EnsureModel_Timeout_FallsThrough
                   - ModelDownloader_EnsureModel_BodyStalls_TimesOutFallsThroughAndLeavesNoPartialFile
                   - ModelDownloader_EnsureModel_BodyCutShort_FallsThroughAndLeavesNoPartialFile
                   - ModelDownloader_EnsureModel_BodyLargerThanPinnedSize_IsRefused
                   - ModelDownloader_EnsureModel_RedirectToNonHttpScheme_IsRefusedAndFallsThrough
                   - ModelDownloader_EnsureAsync_HashMismatch_FallsThroughAndKeepsNothingBad
+
+              - id: WordSense-Onnx-ModelDownloader-Retry
+                title: >-
+                  The downloader shall retry a transient failure of a source once, after the wait that the server asks
+                  for (at most 10 seconds) or else 2 seconds, and shall not retry a missing file or any other failure.
+                tags: [unit]
+                justification: |
+                  A release asset has no further fallback, so one throttled or failing response must not fail the
+                  download; a missing file or a wrong digest is not transient.
+                tests:
+                  - ModelDownloader_EnsureAsync_Transient503_IsRetriedOnce
+                  - ModelDownloader_EnsureAsync_Persistent503_IsRetriedOnlyOnce
+                  - ModelDownloader_EnsureAsync_NotFound_IsNotRetried
+                  - ModelDownloader_EnsureAsync_RetryAfter_IsHonoredUpToTheCap
 
               - id: WordSense-Onnx-ModelDownloader-Integrity
                 title: The downloader shall verify the SHA-256 digest of each download and of each existing file.
@@ -41,6 +71,7 @@ sections:
                   Only verified content may end up in the model store.
                 tests:
                   - ModelDownloader_EnsureAsync_HashMismatch_FallsThroughAndKeepsNothingBad
+                  - ModelDownloader_EnsureAsync_EverySourceHashMismatch_ReportsEachSource
                   - ModelDownloader_EnsureAsync_PresentAndCorrupt_ReusesValidRedownloadsCorrupt
                   - ModelDownloader_EnsureModel_CorruptCacheAndAllSourcesFail_LeavesFileInPlace
 
@@ -72,22 +103,33 @@ sections:
               - id: WordSense-Onnx-ModelDownloader-StoreRoot
                 title: >-
                   The downloader shall by default store models in a per-user location, beneath a folder named by the
-                  model identifier, unless the caller supplies a store location.
+                  base model and a version folder (`{base-model}/v{version}`), unless the caller supplies a store
+                  location.
                 tags: [unit]
                 justification: |
                   A shared or application-relative store would let one user's download affect another and may not be
-                  writable; per-model folders keep models apart.
+                  writable; per-model and per-version folders keep models and exports apart, and a store of an older
+                  layout is never read.
                 tests:
                   - ModelDownloader_DefaultStoreRoot_IsPerUser
                   - ModelDownloader_EnsureAsync_MirrorServes_UsesOnlyMirror
+                  - ModelDownloader_EnsureAsync_StoreFolder_IncludesVersion
+                  - ModelDownloader_EnsureAsync_OldStoreLayout_IsIgnored
+                  - ModelDownloader_EnsureModel_StoreRootWithoutOptions_IsUsed
 
               - id: WordSense-Onnx-ModelDownloader-AllFail
-                title: The downloader shall report every failed attempt when all sources fail.
+                title: >-
+                  The downloader shall report every failed attempt when all sources fail, naming each source with its
+                  request path and never a query string or a credential.
                 tags: [unit]
                 justification: |
-                  Users need the full list of failures to diagnose network or mirror problems.
+                  Users need the full list of failures to diagnose network or mirror problems, and a signed redirect
+                  query or a token must not reach a log.
                 tests:
                   - ModelDownloader_EnsureAsync_AllSourcesFail_Throws
+                  - ModelDownloader_EnsureAsync_Release404_FailsListingMirrorAndRelease
+                  - ModelDownloader_EnsureAsync_NoMirrorRelease404_ListsOnlyTheRelease
+                  - ModelDownloader_EnsureModel_ReleaseFails_ErrorOmitsRedirectQuery
 
               - id: WordSense-Onnx-ModelDownloader-Present
                 title: The downloader shall make no request for files that are already present and valid.
@@ -120,26 +162,29 @@ sections:
 
               - id: WordSense-Onnx-ModelDownloader-MirrorLayout
                 title: >-
-                  The downloader shall request each file from a mirror at the mirror address followed by the model
-                  identifier and the file name.
+                  The downloader shall request each file from a mirror at the mirror address followed by the base
+                  model, the version folder and the file name (`{mirror}/{base-model}/v{version}/{file}`).
                 tags: [unit]
                 justification: |
-                  A fixed layout lets users populate a mirror by copying the model folders from the repository.
+                  A fixed layout lets users populate a mirror by copying the store folders of the models.
                 tests:
                   - ModelDownloader_EnsureAsync_MirrorServes_UsesOnlyMirror
-                  - ModelDownloader_BuildSources_MirrorThenGitHub_UsesDocumentedLayout
+                  - ModelDownloader_BuildSources_MirrorThenRelease_UsesDocumentedLayout
 
               - id: WordSense-Onnx-ModelDownloader-Credentials
-                title: The downloader shall send mirror credentials only to the mirror's own origin.
+                title: >-
+                  The downloader shall send mirror credentials only to the mirror's own origin, never to the release
+                  host or to the host that a release redirects to.
                 tags: [unit]
                 justification: |
-                  Public hosts, and hosts a mirror redirects to, must never receive the user's credentials.
+                  Public hosts, and hosts a mirror or a release redirects to, must never receive the user's credentials.
                 tests:
                   - ModelDownloader_EnsureAsync_BearerToken_SentOnlyToMirror
                   - ModelDownloader_EnsureModel_BasicCredentials_SentToMirror
                   - ModelDownloader_EnsureModel_MirrorRedirectsToOtherOrigin_SendsNoCredentialsThere
                   - ModelDownloader_EnsureModel_MirrorRedirectsWithinOrigin_KeepsCredentials
                   - ModelDownloader_EnsureModel_MirrorRedirectsToDowngradedScheme_SendsNoCredentialsThere
+                  - ModelDownloader_EnsureModel_ReleaseRedirectsToCdn_SendsNoAuthorization
                   - ModelDownloader_EnsureModel_RedirectLoop_FallsThrough
 
               - id: WordSense-Onnx-ModelDownloader-Options

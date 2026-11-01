@@ -183,6 +183,11 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
     internal PublicSources? PublicSources { get; set; }
 
     /// <summary>
+    ///     Gets or sets the wait before the one retry of a transient download failure, or null for the default; set by tests.
+    /// </summary>
+    internal TimeSpan? RetryDelay { get; set; }
+
+    /// <summary>
     ///     Gets or sets the environment reader used to find a mirror, or null for the process environment; set by tests.
     /// </summary>
     internal Func<string, string?>? GetEnvironmentVariable { get; set; }
@@ -757,7 +762,7 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel, IPartOfS
         {
             try
             {
-                directory = await ModelDownloader.EnsureAsync(_spec, options, _disposeToken, HttpClient, PublicSources, GetEnvironmentVariable).ConfigureAwait(false);
+                directory = await ModelDownloader.EnsureAsync(_spec, options, _disposeToken, HttpClient, PublicSources, GetEnvironmentVariable, null, RetryDelay).ConfigureAwait(false);
             }
             catch (Exception ex) when (_disposeToken.IsCancellationRequested && ex is not OperationCanceledException)
             {

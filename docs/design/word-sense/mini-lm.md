@@ -23,9 +23,10 @@ of the core package, `BasicWordSenseModel` (also of the core package) and the we
 ### Design
 
 The package has an internal sealed class `MiniLMEncoderModel` that derives from `OnnxWordSenseModel` and holds a static
-model description (model id `all-MiniLM-L6-v2-int8`; files `model_int8.onnx` and
-`vocab.txt` with their SHA-256 digests; ONNX file `model_int8.onnx`; vocabulary `vocab.txt`; lower-casing tokenizer;
-the embedded weights resource of this assembly; hidden size 384; the embedded part-of-speech head resource). It adds no
+model description (base model `all-MiniLM-L6-v2`, version 1; files `model-int8-dynamic.onnx` and
+`vocab.txt` with their SHA-256 digests; ONNX file `model-int8-dynamic.onnx`; vocabulary `vocab.txt`; lower-casing tokenizer;
+the embedded weights resource of this assembly; hidden size 384; the embedded part-of-speech head resource; the
+identity `all-MiniLM-L6-v2-int8` that the embedded weights and head record, `BlobModelId`). It adds no
 members and no logic. The public
 `MiniLMWordSenseModel` creates an encoder model and a `BasicWordSenseModel` and wraps them in a
 `FallbackWordSenseModel` (the encoder is the primary model and Basic the fallback), to which it delegates
@@ -47,7 +48,8 @@ sense usage prior derived from the WordNet 3.0 sense counts (the builder adds it
 reproduces the Princeton WordNet 3.0 license, gives the Open English WordNet 2025 (CC BY 4.0) attribution for the sense
 ids that the weights hold (the package license expression is `MIT AND CC-BY-4.0`), states that the weights are
 statistical summaries of the project corpora (CC0 rows and annotations over public-domain and CC0 sentences) of
-this project, and records that the encoder model files are not in the package: they are downloaded from this repository
-(`model/all-MiniLM-L6-v2-int8/`, Apache License 2.0, with the license text in that folder) and are the int8 ONNX export
+this project, and records that the encoder model files are not in the package: they are downloaded from the assets of the
+GitHub release `models/all-MiniLM-L6-v2/v1` of this repository (provenance in `model/all-MiniLM-L6-v2/`, Apache License
+2.0, with the license text in that folder and as a release asset) and are the int8 ONNX export
 of `sentence-transformers/all-MiniLM-L6-v2`. The notice also describes the embedded part-of-speech head: its content,
 the open corpus it is trained on and the license position that covers the tags of that corpus.

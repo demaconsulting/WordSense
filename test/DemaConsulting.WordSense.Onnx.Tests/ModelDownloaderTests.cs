@@ -5,7 +5,7 @@ using System.Text;
 namespace DemaConsulting.WordSense.Onnx.Tests;
 
 /// <summary>
-///     Tests for <see cref="ModelDownloader"/>, using synthetic model files and only a loopback server.
+///     Tests for <see cref="ModelDownloader"/>, using synthetic model files and only a loopback server or a stub transport.
 /// </summary>
 public sealed class ModelDownloaderTests : IDisposable
 {
@@ -18,6 +18,7 @@ public sealed class ModelDownloaderTests : IDisposable
 
     private static readonly ModelSpec Spec = new(
         ModelId,
+        1,
         [new ModelFile("model.onnx", Sha(OnnxText)), new ModelFile("vocab.txt", Sha(VocabText))],
         "model.onnx",
         "vocab.txt",
@@ -42,19 +43,39 @@ public sealed class ModelDownloaderTests : IDisposable
 
     private static string Sha(string text) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(text))).ToLowerInvariant();
 
-    private static Task Serve(HttpListenerContext context) => LocalServer.SendAsync(
-        context,
-        200,
-        Path.GetFileName(context.Request.Url!.AbsolutePath) == "model.onnx" ? OnnxText : VocabText);
+    private static string TextOf(string file) => file == "model.onnx" ? OnnxText : VocabText;
+
+    private static Task Serve(HttpListenerContext context) => LocalServer.SendAsync(context, 200, TextOf(Path.GetFileName(context.Request.Url!.AbsolutePath)));
 
     private static bool IsMirror(HttpListenerContext context) => context.Request.Url!.AbsolutePath.StartsWith("/mirror/", StringComparison.Ordinal);
 
     private DownloadOptions Mirror(LocalServer server, string? bearer = null) =>
         new(new Uri(server.BaseUri, "/mirror/"), BearerToken: bearer, StoreRoot: _store, Timeout: TimeSpan.FromSeconds(30));
 
-    private static Uri Lfs(LocalServer server) => new(server.BaseUri, "/lfs/");
+    /// <summary>
+    ///     The release location on the loopback server: no test may reach the real GitHub.
+    /// </summary>
+    /// <param name="server">The loopback server.</param>
+    /// <returns>The public sources of the test.</returns>
+    private static PublicSources Public(LocalServer server) => new(new Uri(server.BaseUri, "/release/"));
 
     private static string[] Paths(LocalServer server) => [.. server.Requests.Select(r => r.Path)];
+
+    /// <summary>
+    ///     Runs the downloader with the test settings: no retry wait and no environment.
+    /// </summary>
+    private static Task<string> Ensure(
+        ModelSpec spec,
+        DownloadOptions? options,
+        PublicSources sources,
+        CancellationToken cancellationToken,
+        HttpClient? client = null,
+        Func<string, string?>? environment = null,
+        string? storeRoot = null) =>
+        ModelDownloader.EnsureAsync(spec, options, cancellationToken, client, sources, environment ?? (_ => null), storeRoot, TimeSpan.Zero);
+
+    private static Task<string> Ensure(ModelSpec spec, DownloadOptions? options, LocalServer server, Func<string, string?>? environment = null) =>
+        Ensure(spec, options, Public(server), TestContext.Current.CancellationToken, null, environment);
 
     /// <summary>
     ///     A mirror that serves valid files is the only source contacted and the files land in the model folder.
@@ -65,25 +86,42 @@ public sealed class ModelDownloaderTests : IDisposable
     {
         using var server = new LocalServer(Serve);
 
-        var directory = await ModelDownloader.EnsureAsync(Spec, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+        var directory = await Ensure(Spec, Mirror(server), server);
 
-        Assert.Equal(Path.Join(_store, ModelId), directory);
-        Assert.Equal(["/mirror/test-model/model.onnx", "/mirror/test-model/vocab.txt"], Paths(server));
+        Assert.Equal(Path.Join(_store, ModelId, "v1"), directory);
+        Assert.Equal(["/mirror/test-model/v1/model.onnx", "/mirror/test-model/v1/vocab.txt"], Paths(server));
         ModelDownloader.Verify(Spec, directory);
     }
 
     /// <summary>
-    ///     When the mirror fails, the GitHub copy is used for the same file.
+    ///     The model folder includes the version, in the store and on the mirror.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task ModelDownloader_EnsureAsync_MirrorFails_FallsBackToGitHub()
+    public async Task ModelDownloader_EnsureAsync_StoreFolder_IncludesVersion()
     {
-        using var server = new LocalServer(c => IsMirror(c) ? LocalServer.SendAsync(c, 503, "down") : Serve(c));
+        using var server = new LocalServer(Serve);
+        var second = Spec with { Version = 2 };
 
-        var directory = await ModelDownloader.EnsureAsync(Spec, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+        var directory = await Ensure(second, Mirror(server), server);
 
-        Assert.Contains("/lfs/main/model/test-model/model.onnx", Paths(server));
+        Assert.Equal(Path.Join(_store, ModelId, "v2"), directory);
+        Assert.Equal(["/mirror/test-model/v2/model.onnx", "/mirror/test-model/v2/vocab.txt"], Paths(server));
+        Assert.Equal("test-model/v2", second.StoreFolder);
+    }
+
+    /// <summary>
+    ///     When the mirror fails, the release asset is used for the same file.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task ModelDownloader_EnsureAsync_MirrorFails_FallsBackToRelease()
+    {
+        using var server = new LocalServer(c => IsMirror(c) ? LocalServer.SendAsync(c, 404, "no") : Serve(c));
+
+        var directory = await Ensure(Spec, Mirror(server), server);
+
+        Assert.Contains("/release/models/test-model/v1/model.onnx", Paths(server));
         ModelDownloader.Verify(Spec, directory);
     }
 
@@ -96,14 +134,31 @@ public sealed class ModelDownloaderTests : IDisposable
     {
         using var server = new LocalServer(c => IsMirror(c) ? LocalServer.SendAsync(c, 200, "not the model") : Serve(c));
 
-        var directory = await ModelDownloader.EnsureAsync(Spec, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+        var directory = await Ensure(Spec, Mirror(server), server);
 
         ModelDownloader.Verify(Spec, directory);
         Assert.Empty(Directory.GetFiles(directory, "*.part"));
     }
 
     /// <summary>
-    ///     When every source fails, the error lists the attempts.
+    ///     When the release serves wrong bytes too, the failure reports a mismatch for every source, with its path.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task ModelDownloader_EnsureAsync_EverySourceHashMismatch_ReportsEachSource()
+    {
+        using var server = new LocalServer(c => LocalServer.SendAsync(c, 200, "not the model"));
+
+        var ex = await Assert.ThrowsAsync<HttpRequestException>(() => Ensure(Spec, Mirror(server), server));
+
+        Assert.Equal(2, ex.Message.Split("SHA-256 mismatch").Length - 1);
+        Assert.Contains("mirror (", ex.Message, StringComparison.Ordinal);
+        Assert.Contains("github-release (", ex.Message, StringComparison.Ordinal);
+        Assert.Empty(Directory.GetFiles(Path.Join(_store, ModelId, "v1")));
+    }
+
+    /// <summary>
+    ///     When every source fails, the error lists each source with its request path and never a query or a token.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
@@ -111,11 +166,131 @@ public sealed class ModelDownloaderTests : IDisposable
     {
         using var server = new LocalServer(c => LocalServer.SendAsync(c, 500, "broken"));
 
-        var ex = await Assert.ThrowsAsync<HttpRequestException>(
-            () => ModelDownloader.EnsureAsync(Spec, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null));
+        var ex = await Assert.ThrowsAsync<HttpRequestException>(() => Ensure(Spec, Mirror(server, "tok-secret"), server));
 
-        Assert.Contains("mirror", ex.Message, StringComparison.Ordinal);
-        Assert.Contains("github-lfs", ex.Message, StringComparison.Ordinal);
+        Assert.Contains($"mirror ({new Uri(server.BaseUri, "/mirror/test-model/v1/model.onnx")})", ex.Message, StringComparison.Ordinal);
+        Assert.Contains($"github-release ({new Uri(server.BaseUri, "/release/models/test-model/v1/model.onnx")})", ex.Message, StringComparison.Ordinal);
+        Assert.Contains("test-model", ex.Message, StringComparison.Ordinal);
+        Assert.DoesNotContain("tok-secret", ex.Message, StringComparison.Ordinal);
+        Assert.DoesNotContain("?", ex.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A release without the asset fails after the mirror and the release were tried, and a missing file is not retried.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task ModelDownloader_EnsureAsync_Release404_FailsListingMirrorAndRelease()
+    {
+        using var server = new LocalServer(c => LocalServer.SendAsync(c, 404, "no"));
+
+        var ex = await Assert.ThrowsAsync<HttpRequestException>(() => Ensure(Spec, Mirror(server), server));
+
+        Assert.Contains("mirror (", ex.Message, StringComparison.Ordinal);
+        Assert.Contains("github-release (", ex.Message, StringComparison.Ordinal);
+        Assert.Contains("404", ex.Message, StringComparison.Ordinal);
+        Assert.Equal(["/mirror/test-model/v1/model.onnx", "/release/models/test-model/v1/model.onnx"], Paths(server));
+    }
+
+    /// <summary>
+    ///     Without a mirror the failure lists only the release.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task ModelDownloader_EnsureAsync_NoMirrorRelease404_ListsOnlyTheRelease()
+    {
+        using var server = new LocalServer(c => LocalServer.SendAsync(c, 404, "no"));
+
+        var ex = await Assert.ThrowsAsync<HttpRequestException>(() => Ensure(UniqueSpec(), null, server));
+
+        Assert.Contains("github-release (", ex.Message, StringComparison.Ordinal);
+        Assert.DoesNotContain("mirror (", ex.Message, StringComparison.Ordinal);
+        Assert.Single(Paths(server));
+    }
+
+    /// <summary>
+    ///     A transient failure is retried once: a 503 followed by a success needs two requests.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task ModelDownloader_EnsureAsync_Transient503_IsRetriedOnce()
+    {
+        var first = true;
+        using var server = new LocalServer(c =>
+        {
+            if (first)
+            {
+                first = false;
+                return LocalServer.SendAsync(c, 503, "busy");
+            }
+
+            return Serve(c);
+        });
+
+        var directory = await Ensure(Spec, Mirror(server), server);
+
+        ModelDownloader.Verify(Spec, directory);
+        Assert.Equal(["/mirror/test-model/v1/model.onnx", "/mirror/test-model/v1/model.onnx", "/mirror/test-model/v1/vocab.txt"], Paths(server));
+    }
+
+    /// <summary>
+    ///     A source that keeps failing is retried once, not more: two requests per source, then the next source.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task ModelDownloader_EnsureAsync_Persistent503_IsRetriedOnlyOnce()
+    {
+        using var server = new LocalServer(c => IsMirror(c) ? LocalServer.SendAsync(c, 503, "busy") : Serve(c));
+
+        var directory = await Ensure(Spec, Mirror(server), server);
+
+        ModelDownloader.Verify(Spec, directory);
+        Assert.Equal(2, Paths(server).Count(p => p == "/mirror/test-model/v1/model.onnx"));
+        Assert.Equal(1, Paths(server).Count(p => p == "/release/models/test-model/v1/model.onnx"));
+    }
+
+    /// <summary>
+    ///     A missing file (404) is not retried.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task ModelDownloader_EnsureAsync_NotFound_IsNotRetried()
+    {
+        using var server = new LocalServer(c => IsMirror(c) ? LocalServer.SendAsync(c, 404, "no") : Serve(c));
+
+        await Ensure(Spec, Mirror(server), server);
+
+        Assert.Equal(1, Paths(server).Count(p => p == "/mirror/test-model/v1/model.onnx"));
+    }
+
+    /// <summary>
+    ///     A throttled source (429) is retried once after the wait that it asks for, never longer than the cap.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task ModelDownloader_EnsureAsync_RetryAfter_IsHonoredUpToTheCap()
+    {
+        var first = true;
+        using var server = new LocalServer(c =>
+        {
+            if (first)
+            {
+                first = false;
+                c.Response.Headers["Retry-After"] = "0";
+                return LocalServer.SendAsync(c, 429, "slow down");
+            }
+
+            return Serve(c);
+        });
+
+        var directory = await ModelDownloader.EnsureAsync(Spec, Mirror(server), TestContext.Current.CancellationToken, null, Public(server), _ => null, null, TimeSpan.FromMinutes(5));
+
+        ModelDownloader.Verify(Spec, directory);
+        Assert.Equal(2, Paths(server).Count(p => p == "/mirror/test-model/v1/model.onnx"));
+        Assert.Equal(TimeSpan.FromSeconds(3), ModelDownloader.RetryWait(TimeSpan.FromSeconds(3), TimeSpan.FromSeconds(2)));
+        Assert.Equal(ModelDownloader.MaxRetryDelay, ModelDownloader.RetryWait(TimeSpan.FromMinutes(5), TimeSpan.FromSeconds(2)));
+        Assert.Equal(TimeSpan.FromSeconds(2), ModelDownloader.RetryWait(null, TimeSpan.FromSeconds(2)));
+        Assert.Equal(TimeSpan.FromSeconds(10), ModelDownloader.MaxRetryDelay);
     }
 
     /// <summary>
@@ -126,17 +301,36 @@ public sealed class ModelDownloaderTests : IDisposable
     public async Task ModelDownloader_EnsureAsync_PresentAndCorrupt_ReusesValidRedownloadsCorrupt()
     {
         using var server = new LocalServer(Serve);
-        var directory = await ModelDownloader.EnsureAsync(Spec, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+        var directory = await Ensure(Spec, Mirror(server), server);
         var before = Paths(server).Length;
 
-        await ModelDownloader.EnsureAsync(Spec, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+        await Ensure(Spec, Mirror(server), server);
         Assert.Equal(before, Paths(server).Length);
 
         await File.WriteAllTextAsync(Path.Join(directory, "vocab.txt"), "corrupt", TestContext.Current.CancellationToken);
-        await ModelDownloader.EnsureAsync(Spec, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+        await Ensure(Spec, Mirror(server), server);
 
         Assert.Equal(before + 1, Paths(server).Length);
         ModelDownloader.Verify(Spec, directory);
+    }
+
+    /// <summary>
+    ///     A store folder of another version is not used for this version, and a folder of an old layout is ignored.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task ModelDownloader_EnsureAsync_OldStoreLayout_IsIgnored()
+    {
+        using var server = new LocalServer(Serve);
+        var old = Path.Join(_store, ModelId);
+        Directory.CreateDirectory(old);
+        await File.WriteAllTextAsync(Path.Join(old, "model.onnx"), OnnxText, TestContext.Current.CancellationToken);
+        await File.WriteAllTextAsync(Path.Join(old, "vocab.txt"), VocabText, TestContext.Current.CancellationToken);
+
+        var directory = await Ensure(Spec, Mirror(server), server);
+
+        Assert.Equal(Path.Join(old, "v1"), directory);
+        Assert.Equal(2, Paths(server).Length);
     }
 
     /// <summary>
@@ -148,10 +342,10 @@ public sealed class ModelDownloaderTests : IDisposable
     {
         using var server = new LocalServer(c => IsMirror(c) ? LocalServer.SendAsync(c, 404, "no") : Serve(c));
 
-        await ModelDownloader.EnsureAsync(Spec, Mirror(server, "tok-123"), TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+        await Ensure(Spec, Mirror(server, "tok-123"), server);
 
-        Assert.All(server.Requests.Where(r => r.Path.StartsWith("/mirror/", StringComparison.Ordinal)), r => Assert.Equal("Bearer tok-123", r.Authorization));
-        Assert.All(server.Requests.Where(r => r.Path.StartsWith("/lfs/", StringComparison.Ordinal)), r => Assert.Null(r.Authorization));
+        Assert.All(server.Requests.Where(r => r.Path.StartsWith("/mirror/", StringComparison.Ordinal)),         r => Assert.Equal("Bearer tok-123", r.Authorization));
+        Assert.All(server.Requests.Where(r => r.Path.StartsWith("/release/", StringComparison.Ordinal)), r => Assert.Null(r.Authorization));
     }
 
     /// <summary>
@@ -164,8 +358,7 @@ public sealed class ModelDownloaderTests : IDisposable
         using var server = new LocalServer(Serve);
         var options = Mirror(server) with { Timeout = TimeSpan.FromSeconds(-5) };
 
-        await Assert.ThrowsAsync<ArgumentOutOfRangeException>(
-            () => ModelDownloader.EnsureAsync(Spec, options, TestContext.Current.CancellationToken, null, Lfs(server), _ => null));
+        await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => Ensure(Spec, options, server));
 
         Assert.Empty(server.Requests);
     }
@@ -187,8 +380,7 @@ public sealed class ModelDownloaderTests : IDisposable
         var options = Mirror(server) with { StoreRoot = storeRoot };
 
         // Act
-        var failure = await Assert.ThrowsAsync<ArgumentException>(
-            () => ModelDownloader.EnsureAsync(Spec, options, TestContext.Current.CancellationToken, null, Lfs(server), _ => null));
+        var failure = await Assert.ThrowsAsync<ArgumentException>(() => Ensure(Spec, options, server));
 
         // Assert
         Assert.Equal("StoreRoot", failure.ParamName);
@@ -218,18 +410,63 @@ public sealed class ModelDownloaderTests : IDisposable
     }
 
     /// <summary>
-    ///     The sources of a file are the mirror first, then GitHub, laid out as the documentation says.
+    ///     The identity of a model comes from its base model, version and ONNX file name.
     /// </summary>
     [Fact]
-    public void ModelDownloader_BuildSources_MirrorThenGitHub_UsesDocumentedLayout()
+    public void ModelDownloader_ModelSpec_DerivesQuantizationTagAndFolder()
+    {
+        var spec = Spec with { OnnxFileName = "model-int8-dynamic.onnx" };
+
+        Assert.Equal("test-model", spec.ModelId);
+        Assert.Equal("int8-dynamic", spec.Quantization);
+        Assert.Equal("models/test-model/v1", spec.ReleaseTag);
+        Assert.Equal("test-model/v1", spec.StoreFolder);
+        Assert.Equal("test-model/v1/int8-dynamic", spec.WeightsId);
+        Assert.Equal("old-blob-id", (spec with { BlobModelId = "old-blob-id" }).WeightsId);
+    }
+
+    /// <summary>
+    ///     The sources of a file are the mirror first, then the release asset, laid out as the documentation says.
+    /// </summary>
+    [Fact]
+    public void ModelDownloader_BuildSources_MirrorThenRelease_UsesDocumentedLayout()
     {
         var mirror = DownloadMirror.FromOptions(new DownloadOptions(new Uri("http://mirror.example/base/")));
 
-        var sources = ModelDownloader.BuildSources(Spec, mirror, ModelDownloader.GitHubBaseUri, Spec.Files[0]);
+        var sources = ModelDownloader.BuildSources(Spec, mirror, PublicSources.Default, Spec.Files[0]);
 
         Assert.Equal(2, sources.Count);
-        Assert.Equal("http://mirror.example/base/test-model/model.onnx", sources[0].Uri.ToString());
-        Assert.Equal("https://media.githubusercontent.com/media/demaconsulting/WordSense/main/model/test-model/model.onnx", sources[1].Uri.ToString());
+        Assert.Equal("mirror", sources[0].Name);
+        Assert.Equal("http://mirror.example/base/test-model/v1/model.onnx", sources[0].Uri.ToString());
+        Assert.Same(mirror, sources[0].Auth);
+        Assert.Equal("github-release", sources[1].Name);
+        Assert.Equal("https://github.com/demaconsulting/WordSense/releases/download/models/test-model/v1/model.onnx", sources[1].Uri.ToString());
+        Assert.Null(sources[1].Auth);
+    }
+
+    /// <summary>
+    ///     Without a mirror there is one source, the release asset.
+    /// </summary>
+    [Fact]
+    public void ModelDownloader_BuildSources_NoMirror_OnlyRelease()
+    {
+        var sources = ModelDownloader.BuildSources(Spec, null, PublicSources.Default, Spec.Files[1]);
+
+        var only = Assert.Single(sources);
+        Assert.Equal("github-release", only.Name);
+    }
+
+    /// <summary>
+    ///     The slashes of the tag stay literal and every segment is escaped.
+    /// </summary>
+    [Fact]
+    public void ModelDownloader_BuildSources_Release_KeepsSlashesAndEscapesSegments()
+    {
+        var spec = Spec with { BaseModel = "a b", Files = [new ModelFile("m#1.onnx", Sha(OnnxText))] };
+
+        var sources = ModelDownloader.BuildSources(spec, null, new PublicSources(new Uri("https://host.test/dl/")), spec.Files[0]);
+
+        Assert.Equal("https://host.test/dl/models/a%20b/v1/m%231.onnx", sources[0].Uri.AbsoluteUri);
     }
 
     private static string FileOf(HttpListenerContext context) => Path.GetFileName(context.Request.Url!.AbsolutePath);
@@ -238,30 +475,45 @@ public sealed class ModelDownloaderTests : IDisposable
         name => values.Where(v => v.Name == name).Select(v => v.Value).FirstOrDefault();
 
     /// <summary>
-    ///     Creates a specification with a unique model identifier, so that a run without a store root option uses its own folder
+    ///     Creates a specification with a unique base model, so that a run without a store root option uses its own folder
     ///     in the per-user store, which is removed again on disposal.
     /// </summary>
     /// <returns>The specification.</returns>
     private ModelSpec UniqueSpec()
     {
-        var spec = Spec with { ModelId = "test-model-" + Guid.NewGuid().ToString("N") };
-        _defaultStoreFolders.Add(Path.Join(ModelDownloader.DefaultStoreRoot(), spec.ModelId));
+        var spec = Spec with { BaseModel = "test-model-" + Guid.NewGuid().ToString("N") };
+        _defaultStoreFolders.Add(Path.Join(ModelDownloader.DefaultStoreRoot(), spec.BaseModel));
         return spec;
     }
 
     /// <summary>
-    ///     Without any mirror the GitHub copy is used.
+    ///     Without any mirror the release asset is used.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task ModelDownloader_EnsureModel_NoMirror_UsesGitHubLfs()
+    public async Task ModelDownloader_EnsureModel_NoMirror_UsesRelease()
     {
         using var server = new LocalServer(Serve);
         var spec = UniqueSpec();
 
-        await ModelDownloader.EnsureAsync(spec, null, TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+        await Ensure(spec, null, server);
 
-        Assert.Equal([$"/lfs/main/model/{spec.ModelId}/model.onnx", $"/lfs/main/model/{spec.ModelId}/vocab.txt"], Paths(server));
+        Assert.Equal([$"/release/models/{spec.BaseModel}/v1/model.onnx", $"/release/models/{spec.BaseModel}/v1/vocab.txt"], Paths(server));
+    }
+
+    /// <summary>
+    ///     An explicit store root is used when no options are passed.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task ModelDownloader_EnsureModel_StoreRootWithoutOptions_IsUsed()
+    {
+        using var server = new LocalServer(Serve);
+
+        var directory = await Ensure(Spec, null, Public(server), TestContext.Current.CancellationToken, null, null, _store);
+
+        Assert.Equal(Path.Join(_store, ModelId, "v1"), directory);
+        ModelDownloader.Verify(Spec, directory);
     }
 
     /// <summary>
@@ -275,7 +527,7 @@ public sealed class ModelDownloaderTests : IDisposable
         var url = new Uri(server.BaseUri, "/from-environment/").ToString();
         var spec = UniqueSpec();
 
-        await ModelDownloader.EnsureAsync(spec, null, TestContext.Current.CancellationToken, null, Lfs(server), Environment((DownloadMirror.UrlEnvironmentVariable, url)));
+        await Ensure(spec, null, server, Environment((DownloadMirror.UrlEnvironmentVariable, url)));
 
         Assert.All(Paths(server), p => Assert.StartsWith("/from-environment/", p, StringComparison.Ordinal));
     }
@@ -290,7 +542,7 @@ public sealed class ModelDownloaderTests : IDisposable
         using var server = new LocalServer(Serve);
         var url = new Uri(server.BaseUri, "/from-environment/").ToString();
 
-        await ModelDownloader.EnsureAsync(Spec, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), Environment((DownloadMirror.UrlEnvironmentVariable, url)));
+        await Ensure(Spec, Mirror(server), server, Environment((DownloadMirror.UrlEnvironmentVariable, url)));
 
         Assert.All(Paths(server), p => Assert.StartsWith("/mirror/", p, StringComparison.Ordinal));
     }
@@ -304,8 +556,7 @@ public sealed class ModelDownloaderTests : IDisposable
     {
         using var server = new LocalServer(Serve);
 
-        await Assert.ThrowsAsync<ArgumentException>(
-            () => ModelDownloader.EnsureAsync(UniqueSpec(), null, TestContext.Current.CancellationToken, null, Lfs(server), Environment((DownloadMirror.UserEnvironmentVariable, "user"))));
+        await Assert.ThrowsAsync<ArgumentException>(() => Ensure(UniqueSpec(), null, server, Environment((DownloadMirror.UserEnvironmentVariable, "user"))));
 
         Assert.Empty(server.Requests);
     }
@@ -319,10 +570,9 @@ public sealed class ModelDownloaderTests : IDisposable
     {
         using var server = new LocalServer(Serve);
         var spec = UniqueSpec();
-        await ModelDownloader.EnsureAsync(spec, null, TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+        await Ensure(spec, null, server);
 
-        await Assert.ThrowsAsync<ArgumentException>(
-            () => ModelDownloader.EnsureAsync(spec, null, TestContext.Current.CancellationToken, null, Lfs(server), Environment((DownloadMirror.UserEnvironmentVariable, "user"))));
+        await Assert.ThrowsAsync<ArgumentException>(() => Ensure(spec, null, server, Environment((DownloadMirror.UserEnvironmentVariable, "user"))));
     }
 
     /// <summary>
@@ -335,7 +585,7 @@ public sealed class ModelDownloaderTests : IDisposable
         using var server = new LocalServer(Serve);
         var options = Mirror(server) with { Credentials = new NetworkCredential("user", "pw") };
 
-        await ModelDownloader.EnsureAsync(Spec, options, TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+        await Ensure(Spec, options, server);
 
         Assert.All(server.Requests, r => Assert.Equal("Basic " + Convert.ToBase64String("user:pw"u8.ToArray()), r.Authorization));
     }
@@ -360,7 +610,7 @@ public sealed class ModelDownloaderTests : IDisposable
         using var handler = new SocketsHttpHandler { AllowAutoRedirect = false };
         using var client = new HttpClient(handler);
 
-        await ModelDownloader.EnsureAsync(Spec, Mirror(mirrorServer, "tok-123"), TestContext.Current.CancellationToken, callerClient ? client : null, Lfs(mirrorServer), _ => null);
+        await Ensure(Spec, Mirror(mirrorServer, "tok-123"), Public(mirrorServer), TestContext.Current.CancellationToken, callerClient ? client : null);
 
         Assert.All(mirrorServer.Requests, r => Assert.NotNull(r.Authorization));
         Assert.Equal(2, other.Requests.Count);
@@ -386,10 +636,88 @@ public sealed class ModelDownloaderTests : IDisposable
             return Serve(context);
         });
 
-        await ModelDownloader.EnsureAsync(Spec, Mirror(server, "tok-123"), TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+        await Ensure(Spec, Mirror(server, "tok-123"), server);
 
         Assert.Equal(4, server.Requests.Count);
         Assert.All(server.Requests, r => Assert.NotNull(r.Authorization));
+    }
+
+    /// <summary>
+    ///     The release redirects to a CDN host with a signed query, as GitHub does: no mirror credential reaches the
+    ///     release host or the CDN host, and the mirror hops still carry it.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task ModelDownloader_EnsureModel_ReleaseRedirectsToCdn_SendsNoAuthorization()
+    {
+        // Arrange: the mirror is down; github.com redirects to release-assets.githubusercontent.com with a signed query
+        var seen = new List<(Uri Uri, string? Authorization)>();
+        using var handler = new StubHandler(request =>
+        {
+            // Record only the scheme and a hash of the parameter, never the credential itself
+            var auth = request.Headers.Authorization;
+            seen.Add((request.RequestUri!, auth is null ? null : auth.Scheme));
+            var uri = request.RequestUri!;
+            var file = Path.GetFileName(uri.AbsolutePath);
+            if (uri.Host == "mirror.test")
+            {
+                return new HttpResponseMessage(HttpStatusCode.ServiceUnavailable);
+            }
+
+            if (uri.Host == "github.com")
+            {
+                var redirect = new HttpResponseMessage(HttpStatusCode.Found);
+                redirect.Headers.Location = new Uri("https://release-assets.githubusercontent.com/github-production-release-asset/1/" + file + "?sp=r&sig=SECRETSIG&jwt=SECRETJWT");
+                return redirect;
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(TextOf(file)) };
+        });
+        using var client = new HttpClient(handler);
+        var options = new DownloadOptions(new Uri("https://mirror.test/models/"), BearerToken: "tok-123", StoreRoot: _store, Timeout: TimeSpan.FromSeconds(30));
+
+        // Act
+        var directory = await Ensure(Spec, options, PublicSources.Default, TestContext.Current.CancellationToken, client);
+
+        // Assert
+        ModelDownloader.Verify(Spec, directory);
+        Assert.All(seen.Where(r => r.Uri.Host == "mirror.test"), r => Assert.Equal("Bearer", r.Authorization));
+        Assert.All(seen.Where(r => r.Uri.Host != "mirror.test"), r => Assert.Null(r.Authorization));
+        Assert.Contains(seen, r => r.Uri.Host == "github.com" && r.Uri.AbsolutePath == "/demaconsulting/WordSense/releases/download/models/test-model/v1/model.onnx");
+        Assert.Contains(seen, r => r.Uri.Host == "release-assets.githubusercontent.com");
+    }
+
+    /// <summary>
+    ///     When the CDN refuses a signed redirect, the failure names the release path and never the signed query.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task ModelDownloader_EnsureModel_ReleaseFails_ErrorOmitsRedirectQuery()
+    {
+        // Arrange
+        using var handler = new StubHandler(request =>
+        {
+            var uri = request.RequestUri!;
+            if (uri.Host == "github.com")
+            {
+                var redirect = new HttpResponseMessage(HttpStatusCode.Found);
+                redirect.Headers.Location = new Uri("https://release-assets.githubusercontent.com/github-production-release-asset/1/x?sp=r&sig=SECRETSIG&jwt=SECRETJWT");
+                return redirect;
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.Forbidden);
+        });
+        using var client = new HttpClient(handler);
+
+        // Act
+        var ex = await Assert.ThrowsAsync<HttpRequestException>(() => Ensure(UniqueSpec(), null, PublicSources.Default, TestContext.Current.CancellationToken, client));
+
+        // Assert
+        Assert.Contains("github-release (https://github.com/demaconsulting/WordSense/releases/download/models/", ex.Message, StringComparison.Ordinal);
+        Assert.DoesNotContain("SECRETSIG", ex.Message, StringComparison.Ordinal);
+        Assert.DoesNotContain("SECRETJWT", ex.Message, StringComparison.Ordinal);
+        Assert.DoesNotContain("sig=", ex.Message, StringComparison.Ordinal);
+        Assert.DoesNotContain("?", ex.Message, StringComparison.Ordinal);
     }
 
     /// <summary>
@@ -411,10 +739,10 @@ public sealed class ModelDownloaderTests : IDisposable
             return Serve(context);
         });
 
-        var directory = await ModelDownloader.EnsureAsync(Spec, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+        var directory = await Ensure(Spec, Mirror(server), server);
 
         ModelDownloader.Verify(Spec, directory);
-        Assert.Contains("/lfs/main/model/test-model/model.onnx", Paths(server));
+        Assert.Contains("/release/models/test-model/v1/model.onnx", Paths(server));
     }
 
     /// <summary>
@@ -439,10 +767,10 @@ public sealed class ModelDownloaderTests : IDisposable
         // The timeout only breaks the hang; it is far above any healthy local response, so it never limits the fallback
         var options = Mirror(server) with { Timeout = TimeSpan.FromSeconds(5) };
 
-        var directory = await ModelDownloader.EnsureAsync(Spec, options, TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+        var directory = await Ensure(Spec, options, server);
 
         ModelDownloader.Verify(Spec, directory);
-        Assert.Contains("/lfs/main/model/test-model/model.onnx", Paths(server));
+        Assert.Contains("/release/models/test-model/v1/model.onnx", Paths(server));
     }
 
     /// <summary>
@@ -460,8 +788,7 @@ public sealed class ModelDownloaderTests : IDisposable
         });
         using var cts = new CancellationTokenSource(TimeSpan.FromMilliseconds(300));
 
-        await Assert.ThrowsAnyAsync<OperationCanceledException>(
-            () => ModelDownloader.EnsureAsync(Spec, Mirror(server), cts.Token, null, Lfs(server), _ => null));
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(() => Ensure(Spec, Mirror(server), Public(server), cts.Token));
     }
 
     /// <summary>
@@ -474,7 +801,7 @@ public sealed class ModelDownloaderTests : IDisposable
         using var server = new LocalServer(Serve);
         var options = Mirror(server) with { Timeout = Timeout.InfiniteTimeSpan };
 
-        var directory = await ModelDownloader.EnsureAsync(Spec, options, TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+        var directory = await Ensure(Spec, options, server);
 
         ModelDownloader.Verify(Spec, directory);
     }
@@ -487,13 +814,12 @@ public sealed class ModelDownloaderTests : IDisposable
     public async Task ModelDownloader_EnsureModel_CorruptCacheAndAllSourcesFail_LeavesFileInPlace()
     {
         using var server = new LocalServer(c => LocalServer.SendAsync(c, 500, "broken"));
-        var folder = Path.Join(_store, ModelId);
+        var folder = Path.Join(_store, ModelId, "v1");
         Directory.CreateDirectory(folder);
         var vocabulary = Path.Join(folder, "vocab.txt");
         await File.WriteAllTextAsync(vocabulary, "corrupt", TestContext.Current.CancellationToken);
 
-        await Assert.ThrowsAsync<HttpRequestException>(
-            () => ModelDownloader.EnsureAsync(Spec, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null));
+        await Assert.ThrowsAsync<HttpRequestException>(() => Ensure(Spec, Mirror(server), server));
 
         Assert.Equal("corrupt", await File.ReadAllTextAsync(vocabulary, TestContext.Current.CancellationToken));
     }
@@ -522,13 +848,13 @@ public sealed class ModelDownloaderTests : IDisposable
                 return redirect;
             }
 
-            return new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(file == "model.onnx" ? OnnxText : VocabText) };
+            return new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(TextOf(file)) };
         });
         using var client = new HttpClient(handler);
         var options = new DownloadOptions(new Uri("https://mirror.test:8443/mirror/"), BearerToken: "tok-123", StoreRoot: _store, Timeout: TimeSpan.FromSeconds(30));
 
         // Act
-        var directory = await ModelDownloader.EnsureAsync(Spec, options, TestContext.Current.CancellationToken, client, new Uri("https://lfs.test/lfs/"), _ => null);
+        var directory = await Ensure(Spec, options, new PublicSources(new Uri("https://release.test/release/")), TestContext.Current.CancellationToken, client);
 
         // Assert: the https hops carried the token, the http hops did not
         ModelDownloader.Verify(Spec, directory);
@@ -558,11 +884,18 @@ public sealed class ModelDownloaderTests : IDisposable
         });
 
         // Act
-        var directory = await ModelDownloader.EnsureAsync(Spec, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+        var directory = await Ensure(Spec, Mirror(server), server);
 
         // Assert
         ModelDownloader.Verify(Spec, directory);
-        Assert.Equal(["/mirror/test-model/model.onnx", "/lfs/main/model/test-model/model.onnx", "/mirror/test-model/vocab.txt", "/lfs/main/model/test-model/vocab.txt"], Paths(server));
+        Assert.Equal(
+            [
+                "/mirror/test-model/v1/model.onnx",
+                "/release/models/test-model/v1/model.onnx",
+                "/mirror/test-model/v1/vocab.txt",
+                "/release/models/test-model/v1/vocab.txt",
+            ],
+            Paths(server));
     }
 
     /// <summary>
@@ -589,11 +922,11 @@ public sealed class ModelDownloaderTests : IDisposable
         });
 
         // Act
-        var directory = await ModelDownloader.EnsureAsync(Spec, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+        var directory = await Ensure(Spec, Mirror(server), server);
 
         // Assert
         ModelDownloader.Verify(Spec, directory);
-        Assert.Contains("/lfs/main/model/test-model/model.onnx", Paths(server));
+        Assert.Contains("/release/models/test-model/v1/model.onnx", Paths(server));
         Assert.Equal(["model.onnx", "vocab.txt"], Directory.GetFiles(directory).Select(f => Path.GetFileName(f)).Order(StringComparer.Ordinal));
     }
 
@@ -626,11 +959,11 @@ public sealed class ModelDownloaderTests : IDisposable
         var options = Mirror(server) with { Timeout = TimeSpan.FromSeconds(5) };
 
         // Act
-        var directory = await ModelDownloader.EnsureAsync(Spec, options, TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+        var directory = await Ensure(Spec, options, server);
 
         // Assert
         ModelDownloader.Verify(Spec, directory);
-        Assert.Contains("/lfs/main/model/test-model/model.onnx", Paths(server));
+        Assert.Contains("/release/models/test-model/v1/model.onnx", Paths(server));
         Assert.Equal(["model.onnx", "vocab.txt"], Directory.GetFiles(directory).Select(f => Path.GetFileName(f)).Order(StringComparer.Ordinal));
     }
 
@@ -652,7 +985,7 @@ public sealed class ModelDownloaderTests : IDisposable
         };
         using var server = new LocalServer(async context =>
         {
-            var body = Encoding.UTF8.GetBytes((Path.GetFileName(context.Request.Url!.AbsolutePath) == "model.onnx" ? OnnxText : VocabText) + "!");
+            var body = Encoding.UTF8.GetBytes(TextOf(Path.GetFileName(context.Request.Url!.AbsolutePath)) + "!");
             if (chunked)
             {
                 context.Response.SendChunked = true;
@@ -666,12 +999,11 @@ public sealed class ModelDownloaderTests : IDisposable
         });
 
         // Act
-        var ex = await Assert.ThrowsAsync<HttpRequestException>(
-            () => ModelDownloader.EnsureAsync(pinned, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null));
+        var ex = await Assert.ThrowsAsync<HttpRequestException>(() => Ensure(pinned, Mirror(server), server));
 
         // Assert: both sources were tried and refused for their size
         Assert.Equal(2, ex.Message.Split("larger than the pinned size").Length - 1);
-        Assert.False(File.Exists(Path.Join(_store, ModelId, "model.onnx")));
+        Assert.False(File.Exists(Path.Join(_store, ModelId, "v1", "model.onnx")));
     }
 
     /// <summary>
@@ -683,14 +1015,14 @@ public sealed class ModelDownloaderTests : IDisposable
     public async Task ModelDownloader_EnsureModel_StalePartialFile_IsNotResumedOrReused()
     {
         // Arrange: a leftover partial file of an earlier run
-        var folder = Path.Join(_store, ModelId);
+        var folder = Path.Join(_store, ModelId, "v1");
         Directory.CreateDirectory(folder);
         var stale = Path.Join(folder, "model.onnx.0123456789abcdef0123456789abcdef.part");
         await File.WriteAllTextAsync(stale, "pretend", TestContext.Current.CancellationToken);
         using var server = new LocalServer(Serve);
 
         // Act
-        var directory = await ModelDownloader.EnsureAsync(Spec, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+        var directory = await Ensure(Spec, Mirror(server), server);
 
         // Assert: the whole file was requested and verified; the stale file is untouched
         ModelDownloader.Verify(Spec, directory);
@@ -718,7 +1050,7 @@ public sealed class ModelDownloaderTests : IDisposable
     {
         using var server = new LocalServer(Serve);
 
-        var directory = await ModelDownloader.EnsureAsync(Spec, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+        var directory = await Ensure(Spec, Mirror(server), server);
 
         Assert.Equal(["model.onnx", "vocab.txt"], Directory.GetFiles(directory).Select(f => Path.GetFileName(f)).Order(StringComparer.Ordinal));
     }

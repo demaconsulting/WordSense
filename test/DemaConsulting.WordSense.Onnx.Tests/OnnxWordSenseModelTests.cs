@@ -11,7 +11,7 @@ namespace DemaConsulting.WordSense.Onnx.Tests;
 /// </summary>
 public class OnnxWordSenseModelTests
 {
-    private static readonly string[] ModelFiles = ["model_int8.onnx", "vocab.txt"];
+    private static readonly string[] ModelFiles = ["model-int8-dynamic.onnx", "vocab.txt"];
 
     private static readonly string[] PendingSentence = ["It", "was", "just", "fine"];
 
@@ -43,7 +43,9 @@ public class OnnxWordSenseModelTests
     {
         using var model = Open();
 
-        Assert.Equal("all-MiniLM-L6-v2-int8", model.ModelId);
+        Assert.Equal("all-MiniLM-L6-v2", model.ModelId);
+        Assert.Equal(1, model.ModelVersion);
+        Assert.Equal("int8-dynamic", model.Quantization);
         Assert.Equal(384, model.HiddenSize);
     }
 
@@ -226,7 +228,7 @@ public class OnnxWordSenseModelTests
 
             // Assert: the original exception is kept
             Assert.IsType<FileNotFoundException>(failure.InnerException);
-            Assert.Contains("model_int8.onnx", failure.Message, StringComparison.Ordinal);
+            Assert.Contains("model-int8-dynamic.onnx", failure.Message, StringComparison.Ordinal);
         }
         finally
         {
@@ -249,7 +251,7 @@ public class OnnxWordSenseModelTests
         try
         {
             File.Copy(Path.Join(source, "vocab.txt"), Path.Join(directory, "vocab.txt"));
-            await File.WriteAllTextAsync(Path.Join(directory, "model_int8.onnx"), "altered", TestContext.Current.CancellationToken);
+            await File.WriteAllTextAsync(Path.Join(directory, "model-int8-dynamic.onnx"), "altered", TestContext.Current.CancellationToken);
             using var model = Open(directory);
 
             // Act
@@ -257,7 +259,7 @@ public class OnnxWordSenseModelTests
 
             // Assert: the original exception is kept, and the message names the file
             Assert.IsType<InvalidDataException>(failure.InnerException);
-            Assert.Contains("model_int8.onnx", failure.Message, StringComparison.Ordinal);
+            Assert.Contains("model-int8-dynamic.onnx", failure.Message, StringComparison.Ordinal);
         }
         finally
         {
@@ -309,7 +311,8 @@ public class OnnxWordSenseModelTests
             var healthy = false;
             using var server = new LocalServer(c => healthy ? ServeModel(c, source) : LocalServer.SendAsync(c, 500, "broken"));
             using var model = Open();
-            model.GitHubBaseUri = new Uri(server.BaseUri, "/lfs/");
+            model.PublicSources = new PublicSources(new Uri(server.BaseUri, "/release/"));
+            model.RetryDelay = TimeSpan.Zero;
             model.GetEnvironmentVariable = _ => null;
             var mirror = new DownloadOptions(new Uri(server.BaseUri, "/mirror/"), StoreRoot: store);
 
@@ -346,7 +349,7 @@ public class OnnxWordSenseModelTests
             // Arrange: every source serves wrong bytes
             using var server = new LocalServer(c => LocalServer.SendAsync(c, 200, "wrong bytes"));
             using var model = Open();
-            model.GitHubBaseUri = new Uri(server.BaseUri, "/lfs/");
+            model.PublicSources = new PublicSources(new Uri(server.BaseUri, "/release/"));
             model.GetEnvironmentVariable = _ => null;
             var mirror = new DownloadOptions(new Uri(server.BaseUri, "/mirror/"), StoreRoot: store);
 
@@ -532,7 +535,7 @@ public class OnnxWordSenseModelTests
         {
             File.Copy(Path.Join(source, "vocab.txt"), Path.Join(directory, "vocab.txt"));
             var garbage = "this is not an onnx model"u8.ToArray();
-            await File.WriteAllBytesAsync(Path.Join(directory, "model_int8.onnx"), garbage, TestContext.Current.CancellationToken);
+            await File.WriteAllBytesAsync(Path.Join(directory, "model-int8-dynamic.onnx"), garbage, TestContext.Current.CancellationToken);
             var digest = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(garbage)).ToLowerInvariant();
             using var model = new FixtureEncoderModel(directory, spec => spec with
             {
@@ -571,7 +574,7 @@ public class OnnxWordSenseModelTests
         Directory.CreateDirectory(directory);
         try
         {
-            File.Copy(Path.Join(source, "model_int8.onnx"), Path.Join(directory, "model_int8.onnx"));
+            File.Copy(Path.Join(source, "model-int8-dynamic.onnx"), Path.Join(directory, "model-int8-dynamic.onnx"));
             var lines = (await File.ReadAllLinesAsync(Path.Join(source, "vocab.txt"), TestContext.Current.CancellationToken))
                 .Where(line => line.Trim() != token)
                 .ToArray();
@@ -614,7 +617,7 @@ public class OnnxWordSenseModelTests
             HeadResourceName = null,
             WeightsAssembly = new FixtureAssembly(
                 FixtureEncoderModel.ResourceName,
-                BlobWriter.Write(new WeightsData(spec.ModelId, Fixtures.InventoryHash(), wrongSize, new float[wrongSize], [Fixtures.Lemma("just", dimension: wrongSize)]))),
+                BlobWriter.Write(new WeightsData(spec.WeightsId, Fixtures.InventoryHash(), wrongSize, new float[wrongSize], [Fixtures.Lemma("just", dimension: wrongSize)]))),
         });
 
         // Act
@@ -1035,7 +1038,7 @@ public class OnnxWordSenseModelTests
                 await release.Task;
             });
             var model = Fixture();
-            model.GitHubBaseUri = new Uri(server.BaseUri, "/lfs/");
+            model.PublicSources = new PublicSources(new Uri(server.BaseUri, "/release/"));
             model.GetEnvironmentVariable = _ => null;
             var mirror = new DownloadOptions(new Uri(server.BaseUri, "/mirror/"), StoreRoot: store);
 

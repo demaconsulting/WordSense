@@ -2,7 +2,7 @@ namespace DemaConsulting.WordSense.MiniLM.Tests;
 
 /// <summary>
 ///     Tests for <see cref="MiniLMWordSenseModel"/>. Most need no model files and no network access; the three that
-///     use the real model files are skipped when the Git LFS files are absent.
+///     use the real model files are skipped when the files have not been fetched.
 /// </summary>
 public class MiniLMWordSenseModelTests
 {
@@ -23,7 +23,11 @@ public class MiniLMWordSenseModelTests
     {
         using var model = new MiniLMWordSenseModel();
 
-        Assert.Equal("all-MiniLM-L6-v2-int8", model.ModelId);
+        Assert.Equal("all-MiniLM-L6-v2", model.ModelId);
+        Assert.Equal(1, model.ModelVersion);
+        Assert.Equal("int8-dynamic", model.Quantization);
+        Assert.Equal("models/all-MiniLM-L6-v2/v1", model.Encoder.Spec.ReleaseTag);
+        Assert.Equal("all-MiniLM-L6-v2-int8", model.Encoder.Spec.WeightsId);
         Assert.Equal(384, model.HiddenSize);
         Assert.True(model.Encoder.Spec.LowerCase);
     }
@@ -158,8 +162,39 @@ public class MiniLMWordSenseModelTests
     {
         using var model = new MiniLMWordSenseModel();
 
-        Assert.Equal(["model_int8.onnx", "vocab.txt"], model.Encoder.Spec.Files.Select(f => f.Name).Order().ToArray());
+        Assert.Equal(["model-int8-dynamic.onnx", "vocab.txt"], model.Encoder.Spec.Files.Select(f => f.Name).Order().ToArray());
         Assert.All(model.Encoder.Spec.Files, f => Assert.Matches("^[0-9a-f]{64}$", f.Sha256.ToLowerInvariant()));
+    }
+
+    /// <summary>
+    ///     The pinned digests equal the documented ones in <c>model/all-MiniLM-L6-v2/SHA256SUMS</c>, which are the digests of the release assets.
+    /// </summary>
+    [Fact]
+    public void MiniLMWordSenseModel_Pins_MatchTheDocumentedSha256Sums()
+    {
+        var sums = SumsOf("all-MiniLM-L6-v2");
+        using var model = new MiniLMWordSenseModel();
+
+        Assert.All(model.Encoder.Spec.Files, f => Assert.Equal(sums[f.Name], f.Sha256));
+        Assert.Contains("tokenizer.json", sums.Keys);
+        Assert.Contains("LICENSE", sums.Keys);
+    }
+
+    private static Dictionary<string, string> SumsOf(string baseModel)
+    {
+        for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir is not null; dir = dir.Parent)
+        {
+            var path = Path.Join(dir.FullName, "model", baseModel, "SHA256SUMS");
+            if (File.Exists(path))
+            {
+                return File.ReadAllLines(path)
+                    .Where(line => line.Length > 0)
+                    .Select(line => line.Split("  ", 2))
+                    .ToDictionary(parts => parts[1].Trim(), parts => parts[0], StringComparer.Ordinal);
+            }
+        }
+
+        throw new FileNotFoundException($"model/{baseModel}/SHA256SUMS was not found.");
     }
 
     /// <summary>

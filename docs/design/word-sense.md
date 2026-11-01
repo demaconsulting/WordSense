@@ -142,9 +142,10 @@ the curated table `corpus/curation/heteronyms.tsv`. An unknown word has no key.
   its own data (for example the phonemes of a speech front end; WordSense carries none) to the keys.
 - Environment variables (in): `WORDSENSE_MIRROR_URL`, `WORDSENSE_MIRROR_USER`, `WORDSENSE_MIRROR_PASSWORD` and
   `WORDSENSE_MIRROR_BEARER_TOKEN`; used only when no download option is passed.
-- Model store (in/out): `<store>/<model-id>/<file>` in a per-user directory unless `StoreRoot` is given.
-- Mirror and GitHub LFS source (in): HTTP(S) `GET <base>/<model-id>/<file>`; SHA-256 verified, credentials sent to
-  the mirror's own origin only.
+- Model store (in/out): `<store>/<base-model>/v<version>/<file>` in a per-user directory unless `StoreRoot` is given.
+- Mirror and GitHub release source (in): HTTP(S) `GET <base>/<base-model>/v<version>/<file>` on a mirror and
+  `GET https://github.com/demaconsulting/WordSense/releases/download/models/<base-model>/v<version>/<file>` (a
+  redirect to a signed CDN address); SHA-256 verified, credentials sent to the mirror's own origin only.
 - Builder command line (in/out): `compile-image`, `import-moby`, `weights`, `evaluate`, `evaluate-senses`,
   `evaluate-running`, `open-counts`, `evaluate-tagger`, `coverage`, `train-basic`, `tune-basic`, `label-senses`,
   `import-wn30-counts`, `tiers`, `appendix`, `keys` and `heteronyms`; build time only, never shipped. The evaluation
@@ -183,7 +184,7 @@ analyses at the part of speech level, and the Basic model of a composition choos
    default and environment download settings, and a model that is never needed is never downloaded). The Basic model
    is not downloadable and needs no files. An encoder model uses the files of its model
    directory when one was given, otherwise reuses valid files in the per-user store, otherwise downloads each missing
-   file from the mirror (explicit option or environment variables) and then from the GitHub LFS copy, verifying every
+   file from the mirror (explicit option or environment variables) and then from the GitHub release assets, verifying every
    file against its pinned SHA-256. A composite model ensures all of its downloadable members concurrently. A failure
    is reported as a `ModelUnavailableException` (no source could provide a file), a `ModelIntegrityException` (a
    supplied file does not match its digest) or a `DownloadConfigurationException` (invalid options or environment
@@ -349,5 +350,5 @@ senses appendix, which explains the keys and lists the heteronyms.
   disposed. Disposing a model while a classification is running is safe for every model: the running call completes,
   new calls throw `ObjectDisposedException`, and an encoder model releases its ONNX session after the last running
   call.
-- The `model_int8.onnx` file of `bert-base-cased-int8` is the derived encoder export, not the upstream masked
+- The `model-int8-dynamic.onnx` file of `bert-base-cased` is the derived encoder export, not the upstream masked
   language model export.

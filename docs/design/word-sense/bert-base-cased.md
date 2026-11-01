@@ -26,11 +26,12 @@ embedded in its own assembly.
 ### Design
 
 The package has an internal sealed class `BertBaseCasedEncoderModel` that derives from `OnnxWordSenseModel` and holds a
-static model description (model id `bert-base-cased-int8`; files `model_int8.onnx`, `vocab.txt`,
-`config.json` and `tokenizer.json` with their SHA-256 digests; ONNX file `model_int8.onnx`; vocabulary `vocab.txt`;
+static model description (base model `bert-base-cased`, version 1; files `model-int8-dynamic.onnx`, `vocab.txt`,
+`config.json` and `tokenizer.json` with their SHA-256 digests; ONNX file `model-int8-dynamic.onnx`; vocabulary `vocab.txt`;
 case-preserving tokenizer; the embedded weights resource of this assembly; hidden size 768; the embedded
-part-of-speech head resource). It adds no members and no
-logic. The `model_int8.onnx` file is the derived encoder export of the
+part-of-speech head resource; the identity `bert-base-cased-int8` that the embedded weights and head record,
+`BlobModelId`). It adds no members and no
+logic. The `model-int8-dynamic.onnx` file is the derived encoder export of the
 model, not the upstream masked language model export. The public `BertBaseCasedWordSenseModel` creates an encoder model
 and a `BasicWordSenseModel` and wraps them in a `FallbackWordSenseModel` (the encoder is the primary model and Basic the
 fallback), to which it delegates `EnsureModelAsync` (optional; the composite forwards it to the encoder, which is
@@ -56,7 +57,8 @@ sense usage prior derived from the WordNet 3.0 sense counts (the builder adds it
 reproduces the Princeton WordNet 3.0 license, gives the Open English WordNet 2025 (CC BY 4.0) attribution for the sense
 ids that the weights hold (the package license expression is `MIT AND CC-BY-4.0`), states that the weights are
 statistical summaries of the project corpora (CC0 rows and annotations over public-domain and CC0 sentences) of
-this project, and records that the encoder model files are not in the package: they are downloaded from this repository
-(`model/bert-base-cased-int8/`, Apache License 2.0, with the license text in that folder) and are the int8 ONNX export
+this project, and records that the encoder model files are not in the package: they are downloaded from the assets of the
+GitHub release `models/bert-base-cased/v1` of this repository (provenance in `model/bert-base-cased/`, Apache License
+2.0, with the license text in that folder and as a release asset) and are the int8 ONNX export
 of `bert-base-cased` cut at the last encoder layer. The notice also describes the embedded part-of-speech head and tense
 head: their content, the open corpus they are trained on and the license position that covers the tags of that corpus.

@@ -403,8 +403,7 @@ internal static class ModelDownloader
                     // Request failure, block, timeout or local IO problem: retry a transient one once, else go to the next source
                     if (attempt == 1 && IsTransient(ex))
                     {
-                        var delay = ex is StatusException { RetryAfter: { } asked } ? asked : context.RetryDelay;
-                        await Task.Delay(delay > MaxRetryDelay ? MaxRetryDelay : delay, cancellationToken).ConfigureAwait(false);
+                        await Task.Delay(RetryWait((ex as StatusException)?.RetryAfter, context.RetryDelay), cancellationToken).ConfigureAwait(false);
                         continue;
                     }
 
@@ -418,8 +417,20 @@ internal static class ModelDownloader
             }
         }
 
-        var reason = failures.Count == 0 ? "no download source is configured" : string.Join(" | ", failures);
+        var reason = string.Join(" | ", failures);
         throw new HttpRequestException($"Could not obtain '{file.Name}' of model '{context.Spec.BaseModel}' version {context.Spec.Version} from any source. {reason}");
+    }
+
+    /// <summary>
+    ///     Decides how long to wait before the one retry: what the server asked for, else the default, never more than <see cref="MaxRetryDelay"/>.
+    /// </summary>
+    /// <param name="asked">The wait the server asked for (<c>Retry-After</c>), or null.</param>
+    /// <param name="fallback">The wait when the server named none.</param>
+    /// <returns>The wait.</returns>
+    internal static TimeSpan RetryWait(TimeSpan? asked, TimeSpan fallback)
+    {
+        var wait = asked ?? fallback;
+        return wait > MaxRetryDelay ? MaxRetryDelay : wait;
     }
 
     /// <summary>

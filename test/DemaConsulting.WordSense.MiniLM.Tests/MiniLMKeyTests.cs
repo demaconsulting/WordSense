@@ -2,7 +2,7 @@ namespace DemaConsulting.WordSense.MiniLM.Tests;
 
 /// <summary>
 ///     Checks that every key that the MiniLM model gives is a member of <c>WordLexicon.Keys</c>. The test is skipped when
-///     the model files are not available (for example a checkout without Git LFS content).
+///     the model files are not available (for example when <c>fetch-models</c> has not run).
 /// </summary>
 public class MiniLMKeyTests
 {
