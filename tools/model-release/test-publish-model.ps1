@@ -5,7 +5,7 @@
 .DESCRIPTION
     The release must hold README.md, and every model-<quantization>.onnx must come with its model-<quantization>.md. The
     rule is checked over the assets that the release already has together with the files of the run. The script runs
-    runs publish-model.ps1 against a fake `gh` function (a function of the caller is visible to the script it
+    publish-model.ps1 against a fake `gh` function (a function of the caller is visible to the script it
     runs) that answers the release lookup from a table and records the writes, and checks which runs pass and which
     stop. Most cases are dry runs; the cases that check whether a draft is published run for real against the fake.
 
