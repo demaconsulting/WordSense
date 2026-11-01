@@ -40,6 +40,7 @@ internal static partial class Program
         await ModelCatalog.EnsureAsync(model, cancellationToken).ConfigureAwait(false);
         var encoderModel = ModelCatalog.EncoderOf(model);
         using var encoder = encoderModel.OpenEncoder();
+        await CpuPreflight.RunAsync(encoder, encoderModel.Spec, repository, output, cancellationToken).ConfigureAwait(false);
         var request = new TenseHeadRequest(
             corpus,
             options.TryGetValue("data", out var data) ? Path.GetFullPath(data) : Path.Join(repository, "data"),
@@ -48,7 +49,7 @@ internal static partial class Program
             VectorCacheOf(options, repository, info),
             CGridOf(options, TenseHeadTrainer.DefaultCGrid),
             IsOn(options, "report-fusion"));
-        var outcome = await TenseHeadTrainer.TrainAsync(request, EncoderIdentityOf(encoderModel.Spec), existing, (words, token) => encoder.EncodeAllAsync(words, token), output, cancellationToken).ConfigureAwait(false);
+        var outcome = await TenseHeadTrainer.TrainAsync(request, EncoderIdentityOf(encoderModel.Spec), existing, (words, token) => encoder.EncodeHeadAllAsync(words, token), output, cancellationToken).ConfigureAwait(false);
         Directory.CreateDirectory(Path.GetDirectoryName(file)!);
         File.WriteAllBytes(file, outcome.Blob);
         output.Write(outcome.Report);

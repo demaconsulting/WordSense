@@ -8,7 +8,7 @@ namespace WordSense.Builder.Tests;
 /// </summary>
 public sealed class EmbeddingCacheTests : IDisposable
 {
-    private static readonly byte[] Digest = EmbeddingCache.ComputeDigest("aa", "bb", true, "1.0");
+    private static readonly byte[] Digest = EmbeddingCache.ComputeDigest("aa", "bb", true, "1.0", "last");
     private readonly TestDirectory _dir = new();
 
     /// <inheritdoc />
@@ -61,15 +61,34 @@ public sealed class EmbeddingCacheTests : IDisposable
     public void WordSenseBuilder_EmbeddingCache_ComputeDigest_DependsOnEveryInput()
     {
         // Arrange
-        var digest = EmbeddingCache.ComputeDigest("aa", "bb", true, "1.0");
+        var digest = EmbeddingCache.ComputeDigest("aa", "bb", true, "1.0", "last");
 
         // Act and Assert
         Assert.Equal(32, digest.Length);
-        Assert.Equal(digest, EmbeddingCache.ComputeDigest("AA", "BB", true, "1.0"));
-        Assert.NotEqual(digest, EmbeddingCache.ComputeDigest("ab", "bb", true, "1.0"));
-        Assert.NotEqual(digest, EmbeddingCache.ComputeDigest("aa", "bc", true, "1.0"));
-        Assert.NotEqual(digest, EmbeddingCache.ComputeDigest("aa", "bb", false, "1.0"));
-        Assert.NotEqual(digest, EmbeddingCache.ComputeDigest("aa", "bb", true, "1.1"));
+        Assert.Equal(digest, EmbeddingCache.ComputeDigest("AA", "BB", true, "1.0", "last"));
+        Assert.NotEqual(digest, EmbeddingCache.ComputeDigest("ab", "bb", true, "1.0", "last"));
+        Assert.NotEqual(digest, EmbeddingCache.ComputeDigest("aa", "bc", true, "1.0", "last"));
+        Assert.NotEqual(digest, EmbeddingCache.ComputeDigest("aa", "bb", false, "1.0", "last"));
+        Assert.NotEqual(digest, EmbeddingCache.ComputeDigest("aa", "bb", true, "1.1", "last"));
+        Assert.NotEqual(digest, EmbeddingCache.ComputeDigest("aa", "bb", true, "1.0", "mean:9-12"));
+        Assert.NotEqual(EmbeddingCache.ComputeDigest("aa", "bb", true, "1.0", "mean:9-12"), EmbeddingCache.ComputeDigest("aa", "bb", true, "1.0", "mean:10-12"));
+    }
+
+    /// <summary>
+    ///     A cache of one sense layout is dropped when it is opened for another layout of the same encoder.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_EmbeddingCache_Open_OtherLayout_IsInvalidated()
+    {
+        // Arrange: a cache written for the layout "last"
+        Filled(2);
+
+        // Act
+        var other = EmbeddingCache.Open(_dir.Root, EmbeddingCache.ComputeDigest("aa", "bb", true, "1.0", "mean:9-12"));
+
+        // Assert
+        Assert.True(other.Invalidated);
+        Assert.Equal(0, other.Count);
     }
 
     /// <summary>
@@ -123,7 +142,7 @@ public sealed class EmbeddingCacheTests : IDisposable
         var written = Filled(3);
 
         // Act
-        var other = EmbeddingCache.Open(_dir.Root, EmbeddingCache.ComputeDigest("cc", "bb", true, "1.0"));
+        var other = EmbeddingCache.Open(_dir.Root, EmbeddingCache.ComputeDigest("cc", "bb", true, "1.0", "last"));
         other.Add(EmbeddingCache.KeyOf(["x"], 0), Vector(9));
         other.Save();
         var original = EmbeddingCache.Open(_dir.Root, Digest);

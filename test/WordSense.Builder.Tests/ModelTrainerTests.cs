@@ -15,7 +15,8 @@ public sealed class ModelTrainerTests : IDisposable
 {
     private const string ModelId = "stub-model";
     private static readonly byte[] Hash = new byte[32];
-    private static readonly byte[] Digest = EmbeddingCache.ComputeDigest("aa", "bb", false, "1.0");
+    private static readonly string EncoderSha = new('a', 64);
+    private static readonly byte[] Digest = EmbeddingCache.ComputeDigest("aa", "bb", false, "1.0", "last");
     private static readonly SenseInfo WalkNoun = SenseFixtures.Senses("walk", PartOfSpeech.Noun, 1)[0];
     private static readonly SenseInfo WalkVerb = SenseFixtures.Senses("walk", PartOfSpeech.Verb, 1)[0];
     private static readonly SenseInfo RunNoun = SenseFixtures.Senses("run", PartOfSpeech.Noun, 1)[0];
@@ -117,7 +118,7 @@ public sealed class ModelTrainerTests : IDisposable
         await TrainAsync(anchors, Encoder(EmbeddingCache.Open(_dir.Root, Digest)), null);
 
         // Act
-        var encoder = Encoder(EmbeddingCache.Open(_dir.Root, EmbeddingCache.ComputeDigest("other", "bb", false, "1.0")));
+        var encoder = Encoder(EmbeddingCache.Open(_dir.Root, EmbeddingCache.ComputeDigest("other", "bb", false, "1.0", "last")));
         await TrainAsync(anchors, encoder, null);
 
         // Assert
@@ -226,11 +227,43 @@ public sealed class ModelTrainerTests : IDisposable
         using var output = new StringWriter();
 
         // Act
-        var mean = ModelTrainer.ReadFrozenMean(path, ModelId, output, "stub");
+        var mean = ModelTrainer.ReadFrozenMean(path, ModelId, EncoderSha, "last", output, "stub");
 
         // Assert
         Assert.Equal(data.Mean, mean);
         Assert.Contains("reused", output.ToString(), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A mean of another feature layout, or of another encoder file, is not reused, although it has the same width;
+    ///     a WSX4 blob of the same encoder and layout is.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_ModelTrainer_ReadFrozenMean_OtherLayoutOrEncoder_ReturnsNull()
+    {
+        // Arrange: weights of the layout "last" without an encoder pin (WSX3), and weights of the layer mean of the encoder EncoderSha (WSX4)
+        var data = await TrainAsync(Anchors(3, 3), Encoder(null), null);
+        var last = Path.Join(_dir.Root, "last.bin");
+        await File.WriteAllBytesAsync(last, WeightsBlobWriter.Write(data), TestContext.Current.CancellationToken);
+        var layered = Path.Join(_dir.Root, "layered.bin");
+        await File.WriteAllBytesAsync(layered, WeightsBlobWriter.Write(data with { EncoderSha256 = Convert.FromHexString(EncoderSha), Layout = "mean:9-12" }), TestContext.Current.CancellationToken);
+        using var output = new StringWriter();
+
+        // Act
+        var lastForMean = ModelTrainer.ReadFrozenMean(last, ModelId, EncoderSha, "mean:9-12", output, "stub");
+        var meanForLast = ModelTrainer.ReadFrozenMean(layered, ModelId, EncoderSha, "last", output, "stub");
+        var otherEncoder = ModelTrainer.ReadFrozenMean(layered, ModelId, new string('1', 64), "mean:9-12", output, "stub");
+        var same = ModelTrainer.ReadFrozenMean(layered, ModelId, EncoderSha, "mean:9-12", output, "stub");
+
+        // Assert
+        Assert.Null(lastForMean);
+        Assert.Null(meanForLast);
+        Assert.Null(otherEncoder);
+        Assert.Equal(data.Mean, same);
+        Assert.Contains("layout 'last', not 'mean:9-12'", output.ToString(), StringComparison.Ordinal);
+        Assert.Contains("layout 'mean:9-12', not 'last'", output.ToString(), StringComparison.Ordinal);
+        Assert.Contains("another encoder file", output.ToString(), StringComparison.Ordinal);
     }
 
     /// <summary>
@@ -248,9 +281,9 @@ public sealed class ModelTrainerTests : IDisposable
         using var output = new StringWriter();
 
         // Act
-        var missing = ModelTrainer.ReadFrozenMean(Path.Join(_dir.Root, "missing.bin"), ModelId, output, "stub");
-        var otherModel = ModelTrainer.ReadFrozenMean(other, "another-model", output, "stub");
-        var unreadable = ModelTrainer.ReadFrozenMean(garbage, ModelId, output, "stub");
+        var missing = ModelTrainer.ReadFrozenMean(Path.Join(_dir.Root, "missing.bin"), ModelId, EncoderSha, "last", output, "stub");
+        var otherModel = ModelTrainer.ReadFrozenMean(other, "another-model", EncoderSha, "last", output, "stub");
+        var unreadable = ModelTrainer.ReadFrozenMean(garbage, ModelId, EncoderSha, "last", output, "stub");
 
         // Assert
         Assert.Null(missing);

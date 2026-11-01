@@ -52,12 +52,13 @@ namespace WordSense.Builder;
 ///     <item><description><c>import-wn30-counts --input FILE [--data DIR] [--sha256 HEX|none]</c> imports the pinned WordNet 3.0 sense index (<c>index.sense</c>) into the <c>sense_frequency</c> table, joined on the sense key, with the count 0 for a sense that has no line.</description></item>
 ///     <item><description><c>label-senses [--data DIR]</c> gives every sense of the inventory that has no label a readable label; labels that exist are never changed and no group is created.</description></item>
 ///     <item><description><c>seed-inventory [--data DIR] [--curation DIR]</c> adds a project sense to every closed-class entry that has none and imports the curated labels and groups of the curation folder (default <c>corpus/curation</c>), leaving out a group with one sense and a group with every sense of its lemma and part of speech; it is the bootstrap of the inventory and is idempotent.</description></item>
+///     <item><description><c>canary --write FILE --sentences FILE [--model bert-base-cased] [--arm-tolerance 40]</c> answers the sentences of a TSV file (the first column is the id, the last the words joined by spaces) with the public model on this machine and writes the canary file: the header (model, encoder SHA-256, ARM tolerance, machine) and the answer (level and key) to every word; write it on the reference CPU class. <c>canary --check FILE [--arm-tolerance N]</c> answers the sentences of a canary file on this machine, lists the words whose answer differs and exits with 1 when more words differ than the architecture allows: none on x86-64, at most the tolerance (the file's, the option's or 40) on ARM; another architecture is not judged. A file written for another encoder file is refused.</description></item>
 ///     <item><description><c>validate-data [--data DIR] [--baseline DIR]</c> validates the table files of the data folder against its <c>schema.yaml</c> and, with a baseline (the data folder of the last release), checks that published sense labels are neither changed nor reused; it exits with 1 and lists the violations when the data is not valid.</description></item>
 ///     </list>
 /// </remarks>
 internal static partial class Program
 {
-    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: compile-image, rebuild-forms, audit-forms, generate-facts, import-moby, weights <modelId>, train-pos-head <modelId>, train-tense-head <modelId>, fetch-models, evaluate <modelId>, evaluate-senses, evaluate-allwords, allwords-sample, allwords-merge, gold2-power, gold2-sample, gold2-batches, gold2-merge, evaluate-gold2, compare-gold2, evaluate-running, compare-outcomes, evaluate-suite, evaluate-shapes, check-leakage, tiers, open-counts, evaluate-tagger, coverage, train-basic, tune-basic, appendix, keys, heteronyms, import-oewn, import-wn30-counts, label-senses, seed-inventory, validate-data.";
+    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: compile-image, rebuild-forms, audit-forms, generate-facts, import-moby, weights <modelId>, train-pos-head <modelId>, train-tense-head <modelId>, fetch-models, evaluate <modelId>, evaluate-senses, evaluate-allwords, allwords-sample, allwords-merge, gold2-power, gold2-sample, gold2-batches, gold2-merge, evaluate-gold2, compare-gold2, evaluate-running, compare-outcomes, evaluate-suite, evaluate-shapes, check-leakage, canary, tiers, open-counts, evaluate-tagger, coverage, train-basic, tune-basic, appendix, keys, heteronyms, import-oewn, import-wn30-counts, label-senses, seed-inventory, validate-data.";
 
     /// <summary>The name of the option that gives the input file of an import command.</summary>
     private const string InputOption = "input";
@@ -156,6 +157,8 @@ internal static partial class Program
                     return await RunEvaluateShapesAsync(options, repository, corpus, output, cancellationToken).ConfigureAwait(false);
                 case "check-leakage":
                     return RunCheckLeakage(options, repository, corpus, output);
+                case "canary":
+                    return await RunCanaryAsync(options, repository, output, cancellationToken).ConfigureAwait(false);
                 case "tiers":
                     return RunTiers(options, repository, corpus, output);
                 case "coverage":
@@ -194,7 +197,7 @@ internal static partial class Program
         }
     }
 
-    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "split", "gold", "table", InputOption, "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes", "oewn", "sample", "seed", "oracle", "adjudications", "max-error", "previous", "previous-release", "previous-sha256", "cache", "no-cache", "recompute-mean", "baseline", "curation", "solver", "calibration-target", "write-expectations", "prior-alpha", "prior-smoothing", "report", "batches", "per-split", "max-per-lemma", "batch-size", "first", "second", "target", "sections", "pool", "docs", "dir", "stage", "splits", "tag", "missing", "adjudicator", "name-first", "name-second", "gold-dir", "read-set", "c-grid", "train", "diff", "base", "new", "cluster", "reps", "base-model", "new-model", "latency-sentences"], StringComparer.Ordinal);
+    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "split", "gold", "table", InputOption, "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes", "oewn", "sample", "seed", "oracle", "adjudications", "max-error", "previous", "previous-release", "previous-sha256", "cache", "no-cache", "recompute-mean", "baseline", "curation", "solver", "calibration-target", "write-expectations", "prior-alpha", "prior-smoothing", "report", "batches", "per-split", "max-per-lemma", "batch-size", "first", "second", "target", "sections", "pool", "docs", "dir", "stage", "splits", "tag", "missing", "adjudicator", "name-first", "name-second", "gold-dir", "read-set", "c-grid", "train", "diff", "base", "new", "cluster", "reps", "base-model", "new-model", "latency-sentences", "write", "check", "sentences", "arm-tolerance"], StringComparer.Ordinal);
 
     /// <summary>
     ///     Options that are switches: they take no value, but accept a following <c>true</c> or <c>false</c>.

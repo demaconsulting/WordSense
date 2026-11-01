@@ -10,7 +10,7 @@ namespace WordSense.Builder;
 /// </summary>
 /// <remarks>
 ///     <para>
-///     The vectors are the output of <c>OnnxEncoder.EncodeAllAsync</c>, which is deterministic for given model files and
+///     The vectors are the output of <c>OnnxEncoder.EncodeHeadAllAsync</c> (the last layer, which the heads read), which is deterministic for given model files and
 ///     inference runtime, so a file is valid for exactly the digest it was written with (the encoder file, the
 ///     vocabulary, the casing, the version of ONNX Runtime and <see cref="FeatureVersion"/>) and for the exact word
 ///     sequence of the set. A file that does not match is encoded again. The vectors are stored as 32-bit floats, which
@@ -26,10 +26,15 @@ namespace WordSense.Builder;
 internal static class PosVectorCache
 {
     /// <summary>
-    ///     The version of the feature definition (the pooling, the window rule and the possessive view of the encoder);
-    ///     changing it invalidates every cache file.
+    ///     The version of the feature definition (the pooling, the window rule, the possessive view and the layer that
+    ///     the vectors come from); changing it invalidates every cache file.
     /// </summary>
-    public const int FeatureVersion = 1;
+    public const int FeatureVersion = 2;
+
+    /// <summary>
+    ///     The encoder output the vectors come from: the heads read the last layer whatever the sense layout of the model is.
+    /// </summary>
+    public const string Source = "last_hidden_state";
 
     private const int HashSize = 32;
     private static readonly byte[] Magic = [(byte)'W', (byte)'S', (byte)'P', (byte)'V'];
@@ -43,7 +48,7 @@ internal static class PosVectorCache
     /// <param name="runtime">The version of the inference runtime.</param>
     /// <returns>The 32-byte digest.</returns>
     public static byte[] ComputeDigest(string onnxSha256, string vocabularySha256, bool lowerCase, string runtime) =>
-        SHA256.HashData(Encoding.UTF8.GetBytes($"pos-vectors={FeatureVersion}\nonnx={onnxSha256.ToLowerInvariant()}\nvocabulary={vocabularySha256.ToLowerInvariant()}\nlowercase={lowerCase}\nruntime={runtime}\n"));
+        SHA256.HashData(Encoding.UTF8.GetBytes($"pos-vectors={FeatureVersion}\nsource={Source}\nonnx={onnxSha256.ToLowerInvariant()}\nvocabulary={vocabularySha256.ToLowerInvariant()}\nlowercase={lowerCase}\nruntime={runtime}\n"));
 
     /// <summary>
     ///     Computes the hash of the word sequence of a set.
