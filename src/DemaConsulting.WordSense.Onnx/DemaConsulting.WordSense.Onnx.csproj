@@ -86,7 +86,7 @@
 
   <!-- Runtime Dependencies -->
   <ItemGroup>
-    <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.31.0" />
+    <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.31.1" />
     <ProjectReference Include="..\DemaConsulting.WordSense\DemaConsulting.WordSense.csproj" />
   </ItemGroup>
 
