@@ -23,6 +23,7 @@ input-files:
   - docs/verification/word-sense/word-data/form-generator.md
   - docs/verification/word-sense/word-data/form-auditor.md
   - docs/verification/word-sense/word-data/data-validator.md
+  - docs/verification/word-sense/word-data/sense-label-generator.md
   - docs/verification/word-sense/onnx.md
   - docs/verification/word-sense/onnx/onnx-word-sense-model.md
   - docs/verification/word-sense/onnx/onnx-classifier.md
@@ -31,6 +32,7 @@ input-files:
   - docs/verification/word-sense/onnx/model-downloader.md
   - docs/verification/word-sense/onnx/download-mirror.md
   - docs/verification/word-sense/onnx/lemma-weights.md
+  - docs/verification/word-sense/onnx/pos-head.md
   - docs/verification/word-sense/mini-lm.md
   - docs/verification/word-sense/mini-lm/mini-lm-word-sense-model.md
   - docs/verification/word-sense/bert-base-cased.md
