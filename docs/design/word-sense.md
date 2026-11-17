@@ -215,28 +215,26 @@ analyses at the part of speech level, and the Basic model of a composition choos
      statement about the lemma and never changes the level, the confidence or the probabilities. An encoder model
      runs the encoder once over the text (only when some word needs it), pools the hidden states of the word,
      centers and scales the vector, and scores the fine senses of the word with the lemma's weights. It lists every
-     analysis with its probability and, in each, the senses with their probabilities given the analysis (softmax-
-     normalized fine scores, summing to one, whatever the level), and answers at the finest level whose per-lemma
-     threshold is met: the fine sense (level `Sense`, with its group id when the sense is in a group), else, for a
-     lemma that has groups and a best sense in a group, the group (level `Group`, when the group threshold is met), else
-     the part of speech (level `PartOfSpeech`, with the ranked senses still listed). The probabilities are worked
-     out per slot: without a head a slot has the mass of its senses; with a head (BertBaseCased) a slot has the
-     head's probability of its part of speech times the share of the slot among the slots of that part of speech
-     (the share of its senses' mass, equal when none is scored; closed-class slots included), and the sense and the
-     group of an answer do not depend on the head. The probability of a sense given its slot is its renormalized
-     mass, the feature variants of a slot split its probability (by the form chooser when it has a label for each,
-     otherwise equally) and the split never reaches the level or the confidence. A word
-     whose lemma has no weights, or for which the encoder gave no usable vector, is answered from the lexicon by
-     the standalone Onnx classifier: the slots are equally likely (the variants of a slot split its share equally), or,
-     for a word of several parts of speech and a model that uses its head, have the probabilities of the head, the
-     most probable slot is selected (the first in lexicon order for equal slots), no senses are scored or listed, and the
-     level is `PartOfSpeech`. The MiniLM and BertBaseCased
-     composites do not return that result: they replace it by the answer of the Basic model for the word, whose
-     senses and level come from the tagger and the context cues and whose polysemous analyses list their senses ranked
-     by the
-     usage prior (not scored; the level and the confidence are the part of speech answer, with no sense and no group),
-     and, for BertBaseCased and a word of several parts of speech, the probabilities of its slots are reweighed as
-     step 5 states.
+     analysis with its probability and, in each, the senses with their probabilities given the analysis
+     (softmax-normalized fine scores, summing to one, whatever the level), and answers at the finest level whose
+     per-lemma threshold is met: the fine sense (level `Sense`, with its group id when the sense is in a group), else,
+     for a lemma that has groups and a best sense in a group, the group (level `Group`, when the group threshold is
+     met), else the part of speech (level `PartOfSpeech`, with the ranked senses still listed). The probabilities are
+     worked out per slot: without a head a slot has the mass of its senses; with a head (BertBaseCased) a slot has the
+     head's probability of its part of speech times the share of the slot among the slots of that part of speech (the
+     share of its senses' mass, equal when none is scored; closed-class slots included), and the sense and the group of
+     an answer do not depend on the head. The probability of a sense given its slot is its renormalized mass, the
+     feature variants of a slot split its probability (by the form chooser when it has a label for each, otherwise
+     equally) and the split never reaches the level or the confidence. A word whose lemma has no weights, or for which
+     the encoder gave no usable vector, is answered from the lexicon by the standalone Onnx classifier: the slots are
+     equally likely (the variants of a slot split its share equally), or, for a word of several parts of speech and a
+     model that uses its head, have the probabilities of the head, the most probable slot is selected (the first in
+     lexicon order for equal slots), no senses are scored or listed, and the level is `PartOfSpeech`. The MiniLM and
+     BertBaseCased composites do not return that result: they replace it by the answer of the Basic model for the word,
+     whose senses and level come from the tagger and the context cues and whose polysemous analyses list their senses
+     ranked by the usage prior (not scored; the level and the confidence are the part of speech answer, with no sense
+     and no group), and, for BertBaseCased and a word of several parts of speech, the probabilities of its slots are
+     reweighed as step 5 states.
 5. A composite model (`FallbackWordSenseModel`) answers each word with the result of its primary model when
    the primary model scored senses for it (the selected analysis lists senses scored in context, not merely ranked by
    usage, or the level is `Group` or `Sense`) and otherwise with the complete result of its fallback model. In the encoder
